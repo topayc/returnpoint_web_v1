@@ -1,0 +1,150 @@
+/*!
+ =========================================================
+ * Paper Dashboard 2 - v2.0.0
+ =========================================================
+ * Product Page: https://www.creative-tim.com/product/paper-dashboard-2
+ * Copyright 2018 Creative Tim (http://www.creative-tim.com)
+ * Designed by www.invisionapp.com Coded by www.creative-tim.com
+ =========================================================
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ */
+/*!
+Animate.css - http://daneden.me/animate
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+Copyright (c) 2015 Daniel Eden
+*/
+
+.content {position: relative;  background-color: #f4f3ef;padding: 30px;}
+
+.dashboard .card {  border-radius: 12px;  box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);  background-color: #FFFFFF;  color: #252422;  margin-bottom: 20px;  position: relative;  border: 0 none;
+  -webkit-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 200ms ease;
+  -moz-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 200ms ease;
+  -o-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 200ms ease;
+  -ms-transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 200ms ease;
+  transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1), box-shadow 200ms ease; }
+
+.dashboard .card .card-body {padding: 15px 15px 0px;}
+.dashboard .card .card-header {padding: 15px 15px 0;  border: 0;}
+.dashboard .card .card-header:not([data-background-color]) {background-color: transparent;}
+.dashboard .card .card-header .card-title {margin-top: 10px;}
+.dashboard .card .card-footer {background-color: transparent;  border: 0;}
+.dashboard .card .card-footer .stats i {margin-right: 5px;  position: relative;  top: 0px;  color: #66615B;}
+
+.dashboard .card-stats .fa-sort-down{position: absolute;font-size: 35px;left: 48%;bottom: -14px;color: #fff;}
+.dashboard .card-stats .card-body  i{font-size:23px;}
+.dashboard .card-stats .card-body .card-category {text-align: right; color: #9A9A9A; font-size: 16px; line-height: 1.4em;}
+.dashboard .card-stats .card-body .card-title{text-align: right; width: 100%;padding: 15px 8px;margin: 5px 10px 20px 10px;border-top:1px solid #efefef;border-bottom:1px solid #efefef;}
+.dashboard .card-stats .card-body .card-title > span{font-size:20px;color:#333;line-height: 30px;}
+.dashboard .card-stats .card-body .card-title .rpoint{}
+.dashboard .card-stats .card-body .card-title .rpoint > span{color: #fff; background: #ff9797; border-radius: 50%; padding: 2px 6px; font-size: 13px; margin: 0 5px; vertical-align: text-top;}
+.dashboard .card-stats .card-body .card-title .gpoint{padding-left:10px;}
+.dashboard .card-stats .card-body .card-title .gpoint > span{color: #fff; background: #a9ce39; border-radius: 50%; padding: 2px 6px; font-size: 13px; margin: 0 5px; vertical-align: text-top;}
+
+.dashboard .card-stats .card-footer {padding: 0px 15px 15px;}
+.dashboard .card-stats .card-footer .stats {color: #9A9A9A;}
+.dashboard .card-stats .card-footer ul{padding: 0 0 0 20px;}
+.dashboard .card-stats .card-footer li{position: relative;font-size: 14px;}
+.dashboard .card-stats .card-footer li span{position:absolute;right:10px;color: #444;}
+
+.dashboard .card-chart .card-header .card-title {  margin-top: 10px;  margin-bottom: 0;}
+.dashboard .card-chart .card-header .card-category {  margin-bottom: 5px;}
+.dashboard .card-chart .table {  margin-bottom: 0;}
+.dashboard .card-chart .table td {  border-top: none;  border-bottom: 1px solid #e9ecef;}
+.dashboard .card-chart .card-progress {  margin-top: 30px;}
+.dashboard .card-chart .chart-area {  height: 190px;  width: calc(100% + 30px);  margin-left: -15px;  margin-right: -15px;}
+.dashboard .card-chart .card-footer {  margin-top: 15px;}
+.dashboard .card-chart .card-footer .stats {  color: #9A9A9A;}
+.dashboard .card-chart .dropdown {  position: absolute;  right: 20px;  top: 20px;}
+.dashboard .card-chart .dropdown .btn {  margin: 0;}
+
+.dashboard .text-primary,a.text-primary:focus,a.text-primary:hover {  color: #51cbce !important;}
+.dashboard .text-info,a.text-info:focus,a.text-info:hover {  color: #51bcda !important;}
+.dashboard .text-success,a.text-success:focus,a.text-success:hover {  color: #6bd098 !important;}
+.dashboard .text-warning,a.text-warning:focus,a.text-warning:hover {  color: #fbc658 !important;}
+.dashboard .text-danger,a.text-danger:focus,a.text-danger:hover {  color: #ef8157 !important;}
+.dashboard .text-gray,a.text-gray:focus,a.text-gray:hover {  color: #E3E3E3 !important;}
+
+.dashboard .animated {  -webkit-animation-duration: 1s;  animation-duration: 1s;  -webkit-animation-fill-mode: both;  animation-fill-mode: both;}
+.dashboard .animated.infinite {  -webkit-animation-iteration-count: infinite;  animation-iteration-count: infinite;}
+.dashboard .animated.hinge {  -webkit-animation-duration: 2s;  animation-duration: 2s;}
+.dashboard .animated.bounceIn,
+.dashboard .animated.bounceOut {  -webkit-animation-duration: .75s;  animation-duration: .75s;}
+.dashboard .animated.flipOutX,
+.dashboard .animated.flipOutY {  -webkit-animation-duration: .75s;  animation-duration: .75s;}
+@-webkit-keyframes shake {
+  from,
+  to {    -webkit-transform: translate3d(0, 0, 0);    transform: translate3d(0, 0, 0);  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {    -webkit-transform: translate3d(-10px, 0, 0);    transform: translate3d(-10px, 0, 0);  }
+  20%,
+  40%,
+  60%,
+  80% {    -webkit-transform: translate3d(10px, 0, 0);    transform: translate3d(10px, 0, 0);  }
+}
+
+@keyframes shake {
+  from,
+  to {    -webkit-transform: translate3d(0, 0, 0);    transform: translate3d(0, 0, 0);  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {    -webkit-transform: translate3d(-10px, 0, 0);    transform: translate3d(-10px, 0, 0);  }
+  20%,
+  40%,
+  60%,
+  80% {    -webkit-transform: translate3d(10px, 0, 0);    transform: translate3d(10px, 0, 0);  }
+}
+
+.shake {  -webkit-animation-name: shake;  animation-name: shake;}
+
+@-webkit-keyframes fadeInDown {
+  from {    opacity: 0;    -webkit-transform: translate3d(0, -100%, 0);    transform: translate3d(0, -100%, 0);  }
+  to {    opacity: 1;    -webkit-transform: none;    transform: none;  }
+}
+
+@keyframes fadeInDown {
+  from {    opacity: 0;    -webkit-transform: translate3d(0, -100%, 0);    transform: translate3d(0, -100%, 0);  }
+  to {    opacity: 1;    -webkit-transform: none;    transform: none;  }
+}
+
+.fadeInDown {  -webkit-animation-name: fadeInDown;  animation-name: fadeInDown;}
+
+@-webkit-keyframes fadeOut {
+  from {    opacity: 1;  }
+  to {    opacity: 0;  }
+}
+
+@keyframes fadeOut {
+  from {    opacity: 1;  }
+  to {    opacity: 0;  }
+}
+
+.dashboard .fadeOut {  -webkit-animation-name: fadeOut;  animation-name: fadeOut;}
+
+@-webkit-keyframes fadeOutDown {
+  from {    opacity: 1;  }
+  to {    opacity: 0;    -webkit-transform: translate3d(0, 100%, 0);    transform: translate3d(0, 100%, 0);  }
+}
+
+@keyframes fadeOutDown {
+  from {    opacity: 1;  }
+  to {    opacity: 0;    -webkit-transform: translate3d(0, 100%, 0);    transform: translate3d(0, 100%, 0);  }
+}
+
+.dashboard .fadeOutDown {  -webkit-animation-name: fadeOutDown;  animation-name: fadeOutDown;}
+
+@-webkit-keyframes fadeOutUp {
+  from {    opacity: 1;  }
+  to {    opacity: 0;    -webkit-transform: translate3d(0, -100%, 0);    transform: translate3d(0, -100%, 0);  }
+}
+
+@keyframes fadeOutUp {
+  from {    opacity: 1;  }
+  to {    opacity: 0;    -webkit-transform: translate3d(0, -100%, 0);    transform: translate3d(0, -100%, 0);  }
+}
+
+.dashboard .fadeOutUp {  -webkit-animation-name: fadeOutUp;  animation-name: fadeOutUp;}

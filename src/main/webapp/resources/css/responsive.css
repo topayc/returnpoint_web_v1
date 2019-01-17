@@ -1,0 +1,179 @@
+@media (min-width: 790px){
+html,body{font-size:13px;font-family:'Open Sans', 'Nanum Gothic', sans-serif;}
+body{height:100% !important;}
+header{position:relative;height:280px;top:auto;}
+header h4{position:relative;top:auto;left:auto;max-width: 1200px;display: block;margin: 79px auto;font-size: 36px;text-align: right;color: #fff;font-weight: 100;text-transform: uppercase;}
+input[type=checkbox], input[type=radio]{margin:4px 0 0;}
+
+.navbar{height:85px;border-bottom:1px solid rgba(255, 255, 255, 0.22);font-weight: 600;font-size: 15px;}
+nav .container-fluid{position: relative;max-width:1200px;margin:15px auto;}
+nav .navbar-back{display:none;}
+nav .navbar-brand{display:block;}
+nav .navbar-toggle .icon-bar { background: #fff; border-radius: 1px;}
+nav #myNavbar{float: right;width: auto;opacity:1;background: transparent;position: relative;top: auto;right: auto;height: auto;padding: 0;}
+nav #myNavbar .closebtn{display:none;}
+nav #myNavbar .navbar-nav {width: auto;position: relative;right: auto;top: auto;background: transparent;height: auto;}	
+nav #myNavbar .navbar-nav>li{padding:0;border:0;}
+nav #myNavbar .navbar-nav>li>a{position: relative;color:#fff;padding:0 14px;}
+nav #myNavbar .navbar-nav>li>a .fa-home, #myNavbar .navbar-nav>li>a .fa-comment, #myNavbar .navbar-nav>li>a .fa-coins, #myNavbar .navbar-nav>li>a .fa-building{display:none;padding:0;}
+nav #myNavbar .navbar-nav>li>a .fas{}
+nav #myNavbar .navbar-nav>li>a .fa-sort-down{display:none;position: absolute; top: -42px;left: 42%;font-size: 18px;text-align: center;}
+nav #myNavbar .navbar-nav>li.active>a, .nav>li>a:focus, .nav>li>a:hover{background-color: transparent;color:#1abebc;}
+nav #myNavbar .navbar-nav>li.active>a .fa-sort-down, .nav>li>a:focus .fa-sort-down, .nav>li>a:hover .fa-sort-down{display:block;}
+nav #myNavbar .navbar-nav>li.member {border-left:1px solid rgba(255, 255, 255, 0.2);padding-left:14px;margin-left:14px;background:transparent;}
+nav #myNavbar .navbar-nav>li.member a{color:rgba(255, 255, 255, 0.52);font-size:13px;}
+nav #myNavbar .navbar-nav>li.member a:hover{color:rgba(255, 255, 255, 0.80);}
+nav #myNavbar .navbar-nav>li.language{display:block;}
+nav #myNavbar .navbar-nav>li.language select.form-control {height: 27px;border: 0;background-color: rgba(255, 255, 255, 0.21);color: #ddd;padding: 3px;border-radius: 5px;margin-left: 19px;width: 55px;} 
+nav #myNavbar .navbar-nav>li.language select::-ms-expand{color:#fff;width:13px;}
+nav #myNavbar .navbar-right {float: right!important; margin-right: 0px; margin-top: 15px;}
+nav #myNavbar .navbar-nav .homelink{display:none}
+nav #myNavbar .navbar-nav .userprofile{display:none}
+nav #myNavbar .navbar-nav>li.qrscan{display:none;}
+#myNavbarbg{display:none;}
+
+footer{display:block;position:relative;padding:30px;border-top: 1px solid #e4e5e4;font-size:12px;text-align:center;color:#444444;line-height:22px;}
+footer div{max-width:1200px;margin: 0 auto;}
+footer span{padding:0 20px; border-left:1px solid rgba(205, 205, 205, 0.50);}
+footer span:first-child{border-left:0px;}
+footer span a, footer span a:hover, footer span a:focus{color:#444444;cursor: pointer;}
+footer p{position:absolute; bottom:7px; right:15px;}
+footer p a{display:block;background: #fff;color: #fff;padding:4px 12px;margin:10px;border-radius:5px;}
+
+.submenu{background-color:#222222;padding-top: 0;}
+.submenu li{padding:15px 35px;} 
+
+.p_service_member header, .p_service_money header, .p_service_point header{background-image: url(../images/sub_top01.jpg);background-position: 0px 0px;}
+.p_company_identity header, .p_company_business header, .p_company_value header{background-image: url(../images/sub_top02.jpg);background-position: 0px 0px;}
+.p_point header{background-image: url(../images/sub_top03.jpg);background-position: 0px 0px;}
+.p_customer_help header, .p_customer_notice header{background-image: url(../images/sub_top04.jpg);background-position: 0px 0px;}
+.p_login header, .p_join header, .p_find header{background-image: url(../images/sub_top05.jpg);background-position: 0px 0px;}
+.p_mypage header, .p_mypage_out header{background-image: url(../images/sub_top05.jpg);background-position: 0px 0px;}
+.p_rpmap header{background-image: url(../images/sub_top05.jpg);background-position: 0px 0px;}
+.p_board header, .p_notice header, .p_qna header, .p_faq header{background-image: url(../images/sub_top05.jpg);background-position: 0px 0px;}
+
+.home footer{position:absolute;width: 100%;bottom:0;border-top: 1px solid rgba(255, 255, 255, 0.22);color:#cecece;}
+.home footer span{border-left:1px solid rgba(205, 205, 205, 0.21);}
+.home footer span:first-child{border-left:0px;}
+.home footer span a, footer span a:hover, footer span a:focus{color:#cecece;}
+.home section .carousel-inner .item:nth-child(1){background:url(../images/index_img01.jpg);background-size:100% 100%;}
+.home section .carousel-inner .item:nth-child(2){background:url(../images/index_img02.jpg);background-size:100% 100%;}
+.home section .carousel-inner .item:nth-child(3){background:url(../images/index_img03.jpg);background-size:100% 100%;}
+.home section .txt_group{text-align:left;}
+.home section .txt_group .txt_wrap{padding: 0 15px;}
+.home section .txt_group ul{display:block;text-align:right;width: 342px;}
+.home section .txt_group ul li{display:inline-block;margin:0 15px;width:6px;height:6px;background-color:rgba(245, 254, 0, 0.46);border-radius:50px;}
+.home section .home_title{font-size:50px;}
+.home section .home_stitle{font-size:15px;}
+.home section .carousel-inner img{width:100%;margin:0;max-width: 100%;}
+
+section{max-width:700px;min-height:550px;margin:0 auto ;padding:60px 0;}
+section h4{position:relative;font-family: 'Jeju Gothic'; font-size: 16px; border-left: 5px solid #00cbcf; padding-left: 10px;}
+section h4 span{position:absolute;right:7px;top:7px;font-size:12px;padding:0;}
+section h4 span small{color:#ff4a4a;}
+section hr{display:block;border-bottom:2px solid #00cbcf;}
+
+.form-group{position:relative;margin: 0 0 10px 0;}
+
+.mobile{display:none !important;}
+.pc{display:block !important;}
+
+.txtarea{padding: 15px 0 15px 100px;text-align:left;}
+.txtarea i{position: absolute;left: 24px;top: 25px;}
+.txtarea h3{font-size: 17px;}
+
+.p_company_identity section{max-width:1000px;padding: 60px 0;}
+.p_company_identity section > div{position: relative;padding:0 0 35px 250px; }
+.p_company_identity section aside{padding-bottom: 20px;position: absolute;left: 0;}
+.p_company_identity section aside hr{display: block;width: 20px;border-bottom: 2px solid #1abebc;margin: 0 0 13px 13px;text-align:left;}
+.p_company_identity section aside h4{border:0;font-size: 15px; font-weight: normal; text-align: center;}
+.p_company_identity section .companybox .box{padding:25px;border-bottom: 1px solid #eee;}
+.p_company_identity section .companybox .box.ps{border-bottom: 0;}
+.p_company_identity section .companybox .title{font-weight: bold;padding: 0 0 12px;margin:0;border:0;}
+.p_company_identity section .companybox .box.ps p{display: inline-block;background: #eee;margin: 5px;padding: 2px 5px 1px 5px;}
+
+.p_service_member section{max-width:1000px;padding: 60px 0;}
+.p_service_member section .content{padding-top:15px;}
+.p_service_member section > ul > li{position: relative;padding:0 0 35px 250px; }
+.p_service_member section aside{padding-bottom: 20px;position: absolute;left: 0;}
+.p_service_member section aside hr{display: block;width: 20px;border-bottom: 2px solid #1abebc;margin: 0 0 13px 13px;text-align:left;}
+.p_service_member section aside h4{border:0;font-size: 15px; font-weight: normal; text-align: center;}
+.p_service_member section .step {padding: 0px 0 10px;}
+.p_service_member section .content.service p {width: 15%;}
+.p_service_member section .content ul.comment li span {display:inline-block;}
+.p_service_member section .content ul.comment li {padding: 7px 0;}
+.p_service_member section .content ul.comment {margin: 15px 15px 5px 15px;}
+.p_service_member section .content p span { font-size: inherit;display: block;padding: 6px;}
+.p_service_member section .step span { padding: 22px 0;}
+    
+/*
+.p_company_identity section{max-width:1000px;padding: 60px 0;}
+.p_company_identity section .txtarea{padding:10px 0 40px;}
+.p_company_identity section li{width:24%;padding-bottom:0px;}
+.p_company_identity section > p{padding: 70px 0 10px;}	
+
+.p_service_member section{max-width:1000px;padding: 60px 0;}
+.p_service_member section .txtarea{padding:10px 0 40px;}
+.p_service_member section li{width:32%;height:100px;margin:0.5%;}
+.p_service_member section li span{display:inline-block;}
+*/
+
+.p_login .checkbox li{float:left; border-left:1px solid #eee;padding:2px 25px;}		
+.p_login .checkbox li:first-child{border:0;padding:2px 25px 2px 5px;}
+
+.mypage_info{padding-bottom:70px;}
+.mypage_info li{position:relative;padding:10px 10px 10px 150px;height:38px;}
+.mypage_info li span{position: absolute;left: 0px;top: 0px;background-color: #efefef;width: 126px;height: 36px;padding: 9px 9px 9px 15px;font-weight: 600;font-size: 12px;}
+.mypage_info .node{    display: inline-block;}
+
+.p_mypage .btn-sbasic{position:absolute;right:0;top:0px;left:auto;font-size: 12px;  padding: 5px 10px;}
+.email i{color: #ff6f6f;}
+.p_mypage h4 select{position: absolute; width: 170px; height: 35px; right: 0; top: -10px;}
+
+.p_point section {padding:60px 0;}
+.p_point .listbox .listdate{padding: 0 25px 0 10px;border-right: 1px solid #eee;height: 45px;line-height: 45px;}
+.p_point .listbox .listshop{float:left;padding: 0 25px;height: 45px;line-height: 45px;clear:none;}
+.p_point .listbox .listpoint{float:left;padding:0 0 0 25px;clear: none;font-size: 25px;}
+.p_point .listbox .listmember span.node{padding: 4px 8px;}
+.p_point .listbox .listmember {float: left;width: 105px;text-align: center;border-right: 1px solid #eee;padding: 0; height: 45px;line-height: 45px;clear: none;}
+.p_point .listbox .listbtn{top:14px;}
+
+.p_point .listbox.detail .listdate{float:left;padding: 0 25px 0 10px;border-right: 1px solid #eee;height: 45px;line-height: 45px;}
+.p_point .listbox.detail .listshop{clear: none;padding: 7px 20px;}
+.p_point .listbox.detail .listmember{float:left;}
+
+section.point_tarnsfer h4 span{background-color:#fff;text-align:left;}
+.point_tarnsfer .listbox .listmember{float:left;height: 60px; line-height: 60px; border-right: 1px solid #eee;}
+.point_tarnsfer .listbox .listpoint{height: 60px; line-height: 60px;float:left;}
+.point_tarnsfer .listbtn{position:relative;top:auto;font-size:17px;right:auto;float: right;width: 180px; line-height: 70px; height: 70px;padding:0px;}
+.point_tarnsfer #Rpoint .listbtn{top:auto;height: 55px;padding:0px;line-height: 55px;}
+.point_tarnsfer .listbtn i{display:inline-block;}
+
+.m_point_transfer .pointinput button{width: 24.2%;}
+.m_point_transfer .listpoint { padding: 0 0 40px; font-size: 30px;}
+.m_point_transfer .listpoint small{padding: 0 9px;}
+.m_point_transfer .pointinfo { margin: 35px auto;Width: 85%;}
+
+/* modal */
+.modal-dialog{width:600px;}
+#myprivacy .modal-dialog, #myterms .modal-dialog{max-width:900px;width:auto;}
+#myprivacy .modal-body, #myterms .modal-body{padding:15px 30px;}
+
+.btn-submit{position: relative;bottom: auto;}
+.btn-submit-cancel{position: relative;bottom: auto;right:auto;}
+
+/* alert */
+.alert_wrap .alert{max-width:350px;width:90%;margin:0 auto;padding: 5px;}
+
+/* rpmap */
+.p_rpmap section{min-height:100%;}
+.p_rpmap .rpmap {height: 400px;position: relative}
+.p_rpmap .rpmap_list {position: relative}
+.p_rpmap .storelist_area li{width:50%;float:left;height: 120px;}
+.p_rpmap .storelist_area li {padding: 15px 15px 15px 128px;}
+.p_rpmap .img_area {top: 15px;}    
+
+/* noti */
+.noti .error_desk {width: auto;margin: 0 auto;}
+.alert_wrap.noti .alert-info{background-position-x: right;background-position-y:bottom;}
+}

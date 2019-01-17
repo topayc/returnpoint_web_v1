@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.returnp_web.dao.mapper.FrontMainMapper">
+
+	<select id="selectMemberTotal" parameterType="HashMap" resultType="Integer">
+		<!-- SELECT FORMAT(sum(pointAmount),1) as redPointAmountSum
+		FROM red_point
+		WHERE memberNo = #{memberNo} -->
+		SELECT count(memberNo)
+		FROM member
+		WHERE memberStatus not in (6,7,8)
+	</select>
+
+	<select id="selectMyRedPointSumInfo" parameterType="HashMap" resultType="HashMap">
+		<!-- SELECT FORMAT(sum(pointAmount),1) as redPointAmountSum
+		FROM red_point
+		WHERE memberNo = #{memberNo} -->
+		SELECT sum(pointAmount) as redPointAmountSum
+		FROM red_point
+		WHERE memberNo = #{memberNo}
+	</select>
+
+	<select id="selectMyGreenPointSumInfo" parameterType="HashMap" resultType="HashMap">
+		SELECT sum(pointAmount) as greenPointAmountSum
+		FROM green_point
+		WHERE memberNo = #{memberNo}
+	</select>
+
+	<!-- <resultMap type="HashMap" id="selectMyGreenPointListInfo" >
+	    <result property="pointAmount" column="pointAmount" jdbcType="FLOAT"/>
+	    <result property="memberPointNo" column="memberPointNo" jdbcType="FLOAT"/>
+	</resultMap> -->
+
+	<select id="selectMyGreenPointList" parameterType="HashMap" resultType="HashMap">
+		SELECT (SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='1') as  memberPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='1') as  member
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='1') as  memberPointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='2') as  recommenderPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='2') as  recommender
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='2') as  recommenderPointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='3') as  branchPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='3') as  branch
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='3') as  branchPointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='4') as  agancyPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='4') as  agancy
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='4') as  agancyPointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='5') as  affiliatePoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='5') as  affiliate
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='5') as  affiliatePointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='6') as  saleManagerPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='6') as  saleManager
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='6') as  saleManagerPointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='7') as  SoleDistPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='7') as  SoleDist
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='7') as  SoleDistPointNo
+		FROM member
+		WHERE memberNo = #{memberNo}
+	</select>
+
+	<!-- 포인트 전환신청 정보 저장 -->
+	<insert id="insertPointConvertRequestAct" parameterType="HashMap">
+		INSERT INTO point_convert_request (
+			memberNo
+			,nodeType
+			,requestNodeTypeName
+			,convertPointAmount
+			,greenPointNo
+			,createTime
+			,updateTime
+		) VALUES (
+			#{memberNo}
+			,#{nodeType}
+			,#{requestNodeTypeName}
+			,#{convertPointAmount}
+			,#{greenPointNo}
+			,NOW()
+			,NOW()
+		)
+	</insert>
+
+
+	<!-- 포인트 중복 저장 조회(추후 운영에서 필요시에 수정해서 사용하시면 좋을듯 -->
+<!-- 	<select id="TempselectRecommend" parameterType="HashMap" resultType="int">
+		SELECT count(*)
+		FROM point_convert_request
+		WHERE memberNo = #{memberNo}
+		AND nodeType = #{nodeType}
+		AND requestNodeTypeName = #{requestNodeTypeName}
+		AND convertPointAmount = #{convertPointAmount}
+	</select>  -->
+
+	<!-- green point 전환에 따른  sum 차감 -->
+	<insert id="updateGreenPointUse" parameterType="HashMap">
+		UPDATE green_point
+		SET pointAmount = #{pointAmount}
+			,greenPointUpdateTime = NOW()
+		WHERE memberNo = #{memberNo}
+		AND nodeType = #{nodeType}
+		AND nodeTypeName = #{requestNodeTypeName}
+	</insert>
+
+	<!-- 포인트 전환신청 정보 저장 -->
+	<insert id="insertPointConvertTransactionAct" parameterType="HashMap">
+		INSERT INTO point_conversion_transaction (
+				<!-- pointConversionTansactionNo 자동 생성-->
+		        memberNo
+		        ,nodeType
+		        ,conversionTotalPoint
+		        ,conversionAccPoint
+		        ,conversionAccRate
+		        ,pointTransRate
+		        ,conversionStatus
+		        ,createTime
+		        ,updateTime
+		) VALUES (
+		        #{memberNo}
+		        ,#{nodeType}
+		        ,#{convertPointAmount}
+		        ,'0'
+		        ,'0'
+		        ,#{redPointAccRate}
+		        ,'1'
+				,NOW()
+				,NOW()
+		)
+	</insert>
+
+<!-- 	<select id="selectPaymentPointbackRecordList" parameterType="HashMap" resultType="HashMap">
+		SELECT paymentPointbackRecordNo
+				,memberNo
+				,paymentTransactionNo
+				,nodeNo
+				,nodeType
+				,accRate
+				,pointbackAmount
+				,date_format(createTime,'%Y-%m-%d %I:%i:%s') as createTime
+				,CASE
+				WHEN nodeType='1' THEN (select memberName from member where memberNo =#{memberNo}) /* 회원 */
+				WHEN nodeType='1' THEN '구매적립'
+				WHEN nodeType='2' THEN (select recommenderName from recommender where memberNo =#{memberNo}) /* 정회원 */
+				WHEN nodeType='3' THEN (select branchName from branch where memberNo =#{memberNo}) /* 지사 */
+				WHEN nodeType='4' THEN (select agencyName from agency where memberNo =#{memberNo}) /* 대리점 */
+				WHEN nodeType='5' THEN (select affiliateName from affiliate where memberNo =#{memberNo}) /* 협력업체 */
+				WHEN nodeType='6' THEN (select saleManagerName from sale_manager where memberNo =#{memberNo}) /* 관리자 */
+				WHEN nodeType='7' THEN (select soleDistName from sole_dist where memberNo =#{memberNo}) /* 총판 */
+				ELSE ''
+				END AS companyname
+		FROM payment_pointback_record
+		WHERE memberNo = #{memberNo}
+		AND left(createTime, 7) = left( #{SEARCHTIME} , 7)
+		ORDER BY createTime DESC
+	</select>  -->
+
+<!-- 	<select id="selectpointConversionTransactionList" parameterType="HashMap" resultType="HashMap">
+		SELECT pointConversionTansactionNo
+				,memberNo
+				,nodeType
+				,conversionTotalPoint
+				,conversionAccPoint
+				,conversionAccRate
+				,conversionStatus
+				,createTime
+		FROM point_conversion_transaction
+		WHERE memberNo = #{memberNo}
+		AND conversionStatus = '3'
+		AND left(createTime, 7) = left(#{SEARCHTIME}, 7)
+	</select>  -->
+
+	<!-- red point 전환에 따른  my red point 차감 update -->
+	<update id="updateMyRedPointUse" parameterType="HashMap">
+		UPDATE red_point
+		SET pointAmount = #{pointAmount}
+			,redPointUpdateTime = NOW()
+		WHERE memberNo = #{memberNo}
+	</update>
+
+	<!-- green point 전환에 따른  my green point 차감 update -->
+	<update id="updateMyGreenPointUse" parameterType="HashMap">
+		UPDATE green_point
+		SET pointAmount = #{pointAmount}
+			,greenPointCreateTime = NOW()
+		WHERE memberNo = #{memberNo}
+		AND nodeType = #{nodeType}
+	</update>
+
+	<!-- 포인트 선물하기 정보 저장 -->
+	<insert id="insertPointTransferTransactionAct" parameterType="HashMap">
+		INSERT INTO point_transfer_transaction (
+		        <!-- pointTransferTransactionNo 자동생성 -->
+				pointTransferer
+				,pointReceiver
+				,pointTransferAmount
+				,pointNode
+				,pointType
+				,pointTransferType
+				,pointTransferStatus
+				,createTime
+				,updateTime
+		) VALUES (
+				#{pointTransferer}
+		        ,#{pointReceiver}
+		        ,#{pointTransferAmount}
+		        ,#{nodeType}
+		        ,#{pointType}
+		        ,'1'
+		        ,'1'
+				,NOW()
+				,NOW()
+		)
+	</insert>
+
+	<select id="selectReceiverRedPointInfo" parameterType="HashMap" resultType="HashMap">
+		SELECT redPointNo
+				,memberNo
+				,pointAmount
+				,redPointCreateTime
+				,redPointUpdateTime
+		FROM red_point
+		WHERE memberNo = #{pointReceiver}
+	</select>
+
+	<!-- red point 전환에 따른  receiver red point update -->
+	<update id="updateReceiveRedPoint" parameterType="HashMap">
+		UPDATE red_point
+		SET pointAmount = #{receiverPointAmount}
+			,redPointUpdateTime = NOW()
+		WHERE memberNo = #{pointReceiver}
+	</update>
+
+	<!-- green point 전환에 따른  receiver green point update -->
+	<update id="updateReceiveGreenPoint" parameterType="HashMap">
+		UPDATE green_point
+		SET pointAmount = #{receiverPointAmount}
+			,greenPointCreateTime = NOW()
+		WHERE memberNo = #{pointReceiver}
+		AND nodeType = '1'
+	</update>
+
+
+	<select id="selectPolicyList" parameterType="HashMap" resultType="HashMap">
+		SELECT policyNo,
+				regAdminNo,
+				soleDistComm,
+				branchComm,
+				agancyComm,
+				affiliateComm,
+				branchRecComm,
+				agancyRecComm,
+				affiliateRecComm,
+				customerRecCom,
+				customerComm,
+				pointTransRate,
+				pointTransLimit,
+				redPointAccRate,
+				membershipTransLimit,
+				gPointMovingMinLimit,
+				gPointMovingMaxLimit,
+				rPointMovingMinLimit,
+				rPointMovingMaxLimit,
+				customerRecManagerComm,
+				affiliateRecManagerComm,
+				agancyRecManagerComm,
+				branchRecManagerComm,
+				createTime
+		FROM policy
+		ORDER BY
+   		policyNo DESC
+		LIMIT 1
+	</select>
+
+	<select id="selectReceiverGreenPointInfo" parameterType="HashMap" resultType="HashMap">
+		SELECT greenPointNo
+				,memberNo
+				,nodeNo
+				,nodeType
+				,nodeTypeName
+				,pointAmount
+				,greenPointCreateTime
+				,greenPointUpdateTime
+		FROM green_point
+		WHERE memberNo = #{pointReceiver}
+		AND nodeType = '1'
+	</select>
+
+	<select id="selectCompanyInfo" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			companyInfo
+			,langLocale
+			,companyName
+			,companyAddress
+			,companyTel
+			,companyeEmail
+			,corporateRegistNumber
+			,corporateType
+			,operatingHours
+			,customerCenterTel
+			,privacyOfficer
+			,copyright
+			,faxNumber
+			,ceo
+		FROM company_info
+		WHERE langLocale = #{langLocale}
+	</select>
+
+	<select id="selectServerManageStatusInfo" parameterType="HashMap" resultType="HashMap">
+		SELECT
+				serverManageNo
+				,webServerStatus
+				,adminServerStatus
+				,batchServerStatus
+				,pointbackServerStatus
+				,createTime
+		FROM server_manage
+	</select>
+
+	<select id="selectPaymentPointbackRecordDetailList" parameterType="HashMap" resultType="HashMap">
+	SELECT 	paymentPointbackRecordNo, memberNo, FORMAT(pointbackAmount, 0) AS pointbackAmount, nodeNo, nodeType, createTime, accumulate, companyname
+		FROM (
+		SELECT paymentPointbackRecordNo
+				,memberNo
+				,pointbackAmount
+				,nodeNo
+				,nodeType
+				,date_format(createTime,'%Y-%m-%d %I:%i:%s') as createTime
+				,'구매적립' as accumulate
+				<if test="nodeType !=null and nodeType !='' ">
+				<choose>
+				<when test="nodeType == 1 ">
+				,(select memberName from member where memberNo =#{memberNo}) /* 회원 */
+				</when>
+				<when test="nodeType == 2 ">
+				,(select recommenderName from recommender where memberNo =#{memberNo}) /* 정회원 */
+				</when>
+				<when test="nodeType == 3 ">
+				,(select branchName from branch where memberNo =#{memberNo}) /* 지사 */
+				</when>
+				<when test="nodeType == 4 ">
+				,(select agencyName from agency where memberNo =#{memberNo}) /* 대리점 */
+				</when>
+				<when test="nodeType == 5 ">
+				,(select affiliateName from affiliate where memberNo =#{memberNo}) /* 협력업체 */
+				</when>
+				<when test="nodeType == 6 ">
+				,(select saleManagerName from sale_manager where memberNo =#{memberNo}) /* 관리자 */
+				</when>
+				<when test="nodeType == 7 ">
+				,(select soleDistName from sole_dist where memberNo =#{memberNo}) /* 총판 */
+				</when>
+				<otherwise>
+				,''
+				</otherwise>
+				</choose>
+				</if>
+				AS companyname
+		FROM payment_pointback_record
+		WHERE memberNo = #{memberNo}
+		<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
+		AND left(createTime, 7) = left( #{SEARCHTIME} , 7)
+		</if>
+		AND nodeType = #{nodeType}
+		UNION ALL
+		SELECT 		a.pointTransferTransactionNo as paymentPointbackRecordNo
+					,a.pointReceiver as memberNo
+					,a.pointTransferAmount as pointbackAmount
+				    ,a.pointNode as nodeNo
+				    ,a.pointType as nodeType
+				    ,date_format(a.createTime,'%Y-%m-%d %I:%i:%s') as createTime
+				    ,'선물적립' as accumulate
+				    ,b.memberName as companyname
+		FROM point_transfer_transaction a, member b
+		WHERE a.pointReceiver = b.memberNo
+ 		AND a.pointReceiver = #{memberNo}
+ 		<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
+		AND left(a.createTime, 7) = left( #{SEARCHTIME} , 7)
+		</if>
+		AND a.pointTransferStatus in ('1')
+		AND a.pointType in ('1')
+	) T_TEMP ORDER BY createTime DESC
+	</select>
+
+	<select id="selectMyGreenPointSumList" parameterType="HashMap" resultType="HashMap">
+		SELECT (SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='1' ) as  memberPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='1' ) as  member
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='1' ) as  memberPointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='2' ) as  recommenderPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='2' ) as  recommender
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='2' ) as  recommenderPointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='3' ) as  branchPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='3' ) as  branch
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='3' ) as  branchPointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='4' ) as  agancyPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='4' ) as  agancy
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='4' ) as  agancyPointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='5' ) as  affiliatePoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='5' ) as  affiliate
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='5' ) as  affiliatePointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='6' ) as  saleManagerPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='6' ) as  saleManager
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='6' ) as  saleManagerPointNo
+				,(SELECT pointAmount FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='7' ) as  SoleDistPoint
+				,(SELECT distinct nodeTypeName FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='7' ) as  SoleDist
+				,(SELECT distinct greenPointNo FROM green_point WHERE  memberNo = #{memberNo} AND nodeType='7' ) as  SoleDistPointNo
+		FROM member
+		WHERE memberNo = #{memberNo}
+	</select>
+
+	<select id="selectPointConversionTransactionDetailList" parameterType="HashMap" resultType="HashMap">
+		SELECT 	pointConversionTansactionNo, memberNo, FORMAT(conversionTotalPoint, 0) AS conversionTotalPoint, nodeType, createTime, accumulate, companyname
+			FROM (
+			SELECT a.pointConversionTansactionNo
+					,a.memberNo
+					,a.conversionTotalPoint
+					,a.nodeType
+					,date_format(a.createTime,'%Y-%m-%d %I:%i:%s') as createTime
+					,'포인트전환' as accumulate
+					,b.memberName as companyname
+			FROM point_conversion_transaction a, member b /*포인트전환*/
+			WHERE a.memberNo = b.memberNo
+			AND a.memberNo = #{memberNo}
+			AND a.conversionStatus = '3'
+			<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
+			AND left(a.createTime, 7) = left(#{SEARCHTIME}, 7)
+			</if>
+			UNION ALL
+			SELECT 		a.pointTransferTransactionNo as pointConversionTansactionNo
+						,a.pointReceiver as memberNo
+						,a.pointTransferAmount as conversionTotalPoint
+					    ,a.pointType as nodeType
+					    ,date_format(a.createTime,'%Y-%m-%d %I:%i:%s') as createTime
+					    ,'선물적립' as accumulate
+					    ,b.memberName as companyname
+			FROM point_transfer_transaction a, member b
+			WHERE a.pointReceiver = b.memberNo
+	 		AND a.pointReceiver = #{memberNo}
+	 		<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
+			AND left(a.createTime, 7) = left( #{SEARCHTIME} , 7)
+			</if>
+			AND a.pointTransferStatus in ('1')
+			AND a.pointType in ('2') /* 2는 레드포인트 */
+		)T_TEMP ORDER BY createTime DESC
+	</select>
+
+	<select id="selectMyRedPointSumList" parameterType="HashMap" resultType="HashMap">
+		SELECT pointAmount
+		FROM red_point
+		WHERE memberNo = #{memberNo}
+	</select>
+
+	<select id="selectFaqList" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			boardNo
+			,boardType
+			,boardName
+			,boardTitle
+			,boardContent
+			,createTime
+			,ROWNUM
+		from(
+			SELECT
+				boardNo
+				,boardType
+				,boardName
+				,boardTitle
+				,boardContent
+				,createTime
+				,(@RNUM := @RNUM + 1 ) AS ROWNUM
+			FROM board, (SELECT @RNUM := 0 ) AS ROWNUM
+			WHERE isPublic ='Y'
+			AND boardType='2'
+			<if test="CODE !=null and CODE !='' ">
+			AND boardCate = #{CODE}
+			</if>
+
+			ORDER BY boardNo
+		)TEMP_T
+		WHERE ROWNUM <![CDATA[<]]> '11'
+	</select>
+
+	<select id="faqTotalCnt" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			COUNT(boardNo) AS CNT
+		FROM board
+		WHERE isPublic ='Y'
+		AND boardType='2'
+		<!-- AND boardNo <![CDATA[<]]> '11' -->
+		<if test="CODE !=null and CODE !='' ">
+		AND boardCate = #{CODE}
+		</if>
+		ORDER BY boardNo
+	</select>
+
+	<select id="selectNoticeList" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			boardNo
+			,boardType
+			,boardName
+			,boardTitle
+			,boardContent
+			,createTime
+			,ROWNUM
+		from(
+			SELECT
+				boardNo
+				,boardType
+				,boardName
+				,boardTitle
+				,boardContent
+				,createTime
+				,(@RNUM := @RNUM + 1 ) AS ROWNUM
+			FROM board, (SELECT @RNUM := 0 ) AS ROWNUM
+			WHERE isPublic ='Y'
+			AND boardType='1'
+			ORDER BY boardNo
+		)TEMP_T
+		WHERE ROWNUM <![CDATA[<]]> '11'
+	</select>
+
+	<select id="selectRpmapLoadList" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			memberAddressNo
+			,affiliateName
+			,a.memberNo
+			,nodeNo
+			,nodeType
+			,roadFullAddr
+			,roadAddrPart1
+			,roadAddrPart2
+			,addrDetail
+			,engAddr
+			,jibunAddr
+			,zipNo
+			,admCd
+			,rnMgtSn
+			,bdMgtSn
+			,lat
+			,lng
+			,(6371*acos(cos(radians(${curLat}))*cos(radians(lat))*cos(radians(lng)
+			-radians(${curLng}))+sin(radians(${curLat}))*sin(radians(lat))))
+			AS distance
+		FROM member_address a
+		inner join affiliate b
+		on a.memberNo = b.memberNo
+		WHERE nodeType = '5'
+		<if test="distance!= null">
+	      <![CDATA[having distance <= #{distance}]]>
+		</if>
+	</select>
+
+	<select id="selectFaqMoreList" parameterType="HashMap" resultType="HashMap">
+	SELECT boardNo
+			,boardType
+			,boardName
+			,boardTitle
+			,boardContent
+			,createTime
+            ,ROWNUM
+	FROM(
+		    SELECT
+					boardNo
+					,boardType
+					,boardName
+					,boardTitle
+					,boardContent
+					,createTime,
+		            (@RNUM := @RNUM + 1 ) AS ROWNUM
+			FROM board, (SELECT @RNUM := 0 ) AS ROWNUM
+			WHERE isPublic ='Y'
+			AND boardType='2'
+			<if test="CODE !=null and CODE !='' ">
+			AND boardCate = #{CODE}
+			</if>
+		   	ORDER BY boardNo
+	)TEMP_T
+	<where>
+		<choose>
+		<when test="morecount == 1 ">
+		AND ROWNUM <![CDATA[>]]> '10'
+		AND ROWNUM <![CDATA[<]]> #{faqcount} + 10
+		</when>
+		<when test="morecount == 2 ">
+		AND ROWNUM <![CDATA[>]]> '20'
+		AND ROWNUM <![CDATA[<]]> #{faqcount} + 20
+		</when>
+		<when test="morecount == 3 ">
+		AND ROWNUM <![CDATA[>]]> '30'
+		AND ROWNUM <![CDATA[<]]> #{faqcount} + 30
+		</when>
+		<otherwise>
+		AND ROWNUM <![CDATA[>]]> '40'
+		</otherwise>
+		</choose>
+	</where>
+	</select>
+
+	<select id="selectNoticeMoreList" parameterType="HashMap" resultType="HashMap">
+	SELECT boardNo
+			,boardType
+			,boardName
+			,boardTitle
+			,boardContent
+			,date_format(createTime,'%Y-%m-%d %I:%i:%s') as createTime
+            ,ROWNUM
+	FROM(
+		    SELECT
+					boardNo
+					,boardType
+					,boardName
+					,boardTitle
+					,boardContent
+					,createTime,
+		            (@RNUM := @RNUM + 1 ) AS ROWNUM
+			FROM board, (SELECT @RNUM := 0 ) AS ROWNUM
+			WHERE isPublic ='Y'
+			AND boardType='1'
+		   	ORDER BY boardNo
+	)TEMP_T
+		<where>
+			<choose>
+			<when test="morecount == 1 ">
+			AND ROWNUM <![CDATA[>]]> '10'
+			AND ROWNUM <![CDATA[<]]> #{noticecount} + 10
+			</when>
+			<when test="morecount == 2 ">
+			AND ROWNUM <![CDATA[>]]> '20'
+			AND ROWNUM <![CDATA[<]]> #{noticecount} + 20
+			</when>
+			<when test="morecount == 3 ">
+			AND ROWNUM <![CDATA[>]]> '30'
+			AND ROWNUM <![CDATA[<]]> #{noticecount} + 30
+			</when>
+			<otherwise>
+			AND ROWNUM <![CDATA[>]]> '40'
+			</otherwise>
+			</choose>
+		</where>
+	</select>
+
+	<select id="noticeTotalCnt" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			COUNT(boardNo) AS CNT
+		FROM board
+		WHERE isPublic ='Y'
+		AND boardType='1'
+		<!-- AND boardNo <![CDATA[<]]> '11' -->
+		ORDER BY boardNo
+	</select>
+
+	<select id="selectQnaList" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			boardNo
+			,boardType
+			,boardName
+			,boardTitle
+			,boardContent
+			,boardWriterNo
+			,boardWriterName
+			,boardWriterEmail
+			,boardWriterType
+			,viewHitCount
+			,isPublic
+			,boardPid
+			,boardRef
+			,boardLevel
+			,boardCate
+			,replyStatus
+			,createTime
+			,DATE_FORMAT(createtime, '%Y-%m-%d') as createTime2
+			,updateTime
+			,(select boardContent from board a where boardRef =  TEMP_T.boardNo  and boardType='3' and boardLevel ='2' ) as answerContent
+			,(select count(*) as cnt from board a where boardRef =  TEMP_T.boardNo  and boardType='3' and boardLevel ='2' ) as answerContentCnt
+		FROM(
+				SELECT
+					boardNo
+					,boardType
+					,boardName
+					,boardTitle
+					,boardContent
+					,boardWriterNo
+					,boardWriterName
+					,boardWriterEmail
+					,boardWriterType
+					,viewHitCount
+					,isPublic
+					,boardPid
+					,boardRef
+					,boardLevel
+					,boardCate
+					,replyStatus
+					,createTime
+					,updateTime
+					,(@RNUM := @RNUM + 1 ) AS ROWNUM
+				FROM board, (SELECT @RNUM := 0 ) AS ROWNUM
+				WHERE boardType='3'
+				AND boardLevel ='1'
+				AND isPublic ='Y'
+				AND boardWriterNo = #{memberNo}
+				ORDER BY boardNo
+		)TEMP_T
+	</select>
+
+	<select id="qnaTotalCnt" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			COUNT(boardNo) AS CNT
+		FROM board
+		WHERE isPublic ='Y'
+		AND boardType='3'
+		AND boardLevel ='1'
+		AND boardWriterNo = #{memberNo}
+		ORDER BY boardNo
+	</select>
+
+	<select id="selectQnaNodeList" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			boardNo
+			,boardType
+			,boardName
+			,boardTitle
+			,boardContent
+			,boardWriterNo
+			,boardWriterName
+			,boardWriterEmail
+			,boardWriterType
+			,viewHitCount
+			,isPublic
+			,boardPid
+			,boardRef
+			,boardLevel
+			,boardCate
+			,replyStatus
+			,createTime
+			,DATE_FORMAT(createtime, '%Y-%m-%d') as createTime2
+			,updateTime
+			,rerv1
+			,rerv2
+			,rerv3
+			,rerv4
+			,rerv5
+			,rerv6
+			,rerv7
+			,(select boardContent from board a where boardRef =  TEMP_T.boardNo  and boardType='4' and boardLevel ='2' ) as answerContent
+			,(select count(*) as cnt from board a where boardRef =  TEMP_T.boardNo  and boardType='4' and boardLevel ='2' ) as answerContentCnt
+		FROM(
+				SELECT
+					boardNo
+					,boardType
+					,boardName
+					,boardTitle
+					,boardContent
+					,boardWriterNo
+					,boardWriterName
+					,boardWriterEmail
+					,boardWriterType
+					,viewHitCount
+					,isPublic
+					,boardPid
+					,boardRef
+					,boardLevel
+					,boardCate
+					,replyStatus
+					,createTime
+					,updateTime
+					,rerv1
+					,rerv2
+					,rerv3
+					,rerv4
+					,rerv5
+					,rerv6
+					,rerv7
+					,(@RNUM := @RNUM + 1 ) AS ROWNUM
+				FROM board, (SELECT @RNUM := 0 ) AS ROWNUM
+				WHERE boardType='4'
+				AND boardLevel ='1'
+				AND isPublic ='Y'
+				AND boardWriterNo = #{memberNo}
+				ORDER BY boardNo
+		)TEMP_T
+	</select>
+
+	<select id="qnaNodeTotalCnt" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			COUNT(boardNo) AS CNT
+		FROM board
+		WHERE isPublic ='Y'
+		AND boardType='4'
+		AND boardLevel ='1'
+		AND boardWriterNo = #{memberNo}
+		ORDER BY boardNo
+	</select>
+</mapper>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Admin Dashboard
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+  <!-- CSS Files -->
+  <link href="./css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+</head>
+<body>   
+  <div class="dashboard content">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+        <i class="fas fa-sort-down"></i> <!-- 해당 단계의 정보가 활성화될 때 출력됨니다. -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-5 col-md-4">
+            	 <i class="fas fa-sitemap text-warning"></i>
+              </div>
+              <div class="col-7 col-md-8">
+                <p class="card-category numbers">총판</p>
+              </div>
+              <p class="card-title"><span class="rpoint"><span>R</span>25,255,148P</span> <span  class="gpoint"><span>G</span>25,255,148P</span></p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <ul class="stats">
+	             <li>누적가입  <span>351총판</span></li>
+	             <li>당일가입 <span>50총판</span></li>
+	             <li>승인대기 <span>5총판</span></li>
+	             <li>우수총판 <span>안영철총판</span></li>                
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-5 col-md-4">
+            	 <i class="fas fa-store-alt text-success"></i>
+              </div>
+              <div class="col-7 col-md-8">
+                <p class="card-category numbers">대리점</p>
+              </div>
+              <p class="card-title"><span class="rpoint"><span>R</span>5,255,148P</span> <span  class="gpoint"><span>G</span>5,255,148P</span></p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <ul class="stats">
+	             <li>누적가입  <span>250대리점</span></li>
+	             <li>당일가입 <span>1,250대리점</span></li>
+	             <li>승인대기 <span>50대리점</span></li>
+	             <li>우수대리점 <span>안영철대리점</span></li>                
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-5 col-md-4">
+            	 <i class="fas fa-store text-danger"></i>
+              </div>
+              <div class="col-7 col-md-8">
+                <p class="card-category numbers">협력업체</p>
+              </div>
+              <p class="card-title"><span class="rpoint"><span>R</span>2,255,148P</span> <span  class="gpoint"><span>G</span>2,255,148P</span></p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <ul class="stats">
+	             <li>누적가입  <span>1550가맹점</span></li>
+	             <li>당일가입 <span>150가맹점</span></li>
+	             <li>승인대기 <span>20가맹점</span></li>
+	             <li>우수가맹점 <span>안영철가맹점</span></li>                
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-5 col-md-4">
+            	 <i class="fas fa-user text-primary"></i>
+              </div>
+              <div class="col-7 col-md-8">
+                <p class="card-category numbers">회원(추천인)</p>
+              </div>
+              <p class="card-title"><span class="rpoint"><span>R</span>2,525,148P</span> <span  class="gpoint"><span>G</span>2,255,148P</span></p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <ul class="stats">
+	             <li>누적가입  <span>151,250명</span></li>
+	             <li>당일가입 <span>1,250명</span></li>
+	             <li>승인대기 <span>50명</span></li>
+	             <li>우수회원 <span>안영철</span></li>                
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-title">최근 포인트 통계</h5>
+            <p class="card-category">최근 1년간의 항목별 포인트 통계를 확인하실 수 있습니다.</p>
+          </div>
+          <div class="card-body ">
+            <canvas id="speedChart" width="400" height="100"></canvas>
+          </div>
+          <div class="card-footer ">
+           <div class="chart-legend">
+              <i class="fa fa-circle text-info"></i> Red Point
+              <i class="fa fa-circle text-warning"></i> Green Point
+              <i class="fa fa-circle text-danger"></i> 전환 Point
+            </div>
+            <hr>
+            <div class="stats">
+              <i class="fa fa-history"></i> Updated 3 minutes ago
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+
+<!-- 요기는 나중에 필요할까 하여 남겨두었습니다.--> 
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card ">
+          <div class="card-header ">
+            <h5 class="card-title">Email Statistics</h5>
+            <p class="card-category">Last Campaign Performance</p>
+          </div>
+          <div class="card-body ">
+            <canvas id="chartEmail"></canvas>
+          </div>
+          <div class="card-footer ">
+            <div class="legend">
+              <i class="fa fa-circle text-primary"></i> Opened
+              <i class="fa fa-circle text-warning"></i> Read
+              <i class="fa fa-circle text-danger"></i> Deleted
+              <i class="fa fa-circle text-gray"></i> Unopened
+            </div>
+            <hr>
+            <div class="stats">
+              <i class="fa fa-calendar"></i> Number of emails sent
+            </div>
+          </div>
+      	</div>   	
+      </div>
+      <div class="col-md-8">
+        <div class="card card-chart">
+         <div class="card-header">
+            <h5 class="card-title">최근 포인트 통계</h5>
+            <p class="card-category">최근 1년간의 항목별 포인트 통계를 확인하실 수 있습니다.</p>
+          </div>
+          <div class="card-body ">
+            <canvas id=chartHours width="400" height="100"></canvas>
+          </div>
+          <div class="card-footer ">
+            <hr>
+            <div class="stats">
+              <i class="fa fa-history"></i> Updated 3 minutes ago
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <!-- Chart JS -->
+  <script src="./js/chartjs.min.js"></script>
+  <script src="./js/demo.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+      demo.initChartsPages();
+    });
+  </script>
+</body>
+
+</html>
