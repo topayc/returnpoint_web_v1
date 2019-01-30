@@ -58,7 +58,7 @@ $(document).ready(function(){
 
 			<div class="list_title"><i class="fas fa-building"></i> 회사소개 </div>		
 			<div class="list_li">상호 : (주) 탑해피월드</div> 		
-			<div class="list_li">전화번호 : 02-585-2593</div>		
+			<div class="list_li">전화번호 : 02-585-5993</div>		
 			<div class="list_li">팩스 : 02-585-2590</div>
 			<div class="list_li">주소 : 서울특별시 서초구 사임당로 32 재우빌딩1층</div> 		
 			<div class="list_li">사업자번호 : 754-86-01056</div> 		

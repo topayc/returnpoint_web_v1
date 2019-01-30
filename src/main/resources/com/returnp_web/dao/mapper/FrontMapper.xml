@@ -799,7 +799,6 @@
 		</where>		 
 	</update>
 	
-	
 	<insert id="insertPointWithdrawal" parameterType="HashMap">
 		INSERT INTO point_withdrawal(
 				memberNo

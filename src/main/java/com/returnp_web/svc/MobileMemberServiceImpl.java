@@ -1299,6 +1299,12 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			dbparams.put("memberNo", sm.getMemberNo());
 			rpayMap = frontMemberDao.selectMyRedPointMapinfo(dbparams);
 			
+			if ((float)rpayMap.get("pointAmount") < Converter.toInt(p.getStr("withdrawalAmount"))){
+				String json = Util.printResult(1, String.format("요청 하신 출금 금액이 보유하신 R PAPY 를 초과합니다. 확인후 다시 시도해주세요"), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
 			dbparams.put("memberBankAccountNo", Converter.toInt(p.getStr("memberBankAccountNo")));
 			dbparams.put("withdrawalAmount", Converter.toInt(p.getStr("withdrawalAmount")));
 			

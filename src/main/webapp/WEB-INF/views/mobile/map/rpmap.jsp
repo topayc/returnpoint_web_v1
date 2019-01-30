@@ -76,9 +76,7 @@ var current = {
    },
    
    addList: function(o){
-      
       var photos= o.photos;
-      
       var i = $(".storelist_area li").length;
       var paging = Math.floor((i)/3);
       var li = $("<li/>",{"class":"page" + o.memberNo });
@@ -90,6 +88,7 @@ var current = {
       var detailArea = $("<div/>",{"class":"info_area"});
       var sec1 = $("<div/>",{"class":"info_tit"});
       var sec2 = $("<div/>",{"class":"info_sub ellp",text:o.jibunAddr});
+      var sec5 = $("<div/>",{"class":"info_tel ellp",text: "Tel " + o.affiliateTel});
       var sec3 = $("<div/>",{"class":"info_tag ellp"});
       var sec4 = $("<div/>",{"class":"info_etc ellp"});
       
@@ -102,6 +101,7 @@ var current = {
       
       sec1.appendTo(detailArea);
       sec2.appendTo(detailArea);
+      sec5.appendTo(detailArea);
       sec3.appendTo(detailArea);
       sec4.appendTo(detailArea);
       
@@ -431,7 +431,7 @@ function searchMap() {
                   <a class="ellp"><input id="text_address" type="text" class="form-control" placeholder="ex)강남역, 시청역, 김포한강로 ..."></a>
                   <i class="fas fa-search" onclick="searchMap()"></i>
                </div>
-               <ul class="storelist_area">
+               <ul class="storelist_area" >
                   
                </ul>   
             </div>

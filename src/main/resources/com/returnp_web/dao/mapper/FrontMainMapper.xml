@@ -521,6 +521,7 @@
 			memberAddressNo
 			,affiliateName
 			,a.memberNo
+			,affiliateTel
 			,nodeNo
 			,nodeType
 			,roadFullAddr

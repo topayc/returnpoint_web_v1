@@ -66,7 +66,6 @@ $(document).ready(function(){
 						<span>R Pay<br class="mobile" />전환 및 사용</span>
 						<span>R Point <br class="mobile" />적립<i class="fas fa-caret-left"></i></span>
 						<span>상품<br class="mobile" />판매<i class="fas fa-caret-left"></i></span>
-					</div>
 				</div>
 			</li>
 			<li>
@@ -75,7 +74,7 @@ $(document).ready(function(){
 					<p><strong>[R Point 적립방법]</strong> <span>협력점에 매출의 발생 할 때 마다 R Point 가 적립됩니다.
 					소비자는 매출의 100%를 익일 R Point 로 적립 받으며, 협력점은 매출의 15%의 매출 예치금을 현금으로 본사에 즉시 납입합니다</span>
 					</p>
-					<p><strong>[R Pay 적립방법]</strong> <span>R Point 발생 후 익일부터 R Point 의 30000/16이 매출 금액의100%가 될 때까지 R Pay로 적립됩니다.</span></p>
+					<p><strong>[R Pay 적립방법]</strong> <span>R Point 발생 후 익일부터 R Point 의 <strong>1/2000 </strong>이 매출 금액의100%가 될 때까지 R Pay로 적립됩니다.</span></p>
 					<p><strong>[R Pay 사용방법]</strong> <span>R Point 에서 전환된 R Pay 는 포인트 포인트사용처에서 이용 가능합니다.</span></p>
 				</div>
 			</li>
