@@ -174,36 +174,36 @@ function searchMap(){
    <!-- main begin -->
    <section class="nobtn">
      <ul class="nav nav-tabs">
-       <li class="main_rpoint active"><a data-toggle="tab" href="#main_rpoint"><span>R</span>-PAY</a></li>
-       <li class="main_gpoint"><a data-toggle="tab" href="#main_gpoint"><span>R</span>-POINT</a></li>
+       <li class="main_rpoint active"><a data-toggle="tab" href="#main_rpoint"><span><spring:message code="label.rpoint" /></span></a></li>
+       <li class="main_gpoint"><a data-toggle="tab" href="#main_gpoint"><span><spring:message code="label.gpoint" /></span></a></li>
      </ul>
      <div class="tab-content">
        <div id="main_rpoint" class="tab-pane fade in active">
          <h6><spring:message code="label.rpay_summary"  arguments = "${sessionScope.memberName}"/></h6>
          <p><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/>P</p>
          <ul>
-            <li><a onclick = "movePage('/m/mypage/m_rpay_use_manage.do?memberNo=${model.memberTypeInfo.memberNo}')" ><i class="fas fa-qrcode"></i>&nbsp;<spring:message code="label.rpay_use" /></a></li>
+            <li><a onclick = "movePage('/m/mypage/m_rpay_use_manage.do?memberNo=${model.memberTypeInfo.memberNo}')" ><i class="fas fa-qrcode"></i>&nbsp;<spring:message code="label.use" /></a></li>
             <li><a href="/m/mypage/point_gift.do"><i class="fas fa-gift"></i>&nbsp;<spring:message code="label.gift" /></a></li>
-            <li><a href="/m/mypage/newpoint.do"><i class="fas fa-sync-alt"></i>&nbsp;<spring:message code="label.transition_history" /></a></li>
+            <li><a href="/m/mypage/newpoint.do"><i class="fas fa-list-ul"></i>&nbsp;<spring:message code="label.transition_history" /></a></li>
          </ul>
        </div>
        <div id="main_gpoint" class="tab-pane fade">
          <h6><spring:message code="label.rpoint_summary"  arguments = "${sessionScope.memberName}"/></h6>
          <p><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/>P</p>
          <ul>
-            <li><a onclick="startQRScan()"><i class="fas fa-qrcode"></i><spring:message code="label.accumulate" /></a></li>
-            <li><a href="/m/mypage/point_gift.do"><i class="fas fa-gift"></i><spring:message code="label.gift" /></a></li>
-            <li><a href="/m/mypage/newpoint.do"><i class="fas fa-list-ul"></i><spring:message code="label.transition_history" /></a></li>
+            <li><a onclick="startQRScan()"><i class="fas fa-qrcode"></i>&nbsp;<spring:message code="label.accumulate" /></a></li>
+            <li><a href="/m/mypage/point_gift.do"><i class="fas fa-gift">&nbsp;</i><spring:message code="label.gift" /></a></li>
+            <li><a href="/m/mypage/newpoint.do"><i class="fas fa-list-ul">&nbsp;</i><spring:message code="label.transition_history" /></a></li>
          </ul>
        </div>
      </div>
      <div class="center store">
-       <div><img src="/resources/images/m_store01.jpg" /></div>
-       <div><img src="/resources/images/m_store01.jpg" /></div>
-       <div><img src="/resources/images/m_store01.jpg" /></div>
-       <div><img src="/resources/images/m_store01.jpg" /></div>
-       <div><img src="/resources/images/m_store01.jpg" /></div>
-       <div><img src="/resources/images/m_store01.jpg" /></div>
+       <div style = "width:20%" ><img src="/resources/images/m_store01.jpg"  /></div>
+       <div style = "width:20%" ><img src="/resources/images/m_store01.jpg" /></div>
+       <div style = "width:20%" ><img src="/resources/images/m_store01.jpg" /></div>
+       <div style = "width:20%" ><img src="/resources/images/m_store01.jpg" /></div>
+       <div style = "width:20%" ><a href="https://sincar.co.kr/UID=rp4282"><img src="/resources/banner/new_car_mall_circle.png" ></a></div>
+       <div style = "width:20%" ><img src="/resources/images/m_store01.jpg" /></div>
 
      </div>
      <div class="search">
@@ -213,7 +213,7 @@ function searchMap(){
       </div>
      <ul class="banner">
         <li><a href=""><img src="/resources/images/m_banner01.jpg" /></a></li>
-        <li><a href=""><img src="/resources/images/m_banner02.jpg" /></a></li>
+         <li><a href="https://sincar.co.kr/UID=rp4282"><img src="/resources/banner/new_car_mall.png" /></a></li>
         <li><a href=""><img src="/resources/images/m_banner03.jpg" /></a></li>
      </ul>
      <div class="footinfo">
