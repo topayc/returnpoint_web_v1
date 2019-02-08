@@ -40,7 +40,7 @@ public class QRManager {
 	public static String CHARSET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; 
 
 	public static HashMap<String, String> parseQRToMap(String queryQR) throws ParseException{
-		System.out.println("QRManager.parseQRToMap");
+		/*System.out.println("QRManager.parseQRToMap");*/
 		HashMap<String, String> queryMap = Util.queryToMap(queryQR);
 		if (!QRManager.beforeValidateQR(queryMap)) {
 			return null;
@@ -58,13 +58,13 @@ public class QRManager {
 		String[] encArr =  encData.split(sep);
 		if (encArr.length != 5) return null;
 		
-		System.out.println(encData);
+		/*System.out.println(encData);
 		System.out.println(encArr[0]);
 		System.out.println(encArr[1]);
 		System.out.println(encArr[2]);
 		System.out.println(encArr[3]);
 		System.out.println(encArr[4]);
-		System.out.println();
+		System.out.println();*/
 		
 		long field1 = AntiLogarithm62.get62CharDecode(encArr[0]);
 		long field2 = AntiLogarithm62.get62CharDecode(encArr[1]);
@@ -75,11 +75,11 @@ public class QRManager {
 	/*	if (!QRManager.afterValidateQR(field1, field2, field3 ,  field4, field5)) {
 			return null;
 		}*/
-		System.out.println("결제 금액");
+	/*	System.out.println("결제 금액");
 		System.out.println(field4);
 		System.out.println(String.format("%09d", Long.valueOf(field4)) );
 		System.out.println("결제 승인 번호 마지막 4자리 ");
-		System.out.println(String.format("%04d", Long.valueOf(field5)) );
+		System.out.println(String.format("%04d", Long.valueOf(field5)) );*/
 		String qrPText = 
 				String.format("%09d", field1)+ 
 				String.format("%09d", field2) + 
@@ -108,8 +108,8 @@ public class QRManager {
 				String.format("%09d", Long.valueOf(field3)) + 
 				String.format("%09d", Long.valueOf(field4)) +
 				String.format("%04d", Long.valueOf(field5));*/
-		System.out.println("큐알 원문 데이타");
-		System.out.println(qrPText);
+/*		System.out.println("큐알 원문 데이타");
+		System.out.println(qrPText);*/
 		/*VAN 시간을 내부 포맷으로 변경*/
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		GregorianCalendar calendar = new GregorianCalendar(

@@ -414,8 +414,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 	@Override
 	public String qrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request,	HttpServletResponse response) throws Exception {
 		String remoteCallURL = environment.getProperty("run_mode").equals("dev")
-				? environment.getProperty("dev.pointback_remote_url_by_enc_qr")
-				: environment.getProperty("real.pointback_remote_url_by_enc_qr");
+				? environment.getProperty("dev.qr_accumulate_point")
+				: environment.getProperty("real.qr_accumulate_point");
 		String key = environment.getProperty("key");
 		StringBuffer response2 = null;
 		try {
