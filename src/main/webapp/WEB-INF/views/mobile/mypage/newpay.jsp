@@ -141,25 +141,25 @@ function rpointDetailView(f, searchtime){
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->
-      <h4>R-PAY</h4>
+      <h4><spring:message code="label.rpoint" /></h4>
    </header>
    <!-- content begin -->
    <section style="padding-top: 50px;">
       <div class="rp_total">
          <p><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/>P</p>
-         <h6>Total RPay</h6>
+         <h6><spring:message code="label.total_rpoint" /></h6>
        </div>
       <div class="tab-content">
           <!-- 레드포인트 내역  -->
             <ul class="tabtitle">
-               <li class="active"><a href="/m/mypage/newpay.do">R-PAY 전환내역</a></li>
-               <li><a href="/m/mypage/pay_gift.do">R-PAY 선물하기</a></li>
+               <li class="active"><a href="/m/mypage/newpay.do"><spring:message code="label.rPointconversionHistory" /></a></li>
+               <li><a href="/m/mypage/pay_gift.do"><spring:message code="label.rPointPresents" /></a></li>
             </ul>
             <div id="RpointM" class="tab-pane fade in active">
             <div class="listbox">
-               <div class="listmember"><span class="node nd1">회원</span></div>
+               <div class="listmember"><span class="node nd1"><spring:message code="label.member" /></span></div>
                <div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myRedPointSumMap.pointAmount}" pattern="###,###,###,###"/></span></div>
-               <a type="button" class="listbtn" onclick="rpointDetailView('1', '');"><i class="fas fa-search"></i>상세보기 </a>
+               <a type="button" class="listbtn" onclick="rpointDetailView('1', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
             </div>
           </div>
           <!-- 레드포인트  노드별 상세 내역   -->

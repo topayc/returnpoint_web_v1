@@ -232,70 +232,70 @@ function gpointDetailView(f, searchtime){
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>R-POINT</h4>
+		<h4><spring:message code="label.gpoint" /></h4>
 	</header>
 	<!-- content begin -->
 	<section style="padding-top: 50px;">
 		<div class="rp_total">
 	      <p><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/>P</p>
-	      <h6>Total RPoint</h6>
+	      <h6><spring:message code="label.total_gpoint" /></h6>
 	    </div>
 		<!-- 노드 타입에 따라 글자, 색상이 구분을 나옴, foreach문 처리 -->
 		<!-- 1 회원 2 정회원 3 지사 4 대리점 5 협력업체 6 영업관리자 7 총판 -->
 		<div class="tab-content">
 		<!-- 그린포인트 노드별 포인트 합 -->
 			<ul class="tabtitle">
-				<li class="active"><a href="/m/mypage/newpoint.do">R-POINT 적립내역</a></li>
-				<li><a href="/m/mypage/point_gift.do">R-POINT 선물하기</a></li>
+				<li class="active"><a href="/m/mypage/newpoint.do"><spring:message code="label.gPointEarningHistory" /></a></li>
+				<li><a href="/m/mypage/point_gift.do"><spring:message code="label.gPointPresents" /></a></li>
 			</ul>
 		    <div id="GpointM" class="tab-pane fade in active">
 				<c:if test="${model.myGreenPointSumMap.memberPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd1">회원</span></div>
+					<div class="listmember"><span class="node nd1"><spring:message code="label.member" /></span></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.memberPoint}" pattern="###,###,###,###"/></span></div>
-					<a type="button" class="listbtn" onclick="gpointDetailView('1', '');"><i class="fas fa-search"></i>상세보기 </a>
+					<a type="button" class="listbtn" onclick="gpointDetailView('1', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.recommenderPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd2">정회원</span></div>
+					<div class="listmember"><span class="node nd2"><spring:message code="label.recommender" /></span></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.recommenderPoint}" pattern="###,###,###,###"/></span></div>
-					<a type="button" class="listbtn" onclick="gpointDetailView('2', '');"><i class="fas fa-search"></i>상세보기 </a>
+					<a type="button" class="listbtn" onclick="gpointDetailView('2', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.saleManagerPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd3">영업관리자</span></div>
+					<div class="listmember"><span class="node nd3"><spring:message code="label.saleManager" /></span></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.saleManagerPoint}" pattern="###,###,###,###"/></span></div>
-					<a type="button" class="listbtn" onclick="gpointDetailView('6', '');"><i class="fas fa-search"></i>상세보기 </a>
+					<a type="button" class="listbtn" onclick="gpointDetailView('6', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.affiliatePoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd4">협력업체</span></div>
+					<div class="listmember"><span class="node nd4"><spring:message code="label.affiliate" /></span></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.affiliatePoint}" pattern="###,###,###,###"/></span></div>
-					<a type="button" class="listbtn" onclick="gpointDetailView('5', '');"><i class="fas fa-search"></i>상세보기 </a>
+					<a type="button" class="listbtn" onclick="gpointDetailView('5', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.agancyPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd5">대리점</span></div>
+					<div class="listmember"><span class="node nd5"><spring:message code="label.agency" /></span></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.agancyPoint}" pattern="###,###,###,###"/></span></div>
-					<a type="button" class="listbtn" onclick="gpointDetailView('4', '');"><i class="fas fa-search"></i>상세보기 </a>
+					<a type="button" class="listbtn" onclick="gpointDetailView('4', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.branchPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd6">지사</span></div>
+					<div class="listmember"><span class="node nd6"><spring:message code="label.branch" /></span></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.branchPoint}" pattern="###,###,###,###"/></span></div>
-					<a type="button" class="listbtn" onclick="gpointDetailView('3', '');"><i class="fas fa-search"></i>상세보기 </a>
+					<a type="button" class="listbtn" onclick="gpointDetailView('3', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /></a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.SoleDistPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd7">총판</span></div>
+					<div class="listmember"><span class="node nd7"><spring:message code="label.soleDist" /></span></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.SoleDistPoint}" pattern="###,###,###,###"/></span></div>
-					<a type="button" class="listbtn" onclick="gpointDetailView('7', '');"><i class="fas fa-search"></i>상세보기 </a>
+					<a type="button" class="listbtn" onclick="gpointDetailView('7', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /></a>
 				</div>
 				</c:if>
 		    </div>

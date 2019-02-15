@@ -517,13 +517,20 @@ height: 12px;left: 50%;background: #fff;border-right: 1px solid #ff6282;border-b
 .p_rpshop #menu2 .review_content{max-height: 50px;overflow: hidden;font-size: 12px;color: #777;}
 
 /* server noti */ 
-.alert_wrap.noti .alert-info{background:url(../images/check_server.jpg);max-width: 600px; height: 466px;border-radius: 13px;border:0;box-shadow:0px 0px 50px 11px rgba(4, 4, 4, 0.25);
+.alert_wrap.noti .alert-info{background:url(../images/noti_server.jpg);max-width: 600px; height: 466px;border-radius: 13px;border:0;box-shadow:0px 0px 50px 11px rgba(4, 4, 4, 0.25);
     background-position: bottom right; background-position-x: 395px;background-position-y: 473px;}
 .noti .alert_body{padding:60px 0;text-align:center;color: #fff;}
 .noti i{font-size: 87px;}
-.noti .error_desk {width: 225px;margin: 0 auto;}
+.noti .error_desk {width: 225px;margin: 0 auto;color: #333;}
 .noti .error_desk h2{padding: 22px 0 10px;}
 .noti .error_desk h4{font-size: 15px;}  
+.popup_bottom{
+    background-color: #3E4156;
+    color: white;
+    height: 25px;
+    padding: 2px 10px 3px 10px;
+    width:330px;
+}
   
 /* event noti */
 .alert_wrap.event .alert-info{background:url(../images/noti_event.jpg); height: 466px;

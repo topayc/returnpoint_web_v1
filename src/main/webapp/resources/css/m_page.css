@@ -574,7 +574,7 @@ height: 12px;left: 50%;background: #fff;border-right: 1px solid #ff6282;border-b
     background-position: bottom right; background-position-x: 395px;background-position-y: 473px;}
 .noti .alert_body{padding:60px 0;text-align:center;color: #fff;}
 .noti i{font-size: 87px;}
-.noti .error_desk {width: 225px;margin: 0 auto;}
+.noti .error_desk {width: 250px;margin: 0 auto;color: #444;}
 .noti .error_desk h2{padding: 22px 0 10px;}
 .noti .error_desk h4{font-size: 15px;}  
 
@@ -595,3 +595,11 @@ background-position: top left; background-position-x: 0px;background-position-y:
 .p_recommend .checkmark:after {content: ""; position: absolute;display: none;}
 .p_recommend .container.all{position: absolute; right: 19px; top: 60px;}
 .p_recommend .container.all .checkmark{color:#c8c8c8;}
+
+.popup_bottom{
+    background-color: #3E4156;
+    color: white;
+    height: 25px;
+    padding: 2px 10px 3px 10px;
+    width:330px;
+}

@@ -118,8 +118,11 @@ $(document).ready(function(){
       $('#alert_ok').show();
       $('#alert_cancel').hide();
    }
-
-   $("#alertView").hide();
+   if(getCookie("notToday")=="Y"){
+	$("#alertView").hide();
+	} 
+  
+   //$("#alertView").hide();
 });
 
 function searchMap(){
@@ -154,13 +157,18 @@ function searchMap(){
    </div>  
    <!-- 0831 서버점검 노티 -->
    <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }">
-   <div class="alert_wrap noti" id="alertView" name="alertView" ><!--  style 부분에 display:none;을 빼주심 활성화되요 -->
+   <div class="alert_wrap noti" id="alertView" name="alertView"  ><!--  style 부분에 display:none;을 빼주심 활성화되요 -->
      <div class="alert alert-info">
+        <button type="button" class="close" id="alert_cancel" name="alertClose"  onclick='javascript:alertClose("noti");' style = "color : #000000">&times;</button>
        <div class="alert_body">
           <i class="fas fa-exclamation-triangle"></i>
            <div class="error_desk">
-               <h2>Checking Server</h2>
-               <h4><spring:message code="label.temporary_server_check" /></h4>
+               <h2><spring:message code="label.server_check" /></h2>
+               <h4><spring:message code="label.server_check_detail" /></h4>
+               </br>
+               <h4><spring:message code="label.server_check_detail_2" /></h4>
+               </br>
+              <h4><a href = "javascript:closePopupNotToday('alertView')" ><strong style = "color : #000000"><spring:message code="label.not_view_today" /></strong></a></h4>
            </div>
        </div>
      </div>
