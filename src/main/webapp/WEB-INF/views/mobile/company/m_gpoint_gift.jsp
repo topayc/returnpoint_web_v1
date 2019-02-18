@@ -55,7 +55,7 @@ $(document).ready(function(){
 		<div class="m_point_transfer">
 			<form name="Frm2">
 				<div class="modal-body">
-					<div class="listmember"><span class="node nd1"><spring:message code="label.mmember"/></span>RPoint</div>
+					<div class="listmember"><span class="node nd1"><spring:message code="label.mmember"/></span><spring:message code="label.gpoint" /></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointMap.memberPoint}" pattern="###,###,###,###"/></span></div>
 					<div class="pointinput">
 						<div class="gift_user"><input type="text" id="redPointGiftMemberEmail1" name="redPointGiftMemberEmail1" placeholder="<spring:message code="label.mpointGiftMemberEnter"/>" onblur="changeAttribute('point1', 1);"/><button type="button" onclick="searchPointGiftMemberEmail('1', 'gpoint_gift');"><spring:message code="label.msearch"/></button></div>

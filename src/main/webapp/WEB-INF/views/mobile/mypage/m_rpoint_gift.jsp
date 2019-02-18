@@ -56,7 +56,7 @@ $(document).ready(function(){
 		<div class="m_point_transfer">
 			<form name="Frm2">				
 				<div class="modal-body">
-					<div class="listmember"><strong>R-PAY</strong></div>
+					<div class="listmember"><strong><spring:message code="label.rpoint" /></strong></div>
 					<div class="listpoint"><strong><small>P</small>&nbsp;<span><fmt:formatNumber value="${model.myRedPointInfo.pointAmount}" pattern="###,###,###,###"/></span></strong></div>
 					<div class="pointinput">
 						<div class="gift_user"><input type="text" id="redPointGiftMemberEmail10" name="redPointGiftMemberEmail10" placeholder="<spring:message code="label.mpointGiftMemberEnter"/>"><button type="button" onclick="searchPointGiftMemberEmail('10', 'rpoint_gift');"><spring:message code="label.msearch"/></button></div>

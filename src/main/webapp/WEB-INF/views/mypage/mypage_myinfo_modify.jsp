@@ -241,15 +241,16 @@ function searchPhoneOverlap(){
 				<label for="email"><spring:message code="label.joinDesc03" /></label> <input type="email"	class="form-control" name="email" id="email"  value="${model.mypageMyinfo.memberEmail}" disabled>
 			</div>
 			<div class="form-group">
+				<label for="name"><spring:message code="label.joinDesc07" /></label> <input type="text"	class="form-control"  name="name" id="name"  value="${model.mypageMyinfo.memberName}" disabled>
+			</div>
+			<div class="form-group">
 				<label for="pwd"><spring:message code="label.joinDesc05" /></label> <input type="password" class="form-control" name="pwd" id="pwd"  minlength="8" maxlength="12">
 			</div>
 			<div class="form-group">
 				<label for="pwdconfirm"><spring:message code="label.joinDesc06" /></label> <input type="password" class="form-control"  name="pwdconfirm" id="pwdconfirm"  minlength="8" maxlength="12">
 			</div>
-			<div class="form-group">
-				<label for="name"><spring:message code="label.joinDesc07" /></label> <input type="text"	class="form-control"  name="name" id="name"  value="${model.mypageMyinfo.memberName}" disabled>
-			</div>
-			<div class="form-group recommend">
+			
+<%-- 			<div class="form-group recommend">
 				<label for="recommend"><spring:message code="label.joinDesc08" /></label> <input type="text" class="form-control"  name="recommend" id="recommend" value="${model.mypageMyinfo.recoMemberEmail}">
 				<div><button type="button" class="btn btn-basic" onclick="searchRecommend();"><spring:message code="label.joinDesc04" /></button></div>
 				<input type="hidden" name="recommendEmail" id="recommendEmail" style="display:none;">
@@ -262,7 +263,7 @@ function searchPhoneOverlap(){
 				<input type="hidden" name="phoneOri" id="phoneOri" value="${model.mypageMyinfo.memberPhone}" style="display:none;">
 				<input type="hidden" name="phoneOriM" id="phoneOriM" style="display:none;">
 				<input type="hidden" name="phoneConfirm" id="phoneConfirm" value="N" style="display:none;">
-			</div>
+			</div> --%>
 			<div class="btns2"><button type="submit" class="btn btn-submit" onclick="memberUpdateSubmit();">수정</button><button type="button" class="btn btn-submit-cancel" id="modifySubmitCancel">취소</button></div>
 		</form>
 	</section>
