@@ -58,10 +58,9 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  
-<!--   
-	실제 배포시에는 이 주석 제거
-	<security-constraint>
+ 
+<!--  실제 웹 배포시에는 아래 구문을 활성화해야 함  -->
+<security-constraint>
     <web-resource-collection>
         <web-resource-name>SSL Forward</web-resource-name>
         <url-pattern>/*</url-pattern>
@@ -69,5 +68,5 @@
     <user-data-constraint>
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
-</security-constraint> -->
+</security-constraint>  
 </web-app>

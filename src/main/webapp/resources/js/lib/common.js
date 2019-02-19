@@ -152,7 +152,7 @@ var host = window.location.protocol + "//" + window.location.host;
 var appInfo = {
 	//appSchem : "intent://returnp?seq=67#Intent;scheme=rp;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.returnp.app;end",
 	appSchem : "rp://returnp",
-	appPackage : "com.returnp.returnpointapp",
+	appPackage : "com.tophappyworld.returnpointapp",
 	access : access,
 	share : {
 		title : '리턴포인트.',
