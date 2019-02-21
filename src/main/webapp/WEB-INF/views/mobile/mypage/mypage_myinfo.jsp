@@ -128,7 +128,7 @@ function recommendSms(data){
 		}
 	});
 	
-	localtion.href = "/m/mypage/recommend_sms.do?r=" +data;
+	//location.href = "/m/mypage/recommend_sms.do?r=" +data;
 }
 </script>	
 </head>
@@ -217,9 +217,9 @@ function recommendSms(data){
 			</div>
 			<div id="recommend_app" class="list_toggle collapse">
 				<div>
-					<p class="list_li">
+				<%-- 	<p class="list_li">
 						<a id = "recommend_sms"  onclick = "recommendSms(' ${model.mypageMyinfo.memberEmail}')" ><i class="fas fa-envelope"></i> <spring:message code="label.mypageRecomBySms" /> </a>
-					</p>
+					</p> --%>
 					<p class="list_li" >
 						<a id = "recommend_kakao" onclick = "sendKakaoLink('${model.mypageMyinfo.memberEmail}')" ><img src="/resources/images/kakao.png" /> <spring:message code="label.mypageRecomByKakao" /></a>
 					</p>

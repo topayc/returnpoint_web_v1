@@ -19,7 +19,7 @@
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/common.js"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb4&libraries=geometry,places"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb4&libraries=geometry,places"></script>
 
 <script type="text/javascript" src="/resources/js/lib/markerwithlabel.js"></script>
 <script type="text/javascript">
@@ -345,17 +345,19 @@ function getDeviceMyLocation(){
 	});
 }
 
-function getCurrentPosition() {
-	if (appInfo.access == "APP") {
-		if(current.secure){
+ function getCurrentPosition() {
+
+		if (appInfo.access == "APP") {
 			getCurrentPosition2();
+	/*    if(current.secure == 'false'){
+				getCurrentPosition2();
+			}else {
+				getOriginalCurrentPosition();
+			}*/
 		}else {
 			getOriginalCurrentPosition();
 		}
-	}else {
-		getOriginalCurrentPosition();
 	}
-}
 
 function setMapCenter(seq, latLng) {
    

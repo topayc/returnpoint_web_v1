@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <!-- sns url 링크시 표시되는 이미지와 텍스트내용들 테스트입니다.  -->
-<meta property="og:url" content="http://returnp.com">
+<meta property="og:url" content="https://www.returnp.com">
 <meta property="og:title" content="ReturnP">
 <meta property="og:type" content="website">
 <meta property="og:image" content="/resources/images/sns_url_link_img.png">

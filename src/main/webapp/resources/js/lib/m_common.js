@@ -154,7 +154,7 @@ var host = window.location.protocol + "//" + window.location.host;
 var appInfo = {
 	//appSchem : "intent://returnp?seq=67#Intent;scheme=rp;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.returnp.app;end",
 	appSchem : "rp://returnp",
-	appPackage : "com.tophappyworld.returnpointapp",
+	appPackage : "com.tophappyworld.returnpapp",
 	access : access,
 	share : {
 		title : '리턴포인트.',
@@ -184,9 +184,18 @@ var appInfo = {
 		SEND_SMS : "SEND_SMS"
 		
 	},
+	
+	permission_group : {
+		CAMERA : "CAMERA",
+		PHONE : "PHONE",
+		CONTACTS : "CONTACTS",
+		LOCATION : "LOCATION",
+		SMS : "SMS"
+		
+	},
 	permissionResult : {
 		PERMITTEED : "0",
-		NOT_PERMITTEED: "1"
+		NOT_PERMITTEED: "-1"
 	}
 };
 
