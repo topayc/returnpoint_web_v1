@@ -78,8 +78,9 @@ $(document).ready(function(){
 		});
 	}
 	var parameters = getParams();
-	if (parameters['recommender'] && typeof parameters['recommender'] != "undefined" ) {
+	if (parameters['recommender'] && typeof parameters['recommender'] != "undefined" && parameters['recommender'].trim() != '') {
 		$('#recommend').val(decodeURIComponent(atob(parameters['recommender'])).trim());
+		$("#recommend").attr("readonly",true); 
 	}
 });
 
