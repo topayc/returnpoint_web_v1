@@ -159,7 +159,7 @@ var appInfo = {
 	share : {
 		title : '리턴포인트.',
 		description : '쓴 만큼 100% 돌려주는 ReturnPoint , 언제 어디서나 쉽고 간편하게',
-		imageUrl: 'http://www.returnp.com/resources/images/sns_url_link_img.png',
+		imageUrl: 'https://www.returnp.com/resources/images/sns_url_link_img.png',
 		link : {
 			webUrl : {
 				home : host + "/m/main/index.do",
@@ -174,7 +174,7 @@ var appInfo = {
 		}
 	},
 	key : {
-		kakao : "3dbc61239fe98c572c6a809e90ded5c4"
+		kakao : "586dd4aa5dba4ee8d4edf867e6eeec21"
 	},
 	permission : {
 		CAMERA : "CAMERA",

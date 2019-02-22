@@ -55,6 +55,7 @@ $(document).ready(function(){
 <script type="text/javascript">
 
 function sendKakaoLink(recomEmail){
+	
 	recomEmail = btoa(encodeURIComponent(recomEmail));
 	Kakao.Link.sendDefault({
 		objectType: 'feed',

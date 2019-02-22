@@ -172,7 +172,7 @@ var appInfo = {
 		}
 	},
 	key : {
-		kakao : "3dbc61239fe98c572c6a809e90ded5c4"
+		kakao : "586dd4aa5dba4ee8d4edf867e6eeec21"
 	},
 	permission : {
 		CAMERA : "CAMERA",
