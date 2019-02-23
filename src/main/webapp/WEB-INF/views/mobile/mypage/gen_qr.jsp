@@ -40,12 +40,18 @@
 	<c:choose>
 		<c:when test="${model.result =='100'}">
 		<div class="qrinfo" style ="margin-top:-170px">
-			<div style = "margin-bottom:30px">
+			<div style = "margin-bottom:5px">
 				<i class="fas fa-qrcode"></i>&nbsp
 				<span style = "font-weight:400; font-size:15px;">
 					<spring:message code="label.gen_qr_success"/>
 				</span>
 			</div>
+			<div style = "margin-bottom:30px">
+				<span style = "font-weight:400; font-size:12px;">
+					<spring:message code="label.use_join_qr_code"/>
+				</span>
+			</div>
+			
 		<%-- 	<div style = "margin-bottom:30px">
 				<span  style = "font-weight:400;font-size:11px"> ${model.qrPlainData}</span>
 			</div> --%>

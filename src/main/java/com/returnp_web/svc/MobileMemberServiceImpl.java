@@ -1377,10 +1377,16 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		HashMap<String, Object> dbparams = new HashMap<String, Object>();
 		SessionManager sm = new SessionManager(request, response);
 		rmap.put("qr_cmd", p.getStr("qr_cmd"));
-		String encode64QrData = null;
+		String data = null;
 		String pageTitle = "";
 		JSONObject qrDataObj = new JSONObject();
-	
+		
+		String scheme = request.getScheme();
+		String serverName = request.getServerName();
+		String port = request.getServerPort() == 80 || request.getServerPort() == 443 ? "" :  ":" + String.valueOf(request.getServerPort());
+		String qrUrl = scheme+"://"+serverName+port.trim(); 
+		System.out.println(qrUrl);
+		
 		try{
 			dbparams.put("memberNo", sm.getMemberNo());
 			HashMap<String, Object> memberInfo = this.frontMemberDao.selectMypageMyinfo(dbparams);
@@ -1389,10 +1395,13 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			case QRManager.QRCmd.GEN_JOIN_RECOM_QR:
 				pageTitle = this.messageUtils.getMessage("label.gen_join_qr_code");
 				rmap.put("pageTitleMessageId","label.gen_join_qr_code");
-				qrDataObj.put("qr_cmd", QRManager.QRCmd.EXE_JOIN_WITH_RECOM);
-				qrDataObj.put("recommender", (String)memberInfo.get("memberEmail"));
-				encode64QrData = BASE64Util.encodeString(qrDataObj.toString());
-				break;
+				rmap.put("pageMessage","label.use_join_qr_code");
+				//qrDataObj.put("qr_cmd", QRManager.QRCmd.EXE_JOIN_WITH_RECOM);
+				//qrDataObj.put("recommender", (String)memberInfo.get("memberEmail"));
+				//System.out.println(qrDataObj.toString());
+				data = qrUrl + "/m/member/join.do?recommender="+ BASE64Util.encodeString((String)memberInfo.get("memberEmail"));
+				System.out.println("QR join URL : " + data);
+				break; 
 			
 			case QRManager.QRCmd.GEN_PRODUCT_QR:
 				pageTitle = this.messageUtils.getMessage("label.gen_product_qr_code");
@@ -1411,9 +1420,9 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			if (p.getStr("qr_cmd").equals(QRManager.QRCmd.GEN_PRODUCT_QR) || p.getStr("qr_cmd").equals(QRManager.QRCmd.GEN_GIFT_QR)) {
 				rmap.put("result","101");
 			}else {
-				rmap.put("qrAccessUrl", QRManager.genQRCode(request.getSession().getServletContext().getRealPath("/gen_qr"),"gen_qr", encode64QrData));
-				rmap.put("qrEncodeData", encode64QrData);
-				rmap.put("qrPlainData", qrDataObj.toString());
+				rmap.put("qrAccessUrl", QRManager.genQRCode(request.getSession().getServletContext().getRealPath("/gen_qr"),"gen_qr", data));
+				rmap.put("qrEncodeData", data);
+				rmap.put("qrPlainData", data);
 				rmap.put("result","100");
 				rmap.put("message", this.messageUtils.getMessage("label.gen_qr_success"));
 			}
