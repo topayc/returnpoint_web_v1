@@ -48,6 +48,13 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
 			logger.debug("uri ==>" + uri);
 			logger.debug("url ==>" + request.getRequestURL().toString());
 			logger.debug("action ==>" + action);
+			logger.debug("locale" + request.getLocale().toString());
+	/*		logger.debug("accept locale : " + request.getLocale().toString());
+			logger.debug("korean locale : " + Locale.KOREAN.toString());
+			logger.debug("korea locale : " + Locale.KOREA.toString());
+			logger.debug("chinese locale : " + Locale.CHINESE.toString());
+			logger.debug("china locale : " + Locale.CHINA.toString());
+			logger.debug("english locale : " + Locale.ENGLISH.toString());*/
 		}
 		
 		try {
@@ -68,17 +75,20 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
 				}
 				return false;
 			}else {
-			/*	Locale locale = (Locale) WebUtils.getSessionAttribute(request, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
+				Locale locale = (Locale) WebUtils.getSessionAttribute(request, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
 				if (locale == null){
 					Locale  acceptLocale= request.getLocale();
-					WebUtils.setSessionAttribute(
-						     request, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, 
-							acceptLocale);
-					
-					WebUtils.setSessionAttribute(
-						     request, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, 
-						     Locale.ENGLISH);
-				}*/
+					String langStr = acceptLocale.toString().split("_")[0];
+					if (langStr.equals("ko") ) {
+						acceptLocale = Locale.KOREAN;
+					}else if (langStr.equals("zh")) {
+						acceptLocale = Locale.CHINESE;
+					}else {
+						acceptLocale = Locale.ENGLISH;
+					}
+					//System.out.println("적용 로케일  : "  + acceptLocale.toString());
+					WebUtils.setSessionAttribute( request, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, acceptLocale);
+				}
 				return true;
 			}
 		} catch (Exception e) {
