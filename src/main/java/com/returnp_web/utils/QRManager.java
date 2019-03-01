@@ -55,6 +55,7 @@ public class QRManager {
 			return null;
 		}
 		
+		
 		String[] encArr =  encData.split(sep);
 		if (encArr.length != 5) return null;
 		
@@ -140,6 +141,7 @@ public class QRManager {
 			qrMap.put("pam", String.valueOf(Integer.valueOf(qrPText.substring(27, 35))));    //승인 금액
 			qrMap.put("pas", qrPText.substring(35,36));    //승인 상태 
 			qrMap.put("pas_str", qrPText.substring(35,36).equals("0") ? "승인 완료" : "승인 취소");    //승인 상태 
+			qrMap.put("pay_type_str", sep.equals(QRManager.QR_MAP_SEP_CREDIT ) ? "신용카드 결제" : "현금 결제");    //1 : 신용카드 2 : 현금 결제 
 			qrMap.put("pay_type", sep.equals(QRManager.QR_MAP_SEP_CREDIT ) ? "1" : "2");    //1 : 신용카드 2 : 현금 결제 
 		} catch (Exception e) {
 			e.printStackTrace();

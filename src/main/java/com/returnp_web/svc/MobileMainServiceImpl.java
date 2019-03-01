@@ -389,7 +389,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 				} else {
 					rmap.put("qr_parsing_result", "success");
 					rmap.put("qr_org", p.getStr("qr_data"));
-					rmap.put("qr_pay_type_str", p.getStr("pay_type").equals("1") ? "신용카드 결제" : "현금 결제");
+					//rmap.put("qr_pay_type_str", p.getStr("pay_type").equals("1") ? "신용카드 결제" : "현금 결제");
 					rmap.put("qrAccessUrl", QRManager .genQRCode(request.getSession().getServletContext().getRealPath("/qr_temp"), "qr_temp", decode64Qr));
 					Util.copyRPmapToMap(rmap, qrParsemap);
 					rmap.put("affiliateName", affiliateInfo.get("affiliateName"));

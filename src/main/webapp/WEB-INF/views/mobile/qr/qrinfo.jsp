@@ -51,7 +51,7 @@ $(document).ready(function(){
 				<input type = "hidden" class = "returnp_qr"  id ="pat" value = "${model.pat}"/>
 				<input type = "hidden" class = "returnp_qr"  id ="pan" value = "${model.pan}"/>
 				<input type = "hidden" class = "returnp_qr"  id ="pas" value = "${model.pas}"/>
-				<li><span>결제 방식</span> ${model.qr_pay_type_str}</li>
+				<li><span>결제 방식</span> ${model.pay_type_str}</li>
 				<li><span id = "pam" >결제 금액</span> <fmt:formatNumber value="${model.pam}" pattern="###,###,###,###"/></li>
 				<li><span>가맹 점이름</span> ${model.affiliateName}</li>
 				<li><span>가맹점 코드</span> ${model.af_id}</li>
