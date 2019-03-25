@@ -453,7 +453,7 @@ function startQRScan(){
 	var qrInfoUrl; 
 	bridge.startQRCodeScan(function(qrData){
 		if (!qrData || qrData == 'null' || qrData== '') {
-			alertOpen("확인", "QR Code로 부터 읽어들인 데이타가 없습니다" , true, false, null, null);
+			//alertOpen("확인", "QR Code로 부터 읽어들인 데이타가 없습니다" , true, false, null, null);
 		}else {
 			if (checkUrlForm(qrData)) {
 				/* 구매후 포인트 적립 요청 QR */
@@ -468,7 +468,7 @@ function startQRScan(){
 					webview_redirect(qrData);
 					return;
 				}
-				alertOpen("확인", "유효하지 않는 QR Code 입니다.", true, false, null, null);
+				alertOpen("확인", "유효하지 않은 QR 코드 입니다. </br> 관리자에게 문의 해주세요", true, false, null, null);
 			}
 			
 			/* 

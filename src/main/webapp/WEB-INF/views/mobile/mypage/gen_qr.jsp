@@ -40,16 +40,16 @@
 	<c:choose>
 		<c:when test="${model.result =='100'}">
 		<div class="qrinfo" style ="margin-top:-170px">
-			<div style = "margin-bottom:5px">
+			<div style = "margin-bottom:20px;margin-top:50px">
 				<i class="fas fa-qrcode"></i>&nbsp
 				<span style = "font-weight:400; font-size:15px;">
 					<spring:message code="label.gen_qr_success"/>
 				</span>
 			</div>
+			
 			<div style = "margin-bottom:30px">
-				<span style = "font-weight:400; font-size:12px;">
-					<spring:message code="label.use_join_qr_code"/>
-				</span>
+				<span style = "font-weight:400; font-size:16px;border-radius: 15px;background-color: #444444;padding: 5px;color : #ffffff;font-weight : bold;"><spring:message code="label.recommender"/></span> &nbsp;:&nbsp;  
+				<span style = "font-weight:400; font-size:16px;"> ${model.memberInfo.memberName}</span>
 			</div>
 			
 		<%-- 	<div style = "margin-bottom:30px">
@@ -61,6 +61,13 @@
 			<div class="qrimg" style ="width:70%;height:70%">
 				<img style ="width:100%;height:100%" src="${model.qrAccessUrl}">
 			</div> 
+			
+			<div style = "margin-top:50px">
+				<span style = "font-weight:400; font-size:13px;color : #999999">
+					<spring:message code="label.use_join_qr_code"/>
+				</span>
+			</div>
+			
 		</div>
 		</c:when>
 

@@ -1393,6 +1393,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 
 			switch(p.getStr("qr_cmd")) {
 			case QRManager.QRCmd.GEN_JOIN_RECOM_QR:
+				rmap.put("memberInfo",  memberInfo);
 				pageTitle = this.messageUtils.getMessage("label.gen_join_qr_code");
 				rmap.put("pageTitleMessageId","label.gen_join_qr_code");
 				rmap.put("pageMessage","label.use_join_qr_code");
