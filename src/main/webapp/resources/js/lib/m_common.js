@@ -151,6 +151,7 @@ var access = (function () {
 })();
 
 var host = window.location.protocol + "//" + window.location.host;
+//var host = "http://124.49.211.77:9090";
 var appInfo = {
 	//appSchem : "intent://returnp?seq=67#Intent;scheme=rp;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=com.returnp.app;end",
 	appSchem : "rp://returnp",
@@ -159,7 +160,7 @@ var appInfo = {
 	share : {
 		title : '리턴포인트.',
 		description : '쓴 만큼 100% 돌려주는 ReturnPoint , 언제 어디서나 쉽고 간편하게',
-		imageUrl: 'https://www.returnp.com/resources/images/sns_url_link_img.png',
+		imageUrl: host + '/resources/images/sns_url_link_img.png',
 		link : {
 			webUrl : {
 				home : host + "/m/main/index.do",
@@ -174,7 +175,8 @@ var appInfo = {
 		}
 	},
 	key : {
-		kakao : "586dd4aa5dba4ee8d4edf867e6eeec21"
+		kakao : "eb27d450ded4748d2b46aed0476fc69b"
+			
 	},
 	permission : {
 		CAMERA : "CAMERA",

@@ -28,8 +28,10 @@ public class QRManager {
 		public static final String GEN_JOIN_RECOM_QR = "10000";
 		public static final String GEN_PRODUCT_QR = "10001";
 		public static final String GEN_GIFT_QR = "10002";
-		
 		public static final String EXE_JOIN_WITH_RECOM = "20000";
+		
+		public static final String ACC_BY_GIFTCARD= "900";
+		public static final String PAY_BY_GIFTCARD= "901";
 	}
 	
 	public static String QR_MAP_KEY_D = "D";
@@ -151,7 +153,7 @@ public class QRManager {
 	}
 
 	
-	public static String genQRCode(String savedir, String webRoot, String qrText) throws Exception {
+	public static String genQRCode(String savedir, String webRoot, String qrText, String fileName) throws Exception {
 		Charset charset = Charset.forName("UTF-8");
 		CharsetEncoder encoder = charset.newEncoder();
 
@@ -178,7 +180,7 @@ public class QRManager {
 		}
 		
 		String ext = "png";
-		String qrFileTempNm = String.format("%s.%s", RandomStringUtils.randomAlphanumeric(10), ext);
+		String qrFileTempNm = fileName != null ? fileName :  String.format("%s.%s", RandomStringUtils.randomAlphanumeric(10), ext);
 		String filePath = savedir + "/" + qrFileTempNm;
 		
 		try {
@@ -203,7 +205,7 @@ public class QRManager {
 				throw e;
 			}
 
-			qrAccessUrl = "/" + webRoot + "/" + qrFileTempNm;
+			qrAccessUrl = webRoot + "/" + qrFileTempNm;
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw e;

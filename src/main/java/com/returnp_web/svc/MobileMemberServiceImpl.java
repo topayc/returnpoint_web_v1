@@ -1421,7 +1421,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			if (p.getStr("qr_cmd").equals(QRManager.QRCmd.GEN_PRODUCT_QR) || p.getStr("qr_cmd").equals(QRManager.QRCmd.GEN_GIFT_QR)) {
 				rmap.put("result","101");
 			}else {
-				rmap.put("qrAccessUrl", QRManager.genQRCode(request.getSession().getServletContext().getRealPath("/gen_qr"),"gen_qr", data));
+				rmap.put("qrAccessUrl", QRManager.genQRCode(request.getSession().getServletContext().getRealPath("/gen_qr"),"/gen_qr", data, null));
 				rmap.put("qrEncodeData", data);
 				rmap.put("qrPlainData", data);
 				rmap.put("result","100");

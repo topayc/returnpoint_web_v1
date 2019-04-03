@@ -206,12 +206,11 @@ function searchMap(){
        </div>
      </div>
      <div class="center store">
-       <div style = "width:20%" ><img src="/resources/images/m_store01.jpg"  /></div>
-       <div style = "width:20%" ><img src="/resources/images/m_store01.jpg" /></div>
-       <div style = "width:20%" ><img src="/resources/images/m_store01.jpg" /></div>
-       <div style = "width:20%" ><img src="/resources/images/m_store01.jpg" /></div>
-       <div style = "width:20%" ><a href="https://sincar.co.kr/UID=rp4282"><img src="/resources/banner/new_car_mall_circle.png" ></a></div>
-       <div style = "width:20%" ><img src="/resources/images/m_store01.jpg" /></div>
+       <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg"  /></div>
+       <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
+       <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
+       <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
+       <div style = "width:20%" ><a href="https://sincar.co.kr/UID=rp4282"><img width = "58" height = "58" src="/resources/banner/new_car_mall_circle.png" ></a></div>
 
      </div>
      <div class="search">

@@ -151,6 +151,8 @@ function searchMember(){
 		alertOpen("확인", "이메일과 동일한 추천인은 입력할수 없습니다.", true, false, null, null);
 		return false;
 	}
+	
+	alert(email);
 	$.ajax({
 		method : "POST",
 		url    : "/m/member/select_member_validity.do",

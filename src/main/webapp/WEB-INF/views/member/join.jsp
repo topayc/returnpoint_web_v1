@@ -173,7 +173,7 @@ function searchMember(){
 		url    : "/member/select_member_validity.do",
 		dataType: "json",
 		data   : {
-			email		: email + "@" + domain
+			email		: email
 		},
 		success: function(data) {
 			if (data.result.code > 0) {
