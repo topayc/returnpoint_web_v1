@@ -251,5 +251,7 @@ public interface MobileMainService {
 	 */
 	boolean saveQnaNodeWAct(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
 
+	boolean giftCardQrImgView(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 }
 

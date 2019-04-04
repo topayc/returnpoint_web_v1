@@ -578,4 +578,7 @@ public class FrontMemberDao {
 	public int selectWithdrawalSumPerDay(HashMap<String, Object> params){
 		return sqlSession.getMapper(FrontMapper.class).selectWithdrawalSumPerDay(params);
 	}
+	public HashMap<String,Object> selectGiftCardIssue(HashMap<String, Object> params){
+		return sqlSession.getMapper(FrontMapper.class).selectGiftCardIssue(params);
+	}
 }

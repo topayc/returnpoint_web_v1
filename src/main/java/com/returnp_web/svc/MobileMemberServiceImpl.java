@@ -1441,6 +1441,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 	@Override
 	public boolean qrCommandControl(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		System.out.println("qrCommandControl");
 		HashMap<String, Object> dbparams = new HashMap<String, Object>();
 		SessionManager sm = new SessionManager(request, response);
 		
@@ -1448,11 +1449,15 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		JSONObject qrJson;
 		String qr_cmd;
 		try{
+			System.out.println("원문 데이타");
+			System.out.println(BASE64Util.decodeString(p.getStr("qr_data")));
 			jsonParser = new JSONParser();
 			qrJson = (JSONObject) jsonParser.parse(BASE64Util.decodeString(p.getStr("qr_data")));
 			qr_cmd = (String) qrJson.get("qr_cmd");
 			
 			switch(qr_cmd ){
+			
+			/* 추천인 큐알 스캔에 의한 회원 페이지 이동*/
 			case QRManager.QRCmd.EXE_JOIN_WITH_RECOM:
 				dbparams.put("recommenderEmail", (String) qrJson.get("recommender"));
 				HashMap<String,Object> memberMap =this.frontMemberDao.selectRecommendDetail(dbparams);
@@ -1464,6 +1469,13 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 					rmap.put("resultCode", "100");
 					rmap.put("redirectUrl", "/m/member/join.do?&recommender=" +BASE64Util.encodeString(Util.encodeURIComponent((String)qrJson.get("recommender"))));
 				}
+				break;
+			
+			/* 상품권 큐알에 의한 적립*/
+			case QRManager.QRCmd.ACC_BY_GIFTCARD:
+				break;
+			/*상품권 QR에 의한 결제 처리*/
+			case QRManager.QRCmd.PAY_BY_GIFTCARD:
 				break;
 			}
 		}catch(Exception e){

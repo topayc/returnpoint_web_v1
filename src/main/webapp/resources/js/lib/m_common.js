@@ -477,7 +477,9 @@ function startQRScan(){
 			 * 큐알로 부터 읽어들인 데이타가 URL 형태가 아닌 경우 RETURNP 자체  큐알 명령 
 			 * */
 			else {
-				qrInfoUrl = window.location.protocol + "//" + window.location.host + "/m/mypage/m_qr_command_control.do?qr_data=" + qrData;
+				var qrData  = encodeURIComponent(qrData);
+				console.log(qrData);
+				qrInfoUrl = window.location.protocol + "//" + window.location.host + "/m//qr/giftcard_qrinfo.do?qr_data=" + qrData;
 				webview_redirect(qrInfoUrl);
 			/*	bridge.getPhoneNumber(function(phone){
 					console.log(phone);

@@ -187,9 +187,9 @@ function recommendSms(data){
 				<span class = "item_title"><spring:message code="label.mypageMyMember" /></span><span><i class="fas fa-chevron-right" ></i></span>
 			</div>
 			
-			<div class="list_li"  onclick = "movePage('./m_fullmember.do')">
+			<%-- <div class="list_li"  onclick = "movePage('./m_fullmember.do')">
 				<span class = "item_title"><spring:message code="label.mypageDesc06" /></span><span><i class="fas fa-chevron-right" ></i></span>
-			</div>
+			</div> --%>
 			
 			<div class="list_li" onclick = "movePage('./mypage_out.do')">
 				<span class = "item_title"><spring:message code="label.mypageDesc02" /></span><span><i class="fas fa-chevron-right"></i></span>

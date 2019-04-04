@@ -27,6 +27,11 @@ $(document).ready(function(){
 	$("#sel1").val(pageContextlocale); 
 });
 </script>
+<style type="text/css">
+.gift_qr_title{
+	font-weight : bold
+}
+</style>
 </head>
 <!-- header end -->
 <!-- body begin -->
@@ -51,14 +56,14 @@ $(document).ready(function(){
 				<input type = "hidden" class = "returnp_qr"  id ="pat" value = "${model.pat}"/>
 				<input type = "hidden" class = "returnp_qr"  id ="pan" value = "${model.pan}"/>
 				<input type = "hidden" class = "returnp_qr"  id ="pas" value = "${model.pas}"/>
-				<li><span>결제 방식</span> ${model.pay_type_str}</li>
-				<li><span id = "pam" >결제 금액</span> <fmt:formatNumber value="${model.pam}" pattern="###,###,###,###"/></li>
-				<li><span>가맹 점이름</span> ${model.affiliateName}</li>
-				<li><span>가맹점 코드</span> ${model.af_id}</li>
-				<li><span>승인 일자</span> ${model.pat}</li>
-				<li><span>승인 번호</span> ${model.pan}</li>
+				<li><span  class = "gift_qr_title">결제 방식</span> ${model.pay_type_str}</li>
+				<li><span id = "pam"  class = "gift_qr_title" >결제 금액</span> <fmt:formatNumber value="${model.pam}" pattern="###,###,###,###"/></li>
+				<li><span  class = "gift_qr_title">가맹 점이름</span> ${model.affiliateName}</li>
+				<li><span  class = "gift_qr_title">가맹점 코드</span> ${model.af_id}</li>
+				<li><span  class = "gift_qr_title">승인 일자</span> ${model.pat}</li>
+				<li><span  class = "gift_qr_title">승인 번호</span> ${model.pan}</li>
 				<li style = "display: none"><span >승인 상태</span> ${model.pas}</li>
-				<li><span  >승인 상태</span> ${model.pas_str}</li>
+				<li><span   class = "gift_qr_title">승인 상태</span> ${model.pas_str}</li>
 			</ul>	
 		</div>			
 		<div class="btns2">

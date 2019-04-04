@@ -146,6 +146,14 @@ public class MobileController extends MallBaseController {
 		boolean bret = mms.qrImgView(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
+	
+	// QR 코드 정보 생성
+	@RequestMapping("/qr/giftcard_qrinfo")
+	public String giftCardQrInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/qr/giftCardQrInfo");
+		boolean bret = mms.giftCardQrImgView(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
 
 	// QR 코드 적립 요청 Procy
 	@ResponseBody

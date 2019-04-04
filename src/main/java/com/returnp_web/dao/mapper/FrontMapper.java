@@ -544,4 +544,7 @@ public interface FrontMapper {
 	ArrayList<HashMap<String,Object>> selectPointwithdrawals(HashMap<String, Object> params);
 
 	int selectWithdrawalSumPerDay(HashMap<String, Object> params);
+	
+	HashMap<String,Object> selectGiftCardIssue(HashMap<String, Object> params);
+
 }

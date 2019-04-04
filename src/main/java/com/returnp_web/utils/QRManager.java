@@ -30,6 +30,7 @@ public class QRManager {
 		public static final String GEN_GIFT_QR = "10002";
 		public static final String EXE_JOIN_WITH_RECOM = "20000";
 		
+		/*900 ~ 999 : 상품권 관련 기능*/
 		public static final String ACC_BY_GIFTCARD= "900";
 		public static final String PAY_BY_GIFTCARD= "901";
 	}

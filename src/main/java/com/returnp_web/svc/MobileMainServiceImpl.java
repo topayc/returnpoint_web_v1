@@ -12,11 +12,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ import com.returnp_web.utils.QRManager;
 import com.returnp_web.utils.RPMap;
 import com.returnp_web.utils.SessionManager;
 import com.returnp_web.utils.Util;
-import net.sf.json.JSONObject;
+
 
 /**
  * The Class FrontMainServiceImpl.
@@ -362,6 +363,9 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return true;
 	}
 
+	/* 
+	 * 영수증 적립 큐알 뷰 서비스 
+	 */
 	@Override
 	public boolean qrImgView(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
 		System.out.println(">>>>>> qrImgView");
@@ -411,6 +415,87 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return true;
 	}
 
+	/* 
+	 * 상품권 QR 코드  뷰 서비스 
+	 */
+	@Override
+	public boolean giftCardQrImgView(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		System.out.println(">>>>>> giftCardQrImgView");
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		
+		JSONParser jsonParser;
+		JSONObject qrJson;
+		String qr_cmd;
+		try {
+			System.out.println(BASE64Util.decodeString(p.getStr("qr_data")));
+			jsonParser = new JSONParser();
+			qrJson = (JSONObject) jsonParser.parse(BASE64Util.decodeString(p.getStr("qr_data")));
+			
+			dbparams.put("pinNumber",(String) qrJson.get("pinNumber"));
+			HashMap<String, Object> issueMap = this.frontMemberDao.selectGiftCardIssue(dbparams);
+			if (issueMap == null) {
+				rmap.put("result", "201");
+				rmap.put("messageKey" , "label.wrong_pinnumber");
+				return true;
+			}
+			
+			qr_cmd = (String) qrJson.get("qr_cmd");
+			
+			String giftCardStatus = null;
+			switch((String)issueMap.get("giftCardStatus")) {
+			case "1":giftCardStatus = "정상"; break;
+			case "2":giftCardStatus = "사용 중지"; break;
+			case "3":giftCardStatus = "적립 불가"; break;
+			case "4":giftCardStatus = "결제 불가"; break;
+			}
+			rmap.put("giftCardStatus", giftCardStatus);
+			
+			String payableStatus = null;
+			switch((String)issueMap.get("payableStatus")) {
+			case "Y":payableStatus = "결제 가능"; break;
+			case "N":payableStatus = "결제 불가 - 결제처리 완료"; break;
+			}
+			rmap.put("payableStatus", payableStatus);
+			
+			String accableStatus = null;
+			switch((String)issueMap.get("accableStatus")) {
+			case "Y":accableStatus = "적립 가능"; break;
+			case "N":accableStatus = "적립 불가 - 적립처리 완료"; break;
+			}
+			rmap.put("accableStatus", accableStatus);
+			
+			switch(qr_cmd ){
+			/* 상품권 큐알에 의한 적립*/
+			case QRManager.QRCmd.ACC_BY_GIFTCARD:
+				System.out.println("상품권 큐알 스캔에 의한 적립 처리");
+				rmap.put("qr_cmd", "900");
+				rmap.put("result", "100");
+				rmap.put("title", "상품권 적립 QR");
+				rmap.put("issueMap",issueMap);
+				rmap.put("giftCardQrData", p.getStr("qr_data"));
+				rmap.put("qrAccessUrl", QRManager.genQRCode(
+					request.getSession().getServletContext().getRealPath("/gift_temp_qr"),"/gift_temp_qr", p.getStr("qr_data"), null));
+				break;
+			/*상품권 QR에 의한 결제 처리*/
+			case QRManager.QRCmd.PAY_BY_GIFTCARD:
+				rmap.put("qr_cmd", "901");
+				System.out.println("상품권 결제 큐알 스캔에 의한 결제 처리");
+				rmap.put("result", "100");
+				rmap.put("title", "상품권 결제 QR");
+				rmap.put("issueMap",issueMap);
+				rmap.put("giftCardQrData", p.getStr("qr_data"));
+				rmap.put("qrAccessUrl", QRManager.genQRCode(
+						request.getSession().getServletContext().getRealPath("/gift_temp_qr"),"/gift_temp_qr", p.getStr("qr_data"), null));
+				break;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
 	@Override
 	public String qrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request,	HttpServletResponse response) throws Exception {
 		String runMode = environment.getProperty("run_mode");
@@ -884,5 +969,4 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 		return true;
 	}
-
 }
