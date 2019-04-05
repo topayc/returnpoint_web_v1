@@ -56,6 +56,7 @@
 			<mvc:exclude-mapping path="/m/mypage/redPointTransactionAct.do" />
 			<mvc:exclude-mapping path="/m/mypage/m_selectLanguage.do" />
 			<mvc:exclude-mapping path="/m/mypage/m_qr_command_control.do" />
+			<mvc:exclude-mapping path="/m/mypage/m_gift_card_command.do" />
 			<beans:bean class="com.returnp_web.interceptor.MobileSessionInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

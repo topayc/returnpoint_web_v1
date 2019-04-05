@@ -1,10 +1,13 @@
 package com.returnp_web.svc;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.ModelMap;
 
 import com.returnp_web.utils.RPMap;
 
@@ -341,5 +344,7 @@ public interface MobileMemberService {
 	boolean qrCommandControl(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
 
 	boolean prepareMemberBankAccountForm(RPMap rPap, RPMap rmap, HttpServletRequest request,HttpServletResponse response) throws Exception ;
+
+	public String handleGiftCardQR(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 }

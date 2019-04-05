@@ -363,6 +363,104 @@ function unsupportedService(){
 	//bridge.toast("아직 지원되지 않는 기능입니다. 곧 추가될 예정입니다.");
 }
 
+/*상품권 QR 요청 처리*/
+function startGiftCardProcess(cmd, giftCardStatus, accableStatus, payableStatus){
+	if (giftCardStatus == "5" ) {
+		alertOpen( "알림", "사용기간이 만료된 상품권입니다.", true, null, null,null);
+		return;
+	}
+	
+	if (cmd == "900") {
+		if (giftCardStatus == "2" ||  giftCardStatus == "3") {
+			alertOpen( "알림", "해당 상품권은 현재 적립이 중지된 상품권입니다", true, null, null,null);
+			return;
+		}
+		
+		if (accableStatus == "N") {
+			alertOpen( "알림", "해당 상품권은 이미 적립 처리가 완료된 상품권입니다", true, null, null,null);
+			return;
+		}
+	}
+	
+	if (cmd == "901") {
+		if (giftCardStatus == "2" ||  giftCardStatus == "4") {
+			alertOpen( "알림", "해당 상품권은 현재 결제가 중지된 상품권입니다", true, null, null, null);
+			return;
+		}
+		
+		if (payableStatus == "N") {
+			alertOpen( "알림", "해당 상품권은 이미 결제 처리가 완료된 상품권입니다", true, null, null,null);
+			return;
+		}
+	}
+	//var qrData = $("#giftCardQrData").val().trim();
+	var pinNumber= $("#pinNumber").val().trim();
+	//var decodeQrData = atob(qrData);
+	console.log(pinNumber);
+	var qrParams = {
+		qr_cmd :  cmd,
+		pinNumber : pinNumber.trim()
+	}
+	bridge.getSesssionAndDeviceInfo(function(info){
+		info = JSON.parse(info);
+		qrParams["memberEmail"] = info.user_email;
+		qrParams["memberName"] = info.user_name;
+		qrParams["memberPhone"] = info.phoneNumber;
+		qrParams["memberPhoneCountry"]  = info.phoneNumberCountry;
+		qrParams["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
+	/*	for (key in qrParams){
+			if (qrParams.hasOwnProperty(key)) {
+				qrParams[key] = encodeURIComponent(qrParams[key]);
+			}
+		}*/
+		//var sendQrData =  btoa(unescape(encodeURIComponent(JSON.stringify(qrParams))))
+		var sendQrData = encodeURIComponent(btoa(JSON.stringify(qrParams)));
+	
+		var  giftCardQrControlUrl = window.location.protocol + "//" + window.location.host + "/m/mypage/m_gift_card_command.do";
+		$.ajax({
+           	type: "POST",
+               url: giftCardQrControlUrl,
+               data: {qrData : sendQrData },
+               success: function (result) {
+            	   $("#progress_loading").hide();
+            	   if (result && typeof result !="undefined") {
+            		  $("#progress_loading").hide();
+            		   /* result obj 설명
+               		  * resultCode : 성공 실패 값(100 이 아니면 실패)
+               		  * message : 메시지
+               		  * url : 이동할 URL 
+               		  */ 
+            		 var alertText = "";
+            		 if (result.resultCode  == "100") {
+            			 alertText = result.message
+            		 }else {
+            			 alertText = result.resultCode + " : " + result.message
+            		 }
+            		 
+            		 alertOpen("확인", 
+            			alertText, 
+            			true, 
+            			false, 
+            			function(){
+            			 if (result.resultCode == "100") {
+            				 document.location.href = window.location.protocol + "//" + window.location.host + "/m/mypage/newpoint.do";
+            			 }
+            		 	}, 
+            			null);
+               	 }else{
+               		 alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
+               	 }
+               },
+               error : function(request, status, error){
+            	   $("#progress_loading").hide();
+            	   alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
+               },
+               dataType: 'json'
+           });
+		//var qrInfoUrl = window.location.protocol + "//pb.retunp.com + "/qr/qrinfo.do?data=" + url;
+	});	
+}
+
 function startPointBack(){
 	//$("#progress_loading").show();
 	var param = {};

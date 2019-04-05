@@ -1,5 +1,11 @@
 package com.returnp_web.svc;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,13 +24,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.core.env.Environment;
 import org.springframework.mobile.device.Device;
 import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
+import org.springframework.ui.ModelMap;
 
 import com.returnp_web.dao.FrontMemberDao;
 import com.returnp_web.utils.BASE64Util;
@@ -38,7 +47,7 @@ import com.returnp_web.utils.RPMap;
 import com.returnp_web.utils.SessionManager;
 import com.returnp_web.utils.Util;
 
-
+@PropertySource("classpath:/config.properties")
 @Service
 public class MobileMemberServiceImpl implements MobileMemberService {
 	
@@ -58,6 +67,9 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 	private MessageSource messageSource;
 
 	@Autowired MessageUtils messageUtils;
+	
+	@Autowired
+	Environment environment;
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Throwable.class})
@@ -1450,6 +1462,8 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		String qr_cmd;
 		try{
 			System.out.println("원문 데이타");
+			System.out.println(p.getStr("qr_data"));
+			System.out.println("디코딩 데이타");
 			System.out.println(BASE64Util.decodeString(p.getStr("qr_data")));
 			jsonParser = new JSONParser();
 			qrJson = (JSONObject) jsonParser.parse(BASE64Util.decodeString(p.getStr("qr_data")));
@@ -1471,11 +1485,10 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				}
 				break;
 			
-			/* 상품권 큐알에 의한 적립*/
-			case QRManager.QRCmd.ACC_BY_GIFTCARD:
-				break;
-			/*상품권 QR에 의한 결제 처리*/
+			/* 상품권 QR 적립*/
 			case QRManager.QRCmd.PAY_BY_GIFTCARD:
+			/* 상품권 QR 적립*/
+			case QRManager.QRCmd.ACC_BY_GIFTCARD:
 				break;
 			}
 		}catch(Exception e){
@@ -1487,6 +1500,51 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		}
 		return true;
 	}
+	
+	@Override
+	public String handleGiftCardQR(HashMap<String, String> paramMap, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println(">>> handleGiftCardQR");
+		String runMode = environment.getProperty("run_mode");
+		String remoteCallURL = environment.getProperty(runMode + ".handle_gift_card_Req");
+		String key = environment.getProperty("key");
+		StringBuffer response2 = null;
+		try {
+			URL url = new URL(remoteCallURL);
+			System.out.println("연결 주소");
+			System.out.println(remoteCallURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setDoInput(true);
+			con.setDoOutput(true);
+			con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			con.setRequestMethod("POST");
+			con.getOutputStream().write(Util.mapToQueryParam(paramMap).getBytes());
+			
+			int responseCode = con.getResponseCode();
+			BufferedReader in = null;
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				String inputLine;
+				response2 = new StringBuffer();
+				while ((inputLine = in.readLine()) != null) {
+					response2.append(inputLine);
+				}
+				in.close();
+				System.out.println("응답");
+				System.out.println(response2.toString());
+			} else {
+				System.out.println("상품권 QR API  요청 에러");
+			}
+			System.out.println("상품권 QR API 요청");
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return response2.toString();
+	}
+
+
 
 	@Override
 	public boolean registerMemberBankAccount(RPMap p, RPMap rmap, HttpServletRequest request,
@@ -1559,5 +1617,8 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		}
 		return false;
 	}
+
+
+
 	
 }

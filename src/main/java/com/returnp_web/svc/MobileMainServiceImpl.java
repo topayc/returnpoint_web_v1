@@ -428,6 +428,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 		JSONObject qrJson;
 		String qr_cmd;
 		try {
+			
+			System.out.println(p.getStr("qr_data"));
 			System.out.println(BASE64Util.decodeString(p.getStr("qr_data")));
 			jsonParser = new JSONParser();
 			qrJson = (JSONObject) jsonParser.parse(BASE64Util.decodeString(p.getStr("qr_data")));
@@ -444,24 +446,24 @@ public class MobileMainServiceImpl implements MobileMainService {
 			
 			String giftCardStatus = null;
 			switch((String)issueMap.get("giftCardStatus")) {
-			case "1":giftCardStatus = "정상"; break;
-			case "2":giftCardStatus = "사용 중지"; break;
-			case "3":giftCardStatus = "적립 불가"; break;
-			case "4":giftCardStatus = "결제 불가"; break;
+			case "1":giftCardStatus = messageSource.getMessage("label.normal", null, LocaleContextHolder.getLocale()); break;
+			case "2":giftCardStatus = messageSource.getMessage("label.stop_using", null, LocaleContextHolder.getLocale()); break;
+			case "3":giftCardStatus = messageSource.getMessage("label.accumulatable", null, LocaleContextHolder.getLocale()); break;
+			case "4":giftCardStatus = messageSource.getMessage("label.unpayable", null, LocaleContextHolder.getLocale()); break;
 			}
 			rmap.put("giftCardStatus", giftCardStatus);
 			
 			String payableStatus = null;
 			switch((String)issueMap.get("payableStatus")) {
-			case "Y":payableStatus = "결제 가능"; break;
-			case "N":payableStatus = "결제 불가 - 결제처리 완료"; break;
+			case "Y": payableStatus =  messageSource.getMessage("label.payable", null, LocaleContextHolder.getLocale()); break;
+			case "N": payableStatus =  messageSource.getMessage("label.unpayable_processed", null, LocaleContextHolder.getLocale()) ; break;
 			}
 			rmap.put("payableStatus", payableStatus);
 			
 			String accableStatus = null;
 			switch((String)issueMap.get("accableStatus")) {
-			case "Y":accableStatus = "적립 가능"; break;
-			case "N":accableStatus = "적립 불가 - 적립처리 완료"; break;
+			case "Y":accableStatus =  messageSource.getMessage("label.accumulatable", null, LocaleContextHolder.getLocale()); break;
+			case "N":accableStatus =  messageSource.getMessage("label.unaccumulatable_processed", null, LocaleContextHolder.getLocale()); break;
 			}
 			rmap.put("accableStatus", accableStatus);
 			
@@ -471,7 +473,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 				System.out.println("상품권 큐알 스캔에 의한 적립 처리");
 				rmap.put("qr_cmd", "900");
 				rmap.put("result", "100");
-				rmap.put("title", "상품권 적립 QR");
+				rmap.put("title", messageSource.getMessage("label.acc_by_gift_card_qr", null, LocaleContextHolder.getLocale()));
+				//rmap.put("title", "상품권 적립 QR 스캔");
 				rmap.put("issueMap",issueMap);
 				rmap.put("giftCardQrData", p.getStr("qr_data"));
 				rmap.put("qrAccessUrl", QRManager.genQRCode(
@@ -482,7 +485,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 				rmap.put("qr_cmd", "901");
 				System.out.println("상품권 결제 큐알 스캔에 의한 결제 처리");
 				rmap.put("result", "100");
-				rmap.put("title", "상품권 결제 QR");
+				rmap.put("title", messageSource.getMessage("label.pay_by_gift_card_qr", null, LocaleContextHolder.getLocale()));
+				//rmap.put("title", "상품권 결제 QR 스캔");
 				rmap.put("issueMap",issueMap);
 				rmap.put("giftCardQrData", p.getStr("qr_data"));
 				rmap.put("qrAccessUrl", QRManager.genQRCode(

@@ -26,38 +26,6 @@ $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale); 
 });
-
-function startGiftCardProcess(cmd, giftCardStatus, accableStaus, payableStatus){
-	if (giftCardStatus == "5" ) {
-		alertOpen( "알림", "사용기간이 만료된 상품권입니다.", true, null, null,null);
-		return;
-	}
-	
-	if (cmd == "900") {
-		if (giftCardStatus == "2" ||  giftCardStatus == "3") {
-			alertOpen( "알림", "해당 상품권은 현재 적립이 중지된 상품권입니다", true, null, null,null);
-			return;
-		}
-		
-		if (accableStaus == "N") {
-			alertOpen( "알림", "해당 상품권은 이미 적립 처리가 완료된 상품권입니다", true, null, null,null);
-			return;
-		}
-	}
-	
-	if (cmd == "901") {
-		if (giftCardStatus == "2" ||  giftCardStatus == "4") {
-			alertOpen( "알림", "해당 상품권은 현재 결제가 중지된 상품권입니다", true, null, null, null);
-			return;
-		}
-		
-		if (payableStatus == "N") {
-			alertOpen( "알림", "해당 상품권은 이미 결제 처리가 완료된 상품권입니다", true, null, null,null);
-			return;
-		}
-	}
-	alert(cmd + " : " +giftCardStatus + " : " +  accableStaus + ":" + payableStatus);
-}
 </script>
 <style type="text/css">
 .gift_qr_title{
@@ -86,35 +54,39 @@ function startGiftCardProcess(cmd, giftCardStatus, accableStaus, payableStatus){
 				<c:if test="${model.qr_cmd=='901'}">결제</c:if>
 			</div>
 				<ul class="pointinfo">
-				<input type = "hidden" class = "returnp_qr"  id ="giftCardQrData"  value = "${model.giftCardQrData}" />
-				<li><span class = "gift_qr_title" >상품권 핀번호</span> ${model.issueMap.pinNumber}</li>
-				<li><span class = "gift_qr_title">상품권 금액</span><fmt:formatNumber value="${fn:trim(model.issueMap.giftCardAmount)}" pattern="###,###,###,###"/> </li>
+				<input type = "hidden"   id ="giftCardQrData"  value = "${model.giftCardQrData}" />
+				<input type = "hidden"  id ="pinNumber"  value = "${model.issueMap.pinNumber}" />
+				
+				<li><span class = "gift_qr_title" ><spring:message code="label.gift_card_pin"/></span> ${model.issueMap.pinNumber}</li>
+				<li><span class = "gift_qr_title"><spring:message code="label.gift_card_amount"/></span><fmt:formatNumber value="${fn:trim(model.issueMap.giftCardAmount)}" pattern="###,###,###,###"/> </li>
 				
 				<c:if test="${model.qr_cmd=='900'}">
-				<li><span class = "gift_qr_title">적립 가능 여부 </span>${model.accableStatus}</li>
-				<li><span class = "gift_qr_title">적립 금액</span><fmt:formatNumber value="${fn:trim(model.issueMap.giftCardAmount)}" pattern="###,###,###,###"/></li>
+				<li><span class = "gift_qr_title"><spring:message code="label.accable_status"/></span>${model.accableStatus}</li>
+				<li><span class = "gift_qr_title"><spring:message code="label.amount_accumulated"/></span><fmt:formatNumber value="${fn:trim(model.issueMap.giftCardAmount)}" pattern="###,###,###,###"/></li>
 				</c:if>
 				
 				<c:if test="${model.qr_cmd=='901'}">
-				<li><span class = "gift_qr_title">결제 가능 여부</span> ${model.payableStatus}</li>
-				<li><span class = "gift_qr_title">결제 금액</span><fmt:formatNumber value="${fn:trim(model.issueMap.giftCardAmount)}" pattern="###,###,###,###"/></li>
+				<li><span class = "gift_qr_title"><spring:message code="label.payable_status"/></span> ${model.payableStatus}</li>
+				<li><span class = "gift_qr_title"><spring:message code="label.payment_amount"/></span><fmt:formatNumber value="${fn:trim(model.issueMap.giftCardAmount)}" pattern="###,###,###,###"/></li>
 				</c:if>
-				<li><span class = "gift_qr_title">발행일</span> ${model.issueMap.issueTime}</li>
-				<li><span class = "gift_qr_title">사용 만료일</span> ${model.issueMap.expirationTime}</li>
+				<li><span class = "gift_qr_title"><spring:message code="label.published_date"/></span> ${model.issueMap.issueTime}</li>
+				<li><span class = "gift_qr_title"><spring:message code="label.expiration_date"/></span> ${model.issueMap.expirationTime}</li>
 			</ul>	
 		</div>			
 		<div class="btns2">
-			<button type="button" class="btn btn-submit" onclick = "startGiftCardProcess('${model.qr_cmd}', '${model.issueMap.giftCardStatus}' ,'${model.issueMap.accableStatus}', '${model.issueMap.payableStatus}')">확인</button>
-			<button type="button" class="btn btn-submit-cancel"  onclick = "history.back()">취소</button>
+			<button type="button" class="btn btn-submit" onclick = "startGiftCardProcess('${model.qr_cmd}', '${model.issueMap.giftCardStatus}' ,'${model.issueMap.accableStatus}', '${model.issueMap.payableStatus}')">
+			<spring:message code="label.joinDesc04"/>
+			</button>
+			<button type="button" class="btn btn-submit-cancel"  onclick = "history.back()"><spring:message code="label.commonCancel"/></button>
 		</div>
 	</section>
 	</c:when>
 	<c:otherwise>
 	<section class="qr_nodata"><!-- 0824 -->
 		<div> 
-			<i class="fas fa-exclamation-triangle"></i><spring:message code="${model.messageKey} }"/>
+			<i class="fas fa-exclamation-triangle"></i><spring:message code="${model.messageKey}"/>
 		</div>
-		<button type="button" class="btn btn-submit"  onclick = "history.back()">확인</button>
+		<button type="button" class="btn btn-submit"  onclick = "history.back()"><spring:message code="label.joinDesc04"/></button>
 	</section>	
 	</c:otherwise>
 	</c:choose>

@@ -1,5 +1,6 @@
 package com.returnp_web.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -248,6 +249,13 @@ public class MobileMemberController extends MallBaseController{
 			return "redirect:" + rmap.getStr("redirectUrl");
 		}
 	}	
+	
+	// 상품권 QR 요청 처리 
+	@ResponseBody
+	@RequestMapping(value = "/mypage/m_gift_card_command.do", method = RequestMethod.POST)
+	public String qrAccProxy(@RequestParam HashMap<String, String> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return mms.handleGiftCardQR(p, map, request, response);
+	}
 	
 	//언어 선택 페이지 보기  
 	@RequestMapping("/mypage/m_selectLanguage")
