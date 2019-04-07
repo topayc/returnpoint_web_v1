@@ -366,7 +366,7 @@ function unsupportedService(){
 /*상품권 QR 요청 처리*/
 function startGiftCardProcess(cmd, giftCardStatus, accableStatus, payableStatus){
 	if (giftCardStatus == "5" ) {
-		alertOpen( "알림", "사용기간이 만료된 상품권입니다.", true, null, null,null);
+		alertOpen( "알림", "해당 상품권은 사용기간이 만료된 상품권입니다", true, null, null,null);
 		return;
 	}
 	
