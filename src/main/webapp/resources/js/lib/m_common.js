@@ -563,7 +563,6 @@ function startQRScan(){
 					webview_redirect(qrInfoUrl);
 					return;
 				}
-				
 				if (qrData.indexOf("join.do") > 0) {
 					webview_redirect(qrData);
 					return;
