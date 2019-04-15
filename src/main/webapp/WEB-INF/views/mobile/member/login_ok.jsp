@@ -32,6 +32,7 @@ $(document).ready(function(){
 		   bridge.setDeviceSession(mbrE, mbrE, userAT, function(result) {
 			   location.href = "/m/main/index.do"
 		   });
+		   bridge.setPushToken();
 		}
    }else {
 	   location.href = "/m/main/index.do"

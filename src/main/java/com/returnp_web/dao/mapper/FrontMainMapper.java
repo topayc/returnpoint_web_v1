@@ -369,4 +369,10 @@ public interface FrontMainMapper {
 	 * @Method 설명 : 제휴상담 게시판 게시글 수 조회
 	 */
 	HashMap<String,Object> qnaNodeTotalCnt(HashMap<String, Object> params);
+
+	int  registPushToken(HashMap<String, Object> params);
+
+	int  updateDeviceInfo(HashMap<String, Object> params);
+
+	HashMap<String,Object>  selectDeviceInfo(HashMap<String, Object> params);
 }

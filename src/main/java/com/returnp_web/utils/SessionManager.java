@@ -23,9 +23,17 @@ public class SessionManager
 	
 	private int memberNo;
 	private String memberName;
+	private String memberPhone;
 	private String memberEmail;
 	private String memberType;
 	
+	public String getMemberPhone() {
+		return session.getAttribute("memberPhone") == null ? null : (String)session.getAttribute("memberPhone");
+	}
+	
+	public void setMemberPhone(String memberPhone) {
+		session.setAttribute("memberPhone", memberPhone);
+	}
 	public int getMemberNo(){
 		return session.getAttribute("memberNo") == null ? null : (int)session.getAttribute("memberNo");
 	}

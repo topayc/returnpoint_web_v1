@@ -332,6 +332,15 @@ var bridge = (function () {
 		window.returnpAndroidBridge.afterJoinComplete();
 	}
 	
+	function setSessionValue(key, value, func){
+		callbackFunc = func;
+		window.returnpAndroidBridge.setData(key,value);
+	}
+
+	function setPushToken(){
+		window.returnpAndroidBridge.setPushToken();
+	}
+	
 	/*
 	 * 안드로이드, IOS 여부에 따라 모듈 함수 세팅
 	 * ( 이부분은 차후 진행, 일단 안드로이드만 제공)
@@ -344,6 +353,7 @@ var bridge = (function () {
 		setDeviceSession : setDeviceSession,
 		clearDeviceSession : clearDeviceSession,
 		getSessionValue : getSessionValue,
+		setSessionValue :  setSessionValue,
 		getSesssionAndDeviceInfo : getSesssionAndDeviceInfo,
 		loadUrl : loadUrl,
 		toast : toast,
@@ -352,7 +362,8 @@ var bridge = (function () {
 		getDeviceContacts : getDeviceContacts,
 		getMyLocation : getMyLocation,
 		sendSMS : sendSMS,
-		afterJoinComplete : afterJoinComplete
+		afterJoinComplete : afterJoinComplete,
+		setPushToken : setPushToken
 	}
 	return exportFunc;
 })();
@@ -461,6 +472,28 @@ function startGiftCardProcess(cmd, giftCardStatus, accableStatus, payableStatus)
 	});	
 }
 
+/*서버로 푸시 토큰 전송*/ 
+function sendPushTokenToServer(data){
+	data = JSON.parse(data);
+	var  url = window.location.protocol + "//" + window.location.host + "/m/device/registPushToken.do";
+	$.ajax({
+       	type: "POST",
+        url: url,
+        data: data,
+        success: function (result) {
+        	if (res.resultCode  == "100") {
+        		alert("토큰 저장 성공");
+        	}else {
+        		$.messager.alert('알림', res.message);
+        	}
+        },
+        error : function(request, status, error){
+        	alertOpen("알림 ", "네트워트 장애 발생!  다시 시도해주세요", true, false, null, null);
+        },
+        dataType: 'json'
+       });
+
+}
 function startPointBack(){
 	//$("#progress_loading").show();
 	var param = {};

@@ -385,4 +385,16 @@ public class FrontMainDao {
 	public HashMap<String,Object> qnaNodeTotalCnt(HashMap<String,Object> params){
 		return sqlSession.getMapper(FrontMainMapper.class).qnaNodeTotalCnt(params);
 	}
+
+	public int  registPushToken(HashMap<String,Object> params){
+		return sqlSession.getMapper(FrontMainMapper.class).registPushToken(params);
+	}
+
+	public int updateDeviceInfo(HashMap<String,Object> params){
+		return sqlSession.getMapper(FrontMainMapper.class).updateDeviceInfo(params);
+	}
+	
+	public HashMap<String,Object>  selectDeviceInfo(HashMap<String, Object> params){
+		return sqlSession.getMapper(FrontMainMapper.class).selectDeviceInfo(params);
+	}
 }
