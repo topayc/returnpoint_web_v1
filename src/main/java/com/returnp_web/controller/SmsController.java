@@ -36,6 +36,14 @@ public class SmsController extends MallBaseController{
 		boolean bret = sms.selectSmsAuth(Util.toRPap(p), rmap, request, response);
 		return rmap.getStr("json");
 	}
-
+	
+	//모바일 회원가입_sms 인증 _ 입력한 정보와 세션과 비교
+	@RequestMapping(value = "/common/smsAuthSession", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String selectSmsAuthSession(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = sms.selectSmsAuthSession(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}
 
 }

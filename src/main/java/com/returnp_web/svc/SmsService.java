@@ -29,6 +29,18 @@ public interface SmsService {
 	 */
 	boolean selectSmsAuth(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
 
-	
+
+	/**
+	 * 사용자->회원가입 sms 휴대폰 인증(입력한 값과 세션 비교)
+	 *
+	 * @param p the p
+	 * @param rmap the rmap
+	 * @param request the request
+	 * @param response the response
+	 * @return true, if successful
+	 * @throws Exception the exception
+	 */
+	boolean selectSmsAuthSession(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
+
 	
 }

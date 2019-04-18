@@ -131,7 +131,8 @@ public class Util {
 			
 			while( iterator.hasNext( ) ) { 
 				Entry entry = (Entry)iterator.next( ) ;
-				_json.put(entry.getKey(), "'" + entry.getValue() + "'"); 
+				//_json.put(entry.getKey(), "'" + entry.getValue() + "'");
+				_json.put(entry.getKey(), entry.getValue());
 			}
 		}
 		
