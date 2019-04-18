@@ -24,6 +24,92 @@
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	//sms 인증
+	$("#authNumberCheckButton").click(function(){
+		var phone 				= $("#phone").val();
+		var phoneOri 			= $("#phoneOri").val();
+		var phoneConfirm	 	= $("#phoneConfirm").val();
+		var authNumberCheck     = $("#authNumberCheck").val();
+		// 핸드폰 체크
+		if (!phone || phone.length == 0) {
+			summitBtnDisabled(false);
+			alertOpen("확인", "핸드폰 번호를 입력해 주세요.", true, false, null, null);
+			return false;
+		} else if (!checkPhonePattern(phone)){
+			summitBtnDisabled(false);
+			alertOpen("확인", "숫자만 입력해주세요.", true, false, null, null);
+			return false;
+		}
+		if( (phoneOri != phone) || (phoneConfirm != 'Y')){ // 인증받은 phone와 입력한 phone의 일치여부 확인
+			summitBtnDisabled(false);
+			alertOpen("확인", "휴대폰 중복가입 확인이 필요합니다", true, false, null, null);
+			return false;
+		}	
+		
+		var authText = $("#authText").text(); //버튼 텍스트 값
+		
+		if(authText!="번호입력"){
+			$.ajax({
+			method : "POST",
+			url    : "/m/common/smsAuth.do",
+			dataType: "json",
+			data   : {
+				phone		: phone
+			},
+				success: function(data) {
+					if (data.result.code > 0 ) {
+						alertOpen("확인", data.result.msg, true, false, null, null);
+						if ( data.result.code == 1 ){ //1성공, 2실패
+							tid=setInterval('authNumberCheck()',1000); //성공했으므로 카운트 시작
+						}
+						return false;
+					}
+				},
+		
+				error: function (request, status, error) {
+					alertOpen("확인", request.responseText, true, false, null, null);
+					//alert(request.responseText);
+					return false;
+				}
+			});
+		}else{
+			if (!authNumberCheck || authNumberCheck.length == 0) {
+				summitBtnDisabled(false);
+				alertOpen("확인", "인증번호를 입력해 주세요.", true, false, null, null);
+				return false;
+			}
+			
+			//저장되어져 있는 세션의 값이 입력한 숫자와 일치하는지 체크
+			$.ajax({
+				method : "POST",
+				url    : "/m/common/smsAuthSession.do",
+				dataType: "json",
+				data   : {
+					authNumberCheck		: authNumberCheck
+				},
+					success: function(data) {
+						if (data.result.code > 0 ) {
+							alertOpen("확인", data.result.msg, true, false, null, null);
+							if ( data.result.code == 1 ){ //1성공, 2실패
+								$("#authNumberConfirm").val("Y");
+							}
+							return false;
+						}
+					},
+			
+					error: function (request, status, error) {
+						alertOpen("확인", request.responseText, true, false, null, null);
+						//alert(request.responseText);
+						return false;
+					}
+				});
+			
+		}//if(authText!="번호입력"){ end
+		
+		
+	});
+	
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);  
 	
@@ -152,7 +238,7 @@ function searchMember(){
 		return false;
 	}
 	
-	alert(email);
+	//alert(email);
 	$.ajax({
 		method : "POST",
 		url    : "/m/member/select_member_validity.do",
@@ -245,6 +331,7 @@ function memberJoinSubmit() {
 	var phone 				= $("#phone").val();
 	var phoneOri 			= $("#phoneOri").val();
 	var phoneConfirm	 	= $("#phoneConfirm").val();
+	var authNumberConfirm   = $("#authNumberConfirm").val();
 	
 	var myterms		= ($(":checkbox[name='myterms']").is(":checked")==true) ? 'Y' : 'N';
 	var myprivacy	= ($(":checkbox[name='myprivacy']").is(":checked")==true) ? 'Y' : 'N';
@@ -329,6 +416,15 @@ function memberJoinSubmit() {
 		alertOpen("확인", "휴대폰 중복가입 확인이 필요합니다", true, false, null, null);
 		return false;
 	}
+	
+	//sms 인증 여부
+	if( authNumberConfirm != 'Y'){ // 인증받은 sms 여부 확인
+		summitBtnDisabled(false);
+		alertOpen("확인", "휴대폰 sms 인증 확인이 필요합니다", true, false, null, null);
+		return false;
+	}
+	
+	
 	//필수 체크(이용약관, 개인정보)
 	if ( myterms == 'N' ) {
 		summitBtnDisabled(false);
@@ -361,6 +457,10 @@ $(document).ready(function(){
 	$("#phoneOri").val($("#phone").val());
 	$("#phoneConfirm").val("N");
 	
+	
+	// sms 인증여부 초기화
+	$("#authNumberConfirm").val("N");
+	
 	// 전체 선택
 	$("#allconfirm").on("click", function(){
 		if($("#allconfirm").is(":checked")==true){
@@ -384,6 +484,25 @@ $(document).ready(function(){
 	    }
 	});
 });
+
+
+	//sms 인증 
+	var SetTime = 180;		// 최초 설정 시간(기본 : 초)
+	
+	function authNumberCheck() {	// 1초씩 카운트
+		m = Math.floor(SetTime / 60) + "분 " + (SetTime % 60) + "초";	// 남은 시간 계산
+		var msg = "현재 남은 시간은 <font color='red'>" + m + "</font> 입니다.";
+		document.all.ViewTimer.innerHTML = msg;		// div 영역에 보여줌 ->>완료되었습니다. 로 변경
+		document.all.authText.innerHTML = "번호입력";	
+		SetTime--;					// 1초씩 감소
+		if(SetTime<0){			// 시간이 종료 되었으면..
+			clearInterval(tid);		// 타이머 해제
+			document.all.authText.innerHTML = "인증번호";	
+			var msg = "시간이 종료되었습니다.";
+			document.all.ViewTimer.innerHTML = msg;		// div 영역에 보여줌 ->>완료되었습니다. 로 변경
+		}
+	}
+	
 </script>
 </head>
 <!-- header end -->
@@ -429,6 +548,12 @@ $(document).ready(function(){
 			<input type="hidden" name="phoneOri" id="phoneOri" style="display:none;">
 			<input type="hidden" name="phoneConfirm" id="phoneConfirm" value="N" style="display:none;">
 		</div>
+		<div class="form-group recommend">
+			<input type="text" class="form-control" name="authNumberCheck" id="authNumberCheck" style = "text-align:left" placeholder="휴대폰으로 발송된 인증번호를 적어주세요" maxlength="6">
+			<button type="button" class="btn btn-basic" id="authNumberCheckButton" name="authNumberCheckButton" onclick="authNumberCheck();"><div id="authText">인증번호</div></button>
+			<input type="hidden" name="authNumberConfirm" id="authNumberConfirm" value="N" style="display:none;"><!-- sms 인증여부 -->
+		</div>		
+		<div id="ViewTimer" style="text-align:center"></div>
 		<div class="form-group recommend">
 			<input type="text" class="form-control" name="recommend" id="recommend" style = "text-align:left" placeholder="<spring:message code="label.joinDesc08" />">
 			<button type="button" class="btn btn-basic" onclick="searchRecommend();"><spring:message code="label.joinDesc04" /></button>
