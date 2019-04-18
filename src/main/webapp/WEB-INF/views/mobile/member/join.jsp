@@ -550,7 +550,7 @@ $(document).ready(function(){
 		</div>
 		<div class="form-group recommend">
 			<input type="text" class="form-control" name="authNumberCheck" id="authNumberCheck" style = "text-align:left" placeholder="휴대폰으로 발송된 인증번호를 적어주세요" maxlength="6">
-			<button type="button" class="btn btn-basic" id="authNumberCheckButton" name="authNumberCheckButton" onclick="authNumberCheck();"><div id="authText">인증번호</div></button>
+			<button type="button" class="btn btn-basic" id="authNumberCheckButton" name="authNumberCheckButton" ><div id="authText">인증번호</div></button>
 			<input type="hidden" name="authNumberConfirm" id="authNumberConfirm" value="N" style="display:none;"><!-- sms 인증여부 -->
 		</div>		
 		<div id="ViewTimer" style="text-align:center"></div>
