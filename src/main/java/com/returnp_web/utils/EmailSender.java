@@ -7,13 +7,16 @@ import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.ui.velocity.VelocityEngineUtils;
+
+import com.returnp_web.svc.FrontMainServiceImpl;
 
 public class EmailSender {
 
@@ -23,7 +26,7 @@ public class EmailSender {
 	@Resource(name="velocityEngine")
 	VelocityEngine velocityEngine;
 
-	Logger log = Logger.getLogger(this.getClass());
+	private static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
 
 	/**
 	 * 
@@ -48,8 +51,8 @@ public class EmailSender {
 				helper.setText(veloTemplate);
 			}
 		}catch(MessagingException e){
-			log.error("mailSender error");
-			log.debug(e.getMessage());
+			logger.error("mailSender error");
+			logger.debug(e.getMessage());
         } catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,8 +60,8 @@ public class EmailSender {
 		try{
 			mailSender.send(msg);
 		}catch(MailException e){
-			log.error("Email MailException...");
-			log.debug(e.getMessage());
+			logger.error("Email MailException...");
+			logger.debug(e.getMessage());
 		}
 	}
 }
