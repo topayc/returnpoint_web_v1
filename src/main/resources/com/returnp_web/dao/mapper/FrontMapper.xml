@@ -276,7 +276,7 @@
 	<select id="selectMemberPhoneOverlapCount" parameterType="HashMap" resultType="int">
 		SELECT count(*)
 		FROM member 
-		WHERE memberPhone = #{memberPhone}
+		WHERE memberPhone LIKE CONCAT('%',#{memberPhone},'%')
 	</select>
 	
 	<!-- 로그인 실패 -->

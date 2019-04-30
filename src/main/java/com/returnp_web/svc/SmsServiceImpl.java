@@ -28,11 +28,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import com.returnp_web.dao.FrontMemberDao;
-import com.returnp_web.utils.Const;
-import com.returnp_web.utils.Converter;
-import com.returnp_web.utils.EmailSender;
-import com.returnp_web.utils.EmailVO;
 import com.returnp_web.utils.RPMap;
 import com.returnp_web.utils.ServletRequestInfoUtil;
 import com.returnp_web.utils.SessionManager;
@@ -40,51 +35,78 @@ import com.returnp_web.utils.Util;
 import net.sf.json.JSONObject;
 import com.returnp_web.utils.BASE64Util;
 
-/**
- * The Class FrontMemberServiceImpl.
- */
+import com.popbill.api.MessageService;
+import com.popbill.api.PopbillException;
+import com.popbill.api.message.MessageServiceImp; 
+
 @Service
 public class SmsServiceImpl implements SmsService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SmsServiceImpl.class);
+	private MessageService messageService; //import com.popbill.api.message.MessageServiceImp; 호출
 	
-	/** The front member dao. */
-	@Autowired
-	private FrontMemberDao frontMemberDao;
-	
-	@Autowired
-	private EmailVO email;
-
-	@Autowired
-	private EmailSender emailSender;
-	
-	@Autowired
-	private MessageSource messageSource;
-
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Throwable.class})
 	public boolean selectSmsAuth(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response ) throws Exception{
-
+		
 		RPMap dbparams = new RPMap();
+		
+		MessageServiceImp service = new MessageServiceImp();
+
+		//sms 업체 api
+		service.setLinkID("TOPHAPPY");
+		service.setSecretKey("G9l+lKAjfp8c7T0rCZh0iM2KI2YwULl8h+mX1xjAHwQ=");
+		service.setTest(false);
+		service.setIPRestrictOnOff(true);
+		messageService = service;
+		//sms 업체 api
 		
 		try{
 			int Count = 0;
-			//로직 추가
 			HttpSession session = request.getSession(true);
 			String authSmsRandomKey = Util.randomNumber(); //인증번호 6자리 난수 발생
 			session.setAttribute("authSmsRandomKey" , authSmsRandomKey);
-			dbparams.put("authSmsRandomKey"	, authSmsRandomKey); //난수 6자리
-			dbparams.put("phone", p.getStr("phone")); //phone 번호
-		
+
+			//sms api start
+			String testCorpNum = "7548601056"; // 팝빌회원 사업자번호
+			String testUserID = "tophappyworld"; // 팝빌회원 아이디 = 웹사이트 아이디
+			String sender = "025855993"; // 발신번호
+			String receiver = p.getStr("phone");// 수신번호
 			
-			Count = 1; //연동 성공시에
+			String memberPhonestatus = null;
+			if(receiver.contains("+82")) {//+82
+				memberPhonestatus = "1";
+			}else if(receiver.contains("82")) { //82
+				memberPhonestatus = "2";
+			}else { //01 
+				memberPhonestatus = "3";
+			}
 			
+			switch(memberPhonestatus) {
+				case "1": receiver = receiver.replace("+82", "0");  break;
+				case "2": receiver = receiver.replace("82", "0");  break;
+			}
 			
-			
-			
+			String receiverName = ""; // 수신자명
+			//String content = "문자메시지 내용"; // 메시지 내용, 90byte 초과된 내용은 삭제되어 전송
+			String content = "회원가입 인증번호는: "+authSmsRandomKey+" 입니다.";
+			Date reserveDT = null; // 예약전송일시, null 처리시 즉시전송
+			Boolean adsYN = false; // 광고문자 전송여부
+		    // 전송요청번호
+		    // 파트너가 전송 건에 대해 관리번호를 구성하여 관리하는 경우 사용.
+		    // 1~36자리로 구성. 영문, 숫자, 하이픈(-), 언더바(_)를 조합하여 팝빌 회원별로 중복되지 않도록 할당.
+		    String requestNum = null; 
+		    //String receiptNum = null;   
+		    String receiptNum = messageService.sendSMS(testCorpNum, sender, receiver, receiverName, content, reserveDT, adsYN, testUserID, requestNum);
+		    
+		    //sms api end
+		    if(receiptNum != null){
+		    	Count = 1; //연동 성공시에
+		    }else{
+		    	Count = 0; //연동 실패시에
+		    }
+	        
 			//연동 부분추가
-			
-			
 			if(Count == 1){
 				String json = Util.printResult(1, String.format("sms가 발송되었습니다."), dbparams);
 				rmap.put("json", json);
@@ -95,10 +117,9 @@ public class SmsServiceImpl implements SmsService {
 				return true;
 			}
 			
-			
 		}catch(Exception e){
 			e.printStackTrace();
-		}
+		} 
 		return true;
 	}
 
@@ -106,24 +127,20 @@ public class SmsServiceImpl implements SmsService {
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor={Throwable.class})
 	public boolean selectSmsAuthSession(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response ) throws Exception{
-
-		RPMap dbparams = new RPMap();
+		
+			RPMap dbparams = new RPMap();
 		
 		try{
 			int Count = 0;
-			//로직 추가
 			HttpSession session = request.getSession(true);
 			String authSmsRandomKey = session.getAttribute("authSmsRandomKey").toString();
 			String authNumberCheck = p.getStr("authNumberCheck");
 
-			if(authSmsRandomKey.equals(authNumberCheck)) {
+			if(authSmsRandomKey.equals(authNumberCheck)){
 				Count = 1; //성공
 			}else {
-				Count = 2; //실패
+				Count = 0; //실패
 			}
-			
-			//로직 추가
-			
 			if(Count == 1){
 				String json = Util.printResult(1, String.format("성공하였습니다."), dbparams);
 				rmap.put("json", json);
@@ -133,8 +150,6 @@ public class SmsServiceImpl implements SmsService {
 				rmap.put("json", json);
 				return true;
 			}
-			
-			
 		}catch(Exception e){
 			e.printStackTrace();
 		}

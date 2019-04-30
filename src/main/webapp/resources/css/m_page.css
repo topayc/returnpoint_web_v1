@@ -160,7 +160,9 @@ section hr{display:none;}
 .p_join .checkbox li{position:relative;padding:5px 10px;font-size:12px;color:#666;}
 .p_join .checkbox li span{position:absolute;right:10px;top:10px;    text-decoration: underline;}
 .recommend .form-control{width:80%;float:left;}
-.recommend button{width:20%;float:left;height: 60px;}L
+.recommend button{width:20%;float:left;height: 60px;}
+.recommend2 .form-control{width:68%;float:left;}
+.recommend2 button{width:32%;float:left;height: 60px;}
 .chptcha_img img{width:70%;height:60px;border:1px solid #ddd;float:left;}
 .chptcha_img div{width:30%;float:left;}
 
@@ -452,6 +454,9 @@ btn-submit2{bottom: 0;border-radius: 0; background-color: #391dab; width: 100%; 
 
 .btn-basic{border-radius: 0; background-color: #ccc; width: 100%; border: 1px solid #ccc; color: #fff;padding: 19px;}
 .btn-basic:hover, .btn-basic:focus{color: #fff;background-color: #bbb; border-color: #bbb;}
+
+.btn-greenafter{border-radius: 0; background-color: #F4A460; width: 100%; border: 1px solid #F4A460; color: #fff;padding: 19px;}
+.btn-greenafter:hover, .btn-greenafter:focus{color: #fff;background-color: #FFDAB9; border-color: #F4A460;}
 
 .btn-green{border-radius: 0; background-color: #c9de39; width: 100%; border: 1px solid #c9de39; color: #fff;padding: 19px;}
 .btn-green:hover, .btn-green:focus{color: #fff;background-color: #b4cf00; border-color: #b4cf00;}

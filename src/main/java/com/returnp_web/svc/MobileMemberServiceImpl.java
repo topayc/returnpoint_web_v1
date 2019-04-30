@@ -888,9 +888,31 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		RPMap dbparams = new RPMap();
 		
 		try{
-			dbparams.put("memberPhone", p.getStr("memberPhone"));
-			int memberValidity = frontMemberDao.selectMemberPhoneOverlapCount(dbparams);
 			
+			String memberPhone = p.getStr("memberPhone");
+			
+			//입력받은 회원 휴대폰번호가 +82로 입력되지만, AS-IS에서는 휴대폰번호가 +82, 82, 010 형식으로 저장이 되어 있기때문에 아래의 로직을 추가한다. START
+			String memberPhonestatus = null;
+			int memberValidity = 0;
+			if(memberPhone.contains("+82")) {//+82
+				memberPhonestatus = "1";
+			}else if(memberPhone.contains("82")) { //82
+				memberPhonestatus = "2";
+			}else { //01 
+				memberPhonestatus = "3";
+			}
+			
+			if(memberPhonestatus =="1" || memberPhonestatus== "2") { //+82, 82일 경우 앞에 0표기
+				switch(memberPhonestatus) {
+					case "1": memberPhone = memberPhone.replace("+82", "");  break;
+					case "2": memberPhone = memberPhone.replace("82", "");  break;
+				}
+			}
+			
+			dbparams.put("memberPhone", memberPhone);
+			memberValidity = frontMemberDao.selectMemberPhoneOverlapCount(dbparams);
+			//입력받은 회원 휴대폰번호가 +82로 입력되지만, AS-IS에서는 휴대폰번호가 +82, 82, 010 형식으로 저장이 되어 있기때문에 아래의 로직을 추가한다. END
+
 			if(memberValidity > 0){
 				String json = Util.printResult(2, String.format("중복된 회원정보가 존재합니다."), null);
 				rmap.put("json", json);
