@@ -11,14 +11,15 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.ui.ModelMap;
 
 import com.returnp_web.controller.dto.ReturnpBaseResponse;
-import com.returnp_web.dao.FrontMainDao;
+import com.returnp_web.dao.DeviceDao;
 import com.returnp_web.utils.ResponseUtil;
 import com.returnp_web.utils.SessionManager;
 
 @Service
 public class DeviceServiceImp implements DeviceService {
 	
-	@Autowired private FrontMainDao frontMainDao;
+	@Autowired 
+	private DeviceDao deviceDao;
 	
 	@Override
 	public ReturnpBaseResponse registPushToken(HashMap<String, Object> paramMap, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
@@ -27,18 +28,18 @@ public class DeviceServiceImp implements DeviceService {
 		SessionManager sm = new SessionManager(request, response);
 		
 		dbparams.put("memberNo", sm.getMemberNo());
-		HashMap<String,Object> deviceInfo = this.frontMainDao.selectDeviceInfo(dbparams);
+		HashMap<String,Object> deviceInfo = deviceDao.selectDeviceInfo(dbparams);
 		if (deviceInfo == null) {
 			dbparams.put("memberName", sm.getMemberName());
 			dbparams.put("memberPhone", sm.getMemberPhone());
 			dbparams.put("memberEmail", sm.getMemberEmail());
 			dbparams.put("os", (String)paramMap.get("os"));
 			dbparams.put("pushKey", (String)paramMap.get("token"));
-			this.frontMainDao.registPushToken(dbparams);
+			deviceDao.registPushToken(dbparams);
 		}else {
 			dbparams.put("osName", (String)paramMap.get("os"));
 			dbparams.put("pushKey", (String)paramMap.get("token"));
-			this.frontMainDao.updateDeviceInfo(dbparams);
+			deviceDao.updateDeviceInfo(dbparams);
 		}
 		
 		try {

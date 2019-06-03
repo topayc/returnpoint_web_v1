@@ -3,9 +3,6 @@ package com.returnp_web.dao.mapper;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * The Interface GoodsReviewMapper.
- */
 public interface SmsMapper {
 
 

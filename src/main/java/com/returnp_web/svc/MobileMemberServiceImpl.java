@@ -35,7 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.ui.ModelMap;
 
-import com.returnp_web.dao.FrontMemberDao;
+import com.returnp_web.dao.MobileMemberDao;
 import com.returnp_web.utils.BASE64Util;
 import com.returnp_web.utils.Const;
 import com.returnp_web.utils.Converter;
@@ -53,9 +53,9 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MobileMemberServiceImpl.class);
 	
-	/** The front member dao. */
+	/** The mobile member dao. */
 	@Autowired
-	private FrontMemberDao frontMemberDao;
+	private MobileMemberDao mobileMemberDao;
 	
 	@Autowired
 	private EmailVO email;
@@ -104,7 +104,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		String memberPhone = "";
 		int failureCnt = 0;
 
-		HashMap<String,Object>records = frontMemberDao.loginAct(dbparams);
+		HashMap<String,Object>records = mobileMemberDao.loginAct(dbparams);
 		
 		if(records !=null && !records.isEmpty()){
 			memberNo = Converter.toInt(records.get("memberNo"));
@@ -164,10 +164,10 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				dbparams.put("failureCnt"	, failureCnt + 1		);
 				
 				//5회 실패 후 미인증시 인증번호 insert
-				frontMemberDao.updateLoginAuthNumber(dbparams);
+				mobileMemberDao.updateLoginAuthNumber(dbparams);
 				
 				//비밀번호 실패시 비밀번호 실패 테이블에 insert
-				frontMemberDao.updateLoginFailure(dbparams);
+				mobileMemberDao.updateLoginFailure(dbparams);
 				
 				// 이메일주소 암호화
 				String encodeEmail = BASE64Util.encodeString(id); ; // 이메일 암호화
@@ -180,7 +180,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 					dbparams.put("failureCnt"	, failureCnt + 1		);
 				
 					//비밀번호 실패시 비밀번호 실패 테이블에 insert
-					frontMemberDao.updateLoginFailure(dbparams);
+					mobileMemberDao.updateLoginFailure(dbparams);
 					
 					if(null != records.get("authNumber")){
 						// 이메일주소 암호화
@@ -193,13 +193,13 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				}else{
 					// 로그인 성공시 실패횟수 초기화 -> 삭제로 로직 변경
 					dbparams.put("memberNo"	    , memberNo        		);
-					frontMemberDao.deleteLoginFailure(dbparams);
+					mobileMemberDao.deleteLoginFailure(dbparams);
 					
 					// 인증기간내에 인증시도한 경우 인증번호 삭제
 					if(null != records.get("authNumber") && 0 <= timeCampare){ 
 
 					//인증번호 삭제
-					frontMemberDao.loginAuthNumberDelete(dbparams);
+					mobileMemberDao.loginAuthNumberDelete(dbparams);
 					}
 				}
 			}
@@ -221,11 +221,11 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				dbparams2.put("memberEmail"	    , memberEmail);
 				//dbparams2.put("memberPhone"	    , memberPhone);
 				
-				HashMap<String, Object> tokenMap = frontMemberDao.getMemberAuthToken(dbparams2);
+				HashMap<String, Object> tokenMap = mobileMemberDao.getMemberAuthToken(dbparams2);
 				if (tokenMap == null || tokenMap.isEmpty()) {
 					userAuthToken =  RandomStringUtils.randomAlphanumeric(40);
 					dbparams.put("userAuthToken"   , userAuthToken);
-					frontMemberDao.insertMemberAuthTokenAct(dbparams);
+					mobileMemberDao.insertMemberAuthTokenAct(dbparams);
 				}else {
 					userAuthToken = Converter.toStr(tokenMap.get("userAuthToken"));
 				}
@@ -264,7 +264,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		frontMemberDao.deleteMemberAuthToken(dbparams);
+		mobileMemberDao.deleteMemberAuthToken(dbparams);
 		sm.killSession();
 		rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/main/index.do" , ""));
 		return true;
@@ -278,7 +278,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		
 		try{
 			dbparams.put("recommend", p.getStr("recommend"));
-			int recommonCount = frontMemberDao.selectRecommend(dbparams);
+			int recommonCount = mobileMemberDao.selectRecommend(dbparams);
 
 			if(recommonCount == 0){
 				String json = Util.printResult(2, String.format("추천인 정보가 존재하지 않습니다."), null);
@@ -303,7 +303,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		
 		try{
 			dbparams.put("memberEmail", p.getStr("memberEmail") );
-			HashMap<String,Object> userAuthInfo = frontMemberDao.selectUserInfoUseEmail(dbparams);
+			HashMap<String,Object> userAuthInfo = mobileMemberDao.selectUserInfoUseEmail(dbparams);
 			
 				// 인증번호 6자리 난수 생성
 				String memberNo = Converter.toStr(userAuthInfo.get("memberNo"));
@@ -313,7 +313,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				dbparams.put("authNumber"	, authRandomNo   		);
 				
 				//5회 실패 후 미인증시 인증번호 insert
-				frontMemberDao.updateLoginAuthNumber(dbparams);
+				mobileMemberDao.updateLoginAuthNumber(dbparams);
 				
 				JSONObject json = new JSONObject();
 				JSONObject _json = new JSONObject();
@@ -342,7 +342,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		try{
 			String decodeEmail = BASE64Util.decodeString(p.getStr("memberEmail")); 
 			dbparams.put("memberEmail", decodeEmail );
-			HashMap<String,Object> recommonInfo = frontMemberDao.selectAuthMember(dbparams);
+			HashMap<String,Object> recommonInfo = mobileMemberDao.selectAuthMember(dbparams);
 
 			if(recommonInfo == null){
 				String json = Util.printResult(0, String.format("로그인 정보가 존재하지 않습니다."), null);
@@ -379,7 +379,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			HashMap<String,Object> recommendMyinfo = null;
 			if (p.getStr("recommend").trim() != null && !"".equals(p.getStr("recommend").trim())) {
 				dbparams.put("recommenderEmail"	, p.getStr("recommend").trim());
-				recommendMyinfo = frontMemberDao.selectRecommendDetail(dbparams);
+				recommendMyinfo = mobileMemberDao.selectRecommendDetail(dbparams);
 				if(recommendMyinfo != null){
 					dbparams.put("recommenderNo"	, Converter.toInt(recommendMyinfo.get("memberNo"))	);
 				}
@@ -423,32 +423,32 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			// 이메일 중복 체크
 			RPMap dbparams2 = new RPMap();
 			dbparams2.put("memberEmail", p.getStr("email").trim());
-			int memberEmailDuplicate = frontMemberDao.selectMemberEmailDup(dbparams2);
+			int memberEmailDuplicate = mobileMemberDao.selectMemberEmailDup(dbparams2);
 			if(memberEmailDuplicate > 0){
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("이미 가입한 이메일입니다.", "/member/join.do?alertView=t&Message=2", "T"));
 				return false;
 			}
 			
-			frontMemberDao.insertJoinAct(dbparams);
+			mobileMemberDao.insertJoinAct(dbparams);
 			
 			/*회원가입후 memberNo갑슬 가져오기 위해 추가*/
-			int memberNo = frontMemberDao.selectMemberNo(dbparams);
+			int memberNo = mobileMemberDao.selectMemberNo(dbparams);
 			dbparams.put("memberNo"		, memberNo );
 			
 			/*기본  G-POINT 생성*/
 			dbparams.put("nodeNo", memberNo);
 			dbparams.put("nodeType", "1");
 			dbparams.put("nodeTypeName","member");
-			frontMemberDao.insertGreenAct(dbparams);
+			mobileMemberDao.insertGreenAct(dbparams);
 			
 			/* 추천인 G-POINT 생성*/
 			dbparams.put("nodeNo", memberNo);
 			dbparams.put("nodeType", "2");
 			dbparams.put("nodeTypeName","recommender");
-			frontMemberDao.insertGreenAct(dbparams);
+			mobileMemberDao.insertGreenAct(dbparams);
 			
 			/*기본  R-PAY생성*/
-			frontMemberDao.insertRedAct(dbparams);
+			mobileMemberDao.insertRedAct(dbparams);
 			
 			/*Cookie joinCookie = new Cookie("joinCookie","T");
 			joinCookie.setMaxAge(7); 
@@ -491,9 +491,9 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		SessionManager sm = new SessionManager(request, response);
 		dbparams.put("memberNo", sm.getMemberNo());
 		try{
-			HashMap<String,Object> mypageMyinfo = frontMemberDao.selectMypageMyinfo(dbparams);
+			HashMap<String,Object> mypageMyinfo = mobileMemberDao.selectMypageMyinfo(dbparams);
 			
-			HashMap<String,Object> membershipRequestPaymentStatus = frontMemberDao.selectMembershipRequestPaymentStatus(dbparams); //정회원 신청여부
+			HashMap<String,Object> membershipRequestPaymentStatus = mobileMemberDao.selectMembershipRequestPaymentStatus(dbparams); //정회원 신청여부
 			
 			if( mypageMyinfo == null ) {
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
@@ -502,17 +502,17 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			String recoMemberEmail = null;
 			if(mypageMyinfo.get("recommenderNo") != null) {
 				dbparams.put("recommenderNo", Converter.toInt( mypageMyinfo.get("recommenderNo") ) );
-				recoMemberEmail = frontMemberDao.recommenderNo(dbparams);
+				recoMemberEmail = mobileMemberDao.recommenderNo(dbparams);
 			}
 			if(recoMemberEmail != null) {
 				mypageMyinfo.put("recoMemberEmail", recoMemberEmail);
 			}
 			rmap.put("mypageMyinfo", mypageMyinfo);
-			ArrayList<HashMap<String, Object>> selectCompanyBankList = frontMemberDao.selectCompanyBankList(dbparams);
+			ArrayList<HashMap<String, Object>> selectCompanyBankList = mobileMemberDao.selectCompanyBankList(dbparams);
 			rmap.put("selectCompanyBankList", selectCompanyBankList);
 			rmap.put("membershipRequestPaymentStatus", membershipRequestPaymentStatus);
 			
-			HashMap<String,Object> memberTypeInfo = frontMemberDao.selectmemberTypeInfo(dbparams); //회원 타입 조회
+			HashMap<String,Object> memberTypeInfo = mobileMemberDao.selectmemberTypeInfo(dbparams); //회원 타입 조회
 			rmap.put("memberTypeInfo", memberTypeInfo);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -527,8 +527,8 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		HashMap<String, Object> dbparams = new HashMap<String, Object>();
 		dbparams.put("memberNo",Converter.toInt(p.get("memberNo")));
 		try {
-			rmap.put("myMemberList",frontMemberDao.selectMyMemberList(dbparams));
-			rmap.put("myMemberListCount", frontMemberDao.selectMyMemberListCount(dbparams));
+			rmap.put("myMemberList",mobileMemberDao.selectMyMemberList(dbparams));
+			rmap.put("myMemberListCount", mobileMemberDao.selectMyMemberListCount(dbparams));
 		}catch(Exception e) {
 			e.printStackTrace();
 			return false;
@@ -544,7 +544,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		SessionManager sm = new SessionManager(request, response);
 		dbparams.put("memberNo", sm.getMemberNo());
 		try{
-			HashMap<String,Object> mypageMyinfo = frontMemberDao.selectMypageMyinfo(dbparams);
+			HashMap<String,Object> mypageMyinfo = mobileMemberDao.selectMypageMyinfo(dbparams);
 			if( mypageMyinfo == null ) {
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
 				return false;
@@ -566,12 +566,12 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		dbparams.put("memberNo", sm.getMemberNo());
 
 		try{
-			HashMap<String,Object> mypageMyinfo = frontMemberDao.selectMypageMyinfo(dbparams);
+			HashMap<String,Object> mypageMyinfo = mobileMemberDao.selectMypageMyinfo(dbparams);
 
 			String recoMemberEmail = null;
 			if(mypageMyinfo.get("recommenderNo") != null) {
 				dbparams.put("recommenderNo", Converter.toInt( mypageMyinfo.get("recommenderNo") ) );
-				recoMemberEmail = frontMemberDao.recommenderNo(dbparams);
+				recoMemberEmail = mobileMemberDao.recommenderNo(dbparams);
 			}
 			if(recoMemberEmail != null) {
 				mypageMyinfo.put("recoMemberEmail", recoMemberEmail);
@@ -579,7 +579,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			
 			HashMap<String, Object> dbparams2 = new HashMap<String, Object>();
 			dbparams2.put("useStatus", "Y");
-			ArrayList<HashMap<String,Object>> countries = frontMemberDao.selectCountries(dbparams2);
+			ArrayList<HashMap<String,Object>> countries = mobileMemberDao.selectCountries(dbparams2);
 			
 			rmap.put("countries", countries);
 			rmap.put("mypageMyinfo", mypageMyinfo);
@@ -599,7 +599,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		int pwd = p.getInt("pwd");
 		dbparams.put("memberNo", sm.getMemberNo());
 		try{
-			HashMap<String,Object> mypageMyinfo = frontMemberDao.selectMypageMyinfo(dbparams);
+			HashMap<String,Object> mypageMyinfo = mobileMemberDao.selectMypageMyinfo(dbparams);
 			String decodepw = Util.sha(p.getStr("pwd").trim().toString());
 			String memberPass = Converter.toStr(mypageMyinfo.get("memberPassword").toString());
 			
@@ -611,7 +611,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			String recoMemberEmail = null;
 			if(mypageMyinfo.get("recommenderNo") != null) {
 				dbparams.put("recommenderNo", Converter.toInt( mypageMyinfo.get("recommenderNo") ) );
-				recoMemberEmail = frontMemberDao.recommenderNo(dbparams);
+				recoMemberEmail = mobileMemberDao.recommenderNo(dbparams);
 			}
 			if(recoMemberEmail != null) {
 				mypageMyinfo.put("recoMemberEmail", recoMemberEmail);
@@ -640,7 +640,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		
 		try{
 			dbparams.put("memberNo", sm.getMemberNo());
-			HashMap<String,Object> mypageMyinfo = frontMemberDao.selectMypageMyinfo(dbparams);
+			HashMap<String,Object> mypageMyinfo = mobileMemberDao.selectMypageMyinfo(dbparams);
 			if(mypageMyinfo!= null) {
 				oriMemberPassword = Converter.toStr(mypageMyinfo.get("memberPassword").toString());
 				if(mypageMyinfo.get("memberPhone") != null) {
@@ -652,7 +652,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			}
 			
 			dbparams.put("recommenderEmail"	, p.getStr("recommend").trim());
-			HashMap<String,Object> recommendMyinfo = frontMemberDao.selectRecommendDetail(dbparams);
+			HashMap<String,Object> recommendMyinfo = mobileMemberDao.selectRecommendDetail(dbparams);
 			if (recommendMyinfo != null){
 				dbparams.put("recommenderNo", Converter.toInt(recommendMyinfo.get("memberNo")));
 				if(Converter.toInt(recommendMyinfo.get("memberNo")) != null) {
@@ -706,7 +706,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			dbparams.put("memberPhone"		, p.getStr("phone").trim()			);
 			dbparams.put("country"		, p.getStr("country").trim()			);
 			dbparams.put("memberNo", sm.getMemberNo());
-			frontMemberDao.updateUser(dbparams);
+			mobileMemberDao.updateUser(dbparams);
 			
 			String[] url=request.getRequestURL().toString().split(request.getRequestURI());
 			String mail_sign = "<a href ="+url[0]+"/m/member/login.do target ='_blank'>";
@@ -737,12 +737,12 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		dbparams.put("memberEmail", BASE64Util.decodeString(emailSignAct).toString().trim());
 		
 		try{
-			int emailSignCount = frontMemberDao.selectEmailSignSuccessCount(dbparams);
+			int emailSignCount = mobileMemberDao.selectEmailSignSuccessCount(dbparams);
 			if(emailSignCount > 0){
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("이메일 인증이 완료된 고객입니다.", "/m/main/index.do?alertView=t&Message=2", "T"));
 				return false;
 			}
-			frontMemberDao.updateUserMemberStatus(dbparams);
+			mobileMemberDao.updateUserMemberStatus(dbparams);
 			rmap.put(Const.D_SCRIPT, Util.jsmsgLink("이메일 인증완료되었습니다.", "/m/main/index.do?alertView=t&Message=3", "T"));
 		}catch(Exception e){
 			e.printStackTrace();
@@ -765,7 +765,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		dbparams.put("memberPhone", memberPhone);
 		
 		try{
-			HashMap<String,Object> userInfos = frontMemberDao.selectFindUserEmailAct(dbparams);
+			HashMap<String,Object> userInfos = mobileMemberDao.selectFindUserEmailAct(dbparams);
 			if(userInfos !=null && !userInfos.isEmpty()){
 			    String memberEmail = Converter.toStr(userInfos.get("memberEmail"));
 			    
@@ -808,7 +808,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		dbparams.put("memberEmail", memberEmail);
 		
 		try{
-			HashMap<String,Object> userInfos = frontMemberDao.selectFindEmailAct(dbparams);
+			HashMap<String,Object> userInfos = mobileMemberDao.selectFindEmailAct(dbparams);
 			String memberStatus = "";
 			if(userInfos !=null && !userInfos.isEmpty()){
 				memberStatus = Converter.toStr(userInfos.get("memberStatus"));
@@ -827,7 +827,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				dbparams.put("tempPassword", decodePw);
 				
 				//임시비밀번호 업데이트
-				frontMemberDao.updateTempPw(dbparams);
+				mobileMemberDao.updateTempPw(dbparams);
 				memberEmail = Converter.toStr(userInfos.get("memberEmail"));
 				String pw = rendomPw.toString();
 				String[] url=request.getRequestURL().toString().split(request.getRequestURI());
@@ -864,7 +864,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		
 		try{
 			dbparams.put("memberEmail", p.getStr("email"));
-			int memberValidity = frontMemberDao.selectMemberJoinCount(dbparams);
+			int memberValidity = mobileMemberDao.selectMemberJoinCount(dbparams);
 			
 			if(memberValidity > 0){
 				String json = Util.printResult(2, String.format("중복된 회원정보가 존재합니다."), null);
@@ -910,7 +910,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			}
 			
 			dbparams.put("memberPhone", memberPhone);
-			memberValidity = frontMemberDao.selectMemberPhoneOverlapCount(dbparams);
+			memberValidity = mobileMemberDao.selectMemberPhoneOverlapCount(dbparams);
 			//입력받은 회원 휴대폰번호가 +82로 입력되지만, AS-IS에서는 휴대폰번호가 +82, 82, 010 형식으로 저장이 되어 있기때문에 아래의 로직을 추가한다. END
 
 			if(memberValidity > 0){
@@ -941,7 +941,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			if(memberEmail != null){
 				dbparams.put("memberNo", memberNo);
 				dbparams.put("memberEmail", memberEmail);
-				HashMap<String,Object> mypageMyinfo = frontMemberDao.selectMypageMyinfo(dbparams);
+				HashMap<String,Object> mypageMyinfo = mobileMemberDao.selectMypageMyinfo(dbparams);
 				
 				
 				String createTime = mypageMyinfo.get("createTime2").toString();
@@ -951,7 +951,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 				String mail_date = date.format(today);*/
 							
-				HashMap<String,Object> userInfos = frontMemberDao.selectFindEmailAct(dbparams);
+				HashMap<String,Object> userInfos = mobileMemberDao.selectFindEmailAct(dbparams);
 			    String mail_name = userInfos.get("memberName").toString();
 			    String mail_email = BASE64Util.encodeString(p.getStr("memberEmail").trim()); 
 				String[] url=request.getRequestURL().toString().split(request.getRequestURI());
@@ -993,7 +993,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		
 		try{
 			dbparams.put("memberNo", sm.getMemberNo());
-			int memberShipReqCount = frontMemberDao.selectMemberShipReq(dbparams);
+			int memberShipReqCount = mobileMemberDao.selectMemberShipReq(dbparams);
 			
 			if(memberShipReqCount > 0){
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("이미 정회원 신청을 하셨습니다.", "/m/mypage/mypage_myinfo.do?alertView=t&Message=1", "T"));
@@ -1002,19 +1002,19 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			
 			String memberName = p.getStr("m_name");
 			dbparams.put("BankAccountNo", p.getStr("m_bank"));
-			HashMap<String, Object> selectCompanyBankAccount = frontMemberDao.selectCompanyBankAccount(dbparams);
+			HashMap<String, Object> selectCompanyBankAccount = mobileMemberDao.selectCompanyBankAccount(dbparams);
 			dbparams.put("bankName", selectCompanyBankAccount.get("bankName"));
 			dbparams.put("bankOwnerName", selectCompanyBankAccount.get("bankOwnerName"));
 			dbparams.put("bankAccount", selectCompanyBankAccount.get("bankAccount"));
 			dbparams.put("memberName", p.getStr("m_name"));
 			dbparams.put("BankAccountNo", p.getStr("m_bank"));
 			
-			HashMap<String, Object> selectPolicyMembershipTransLimit = frontMemberDao.selectPolicyMembershipTransLimit(dbparams);
+			HashMap<String, Object> selectPolicyMembershipTransLimit = mobileMemberDao.selectPolicyMembershipTransLimit(dbparams);
 			dbparams.put("paymentAmount", selectPolicyMembershipTransLimit.get("membershipTransLimit"));
 			dbparams.put("companyBankAccountNo", p.getStr("m_bank"));
-			frontMemberDao.insertMembershipRequest(dbparams);
+			mobileMemberDao.insertMembershipRequest(dbparams);
 			
-			HashMap<String,Object> mypageMyinfo = frontMemberDao.selectMypageMyinfo(dbparams);
+			HashMap<String,Object> mypageMyinfo = mobileMemberDao.selectMypageMyinfo(dbparams);
 			
 			dbparams.put("memberName", mypageMyinfo.get("memberName"));
 			dbparams.put("memberEmail", mypageMyinfo.get("memberEmail"));
@@ -1058,7 +1058,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		dbparams.put("pwd", pwd);
 		
 		try{
-			HashMap<String,Object> myinfo = frontMemberDao.selectMyinfoCheck(dbparams);
+			HashMap<String,Object> myinfo = mobileMemberDao.selectMyinfoCheck(dbparams);
 			
 			if(myinfo !=null && !myinfo.isEmpty()){
 				memberNo = Converter.toInt(myinfo.get("memberNo"));
@@ -1079,7 +1079,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			dbparams.put("memberNo"	        	, myinfo.get("memberNo")              		);
 			dbparams.put("memberStatus"			, "6"						); //사용자 자발 탈퇴
 
-			frontMemberDao.memberOutAct(dbparams);
+			mobileMemberDao.memberOutAct(dbparams);
 			rmap.put(Const.D_SCRIPT, Util.jsmsgLink("탈퇴되었습니다.", "/m/main/index.do?form=out&", "T"));
 			sm.killSession();
 		
@@ -1099,7 +1099,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		SessionManager sm = new SessionManager(request, response);
 		dbparams.put("memberNo", sm.getMemberNo());
 		try{
-			HashMap<String,Object> mypageMyinfo = frontMemberDao.selectMypageMyinfo(dbparams);
+			HashMap<String,Object> mypageMyinfo = mobileMemberDao.selectMypageMyinfo(dbparams);
 			if( mypageMyinfo == null ) {
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
 				return false;
@@ -1117,7 +1117,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		RPMap dbparams = new RPMap();
 		try{
 			//dbparams.put("pointtranslimit", p.getStr("pointtranslimit"));
-			HashMap<String,Object> policy = frontMemberDao.selectPolicyPointTranslimit(dbparams);
+			HashMap<String,Object> policy = mobileMemberDao.selectPolicyPointTranslimit(dbparams);
 			
 			JSONArray json_arr = new JSONArray();
 			JSONObject obj = new JSONObject();
@@ -1150,7 +1150,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		
 		try{
 			dbparams.put("memberEmail", p.getStr("memberEmail"));
-			int memberValidity = frontMemberDao.selectMemberInfo(dbparams);
+			int memberValidity = mobileMemberDao.selectMemberInfo(dbparams);
 			
 			if(memberValidity == 1){
 				String json = Util.printResult(1, String.format("성공하였습니다."), null);
@@ -1177,7 +1177,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		
 		try{
 			dbparams.put("memberPhone", p.getStr("memberPhone"));
-			int qrmemberPhone = frontMemberDao.selectqrMemberPhone(dbparams);
+			int qrmemberPhone = mobileMemberDao.selectqrMemberPhone(dbparams);
 			
 			if(qrmemberPhone > 0){
 				String json = Util.printResult(1, String.format("회원님은 이미 회원가입이 되어 계십니다. 로그인을 해주세요."), null);
@@ -1200,7 +1200,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			dbparams.put("memberPhone", p.getStr("memberPhone"));
 			dbparams.put("memberNo", sm.getMemberNo());
 			
-			int memberValidity = frontMemberDao.selectMemberPhoneOverlapModfiyCount(dbparams);
+			int memberValidity = mobileMemberDao.selectMemberPhoneOverlapModfiyCount(dbparams);
 			
 			if(memberValidity > 0){
 				String json = Util.printResult(2, String.format("중복된 회원정보가 존재합니다."), null);
@@ -1225,7 +1225,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		
 		try{
 			dbparams.put("memberNo", sm.getMemberNo());
-			frontMemberDao.updatePaymentStatusRequestCon(dbparams);
+			mobileMemberDao.updatePaymentStatusRequestCon(dbparams);
 			rmap.put(Const.D_SCRIPT, Util.jsmsgLink("성공하였습니다.", "/m/mypage/mypage_myinfo.do?alertView=t&Message=2", "T"));
 		}catch(Exception e){
 			e.printStackTrace();
@@ -1239,7 +1239,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		HashMap<String, Object> dbparams = new HashMap<String, Object>();
 		dbparams.put("useStatus", "Y");
 		try{
-			ArrayList<HashMap<String,Object>> countries = frontMemberDao.selectCountries(dbparams);
+			ArrayList<HashMap<String,Object>> countries = mobileMemberDao.selectCountries(dbparams);
 			rmap.put("countries", countries);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -1254,7 +1254,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		HashMap<String, Object> dbparams = new HashMap<String, Object>();
 		dbparams.put("useStatus", "Y");
 		try{
-			ArrayList<HashMap<String,Object>> languages= frontMemberDao.selectLanguages(dbparams);
+			ArrayList<HashMap<String,Object>> languages= mobileMemberDao.selectLanguages(dbparams);
 			rmap.put("languages", languages);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -1271,7 +1271,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		try{
 			dbparams.put("memberNo", sm.getMemberNo());
 			dbparams.put("accountStatus", "Y");
-			ArrayList<HashMap<String,Object>> memberBankAccounts= frontMemberDao.selectBankAccounts(dbparams);
+			ArrayList<HashMap<String,Object>> memberBankAccounts= mobileMemberDao.selectBankAccounts(dbparams);
 			rmap.put("memberBankAccounts", memberBankAccounts);
 		}catch(Exception e){
 			e.printStackTrace();
@@ -1286,7 +1286,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		RPMap dbparams = new RPMap();
 		try{
 			dbparams.put("memberBankAccountNo", Converter.toInt(p.getStr("memberBankAccountNo")));
-			int count = frontMemberDao.deleteMemberBankAccount(dbparams);
+			int count = mobileMemberDao.deleteMemberBankAccount(dbparams);
 
 			if(count== 0){
 				String json = Util.printResult(1, String.format("잘못된 요청입니다."), null);
@@ -1312,10 +1312,10 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		try{
 			dbparams.put("memberNo", sm.getMemberNo());
 			
-			rmap.put("memberBankAccounts", frontMemberDao.selectBankAccounts(dbparams));
-			rmap.put("rPayInfo",frontMemberDao.selectMyRedPointMapinfo(dbparams));
-			rmap.put("policy",frontMemberDao.selectPolicyPointTranslimit(dbparams));
-			rmap.put("rpayTotalWithdrawal",frontMemberDao.selectWithdrawalSumPerDay(dbparams));
+			rmap.put("memberBankAccounts", mobileMemberDao.selectBankAccounts(dbparams));
+			rmap.put("rPayInfo",mobileMemberDao.selectMyRedPointMapinfo(dbparams));
+			rmap.put("policy",mobileMemberDao.selectPolicyPointTranslimit(dbparams));
+			rmap.put("rpayTotalWithdrawal",mobileMemberDao.selectWithdrawalSumPerDay(dbparams));
 			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -1332,7 +1332,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		HashMap<String, Object> rpayMap;
 		try{
 			dbparams.put("memberNo", sm.getMemberNo());
-			rpayMap = frontMemberDao.selectMyRedPointMapinfo(dbparams);
+			rpayMap = mobileMemberDao.selectMyRedPointMapinfo(dbparams);
 			
 			if ((float)rpayMap.get("pointAmount") < Converter.toInt(p.getStr("withdrawalAmount"))){
 				String json = Util.printResult(1, String.format("요청 하신 출금 금액이 보유하신 R PAPY 를 초과합니다. 확인후 다시 시도해주세요"), null);
@@ -1343,7 +1343,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			dbparams.put("memberBankAccountNo", Converter.toInt(p.getStr("memberBankAccountNo")));
 			dbparams.put("withdrawalAmount", Converter.toInt(p.getStr("withdrawalAmount")));
 			
-			int count = frontMemberDao.insertPointWithdrawal(dbparams);
+			int count = mobileMemberDao.insertPointWithdrawal(dbparams);
 			if(count== 0){
 				String json = Util.printResult(1, String.format("잘못된 요청입니다."), null);
 				rmap.put("json", json);
@@ -1354,7 +1354,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				System.out.println((float)rpayMap.get("pointAmount"));
 				/* 출금 신청된 회원의 RPay를 출금 금액만큼 차감 */
 				rpayMap.put("pointAmount", (float)rpayMap.get("pointAmount") - Float.parseFloat(p.getStr("withdrawalAmount")));
-				frontMemberDao.updateRedPoint(rpayMap);
+				mobileMemberDao.updateRedPoint(rpayMap);
 				String json = Util.printResult(0, String.format("출금 요청 등록 완료"), null);
 				rmap.put("json", json);
 				return true;
@@ -1374,7 +1374,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			dbparams.put("pointWithdrawalNo", sm.getMemberNo());
 			dbparams.put("withdrawalStatus", Converter.toInt(p.getStr("withdrawalStatus")));
 			
-			int count = frontMemberDao.updatePointwithdrawal(dbparams);
+			int count = mobileMemberDao.updatePointwithdrawal(dbparams);
 			if(count== 0){
 				String json = Util.printResult(1, String.format("잘못된 요청입니다."), null);
 				rmap.put("json", json);
@@ -1397,7 +1397,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		SessionManager sm = new SessionManager(request, response);
 		try{
 			dbparams.put("memberNo", sm.getMemberNo());
-			rmap.put("pointWithdrawals", frontMemberDao.selectPointwithdrawals(dbparams));
+			rmap.put("pointWithdrawals", mobileMemberDao.selectPointwithdrawals(dbparams));
 		}catch(Exception e){
 			e.printStackTrace();
 			return false;
@@ -1424,7 +1424,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		
 		try{
 			dbparams.put("memberNo", sm.getMemberNo());
-			HashMap<String, Object> memberInfo = this.frontMemberDao.selectMypageMyinfo(dbparams);
+			HashMap<String, Object> memberInfo = this.mobileMemberDao.selectMypageMyinfo(dbparams);
 
 			switch(p.getStr("qr_cmd")) {
 			case QRManager.QRCmd.GEN_JOIN_RECOM_QR:
@@ -1497,7 +1497,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			/* 추천인 큐알 스캔에 의한 회원 페이지 이동*/
 			case QRManager.QRCmd.EXE_JOIN_WITH_RECOM:
 				dbparams.put("recommenderEmail", (String) qrJson.get("recommender"));
-				HashMap<String,Object> memberMap =this.frontMemberDao.selectRecommendDetail(dbparams);
+				HashMap<String,Object> memberMap =this.mobileMemberDao.selectRecommendDetail(dbparams);
 				if (memberMap == null) {
 					rmap.put("resultCode", "301");
 					rmap.put("message", this.messageUtils.getMessage("label.label.no_member"));
@@ -1585,12 +1585,12 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			int count  = 0;
 			String action = p.getStr("action") != null  &&   !"".equals(p.getStr("action")) ? p.getStr("action") : "create";
 			if ("create".equals(action)) {
-				count = frontMemberDao.insertMemberBankAccount(dbparams);
+				count = mobileMemberDao.insertMemberBankAccount(dbparams);
 			}
 			
 			if ("modify".equals(action)) {
 				dbparams.put("memberBankAccountNo", Converter.toInt(p.getStr("memberBankAccountNo")));
-				count = frontMemberDao.updateMemberBankAccount(dbparams);
+				count = mobileMemberDao.updateMemberBankAccount(dbparams);
 			}
 
 			if(count== 0){
@@ -1628,7 +1628,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		if ("modify".equals(action)) {
 			dbparams.put("memberNo", sm.getMemberNo());
 			dbparams.put("memberBankAccountNo", p.getInt("memberBankAccountNo"));
-			accountMapList = this.frontMemberDao.selectBankAccounts(dbparams);
+			accountMapList = this.mobileMemberDao.selectBankAccounts(dbparams);
 			rmap.put("title", this.messageUtils.getMessage("label.edit_bank_account"));
 			rmap.put("button_label", this.messageUtils.getMessage("label.edit_bank_account"));
 			if (accountMapList.size() == 1) {

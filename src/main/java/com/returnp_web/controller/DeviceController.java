@@ -19,7 +19,8 @@ import com.returnp_web.svc.DeviceService;
 @RequestMapping("/m")
 public class DeviceController {
 	
-	@Autowired private DeviceService deviceService;;
+	@Autowired 
+	private DeviceService deviceService;
 	
 	//푸쉬 토큰 등록 
 	@ResponseBody

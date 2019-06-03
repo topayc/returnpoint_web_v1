@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,8 +32,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.ui.ModelMap;
 
-import com.returnp_web.dao.FrontMainDao;
-import com.returnp_web.dao.FrontMemberDao;
+import com.returnp_web.dao.MobileMainDao;
+import com.returnp_web.dao.MobileMemberDao;
 import com.returnp_web.utils.BASE64Util;
 import com.returnp_web.utils.Const;
 import com.returnp_web.utils.Converter;
@@ -43,7 +44,7 @@ import com.returnp_web.utils.Util;
 
 
 /**
- * The Class FrontMainServiceImpl.
+ * The Class MobileMainServiceImpl.
  */
 @PropertySource("classpath:/config.properties")
 @Service
@@ -51,12 +52,12 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 	private static final Logger logger = LoggerFactory.getLogger(MobileMainServiceImpl.class);
 
-	/** The front main dao. */
+	/** The mobile main dao. */
 	@Autowired
-	private FrontMainDao frontMainDao;
+	private MobileMainDao mobileMainDao;
 
 	@Autowired
-	private FrontMemberDao frontMemberDao;
+	private MobileMemberDao mobileMemberDao;
 
 	@Autowired
 	private MessageSource messageSource;
@@ -72,7 +73,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 		try {
 
-			int memberTotal = frontMainDao.selectMemberTotal(dbparams); // red point search.
+			int memberTotal = mobileMainDao.selectMemberTotal(dbparams); // red point search.
 
 			rmap.put("memberTotal", memberTotal);
 
@@ -113,7 +114,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 				dbparams.put("SEARCHTIME", move); // 현재년월
 			}
 
-			HashMap<String, Object> serverYearMonth = frontMemberDao.selectYearMonth(dbparams);
+			HashMap<String, Object> serverYearMonth = mobileMemberDao.selectYearMonth(dbparams);
 			String PREWMONTH = (String) serverYearMonth.get("PREWMONTH");
 			String NOWMONTH = (String) serverYearMonth.get("NOWMONTH");
 			String NEXTMONTH = (String) serverYearMonth.get("NEXTMONTH");
@@ -121,18 +122,18 @@ public class MobileMainServiceImpl implements MobileMainService {
 			rmap.put("NOWMONTH", NOWMONTH);
 			rmap.put("NEXTMONTH", NEXTMONTH);
 
-			HashMap<String, Object> mypageMyinfo = frontMemberDao.selectMypageMyinfo(dbparams); // my info
+			HashMap<String, Object> mypageMyinfo = mobileMemberDao.selectMypageMyinfo(dbparams); // my info
 			if (mypageMyinfo == null) {
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
 				return false;
 			}
-			HashMap<String, Object> myRedPointSumInfo = frontMainDao.selectMyRedPointSumInfo(dbparams); // red point search.
-			HashMap<String, Object> myGreenPointSumInfo = frontMainDao.selectMyGreenPointSumInfo(dbparams); // green point Sum search.
-			ArrayList<HashMap<String, Object>> selectMyGreenPointList = frontMainDao.selectMyGreenPointList(dbparams); // green point List search.
-			ArrayList<HashMap<String, Object>> selectPolicyList = frontMainDao.selectPolicyList(dbparams); // policy. 정책
-			HashMap<String, Object> myRedPointInfo = frontMemberDao.selectMyRedPointMapinfo(dbparams); // red point Map search
-			ArrayList<HashMap<String, Object>> selectMyGreenPointSumList = frontMainDao.selectMyGreenPointSumList(dbparams); // green point Sum List search.
-			ArrayList<HashMap<String, Object>> selectMyRedPointSumList = frontMainDao.selectMyRedPointSumList(dbparams); // red point Sum one List search.
+			HashMap<String, Object> myRedPointSumInfo = mobileMainDao.selectMyRedPointSumInfo(dbparams); // red point search.
+			HashMap<String, Object> myGreenPointSumInfo = mobileMainDao.selectMyGreenPointSumInfo(dbparams); // green point Sum search.
+			ArrayList<HashMap<String, Object>> selectMyGreenPointList = mobileMainDao.selectMyGreenPointList(dbparams); // green point List search.
+			ArrayList<HashMap<String, Object>> selectPolicyList = mobileMainDao.selectPolicyList(dbparams); // policy. 정책
+			HashMap<String, Object> myRedPointInfo = mobileMemberDao.selectMyRedPointMapinfo(dbparams); // red point Map search
+			ArrayList<HashMap<String, Object>> selectMyGreenPointSumList = mobileMainDao.selectMyGreenPointSumList(dbparams); // green point Sum List search.
+			ArrayList<HashMap<String, Object>> selectMyRedPointSumList = mobileMainDao.selectMyRedPointSumList(dbparams); // red point Sum one List search.
 			for (Map<String, Object> selectPolicyMap : selectPolicyList) {
 				for (Map.Entry<String, Object> entry : selectPolicyMap.entrySet()) {
 					String key = entry.getKey();
@@ -206,7 +207,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("requestNodeTypeName", p.getStr("requestNodeTypeName"));
 			dbparams.put("greenPointNo", p.getStr("greenPointNo"));
 			float myPoint = 0;
-			HashMap<String, Object> selectPolicyMembershipTransLimit = frontMemberDao.selectPolicyMembershipTransLimit(dbparams);
+			HashMap<String, Object> selectPolicyMembershipTransLimit = mobileMemberDao.selectPolicyMembershipTransLimit(dbparams);
 			if (selectPolicyMembershipTransLimit != null) {
 				dbparams.put("redPointAccRate", selectPolicyMembershipTransLimit.get("redPointAccRate"));
 			} else {
@@ -214,7 +215,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 				rmap.put("json", json);
 				return true;
 			}
-			HashMap<String, Object> selectMygreenPointInfo = frontMemberDao.selectMygreenPointInfo(dbparams);
+			HashMap<String, Object> selectMygreenPointInfo = mobileMemberDao.selectMygreenPointInfo(dbparams);
 			if (selectMygreenPointInfo != null) {
 				myPoint = (float) selectMygreenPointInfo.get("pointAmount");
 			} else {
@@ -225,9 +226,9 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 			float pointAmount = myPoint - (float) p.getInt("convertPointAmount"); // 현재 포인트-차감포인트=최종 잔여 포인트
 			dbparams.put("pointAmount", pointAmount);
-			frontMainDao.insertPointConvertRequestAct(dbparams);
-			frontMainDao.insertPointConvertTransactionAct(dbparams);
-			frontMainDao.updateGreenPointUse(dbparams);
+			mobileMainDao.insertPointConvertRequestAct(dbparams);
+			mobileMainDao.insertPointConvertTransactionAct(dbparams);
+			mobileMainDao.updateGreenPointUse(dbparams);
 			String json = Util.printResult(0, String.format("성공하였습니다."), null);
 			rmap.put("json", json);
 
@@ -251,7 +252,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		try {
 			dbparams.put("memberEmail", p.getStr("redPointGiftMemberEmail"));
 			// 추천인 memberNo 호출
-			HashMap<String, Object> recipientMemberinfo = frontMemberDao.selectRecipientMemberinfo(dbparams);
+			HashMap<String, Object> recipientMemberinfo = mobileMemberDao.selectRecipientMemberinfo(dbparams);
 			if (recipientMemberinfo != null) {
 				dbparams.put("pointReceiver", Converter.toInt(recipientMemberinfo.get("memberNo"))); // pointReceiver :
 																										// 송금받을 멤버 번호
@@ -271,7 +272,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("pointAmount", pointAmount); // 내 레드포인트 잔액
 			dbparams.put("pointTransferer", sm.getMemberNo());
 			dbparams.put("pointType", "2"); // redpoint:2
-			HashMap<String, Object> receiverRedPointInfo = frontMainDao.selectReceiverRedPointInfo(dbparams);
+			HashMap<String, Object> receiverRedPointInfo = mobileMainDao.selectReceiverRedPointInfo(dbparams);
 			if (receiverRedPointInfo == null) {
 				String json = Util.printResult(1, String.format("잠시후 진행 하시길 바랍니다."), null);
 				rmap.put("json", json);
@@ -280,9 +281,9 @@ public class MobileMainServiceImpl implements MobileMainService {
 			// 현재 포인트+부여(선물)포인트=최종 잔여 포인트
 			float receiverPointAmount = (float) receiverRedPointInfo.get("pointAmount") + (float) p.getInt("convertPointAmount");
 			dbparams.put("receiverPointAmount", receiverPointAmount);
-			frontMainDao.insertPointTransferTransactionAct(dbparams);
-			frontMainDao.updateMyRedPointUse(dbparams);
-			frontMainDao.updateReceiveRedPoint(dbparams);
+			mobileMainDao.insertPointTransferTransactionAct(dbparams);
+			mobileMainDao.updateMyRedPointUse(dbparams);
+			mobileMainDao.updateReceiveRedPoint(dbparams);
 			String json = Util.printResult(0, String.format("성공하였습니다."), null);
 			rmap.put("json", json);
 			return true;
@@ -309,7 +310,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			float myPoint = 0;
 
 			// 포인트 선물 받을 memberNo 호출
-			HashMap<String, Object> recipientMemberinfo = frontMemberDao.selectRecipientMemberinfo(dbparams);
+			HashMap<String, Object> recipientMemberinfo = mobileMemberDao.selectRecipientMemberinfo(dbparams);
 			if (recipientMemberinfo != null) {
 				dbparams.put("pointReceiver", Converter.toInt(recipientMemberinfo.get("memberNo"))); // pointReceiver : 송금받을 멤버 번호
 			} else {
@@ -318,7 +319,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 				return true;
 			}
 
-			HashMap<String, Object> selectMygreenPointInfo = frontMemberDao.selectMygreenPointInfo(dbparams);
+			HashMap<String, Object> selectMygreenPointInfo = mobileMemberDao.selectMygreenPointInfo(dbparams);
 			if (selectMygreenPointInfo != null) {
 				myPoint = (float) selectMygreenPointInfo.get("pointAmount");
 			} else {
@@ -340,7 +341,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("pointType", "1"); // greedpoint:1
 
 			//선물받을 사람 그린 포인트 조회
-			HashMap<String, Object> receiverGreenPointInfo = frontMainDao.selectReceiverGreenPointInfo(dbparams);
+			HashMap<String, Object> receiverGreenPointInfo = mobileMainDao.selectReceiverGreenPointInfo(dbparams);
 			if (receiverGreenPointInfo == null) {
 				String json = Util.printResult(1, String.format("잠시후 진행 하시길 바랍니다."), null);
 				rmap.put("json", json);
@@ -349,9 +350,9 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 			float receiverPointAmount = (float) receiverGreenPointInfo.get("pointAmount") + (float) p.getInt("convertPointAmount");
 			dbparams.put("receiverPointAmount", receiverPointAmount);
-			frontMainDao.insertPointTransferTransactionAct(dbparams);
-			frontMainDao.updateMyGreenPointUse(dbparams);
-			frontMainDao.updateReceiveGreenPoint(dbparams);
+			mobileMainDao.insertPointTransferTransactionAct(dbparams);
+			mobileMainDao.updateMyGreenPointUse(dbparams);
+			mobileMainDao.updateReceiveGreenPoint(dbparams);
 			String json = Util.printResult(0, String.format("성공하였습니다."), null);
 			rmap.put("json", json);
 			return true;
@@ -385,7 +386,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			} else {
 				// 가맹점 정보
 				dbparams.put("af_id", qrParsemap.get("af_id")); // 가맹점 시리얼 넘버 조회
-				HashMap<String, Object> affiliateInfo = frontMemberDao.selectAffiliateInfo(dbparams);
+				HashMap<String, Object> affiliateInfo = mobileMemberDao.selectAffiliateInfo(dbparams);
 
 				if (affiliateInfo == null) {
 					rmap.put("qr_parsing_result", "error");
@@ -400,7 +401,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 					float amountAccumulated = Float.parseFloat(qrParsemap.get("pam")); // 가맹점 시리얼 넘버 조회
 					System.out.println("amountAccumulated::" + amountAccumulated);
-					HashMap<String, Object> policy = frontMemberDao.selectPolicyPointTranslimit(dbparams);
+					HashMap<String, Object> policy = mobileMemberDao.selectPolicyPointTranslimit(dbparams);
 					float customerComm = (float) policy.get("customerComm");
 					System.out.println("customerComm::" + customerComm);
 					float qramountAcc = (amountAccumulated * customerComm);
@@ -435,7 +436,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			qrJson = (JSONObject) jsonParser.parse(BASE64Util.decodeString(p.getStr("qr_data")));
 			
 			dbparams.put("pinNumber",(String) qrJson.get("pinNumber"));
-			HashMap<String, Object> issueMap = this.frontMemberDao.selectGiftCardIssue(dbparams);
+			HashMap<String, Object> issueMap = this.mobileMemberDao.selectGiftCardIssue(dbparams);
 			if (issueMap == null) {
 				rmap.put("result", "201");
 				rmap.put("messageKey" , "label.wrong_pinnumber");
@@ -545,7 +546,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		String langLocale = rmap.getStr("langLocale");
 		dbparams.put("langLocale", langLocale);
-		HashMap<String, Object> company = frontMainDao.selectCompanyInfo(dbparams);
+		HashMap<String, Object> company = mobileMainDao.selectCompanyInfo(dbparams);
 		map.put("company", company);
 
 		return map;
@@ -556,7 +557,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		RPMap dbparams = new RPMap();
-		HashMap<String, Object> servermanagestatus = frontMainDao.selectServerManageStatusInfo(dbparams);
+		HashMap<String, Object> servermanagestatus = mobileMainDao.selectServerManageStatusInfo(dbparams);
 		map.put("status", servermanagestatus);
 
 		return map;
@@ -587,12 +588,12 @@ public class MobileMainServiceImpl implements MobileMainService {
 				dbparams.put("TIME", move+"-01"); //현재선택한 년월일
 				dbparams.put("SEARCHTIME", move); //현재년월
 			}
-			HashMap<String,Object> serverYearMonth = frontMemberDao.selectYearMonth(dbparams);
+			HashMap<String,Object> serverYearMonth = mobileMemberDao.selectYearMonth(dbparams);
 			String PREWMONTH = (String) serverYearMonth.get("PREWMONTH");
 			String NOWMONTH = (String) serverYearMonth.get("NOWMONTH");
 			String NEXTMONTH = (String) serverYearMonth.get("NEXTMONTH");
 
-			ArrayList<HashMap<String, Object>> paymentPointbackRecordDetailList = frontMainDao.selectPaymentPointbackRecordDetailList(dbparams);
+			ArrayList<HashMap<String, Object>> paymentPointbackRecordDetailList = mobileMainDao.selectPaymentPointbackRecordDetailList(dbparams);
 			JSONObject json = new JSONObject();
 			if (paymentPointbackRecordDetailList.size() != '0') {
 				JSONArray json_arr = new JSONArray();
@@ -643,12 +644,12 @@ public class MobileMainServiceImpl implements MobileMainService {
 				dbparams.put("TIME", move+"-01"); //현재선택한 년월일
 				dbparams.put("SEARCHTIME", move); //현재년월
 			}
-			HashMap<String,Object> serverYearMonth = frontMemberDao.selectYearMonth(dbparams);
+			HashMap<String,Object> serverYearMonth = mobileMemberDao.selectYearMonth(dbparams);
 			String PREWMONTH = (String) serverYearMonth.get("PREWMONTH");
 			String NOWMONTH = (String) serverYearMonth.get("NOWMONTH");
 			String NEXTMONTH = (String) serverYearMonth.get("NEXTMONTH");
 
-			ArrayList<HashMap<String, Object>> pointConversionTransactionDetailList = frontMainDao.selectPointConversionTransactionDetailList(dbparams);
+			ArrayList<HashMap<String, Object>> pointConversionTransactionDetailList = mobileMainDao.selectPointConversionTransactionDetailList(dbparams);
 			JSONObject json = new JSONObject();
 			if (pointConversionTransactionDetailList.size() != '0') {
 				JSONArray json_arr = new JSONArray();
@@ -692,8 +693,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 			}else{
 				dbparams.put("CODE", p.getInt("code"));
 			}
-			ArrayList<HashMap<String, Object>> faqList = frontMainDao.selectFaqList(dbparams);
-			HashMap<String, Object> faqTotalCnt = frontMainDao.faqTotalCnt(dbparams);
+			ArrayList<HashMap<String, Object>> faqList = mobileMainDao.selectFaqList(dbparams);
+			HashMap<String, Object> faqTotalCnt = mobileMainDao.faqTotalCnt(dbparams);
 			rmap.put("faqList", faqList);
 			rmap.put("faqTotalCnt", faqTotalCnt);
 		} catch (Exception e) {
@@ -713,8 +714,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 		String message = messageSource.getMessage("messages.greeting", null, LocaleContextHolder.getLocale());
 
 		try {
-			ArrayList<HashMap<String, Object>> noticeList = frontMainDao.selectNoticeList(dbparams);
-			HashMap<String, Object> noticeTotalCnt = frontMainDao.noticeTotalCnt(dbparams);
+			ArrayList<HashMap<String, Object>> noticeList = mobileMainDao.selectNoticeList(dbparams);
+			HashMap<String, Object> noticeTotalCnt = mobileMainDao.noticeTotalCnt(dbparams);
 			rmap.put("noticeList", noticeList);
 			rmap.put("noticeTotalCnt", noticeTotalCnt);
 		} catch (Exception e) {
@@ -735,7 +736,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 		try {
 
-			ArrayList<HashMap<String, Object>> rpmapLoadList = frontMainDao.selectRpmapLoadList(dbparams);
+			ArrayList<HashMap<String, Object>> rpmapLoadList = mobileMainDao.selectRpmapLoadList(dbparams);
 			rmap.put("json", rpmapLoadList);
 
 			return true;
@@ -764,7 +765,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 				dbparams.put("CODE", p.getInt("code"));
 			}
 
-			ArrayList<HashMap<String, Object>> faqMoreList = frontMainDao.selectFaqMoreList(dbparams);
+			ArrayList<HashMap<String, Object>> faqMoreList = mobileMainDao.selectFaqMoreList(dbparams);
 			JSONObject json = new JSONObject();
 			if (faqMoreList.size() != '0') {
 				JSONArray json_arr = new JSONArray();
@@ -796,7 +797,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("noticecount", p.getInt("noticecount"));
 			dbparams.put("morecount", p.getInt("morecount"));
 			int morecount =  p.getInt("morecount") + 1;
-			ArrayList<HashMap<String, Object>> noticeMoreList = frontMainDao.selectNoticeMoreList(dbparams);
+			ArrayList<HashMap<String, Object>> noticeMoreList = mobileMainDao.selectNoticeMoreList(dbparams);
 			JSONObject json = new JSONObject();
 			if (noticeMoreList.size() != '0') {
 				JSONArray json_arr = new JSONArray();
@@ -827,7 +828,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		SessionManager sm = new SessionManager(request, response);
 		dbparams.put("memberNo", sm.getMemberNo());
 		try{
-			HashMap<String,Object> myinfo = frontMemberDao.selectMypageMyinfo(dbparams);
+			HashMap<String,Object> myinfo = mobileMemberDao.selectMypageMyinfo(dbparams);
 			if( myinfo == null ) {
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/main/index.do?alertView=t&Message=1", "T"));
 				return false;
@@ -856,8 +857,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 			}*/
 			dbparams.put("memberNo", sm.getMemberNo());
 
-			ArrayList<HashMap<String, Object>> qnaList = frontMainDao.selectQnaList(dbparams);
-			HashMap<String, Object> qnaTotalCnt = frontMainDao.qnaTotalCnt(dbparams);
+			ArrayList<HashMap<String, Object>> qnaList = mobileMainDao.selectQnaList(dbparams);
+			HashMap<String, Object> qnaTotalCnt = mobileMainDao.qnaTotalCnt(dbparams);
 			rmap.put("qnaList", qnaList);
 			rmap.put("qnaTotalCnt", qnaTotalCnt);
 		} catch (Exception e) {
@@ -893,7 +894,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("boardWriterName"	,p.getStr("boardWriterName").trim());
 			dbparams.put("boardTitle"		,p.getStr("boardTitle").trim());
 			dbparams.put("boardContent"		,p.getStr("boardContent").trim());
-			frontMemberDao.insertQnaWAct(dbparams);
+			mobileMemberDao.insertQnaWAct(dbparams);
 
 		    rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/board/qna.do" , ""));
 		}catch(Exception e){
@@ -912,8 +913,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 		try {
 			dbparams.put("memberNo", sm.getMemberNo());
-			ArrayList<HashMap<String, Object>> qnaNodeList = frontMainDao.selectQnaNodeList(dbparams);
-			HashMap<String, Object> qnaNodeTotalCnt = frontMainDao.qnaNodeTotalCnt(dbparams);
+			ArrayList<HashMap<String, Object>> qnaNodeList = mobileMainDao.selectQnaNodeList(dbparams);
+			HashMap<String, Object> qnaNodeTotalCnt = mobileMainDao.qnaNodeTotalCnt(dbparams);
 
 			rmap.put("qnaNodeList", qnaNodeList);
 			rmap.put("qnaNodeTotalCnt", qnaNodeTotalCnt);
@@ -965,7 +966,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("rerv5"			,p.getStr("rerv5").trim());
 			dbparams.put("rerv6"			,p.getStr("rerv6").trim());
 			//dbparams.put("rerv7"			,p.getStr("rerv7").trim());
-			frontMemberDao.insertQnaNodeWAct(dbparams);
+			mobileMemberDao.insertQnaNodeWAct(dbparams);
 		    rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/board/qna_node.do" , ""));
 		}catch(Exception e){
 			e.printStackTrace();

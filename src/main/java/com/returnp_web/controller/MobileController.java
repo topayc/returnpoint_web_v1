@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.MessageSourceAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,13 +26,7 @@ public class MobileController extends MallBaseController {
 	@Autowired
 	private MobileMainService mms;
 
-	/*
-	 * @Autowired private MessageSourceAware messageSourceAware; public void
-	 * setMessageSource(MessageSource messageSource) throws BeansException {
-	 * this.messageSourceAware = messageSourceAware; }
-	 */
-
-	// 프론트 메인페이지
+	// 모바일앱 메인페이지
 	@RequestMapping("/main/index.do")
 	public String home(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/main/index");

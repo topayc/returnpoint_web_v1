@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.MessageSourceAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,13 +27,6 @@ public class MobileMemberController extends MallBaseController{
 
 	@Autowired
 	private MobileMemberService mms;
-
-	/*@Autowired
-	private MessageSourceAware messageSourceAware;
-
-	public void setMessageSource(MessageSource messageSource) throws BeansException {
-		this.messageSourceAware = messageSourceAware;
-	}*/
 
 	//로그인 view
 	@RequestMapping("/member/login")

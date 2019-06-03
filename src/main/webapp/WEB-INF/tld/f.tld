@@ -18,4 +18,12 @@
 		    </function-signature>
 		</function>		
 		
+		<function>
+		    <name>num2Cur</name>
+		    <function-class>com.returnp_web.utils.Util</function-class>
+		    <function-signature>
+		         java.lang.String num2Cur( java.lang.String )
+		    </function-signature>
+		</function>
+		
 </taglib>

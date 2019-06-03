@@ -1,17 +1,17 @@
 package com.returnp_web.svc;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
-
 import com.returnp_web.utils.RPMap;
 
 /**
- * The Interface FrontMainService.
+ * The Interface MobileMainService.
  */
 @Service
 public interface MobileMainService {

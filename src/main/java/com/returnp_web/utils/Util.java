@@ -3,6 +3,7 @@ package com.returnp_web.utils;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -536,4 +537,19 @@ public class Util {
 	}
 	
 	
+	/**
+	 * Numeric To Currency
+	 *
+	 * @param vlaue the vlaue
+	 * @return the string
+	 */
+	public static String num2Cur(String value) {
+		DecimalFormat df = new DecimalFormat("###,###");
+
+		String result="";
+		if (hasText(value))
+			result = df.format(Double.parseDouble(value));
+			
+		return result;
+	}
 }

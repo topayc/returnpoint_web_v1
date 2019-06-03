@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Locale;
-import com.returnp_web.dao.FrontMemberDao;
+import com.returnp_web.dao.MobileMemberDao;
 
 /**
  * The Class FrontInterceptor.
@@ -45,7 +45,7 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 	private static final Logger logger = LoggerFactory.getLogger(MobileSessionInterceptor.class);
 
 	@Autowired
-	private FrontMemberDao frontMemberDao;
+	private MobileMemberDao mobileMemberDao;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -76,12 +76,12 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 				if (userAuthToken != null && !"null".equalsIgnoreCase(userAuthToken)) { // APP이면서 유효한 토큰이 존재
 					if (sm.getMemberEmail() == null) {
 						dbparams.put("userAuthToken", userAuthToken);
-						HashMap<String, Object> memberAuthTokenGb = frontMemberDao.selectMemberAuthToken(dbparams);
+						HashMap<String, Object> memberAuthTokenGb = mobileMemberDao.selectMemberAuthToken(dbparams);
 
 						if (memberAuthTokenGb != null && !memberAuthTokenGb.isEmpty()) {
 							RPMap dbparams2 = new RPMap();
 							dbparams2.put("memberEmail", Converter.toStr(memberAuthTokenGb.get("memberEmail")));
-							HashMap<String, Object> records = frontMemberDao.loginAppAct(dbparams2);
+							HashMap<String, Object> records = mobileMemberDao.loginAppAct(dbparams2);
 
 							if (records != null && !records.isEmpty()) {
 								sm.setMemberNo(Converter.toInt(records.get("memberNo")));
