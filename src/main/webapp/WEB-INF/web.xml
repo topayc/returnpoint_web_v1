@@ -49,11 +49,11 @@
   </context-param>
   <error-page>
     <error-code>404</error-code>
-    <location>/common/error_404</location>
+    <location>/WEB-INF/views/common/error_404.jsp</location>
   </error-page>
   <error-page>
     <error-code>500</error-code>
-    <location>/common/error_500</location>
+    <location>/WEB-INF/views/common/error_500.jsp</location>
   </error-page>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
