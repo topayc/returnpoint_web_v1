@@ -4,13 +4,18 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context" 
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	 xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:oxm="http://www.springframework.org/schema/oxm"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 		 				http://www.springframework.org/schema/beans/spring-beans.xsd 
 			 			http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 						http://www.springframework.org/schema/context 
 						http://www.springframework.org/schema/context/spring-context-3.2.xsd 
-						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+						http://www.springframework.org/schema/util
+						http://www.springframework.org/schema/util/spring-util-3.0.xsd
+						http://www.springframework.org/schema/oxm
+						http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd">
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		 
 	<context:component-scan base-package="com.returnp_web.controller">
@@ -97,4 +102,27 @@
 			</props>
 		</property>
 	</bean>
+		
+	<util:properties id="EXAMPLE_CONFIG">
+		<!-- 링크아이디 -->
+		<prop key="LinkID">TOPHAPPY</prop>
+		<!-- 비밀키 -->
+		<prop key="SecretKey">G9l+lKAjfp8c7T0rCZh0iM2KI2YwULl8h+mX1xjAHwQ=</prop>
+		<!-- 연동환경 설정값 true(개발용), false(상업용) -->
+		<prop key="IsTest">false</prop>
+		<!-- 인증토큰 아이피 제한 기능 사용여부 권장(true) -->
+		<prop key="IsIPRestrictOnOff">true</prop>
+	</util:properties>
+	
+	<!-- 문자메시지 Service Implementation Bean registration. -->
+	<bean id="messageService" class="com.popbill.api.message.MessageServiceImp">
+		<property name="linkID" value="#{EXAMPLE_CONFIG.LinkID}"/>
+		<property name="secretKey" value="#{EXAMPLE_CONFIG.SecretKey}"/>
+		<property name="test" value="#{EXAMPLE_CONFIG.IsTest}"/>
+		<property name="IPRestrictOnOff" value="#{EXAMPLE_CONFIG.IsIPRestrictOnOff}"/>
+	</bean>
+	
+	
+	
+	
 </beans>
