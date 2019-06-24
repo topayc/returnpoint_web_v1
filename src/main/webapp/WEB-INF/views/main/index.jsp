@@ -7,7 +7,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 <script type="text/javascript">
-<!-- 메인 페이지 스크롤 이벤트 js -->
+<!-- 메인 페이지 스크롤 이벤트 js START-->
 	window.counter = function(){
 		var span = this.querySelector('span');
 		var current = parseInt(span.textContent);
@@ -18,14 +18,12 @@
 		addHeight: true
 		});
 	});
-	
+<!-- 메인 페이지 스크롤 이벤트 js END-->	
 	$(document).ready(function(){
 		//숨겨진 공지 모달 사용시, 아래 한줄
 		//document.querySelector(".modal2").classList.toggle("show-modal");
 	});
-    
 </script>
-<!-- body begin -->
 <body>
     <div class="modal2">
         <div class="modal-content col-lg-4 col-md-6 col-sm-6 col-xs-11">
