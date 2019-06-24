@@ -50,16 +50,16 @@ function searchFaqTapList(bbsType2){
 				<li id="bbsType2_sub10" cls_cd="750004"><a href="#" onclick="searchFaqTapList('10');">기타</a></li>
 			</ul>
 		</div>
-	       <div role="tabpanel" class="faq_table tab-pane fade in active" id="home" aria-labelledby="home-tab">
-	        <table class="table table-hover">
-			  <thead>
-			    <tr>
-			      <th scope="col" class="col-lg-1 col-md-1 col-xs-1">번호</th>
-			      <th scope="col" colspan="2">제목</th>
-			      <th scope="col" class="col-lg-1 col-md-1 col-xs-1">작성자</th>
-			    </tr>
-			  </thead>
-			  <tbody>
+        <div role="tabpanel" class="faq_table tab-pane fade in active" id="home" aria-labelledby="home-tab">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="col-lg-1 col-md-1 col-xs-2">번호</th>
+                        <th scope="col" colspan="2" class="col-lg-9 col-xs-8">제목</th>
+                        <th scope="col" class="col-lg-2 col-md-2 col-xs-2">작성자</th>
+                    </tr>
+                </thead>
+                <tbody>
 			<c:choose>
 				<c:when test="${! empty faqList}">			  
 					<c:forEach var="list" items="${faqList}" varStatus="loop">
