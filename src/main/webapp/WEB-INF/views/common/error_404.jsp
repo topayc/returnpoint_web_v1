@@ -5,8 +5,7 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
-<!-- 완료 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <body>
     <div class="error">
         <div class="error_img">

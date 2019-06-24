@@ -5,13 +5,10 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
-<!-- 완료 -->
-<!-- 완료 팝업의 경우 닫기 버튼쪽 이벤트 체크해야할듯 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <script type="text/javascript">
-<!-- 메인 페이지 스크롤 이벤트 -->
+<!-- 메인 페이지 스크롤 이벤트 js -->
 	window.counter = function(){
-		// this refers to the html element with the data-scroll-showCallback tag
 		var span = this.querySelector('span');
 		var current = parseInt(span.textContent);
 		span.textContent = current + 1;
@@ -23,7 +20,7 @@
 	});
 	
 	$(document).ready(function(){
-		//모달 사용시, 아래 한줄
+		//숨겨진 공지 모달 사용시, 아래 한줄
 		//document.querySelector(".modal2").classList.toggle("show-modal");
 	});
     
@@ -46,7 +43,7 @@
             </form>
         </div>
     </div>
-<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+<jsp:include page="/WEB-INF/views/common/topper.jsp" />
 	<div class="wrap1">
         <!-----page1------------------------------------------------------------>
         <div class="main_page1 img-responsive center-block col-xs-12">
@@ -111,15 +108,12 @@
             </div>
         </div>
     </div>
-<!-- footer -->
-<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
-<!-- footer -->
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 <script type="text/javascript">
     var modal = document.querySelector(".modal2");
     //var trigger = document.querySelector(".trigger");
     var closeButton = document.querySelector(".close-button");
     var cancelButton = document.querySelector("#cancel");
-    //console.log(modal);
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
@@ -136,5 +130,4 @@
     //window.addEventListener("click", windowOnClick); //아무곳이나 클릭시 닫히도록 할꺼면 해당부분의 주석을 푼다. 19.06.21 kim
 </script>
 </body>
-<!-- body end -->
 </html>

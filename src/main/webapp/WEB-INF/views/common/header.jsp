@@ -5,7 +5,6 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -36,14 +35,9 @@ $(document).ready(function(){
 		pageContextlocale = "ko";
 	}
 	$("#sel1").val(pageContextlocale);
-	//alert("window.location.href::"+window.location.href);
 	var url = window.location.href;
 	var result = url.search("index.do"); //찾는 값이 없으면 -1 리턴
-	//alert(result+"::c:");
 });
-
-//(오늘) 하루동안 열지 않기
-//https://rocabilly.tistory.com/98 귀찮다..이거 쓰자..
 </script>
 </head>
 <!-- header end -->

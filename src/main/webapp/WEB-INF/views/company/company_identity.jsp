@@ -5,11 +5,9 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
-<!-- body begin -->
-<!-- 완료 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <body>
-<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+<jsp:include page="/WEB-INF/views/common/topper.jsp" />
     <hr class="top_line">
     <div class="_company">
         <p class="_company_text1">Company</p>
@@ -31,10 +29,6 @@
         </div>
     </div>
     <div class="_company3 img-responsive center-block"></div>
-<!-- footer -->
-<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
-<!-- footer -->	
-
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
-<!-- body end -->
 </html>

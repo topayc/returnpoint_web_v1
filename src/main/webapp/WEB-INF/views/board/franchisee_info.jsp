@@ -5,15 +5,12 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" /><!-- <html>~</head>까지 -->
-<!-- 완료 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <script type="text/javascript">
 $(document).ready(function(){
 	searchCity();
 	var country = '${params.country}';
-	//if(country.length != '0' ){
-		searchCountry('${params.city}');
-	//}
+	searchCountry('${params.city}');
 });
 
 function searchCity(){
@@ -52,7 +49,6 @@ function searchCountry(city_name){
 				$("#country").empty();
 				content += "<option value=''>구/군</option>";
 				for(i=0; i<data.json_arr.length; i++) {
-					//content += "<option value=" + data.json_arr[i].countryNameList[i].country_name + ">" + data.json_arr[i].countryNameList[i].country_name + "</option> ";
 					if('${params.country}' == data.json_arr[i].countryNameList[i].country_name){
 	            		content += "<option value=" + data.json_arr[i].countryNameList[i].country_name + " selected>" + data.json_arr[i].countryNameList[i].country_name + "</option> ";
 					}else{
@@ -86,7 +82,6 @@ function searchFranchisee(){
     document.franchiseeform.submit();
 }
 
-//검색 페이징
 function searchList_page(page, upperPage){
 	$("#page").val(page);
     $("#upperPage").val(upperPage);
@@ -97,10 +92,9 @@ function searchList(){
 	document.viewList.action = "/board/franchisee_info.do";
     document.viewList.submit();
 }
-
 </script>
 <body>
-<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+<jsp:include page="/WEB-INF/views/common/topper.jsp" />
    <hr class="top_line">
     <div class="fran container">
         <div class="fran_text1"><spring:message code="label.web.findaMerchant"/></div>
@@ -158,8 +152,6 @@ function searchList(){
 	<jsp:include page="/WEB-INF/views/common/paging.jsp" />
 </div>
 </div>
-	<!-- footer -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
-	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

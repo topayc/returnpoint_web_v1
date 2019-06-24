@@ -5,10 +5,8 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
-<!-- 완료 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <script type="text/javascript">
-//검색 페이징
 function searchList_page(page, upperPage){
 	$("#page").val(page);
     $("#upperPage").val(upperPage);
@@ -27,7 +25,7 @@ function moveNoticeContent(mainBbsNo){
 }
 </script>
 <body>
-<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+<jsp:include page="/WEB-INF/views/common/topper.jsp" />
    <hr class="top_line">
     <div class="faq_tab container">
         <div class="faq_text1"><spring:message code="label.web.notice"/></div>
@@ -62,8 +60,6 @@ function moveNoticeContent(mainBbsNo){
         </div>
     </div>
 	<jsp:include page="/WEB-INF/views/common/paging.jsp" />
-	<!-- footer -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
-	<!-- footer -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

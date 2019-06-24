@@ -5,11 +5,9 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
-<!-- body begin -->
-<!-- 완료 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <body>
-<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+<jsp:include page="/WEB-INF/views/common/topper.jsp" />
     <hr class="top_line">
     <div class="ter_text1">개인정보 수집 및 이용에 대한 안내</div>
     <div class="ter_text_box">
@@ -45,9 +43,6 @@
         <p class="ter_text2 col-xs-12">라. 위 사항에 대하여 동의하시는 경우</p>
         <p class="ter_text3 col-xs-12">「개인정보 보호법」 제19조에 의하여 제휴업체가 고객님의 정보를 RETURNP에 제공함에 동의한 것과 동일한 효력이 있음을 안내드립니다.<br><br><br></p>
     </div>
-<!-- footer -->
-<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
-<!-- footer -->	
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
-<!-- body end -->
 </html>

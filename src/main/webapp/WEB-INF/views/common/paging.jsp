@@ -5,7 +5,6 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-	<!-- 페이징 시작 -->
 	<div class="Page navigation container text-center">
 	  <ul class="pagination">
 	  <c:if test="${params.upperPage > 1}">
@@ -65,7 +64,6 @@
 	    <input type="hidden" id="recordCount" name="recordCount" value="${params.recordCount}"/>
 	    <input type="hidden" id="mainBbsNo" name="mainBbsNo" value="${params.mainBbsNo}"/>
 	    <input type="hidden" id="bbsType2" name="bbsType2" value="${params.bbsType2}"/>
-	    
 	    <!-- 가맹점찾기 -->
 	    <input type="hidden" id="affiliateName" name="affiliateName" value="${params.affiliateName}"/>
 	    <input type="hidden" id="city" name="city" value="${params.city}"/>

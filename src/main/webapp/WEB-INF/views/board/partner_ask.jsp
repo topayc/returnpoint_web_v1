@@ -5,8 +5,7 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
-<!-- 완료 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <script type="text/javascript">
 function refresh(){
 	location.reload();
@@ -43,7 +42,6 @@ function commonAlert(message, bool, func){
 
 function gbCheck(obj){
 	var checkboxVal=$("input[name='gb']:checked").val();
-	
 	if(checkboxVal != 'on'){
 		$("#gbval").val('');	
 	}else{
@@ -55,7 +53,6 @@ function gbCheck(obj){
 			$("#gbval").val(obj);
 		}	
 	}
-	
 }
 
 //이메일 형식 체크 
@@ -72,7 +69,6 @@ function partnerAskSave(){
 	event.preventDefault();
 	
 	var f = document.partnerAskSaveForm;
-	
 	var bbsType2 = $("#bbsType2 option:selected").val();
 	if(bbsType2 == null || bbsType2 ==""){
 		commonAlert('질문 유형을 선택해 주세요.', false, null);
@@ -178,7 +174,7 @@ function partnerAskSave(){
 }
 </script>
 <body>
-<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+<jsp:include page="/WEB-INF/views/common/topper.jsp" />
     <hr class="top_line">
     <div class="partnership container">
      <form name="partnerAskSaveForm" id="partnerAskSaveForm">
@@ -238,7 +234,6 @@ function partnerAskSave(){
         </div>
         </form>
     </div>
-	<!-- footer -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

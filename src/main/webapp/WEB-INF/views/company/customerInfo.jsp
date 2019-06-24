@@ -5,11 +5,9 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
-<!-- body begin -->
-<!-- 완료 -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <body>
-<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+<jsp:include page="/WEB-INF/views/common/topper.jsp" />
     <hr class="top_line">
     <div class="ter_text1">ReturnP 이용약관</div>
     <div class="ter_text_box">
@@ -149,9 +147,6 @@
         <p class="ter_text3 col-xs-12">① "사이트"와 이용자간에 발생한 전자거래 분쟁에 관한 소송은 민사 소송법상의 관할법원에 제기합니다.<br>
             ② "사이트"와 이용자간에 제기된 전자거래 소송에는 한국법을 적용 합니다. <br><br><br></p>
     </div>
-<!-- footer -->
-<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
-<!-- footer -->	
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
-<!-- body end -->
 </html>

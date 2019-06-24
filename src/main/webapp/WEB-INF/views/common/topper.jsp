@@ -5,8 +5,6 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!-- 완료 -->
-<!-- <nav>~</nav>까지 -->
     <nav class="navbar navbar-default navbar-fixed-top main_nav navbar-dark bg-dark">
     <c:if test="${!fn:contains( pageContext.request.requestURI, 'index.jsp' )}"> <!-- GNB를 메인, 기타 페이지로 두개를 잡으면 좋겠지만 현상황에서는 우선은 시안을 기다릴 시간없으니 우선은 있는대로 진행하자고 하심. 안실장님-->
     	<a href="javascript:history.back()"><div class="back_button"></div></a>

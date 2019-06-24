@@ -1,3 +1,4 @@
+//PC WEB js 
 function isEmpty(obj){
 	if(typeof obj.value.trim() == "undefined" || obj.value.trim() == null || obj.value.trim() == ""){
 		return true

@@ -5,11 +5,9 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
-<!-- body begin -->
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
 <body>
-<!-- 완료 -->
-<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+<jsp:include page="/WEB-INF/views/common/topper.jsp" />
     <hr class="top_line">
     <div class="ser_img">
         <p class="ser_text1 col-lg-7 col-lg-offset-1 col-md-7 col-md-offset-2">Service</p>
@@ -65,9 +63,6 @@
             <p class="ser_text6"><spring:message code="label.web.serviceinfoContent14"/><br><spring:message code="label.web.serviceinfoContent15"/></p>
         </div>
     </div>
-<!-- footer -->
-<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
-<!-- footer -->    
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
-<!-- body end -->
 </html>

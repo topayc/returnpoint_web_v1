@@ -4,11 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <script type='text/javascript'>
-
 function __jsmsgLink(msg, url, mode) {
 	//alert(msg + ", " + url + ", " + mode);
 	//alert(msg);
- 
 	if (mode == 'P') {
 		parent.location.replace(url);
 	} else if (mode == 'O') {
@@ -79,13 +77,11 @@ function __jsmsgReload(msg, mode) {
 }
 
 function __jsmsgClose(msg) {
-
 	if(msg != '') {
 		alert(msg);
 	}
 	window.close();
 }
-
 </script>
 <script type='text/javascript'>
 	; ${excute_script} ;
