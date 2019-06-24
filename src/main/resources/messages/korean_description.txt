@@ -155,3 +155,115 @@ label.sum=총
 label.unit=단위
 label.transform=전환 
 label.switchable=전환가능한
+
+
+
+##20190618 start
+##중국어 간체
+##topper.jsp
+label.web.home=홈
+label.web.serviceInformation=서비스안내
+label.web.companyIntroduction=회사소개
+label.web.findaMerchant=가맹점찾기
+label.web.faq=FAQ
+label.web.notice=공지사항
+label.web.affiliationGuide=제휴안내
+
+##footer.jsp
+label.web.personalInformationHandlingAndHandlingPolicy=개인정보취급및처리방침
+label.web.termsAndConditions=이용약관
+label.web.emailCollectingProhibition=이메일 무단수집 거부
+label.web.emailCollectingProhibitionMast=ReturnP 웹사이트는
+label.web.emailCollectingProhibitionSub=이메일 무단수집 거부합니다.
+label.web.emailCollectingProhibitionDetail = 본 사이트에 게시된 이메일 주소가 이메일 수집 프로그램이나 그밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 거부하며, 이를 위반 시 정보통신망법에 의해 형사처벌됨을 유념하시기 바랍니다. 
+label.web.closebutton=닫기
+label.web.tophappyworld=(주)탑해피월드
+label.web.tophappyworldBusiness=쇼핑몰 판매업
+abel.web.tophappyworldBusinessLicenseNumber=사업자등록번호
+label.web.tophappyworldCustomerCenterOperationHours=고객센터 운영시간
+label.web.tophappyworldAddress=서울특별시 서초구 사임당로 32 재우빌딩 1층
+
+##service_member.jsp
+label.web.serviceinfo=소비자의 구매로 인해 발생한 G-POINT 를 포인트 사용처에서 이용 가능한 R-POINT로 전환해 협력점 및 포인트 선물 등으로 사용할 수 있는 서비스입니다.
+label.web.serviceinfoTitleM1=오프라인 결제 후
+label.web.serviceinfoTitleS1=QR 적립 서비스
+label.web.serviceinfoContent1=소상공인과 고객 모두에게 편리한 QR서비스입니다.
+label.web.serviceinfoContent2=바쁜시간!빠른 적립!
+label.web.serviceinfoContent3=오프라인으로 결제 후 별도에 절차 없이 QR코드로 바로 적립!
+label.web.serviceinfoTitleM2=결제시 즉시 적립 서비스
+label.web.serviceinfoContent4=복잡한 인증절차없이 편리하고 빠르게
+label.web.serviceinfoContent5=적립되는 시스템 구축!
+label.web.serviceinfoContent6=카드번호 인증번호 없이 안전하고 빠르게
+label.web.serviceinfoContent7=QR코드로 적립됩니다.
+label.web.serviceinfoTitleM3=상품권 결제,적립 서비스
+label.web.serviceinfoContent8=직원에게'상품권으로 결제할게요!'라고 말해주세요.
+label.web.serviceinfoContent9=상품권으로 결제해도 100% G-point로 적립되고
+label.web.serviceinfoContent10=R-point로 사용 가능한 서비스!
+label.web.serviceinfoTitleM4=쇼핑몰 연동 결제 적립
+label.web.serviceinfoContent11=뚱뚱한 지갑은 이제 그만!
+label.web.serviceinfoContent12=현금, 카드, 포인트 적립 카드 등
+label.web.serviceinfoContent13=여러 카드를 꺼내지 않아도!
+label.web.serviceinfoContent14=안전하고 편리하게 쇼핑몰과 연동되어
+label.web.serviceinfoContent15=결제가 가능합니다.
+
+##company_identity.jsp
+label.web.companyIdentityTitle=유통구조에서 발생하는 이익을 공동분배하여 일자리를 창출하고 신개념의 유통혁신을 이루고자 합니다.
+label.web.companyIdentityContent1=회사의 목표와 가치에 자신의 업무를 일치시킴으로써 성과 창출
+label.web.companyIdentityContent2=전문 지식을 바탕으로 끊임 없이 탐색하고 도전하여 고객 가치 창출
+label.web.companyIdentityContent3=정직함을 바탕으로 사회 모범적 성장 및 가치 창출
+
+##index.jsp
+label.web.indexTitleM1=인류의 행복한 삶을 창조하는 글로벌 기업, 그 원대한 꿈을 향한
+label.web.indexTitleS1=리턴포인트의 도전은 계속됩니다.
+label.web.indexTitleM2=소비와 저축이 한번에!
+label.web.indexTitleS2=똑똑한 소비혁명!
+label.web.indexContent1=쓴만큼 돌려받는 리턴포인트!
+label.web.indexContent2=전세계인이 인정한 소비!
+label.web.indexContent3=항상 고객님의 곁에,
+label.web.indexContent4=return.P 간편결제
+label.web.indexContent5=상품권으로 결제해도
+label.web.indexContent6=100%포인트 적립!
+label.web.indexTitleM3=소비한 만큼 100%
+label.web.indexTitleS3=G-point 적립
+label.web.indexContent7=온라인/오프라인 가맹점에서 결제와
+label.web.indexContent8=G-point 적립이 가능합니다.
+label.web.indexContent9=소상공과 함께하는
+label.web.indexContent10=G-point QR서비스
+label.web.indexContent11=바쁜 시간, 빠른거래
+label.web.indexContent12=QR 결제로 빨라집니다.
+label.web.indexContent13=우리 사회가 더욱 풍요로운 세상이 될 수 있도록 사회적 인프라를 구축하고 소회계층의 권리와 인식 개선을 위해보다 다양한 형태의 나눔활동을 전개하고 있습니다.
+label.web.indexContent14=쇼핑
+label.web.indexContent15=여행
+label.web.indexContent16=외식
+label.web.indexContent17=유통
+label.web.indexTitleM4=지속적인 초과 성과 창출을 통한 고객만족
+label.web.indexContent18=고객자산 최우선 철저한 선관
+label.web.indexContent19=의무 이행
+label.web.indexContent20=투자환경 변화의 지속성(Sustainability)에 대응한 차별적인 투자전략 실행
+label.web.indexContent21=창의적이고, 치열하고, 생각을
+label.web.indexContent22=나누는 조직문화
+
+#franchisee_info.jsp
+#label.web.findaMerchant=가맹점찾기 #재사용
+label.web.addressAndStoreName=주소 및 매장명
+label.web.search=검색
+label.web.storeName=매장명
+label.web.contact=연락처
+label.web.address=주소
+
+#notice.jsp
+#label.web.notice=공지사항 #재사용
+
+#partner_ask.jsp
+label.web.contactUs=제휴문의
+label.web.collectionAndUseOfPersonalInformation=개인정보 수집 및 약관 동의(필수)
+label.web.purposeOfProcessing=처리목적
+label.web.consultationReceptionAndProcessing=상담 접수 및 처리, 결과 통보 등
+label.web.processingItems=처리(수집) 항목
+label.web.nameEmailAddressPhonenumber=이름, 이메일주소, 전화번호
+label.web.retentionPeriod=보유기간
+label.web.atTheEnd=목적 달성 시
+label.web.partnerAskContent1=상기의 개인정보 수집 및 이용을 거부하실 수 있으나 거부하시는 경우 서비스 이용이 불가합니다.
+label.web.yes=네
+label.web.no=아니요
+label.web.apply=신청하기
