@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [Layout]
+ %m : 로그내용이 출력
+ %p : trace > debug > info > warn > error 등의 priority 출력
+ %r : 어플리케이션이 시작되어 로깅이벤트가 발생하는 시점까지의 경과시간을 밀리세컨드로 출력
+ %c : 예) 카테고리가 a.b.c 처럼 되어있다면 %c{2}는 b.c가 출력됩니다.
+ %n :  플랫폼 종속적인 개행문자가 출력된다. \r\n 또는 \n 일것이다
+ %d : 로깅이벤트가 일어나 날짜 출력 ( 프로그램의 실행속도를 느리게 한다.)
+     예) %d{HH:mm:ss} 또는 %d{dd MMMM yyyy HH:mm:ss}
+ %C : 호출자의 클래스명 출력
+    예) 클래스구조가 org.apache.xyz.SomeClass 처럼 되어있다면 %C{2}는 xyz.SomeClass 가 출력됩니다
+ %M : 로깅이 발생한 method 이름을 나타냅니다.
+ %F : 로깅이 발생한 프로그램 파일명을 나타냅니다.
+ %l : 로깅이 발생한 caller의 정보를 나타냅니다 
+ %L : 로깅이 발생한 caller의 라인수를 나타냅니다 
+ %x : 로깅이 발생한 thread와 관련된 NDC(nested diagnostic context)를 출력합니다. 
+ %X : 로깅이 발생한 thread와 관련된 MDC(mapped diagnostic context)를 출력합니다. 
+ %% : % 표시를 출력하기 위해 사용한다.  
+ %t : 로그이벤트가 발생된 쓰레드의 이름을 출력합니다
+-->
+<configuration scan="true" scanPeriod="180 seconds"><!-- 180 초마다 설정 파일의 변경을 확인한다. 파일이 변경되면 다시 로딩한다 -->
+<!-- setting -->
+	<property name="LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss}] %-5level %logger{36} - %msg%n"/><!-- pattern -->
+	<property name="MAX_FILE_SIZE" value="100MB" /><!-- 분할할 로그파일 용량 log file size-->
+	<property name="LOG_DAYS" value="1000" /><!-- ex) 1000일 지난 로그는 오래된 순서대로 지워준다. -->
+	<!-- <property name="FILE_LOG_PATH" value="/weblog/logback-%d{yyyy-MM-dd}.%i.log"/> -->
+	<property name="FILE_LOG_PATH" value="/usr/local/server/apache-tomcat-8.5.34/logs/returnp/logback-%d{yyyy-MM-dd}.%i.log"/>
+	<property name="LOG_TOTAL_FILESIZE" value="50GB" /><!-- 로그파일 최대 최대 사이즈	-->
+    <!-- console log start-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>${LOG_PATTERN}</Pattern>
+        </layout>
+    </appender>
+    <!-- console log end-->
+    
+	<!-- log file save start -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${FILE_LOG_PATH}</fileNamePattern>
+			<maxHistory>${LOG_DAYS}</maxHistory>
+            <totalSizeCap>${LOG_TOTAL_FILESIZE}</totalSizeCap><!-- total file size -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+	<!-- log file save end -->    
+
+    <!-- Loggers -->
+    <!-- additivity의 default값은 true입니다. logger name이하 모두 적용이 되는데 additivity를 false로 설정하면 해당 name에만 logger가 적용됩니다. -->
+    <!-- 개별 LOGGING 정책 설정 -->
+	<logger name="org.springframework" additivity="false">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="org.springframework.jdbc.core.JdbcTemplate">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="com.returnp_web.dao.mapper">
+		<level value="DEBUG" />
+	</logger>
+	<logger name="org.mybatis">
+		<level value="DEBUG" />
+	</logger> 
+
+	<!-- ROOT LEVEL LOGGING 정책 설정 -->
+    <root>
+		<level value="DEBUG" />
+		<appender-ref ref="FILE"/>
+		<appender-ref ref="console"/><!-- console log mode -->
+    </root>
+</configuration>
