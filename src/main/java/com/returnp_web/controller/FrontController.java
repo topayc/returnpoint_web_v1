@@ -1,14 +1,21 @@
 package com.returnp_web.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.MessageSourceAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +24,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.returnp_web.svc.FrontMainService;
-import com.returnp_web.utils.RPMap;
-import com.returnp_web.utils.Util;
+import com.returnp_web.svc.MobileMainServiceImpl;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
+//설명: FRONT PC Controller
 @Controller
 @RequestMapping
 public class FrontController extends MallBaseController {
@@ -27,248 +36,324 @@ public class FrontController extends MallBaseController {
 	@Autowired
 	private FrontMainService fms;
 
-	/*
-	 * @Autowired private MessageSourceAware messageSourceAware;
-	 *
-	 * public void setMessageSource(MessageSource messageSource) throws
-	 * BeansException { this.messageSourceAware = messageSourceAware; }
-	 */
-
-	// 프론트 메인페이지
-	@RequestMapping("/main/index.do")
-	public String home(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/main/index");
-		return page(true, map, rmap);
+	private static final Logger logger = LoggerFactory.getLogger(FrontController.class);
+	
+	// WEB 메인페이지
+	@RequestMapping("/main/index")
+	public String home(@RequestParam(required = false) String lang, @RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		return "/main/index";
 	}
-
-	// 서비스 안내
+	
+	// WEB 서비스안내
 	@RequestMapping("/company/service_member")
-	public String serviceInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session) throws Exception {
-		RPMap rmap = Util.getRPRmap("/company/service_member");
-		return page(true, map, rmap);
+	public String serviceInfo(@RequestParam(required = false) String lang, @RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		return "/company/service_member";
 	}
-
-	// 회사소개
+	
+	// WEB 회사소개
 	@RequestMapping("/company/company_identity")
 	public String companyInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session) throws Exception {
-		RPMap rmap = Util.getRPRmap("/company/company_identity");
-		return page(true, map, rmap);
+		return "/company/company_identity";
 	}
-
-	// 포인트 조회
-	@RequestMapping("/mypage/point")
-	public String myPoint(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mypage/point");
-		boolean bret = fms.myPointInfo(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
+	
+	// WEB 가맹점찾기
+	@RequestMapping("/board/franchisee_info")
+	public String franchiseeInfoSearch(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		
+		/****Paging*******************/
+		int page = 1; 		// 현재 선택된 페이지
+		int upperPage= 1;	// 현재 선택된 상위페이지
+		int recordCount = 0; //데이터 총 갯수
+		int recordPerPage = 20; //페이지당 레코드수
+		int pageCount = 1;	//페이지 총 갯수
+		int upperPageCount = 1;	//상위페이지수
+		int pagePerUpperPage = 5;	//한화면에 보여지는 페이지수
+		int s_seq=0;
+		int e_seq=0;
+		/*****************************/
+		
+		try{
+			if (params.get("city") != null) {
+				String affiliateAddress = params.get("city").toString() +" "+ params.get("country").toString();
+				params.put("affiliateAddress", affiliateAddress);
+			}
+	
+			recordCount = fms.selectWebFranchiseeInfoListTotalCount(params);
+			pageCount = (int) Math.ceil((double)recordCount/recordPerPage); //페이지 총 갯수
+			
+			if (params.get("page") != null) page = Integer.parseInt(params.get("page").toString());	//현재 페이지
+			if (params.get("upperPage") != null) upperPage = Integer.parseInt(params.get("upperPage").toString());		//현재 선택된 상위페이지
+			if (params.get("recordPerPage") != null) recordPerPage = Integer.parseInt(params.get("recordPerPage").toString());		//페이지당 레코드수
+			
+			s_seq = (page-1) * recordPerPage + 1;		//s_seq = 현재페이지 * 페이지당레코드
+			e_seq = page * recordPerPage;
+	
+			upperPageCount =(int)Math.ceil((double)pageCount / pagePerUpperPage);		//올림(토탈페이지수 / 슈퍼페이지당 페이지)
+			
+			params.put("page", page);
+			params.put("upperPage", upperPage);
+			params.put("recordCount", recordCount);
+			params.put("recordPerPage", recordPerPage);
+			params.put("pageCount", pageCount);
+			params.put("upperPageCount", upperPageCount);
+			params.put("pagePerUpperPage", pagePerUpperPage);
+			params.put("S_SEQ", s_seq);
+			params.put("E_SEQ", e_seq);
+			params.put("breakValue", "N");
+	
+			ArrayList<HashMap<String, Object>> franchiseeInfoList = fms.selectWebFranchiseeInfoSearchList(params);
+	
+			map.addAttribute("franchiseeInfoList", franchiseeInfoList);
+			map.addAttribute("params", params);
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
+			return "/board/franchisee_info";
+		
 	}
-
-	// 포인트 전환 실행
-	@RequestMapping("/mypage/pointTransactionAct")
-	@ResponseBody
-	public String pointConvert(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap();
-		boolean bret = fms.pointConvertRequest(Util.toRPap(p), rmap, request, response);
-		return rmap.getStr("json");
-	}
-
-	// 포인트 전환 화면
-	@RequestMapping("/mypage/point_transfer")
-	public String pointTransfer(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mypage/point_transfer");
-		boolean bret = fms.myPointInfo(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
-	}
-
-	// 포인트 조회
-	@RequestMapping("/mypage/newpoint")
-	public String myNewPoint(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mypage/newpoint");
-		boolean bret = fms.myPointInfo(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
-	}
-
-	// 페이 조회
-	@RequestMapping("/mypage/newpay")
-	public String myNewPay(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mypage/newpay");
-		boolean bret = fms.myPointInfo(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
-	}
-
-	// 포인트 조회
-	@RequestMapping("/mypage/point_gift")
-	public String myPointGift(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mypage/point_gift");
-		boolean bret = fms.myPointInfo(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
-	}
-
-	// 페이 조회
-	@RequestMapping("/mypage/pay_gift")
-	public String myPayGift(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mypage/pay_gift");
-		boolean bret = fms.myPointInfo(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
-	}
-
-	// red point 선물하기
-	@RequestMapping("/mypage/redPointTransactionAct")
-	@ResponseBody
-	public String redPointConvert(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap();
-		boolean bret = fms.redPointConvertRequest(Util.toRPap(p), rmap, request, response);
-		return rmap.getStr("json");
-	}
-
-	// green point 선물하기
-	@RequestMapping("/mypage/greenPointTransactionAct")
-	@ResponseBody
-	public String greenPointConvert(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap();
-		boolean bret = fms.greenPointConvertRequest(Util.toRPap(p), rmap, request, response);
-		return rmap.getStr("json");
-	}
-
-	// sms 로 추천하기
-	@RequestMapping("/mypage/recommend_sms")
-	public String recommendSms(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mypage/recommend_sms");
-		boolean bret = fms.myinfo(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
-	}
-
-	// QR 코드 정보 생성
-	@RequestMapping("/qr/qrinfo")
-	public String qrInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/qr/qrinfo");
-		boolean bret = fms.qrImgView(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
-	}
-
-	// QR 코드 적립 요청 Procy
-	@ResponseBody
-	@RequestMapping(value = "/qr/qrAcc", method = RequestMethod.POST)
-	public String qrAccProxy(@RequestParam HashMap<String, String> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return fms.qrAccProxy(p, map, request, response);
-	}
-
-	// 내주변 상가 찾기
-	@RequestMapping("/map/rpmap")
-	public String map(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/map/rpmap");
-		return page(true, map, rmap);
-	}
-
-	// 내주변 상가 상세
-	@RequestMapping("/map/rp_shop")
-	public String shop(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/map/rp_shop");
-		return page(true, map, rmap);
-	}
-
-	// 자주하는 질문
+	
+	
+	// WEB FAQ(자주묻는질문)
 	@RequestMapping("/board/faq")
-	public String bFaq(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/board/faq");
-		boolean bret = fms.faq(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
+	public String faq(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		
+		/****Paging*******************/
+		int page = 1; 		// 현재 선택된 페이지
+		int upperPage= 1;	// 현재 선택된 상위페이지
+		int recordCount = 0; //데이터 총 갯수
+		int recordPerPage = 20; //페이지당 레코드수
+		int pageCount = 1;	//페이지 총 갯수
+		int upperPageCount = 1;	//상위페이지수
+		int pagePerUpperPage = 5;	//한화면에 보여지는 페이지수
+		int s_seq=0;
+		int e_seq=0;
+		/*****************************/
+		/*************FAQ 세부 구분*******************/
+		if(params.get("bbsType2") != null && params.get("bbsType2") != "0" ){
+			params.put("bbsType2", params.get("bbsType2")); //faq는 bbsType1: 2번 으로 fix한 상태에서, bbsType2에  1:회원/가입/탈퇴, 2:포인트, 3:적립 및 출금, 10.기타
+		}else {
+			params.put("bbsType2", 0);
+		}
+		/*************FAQ 세부 구분*******************/
+		
+		try{
+			recordCount = fms.selectWebFAQListTotalCount(params);
+			pageCount = (int) Math.ceil((double)recordCount/recordPerPage); //페이지 총 갯수
+			
+			if (params.get("page") != null) page = Integer.parseInt(params.get("page").toString());	//현재 페이지
+			if (params.get("upperPage") != null) upperPage = Integer.parseInt(params.get("upperPage").toString());		//현재 선택된 상위페이지
+			if (params.get("recordPerPage") != null) recordPerPage = Integer.parseInt(params.get("recordPerPage").toString());		//페이지당 레코드수
+			
+			s_seq = (page-1) * recordPerPage + 1;		//s_seq = 현재페이지 * 페이지당레코드
+			e_seq = page * recordPerPage;
+	
+			upperPageCount =(int)Math.ceil((double)pageCount / pagePerUpperPage);		//올림(토탈페이지수 / 슈퍼페이지당 페이지)
+			
+			params.put("page", page);
+			params.put("upperPage", upperPage);
+			params.put("recordCount", recordCount);
+			params.put("recordPerPage", recordPerPage);
+			params.put("pageCount", pageCount);
+			params.put("upperPageCount", upperPageCount);
+			params.put("pagePerUpperPage", pagePerUpperPage);
+			params.put("S_SEQ", s_seq);
+			params.put("E_SEQ", e_seq);
+			params.put("breakValue", "N");
+			
+			ArrayList<HashMap<String, Object>> faqList = fms.selectWebFAQList(params);
+			
+			map.addAttribute("faqList", faqList);
+			map.addAttribute("params", params);
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+			return "/board/faq";
 	}
 
-	// 일반상담
-	@RequestMapping("/board/qna")
-	public String bQna(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/board/qna");
-		return page(true, map, rmap);
+	
+	// WEB 공지사항 상세 페이지
+	@RequestMapping("/board/faq_content")
+	public String faqContent(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		
+		int viewCount = 0; 
+		
+		params.put("mainBbsNo", params.get("mainBbsNo"));
+		params.put("page", params.get("page"));
+		params.put("upperPage", params.get("upperPage"));
+		params.put("recordPerPage", params.get("recordPerPage"));
+		
+		try{
+			HashMap<String, Object> faqContent = fms.selectWebFAQContent(params);
+	
+			if( faqContent.get("viewCount") != null) {
+				viewCount = (int) faqContent.get("viewCount");
+			}
+			
+			params.put("viewCount", viewCount);
+			fms.updateMainBbsViewCount(params);
+			
+			map.addAttribute("faqContent", faqContent);
+			map.addAttribute("params", params);
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
+			return "/board/faq_content";
 	}
 
-	// 일반상담
-	@RequestMapping("/board/qna_w")
-	public String bQna_w(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/board/qna_w");
-		return page(true, map, rmap);
-	}
-
-	// 등급상담
-	@RequestMapping("/board/qna_node")
-	public String bQna_node(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/board/qna_node");
-		return page(true, map, rmap);
-	}
-
-	// 등급상담
-	@RequestMapping("/board/qna_node_w")
-	public String bQna_node_w(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/board/qna_node_w");
-		return page(true, map, rmap);
-	}
-
-	// 게시판메인
+	
+	// WEB 공지사항
 	@RequestMapping("/board/notice")
-	public String bNotice(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/board/notice");
-		boolean bret = fms.notice(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
+	public String notice(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		
+		/****Paging***************/
+		int page = 1; 		// 현재 선택된 페이지
+		int upperPage= 1;	// 현재 선택된 상위페이지
+		int recordCount = 0; //데이터 총 갯수
+		int recordPerPage = 20; //페이지당 레코드수
+		int pageCount = 1;	//페이지 총 갯수
+		int upperPageCount = 1;	//상위페이지수
+		int pagePerUpperPage = 5;	//한화면에 보여지는 페이지수
+		int s_seq=0;
+		int e_seq=0;
+		/*****************************/
+		try{
+			recordCount = fms.selectWebNoticeListTotalCount(params);
+			
+			pageCount = (int) Math.ceil((double)recordCount/recordPerPage); //페이지 총 갯수
+			
+			if (params.get("page") != null) page = Integer.parseInt(params.get("page").toString());	//현재 페이지
+			if (params.get("upperPage") != null) upperPage = Integer.parseInt(params.get("upperPage").toString());		//현재 선택된 상위페이지
+			if (params.get("recordPerPage") != null) recordPerPage = Integer.parseInt(params.get("recordPerPage").toString());		//페이지당 레코드수
+			
+			s_seq = (page-1) * recordPerPage + 1;		//s_seq = 현재페이지 * 페이지당레코드
+			e_seq = page * recordPerPage;
+	
+			upperPageCount =(int)Math.ceil((double)pageCount / pagePerUpperPage);		//올림(토탈페이지수 / 슈퍼페이지당 페이지)
+			
+			params.put("page", page);
+			params.put("upperPage", upperPage);
+			params.put("recordCount", recordCount);
+			params.put("recordPerPage", recordPerPage);
+			params.put("pageCount", pageCount);
+			params.put("upperPageCount", upperPageCount);
+			params.put("pagePerUpperPage", pagePerUpperPage);
+			params.put("S_SEQ", s_seq);
+			params.put("E_SEQ", e_seq);
+			params.put("breakValue", "N");
+			
+			ArrayList<HashMap<String, Object>> noticeList = fms.selectWebNoticeList(params);
+			
+			map.addAttribute("noticeList", noticeList);
+			map.addAttribute("params", params);
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
+			return "/board/notice";
+		
 	}
-
-	// 게시판메인
-	@RequestMapping("/board/board")
-	public String bBoard(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/board/board");
-		return page(true, map, rmap);
+	
+	
+	// WEB 공지사항 상세
+	@RequestMapping("/board/notice_content")
+	public String noticeContent(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		
+		int viewCount = 0; 
+		
+		params.put("mainBbsNo", params.get("mainBbsNo"));
+		params.put("page", params.get("page"));
+		params.put("upperPage", params.get("upperPage"));
+		params.put("recordPerPage", params.get("recordPerPage"));
+		
+		try{
+			HashMap<String, Object> noticeContent = fms.selectWebNoticeContent(params);
+			
+			if( noticeContent.get("viewCount") != null) {
+				viewCount = (int) noticeContent.get("viewCount");
+			}
+			
+			params.put("viewCount", viewCount);
+			fms.updateMainBbsViewCount(params);
+			
+			map.addAttribute("noticeContent", noticeContent);
+			map.addAttribute("params", params);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+			return "/board/notice_content";
 	}
-
-	/*
-	 * @RequestMapping("경로") public String 함수명(@RequestParam Map<String,Object> p,
-	 * ModelMap map, HttpSession session, HttpServletRequest request,
-	 * HttpServletResponse response) throws Exception{ RPMap rmap =
-	 * Util.getRPRmap("경로"); return page(true, map, rmap); }
-	 */
-
-	// 그린포인트 상세 조회
-	@RequestMapping(value = "/mypage/paymentPointbackRecordDetail", produces = "application/text; charset=utf8")
+	
+	
+	// WEB 제휴안내
+	@RequestMapping("/board/partner_ask")
+	public String partnerAsk(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		return "/board/partner_ask";
+	}
+	
+	// WEB 제휴안내 저장
 	@ResponseBody
-	public String paymentPointbackRecordDetail(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap();
-		boolean bret = fms.paymentPointbackRecordDetail(Util.toRPap(p), rmap, request, response);
-		return rmap.getStr("json");
+	@RequestMapping(value = "/board/partnerAskSave", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	public Map<String, Object> partnerAskSave(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		try{
+			fms.insertMainBbsPartnerAskSave(params);
+			resultMap.put("code", "1");
+		}catch(Exception e) {
+			//resultMap.put("message", e.getMessage());
+			return resultMap;
+		}
+			return resultMap;
 	}
-
-	// 레드포인트 상세 조회
-	@RequestMapping(value = "/mypage/pointConversionTransactionDetail", produces = "application/text; charset=utf8")
+	
+	
+	//WEB CITY SEARCH
 	@ResponseBody
-	public String pointConversionTransactionDetail(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap();
-		boolean bret = fms.pointConversionTransactionDetail(Util.toRPap(p), rmap, request, response);
-		return rmap.getStr("json");
+	@RequestMapping(value = "/board/searchCity", method = RequestMethod.POST , produces = "application/json; charset=utf8")
+	public String searchCity(@RequestParam HashMap<String, Object> params, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		
+		ArrayList<HashMap<String, Object>> cityList = fms.selectWebCityList(params);
+		JSONObject json = new JSONObject();
+		if (cityList.size() != '0') {
+			JSONArray json_arr = new JSONArray();
+			JSONObject obj = new JSONObject();
+			for (int i = 0; i < cityList.size(); i++) {
+				obj.put("cityList", cityList);
+				json_arr.add(obj);
+			}
+			json.put("json_arr", json_arr);
+		}
+		return json.toString() ;
 	}
-
-	// 내주변 상가 찾기 -> 로딩시에 호출하여 사용
-	@RequestMapping(value = "/map/rpmapLoadAct", produces = "application/json; charset=utf8")
+	
+	//WEB COUNTRY SEARCH
 	@ResponseBody
-	public Object rpmapLoadAct(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap();
-		boolean bret = fms.rpmapLoadAct(Util.toRPap(p), rmap, request, response);
-		return rmap.get("json");
+	@RequestMapping(value = "/board/searchCountry", method = RequestMethod.POST , produces = "application/json; charset=utf8")
+	public String selectAjax(@RequestParam HashMap<String, Object> params, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		ArrayList<HashMap<String, Object>> countryNameList = fms.selectWebCountryNameList(params);
+		JSONObject json = new JSONObject();
+		if (countryNameList.size() != '0') {
+			JSONArray json_arr = new JSONArray();
+			JSONObject obj = new JSONObject();
+			for (int i = 0; i < countryNameList.size(); i++) {
+				obj.put("countryNameList", countryNameList);
+				json_arr.add(obj);
+			}
+			json.put("json_arr", json_arr);
+		}
+		return json.toString();
 	}
 
-	// FAQ더보기
-	@RequestMapping(value = "/board/faqMoreAct", produces = "application/text; charset=utf8")
-	@ResponseBody
-	public String faqMoreAct(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap();
-		boolean bret = fms.faqMoreAct(Util.toRPap(p), rmap, request, response);
-		return rmap.getStr("json");
+	// 개인정보취급및처리방침
+	@RequestMapping("/company/privacy")
+	public String privacyInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session) throws Exception {
+		return "/company/privacy";
 	}
 
-	// 공지사항 더보기
-	@RequestMapping(value = "/board/noticeMoreAct", produces = "application/text; charset=utf8")
-	@ResponseBody
-	public String MoreAct(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap();
-		boolean bret = fms.noticeMoreAct(Util.toRPap(p), rmap, request, response);
-		return rmap.getStr("json");
+	// 이용약관
+	@RequestMapping("/company/customerInfo")
+	public String customerInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session) throws Exception {
+		return "/company/customerInfo";
 	}
-
+	
 }

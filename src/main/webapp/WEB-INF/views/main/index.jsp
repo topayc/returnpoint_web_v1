@@ -1,208 +1,140 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@page import="com.returnp_web.utils.SessionManager"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
-<%@page import="java.net.URL" %>
-<!DOCTYPE html>
-<html lang="en">
-<head> 
-<title>RETURNP</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<!-- sns url 링크시 표시되는 이미지와 텍스트내용들 테스트입니다.  -->
-<meta property="og:url" content="https://www.returnp.com">
-<meta property="og:title" content="ReturnP">
-<meta property="og:type" content="website">
-<meta property="og:image" content="/resources/images/sns_url_link_img.png">
-
-<!-- css   -->
-<!-- font -->
-<link rel="stylesheet" href="/resources/css/common.css">
-<!-- js -->
-<script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
-<script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resources/js/lib/jquery.cookie.js"></script>
-<script type="text/javascript" src="/resources/js/lib/common.js"></script>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
+<!-- 완료 -->
+<!-- 완료 팝업의 경우 닫기 버튼쪽 이벤트 체크해야할듯 -->
 <script type="text/javascript">
-if (appInfo.access =="MOBILE" || appInfo.access == "APP") {
-	location.href = "/m/main/index.do";
-}
-$(document).ready(function(){
-	var pageContextlocale = '${pageContext.response.locale}';
-	pageContextlocale = pageContextlocale ? pageContextlocale : "ko";  
-	if (pageContextlocale.indexOf("ko") > 0) {
-	   pageContextlocale  = "ko";
-    }
-   $("#sel1").val(pageContextlocale);
-   if($.cookie('joinCookie')) {
-      $('#mjoincomplete').modal('show');
-   }
-   
-   //회원가입 모달창 회원가입 버튼 이벤트
-   $("#joincompletelogin").on("click", function(){
-      location.href = '/member/login.do'; 
-   });
-
-   //회원가입 모달창 닫기 버튼 이벤트
-   $("#joincompleteclose").on("click", function(){
-      location.href = '/member/login.do';
-   });
-   
-    //탈퇴완료 후 모달 호출
-    if(location.href.match('form=out')){
-       $("#mymemberout").modal({backdrop: 'static', keyboard: false});
-    }
-   
-    //회원탈퇴 모달창 닫기 버튼
-    $("#memberOutClose").on("click", function(){
-       location.replace('/main/index.do');
-    });
+<!-- 메인 페이지 스크롤 이벤트 -->
+	window.counter = function(){
+		// this refers to the html element with the data-scroll-showCallback tag
+		var span = this.querySelector('span');
+		var current = parseInt(span.textContent);
+		span.textContent = current + 1;
+	};
+	document.addEventListener('DOMContentLoaded', function(){
+  		var trigger = new ScrollTrigger({
+		addHeight: true
+		});
+	});
+	
+	$(document).ready(function(){
+		//모달 사용시, 아래 한줄
+		//document.querySelector(".modal2").classList.toggle("show-modal");
+	});
     
-    //회원탈퇴 회원가입메뉴 이동버튼
-    $("#memberJoin").on("click", function(){
-       location.replace('/member/join.do');
-    });
-    
-   if (appInfo && appInfo['access'] && appInfo['access'] == "APP") {
-      var p = getParams();
-      var mbrE = (p["mbrE"]);
-      var userAT = (p["userAT"]);
-      if (typeof mbrE != "undefined" && typeof userAT != "undefined") {
-         bridge.setDeviceSession(mbrE, mbrE, userAT, function(result) {
-            bridge.getSessionValue('PREF_ALL_SESSION', function(result){
-            });
-         });
-      }
-   }
-   
-   var p = getParams();
-   var alertView = (p["alertView"]);
-   var Message  = (p["Message"]);
-   var message = "";
-   var title = "확인";
-   if(Message =="1"){
-      message = "잘못된 경로입니다.";
-   }else if(Message =="2"){
-      message = "이메일 인증이 완료된 고객입니다.";
-   }else if(Message =="3"){
-      message = "이메일 인증완료되었습니다.";
-   }else if(Message =="4"){
-      message = "미인증 고객입니다. 이메일인증완료후 사용해주세요.";
-   }else if(Message =="5"){
-      message = "가입하신 이메일로 발송이 완료되었습니다.";
-   }
-      
-   if(alertView =="t"){
-      var alertMessageHtml = "";
-      var alertTitleHtml = "";
-      document.getElementById('alertView').style.display='flex';   
-      alertMessageHtml += "<p>"+message+"</p>";
-      $('#alertMassage').html(alertMessageHtml);
-      alertTitleHtml += "<strong><i class='fas fa-info-circle'></i>"+title+"</strong>";
-      $('#alertTitle').html(alertTitleHtml);
-      $('#alert_ok').show();
-      $('#alert_cancel').hide();
-   }
-
-   if(getCookie("notToday")=="Y"){
-		$("#alertView").hide();
-		} 
-});
-
 </script>
-</head>
-<!-- header end -->
 <!-- body begin -->
-<body class="home">
-   <!-- 0921 이벤트 노티 -->
-   <div class="alert_wrap event" name="eventAlert" style = "display:none">
-     <div class="alert alert-info">     
-       <button type="button" class="close" id="alert_cancel" name="alertClose"  onclick='javascript:alertClose("event");'>&times;</button>
-       <c:choose>
-         <c:when
-            test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
-            <a href="/member/join.do" class="eventlink">회원가입<br />바로가기</a>
-            <!-- 로그인 후 -->
-         </c:when>
-         <c:otherwise>
-            <a href="/mypage/m_fullmember.do" class="eventlink">정회원<br />신청하기</a>
-         </c:otherwise>
-      </c:choose>
-     </div> 
-   </div>
-   <!-- 0831 서버점검 노티 -->
-   <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }">
-   <div class="alert_wrap noti" id="alertView" name="alertView" ><!--  style 부분에 display:none;을 빼주심 활성화되요 -->
-     <div class="alert alert-info">
-     <button type="button" class="close" id="alert_cancel" name="alertClose"  onclick='javascript:alertClose("noti");' style = "color : #000000">&times;</button>
-       <div class="alert_body">   
-          <i class="fas fa-exclamation-triangle"></i>       
-          <div class="error_desk">
-  			  <h2><spring:message code="label.server_check" /></h2>
-              <h4><spring:message code="label.server_check_detail" /></h4>
-              </br>
-              <h4><spring:message code="label.server_check_detail_2" /></h4>
-
-              </br>
-              <h4><a href = "javascript:closePopupNotToday('alertView')" ><strong style = "color : #000000"><spring:message code="label.not_view_today" /></strong></a></h4>
-          </div>
-       </div>
-     </div>
-   </div>
-   </c:if>
-   <!-- nav -->
-   <jsp:include page="/WEB-INF/views/common/topper.jsp" />
-   <!-- nav -->
-   </header>
-   <!-- main begin -->
-   <section> 
-      <div id="main-carousel" class="carousel slide" data-ride="carousel">
-         <div class="carousel-inner">         
-            <div class="item active "></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <ol class="carousel-indicators">
-               <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
-               <li data-target="#main-carousel" data-slide-to="1"></li>
-               <li data-target="#main-carousel" data-slide-to="2"></li>
-            </ol>
-            <div class="txt_group">
-               <div class="txt_wrap">
-                  <ul>
-                     <li></li>   <li></li>   <li></li>   <li></li>
-                  </ul>
-                  <h2 class="home_title">
-                     MAKE IT <span>SHOW</span>
-                  </h2>
-                  <p class="home_stitle">
-                     <spring:message code="label.homeStitle" />
-                  </p>
-               </div>
+<body>
+    <div class="modal2">
+        <div class="modal-content col-lg-4 col-md-6 col-sm-6 col-xs-11">
+            <span class="close-button">&times;</span>
+            <p class="modal_text1">returnP</p>
+            <p class="modal_text2">R-포인트 현금출금 수수료 조정 공지</p>
+            <hr>
+            <form action="#" method="POST">
+                <p class="modal_text3 text-center">현행 6.3% 출금 수수료를 플랫폼 부가세 납부수준을
+                    반영하여 13% ( 부가세 10% + 운영비 3% )로 부득불
+                    시행됨을 알려드립니다.</p>
+                <p class="modal_text4">시행일시 : 2019년 5월 15일 0시</p>
+                <p class="modal_text4">대 상 : 위 시행일시부터 요청된 현금 출금</p>
+                <input type="button" id="cancel" onclick="toggleModal();" value="창닫기">
+            </form>
+        </div>
+    </div>
+<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+	<div class="wrap1">
+        <!-----page1------------------------------------------------------------>
+        <div class="main_page1 img-responsive center-block col-xs-12">
+            <p class="text-center main_text1 " data-scroll="toggle(.scaleDownIn, .scaleDownOut)">About returnP</p>
+            <p class="text-center main_text2 col-md-6 col-md-offset-3" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexTitleM1"/><br><spring:message code="label.web.indexTitleS1"/></p>
+        </div>
+        <!-----page2------------------------------------------------------------>
+        <div class="main_page2 block">
+            <div class="main_page2_sub1 pull-right col-xs-12 col-lg-7">
+                <div class="main_event" data-scroll="toggle(.scaleDownIn, .scaleDownOut)">
+                    <img src="/resources/web_images/main_page22.png">
+                </div>
             </div>
-         </div>
-      </div>
-   </section>
-   <!-- main end -->
-   <!-- footer -->
-   <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-   <!-- footer -->
-</div>
-   <!-- privacy policy modal -->
-   <jsp:include page="../company/m_privacypolicy.jsp" flush="false" />
-   <!-- privacy policy modal end -->
-   <!-- terms of ues modal -->
-   <jsp:include page="../company/m_termsofuse.jsp" flush="false" />
-   <!-- terms of ues modal end -->
-   <!-- join complete modal 회원가입 완료 후 출력되는 모달입니다. -->
-   <jsp:include page="../member/m_joincomplete.jsp" flush="false" />
-   <!-- join complete modal end -->
-   <!-- member out modal -->
-   <jsp:include page="../mypage/m_memberout.jsp" flush="false" />
-   <!-- member out modal end -->
+            <div class="main_page2_sub2 pull-left col-xs-12 col-lg-4 col-lg-offset-1">
+                <p class="main_text3" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexTitleM2"/><br> <spring:message code="label.web.indexTitleS2"/></p>
+                <p class="main_text4" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexContent1"/><br><spring:message code="label.web.indexContent2"/></p>
+                <p class="main_text4" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexContent3"/><br><spring:message code="label.web.indexContent4"/></p>
+                 <p class="main_text4" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexContent5"/><br><spring:message code="label.web.indexContent6"/></p>
+            </div>
+        </div>
+        <!-----page3------------------------------------------------------------>
+        <div class="main_page3 block">
+            <div class="main_page3_sub1 pull-left col-xs-12 col-lg-7">
+                <div class="main_event" data-scroll="toggle(.scaleDownIn, .scaleDownOut)">
+                    <img src="/resources/web_images/main_page3.png">
+                </div>
+            </div>
+            <div class="main_page3_sub2 pull-left col-xs-12 col-lg-4">
+                <p class="main_text5" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexTitleM3"/><br><spring:message code="label.web.indexTitleS3"/></p>
+                <p class="main_text6" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexContent7"/><br><spring:message code="label.web.indexContent8"/></p>
+                <p class="main_text6" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexContent9"/><br><spring:message code="label.web.indexContent10"/></p>
+                <p class="main_text6" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexContent11"/><br><spring:message code="label.web.indexContent12"/></p>
+            </div>
+        </div>
+        <!-----page4------------------------------------------------------------>
+        <div class="main_page4 img-responsive center-block col-xs-12">
+            <p class="main_text7 col-md-12 col-xs-12">Lifetime <span class="main_value">Value</span> Creator</p>
+                <p class="main_text8 col-lg-5 col-lg-offset-7 col-xs-12"><spring:message code="label.web.indexContent13"/></p>
+            <div class="main_page4_text_box">
+                <p class="main_text9"><spring:message code="label.web.indexContent14"/></p>
+                <p class="main_text9"><spring:message code="label.web.indexContent15"/></p>
+                <p class="main_text9"><spring:message code="label.web.indexContent16"/></p>
+                <p class="main_text9"><spring:message code="label.web.indexContent17"/></p>
+            </div>
+        </div>
+        <!-----page5------------------------------------------------------------>
+        <div class="main_page5_sub1 img-responsive center-block">
+            <p class="main_text10 col-md-12" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexTitleM4"/></p>
+            <div class="main_bottom_img img-responsive col-lg-6 col-lg-offset-3" data-scroll="toggle(.scaleDownIn, .scaleDownOut)">
+                <img src="/resources/web_images/main_page88.png">
+            </div>
+            <div class="main_page5_sub2 col-lg-8 col-lg-offset-3 col-md-10 col-md-offset-2 col-xs-10 col-xs-offset-2">
+                <div class="col-md-3 col-xs-10 pull-left main_text11" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><b>Discipline & Due Diligence</b><br><br><spring:message code="label.web.indexContent18"/>
+                <br><spring:message code="label.web.indexContent19"/><br><br></div>
+                <div class="col-md-3 col-xs-10 pull-left main_text11" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><b>Smart Trading</b><br><br><spring:message code="label.web.indexContent20"/>
+                <br><br></div>
+                <div class="col-md-3 col-xs-10 pull-left main_text11" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><b>Creative, Intensive, Open</b><br><br><spring:message code="label.web.indexContent21"/>
+                <br><spring:message code="label.web.indexContent22"/><br><br></div>
+                <div class="main_bottom_img img-responsive col-lg-9 col-xs-10" data-scroll="toggle(.scaleDownIn, .scaleDownOut)">
+                    <img src="/resources/web_images/main_page8.png">
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- footer -->
+<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
+<!-- footer -->
+<script type="text/javascript">
+    var modal = document.querySelector(".modal2");
+    //var trigger = document.querySelector(".trigger");
+    var closeButton = document.querySelector(".close-button");
+    var cancelButton = document.querySelector("#cancel");
+    //console.log(modal);
+
+    function toggleModal() {
+        modal.classList.toggle("show-modal");
+    }
+
+    function windowOnClick(event) {
+        if (event.target === modal) {
+            toggleModal();
+        }
+    }
+    //trigger.addEventListener("click", toggleModal);
+    closeButton.addEventListener("click", toggleModal);
+    //cancel.addEventListener("click", toggleModal);
+    //window.addEventListener("click", windowOnClick); //아무곳이나 클릭시 닫히도록 할꺼면 해당부분의 주석을 푼다. 19.06.21 kim
+</script>
 </body>
 <!-- body end -->
 </html>

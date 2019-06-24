@@ -1,38 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>404Error</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- font -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-<link rel="stylesheet"	href="//fonts.googleapis.com/earlyaccess/jejugothic.css" />
-<link rel="stylesheet"	href="//fonts.googleapis.com/earlyaccess/nanumgothic.css" />
-<link rel="stylesheet"	href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:500,700" />
-</head>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
+<!-- 완료 -->
 <body>
-    <div class="error_all">
-        <div class="error_pic">
-           <i class="fas fa-exclamation-triangle"></i>
+    <div class="error">
+        <div class="error_img">
+            <img src="/resources/web_images/logo.png">
         </div>
-        <div class="error_desk">
-            <h2>Error 404</h2>
-            <h4>The page you were looking for was not found.</h4>
-            <p>
-              <a class="error_btn" href="/">Go back to home page</a>
-            </p>
+        <div class="error_text col-lg-12">
+            <p class="error_text1">찾을 수 없는 페이지 입니다.</p>
+            <p class="error_text2">서비스 이용에 불편을 드려서 대단히 죄송합니다.</p>
         </div>
-    </div>
+        <div class="error_text_box">
+            <p class="error_text2">입력하신 페이지의 주소가 잘못입력되었거나, 변경
+                또는 삭제되어 요청하신 페이지를 찾을 수 없습니다.</p>
+            <p class="error_text2">다시 한번 입력하신 주소가 정확한지 확인해주시기
+                바랍니다.</p>
+            <div class="error_button">
+                <a href="/main/index.do"><button type="button" class="btn btn-warning col-lg-4 col-lg-offset-4 col-xs-12">Home으로 이동</button></a>
+            </div>
+        </div>
+    </div>    
 </body>
 </html>
-
-<style>
-body, html{height:100%;margin:0;font-family: 'Open Sans', 'Nanum Gothic', sans-serif;}
-.error_all{top: 50%;left: 50%;width: 600px; margin: -140px -300px;height: 290px;position: absolute;}
-.error_pic{text-align:center;}
-.error_pic i{color:#1abebc;font-size:80px;padding-bottom:35px;}
-.error_desk{text-align:center;}
-.error_desk h2{font-size: 45px; line-height: 45px; color: rgba(0, 0, 0, .7);margin:0;}
-.error_desk h4{font-size: 21px;color: rgba(0, 0, 0, .7);margin:10px 0 40px 0 ;font-weight: normal;}
-.error_btn{background-color: #f7f7f7;color: #747474;padding: 11px 20px;border-radius: 5px;box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .03); text-decoration:none;}
-</style>

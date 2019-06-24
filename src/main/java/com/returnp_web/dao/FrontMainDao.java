@@ -2,6 +2,7 @@ package com.returnp_web.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -26,187 +27,6 @@ public class FrontMainDao {
 	private SqlSessionTemplate sqlSession;
 
 	/**
-	 * select my red point Sum Info.
-	 *
-	 * @param params the params
-	 * @return the hash map
-	 */
-	public int selectMemberTotal(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectMemberTotal(params);
-	}
-
-	/**
-	 * select my red point Sum Info.
-	 *
-	 * @param params the params
-	 * @return the hash map
-	 */
-	public HashMap<String,Object> selectMyRedPointSumInfo(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectMyRedPointSumInfo(params);
-	}
-
-	/**
-	 * select my green point Sum Info.
-	 *
-	 * @param params the params
-	 * @return the hash map
-	 */
-	public HashMap<String,Object> selectMyGreenPointSumInfo(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectMyGreenPointSumInfo(params);
-	}
-
-	/**
-	 * select my Green point List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String,Object>> selectMyGreenPointList(HashMap<String, Object> params) {
-		return sqlSession.getMapper(FrontMainMapper.class).selectMyGreenPointList(params);
-	}
-
-	/**
-	 * insert point_convert_request.
-	 *
-	 * @param params the params
-	 * @return int
-	 */
-	public int insertPointConvertRequestAct(HashMap<String, Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).insertPointConvertRequestAct(params);
-	}
-
-	/**
-	 * Select duplicate Point Chcek count.
-	 *
-	 * @param params the params
-	 * @return the int
-	 */
-	public int duplicatePointChcek(HashMap<String,Object> params) {
-		return sqlSession.getMapper(FrontMainMapper.class).duplicatePointChcek(params);
-	}
-
-	/**
-	 * update green point_use_sum.
-	 *
-	 * @param params the params
-	 * @return int
-	 */
-	public int updateGreenPointUse(HashMap<String, Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).updateGreenPointUse(params);
-	}
-
-	/**
-	 * insert point_conversion_transaction.
-	 *
-	 * @param params the params
-	 * @return int
-	 */
-	public int insertPointConvertTransactionAct(HashMap<String, Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).insertPointConvertTransactionAct(params);
-	}
-
-	/**
-	 * select payment_pointback_record List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	//public ArrayList<HashMap<String, Object>> selectPaymentPointbackRecordList(HashMap<String,Object> params){
-	//	return sqlSession.getMapper(FrontMainMapper.class).selectPaymentPointbackRecordList(params);
-	//}
-
-	/**
-	 * select point_conversion_transaction List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	//public ArrayList<HashMap<String, Object>> selectpointConversionTransactionList(HashMap<String,Object> params){
-	//	return sqlSession.getMapper(FrontMainMapper.class).selectpointConversionTransactionList(params);
-	//}
-
-	/**
-	 * update my red point.
-	 *
-	 * @param params the params
-	 * @return int
-	 */
-	public int updateMyRedPointUse(HashMap<String, Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).updateMyRedPointUse(params);
-	}
-
-
-	/**
-	 * update my green point.
-	 *
-	 * @param params the params
-	 * @return int
-	 */
-	public int updateMyGreenPointUse(HashMap<String, Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).updateMyGreenPointUse(params);
-	}
-
-	/**
-	 * insert point_transfer_transaction
-	 *
-	 * @param params the params
-	 * @return int
-	 */
-	public int insertPointTransferTransactionAct(HashMap<String, Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).insertPointTransferTransactionAct(params);
-	}
-
-	/**
-	 * select receiver red point Info.
-	 *
-	 * @param params the params
-	 * @return the hash map
-	 */
-	public HashMap<String,Object> selectReceiverRedPointInfo(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectReceiverRedPointInfo(params);
-	}
-
-	/**
-	 * update receiver red point.
-	 *
-	 * @param params the params
-	 * @return int
-	 */
-	public int updateReceiveRedPoint(HashMap<String, Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).updateReceiveRedPoint(params);
-	}
-
-	/**
-	 * update receiver green point.
-	 *
-	 * @param params the params
-	 * @return int
-	 */
-	public int updateReceiveGreenPoint(HashMap<String, Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).updateReceiveGreenPoint(params);
-	}
-
-	/**
-	 * select policy List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectPolicyList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectPolicyList(params);
-	}
-
-	/**
-	 * select receiver green point Info.
-	 *
-	 * @param params the params
-	 * @return the hash map
-	 */
-	public HashMap<String,Object> selectReceiverGreenPointInfo(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectReceiverGreenPointInfo(params);
-	}
-
-	/**
 	 * select company Info.
 	 *
 	 * @param params the params
@@ -226,175 +46,63 @@ public class FrontMainDao {
 		return sqlSession.getMapper(FrontMainMapper.class).selectServerManageStatusInfo(params);
 	}
 
-	/**
-	 * select payment_pointback_record detail List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectPaymentPointbackRecordDetailList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectPaymentPointbackRecordDetailList(params);
-	}
-
-	/**
-	 * select my Green point Sum List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String,Object>> selectMyGreenPointSumList(HashMap<String, Object> params) {
-		return sqlSession.getMapper(FrontMainMapper.class).selectMyGreenPointSumList(params);
-	}
-
-	/**
-	 * select point_conversion_transaction And point_transfer_transaction List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectpointConTranAndPointTranList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectpointConTranAndPointTranList(params);
-	}
-
-	/**
-	 * select my Red point Sum List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String,Object>> selectMyRedPointSumList(HashMap<String, Object> params) {
-		return sqlSession.getMapper(FrontMainMapper.class).selectMyRedPointSumList(params);
-	}
-
-	/**
-	 * select conversion transaction red point detail List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectPointConversionTransactionDetailList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectPointConversionTransactionDetailList(params);
-	}
-
-	/**
-	 * select faq List.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectFaqList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectFaqList(params);
-	}
-
-	/**
-	 * select notice List.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectNoticeList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectNoticeList(params);
-	}
-
-	/**
-	 * select conversion transaction red point detail List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectRpmapLoadList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectRpmapLoadList(params);
-	}
-
-	/**
-	 * select faq board Total Cnt.
-	 *
-	 * @param params the params
-	 * @return the hash map
-	 */
-	public HashMap<String,Object> faqTotalCnt(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).faqTotalCnt(params);
-	}
-
-	/**
-	 * select board faq List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectFaqMoreList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectFaqMoreList(params);
-	}
-
-	/**
-	 * select notice List Info.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectNoticeMoreList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectNoticeMoreList(params);
-	}
-
-	/**
-	 * select faq board Total Cnt.
-	 *
-	 * @param params the params
-	 * @return the hash map
-	 */
-	public HashMap<String,Object> noticeTotalCnt(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).noticeTotalCnt(params);
-	}
-
-	/**
-	 * select qna List.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectQnaList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectQnaList(params);
-	}
-
-	/**
-	 * select qna board Total Cnt.
-	 *
-	 * @param params the params
-	 * @return the hash map
-	 */
-	public HashMap<String,Object> qnaTotalCnt(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).qnaTotalCnt(params);
-	}
-
-	/**
-	 * select qnaNode List.
-	 *
-	 * @param params the params
-	 * @return the array list
-	 */
-	public ArrayList<HashMap<String, Object>> selectQnaNodeList(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectQnaNodeList(params);
-	}
-
-	/**
-	 * select qnaNode board Total Cnt.
-	 *
-	 * @param params the params
-	 * @return the hash map
-	 */
-	public HashMap<String,Object> qnaNodeTotalCnt(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).qnaNodeTotalCnt(params);
-	}
-
-	public int  registPushToken(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).registPushToken(params);
-	}
-
-	public int updateDeviceInfo(HashMap<String,Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).updateDeviceInfo(params);
+	//공지사항 리스트 총 갯수
+	public int selectWebNoticeListTotalCount(HashMap<String,Object> params){
+		return sqlSession.getMapper(FrontMainMapper.class).selectWebNoticeListTotalCount(params);
 	}
 	
-	public HashMap<String,Object>  selectDeviceInfo(HashMap<String, Object> params){
-		return sqlSession.getMapper(FrontMainMapper.class).selectDeviceInfo(params);
+	//공지사항 리스트
+	public ArrayList<HashMap<String, Object>> selectWebNoticeList(HashMap<String, Object> params) {
+		return sqlSession.getMapper(FrontMainMapper.class).selectWebNoticeList(params);
+	}
+	
+	//공지사항 상세
+	public HashMap<String,Object> selectWebNoticeContent(HashMap<String, Object> params){
+		return sqlSession.getMapper(FrontMainMapper.class).selectWebNoticeContent(params);
+	}
+	
+	//FAQ 리스트 총 갯수
+	public int selectWebFAQListTotalCount(HashMap<String,Object> params){
+		return sqlSession.getMapper(FrontMainMapper.class).selectWebFAQListTotalCount(params);
+	}
+	
+	//공지사항 리스트
+	public ArrayList<HashMap<String, Object>> selectWebFAQList(HashMap<String, Object> params) {
+		return sqlSession.getMapper(FrontMainMapper.class).selectWebFAQList(params);
+	}
+	
+	//공지사항 상세
+	public HashMap<String,Object> selectWebFAQContent(HashMap<String, Object> params){
+		return sqlSession.getMapper(FrontMainMapper.class).selectWebFAQContent(params);
+	}	
+	
+	//가맹점찾기 리스트 총 갯수
+	public int selectWebFranchiseeInfoListTotalCount(HashMap<String,Object> params){
+		return sqlSession.getMapper(FrontMainMapper.class).selectWebFranchiseeInfoListTotalCount(params);
+	}
+	
+	//가맹점찾기 리스트
+	public ArrayList<HashMap<String, Object>> selectWebFranchiseeInfoSearchList(HashMap<String, Object> params) {
+		return sqlSession.getMapper(FrontMainMapper.class).selectWebFranchiseeInfoSearchList(params);
+	}
+	
+	//시군구 AJAX 리스트
+	public ArrayList<HashMap<String, Object>> selectWebCityList(HashMap<String, Object> params) {
+		return sqlSession.getMapper(FrontMainMapper.class).selectWebCityList(params);
+	}
+	
+	//시군구 AJAX 리스트
+	public ArrayList<HashMap<String, Object>> selectWebCountryNameList(HashMap<String, Object> params) {
+		return sqlSession.getMapper(FrontMainMapper.class).selectWebCountryNameList(params);
+	}
+	
+	//게시글 카운팅 +1
+	public int updateMainBbsViewCount(HashMap<String,Object> params){
+		return sqlSession.getMapper(FrontMainMapper.class).updateMainBbsViewCount(params);
+	}
+	
+	//제휴문의 저장
+	public int insertMainBbsPartnerAskSave(HashMap<String,Object> params){
+		return sqlSession.getMapper(FrontMainMapper.class).insertMainBbsPartnerAskSave(params);
 	}
 }

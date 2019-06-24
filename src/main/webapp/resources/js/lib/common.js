@@ -1,3 +1,12 @@
+function isEmpty(obj){
+	if(typeof obj.value.trim() == "undefined" || obj.value.trim() == null || obj.value.trim() == ""){
+		return true
+	}else{
+		return false
+	}
+}
+
+
 function setCookie(name, value, expiredays) {
 	var today = new Date();
 	    today.setDate(today.getDate() + expiredays);
@@ -38,7 +47,6 @@ function movePage(url){
 
 function changeLang(value){
 	location.href="/locale/change.do?lang=" + value.trim() + "&returnUrl="+ location.href;
-	/*location.href="/main/index.do?lang=" + value*/
 }
 
 function changeLocalLang(value){

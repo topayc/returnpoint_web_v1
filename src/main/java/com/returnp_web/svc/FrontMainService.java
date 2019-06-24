@@ -1,6 +1,8 @@
 package com.returnp_web.svc;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,69 +17,6 @@ import com.returnp_web.utils.RPMap;
  */
 @Service
 public interface FrontMainService {
-
-	
-	/**
-	 * 사용자->포인트 조회
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean myPointInfo(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-	
-	/**
-	 * 사용자->포인트 전환
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean pointConvertRequest(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-	
-	/**
-	 * 사용자->red point 선물하기
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean redPointConvertRequest(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-
-	/**
-	 * 사용자->green point 선물하기
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean greenPointConvertRequest(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-
-	/**
-	 * 사용자->qr img 생성
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean qrImgView(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-	
-	public String qrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	/**
 	 * 사용자->하단영역 정보
@@ -95,101 +34,64 @@ public interface FrontMainService {
 	 */
 	HashMap<String, Object> getServerManageStatus() throws Exception;
 	
+	///////////////////////////////////////////////////////////2019.05.20 신규////////////////////////////////////////////////////////////////
 	/**
-	 * 포인트조회->그린 포인트 상세내역 조회
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
+	 * 공지사항 총 갯수
 	 */
-	boolean paymentPointbackRecordDetail(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-	
-	/**
-	 * 포인트조회->레드 포인트 상세내역 조회
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean pointConversionTransactionDetail(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-	
-	/**
-	 * 게시판->faq 게시판
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean faq(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-	
-	/**
-	 * 게시판->notice 게시판
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean notice(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-	
-	/**
-	 * 내주변 상가 조회
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean rpmapLoadAct(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-	
-	
-	/**
-	 * faq 더보기 조회
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean faqMoreAct(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
-	
-	/**
-	 * notice(공지사항) 더보기 조회
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
-	 */
-	boolean noticeMoreAct(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
+	public int selectWebNoticeListTotalCount(HashMap<String, Object> params) throws Exception;
 
 	/**
-	 * 사용자-> 회원정보
-	 *
-	 * @param p the p
-	 * @param rmap the rmap
-	 * @param request the request
-	 * @param response the response
-	 * @return true, if successful
-	 * @throws Exception the exception
+	 * 공지사항 리스트
 	 */
-	boolean myinfo(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
+	public ArrayList<HashMap<String,Object>> selectWebNoticeList(HashMap<String, Object> params) throws Exception;
+	
+	/**
+	 * 공지사항 상세
+	 */
+	public HashMap<String,Object> selectWebNoticeContent(HashMap<String, Object> params) throws Exception;
+
+	/**
+	 * FAQ 총 갯수
+	 */
+	public int selectWebFAQListTotalCount(HashMap<String, Object> params) throws Exception;
+
+	/**
+	 * FAQ 리스트
+	 */
+	public ArrayList<HashMap<String,Object>> selectWebFAQList(HashMap<String, Object> params) throws Exception;
+	
+	/**
+	 * FAQ 상세
+	 */
+	public HashMap<String,Object> selectWebFAQContent(HashMap<String, Object> params) throws Exception;
+	
+	/**
+	 * 가맹점찾기 총 갯수
+	 */
+	public int selectWebFranchiseeInfoListTotalCount(HashMap<String, Object> params) throws Exception;
+
+	/**
+	 * 가맹점찾기 리스트
+	 */
+	public ArrayList<HashMap<String,Object>> selectWebFranchiseeInfoSearchList(HashMap<String, Object> params) throws Exception;
+	
+	/**
+	 * CITY 리스트
+	 */
+	public ArrayList<HashMap<String, Object>> selectWebCityList(HashMap<String, Object> params) throws Exception;
+	
+	/**
+	 * 시군구 AJAX 리스트
+	 */
+	public ArrayList<HashMap<String, Object>> selectWebCountryNameList(HashMap<String, Object> params) throws Exception;
+
+	/**
+	 * 게시글 카운팅 +1
+	 */
+	public int updateMainBbsViewCount(HashMap<String, Object> params) throws Exception;
+
+	/**
+	 * 제휴문의 저장
+	 */
+	public int insertMainBbsPartnerAskSave(HashMap<String, Object> params) throws Exception;
 }
-

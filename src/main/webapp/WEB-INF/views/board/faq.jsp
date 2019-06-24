@@ -1,142 +1,94 @@
-<%@page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<%@page import="com.returnp_web.utils.SessionManager"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>ReturnP</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- 0710 ie가 edge로 맞춰지는 메타 추가 -->
-<meta name="format-detection" content="telephone=no"/><!-- 0710 edge상에서 전화번호 자동인식으로 인한 메타 추가 -->
-<!-- css   -->
-<!-- font -->
-<link rel="stylesheet" href="/resources/css/common.css">
-<!-- js -->
-<script src="/resources/js/lib/jquery.min.js"></script>
-<script src="/resources/js/lib/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resources/js/lib/common.js"></script>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
+<!-- 완료 -->
 <script type="text/javascript">
 $(document).ready(function(){
-	var pageContextlocale = '${pageContext.response.locale}';
-	$("#sel1").val(pageContextlocale);
+	var bbsType2css= $("#bbsType2").val();
+	$("#class_cd li").removeClass("on");
+	$("#bbsType2_sub"+bbsType2css).addClass("on");
 });
 
-function addlist(faqcount){
-	var content = "";
-	var faqcount = faqcount;
-	var morecount = $('#morecount').val();
-	if(morecount =="" || morecount ==null){
-		morecount = "1";
-	}
-	var p = getParams();
-	var CODE = (p["code"]);
-	$.ajax({
-		method : "POST",
-		url    : "/board/faqMoreAct.do",
-		dataType: "json",
-		data   : {
-			faqcount		: faqcount,
-			morecount		: morecount,
-			CODE			: CODE
-		},
-        success : function(data){
-        	if(data.json_arr.length == 0){
-        		alert("더보기가 없습니다");
-        	}
-        	
-            for(i=0; i<data.json_arr.length; i++) {
-            	content += "<div data-toggle='collapse' data-target='#faq_"+data.json_arr[i].faqMoreList[i].ROWNUM+"' class='list_li collapsed ellp'>"+data.json_arr[i].faqMoreList[i].boardNo+"<strong>Q</strong>"
-            	content += "<span>"+data.json_arr[i].faqMoreList[i].boardTitle+"</span>"
-            	content += "</div>"
-            	content +="<div id='faq_"+data.json_arr[i].faqMoreList[i].ROWNUM+ "' class='list_toggle collapse'>"
-            	content +="<p><strong>A</strong>"+data.json_arr[i].faqMoreList[i].boardContent+"</p>"
-            	content +="</div>"; 
-            }
-            $('#morecount').val(data.morecount);
-            //$('#addlist').remove();//remove btn
-            $(content).appendTo("#table"); 
-        },
-        error: function (request, status, error) {
-			alert("더보기가 없습니다");
-			return false;
-		}
-		
-    });
+//검색 페이징
+function searchList_page(page, upperPage){
+	$("#page").val(page);
+    $("#upperPage").val(upperPage);
+    searchList();
+}
 
+function searchList(){
+	document.viewList.action = "/board/faq.do";
+    document.viewList.submit();
+}
 
+function moveFaqContent(mainBbsNo){
+	$("#mainBbsNo").val(mainBbsNo);
+	document.viewList.action = "/board/faq_content.do";
+    document.viewList.submit();
+}
+
+//상단 탭 버튼 클릭시 이동
+function searchFaqTapList(bbsType2){
+	$("#bbsType2").val(bbsType2);
+	document.faqform.action = "/board/faq.do";
+    document.faqform.submit();
 }
 </script>
-</head>
-<!-- header end -->
-<!-- body begin -->
-<body class="p_faq">	
-	<!-- nav -->
-	<jsp:include page="/WEB-INF/views/common/topper.jsp" />
-	<!-- nav -->
-		<h4 class="pc">Customer Center</h4>
-		<h4 class="mobile">FAQ</h4>
-	</header> 
-	<!-- content begin -->
-	<ul class="submenu pc">
-		<li class="active"><a href="./faq.do">자주묻는질문</a></li>
-		<li><a href="./notice.do">공지사항</a></li>
-		<!-- <li><a href="./qna.do">일반상담</a></li>
-		<li><a href="./qna_node.do">제휴상담</a></li> -->
-	</ul>
-	<section>
-		<div class="listS01">			
-			<div class="list_title"><i class="fas fa-pencil-alt"></i> 자주묻는 질문들을 모았습니다. </div>			
-			<ul><li class="active"><a href="/board/faq.do?code=1">일반회원</a></li>
-				<li><a href="/board/faq.do?code=2">회원정보</a></li>
-				<li><a href="/board/faq.do?code=3">포인트</a></li>
-				<li><a href="/board/faq.do?code=4">기타</a></li>
+<body>
+<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+<hr class="top_line">
+	<div class="faq_tab container">
+		<div class="faq_text1">FAQ</div>
+		<div class="faq_nav">
+			<ul id="class_cd">
+				<li id="bbsType2_sub0" cls_cd="750000"><a href="#" onclick="searchFaqTapList('0');">전체</a></li>
+				<li id="bbsType2_sub1" cls_cd="750001"><a href="#" onclick="searchFaqTapList('1');">회원/가입/탈퇴</a></li>
+				<li id="bbsType2_sub2" cls_cd="750002"><a href="#" onclick="searchFaqTapList('2');">포인트</a></li>
+				<li id="bbsType2_sub3" cls_cd="750003"><a href="#" onclick="searchFaqTapList('3');">적립 및 출금</a></li>
+				<li id="bbsType2_sub10" cls_cd="750004"><a href="#" onclick="searchFaqTapList('10');">기타</a></li>
 			</ul>
-	<div id="table">
-		<c:choose>
-			<c:when test="${! empty model.faqList}">
-		<c:forEach var="list" items="${model.faqList}" varStatus="loop">
-
-		<div data-toggle="collapse" data-target="#faq_${list.ROWNUM}" class="list_li collapsed ellp">
-			${list.ROWNUM}<strong>Q</strong>
-			<span>${list.boardTitle}</span>
 		</div>
-		<div id="faq_${list.boardNo}" class="list_toggle collapse">
-			<p><strong>A</strong>${f:decQuote(list.boardContent)}</p>
-		</div> 	
-		<c:set var="faqcount" value="${loop.count}"/>
-		</c:forEach>
-			</c:when>
-			<c:otherwise>
-				<div class="list_li collapsed ellp">
-				<span>등록된 FAQ가 없습니다.</span>
-				</div>
-			</c:otherwise>
-		</c:choose>	
+	       <div role="tabpanel" class="faq_table tab-pane fade in active" id="home" aria-labelledby="home-tab">
+	        <table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th scope="col" class="col-lg-1 col-md-1 col-xs-1">번호</th>
+			      <th scope="col" colspan="2">제목</th>
+			      <th scope="col" class="col-lg-1 col-md-1 col-xs-1">작성자</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			<c:choose>
+				<c:when test="${! empty faqList}">			  
+					<c:forEach var="list" items="${faqList}" varStatus="loop">
+		 				<tr>
+					      <th scope="row">${params.recordCount - loop.index - (params.page-1) * 20}</th> 
+					      <td colspan="2"><a href="#" onclick="moveFaqContent('${list.mainBbsNo}');">${list.title}</a></td>
+					      <td>관리자</td>
+					    </tr>					
+					</c:forEach>			  
+				</c:when>
+				<c:otherwise>		    
+						<tr>
+					       <td colspan="3">등록된 FAQ가 없습니다.</td>
+					    </tr>
+				</c:otherwise>
+			</c:choose>			   
+			  </tbody>
+			</table>
+	      </div>
 	</div>
-		</div>
-		<input type="hidden" id="morecount" name="morecount"/>
-		<input type="hidden" id="faqTotalCnt" name="faqTotalCnt" value="${model.faqTotalCnt.CNT}"/>
-		<c:if test="${faqcount eq 10}">
-			<button type="submit" class="btn btn-basic" id="addlist" onclick="addlist('${faqcount}');">더보기</button>
-		</c:if>
-	</section>
-	<!-- content end -->
+	<form id="faqform" name="faqform">
+	    <input type="hidden" id="bbsType2" name="bbsType2" value="${params.bbsType2}"/>
+	</form>
+	<jsp:include page="/WEB-INF/views/common/paging.jsp" />
 	<!-- footer -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	<!-- footer -->	
-</div>
-	<!-- privacy policy modal -->
-	<jsp:include page="../company/m_privacypolicy.jsp" flush="false" />
-	<!-- privacy policy modal end -->
-	<!-- terms of ues modal -->
-	<jsp:include page="../company/m_termsofuse.jsp" flush="false" />
-	<!-- terms of ues modal end -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
+	<!-- footer -->
 </body>
-<!-- body end -->
 </html>

@@ -1,135 +1,73 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<%@page import="com.returnp_web.utils.SessionManager"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
-<!DOCTYPE html>
-<html lang="en">
-<head> 
-<title>ReturnP</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- 0710 ie가 edge로 맞춰지는 메타 추가 -->
-<meta name="format-detection" content="telephone=no"/><!-- 0710 edge상에서 전화번호 자동인식으로 인한 메타 추가 -->
-<!-- css   -->
-<!-- font -->
-<link rel="stylesheet" href="/resources/css/common.css">
-<!-- js -->
-<script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
-<script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resources/js/lib/common.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	var pageContextlocale = '${pageContext.response.locale}';
-	$("#sel1").val(pageContextlocale);
-});
-</script>
-</head>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<jsp:include page="/WEB-INF/views/common/header.jsp" /> <!-- <html>~</head>까지 -->
 <!-- body begin -->
-<body class="p_service_member">	
-
-	<!-- nav -->
-	<jsp:include page="/WEB-INF/views/common/topper.jsp" />
-	<!-- nav -->
-		<h4>Service</h4>
-	</header> 
-	
-	<section>
-		<ul>
-			<li>
-				<aside><hr><h4>리턴포인트란</h4></aside>
-				<div class="content">
-				<p>소비자의 구매로 인해 발생한 <spring:message code="label.gpoint" /> 를 포인트 사용처에서 이용 가능한 <spring:message code="label.rpoint" />로 전환해 협력점 및 포인트 선물 등으로 사용할 수 있는 서비스입니다. </p>
-					<ul class="comment">
-						<li><strong>* <spring:message code="label.gpoint" /></strong> <span>  (종합포인트) - 협력점에서 사용한 Point의 합.</span></li>
-						<li><strong>* <spring:message code="label.rpoint" /></strong> <span>(사용가능 포인트) - <spring:message code="label.gpoint" /> 발생 익일부터 지급하는 Point.</span></li>
-						<li><strong>* 포인트 사용처</strong> <span>GLK 와 협력점, 토탈프라자, 해외 협력점.</span></li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<aside><hr><h4>리턴포인트 이용안내</h4></aside>
-				<div class="content">
-					<div class="step step_user">					
-						<span class="title">소비자 <br class="mobile" /> Step<i class="fas fa-caret-right"></i></span>
-						<span>회원가입 <br class="mobile" /> 및 앱설치<i class="fas fa-caret-right"></i></span>
-						<span>협력점<br class="mobile" />상품구매<i class="fas fa-sort-down"></i></span>
-						<span><spring:message code="label.rpoint" /><br class="mobile" />전환 및 사용</span>
-						<span><spring:message code="label.gpoint" /><br class="mobile" />적립<i class="fas fa-caret-left"></i></span>
-						<span>영수증<br class="mobile" />QR스캔<i class="fas fa-caret-left"></i></span>
-					</div>
-					<div class="step step_store">									
-						<span class="title">협력점 <br class="mobile" /> Step<i class="fas fa-caret-right"></i></span>
-						<span>회원 <br class="mobile" /> 가입<i class="fas fa-caret-right"></i></span>
-						<span>협력점 <br class="mobile" /> 등록<i class="fas fa-sort-down"></i></span>
-						<span><spring:message code="label.rpoint" /><br class="mobile" />전환 및 사용</span>
-						<span><spring:message code="label.gpoint" /><br class="mobile" />적립<i class="fas fa-caret-left"></i></span>
-						<span>상품<br class="mobile" />판매<i class="fas fa-caret-left"></i></span>
-					</div>
-				</div>
-			</li>
-			<li>
-				<aside><hr><h4>리턴포인트 적립및 사용방법 </h4></aside>
-				<div class="content">
-									<p><strong>[<spring:message code="label.gpoint" /> 적립방법]</strong> <span>협력점에 매출의 발생 할 때 마다 <spring:message code="label.gpoint" /> 가 적립됩니다.
-					</br>소비자는 매출의 100%를 익일 <spring:message code="label.gpoint" /> 로 적립 받으며, 협력점은 매출의 15%의 매출 예치금을 현금으로 본사에 즉시 납입합니다</span>
-					</p>
-					<p><strong>[<spring:message code="label.rpoint" /> 적립방법]</strong> <span><spring:message code="label.gpoint" /> 발생 후 익일부터 <spring:message code="label.gpoint" /> 의 <strong>1/2000</strong> 이 매출 금액의100%가 될 때까지 <spring:message code="label.rpoint" />로 적립됩니다.</span></p>
-					<p><strong>[<spring:message code="label.rpoint" /> 사용방법]</strong> <span><spring:message code="label.gpoint" /> 에서 전환된 <spring:message code="label.rpoint" /> 는 포인트 포인트사용처에서 이용 가능합니다.</span></p>
-				</div>
-			</li>
-			<li>
-				<aside><hr><h4>리턴포인트 이용을 위한 서비스  </h4></aside>
-				<div class="content service">
-					<p><i class="far fa-credit-card"></i>카드 결제</p>
-					<p><i class="fas fa-coins"></i>코인 결제</p>
-					<p><i class="fas fa-map-marker-alt"></i>지역 찾기</p>
-					<p><i class="fas fa-store"></i>협력점 <br />즉시 결제</p>
-					<p><i class="fas fa-qrcode"></i>협력점 결제 후 <br />포인트적립</p>
-					<p><i class="fas fa-print"></i>결제앱</p>
-				</div>
-			</li>
-		</ul>
-	</section>	
-	<!-- content begin
-	<section>
-			<div class="txtarea">
-			<h3><spring:message code="label.serviceMemberDesc01" /> </h3>
-			<p><spring:message code="label.serviceMemberDesc02" /><br />
-			<spring:message code="label.serviceMemberDesc03" /></p>
-		</div>
-		<ul>
-			<li><img src="/resources/images/service01.jpg" />
-				<p><spring:message code="label.serviceMemberDesc04" />
-				   <span><spring:message code="label.serviceMemberDesc05" /> <br /><spring:message code="label.serviceMemberDesc06" /></span>
-				</p>
-				
-			</li>
-			<li><img src="/resources/images/service02.jpg" />
-				<p><spring:message code="label.serviceMemberDesc07" />
-					<span><spring:message code="label.serviceMemberDesc08" /></span>
-				</p>				
-			</li>
-			<li><img src="/resources/images/service03.jpg" />
-				<p><spring:message code="label.serviceMemberDesc09" />
-				   <span><spring:message code="label.serviceMemberDesc10" /></span>
-				</p>				
-			</li>
-		</ul>
-	</section>
-	 content end -->
-	<!-- footer -->
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	<!-- footer -->	
-</div>
-	<!-- privacy policy modal -->
-	<jsp:include page="./m_privacypolicy.jsp" flush="false" />
-	<!-- privacy policy modal end -->
-	<!-- terms of ues modal -->
-	<jsp:include page="./m_termsofuse.jsp" flush="false" />
-	<!-- terms of ues modal end -->
+<body>
+<!-- 완료 -->
+<jsp:include page="/WEB-INF/views/common/topper.jsp" /> <!-- <nav>~</nav>까지 -->
+    <hr class="top_line">
+    <div class="ser_img">
+        <p class="ser_text1 col-lg-7 col-lg-offset-1 col-md-7 col-md-offset-2">Service</p>
+        <p class="ser_text2 col-lg-7 col-lg-offset-1 col-md-7 col-md-offset-2"><spring:message code="label.web.serviceinfo"/></p>
+    </div>
+    <div class="ser_page1 block">
+        <div class="ser_page1_sub1 col-xs-10 col-xs-offset-1 col-lg-5 col-lg-offset-1">
+            <div class="main_event">
+                <img src="/resources/web_images/ser_img2.png">
+            </div>
+        </div>
+        <div class="ser_page1_sub2 col-xs-12 col-lg-5 col-lg-offset-1">
+            <p class="ser_text3"><spring:message code="label.web.serviceinfoTitleM1"/><br><spring:message code="label.web.serviceinfoTitleS1"/></p>
+            <p class="ser_text4"><spring:message code="label.web.serviceinfoContent1"/></p>
+            <p class="ser_text4"><spring:message code="label.web.serviceinfoContent2"/></p>
+            <p class="ser_text4"><spring:message code="label.web.serviceinfoContent3"/></p>
+        </div>
+    </div>
+    <div class="ser_page2 block">
+        <div class="ser_page2_sub1 col-xs-10 col-xs-offset-1 col-lg-5 col-lg-offset-1">
+            <div class="main_event">
+                <img src="/resources/web_images/ser_img3.png">
+            </div>
+        </div>
+        <div class="ser_page2_sub2 col-xs-12 col-lg-5">
+            <p class="ser_text5"><spring:message code="label.web.serviceinfoTitleM2"/></p>
+            <p class="ser_text6"><spring:message code="label.web.serviceinfoContent4"/><br><spring:message code="label.web.serviceinfoContent5"/></p>
+            <p class="ser_text6"><spring:message code="label.web.serviceinfoContent6"/><br><spring:message code="label.web.serviceinfoContent7"/></p>
+        </div>
+    </div>
+    <div class="ser_page1 block">
+        <div class="ser_pageq_sub1 col-xs-10 col-xs-offset-1 col-lg-5 col-lg-offset-1">
+            <div class="main_event">
+                <img src="/resources/web_images/ser_img4.png">
+            </div>
+        </div>
+        <div class="ser_page1_sub2 col-xs-12 col-lg-5 col-lg-offset-1">
+            <p class="ser_text3"><spring:message code="label.web.serviceinfoTitleM3"/></p>
+            <p class="ser_text4"><spring:message code="label.web.serviceinfoContent8"/></p>
+            <p class="ser_text4"><spring:message code="label.web.serviceinfoContent9"/><br><spring:message code="label.web.serviceinfoContent10"/></p>
+        </div>
+    </div>
+    <div class="ser_page2 block">
+        <div class="ser_page3_sub1 col-xs-10 col-xs-offset-1 col-lg-5 col-lg-offset-1">
+            <div class="main_event">
+                <img src="/resources/web_images/ser_img4.jpg">
+            </div>
+        </div>
+        <div class="ser_page3_sub2 col-xs-12 col-lg-5">
+            <p class="ser_text5"><spring:message code="label.web.serviceinfoTitleM4"/></p>
+            <p class="ser_text6"><spring:message code="label.web.serviceinfoContent11"/></p>
+            <p class="ser_text6"><spring:message code="label.web.serviceinfoContent12"/><br><spring:message code="label.web.serviceinfoContent13"/></p>
+            <p class="ser_text6"><spring:message code="label.web.serviceinfoContent14"/><br><spring:message code="label.web.serviceinfoContent15"/></p>
+        </div>
+    </div>
+<!-- footer -->
+<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
+<!-- footer -->    
 </body>
 <!-- body end -->
 </html>
