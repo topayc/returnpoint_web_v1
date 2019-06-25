@@ -13,6 +13,11 @@ $(document).ready(function(){
 	searchCountry('${params.city}');
 });
 
+function franchiseeInfoGoogleMapPopup(affiliateNo){
+	url = "/board/franchiseeInfoGoogleMap.do?affiliateNo="+affiliateNo;
+	window.open(url, "url", "width=615, height=615, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes");
+}
+
 function searchCity(){
 	var content = "";
 	$.ajax({
@@ -134,9 +139,9 @@ function searchList(){
 				<c:when test="${! empty franchiseeInfoList}">			  
 					<c:forEach var="list" items="${franchiseeInfoList}" varStatus="loop">
 			    <tr>
-			      <th scope="row" class="text-center">${list.affiliateName}</th>
-			      <td class="text-center">${list.affiliateTel}</td>
-			      <td class="text-center">${list.affiliateAddress}</td>
+			      <th scope="row" class="text-center"><a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');">${list.affiliateName}</a></th>
+			      <td class="text-center"><a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}'${list.affiliateNo}');">${list.affiliateTel}</a></td>
+			      <td class="text-center"><a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');">${list.affiliateAddress}</a></td>
 			    </tr>
 			    	</c:forEach>
 			    </c:when>
