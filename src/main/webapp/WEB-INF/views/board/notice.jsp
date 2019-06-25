@@ -10,18 +10,7 @@
 function searchList_page(page, upperPage){
 	$("#page").val(page);
     $("#upperPage").val(upperPage);
-    searchList();
-}
-
-function searchList(){
-	document.viewList.action = "/board/notice.do";
-    document.viewList.submit();
-}
-
-function moveNoticeContent(mainBbsNo){
-	$("#mainBbsNo").val(mainBbsNo);
-	document.viewList.action = "/board/notice_content.do";
-    document.viewList.submit();
+    searchNoticeList();
 }
 </script>
 <body>

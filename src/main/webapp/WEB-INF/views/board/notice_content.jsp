@@ -6,12 +6,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
-<script type="text/javascript">
-function moveList(){
-	document.noticeList.action = "/board/notice.do";
-    document.noticeList.submit();
-}
-</script>
 <body>
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
 <hr class="top_line">
@@ -23,7 +17,7 @@ function moveList(){
 		<div class="faq_sub3">
 		 	<span class="faq_text3">${noticeContent.content}</span>
 		</div>
-		<a href="#" onclick="moveList();"><button type="button" class="btn btn-primary faq_button">목록</button></a>
+		<a href="#" onclick="moveNoticeList();"><button type="button" class="btn btn-primary faq_button">목록</button></a>
 </div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<form id="noticeList" name="noticeList">

@@ -12,28 +12,10 @@ $(document).ready(function(){
 	$("#class_cd li").removeClass("on");
 	$("#bbsType2_sub"+bbsType2css).addClass("on");
 });
-
 function searchList_page(page, upperPage){
 	$("#page").val(page);
     $("#upperPage").val(upperPage);
-    searchList();
-}
-
-function searchList(){
-	document.viewList.action = "/board/faq.do";
-    document.viewList.submit();
-}
-
-function moveFaqContent(mainBbsNo){
-	$("#mainBbsNo").val(mainBbsNo);
-	document.viewList.action = "/board/faq_content.do";
-    document.viewList.submit();
-}
-
-function searchFaqTapList(bbsType2){
-	$("#bbsType2").val(bbsType2);
-	document.faqform.action = "/board/faq.do";
-    document.faqform.submit();
+    searchFaqList();
 }
 </script>
 <body>
@@ -84,6 +66,6 @@ function searchFaqTapList(bbsType2){
 	    <input type="hidden" id="bbsType2" name="bbsType2" value="${params.bbsType2}"/>
 	</form>
 	<jsp:include page="/WEB-INF/views/common/paging.jsp" />
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" /> <!-- <footer>~</footer>까지 -->
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>
