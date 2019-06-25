@@ -250,6 +250,7 @@ label.web.search=검색
 label.web.storeName=매장명
 label.web.contact=연락처
 label.web.address=주소
+label.web.viewMap=지도 보기
 
 #notice.jsp
 #label.web.notice=공지사항 #재사용

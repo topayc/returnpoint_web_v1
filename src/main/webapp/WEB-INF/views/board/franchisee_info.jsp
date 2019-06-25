@@ -130,8 +130,9 @@ function searchList(){
 			  <thead>
 			    <tr>
 					<th scope="col" class="col-lg-3 col-md-3 col-xs-3 text-center"><spring:message code="label.web.storeName"/></th>
-					<th scope="col" class="col-lg-3 col-md-3 col-xs-3 text-center"><spring:message code="label.web.contact"/></th>
-					<th scope="col" class="col-lg-6 col-md-6 col-xs-6 text-center"><spring:message code="label.web.address"/></th>
+					<th scope="col" class="col-lg-2 col-md-2 col-xs-2 text-center"><spring:message code="label.web.contact"/></th>
+					<th scope="col" class="col-lg-2 col-md-2 col-xs-3 text-center"><spring:message code="label.web.address"/></th>
+					<th scope="col" class="col-lg-5 col-md-5 col-xs-4 text-center"><spring:message code="label.web.viewMap"/></th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -139,9 +140,10 @@ function searchList(){
 				<c:when test="${! empty franchiseeInfoList}">			  
 					<c:forEach var="list" items="${franchiseeInfoList}" varStatus="loop">
 			    <tr>
-			      <th scope="row" class="text-center"><a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');">${list.affiliateName}</a></th>
-			      <td class="text-center"><a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}'${list.affiliateNo}');">${list.affiliateTel}</a></td>
-			      <td class="text-center"><a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');">${list.affiliateAddress}</a></td>
+			      <th scope="row" class="text-center">${list.affiliateName}</th>
+			      <td class="text-center">${list.affiliateTel}</td>
+			      <td class="text-center"><a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');"><img src="/resources/web_images/map.png"></a></td>
+			      <td class="text-center">${list.affiliateAddress}</td>
 			    </tr>
 			    	</c:forEach>
 			    </c:when>
