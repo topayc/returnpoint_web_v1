@@ -62,4 +62,7 @@ public interface FrontMainMapper {
 	//제휴문의 저장
 	int insertMainBbsPartnerAskSave(HashMap<String, Object> params);
 	
+	//가맹점 상세정보
+	HashMap<String,Object> selectAffiliateIfo(HashMap<String, Object> params);
+	
 }

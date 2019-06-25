@@ -274,4 +274,73 @@
 		        ,'Y'
 		)
 	</insert>
+	
+	<!-- 가맹점 상세정보 -->	
+	<select id="selectAffiliateIfo" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			AF.affiliateNo, 
+			AF.affiliateSerial, 
+			AF.affiliateCode, 
+			AF.affiliateName, 
+			AF.affiliateAddress, 
+			AF.affiliateTel, 
+			AF.affiliatePhone, 
+			AF.affiliateType, 
+			AF.affiliateComm, 
+			AF.giftCardPayRefundRate, 
+			AF.memberNo, 
+			AF.agencyNo, 
+			AF.recommenderNo, 
+			AF.affiliateStatus, 
+			AF.regType, 
+			AF.regAdminNo, 
+			AF.affiliateEmail, 
+			AF.greenPointAccStatus, 
+			AF.redPointAccStatus, 
+			AF.greenPointUseStatus, 
+			AF.redPointUseStatus, 
+			AF.createTime, 
+			AF.updateTime, 
+			M.memberEmail AS memberEmail, 
+			M.memberName AS memberName, 
+			M.memberPhone AS memberPhone, 
+			GP.pointAmount AS greenPointAmount, 
+			RP.pointAmount AS redPointAmount, 
+			MA.memberAddressNo, 
+			MA.memberNo, 
+			MA.nodeNo, 
+			MA.nodeType, 
+			MA.roadFullAddr, 
+			MA.roadAddrPart1, 
+			MA.roadAddrPart2, 
+			MA.addrDetail, 
+			MA.engAddr, 
+			MA.jibunAddr, 
+			MA.zipNo, 
+			MA.admCd, 
+			MA.rnMgtSn, 
+			MA.bdMgtSn, 
+			MA.lat, 
+			MA.lng, 
+			M2.memberName AS recommenderName, 
+			AG.agencyName, 
+			(SELECT COUNT(*) FROM affiliate_tid AS AT WHERE AF.affiliateNo = AT.affiliateNo) AS affiliateSerialCount, 
+			APR.paymentRouterNo, 
+			(SELECT paymentRouterType FROM payment_router WHERE paymentRouterNo = APR.paymentRouterNo) AS paymentRouterType, 
+			(SELECT paymentRouterName FROM payment_router WHERE paymentRouterNo = APR.paymentRouterNo) AS paymentRouterName, 
+			(SELECT paymentRouterCode FROM payment_router WHERE paymentRouterNo = APR.paymentRouterNo) AS paymentRouterCode
+		FROM affiliate AS AF
+		INNER JOIN member AS M ON (AF.memberNo = M.memberNo)
+		INNER JOIN red_point AS RP ON (AF.memberNo = RP.memberNo)
+		INNER JOIN green_point AS GP ON (AF.memberNo = GP.memberNo AND GP.nodeType ='5')
+		LEFT OUTER
+		JOIN member_address AS MA ON (AF.affiliateNo = MA.nodeNo AND MA.nodeType ='5')
+		LEFT OUTER
+		JOIN member AS M2 ON (AF.recommenderNo = M2.memberNo)
+		LEFT OUTER
+		JOIN agency AS AG ON (AF.agencyNo= AG.agencyNo)
+		LEFT OUTER
+		JOIN affiliate_payment_router AS APR ON (AF.affiliateNo= APR.affiliateNo)
+		WHERE AF.affiliateNo = #{affiliateNo}
+	</select>
 </mapper>

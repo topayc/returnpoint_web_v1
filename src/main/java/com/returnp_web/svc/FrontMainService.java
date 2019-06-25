@@ -94,4 +94,10 @@ public interface FrontMainService {
 	 * 제휴문의 저장
 	 */
 	public int insertMainBbsPartnerAskSave(HashMap<String, Object> params) throws Exception;
+	
+	/**
+	 * 가맹점 상세정보
+	 */
+	public HashMap<String,Object> selectAffiliateIfo(HashMap<String, Object> params) throws Exception;
+	
 }

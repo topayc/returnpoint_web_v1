@@ -356,4 +356,27 @@ public class FrontController extends MallBaseController {
 		return "/company/customerInfo";
 	}
 	
+	// WEB 가맹점찾기 상세 Google Map
+	@RequestMapping("/board/franchiseeInfoGoogleMap")
+	public String franchiseeInfoGoogleMap(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		
+		try{
+			//Google Map Api Key
+			String key = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb4";
+			params.put("key", key);
+			HashMap<String, Object> affiliateGoogleMapView = fms.selectAffiliateIfo(params);
+			
+			if (affiliateGoogleMapView.get("lat") == null || affiliateGoogleMapView.get("lng") == null || affiliateGoogleMapView.get("affiliateName") == null) { //위도, 경도, 가맹점명 중 하나라도 NULL일 경우
+				params.put("code", "error");
+			}else {
+				params.put("code", "success");
+			}
+			map.addAttribute("affiliateGoogleMapView", affiliateGoogleMapView);
+			map.addAttribute("params", params);
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
+			return "/board/franchiseeInfoGoogleMap";
+	}
+	
 }

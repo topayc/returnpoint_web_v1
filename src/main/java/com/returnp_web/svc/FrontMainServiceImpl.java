@@ -142,4 +142,10 @@ public class FrontMainServiceImpl implements FrontMainService {
 	public int insertMainBbsPartnerAskSave(HashMap<String, Object> params) throws Exception {
 		return frontMainDao.insertMainBbsPartnerAskSave(params);
 	}
+	
+	//가맹점 상세정보
+	public HashMap<String, Object> selectAffiliateIfo(HashMap<String, Object> params) throws Exception {
+		return frontMainDao.selectAffiliateIfo(params);
+	}
+	
 }
