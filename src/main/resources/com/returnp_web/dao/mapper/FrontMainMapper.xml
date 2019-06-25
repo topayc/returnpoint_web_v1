@@ -122,7 +122,7 @@
 
 	<!-- FAQ 리스트 -->	
 	<select id="selectWebFAQList" parameterType="HashMap" resultType="HashMap">
-		SELECT /* selectWebFAQList */
+		SELECT 
 			totalCount
 			,mainBbsNo
 			,bbsType1
@@ -180,6 +180,7 @@
 		SELECT count(affiliateNo) as totalCount 
 		FROM affiliate
 		WHERE 1 = 1
+		AND affiliatestatus = '1'
 		<if test="affiliateName !=null and affiliateName !='' ">
 		AND affiliateName LIKE CONCAT('%',TRIM(#{affiliateName}),'%')
 		</if>
@@ -203,6 +204,7 @@
 				,(@RNUM := @RNUM + 1 ) AS ROWNUM
 				FROM affiliate , (SELECT @RNUM := 0 ) AS ROWNUM
 				WHERE 1 = 1
+				AND affiliatestatus = '1'
 				<if test="affiliateName !=null and affiliateName !='' ">
 				AND affiliateName LIKE CONCAT('%',TRIM(#{affiliateName}),'%')
 				</if>
@@ -342,5 +344,6 @@
 		LEFT OUTER
 		JOIN affiliate_payment_router AS APR ON (AF.affiliateNo= APR.affiliateNo)
 		WHERE AF.affiliateNo = #{affiliateNo}
+		AND AF.affiliatestatus = '1'
 	</select>
 </mapper>
