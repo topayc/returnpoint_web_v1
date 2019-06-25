@@ -12,15 +12,11 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<!-- sns url 링크시 표시되는 이미지와 텍스트내용들 테스트입니다.  -->
 <meta property="og:url" content="https://www.returnp.com">
 <meta property="og:title" content="ReturnP">
 <meta property="og:type" content="website">
-<meta property="og:image" content="/resources/images/sns_url_link_img.png">
-<!-- css   -->
-<!-- font -->
+<meta property="og:image" content="https://www.returnp.com/resources/images/sns_url_link_img.png">
 <link rel="stylesheet" href="/resources/web_css/common.css">
-<!-- js -->
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery.cookie.js"></script>
@@ -40,4 +36,3 @@ $(document).ready(function(){
 });
 </script>
 </head>
-<!-- header end -->
