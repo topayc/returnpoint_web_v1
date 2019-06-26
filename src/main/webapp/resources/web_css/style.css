@@ -34,7 +34,7 @@ nav {
 }
 
 .main_nav img {
-   margin-top: -5px;
+    margin-top: -5px;
 }
 
 .after {
@@ -71,19 +71,19 @@ nav {
     }
 }
 
-.back_button{
-	display: none;
-	float: left;
+.back_button {
+    display: none;
+    float: left;
 }
 
 @media (max-width:800px) {
     .back_button {
         display: block;
-        width:30px;
+        width: 30px;
         height: 30px;
         margin-left: 20px;
         margin-top: 5px;
-        background:url("/resources/web_images/back.png") no-repeat;
+        background: url("/resources/web_images/back.png") no-repeat;
     }
 }
 
@@ -143,7 +143,7 @@ nav {
 @media (max-width:767px) {
     .nav_top li {
         padding: 0;
-        border-bottom: 0.3px solid rgba(256,256,256,0.5);
+        border-bottom: 0.3px solid rgba(256, 256, 256, 0.5);
     }
 }
 
@@ -167,7 +167,51 @@ nav {
 
     }
 }
+/*****************************************************************/
+@media (max-width: 1007px){
+    .nav_top li{
+        width:13%;
+        padding-right: 0;
+        padding-left: 0;
+        text-align: center;
+    }
+}
+@media (max-width: 1007px){
+    .nav_top li> a{
+        font-size: 12px;
+        font-weight: bold;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+@media (max-width: 1007px){
+    .after a {
+        display: none;
+    }
+}
+@media (max-width: 767px){
+    .after a {
+        display: block;
+    }
+}
+@media (max-width: 800px){
+    .nav_top {
+        width:100% !important;
+    }
+}
+@media (max-width: 800px){
+    .nav_top li {
+        width:12%;
+    }
+}
 
+@media (max-width: 1007px){
+    .nav_top {
+        width:70%;
+    }
+}
+
+/*****************************************************************/
 @media (max-width:767px) {
     .main_nav {
         background-color: #0076be;
@@ -205,7 +249,7 @@ nav {
     color: #052e6b;
     padding-top: 13%;
     font-weight: bold;
-    text-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width:800px) {
@@ -219,7 +263,7 @@ nav {
     font-size: 1.5vw;
     color: #0076be;
     margin-top: 20px;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width:800px) {
@@ -340,7 +384,7 @@ nav {
     margin-top: 5%;
     text-align: right;
     padding-right: 5%;
-    text-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width:800px) {
@@ -451,7 +495,7 @@ nav {
     color: #0076be;
     padding-bottom: 7%;
     margin-top: 7%;
-    text-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 @media(max-width: 800px) {
@@ -464,6 +508,7 @@ nav {
 .main_text11 {
     font-size: 1vw;
 }
+
 @media(max-width: 800px) {
     .main_text11 {
         font-size: 15px;
@@ -471,6 +516,7 @@ nav {
         margin-bottom: 2%;
     }
 }
+
 .main_text11 b {
     color: #0076be;
 }
@@ -544,6 +590,7 @@ nav {
     width: 10%;
     margin: 0 auto;
 }
+
 /***********************메인페이지****************************************************/
 /***********************고객센터페이지****************************************************/
 .top_line {
@@ -775,10 +822,13 @@ tr a:hover {
 
 .fran4 {
     margin-top: 10%;
+    padding:0;
 }
-thead th{
-	text-align: center;
+
+thead th {
+    text-align: center;
 }
+
 tbody td {
     color: #3c3d3e;
     padding: 1.3% 0 1.3% 0 !important;
@@ -788,17 +838,20 @@ tbody th {
     color: #3c3d3e;
     padding: 1.3% 0 1.3% 1.5% !important;
 }
+
 @media (max-width:800px) {
     tbody th {
-        padding:1.3% 0 1.3% 5% !important;
+        padding: 1.3% 0 1.3% 5% !important;
     }
 }
-tbody th:first-child{
-	text-align: center;
-	padding-left: 0 !important;
+
+tbody th:first-child {
+    text-align: center;
+    padding-left: 0 !important;
 }
-tbody td:last-child{
-	text-align: center;
+
+tbody td:last-child {
+    text-align: center;
 }
 
 .fran_button {
@@ -1028,20 +1081,24 @@ textarea {
 .modal1_sub {
     background-color: #fff;
 }
+
 .modal3 {
     background-color: rgba(0, 0, 0, 0.3);
 }
+
 @media (max-width:800px) {
     .modal3_conbox {
         padding: 10% 2% 7% 2% !important;
     }
 }
+
 @media (max-width:800px) {
     .partner1_button {
-            font-size: 8px !important;
-            width: 15% !important;
+        font-size: 8px !important;
+        width: 15% !important;
     }
 }
+
 .modal-content2 {
     margin-top: 15%;
     background-color: #fff;
@@ -1072,8 +1129,9 @@ textarea {
     margin-bottom: 3%;
     color: #ccc;
 }
-.modal3_text2 > img{
-    width:30px;
+
+.modal3_text2>img {
+    width: 30px;
     height: 30px;
     margin-right: 2%;
 }
@@ -1084,7 +1142,8 @@ textarea {
     color: #3c3d3e;
     margin-bottom: 7%;
 }
-.partner1_button{
+
+.partner1_button {
     background-color: #0076be;
     width: 20%;
     margin-left: 40%;
