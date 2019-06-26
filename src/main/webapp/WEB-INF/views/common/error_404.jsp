@@ -21,7 +21,7 @@
             <p class="error_text2">다시 한번 입력하신 주소가 정확한지 확인해주시기
                 바랍니다.</p>
             <div class="error_button">
-                <a href="/main/index.do"><button type="button" class="btn btn-warning col-lg-4 col-lg-offset-4 col-xs-12">Home으로 이동</button></a>
+                <a href="javascript:history.back()"><button type="button" class="btn btn-warning col-lg-4 col-lg-offset-4 col-xs-12">이전페이지로 이동</button></a>
             </div>
         </div>
     </div>    
