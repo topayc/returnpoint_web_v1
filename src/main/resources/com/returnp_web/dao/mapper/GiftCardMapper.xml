@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.returnp_web.dao.mapper.GiftCardMapper">
+	<!-- 나의 상품권 가져오기 -->
+	<select id="selectMyGiftCards" parameterType="HashMap" resultType="HashMap">
+		SELECT
+		   G.myGiftCardNo, 
+		   G.memberNo, 
+		   G.giftCardIssueNo, 
+		   G.createTime as createTime,
+		   G.updateTime as updateTime,
+		   M.memberName,
+		   A.giftCardIssueNo, 
+		   A.pinNumber, 
+		   A.giftCardOrderNo, 
+		   A.giftCardNo, 
+		   A.accableStatus, 
+		   A.payableStatus, 
+		   A.giftCardStatus, 
+		   A.giftCardType, 
+		   A.giftCardAmount, 
+		   A.giftCardSalePrice, 
+		   A.accQrData, 
+		   A.payQrData, 
+		   A.accQrCodeWebPath, 
+		   A.payQrCodeWebPath, 
+		   A.accQrCodeFilePath, 
+		   A.payQrCodeFilePath, 
+		   A.accQrScanner, 
+		   A.payQrScanner, 
+		   A.accQrScanTime, 
+		   A.payQrScanTime, 
+		   A.issueTime, 
+		   A.expirationTime, 
+		   A.receiverPhone,
+		   A.receiverName,
+		   A.receiverEmail,
+		   A.receiverAddress,
+		   A.receiverIsMember,
+		   A.deliveryMessage,
+		   A.deliveryStatus,
+		   A.deliveryNumber,
+		   O.orderNumber,
+		   O.orderType
+	   from my_gift_card as G
+       inner join member as M on (G.memberNo = M.memberNo)
+       inner join gift_card_issue as A on (G.giftCardIssueNo= A.giftCardIssueNo)
+       inner join gift_card_order as O on (A.giftCardOrderNo= O.orderNo)
+       where 
+      	 1 = 1
+       	<if test="myGiftCardNo != null"> AND G.myGiftCardNo = #{myGiftCardNo,jdbcType=INTEGER}</if>
+     	<if test="memberNo != null"> AND G.memberNo = #{memberNo,jdbcType=INTEGER}</if>
+        <if test="giftCardIssueNo != null"> AND A.giftCardIssueNo = #{giftCardIssueNo,jdbcType=INTEGER}</if>
+        <if test="giftCardType != null"> AND A.giftCardType = #{giftCardType,jdbcType=VARCHAR}</if>
+        <if test="accableStatus != null"> AND A.accableStatus = #{accableStatus,jdbcType=VARCHAR}</if>
+        <if test="payableStatus != null"> AND A.payableStatus = #{payableStatus,jdbcType=VARCHAR}</if>
+	</select> 
+	
+		<select id="selectGiftCardIssues" parameterType="HashMap" resultType="HashMap">
+		SELECT
+		*
+	   from gift_card_issue
+       where 
+      	 1 = 1
+       	<if test="giftCardIssueNo != null"> AND giftCardIssueNo = #{giftCardIssueNo,jdbcType=INTEGER}</if>
+        <if test="pinNumber != null"> AND pinNumber = #{pinNumber,jdbcType=VARCHAR}</if>
+        <if test="accableStatus != null"> AND accableStatus = #{accableStatus,jdbcType=VARCHAR}</if>
+        <if test="payableStatus != null"> AND payableStatus = #{payableStatus,jdbcType=VARCHAR}</if>
+        <if test="giftCardType != null"> AND giftCardType = #{giftCardType,jdbcType=VARCHAR}</if>
+	</select> 
+</mapper>
