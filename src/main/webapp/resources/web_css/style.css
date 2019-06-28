@@ -76,7 +76,7 @@ nav {
     float: left;
 }
 
-@media (max-width:800px) {
+@media (max-width:766px) {
     .back_button {
         display: block;
         width: 30px;
@@ -167,6 +167,29 @@ nav {
 
     }
 }
+/***********************2019.06.28 수정******************************************/
+@media (max-width:766px) {
+    .nav_top li{
+        width:100% !important;
+        text-align: left !important;
+        text-indent: 4em;
+    }
+}
+@media (max-width:766px) {
+    .nav_top li a{
+        font-size: 17px !important;
+    }
+}
+@media (max-width:766px) {
+    .navbar-nav{
+        margin:0;
+    }
+}
+@media (max-width:766px) {
+    .navbar-collapse{
+        padding:0;
+    }
+}
 /*****************************************************************/
 @media (max-width: 1007px){
     .nav_top li{
@@ -220,7 +243,7 @@ nav {
 
 @media (max-width:767px) {
     .main_form {
-        margin-left: 3%;
+        margin-left: 50px;
 
     }
 }
@@ -249,7 +272,6 @@ nav {
     color: #052e6b;
     padding-top: 13%;
     font-weight: bold;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width:800px) {
@@ -263,7 +285,6 @@ nav {
     font-size: 1.5vw;
     color: #0076be;
     margin-top: 20px;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width:800px) {
@@ -301,7 +322,7 @@ nav {
 .main_text3 {
     font-size: 2.5vw;
     font-weight: bold;
-    color: #3c3d3e;
+    color: #171717;
 }
 
 .main_text4 {
@@ -352,7 +373,7 @@ nav {
 .main_text5 {
     font-size: 2.5vw;
     font-weight: bold;
-    color: #3c3d3e;
+    color: #171717;
     text-align: right;
 }
 
@@ -495,7 +516,6 @@ nav {
     color: #0076be;
     padding-bottom: 7%;
     margin-top: 7%;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 @media(max-width: 800px) {
