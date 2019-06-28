@@ -177,7 +177,8 @@ nav {
 }
 @media (max-width:766px) {
     .nav_top li a{
-        font-size: 17px !important;
+        font-size: 14px !important;
+        font-weight: lighter;
     }
 }
 @media (max-width:766px) {
