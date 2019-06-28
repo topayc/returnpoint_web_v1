@@ -160,9 +160,7 @@ section hr{display:none;}
 .p_join .checkbox li{position:relative;padding:5px 10px;font-size:12px;color:#666;}
 .p_join .checkbox li span{position:absolute;right:10px;top:10px;    text-decoration: underline;}
 .recommend .form-control{width:80%;float:left;}
-.recommend button{width:20%;float:left;height: 60px;}
-.recommend2 .form-control{width:68%;float:left;}
-.recommend2 button{width:32%;float:left;height: 60px;}
+.recommend button{width:20%;float:left;height: 60px;}L
 .chptcha_img img{width:70%;height:60px;border:1px solid #ddd;float:left;}
 .chptcha_img div{width:30%;float:left;}
 
@@ -455,9 +453,6 @@ btn-submit2{bottom: 0;border-radius: 0; background-color: #391dab; width: 100%; 
 .btn-basic{border-radius: 0; background-color: #ccc; width: 100%; border: 1px solid #ccc; color: #fff;padding: 19px;}
 .btn-basic:hover, .btn-basic:focus{color: #fff;background-color: #bbb; border-color: #bbb;}
 
-.btn-greenafter{border-radius: 0; background-color: #F4A460; width: 100%; border: 1px solid #F4A460; color: #fff;padding: 19px;}
-.btn-greenafter:hover, .btn-greenafter:focus{color: #fff;background-color: #FFDAB9; border-color: #F4A460;}
-
 .btn-green{border-radius: 0; background-color: #c9de39; width: 100%; border: 1px solid #c9de39; color: #fff;padding: 19px;}
 .btn-green:hover, .btn-green:focus{color: #fff;background-color: #b4cf00; border-color: #b4cf00;}
 
@@ -479,7 +474,7 @@ btn-submit2{bottom: 0;border-radius: 0; background-color: #391dab; width: 100%; 
 .alert_wrap .alert_body{padding: 3px 0;}
 .alert_wrap .alert_body #alertTitle{display: block;width: 100%; text-align: center;padding-top: 14px;}
 .alert_wrap .alert_body #alertMassage{display: block;width: 100%;text-align: center;padding-bottom: 12px;}
-.alert_wrap .alert_body strong { line-height: 27px; vertical-align: bottom;font-size: 13px; width: 100%; text-align: center; font-weight: 700; color: #c9c9c9; padding: 4px 8px; border-radius: 6px;}
+.alert_wrap .alert_body strong { line-height: 27px; vertical-align: bottom;font-size: 17px; width: 100%; text-align: center; font-weight: 700; color: #c9c9c9; padding: 4px 8px; border-radius: 6px;}
 .alert_wrap .alert_body strong i{font-size: 26px;padding-right:5px;}
 .alert_wrap .alert_body p{padding: 8px 0 0 0px;}
 .alert_wrap .alert_body .btns{display: flex;margin-top: 12px;border-top: 1px solid #f2f2f2;padding-top: 10px;}
@@ -577,7 +572,7 @@ height: 12px;left: 50%;background: #fff;border-right: 1px solid #ff6282;border-b
 /* server noti */
 .alert_wrap.noti .alert-info{background:url(../images/noti_server.jpg);max-width: 600px; height: 466px;border-radius: 13px;border:0;box-shadow:0px 0px 50px 11px rgba(4, 4, 4, 0.25);
     background-position: bottom right; background-position-x: 395px;background-position-y: 473px;}
-.noti .alert_body{padding:60px 0;text-align:center;color: #fff;}
+.noti .alert_body{padding:30px 0;text-align:center;color: #fff;}
 .noti i{font-size: 87px;}
 .noti .error_desk {width: 250px;margin: 0 auto;color: #444;}
 .noti .error_desk h2{padding: 22px 0 10px;}
