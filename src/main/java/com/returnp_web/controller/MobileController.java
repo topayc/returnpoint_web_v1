@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.context.MessageSourceAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,28 @@ public class MobileController extends MallBaseController {
 	@Autowired
 	private MobileMainService mms;
 
-	// 모바일앱 메인페이지
+	/*
+	 * @Autowired private MessageSourceAware messageSourceAware; public void
+	 * setMessageSource(MessageSource messageSource) throws BeansException {
+	 * this.messageSourceAware = messageSourceAware; }
+	 */
+
+	// intro 페이지
+	@RequestMapping("/intro/intro.do")
+	public String intro(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap dataMap = Util.getRPRmap("/mobile/intro/intro");
+		boolean bret = true;
+		/*
+		 * v : 밴사 이름 
+		 * tid : 해당 밴사에서 설치한 포스의 tid
+		 * */
+		if (p.containsKey("v") &&  p.get("v") != null && p.containsKey("tid") &&  p.get("tid") != null ) {
+			bret = mms.prepareIntro(Util.toRPap(p), dataMap, request, response); 
+		}
+		return page(bret, modelMap, dataMap);
+	}
+	
+	// 프론트 메인페이지
 	@RequestMapping("/main/index.do")
 	public String home(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/main/index");
@@ -132,13 +154,28 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}
 
-	// QR 코드 정보 생성
-	@RequestMapping("/qr/qrinfo")
-	public String qrInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	/*
+	 * KICC 전용 QR 포맷
+	 * QR 코드 정보 생성
+	 * */
+	@RequestMapping("/qr/kiccQrinfo")
+	public String kiccQrinfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/qr/qrinfo");
-		boolean bret = mms.qrImgView(Util.toRPap(p), rmap, request, response);
+		boolean bret = mms.kiccQrImgView(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
+	
+	/*
+	 * KICC 외의 표준 QR 포맷 
+	 * QR 코드 정보 생성
+	 * */
+	@RequestMapping("/qr/commonQrinfo")
+	public String qrInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/qr/qrinfo");
+		boolean bret = mms.commonQrImgView(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
+	
 	
 	// QR 코드 정보 생성
 	@RequestMapping("/qr/giftcard_qrinfo")
@@ -148,11 +185,18 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}
 
-	// QR 코드 적립 요청 Procy
+	//KICC  QR 코드 적립 요청 Procy
 	@ResponseBody
-	@RequestMapping(value = "/qr/qrAcc", method = RequestMethod.POST)
-	public String qrAccProxy(@RequestParam HashMap<String, String> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		return mms.qrAccProxy(p, map, request, response);
+	@RequestMapping(value = "/qr/kiccQrAcc", method = RequestMethod.POST)
+	public String kiccQrAcc(@RequestParam HashMap<String, String> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return mms.kiccQrAccProxy(p, map, request, response);
+	}
+	
+	// KICC QR 외의 일반 QR  적립 요청 Procy
+	@ResponseBody
+	@RequestMapping(value = "/qr/commonQrAcc", method = RequestMethod.POST)
+	public String  commonQrAcc(@RequestParam HashMap<String, String> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return mms.commonQrAccProxy(p, map, request, response);
 	}
 
 	// 내주변 상가 찾기

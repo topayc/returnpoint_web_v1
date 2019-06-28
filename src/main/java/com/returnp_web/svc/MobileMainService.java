@@ -1,17 +1,17 @@
 package com.returnp_web.svc;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+
 import com.returnp_web.utils.RPMap;
 
 /**
- * The Interface MobileMainService.
+ * The Interface FrontMainService.
  */
 @Service
 public interface MobileMainService {
@@ -77,7 +77,7 @@ public interface MobileMainService {
 	boolean greenPointConvertRequest(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
 
 	/**
-	 * 사용자->qr img 생성
+	 * kicc 전용 QR 이미지 생성
 	 *
 	 * @param p the p
 	 * @param rmap the rmap
@@ -86,9 +86,13 @@ public interface MobileMainService {
 	 * @return true, if successful
 	 * @throws Exception the exception
 	 */
-	boolean qrImgView(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
+	boolean kiccQrImgView(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
 
-	public String qrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	boolean commonQrImgView(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
+
+	public String kiccQrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	public String commonQrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	/**
 	 * 사용자->하단영역 정보
@@ -252,6 +256,8 @@ public interface MobileMainService {
 	boolean saveQnaNodeWAct(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception ;
 
 	boolean giftCardQrImgView(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	boolean prepareIntro(RPMap paramMap, RPMap dataMap, HttpServletRequest request, HttpServletResponse response);
 
 }
 

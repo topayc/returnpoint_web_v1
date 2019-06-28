@@ -10,11 +10,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.tagext.TryCatchFinally;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -44,7 +44,7 @@ import com.returnp_web.utils.Util;
 
 
 /**
- * The Class MobileMainServiceImpl.
+ * The Class FrontMainServiceImpl.
  */
 @PropertySource("classpath:/config.properties")
 @Service
@@ -52,7 +52,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 	private static final Logger logger = LoggerFactory.getLogger(MobileMainServiceImpl.class);
 
-	/** The mobile main dao. */
+	/** The front main dao. */
 	@Autowired
 	private MobileMainDao mobileMainDao;
 
@@ -365,19 +365,114 @@ public class MobileMainServiceImpl implements MobileMainService {
 	}
 
 	/* 
-	 * 영수증 적립 큐알 뷰 서비스 
+	 * Intro 페이지에서 추천인 (가맹점)이 있는 경우 해당 가맹점의 아이디를 추천인으로 설정
 	 */
 	@Override
-	public boolean qrImgView(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
-		System.out.println(">>>>>> qrImgView");
+	public boolean prepareIntro(RPMap paramMap, RPMap dataMap, HttpServletRequest request,
+			HttpServletResponse response) {
+	
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		try {
+			//dataMap.put("recommender", BASE64Util.encodeString("kjs67737389@gmail.com"));
+			dbparams.put("affiliateSerial", paramMap.get("tid")); 
+			dbparams.put("paymentRouterType", "VAN");
+			dbparams.put("paymentRouterName", paramMap.get("v"));
+			HashMap<String, Object> affiliateCommand = mobileMemberDao.selectAffiliateCommand(dbparams);
+			dataMap.put("recommender", affiliateCommand.get("memberEmail"));
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	/* 
+	 * KICC 전용 영수증 적립 큐알 뷰 서비스 
+	 */
+	@Override
+	public boolean kiccQrImgView(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
 		HashMap<String, Object> dbparams = new HashMap<String, Object>();
 		String decode64Qr = null;
 
 		try {
 			decode64Qr = BASE64Util.decodeString(p.getStr("qr_data"));
+			
 			URL url = new URL(decode64Qr);
 			String queryParmStr = url.getQuery();
+			
+		/*	System.out.println("-------------------------------kiccQrImgView - KICC QR 데이타--------------------------------------");
+			System.out.println(decode64Qr);
+			System.out.println(queryParmStr);
+			System.out.println("----------------------------------------------------------------------------------------------------------");*/
 
+			HashMap<String, String> qrParsemap = QRManager.parseQRToMap(queryParmStr);
+			
+			if (qrParsemap == null) {
+				rmap.put("qr_parsing_result", "error");
+				rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE");
+			} else {
+				// 가맹점 정보
+				dbparams.put("tid", qrParsemap.get("af_id")); // 가맹점 시리얼 넘버 조회
+				ArrayList<HashMap<String, Object>> affiliateTids = mobileMemberDao.selectAffiliateTid(dbparams);
+				if (affiliateTids.size() < 1) {
+					rmap.put("qr_parsing_result", "error");
+					rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE  </br>존재하지 않는 가맹점 코드[" +qrParsemap.get("af_id")  +  "]");
+					return true;
+				}
+				dbparams.clear();
+				
+				// 가맹점 조회
+				dbparams.put("affiliateNo", affiliateTids.get(0).get("affiliateNo"));
+				dbparams.put("affiliateSerial", qrParsemap.get("af_id"));
+				dbparams.put("paymentRouterType", qrParsemap.get("paymentRouterType"));
+				dbparams.put("paymentRouterName", qrParsemap.get("paymentRouterName"));
+				HashMap<String, Object> affiliateInfo = mobileMemberDao.selectAffiliateCommand(dbparams);
+				
+				if (affiliateInfo == null) {
+					rmap.put("qr_parsing_result", "error");
+					rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE  </br>유효하지 않은 가맹점[" +qrParsemap.get("af_id")  +  "]");
+				} else {
+					rmap.put("qr_parsing_result", "success");
+					rmap.put("qr_org", p.getStr("qr_data"));
+					
+					//rmap.put("qr_pay_type_str", p.getStr("pay_type").equals("1") ? "신용카드 결제" : "현금 결제");
+					rmap.put("qrAccessUrl", QRManager.genQRCode(request.getSession().getServletContext().getRealPath("/qr_temp"), "/qr_temp", decode64Qr, null));
+					Util.copyRPmapToMap(rmap, qrParsemap);
+					rmap.put("affiliateName", affiliateInfo.get("affiliateName"));
+
+					float amountAccumulated = Float.parseFloat(qrParsemap.get("pam")); // 가맹점 시리얼 넘버 조회
+					HashMap<String, Object> policy = mobileMemberDao.selectPolicyPointTranslimit(dbparams);
+
+					float customerComm = (float) policy.get("customerComm");
+					float qramountAcc = (amountAccumulated * customerComm);
+					rmap.put("qramountAcc", qramountAcc);
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	/* 
+	 * KICC 외의 일반 영수증 적립 큐알 뷰 서비스 
+	 */
+	@Override
+	public boolean commonQrImgView(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		String decode64Qr = null;
+
+		try {
+			decode64Qr = BASE64Util.decodeString(p.getStr("qr_data"));
+			System.out.println("------------------------------commonQrImgView 범용 QR 데이타--------------------------------------");
+			System.out.println(decode64Qr);
+			System.out.println("------------------------------------------------------------------------------------------------------------");
+			
+			URL url = new URL(decode64Qr);
+			String queryParmStr = url.getQuery();
 			HashMap<String, String> qrParsemap = QRManager.parseQRToMap(queryParmStr);
 
 			if (qrParsemap == null) {
@@ -385,12 +480,26 @@ public class MobileMainServiceImpl implements MobileMainService {
 				rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE");
 			} else {
 				// 가맹점 정보
-				dbparams.put("af_id", qrParsemap.get("af_id")); // 가맹점 시리얼 넘버 조회
-				HashMap<String, Object> affiliateInfo = mobileMemberDao.selectAffiliateInfo(dbparams);
+				dbparams.put("tid", qrParsemap.get("af_id")); // 가맹점 시리얼 넘버 조회
+				ArrayList<HashMap<String, Object>> affiliateTids = mobileMemberDao.selectAffiliateTid(dbparams);
+				if (affiliateTids.size() < 1) {
+					rmap.put("qr_parsing_result", "error");
+					rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE  </br>존재하지 않는 가맹점 코드[" +qrParsemap.get("af_id")  +  "]");
+					return true;
+				}
+				dbparams.clear();
+				
+				// 가맹점 조회
+				dbparams.put("affiliateNo", affiliateTids.get(0).get("affiliateNo"));
+				dbparams.put("affiliateSerial", qrParsemap.get("af_id"));
+				dbparams.put("paymentRouterType", qrParsemap.get("paymentRouterType"));
+				dbparams.put("paymentRouterName", qrParsemap.get("paymentRouterName"));
+				
+				HashMap<String, Object> affiliateInfo = mobileMemberDao.selectAffiliateCommand(dbparams);
 
 				if (affiliateInfo == null) {
 					rmap.put("qr_parsing_result", "error");
-					rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE  </br>존재하지 않는 가맹점 코드[" +qrParsemap.get("af_id")  +  "]");
+					rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE  </br>유효하지 않은 가맹점[" +qrParsemap.get("af_id")  +  "]");
 				} else {
 					rmap.put("qr_parsing_result", "success");
 					rmap.put("qr_org", p.getStr("qr_data"));
@@ -415,7 +524,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 		return true;
 	}
-
+	
 	/* 
 	 * 상품권 QR 코드  뷰 서비스 
 	 */
@@ -501,8 +610,11 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return true;
 	}
 	
+	/*
+	 * KICC 전용 포맷 QR 적립 요청
+	 * */
 	@Override
-	public String qrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request,	HttpServletResponse response) throws Exception {
+	public String kiccQrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request,	HttpServletResponse response) throws Exception {
 		String runMode = environment.getProperty("run_mode");
 		String remoteCallURL = environment.getProperty(runMode + ".qr_accumulate_point");
 		String key = environment.getProperty("key");
@@ -539,6 +651,49 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return response2.toString();
 	}
 
+
+	/*
+	 * KICC 외의 다른 일반 QR 적립 요청
+	 * */
+	@Override
+	public String commonQrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String runMode = environment.getProperty("run_mode");
+		String remoteCallURL = environment.getProperty(runMode + ".qr_accumulate_point");
+		String key = environment.getProperty("key");
+		StringBuffer response2 = null;
+		try {
+			URL url = new URL(remoteCallURL + "?" + Util.mapToQueryParam(p));
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setDoInput(true);
+			con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			con.setRequestMethod("GET");
+			int responseCode = con.getResponseCode();
+			BufferedReader in = null;
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				String inputLine;
+				response2 = new StringBuffer();
+				while ((inputLine = in.readLine()) != null) {
+					response2.append(inputLine);
+				}
+				in.close();
+				System.out.println("응답");
+				System.out.println(response2.toString());
+			} else {
+				System.out.println("포인트 백 적립 요청 에러");
+			}
+			System.out.println("포인트 백 적립 요청");
+			System.out.println(remoteCallURL + "?" + Util.mapToQueryParam(p));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return response2.toString();
+	}
+	
 	@Override
 	public HashMap<String, Object> getFooter(RPMap rmap) throws Exception {
 
@@ -974,4 +1129,5 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 		return true;
 	}
+
 }
