@@ -11,5 +11,7 @@ public interface DeviceMapper {
 	int  updateDeviceInfo(HashMap<String, Object> params);
 
 	HashMap<String,Object>  selectDeviceInfo(HashMap<String, Object> params);
+	
+	HashMap<String, Object> selectLastVersion(HashMap<String, Object> params);
 
 }

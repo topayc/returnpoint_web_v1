@@ -38,4 +38,8 @@ public class DeviceDao {
 		return sqlSession.getMapper(DeviceMapper.class).selectDeviceInfo(params);
 	}
 	
+	public HashMap<String, Object> selectLastVersion(HashMap<String, Object> params) {
+		return sqlSession.getMapper(DeviceMapper.class).selectLastVersion(params);
+	}
+	
 }

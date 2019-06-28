@@ -13,4 +13,5 @@ import com.returnp_web.controller.dto.ReturnpBaseResponse;
 @Transactional
 public interface DeviceService {
 	public ReturnpBaseResponse registPushToken(HashMap<String, Object> paramMap, ModelMap map, HttpServletRequest request, HttpServletResponse response);
+	public String getVersion(HashMap<String, Object> paramMap, ModelMap modelMap, HttpServletRequest request, HttpServletResponse response);
 }
