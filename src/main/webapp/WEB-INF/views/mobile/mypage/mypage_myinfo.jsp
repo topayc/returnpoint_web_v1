@@ -17,7 +17,8 @@
 <!-- font -->
 <link rel="stylesheet" href="/resources/css/m_common.css">
 <!-- js -->
-<script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script> -->
+<script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script> 
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -51,6 +52,46 @@ $(document).ready(function(){
 	/* 카카오 초기화 */
 	Kakao.init(appInfo.key.kakao);
 });
+function changeMemberConfig(configName, value){
+	bridge.getSessionValue('PREF_ALL_SESSION', function(result){
+		  var userAuthToken;
+		  var ajax;
+		  if (!result) {
+			  ajax = true;
+		  }else {
+			  result = JSON.parse(result)
+			  userAuthToken = result.user_auth_token;
+		  }
+			value = value == true ? "Y": "N";
+			var param = {memberConfigName : configName , value : value}
+			var url = "/m/mypage/m_change_member_config.do"
+				$.ajax({
+					method : "get",
+					url    : url,
+					dataType: "json",
+					data   :  param,
+					
+					beforeSend : function(xhr){
+					     if (!userAuthToken) {
+							 xhr.setRequestHeader("AJAX","true");
+					     }else {
+					    	 xhr.setRequestHeader("user_auth_token",userAuthToken);
+					     }
+					},
+					
+					success: function(data) {
+						if (configName == "devicePush"  && value == "Y"){
+							 bridge.setPushToken();
+						} 
+					},
+					error: function (request, status, error) {
+						alertOpen("확인", data.result.msg, false, true, null, null);
+					}
+				});
+	  }); 
+	
+
+}
 </script>
 <script type="text/javascript">
 
@@ -207,8 +248,14 @@ function recommendSms(data){
 			<!-- 알림 설정 -->
 			<div class="list_title"><i class="fas fa-bell"></i>&nbsp;<spring:message code="label.noticeService" /></div>
 			<div class="list_li">
-				<span class = "item_title"><spring:message code="label.pushNoti" /></span>
-				<div class="switch_w"><label class="switch"><input type="checkbox" checked><span class="sslider round"></span></label></div>
+				<span class = "item_title"><spring:message code="label.pushNoti" /></span></br>
+				<span class ="item_des"><spring:message code="label.pushNotiDes" /></span>
+				<div class="switch_w"><label class="switch"><input onchange = "changeMemberConfig('devicePush', this.checked)" type="checkbox" <c:if test = "${model.memberConfig.devicePush == 'Y'}">checked </c:if>><span class="sslider round"></span></label></div>
+			</div>
+			<div class="list_li">
+				<span class = "item_title"><spring:message code="label.emailNoti" /></span></br>
+				<span class ="item_des"><spring:message code="label.emailDes" /></span>
+				<div class="switch_w"><label class="switch"><input  onchange = "changeMemberConfig('emailReceive', this.checked)"  type="checkbox" <c:if test = "${model.memberConfig.emailReceive == 'Y'}">checked </c:if>><span class="sslider round"></span></label></div>
 			</div>
 			<div data-toggle="collapse" data-target="#recommend_app" class="list_li collapsed">
 				<a>

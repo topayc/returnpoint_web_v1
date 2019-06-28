@@ -8,7 +8,7 @@
 <div class="alert_wrap" id="alertView" name="alertView" style="display:none;">
   <div class="alert alert-info">
     <div class="alert_body">
-    	<button type="button" class="close" id="alertClose" name="alertClose" onclick='javascript:alertClose();'>&times;</button>
+    	<!-- <button type="button" class="close" id="alertClose" name="alertClose" onclick='javascript:alertClose();'>&times;</button> -->
     	<!-- <span id="alertTitle" name="alertTitle"><strong><i class="fas fa-info-circle"></i> Warning!</strong></span> --> 	
     	<!-- <span id="alertMassage" name="alertMassage"><p>alert 메시지가 들어가는 곳입니다.</p></span> -->
     	<span id="alertTitle" name="alertTitle"></span>
@@ -67,6 +67,8 @@
 							</c:otherwise>
 						</c:choose>				 
 						<li><a onclick="location='/m/map/rpmap.do'"><i class="fas fa-map-marker-alt"></i><spring:message code="label.topper.menu.search_aff" /></a></li>
+						<%-- <li><a href="/m/giftCard/giftCardDetail.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> --%>
+						<li><a href="/m/giftCard/giftCardList.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> 
 						<li><a href="/m/mypage/m_selectLanguage.do"><i class="fas fa-globe-americas"></i> <i class="fas fa-sort-down"></i><spring:message code="label.mypageLanguage" /></a></li>
 						<li><a href="/m/board/board.do"><i	class="fas fa-comment"></i><i class="fas fa-sort-down"></i><spring:message code="label.topper.menu.customer_center" /></a></li>
 						<c:choose>

@@ -173,6 +173,7 @@ $(document).ready(function(){
 							<fmt:formatNumber var = "rpayWithdrawMaxLimit"  value="${model.policy.rPayWithdrawalMaxLimit}" pattern="###,###,###,###" scope = "page"/> --%>
 							<ul class="pointinfo">
 								<%-- <li>- <strong><spring:message code="label.rpay_withdrawal_quide" arguments="${model.policy.rPayWithdrawalMinLimit}, ${model.policy.rPayWithdrawalMaxLimit}" /></strong></li> --%>
+								<li>- <span style = "color : green;"><strong><spring:message code="label.rpay_withdrawal_fee_policy" /></strong></span></li>
 								<li>- <strong><spring:message code="label.rpay_total_withdrawal_one_day" arguments="${model.rpayTotalWithdrawal}" /></strong></li>
 								<li>- <strong><spring:message code="label.rpay_withdrawable_amount" arguments="${model.policy.rPayWithdrawalMaxLimit - model.rpayTotalWithdrawal}" /></strong></li>
 							</ul>

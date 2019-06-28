@@ -23,6 +23,7 @@
 <script type="text/javascript" src="/resources/js/lib/m_member.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);  

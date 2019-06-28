@@ -238,7 +238,7 @@ function gpointDetailView(f, searchtime){
 	<section style="padding-top: 50px;">
 		<div class="rp_total">
 	      <p><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/>P</p>
-	      <h6><spring:message code="label.total_gpoint" /></h6>
+	      <h6>Total G-POINT</h6>
 	    </div>
 		<!-- 노드 타입에 따라 글자, 색상이 구분을 나옴, foreach문 처리 -->
 		<!-- 1 회원 2 정회원 3 지사 4 대리점 5 협력업체 6 영업관리자 7 총판 -->

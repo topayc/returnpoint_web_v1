@@ -61,7 +61,6 @@
 			<div class="qrimg" style ="width:70%;height:70%">
 				<img style ="width:100%;height:100%" src="${model.qrAccessUrl}">
 			</div> 
-			
 			<div style = "margin-top:50px">
 				<span style = "font-weight:400; font-size:13px;color : #999999">
 					<spring:message code="label.use_join_qr_code"/>

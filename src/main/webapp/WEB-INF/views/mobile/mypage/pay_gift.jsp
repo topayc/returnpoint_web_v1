@@ -57,23 +57,23 @@ function resetGpointvalue(postfixId){
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->
-		<h4>R-PAY</h4>
+		<h4>R-POINT</h4>
 	</header> 
 	<!-- content begin -->   
 	<section style="padding-top: 50px;">
 		<div class="rp_total">
 	      <p><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/>P</p>
-	      <h6>Total R-PAY</h6>
+	      <h6>Total R-POINT</h6>
 	    </div>
 		<div class="tab-content">
 			<ul class="tabtitle">
-				<li><a href="/m/mypage/newpay.do">R-PAY 전환내역</a></li>
-				<li class="active"><a href="/m/mypage/pay_gift.do">R-PAY 선물하기</a></li>
+				<li><a href="/m/mypage/newpay.do">R-POINT 전환내역</a></li>
+				<li class="active"><a href="/m/mypage/pay_gift.do">R-POINT 선물하기</a></li>
 			</ul>  
           <div id="Rpoint" class="tab-pane fade in active">               
             <div class="listbox rplist">
                <div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/></span></div>
-               <a type="button"  class="listbtn" onclick="resetRpointvalue();"><i class="fas fa-gift"></i><spring:message code="label.pointRGift"/></a>
+               <a type="button"  class="listbtn" onclick="resetRpointvalue();"><i class="fas fa-gift"></i><spring:message code="label.gift"/></a>
             </div>
           </div>
       </div>

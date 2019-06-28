@@ -56,6 +56,12 @@ $(document).ready(function(){
 				<input type = "hidden" class = "returnp_qr"  id ="pat" value = "${model.pat}"/>
 				<input type = "hidden" class = "returnp_qr"  id ="pan" value = "${model.pan}"/>
 				<input type = "hidden" class = "returnp_qr"  id ="pas" value = "${model.pas}"/>
+				
+				<!-- KICC 외의 다른 밴일 경우는 아래의 2개의 태그가 생성되어, 적립시 서버로 전송됨 -->
+				<c:if test = "${not empty model.paymentRouterType}"> <input type = "hidden" class = "returnp_qr"  id ="paymentRouterType" value = "${model.paymentRouterType}"/> </c:if>
+				<c:if test = "${not empty model.paymentRouterName}"> <input type = "hidden" class = "returnp_qr"  id ="paymentRouterName" value = "${model.paymentRouterName}"/> </c:if>
+				<c:if test = "${not empty model.seq}"> <input type = "hidden" class = "returnp_qr"  id ="seq" value = "${model.seq}"/> </c:if>
+				
 				<li><span  class = "gift_qr_title">결제 방식</span> ${model.pay_type_str}</li>
 				<li><span id = "pam"  class = "gift_qr_title" >결제 금액</span> <fmt:formatNumber value="${model.pam}" pattern="###,###,###,###"/></li>
 				<li><span  class = "gift_qr_title">가맹 점이름</span> ${model.affiliateName}</li>

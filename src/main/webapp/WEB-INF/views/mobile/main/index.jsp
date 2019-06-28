@@ -23,16 +23,20 @@
 <!-- font -->
 <link rel="stylesheet" href="/resources/css/m_common.css">
 <!-- js -->
-<script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script> -->
+<script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script> 
+
+<!-- 가맹점롤링 -->
+<!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script> -->
+
+<!-- 가맹점롤링 -->
+<script type="text/javascript" src="/resources/js/lib/m_slick.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 
-<!-- 가맹점롤링 --><script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-<!-- 가맹점롤링 --><script type="text/javascript" src="/resources/js/lib/m_slick.js"></script>
 
 <script type="text/javascript">
-
 // 가맹점롤링 시작
 $(document).on('ready', function() {
     $(".center").slick({
@@ -140,7 +144,7 @@ function searchMap(){
 <!-- body begin -->
 <body class="index">
    <!-- 0921 이벤트 노티 -->
-   <div class="alert_wrap event" id="eventAlert" name="eventAlert" style = "display:none">
+<%--    <div class="alert_wrap event" id="eventAlert" name="eventAlert" style = "display:none">
      <div class="alert alert-info">
        <button type="button" class="close" id="alert_cancel" name="alertClose"  onclick='javascript:alertClose("event");'>&times;</button>
        <c:choose>
@@ -154,25 +158,30 @@ function searchMap(){
          </c:otherwise>
       </c:choose>
      </div>
-   </div>  
+   </div>   --%>
    <!-- 0831 서버점검 노티 -->
    <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }">
-   <div class="alert_wrap noti" id="alertView" name="alertView"  ><!--  style 부분에 display:none;을 빼주심 활성화되요 -->
+  	<div class="alert_wrap noti" id="alertView" name="alertView"  ><!--  style 부분에 display:none;을 빼주심 활성화되요 -->
      <div class="alert alert-info">
-        <button type="button" class="close" id="alert_cancel" name="alertClose"  onclick='javascript:alertClose("noti");' style = "color : #000000">&times;</button>
+        <button type="button" class="close" id="alertClose" name="alertClose"  onclick='javascript:alertClose("noti");' style = "color : #000000">&times;</button>
        <div class="alert_body">
-          <i class="fas fa-exclamation-triangle"></i>
+           <i class="fas fa-volume-up"></i>
            <div class="error_desk">
-               <h2><spring:message code="label.server_check" /></h2>
-               <h4><spring:message code="label.server_check_detail" /></h4>
+               <p style = "margin-bottom : 15px">
+               		<span style = "font-size : 20px; font-weight : bold">R-포인트 출금 수수료 조정</span>
+               	</p>
+               <h4>현행 6,3% 수수료를 플랫폼 부가세 납부 수준을 반영하여, </br>13%(부가세 10% + 운영비 3%)로 부득불 시행함을 알려드립니다.</h4>
                </br>
-               <h4><spring:message code="label.server_check_detail_2" /></h4>
+               <h4>
+               	<p>시행일시 : 2019년 5월 15일 0시</p>
+               
+               </h4>
                </br>
-              <h4><a href = "javascript:closePopupNotToday('alertView')" ><strong style = "color : #000000"><spring:message code="label.not_view_today" /></strong></a></h4>
+              <h4><a href = "javascript:closePopupNotToday('alertView')" ><strong style = "color : #666666"><spring:message code="label.not_view_today" /></strong></a></h4>
            </div>
        </div>
      </div>
-   </div>
+   </div> 
    </c:if>
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
@@ -191,7 +200,7 @@ function searchMap(){
          <p><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/>P</p>
          <ul>
             <li><a onclick = "movePage('/m/mypage/m_rpay_use_manage.do?memberNo=${model.memberTypeInfo.memberNo}')" ><i class="fas fa-qrcode"></i>&nbsp;<spring:message code="label.use" /></a></li>
-            <li><a href="/m/mypage/point_gift.do"><i class="fas fa-gift"></i>&nbsp;<spring:message code="label.gift" /></a></li>
+            <li><a href="/m/mypage/pay_gift.do"><i class="fas fa-gift"></i>&nbsp;<spring:message code="label.gift" /></a></li>
             <li><a href="/m/mypage/newpoint.do"><i class="fas fa-list-ul"></i>&nbsp;<spring:message code="label.transition_history" /></a></li>
          </ul>
        </div>
@@ -218,19 +227,24 @@ function searchMap(){
       <input id="text_address" type="text" class="form-control" placeholder="ex)강남역, 시청역, 김포 ...">
       <i class="fas fa-search" onclick="searchMap()"></i>
       </div>
-     <ul class="banner">
-        <li><a href=""><img src="/resources/images/m_banner01.jpg" /></a></li>
-         <li><a href="https://sincar.co.kr/UID=rp4282"><img src="/resources/banner/new_car_mall.png" /></a></li>
-        <li><a href=""><img src="/resources/images/m_banner03.jpg" /></a></li>
+   <ul class="banner">
+        <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo3"><img src="/resources/banner/gift_card_banner.jpg" /></a></li>
+          <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo1"><img src="/resources/banner/20190502_133801490.jpg" /></a></li>
+       <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo2"><img src="/resources/banner/insurance_banner.jpg" /></a></li>
      </ul>
-     <div class="footinfo">
+<%--      <div class="footinfo">
         <a href="/m/company/service_member.do"><spring:message code="label.what_return_point" /></a><small>/</small>
         <a href="/m/board/qna_node.do"><spring:message code="label.affiliated_inquiry" /></a><small>/</small>
         <a href="/m/board/faq.do">FAQ</a>
         <p>TOTAL<br /><span class="total">${model.memberTotal} </span></p>
-     </div>
+     </div> --%>
    </section>
 </div>
+<script>
+if (appInfo && appInfo['access'] && appInfo['access'] == "APP") {
+	checkVersion()
+}
+</script>
 </body>
 <!-- body end -->
 </html>
