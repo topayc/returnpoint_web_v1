@@ -544,5 +544,15 @@ public interface MobileMapper {
 	int selectWithdrawalSumPerDay(HashMap<String, Object> params);
 	
 	HashMap<String,Object> selectGiftCardIssue(HashMap<String, Object> params);
+	
+	HashMap<String,Object> selectMemberConfig(HashMap<String, Object> params);
+
+	int insertMemberConfigl(HashMap<String, Object> params);
+
+	int  updateMemberConfig(HashMap<String, Object> dbparams);
+	
+	ArrayList<HashMap<String, Object>>  selectAffiliateTid(HashMap<String, Object> dbparams);
+
+	HashMap<String, Object> selectAffiliateCommand(HashMap<String, Object> dbparams);
 
 }

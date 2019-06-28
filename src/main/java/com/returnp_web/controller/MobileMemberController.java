@@ -159,6 +159,15 @@ public class MobileMemberController extends MallBaseController{
 		boolean bret = mms.deleteMemberBankAccount(Util.toRPap(p), rmap, request, response);
 		return rmap.getStr("json");
 	}	
+	
+	//멤버 설정 변경
+	@RequestMapping(value = "/mypage/m_change_member_config",method = RequestMethod.GET)
+	@ResponseBody
+	public String mChangeMemberConfig(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.changeMemberConfig(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}	
 		
 	//출금 요청 리스트 화면  
 	@RequestMapping("/mypage/m_rpay_withdrawal_list")

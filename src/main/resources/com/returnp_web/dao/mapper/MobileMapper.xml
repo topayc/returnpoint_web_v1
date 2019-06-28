@@ -902,7 +902,7 @@
 		AND (withdrawalStatus='1' OR withdrawalStatus='2')
 	</select> 
 	
-			<!--핀넘버 조회에 의한 상품권 발행 정보 가져오기-->
+	<!--핀넘버 조회에 의한 상품권 발행 정보 가져오기-->
 	<select id="selectGiftCardIssue" parameterType="HashMap" resultType="HashMap">
 		SELECT *
 		FROM  gift_card_issue
@@ -910,6 +910,33 @@
 		WHERE 	pinNumber = #{pinNumber}
 	</select> 
 	
+	<!-- 회원 설정 가져오기 -->
+	<select id="selectMemberConfig" parameterType="HashMap" resultType="HashMap">
+		SELECT *
+		FROM member_config
+		WHERE 	memberNo = #{memberNo}
+	</select> 
 
+	<!-- 회원 설정 인서트 -->
+	<insert id="insertMemberConfigl" parameterType="HashMap" >
+		INSERT INTO member_config (memberNo, devicePush, emailReceive, createTime, updateTime) values(#{memberNo},#{devicePush} ,#{emailReceive} ,NOW(), NOW())
+	</insert> 
+
+	<!-- 회원 설정 업데이트 -->
+	<update id="updateMemberConfig" parameterType="HashMap" >
+	UPDATE member_config
+		<set>
+			<if test="devicePush !=null">
+				devicePush=#{devicePush},
+			</if>
+			<if test="emailReceive !=null">
+				emailReceive=#{emailReceive},
+			</if>
+			updateTime=NOW()
+		</set>
+		<where>
+			AND memberNo= #{memberNo}
+		</where>		 
+	</update>
 	
 </mapper>

@@ -582,5 +582,26 @@ public class MobileMemberDao {
 	public HashMap<String,Object> selectGiftCardIssue(HashMap<String, Object> params){
 		return sqlSession.getMapper(MobileMapper.class).selectGiftCardIssue(params);
 	}
+	
+	public HashMap<String,Object> selectMemberConfig(HashMap<String, Object> params){
+		return sqlSession.getMapper(MobileMapper.class).selectMemberConfig(params);
+	}
+	
+	public int insertMemberConfigl(HashMap<String, Object> params) {
+		return sqlSession.getMapper(MobileMapper.class).insertMemberConfigl(params);
+	}
+
+	public int updateMemberConfig(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMapper.class).updateMemberConfig(dbparams);
+		
+	}
+	
+	public ArrayList<HashMap<String, Object>>  selectAffiliateTid(HashMap<String, Object> dbparams){
+		return sqlSession.getMapper(MobileMapper.class).selectAffiliateTid(dbparams);
+	}
+
+	public HashMap<String, Object> selectAffiliateCommand(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMapper.class).selectAffiliateCommand(dbparams);
+	}
 
 }
