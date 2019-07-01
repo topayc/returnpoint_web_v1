@@ -23,8 +23,8 @@
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="nav navbar-nav nav_top">
                     <li><a href="/main/index.do"><spring:message code="label.web.home"/></a></li>
-                    <li><a href="/company/service_member.do"><spring:message code="label.web.serviceInformation"/></a></li>
                     <li><a href="/company/company_identity.do"><spring:message code="label.web.companyIntroduction"/></a></li>
+                    <li><a href="/company/service_member.do"><spring:message code="label.web.serviceInformation"/></a></li>
                     <li><a href="/board/franchisee_info.do"><spring:message code="label.web.findaMerchant"/></a></li>
                     <li><a href="/board/faq.do"><spring:message code="label.web.faq"/></a></li>
                     <li><a href="/board/notice.do"><spring:message code="label.web.notice"/></a></li>

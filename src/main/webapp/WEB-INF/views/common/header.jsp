@@ -16,11 +16,11 @@
 <meta property="og:title" content="ReturnP">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.returnp.com/resources/images/sns_url_link_img.png">
-<link rel="stylesheet" href="/resources/web_css/common.css">
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="/resources/js/lib/common.js"></script>
+<link rel="stylesheet" href="/resources/web_css/common.css">
 <script type="text/javascript" src="/resources/js/lib/ScrollTrigger.min.js"></script><!-- 메인 스크롤 이벤트 -->
 <script type="text/javascript">
 $(document).ready(function(){
