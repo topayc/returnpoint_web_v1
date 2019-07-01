@@ -939,4 +939,98 @@
 		</where>		 
 	</update>
 	
+		<!-- 가맹점 tid 조회-->
+	<select id="selectAffiliateTid" parameterType="HashMap" resultType="HashMap">
+		SELECT *
+		FROM affiliate_tid
+		WHERE 
+		1 =1 
+		<if test="affiliateTidNo != null "> AND affiliateTidNo = #{affiliateTidNo} </if>
+      	<if test="memberNo != null"> AND memberNo =  #{memberNo} </if>
+      	<if test="affiliateNo != null"> AND affiliateNo =  #{affiliateNo} </if>
+      	<if test="tid != null"> AND tid =  #{tid} </if>
+	</select> 
+	
+		<!--조인을 통한 가맹점 정보 조회 -->
+	<select id="selectAffiliateCommand" parameterType="HashMap" resultType="HashMap">
+	 select
+    AF.affiliateNo, 
+	APR.paymentRouterNo, 
+    (SELECT A.paymentRouterType from payment_router as A WHERE paymentRouterNo = APR.paymentRouterNo) as paymentRouterType,
+    (SELECT B.paymentRouterName from payment_router as B WHERE paymentRouterNo = APR.paymentRouterNo) as paymentRouterName,
+    (SELECT C.paymentRouterCode  from payment_router as C WHERE paymentRouterNo = APR.paymentRouterNo) as paymentRouterCode,
+    AT.tid as affiliateSerial, 
+    AF.affiliateCode, 
+    AF.affiliateName, 
+    AF.affiliateAddress, 
+    AF.affiliateTel, 
+    AF.affiliatePhone, 
+    AF.affiliateType,
+    AF.affiliateComm,
+    AF.giftCardPayRefundRate,
+    AF.memberNo, 
+    AF.agencyNo, 
+    AF.recommenderNo, 
+    AF.affiliateStatus,
+    AF.regType, 
+    AF.regAdminNo, 
+    AF.affiliateEmail, 
+    AF.greenPointAccStatus, 
+    AF.redPointAccStatus, 
+    AF.greenPointUseStatus, 
+    AF.redPointUseStatus, 
+    AF.createTime, 
+    AF.updateTime,
+  	M.memberEmail as memberEmail, 
+    M.memberName as memberName, 
+    M.memberPhone as memberPhone, 
+    GP.pointAmount as greenPointAmount, 
+    RP.pointAmount as redPointAmount,
+    MA.memberAddressNo, 
+    MA.memberNo, 
+    MA.nodeNo, 
+    MA.nodeType, 
+    MA.roadFullAddr, 
+    MA.roadAddrPart1, 
+    MA.roadAddrPart2, 
+    MA.addrDetail, 
+    MA.engAddr, 
+    MA.jibunAddr, 
+    MA.zipNo, 
+    MA.admCd, 
+    MA.rnMgtSn, 
+    MA.bdMgtSn, 
+    MA.lat, 
+    MA.lng,
+    M2.memberName as recommenderName,
+    AG.agencyName    
+	from affiliate as AF  
+    inner join member as M on (AF.memberNo = M.memberNo)
+    inner join red_point as RP on (AF.memberNo = RP.memberNo)
+    inner join green_point as GP on (AF.memberNo = GP.memberNo AND GP.nodeType ='5' )    
+    left outer join member_address as MA on (AF.affiliateNo = MA.nodeNo AND MA.nodeType ='5' )
+    left outer join member as M2 on (AF.recommenderNo = M2.memberNo)
+    left outer join agency as AG on (AF.agencyNo= AG.agencyNo)
+    inner join affiliate_tid AT on (AF.affiliateNo = AT.affiliateNo)
+    left outer join affiliate_payment_router as APR on (AF.affiliateNo= APR.affiliateNo)
+    where 
+    1 = 1
+      <if test="affiliateNo != null">AND AF.affiliateNo = #{affiliateNo,jdbcType=INTEGER} </if>
+      <if test="memberNo != null">AND AF.memberNo = #{memberNo,jdbcType=INTEGER} </if>
+      <if test="agencyNo != null">AND AF.agencyNo = #{agencyNo,jdbcType=INTEGER} </if>
+      <if test="affiliateSerial != null">AND AF.affiliateSerial = #{affiliateSerial,jdbcType=VARCHAR} </if>
+      <if test="affiliateType != null">AND AF.affiliateType = #{affiliateType,jdbcType=VARCHAR} </if>
+      <if test="recommenderNo != null">AND AF.recommenderNo = #{recommenderNo,jdbcType=INTEGER} </if>
+      <if test="greenPointAccStatus != null"> AND AF.greenPointAccStatus = #{greenPointAccStatus,jdbcType=INTEGER} </if>
+      <if test="redPointAccStatus != null"> AND AF.redPointAccStatus = #{redPointAccStatus,jdbcType=INTEGER} </if>
+      <if test="greenPointUseStatus != null"> AND AF.greenPointUseStatus = #{greenPointUseStatus,jdbcType=INTEGER} </if>
+      <if test="redPointUseStatus != null"> AND AF.redPointUseStatus = #{redPointUseStatus,jdbcType=INTEGER} </if>
+      <if test="affiliateStatus != null and affiliateStatus !=  '0'  and affiliateStatus !=  0">AND AF.affiliateStatus = #{affiliateStatus,jdbcType=VARCHAR} </if>
+      <if test="regType != null">AND AF.regType = #{regType,jdbcType=CHAR} </if>
+      <if test="regAdminNo != null">AND AF.regAdminNo = #{regAdminNo,jdbcType=INTEGER} </if>
+      <if test="paymentRouterType != null"> AND (SELECT paymentRouterType from payment_router WHERE paymentRouterNo = APR.paymentRouterNo) = #{paymentRouterType,jdbcType=VARCHAR} </if>
+      <if test="paymentRouterName != null"> AND (SELECT paymentRouterName from payment_router WHERE paymentRouterNo = APR.paymentRouterNo) = #{paymentRouterName,jdbcType=VARCHAR} </if>
+      <if test="paymentRouterCode != null"> AND (SELECT paymentRouterCode from payment_router WHERE paymentRouterNo = APR.paymentRouterNo) = #{paymentRouterCode,jdbcType=VARCHAR} </if>
+		
+	</select> 
 </mapper>

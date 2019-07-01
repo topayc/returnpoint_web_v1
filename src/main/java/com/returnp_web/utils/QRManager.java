@@ -86,7 +86,7 @@ public class QRManager {
 			String.format("%04d", field5);
 		System.out.println("----------------------KICC 큐알 적립 원본 데이타--------------------");
 		System.out.println(qrPText);
-		System.out.println("----------------------KICC 큐알 적립 원본 데이타--------------------");
+		System.out.println("------------------------------------------------------------------------");
 		/*VAN 시간을 내부 포맷으로 변경*/
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		GregorianCalendar calendar = new GregorianCalendar(
@@ -114,8 +114,6 @@ public class QRManager {
 		System.out.println(qrPText);
 		System.out.println("--------------------------------------------------------------------------------------");*/
 		try {
-			qrMap.put("paymentRouterType", "VAN");  //결제 라우터 타입
-			qrMap.put("paymentRouterName", "KICC");  //결제 라우터 이름  
 			qrMap.put("pat", sdf2.format(date));  //승인시간
 			qrMap.put("pan",  qrPText.substring(23, 27) + qrPText.substring(36) + qrPText.substring(12, 16));   // 승인 번호
 			qrMap.put("af_id", qrPText.substring(16, 23));  // 가맹점 번호
@@ -191,15 +189,11 @@ public class QRManager {
 		 * pas_str : 승인 상태에 따른 추가된 문자열
 		 * */
 		
-/*		System.out.println("-------------------------------QR Manager Common QR 파싱 데이타--------------------------------------");
+		System.out.println("-------------------------------QR Manager Common QR 파싱 데이타--------------------------------------");
 		System.out.println(qrPText);
-		System.out.println("---------------------------------------------------------------------------------------------------------------");*/
+		System.out.println("---------------------------------------------------------------------------------------------------------------");
 		
 		try {
-			qrMap.put("paymentRouterType", "VAN");  //결제 라우터 타입
-			qrMap.put("paymentRouterName", queryMap.get("v"));  //결제 라우터 이름
-			qrMap.put("seq", queryMap.get("s"));  // 포스별 고유 번호 
-			
 			qrMap.put("pat", sdf2.format(date));  //승인시간
 			qrMap.put("pan", qrPText.substring(12, 16) + qrPText.substring(23, 27) + qrPText.substring(36));   // 승인 번호
 			qrMap.put("af_id", qrPText.substring(16, 23));  // 가맹점 번호

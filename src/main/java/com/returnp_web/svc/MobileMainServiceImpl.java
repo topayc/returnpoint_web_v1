@@ -432,6 +432,10 @@ public class MobileMainServiceImpl implements MobileMainService {
 					rmap.put("qr_parsing_result", "error");
 					rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE  </br>유효하지 않은 가맹점[" +qrParsemap.get("af_id")  +  "]");
 				} else {
+					HashMap<String, String> queryMap = Util.queryToMap(queryParmStr);
+					rmap.put("paymentRouterType", "VAN");  //결제 라우터 타입
+					rmap.put("paymentRouterName", "KICC");  //결제 라우터 이름  
+					
 					rmap.put("qr_parsing_result", "success");
 					rmap.put("qr_org", p.getStr("qr_data"));
 					
@@ -501,6 +505,12 @@ public class MobileMainServiceImpl implements MobileMainService {
 					rmap.put("qr_parsing_result", "error");
 					rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE  </br>유효하지 않은 가맹점[" +qrParsemap.get("af_id")  +  "]");
 				} else {
+					
+					HashMap<String, String> queryMap = Util.queryToMap(queryParmStr);
+					rmap.put("paymentRouterType", "VAN");  //결제 라우터 타입
+					rmap.put("paymentRouterName", queryMap.get("v"));  //결제 라우터 이름
+					rmap.put("seq", queryMap.get("s"));  // 포스별 고유 번호 
+					
 					rmap.put("qr_parsing_result", "success");
 					rmap.put("qr_org", p.getStr("qr_data"));
 					//rmap.put("qr_pay_type_str", p.getStr("pay_type").equals("1") ? "신용카드 결제" : "현금 결제");

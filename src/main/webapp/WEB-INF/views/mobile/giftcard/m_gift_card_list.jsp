@@ -40,7 +40,7 @@
       <h4><spring:message code="label.mygiftcard" /></h4>
    </header>
  <section style="padding-top: 45px;">
- <div class="top_text"><h1>${fn:length(model.myGiftCards)}개의<br/>리턴포인트 상품권이 있습니다. </h1></div>
+ <div class="top_text"><h1>${fn:length(model.myGiftCards)}개의<br/>R.POINT 상품권이 있습니다. </h1></div>
  <div class="gift_card_nav">
 	<ul>
 		<li><a href="#" class = "gift_card_nav_a" id ="a_3"><spring:message code="label.pay_not" />&nbsp;<span class = "pay_not_count"></span></a></li>
@@ -54,14 +54,14 @@
 	<c:choose>
 		<c:when test = "${empty model.myGiftCards}">
 			<section class="qr_nodata" style = "background-color : #eeeeee;height:100%">
-				<div> 
+				<div style = "hight : 100%"> 
 					<i style = "color : #ccc;font-size : 60px" class="fas fa-exclamation-triangle"></i>
 					<span style = "font-size : 16px; color : #555555;font-weight: 400"><spring:message code="label.no_gift_card"/></span></div>
 			</section>
 		</c:when>
 		<c:otherwise>
 			<c:forEach items = "${model.myGiftCards}" var = "giftCard">
-				<div class="content giftcard" onclick = "giftCardDetail(${giftCard.myGiftCardNo})">
+				<div class="content giftcard"  onclick = "giftCardDetail(${giftCard.myGiftCardNo})">
 					<div class="con_box_icon">
 						<a href="#">
 							<img src="/resources/images/giftcard/rp${giftCard.giftCardAmount}.jpg" alt="상품권이미지1"/>

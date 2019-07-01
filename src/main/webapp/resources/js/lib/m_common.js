@@ -230,6 +230,12 @@ function goPlayStore() {
 	location.replace(storeURL);
 }
 
+function goUpdatePlayStore() {
+	// id 뒤에 앱 패키지명
+	storeURL = "market://details?id=" + appInfo.appPackage;
+	location.replace(storeURL);
+}
+
 function goAppStore() {
 	// id 뒤에 앱 패키지명
 	storeURL = 'http://itunes.apple.com/<country>/app/<app–name>/id<app-ID>?mt=8';
@@ -341,6 +347,16 @@ var bridge = (function () {
 		window.returnpAndroidBridge.setPushToken();
 	}
 	
+	function getData(key, defaultValue,  func){
+		callbackFunc = func;
+		window.returnpAndroidBridge.getData(key, defaultValue);
+	}
+
+	function isNavigationBar(func){
+		callbackFunc = func;
+		window.returnpAndroidBridge.isNavigationBar();
+	}
+	
 	/*
 	 * 안드로이드, IOS 여부에 따라 모듈 함수 세팅
 	 * ( 이부분은 차후 진행, 일단 안드로이드만 제공)
@@ -363,7 +379,8 @@ var bridge = (function () {
 		getMyLocation : getMyLocation,
 		sendSMS : sendSMS,
 		afterJoinComplete : afterJoinComplete,
-		setPushToken : setPushToken
+		setPushToken : setPushToken,
+		isNavigationBar : isNavigationBar
 	}
 	return exportFunc;
 })();
@@ -482,7 +499,7 @@ function sendPushTokenToServer(data){
         data: data,
         success: function (result) {
         	if (res.resultCode  == "100") {
-        		alert("토큰 저장 성공");
+        		$.messager.alert('알림', res.message);
         	}else {
         		$.messager.alert('알림', res.message);
         	}
@@ -493,7 +510,7 @@ function sendPushTokenToServer(data){
         dataType: 'json'
        });
 
-}
+} 
 function startPointBack(){
 	//$("#progress_loading").show();
 	var param = {};
@@ -508,15 +525,30 @@ function startPointBack(){
 			param["phoneNumber"] = info.phoneNumber;
 			param["phoneNumberCountry"]  = info.phoneNumberCountry;
 			param["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
+			console.log(param["phoneNumber"] + "</br>" + param["phoneNumberCountry"]);
 			for (key in param){
 				if (param.hasOwnProperty(key)) {
 					param[key] = encodeURIComponent(param[key]);
 				}
 			}
 			
-			/*실제 운영 포인트 백 서버 */
-			var  pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/qrAcc.do";
-			//ert(JSON.stringify(param));
+			var  pointBackUrl;
+
+			/* KICC 외의 일반 QR에 의한 적립 요청 주소 */
+			if (param["paymentRouterType"] && param["paymentRouterType"].trim().length != 0 &&  param["paymentRouterType"] == "VAN"){
+				if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KFTC" ){
+					pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrAcc.do";
+				}
+				/* KICC 전용 QR 에 의한 적립 요청 주소 */
+				else if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KICC" ){
+					pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/kiccQrAcc.do";
+				} 
+				else {
+					 alertOpen("알림", "잘못된 QR 정보입니다. <br/>관리자에게 문의해주세요", true, false, null, null);
+				}
+				
+			}
+			
 			$.ajax({
 	           	type: "POST",
 	               url: pointBackUrl,
@@ -578,6 +610,37 @@ function startPointBack(){
 	});
 }
 
+function checkVersion(){
+	var data = {};
+	var  url = window.location.protocol + "//" + window.location.host + "/m/device/getVersion.do";
+	$.ajax({
+       	type: "GET",
+        url: url,
+        data: data,
+        success: function (sVersionInfo) {
+        	var sVersion = sVersionInfo.split(":")[0];
+        	var sVersionApply = sVersionInfo.split(":")[1];
+        	if (sVersion != null && sVersion != "" && sVersionApply == "Y") {
+        		bridge.getSessionValue("version", function(aVersion){
+        			if (aVersion == null || aVersion == "" || Number(aVersion) < Number(sVersion)){
+        				/*$('#alert_ok').attr("onclick", "");*/
+        				alertOpen(
+        					"업데이트 알림", 
+        			 		"새로운 버젼의 앱이 출시되었습니다.<br>- 가카오톡 공유하기 수정 <br> - 수동, 자동 업데이트 (이후 부터 적용) <br> 구글 플레이스토어에서 '리턴포인트' 를 검색해서 </br>업데이트를 받아주세요", 
+        			 		true, 
+        			 		false, 
+        			 	    function(){/*goUpdatePlayStore()*/},
+        			 		null);	
+        			}
+        		})
+        	}
+        },
+        error : function(request, status, error){
+        	alertOpen("알림 ", "네트워트 장애 발생!  다시 시도해주세요", true, false, null, null);
+        },
+        dataType: 'text'
+       });
+}
 function startQRScan(){
 	if (appInfo.access != "APP")  {
 		executeAppOrGoStore();
@@ -589,28 +652,31 @@ function startQRScan(){
 			//alertOpen("확인", "QR Code로 부터 읽어들인 데이타가 없습니다" , true, false, null, null);
 		}else {
 			if (checkUrlForm(qrData)) {
-				/* 구매후 포인트 적립 요청 QR */
+				/*KICC 전용 QR 포맷에 의한 적립 요청*/
 				if (qrData.indexOf("PB.RETURNP.COM") > 0) {
 					/*QR code Base64 인코딩 전송*/
-					qrInfoUrl = window.location.protocol + "//" + window.location.host + "/m/qr/qrinfo.do?qr_data=" + btoa(unescape(encodeURIComponent(qrData)));
+					qrInfoUrl = window.location.protocol + "//" + window.location.host + "/m/qr/kiccQrinfo.do?qr_data=" + btoa(unescape(encodeURIComponent(qrData)));
 					webview_redirect(qrInfoUrl);
 					return;
-				}
-				if (qrData.indexOf("join.do") > 0) {
+					
+				} 
+				
+				/*KICC 외의 다른 밴사로 부터 온 QR 요청*/
+				else if (qrData.indexOf("https://ppb.rp.com") > 0) {
+					qrInfoUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrinfo.do?qr_data=" + btoa(unescape(encodeURIComponent(qrData)));
+					webview_redirect(qrInfoUrl);
+				} 
+				
+				/*회원 가입 QR */
+				else if (qrData.indexOf("intro.do") > 0) {
 					webview_redirect(qrData);
 					return;
+				}else {
+					alertOpen("확인", "유효하지 않은 QR 코드 입니다. </br> 관리자에게 문의 해주세요", true, false, null, null);
 				}
-				alertOpen("확인", "유효하지 않은 QR 코드 입니다. </br> 관리자에게 문의 해주세요", true, false, null, null);
-			}
-			
-			/* 
-			 * 큐알로 부터 읽어들인 데이타가 URL 형태가 아닌 경우 RETURNP 자체  큐알 명령 
-			 * */
-			else {
-				var qrData  = encodeURIComponent(qrData);
-				console.log(qrData);
-				qrInfoUrl = window.location.protocol + "//" + window.location.host + "/m//qr/giftcard_qrinfo.do?qr_data=" + qrData;
-				webview_redirect(qrInfoUrl);
+			}else{
+				/*큐알로 부터 읽어들인 데이타가 URL 형태가 아닌 경우 RETURNP 자체  큐알 명령 */
+				accumulateGiftCardQr(qrData);
 			/*	bridge.getPhoneNumber(function(phone){
 					console.log(phone);
 					phone = JSON.parse(phone);
@@ -622,6 +688,13 @@ function startQRScan(){
 			}
 		}
 	});
+}
+
+function accumulateGiftCardQr(data){
+	var data  = encodeURIComponent(data);
+	console.log(data);
+	qrInfoUrl = window.location.protocol + "//" + window.location.host + "/m//qr/giftcard_qrinfo.do?qr_data=" + data;
+	webview_redirect(qrInfoUrl);
 }
 
 function webview_redirect(uri) {
