@@ -662,7 +662,7 @@ function startQRScan(){
 				} 
 				
 				/*KICC 외의 다른 밴사로 부터 온 QR 요청*/
-				else if (qrData.indexOf("https://ppb.rp.com") > 0) {
+				else if (qrData.indexOf("ppb.rp.com") > 0) {
 					qrInfoUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrinfo.do?qr_data=" + btoa(unescape(encodeURIComponent(qrData)));
 					webview_redirect(qrInfoUrl);
 				} 
@@ -672,7 +672,7 @@ function startQRScan(){
 					webview_redirect(qrData);
 					return;
 				}else {
-					alertOpen("확인", "유효하지 않은 QR 코드 입니다. </br> 관리자에게 문의 해주세요", true, false, null, null);
+					alertOpen("확인", "908 유효하지 않은 QR 코드 입니다. </br> 관리자에게 문의 해주세요", true, false, null, null);
 				}
 			}else{
 				/*큐알로 부터 읽어들인 데이타가 URL 형태가 아닌 경우 RETURNP 자체  큐알 명령 */

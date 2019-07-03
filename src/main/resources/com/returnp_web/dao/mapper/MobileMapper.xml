@@ -1003,7 +1003,7 @@
     MA.lat, 
     MA.lng,
     M2.memberName as recommenderName,
-    AG.agencyName    
+    AG.agencyName
 	from affiliate as AF  
     inner join member as M on (AF.memberNo = M.memberNo)
     inner join red_point as RP on (AF.memberNo = RP.memberNo)
@@ -1015,22 +1015,38 @@
     left outer join affiliate_payment_router as APR on (AF.affiliateNo= APR.affiliateNo)
     where 
     1 = 1
-      <if test="affiliateNo != null">AND AF.affiliateNo = #{affiliateNo,jdbcType=INTEGER} </if>
-      <if test="memberNo != null">AND AF.memberNo = #{memberNo,jdbcType=INTEGER} </if>
-      <if test="agencyNo != null">AND AF.agencyNo = #{agencyNo,jdbcType=INTEGER} </if>
-      <if test="affiliateSerial != null">AND AF.affiliateSerial = #{affiliateSerial,jdbcType=VARCHAR} </if>
-      <if test="affiliateType != null">AND AF.affiliateType = #{affiliateType,jdbcType=VARCHAR} </if>
-      <if test="recommenderNo != null">AND AF.recommenderNo = #{recommenderNo,jdbcType=INTEGER} </if>
-      <if test="greenPointAccStatus != null"> AND AF.greenPointAccStatus = #{greenPointAccStatus,jdbcType=INTEGER} </if>
-      <if test="redPointAccStatus != null"> AND AF.redPointAccStatus = #{redPointAccStatus,jdbcType=INTEGER} </if>
-      <if test="greenPointUseStatus != null"> AND AF.greenPointUseStatus = #{greenPointUseStatus,jdbcType=INTEGER} </if>
-      <if test="redPointUseStatus != null"> AND AF.redPointUseStatus = #{redPointUseStatus,jdbcType=INTEGER} </if>
-      <if test="affiliateStatus != null and affiliateStatus !=  '0'  and affiliateStatus !=  0">AND AF.affiliateStatus = #{affiliateStatus,jdbcType=VARCHAR} </if>
-      <if test="regType != null">AND AF.regType = #{regType,jdbcType=CHAR} </if>
-      <if test="regAdminNo != null">AND AF.regAdminNo = #{regAdminNo,jdbcType=INTEGER} </if>
+       <if test="affiliateNo != null">AND AF.affiliateNo = #{affiliateNo,jdbcType=INTEGER} </if>
+      <if test="memberNo != null">AND memberNo = #{memberNo,jdbcType=INTEGER} </if>
+      <if test="agencyNo != null">AND agencyNo = #{agencyNo,jdbcType=INTEGER} </if>
+      <if test="affiliateSerial != null">AND AT.tid = #{affiliateSerial,jdbcType=VARCHAR} </if>
+      <if test="affiliateType != null">AND affiliateType = #{affiliateType,jdbcType=VARCHAR} </if>
+      <if test="recommenderNo != null">AND recommenderNo = #{recommenderNo,jdbcType=INTEGER} </if>
+      <if test="greenPointAccStatus != null"> AND greenPointAccStatus = #{greenPointAccStatus,jdbcType=INTEGER} </if>
+      <if test="redPointAccStatus != null"> AND redPointAccStatus = #{redPointAccStatus,jdbcType=INTEGER} </if>
+      <if test="greenPointUseStatus != null"> AND greenPointUseStatus = #{greenPointUseStatus,jdbcType=INTEGER} </if>
+      <if test="redPointUseStatus != null"> AND redPointUseStatus = #{redPointUseStatus,jdbcType=INTEGER} </if>
+      <if test="affiliateStatus != null and affiliateStatus !=  '0'  and affiliateStatus !=  0">AND affiliateStatus = #{affiliateStatus,jdbcType=VARCHAR} </if>
+      <if test="regType != null">AND regType = #{regType,jdbcType=CHAR} </if>
+      <if test="regAdminNo != null">AND regAdminNo = #{regAdminNo,jdbcType=INTEGER} </if>
+
       <if test="paymentRouterType != null"> AND (SELECT paymentRouterType from payment_router WHERE paymentRouterNo = APR.paymentRouterNo) = #{paymentRouterType,jdbcType=VARCHAR} </if>
       <if test="paymentRouterName != null"> AND (SELECT paymentRouterName from payment_router WHERE paymentRouterNo = APR.paymentRouterNo) = #{paymentRouterName,jdbcType=VARCHAR} </if>
       <if test="paymentRouterCode != null"> AND (SELECT paymentRouterCode from payment_router WHERE paymentRouterNo = APR.paymentRouterNo) = #{paymentRouterCode,jdbcType=VARCHAR} </if>
+      
+       <if test="affiliateCode != null or affiliateAddress != null or affiliateTel != null or affiliatePhone != null or affiliateName != null  or affiliateEmail != null or memberName != null or memberPhone != null ">
+      	AND ( 1 = 2 
+      </if>
+       <if test="memberName != null"> OR M.memberName  LIKE CONCAT('%',#{memberName},'%')</if>
+       <if test="memberPhone != null"> OR M.memberPhone  LIKE CONCAT('%',#{memberPhone},'%')</if>
+       <if test="affiliateCode != null"> OR affiliateCode  LIKE CONCAT('%',#{affiliateCode},'%')</if>
+      <if test="affiliateAddress != null"> OR affiliateAddress  LIKE CONCAT('%',#{affiliateAddress},'%')</if>
+      <if test="affiliateEmail != null"> OR affiliateEmail  LIKE CONCAT('%',#{affiliateEmail},'%')</if>
+      <if test="affiliateTel != null"> OR affiliateTel  LIKE CONCAT('%',#{affiliateTel},'%')</if>
+      <if test="affiliatePhone != null">OR affiliatePhone  LIKE CONCAT('%',#{affiliatePhone},'%') </if>
+      <if test="affiliateName != null">OR affiliateName  LIKE CONCAT('%',#{affiliateName},'%')</if>
+    <if test="affiliateCode != null or affiliateAddress != null or affiliateTel != null or affiliatePhone != null or affiliateName != null  or affiliateEmail != null or memberName != null or memberPhone != null ">
+      	)
+      </if>
 		
 	</select> 
 </mapper>

@@ -433,8 +433,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 					rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE  </br>유효하지 않은 가맹점[" +qrParsemap.get("af_id")  +  "]");
 				} else {
 					HashMap<String, String> queryMap = Util.queryToMap(queryParmStr);
-					rmap.put("paymentRouterType", "VAN");  //결제 라우터 타입
-					rmap.put("paymentRouterName", "KICC");  //결제 라우터 이름  
+					rmap.put("paymentRouterType", qrParsemap.get("paymentRouterType"));
+					rmap.put("paymentRouterName", qrParsemap.get("paymentRouterName"));
 					
 					rmap.put("qr_parsing_result", "success");
 					rmap.put("qr_org", p.getStr("qr_data"));
@@ -477,7 +477,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			
 			URL url = new URL(decode64Qr);
 			String queryParmStr = url.getQuery();
-			HashMap<String, String> qrParsemap = QRManager.parseQRToMap(queryParmStr);
+			HashMap<String, String> qrParsemap = QRManager.parseCommonQRToMap(queryParmStr);
 
 			if (qrParsemap == null) {
 				rmap.put("qr_parsing_result", "error");
@@ -507,9 +507,9 @@ public class MobileMainServiceImpl implements MobileMainService {
 				} else {
 					
 					HashMap<String, String> queryMap = Util.queryToMap(queryParmStr);
-					rmap.put("paymentRouterType", "VAN");  //결제 라우터 타입
-					rmap.put("paymentRouterName", queryMap.get("v"));  //결제 라우터 이름
-					rmap.put("seq", queryMap.get("s"));  // 포스별 고유 번호 
+					rmap.put("paymentRouterType", qrParsemap.get("paymentRouterType"));
+					rmap.put("paymentRouterName", qrParsemap.get("paymentRouterName"));
+					rmap.put("seq", qrParsemap.get("seq"));  // 포스별 고유 번호 
 					
 					rmap.put("qr_parsing_result", "success");
 					rmap.put("qr_org", p.getStr("qr_data"));
@@ -518,7 +518,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 					Util.copyRPmapToMap(rmap, qrParsemap);
 					rmap.put("affiliateName", affiliateInfo.get("affiliateName"));
 
-					float amountAccumulated = Float.parseFloat(qrParsemap.get("pam")); // 가맹점 시리얼 넘버 조회
+					float amountAccumulated = Float.parseFloat(qrParsemap.get("pam")); // 
 					System.out.println("amountAccumulated::" + amountAccumulated);
 					HashMap<String, Object> policy = mobileMemberDao.selectPolicyPointTranslimit(dbparams);
 					float customerComm = (float) policy.get("customerComm");
