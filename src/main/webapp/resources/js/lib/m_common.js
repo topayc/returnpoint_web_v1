@@ -526,7 +526,6 @@ function startPointBack(){
 			param["phoneNumberCountry"]  = info.phoneNumberCountry;
 			param["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
 			console.log(param["phoneNumber"] + "</br>" + param["phoneNumberCountry"]);
-			alert(param["phoneNumber"] + "</br>" + param["phoneNumberCountry"]);
 			for (key in param){
 				if (param.hasOwnProperty(key)) {
 					param[key] = encodeURIComponent(param[key]);
