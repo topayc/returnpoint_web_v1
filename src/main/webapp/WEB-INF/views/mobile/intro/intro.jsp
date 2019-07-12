@@ -49,12 +49,12 @@
                 <p class = "title">똑똑한 소비 , 100% 포인트 적립</p>
                 <div class="text_box">
                     <ul>
-                        <li>리턴포인트 가맹점 결제후 영수증의</li>
-                        <li>QR코드만 스캔하면 포인트가 100% 적립</li>
+                        <li>R 포인트 가맹점 결제후 영수증의</li>
+                        <li>QR 코드만 스캔하면 포인트가 100% 적립</li>
                     </ul>
                      <div class = "sub">
-              			<span class = "point gpoint" style = "margin-bottom : 5px">G-POINT</span> 결제시 100% 적립되는 포인트</br></br>
-              			<span class = "point rpoint">R-POINT</span> G-POINT는 매일 R-POINT 로 전환
+              			<span class = "point gpoint" style = "margin-bottom : 5px">G 포인트</span> 결제시 100% 적립되는 포인트</br></br>
+              			<span class = "point rpoint">R 포인트</span> G 포인트는 매일 R 포인트로 전환
               		</div>
                 </div>
              
@@ -67,7 +67,8 @@
                      <li>뚱뚱한 지갑은 이제 그만</li>
                         <li>현금, 카드, 포인트 적립 카드 등</li>
                         <li>여러 카드를 꺼내지 않아도!</li>
-                        <li>리턴포인트 가맹점에서 R-POINT로 결제해보세요.
+                        <li>온라인, 오프라인 가맹점에서 </li>
+                        <li>R 포인트로 결제해보세요.</li>
                     </ul>
                 </div>
             </div>
@@ -76,20 +77,25 @@
                 <p class = "title">모바일 상품권</p>
                 <div class="text_box">
                     <ul>
-                    <li>리턴포인트희 가맹 쇼핑몰에서 결제시</li>
+                    <li>R 포인트 상품권으로</li>
                         <li>100% 포인트가 적립되고,</li>
-                        <li>적립된 포인트로 편리하게 결제가 가능합니다.</li>
+                        <li>가맹점에서 결제가 가능합니다.</li>
                     </ul>
                 </div>
             </div>
             <div class="swiper-slide swiper_text">
                 <img src="/resources/images/intro/ser4.png">
-                <p class = "title">쇼핑몰에서 리턴포인트로 결제</p>
-                <div class="text_box">
+                <p class = "title">가맹점에서 R 포인트 결제</p>
+                <div class="text_box" style ="margin-bottom:20px">
                     <ul>
-                       <li>리턴포인트희 가맹 쇼핑몰에서 결제시</li>
-                        <li>100% 포인트가 적립되고,</li>
-                        <li>적립된 포인트로 편리하게 결제가 가능합니다.</li>
+                 <!--       <li>뚱뚱한 지갑은 이제 그만</li>
+                       <li>현금, 카드, 포인트 적립 카드 등</li>
+                       <li>여러 카드를 꺼내지 않아도!</li> -->
+                       <li>온라인, 오프라인 가맹점에서 </li>
+                       <li>R 포인트로 결제해보세요</li>
+                       <li>R 포인트 가맹점에서 결제시</li>
+                       <li>100% 포인트가 적립되고,</li>
+                       <li>적립된 포인트로 편리하게 결제가 가능합니다.</li>
                     </ul>
                 </div>
                 <div class="swiper_text1"><a href="#" onclick = "joinMember()">가입하기</a></div>

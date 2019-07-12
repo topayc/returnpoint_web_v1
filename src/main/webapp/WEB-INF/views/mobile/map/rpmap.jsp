@@ -413,9 +413,9 @@ function searchMap() {
       <div class="rpmap noshop" id="map_canvas"></div>
 <!-- <div class="store_point" style="top: 103px; left: 160px;"><i class="fas fa-sort-down"></i>아고라</div>
 <div class="store_point" style="top: 126px; left: 101px;"><i class="fas fa-sort-down"></i>포마토</div>
-<div class="store_point" style="top: 108px; left: 238px;"><i class="fas fa-sort-down"></i>리턴포인트</div>
+<div class="store_point" style="top: 108px; left: 238px;"><i class="fas fa-sort-down"></i>R 포인트</div>
  -->      
- <!-- <div class="store_point store_spot"><i class="fas fa-sort-down"></i>리턴포인트</div> --><!-- class에 store_spot 추가시 선택된 스토어가 보여짐 -->
+ <!-- <div class="store_point store_spot"><i class="fas fa-sort-down"></i>R 포인트</div> --><!-- class에 store_spot 추가시 선택된 스토어가 보여짐 -->
 <!-- 지도 들어가는곳  -->   <!-- class에 nolist 추가시 높이가 리스트가 없는 사이즈로 조절됩니다-->
 <!-- 선택되지 않은 포인트  --><!-- <i class="fas fa-map-marker-alt point_on"></i>    -->
 <!-- 선택된 포인트  -->     <!-- <i class="fas fa-circle point_off"></i> -->

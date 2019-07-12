@@ -67,8 +67,8 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 			String isAjax= request.getHeader("AJAX");
 			if ("true".equals(isAjax)) return true;
 		
-			System.out.println("user_auth_tokensss");
-			System.out.println(userAuthToken);
+			/*System.out.println("user_auth_tokensss");
+			System.out.println(userAuthToken);*/
 			String user_agent = request.getHeader("User-Agent");
 
 			RPMap dbparams = new RPMap();

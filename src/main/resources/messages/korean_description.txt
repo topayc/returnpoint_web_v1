@@ -184,7 +184,7 @@ label.web.tophappyworldCustomerCenterOperationHours=고객센터 운영시간
 label.web.tophappyworldAddress=서울특별시 서초구 사임당로 32 재우빌딩 1층
 
 ##service_member.jsp
-label.web.serviceinfo=소비자의 구매로 인해 발생한 G-POINT 를 포인트 사용처에서 이용 가능한 R-POINT로 전환해 협력점 및 포인트 선물 등으로 사용할 수 있는 서비스입니다.
+label.web.serviceinfo=소비자의 구매로 인해 발생한 G 포인트를 포인트 사용처에서 이용 가능한 R 포인트로 전환해 협력점 및 포인트 선물 등으로 사용할 수 있는 서비스입니다.
 label.web.serviceinfoTitleM1=오프라인 결제 후
 label.web.serviceinfoTitleS1=QR 적립 서비스
 label.web.serviceinfoContent1=소상공인과 고객 모두에게 편리한 QR서비스입니다.
@@ -197,8 +197,8 @@ label.web.serviceinfoContent6=카드번호 인증번호 없이 안전하고 빠�
 label.web.serviceinfoContent7=QR코드로 적립됩니다.
 label.web.serviceinfoTitleM3=상품권 결제,적립 서비스
 label.web.serviceinfoContent8=직원에게'상품권으로 결제할게요!'라고 말해주세요.
-label.web.serviceinfoContent9=상품권으로 결제해도 100% G-point로 적립되고
-label.web.serviceinfoContent10=R-point로 사용 가능한 서비스!
+label.web.serviceinfoContent9=상품권으로 결제해도 100% G 포인트로 적립되고
+label.web.serviceinfoContent10=R 포인트로 사용 가능한 서비스!
 label.web.serviceinfoTitleM4=쇼핑몰 연동 결제 적립
 label.web.serviceinfoContent11=뚱뚱한 지갑은 이제 그만!
 label.web.serviceinfoContent12=현금, 카드, 포인트 적립 카드 등
@@ -214,21 +214,21 @@ label.web.companyIdentityContent3=정직함을 바탕으로 사회 모범적 성
 
 ##index.jsp
 label.web.indexTitleM1=인류의 행복한 삶을 창조하는 글로벌 기업, 그 원대한 꿈을 향한
-label.web.indexTitleS1=리턴포인트의 도전은 계속됩니다.
+label.web.indexTitleS1=R 포인트의 도전은 계속됩니다.
 label.web.indexTitleM2=소비와 저축이 한번에!
 label.web.indexTitleS2=똑똑한 소비혁명!
-label.web.indexContent1=쓴만큼 돌려받는 리턴포인트!
+label.web.indexContent1=쓴만큼 돌려받는 R 포인트!
 label.web.indexContent2=전세계인이 인정한 소비!
 label.web.indexContent3=항상 고객님의 곁에,
-label.web.indexContent4=return.P 간편결제
+label.web.indexContent4=R 포인트 간편결제
 label.web.indexContent5=상품권으로 결제해도
 label.web.indexContent6=100%포인트 적립!
 label.web.indexTitleM3=소비한 만큼 100%
-label.web.indexTitleS3=G-point 적립
+label.web.indexTitleS3=G 포인트 적립
 label.web.indexContent7=온라인/오프라인 가맹점에서 결제와
-label.web.indexContent8=G-point 적립이 가능합니다.
+label.web.indexContent8=G 포인트 적립이 가능합니다.
 label.web.indexContent9=소상공과 함께하는
-label.web.indexContent10=G-point QR서비스
+label.web.indexContent10=G 포인트 QR서비스
 label.web.indexContent11=바쁜 시간, 빠른거래
 label.web.indexContent12=QR 결제로 빨라집니다.
 label.web.indexContent13=우리 사회가 더욱 풍요로운 세상이 될 수 있도록 사회적 인프라를 구축하고 소회계층의 권리와 인식 개선을 위해보다 다양한 형태의 나눔활동을 전개하고 있습니다.

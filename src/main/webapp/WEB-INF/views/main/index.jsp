@@ -21,6 +21,11 @@
 		//숨겨진 공지 모달 사용시, 아래 한줄
 		//document.querySelector(".modal2").classList.toggle("show-modal");
 	});
+	
+	function goPlayStore(){
+		storeURL = "https://play.google.com/store/apps/details?id=com.tophappyworld.returnpapp";
+		location.replace(storeURL);
+	}
 </script>
 <body>
     <div class="modal2">
@@ -43,14 +48,15 @@
 	<div class="wrap1">
         <!-----page1------------------------------------------------------------>
         <div class="main_page1 img-responsive center-block col-xs-12">
-            <p class="text-center main_text1 " data-scroll="toggle(.scaleDownIn, .scaleDownOut)">About returnP</p>
+            <p class="text-center main_text1 " data-scroll="toggle(.scaleDownIn, .scaleDownOut)">About R POINT</p>
             <p class="text-center main_text2 col-md-6 col-md-offset-3" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexTitleM1"/><br><spring:message code="label.web.indexTitleS1"/></p>
+            <a href="#"  onclick = "goPlayStore()"class="col-lg-2 col-lg-offset-5 col-xs-4 col-xs-offset-4 google_icon"><img src="/resources/web_images/goo.png"><b>Google</b> play</a>
         </div>
         <!-----page2------------------------------------------------------------>
         <div class="main_page2 block">
             <div class="main_page2_sub1 pull-right col-xs-12 col-lg-7">
                 <div class="main_event" data-scroll="toggle(.scaleDownIn, .scaleDownOut)">
-                    <img src="/resources/web_images/main_page22.png">
+                    <img src="/resources/web_images/main_page88.png">
                 </div>
             </div>
             <div class="main_page2_sub2 pull-left col-xs-12 col-lg-4 col-lg-offset-1">
@@ -64,7 +70,7 @@
         <div class="main_page3 block">
             <div class="main_page3_sub1 pull-left col-xs-12 col-lg-7">
                 <div class="main_event" data-scroll="toggle(.scaleDownIn, .scaleDownOut)">
-                    <img src="/resources/web_images/main_page3.png">
+                    <img src="/resources/web_images/main_page222.png">
                 </div>
             </div>
             <div class="main_page3_sub2 pull-left col-xs-12 col-lg-4">
@@ -89,7 +95,7 @@
         <div class="main_page5_sub1 img-responsive center-block">
             <p class="main_text10 col-md-12" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexTitleM4"/></p>
             <div class="main_bottom_img img-responsive col-lg-6 col-lg-offset-3" data-scroll="toggle(.scaleDownIn, .scaleDownOut)">
-                <img src="/resources/web_images/main_page88.png">
+                <img src="/resources/web_images/main_page22.png">
             </div>
             <div class="main_page5_sub2 col-lg-8 col-lg-offset-3 col-md-10 col-md-offset-2 col-xs-10 col-xs-offset-2">
                 <div class="col-md-3 col-xs-10 pull-left main_text11" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><b>Discipline & Due Diligence</b><br><br><spring:message code="label.web.indexContent18"/>

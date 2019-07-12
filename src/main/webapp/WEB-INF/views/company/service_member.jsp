@@ -15,11 +15,8 @@
     </div>
     <div class="ser_page1 block">
         <div class="ser_page1_sub1 col-xs-10 col-xs-offset-1 col-lg-5 col-lg-offset-1">
-            <div class="main_event">
-                <img src="/resources/web_images/ser_img2.png">
-            </div>
         </div>
-        <div class="ser_page1_sub2 col-xs-12 col-lg-5 col-lg-offset-1">
+        <div class="ser_page1_sub2 pull-right col-md-6 col-md-offset-6 col-xs-12 col-lg-5 col-lg-offset-1">
             <p class="ser_text3"><spring:message code="label.web.serviceinfoTitleM1"/><br><spring:message code="label.web.serviceinfoTitleS1"/></p>
             <p class="ser_text4"><spring:message code="label.web.serviceinfoContent1"/></p>
             <p class="ser_text4"><spring:message code="label.web.serviceinfoContent2"/></p>
@@ -38,22 +35,22 @@
             <p class="ser_text6"><spring:message code="label.web.serviceinfoContent6"/><br><spring:message code="label.web.serviceinfoContent7"/></p>
         </div>
     </div>
-    <div class="ser_page1 block">
+    <div class="ser_page3 block">
         <div class="ser_pageq_sub1 col-xs-10 col-xs-offset-1 col-lg-5 col-lg-offset-1">
             <div class="main_event">
                 <img src="/resources/web_images/ser_img4.png">
             </div>
         </div>
-        <div class="ser_page1_sub2 col-xs-12 col-lg-5 col-lg-offset-1">
+        <div class="ser_page3_sub2 col-xs-12 col-lg-5"">
             <p class="ser_text3"><spring:message code="label.web.serviceinfoTitleM3"/></p>
             <p class="ser_text4"><spring:message code="label.web.serviceinfoContent8"/></p>
             <p class="ser_text4"><spring:message code="label.web.serviceinfoContent9"/><br><spring:message code="label.web.serviceinfoContent10"/></p>
         </div>
     </div>
-    <div class="ser_page2 block">
+    <div class="ser_page4 block">
         <div class="ser_page3_sub1 col-xs-10 col-xs-offset-1 col-lg-5 col-lg-offset-1">
             <div class="main_event">
-                <img src="/resources/web_images/ser_img4.jpg">
+                <img src="/resources/web_images/ser_img5.png">
             </div>
         </div>
         <div class="ser_page3_sub2 col-xs-12 col-lg-5">

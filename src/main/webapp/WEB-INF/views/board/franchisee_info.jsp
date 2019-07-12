@@ -8,12 +8,17 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 <script type="text/javascript">
 $(document).ready(function(){
+	  $(".fran_button1").click(function(){
+          $(".fran_top").slideToggle(300);
+     });
 	searchCity();
 	var country = '${params.country}';
 	searchCountry('${params.city}');
+	
 });
 
 function franchiseeInfoGoogleMapPopup(affiliateNo){
+	alert(affiliateNo);
 	url = "/board/franchiseeInfoGoogleMap.do?affiliateNo="+affiliateNo;
 	window.open(url, "url", "width=615, height=615, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes");
 }
@@ -102,63 +107,55 @@ function searchList(){
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
    <hr class="top_line">
     <div class="fran container">
-        <div class="fran_text1"><spring:message code="label.web.findaMerchant"/></div>
+        <div class="fran_text1"><spring:message code="label.web.findaMerchant"/><button type="button" class="btn btn-primary btn-lg fran_button1">검색창</button></div>
         <div class="fran1">
-            <hr class="fran_line">
-            <h3 class="fran_text2"><spring:message code="label.web.addressAndStoreName"/></h3>
+			 <div class="fran_top">
 			<form id="franchiseeform" name="franchiseeform">
-				<div class="fran2 col-lg-6">
-					<select class="form-control" id="city" name="city" onchange="searchCountry($('select[name=city]').val());" value="${params.city}"/>
-					  <option value="">시/도</option> 
-					</select>
-				</div>
-				<div class="fran2 col-lg-6">
-					<select class="form-control" id="country" name="country" value="${params.country}" />
-					  <option value="">구/군</option>
-					</select>
-				</div>
-				<div class="fran3 form-group col-lg-12">
-				    <input type="text" id="affiliateName" name="affiliateName" class="form-control" value="${fn:trim(params.affiliateName)}" placeholder="매장명을 입력해 주세요."/> 
-				</div>
-				<hr class="fran_line">
-				<a href="#" onclick="searchFranchisee();"><button type="button" class="btn btn-primary btn-lg fran_button"><spring:message code="label.web.search"/></button></a>
+				  <div class="fran2 col-lg-6">
+                    <select class="form-control fran4_text1" id="city" name="city" onchange="searchCountry($('select[name=city]').val());" value="${params.city}">
+                      <option value="">시/도</option> 
+                    </select>
+                </div>
+				  <div class="fran2 col-lg-6">
+                  <select class="form-control fran4_text1" id="country" name="country" value="${params.country}" >
+                      <option value="">구/군</option>
+                    </select>
+                </div>
+				  <div class="form-group has-success has-feedback frna5">
+                        <div class="col-lg-12 fran5_1">
+                            <input type="text" class="form-control" placeholder="매장명을 입력해 주세요.">
+                        </div>
+                        <div class="col-lg-12 fran5_2">
+                            <button onclick="searchFranchisee();" style ="width:90px"><spring:message code="label.web.search"/></button>
+                        </div>
+                    </div>
 			</form>
+			</div>
 		</div>
-		<div class="fran4 container">
-	      <div class="fran_table tab-pane fade in active">
-	        <table class="table table-hover">
-			  <thead>
-			    <tr>
-					<th scope="col" class="col-lg-3 col-md-3 col-xs-3 text-center"><spring:message code="label.web.storeName"/></th>
-					<th scope="col" class="col-lg-2 col-md-2 col-xs-2 text-center"><spring:message code="label.web.contact"/></th>
-					<th scope="col" class="col-lg-2 col-md-2 col-xs-3 text-center"><spring:message code="label.web.address"/></th>
-					<th scope="col" class="col-lg-5 col-md-5 col-xs-4 text-center"><spring:message code="label.web.viewMap"/></th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			<c:choose>
-				<c:when test="${! empty franchiseeInfoList}">			  
-					<c:forEach var="list" items="${franchiseeInfoList}" varStatus="loop">
-			    <tr>
-			      <th scope="row" class="text-center">${list.affiliateName}</th>
-			      <td class="text-center">${list.affiliateTel}</td>
-			      <td class="text-center"><a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');"><img src="/resources/web_images/map.png"></a></td>
-			      <td class="text-center">${list.affiliateAddress}</td>
-			    </tr>
-			    	</c:forEach>
-			    </c:when>
-				<c:otherwise>
-				<tr>
-			      <td class="text-center" colspan="3">검색된 주소와 일치되는 가맹점이 없습니다.</td>
-			    </tr>		    
-				</c:otherwise>			    
-			   </c:choose> 
-			  </tbody>
-			</table>
-	      </div>
+		<c:choose>
+		<c:when test="${! empty franchiseeInfoList}">	
+		    <c:forEach var="list" items="${franchiseeInfoList}" varStatus="loop">
+		    <div class="fran_box container">
+                <div class="img_box"><img src="/resources/web_images/map.png"></div>
+                <div class="fran_text_box">
+                    <ul>
+                        <li>${list.affiliateName}</li>
+                        <li>${list.affiliateTel}</li>
+                        <li>${list.affiliateAddress}</li>
+                    </ul>
+                </div>
+                <a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');">
+                    <div class="fran_map"><img src="/resources/web_images/map.png"></div>
+                </a>
+			</div>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <p>검색된 주소와 일치되는 가맹점이 없습니다.</p>
+        </c:otherwise>  
+        </c:choose>
+	</div>
 	<jsp:include page="/WEB-INF/views/common/paging.jsp" />
-</div>
-</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

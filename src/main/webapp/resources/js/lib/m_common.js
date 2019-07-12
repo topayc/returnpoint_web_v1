@@ -158,7 +158,7 @@ var appInfo = {
 	appPackage : "com.tophappyworld.returnpapp",
 	access : access,
 	share : {
-		title : '리턴포인트.',
+		title : 'R 포인트',
 		description : '쓴 만큼 100% 돌려주는 ReturnPoint , 언제 어디서나 쉽고 간편하게',
 		imageUrl: host + '/resources/images/sns_url_link_img.png',
 		link : {
@@ -626,7 +626,7 @@ function checkVersion(){
         				/*$('#alert_ok').attr("onclick", "");*/
         				alertOpen(
         					"업데이트 알림", 
-        			 		"새로운 버젼의 앱이 출시되었습니다.<br>- 가카오톡 공유하기 수정 <br> - 수동, 자동 업데이트 (이후 부터 적용) <br> 구글 플레이스토어에서 '리턴포인트' 를 검색해서 </br>업데이트를 받아주세요", 
+        			 		"새로운 버젼의 앱이 출시되었습니다.<br>- 가카오톡 공유하기 수정 <br> - 수동, 자동 업데이트 (이후 부터 적용) <br> 구글 플레이스토어에서 'R 포인트' 를 검색해서 </br>업데이트를 받아주세요", 
         			 		true, 
         			 		false, 
         			 	    function(){/*goUpdatePlayStore()*/},

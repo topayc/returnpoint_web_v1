@@ -191,12 +191,12 @@ function searchMap(){
    <!-- main begin -->
    <section class="nobtn">
      <ul class="nav nav-tabs">
-       <li class="main_rpoint active"><a data-toggle="tab" href="#main_rpoint"><span><spring:message code="label.rpoint" /></span></a></li>
-       <li class="main_gpoint"><a data-toggle="tab" href="#main_gpoint"><span><spring:message code="label.gpoint" /></span></a></li>
+       <li class="main_rpoint active"><a data-toggle="tab" href="#main_rpoint"><span style = "font-size : 11pt"><spring:message code="label.rpoint" /></span></a></li>
+       <li class="main_gpoint"><a data-toggle="tab" href="#main_gpoint"><span style = "font-size : 11pt"><spring:message code="label.gpoint" /></span></a></li>
      </ul>
      <div class="tab-content">
        <div id="main_rpoint" class="tab-pane fade in active">
-         <h6><spring:message code="label.rpay_summary"  arguments = "${sessionScope.memberName}"/></h6>
+         <h5><spring:message code="label.rpay_summary"  arguments = "${sessionScope.memberName}"/></h5>
          <p><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/>P</p>
          <ul>
             <li><a onclick = "movePage('/m/mypage/m_rpay_use_manage.do?memberNo=${model.memberTypeInfo.memberNo}')" ><i class="fas fa-qrcode"></i>&nbsp;<spring:message code="label.use" /></a></li>
@@ -205,7 +205,7 @@ function searchMap(){
          </ul>
        </div>
        <div id="main_gpoint" class="tab-pane fade">
-         <h6><spring:message code="label.rpoint_summary"  arguments = "${sessionScope.memberName}"/></h6>
+         <h5><spring:message code="label.rpoint_summary"  arguments = "${sessionScope.memberName}"/></h5>
          <p><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/>P</p>
          <ul>
             <li><a onclick="startQRScan()"><i class="fas fa-qrcode"></i>&nbsp;<spring:message code="label.accumulate" /></a></li>
@@ -232,12 +232,12 @@ function searchMap(){
           <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo1"><img src="/resources/banner/20190502_133801490.jpg" /></a></li>
        <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo2"><img src="/resources/banner/insurance_banner.jpg" /></a></li>
      </ul>
-<%--      <div class="footinfo">
+     <div class="footinfo">
         <a href="/m/company/service_member.do"><spring:message code="label.what_return_point" /></a><small>/</small>
         <a href="/m/board/qna_node.do"><spring:message code="label.affiliated_inquiry" /></a><small>/</small>
         <a href="/m/board/faq.do">FAQ</a>
-        <p>TOTAL<br /><span class="total">${model.memberTotal} </span></p>
-     </div> --%>
+      <%--   <p>TOTAL<br /><span class="total">${model.memberTotal} </span></p> --%>
+     </div>
    </section>
 </div>
 <script>

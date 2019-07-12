@@ -21,7 +21,9 @@
 <script type="text/javascript" src="/resources/js/lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="/resources/js/lib/common.js"></script>
 <link rel="stylesheet" href="/resources/web_css/common.css">
-<script type="text/javascript" src="/resources/js/lib/ScrollTrigger.min.js"></script><!-- 메인 스크롤 이벤트 -->
+<link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Nanum+Gothic|Sunflower:300&display=swap" rel="stylesheet">
+<!-- <script type="text/javascript" src="/resources/js/lib/ScrollTrigger.min.js"></script> --><!-- 메인 스크롤 이벤트 -->
 <script type="text/javascript">
 $(document).ready(function(){
 	//locale lang 설정

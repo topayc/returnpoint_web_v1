@@ -324,7 +324,7 @@ $(document).ready(function(){
 	  	<li><a href=""><img src="/resources/images/m_banner02.jpg" /></a></li>
 	  </ul>  
 	  <div class="footinfo">
-	  	<a href="/m/company/service_member.do">리턴포인트란</a><small>/</small>
+	  	<a href="/m/company/service_member.do">R 포인트</a><small>/</small>
 	  	<a href="/m/board/qna_node.do">제휴문의</a><small>/</small>
 	  	<a href="/m/board/faq.do">FAQ</a>
 	  	<p>TOTAL<br /><span class="total">1234567명</span></p>

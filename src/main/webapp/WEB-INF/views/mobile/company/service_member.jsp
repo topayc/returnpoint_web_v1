@@ -38,7 +38,7 @@ $(document).ready(function(){
 	<section>
 		<ul>
 			<li>
-				<aside><hr><h4>리턴포인트란</h4></aside>
+				<aside><hr><h4>R 포인트란</h4></aside>
 				<div class="content">
 					<p>소비자의 구매로 인해 발생한  <spring:message code="label.gpoint" /> 를  포인트사용처에서 이용 가능한 <spring:message code="label.rpoint" /> 로 전환해 협력점 및 포인트 선물 등으로 사용할 수 있는 서비스입니다. </p>
 					<ul class="comment">
@@ -49,7 +49,7 @@ $(document).ready(function(){
 				</div>
 			</li>
 			<li>
-				<aside><hr><h4>리턴포인트 이용안내</h4></aside>
+				<aside><hr><h4>R 포인트 이용안내</h4></aside>
 				<div class="content">
 					<div class="step step_user">					
 						<span class="title">소비자 <br class="mobile" /> Step<i class="fas fa-caret-right"></i></span>
@@ -69,7 +69,7 @@ $(document).ready(function(){
 				</div>
 			</li>
 			<li>
-				<aside><hr><h4>리턴포인트 적립및 사용방법 </h4></aside>
+				<aside><hr><h4>R 포인트 적립및 사용방법 </h4></aside>
 				<div class="content">
 					<p><strong>[<spring:message code="label.gpoint" /> 적립방법]</strong> <span>협력점에 매출의 발생 할 때 마다 <spring:message code="label.gpoint" /> 가 적립됩니다.
 					소비자는 매출의 100%를 <spring:message code="label.gpoint" /> 로 적립 받으며, 협력점은 매출의 15%의 매출 예치금을 현금으로 본사에 즉시 납입합니다</span>
@@ -79,7 +79,7 @@ $(document).ready(function(){
 				</div>
 			</li>
 			<li>
-				<aside><hr><h4>리턴포인트 이용을 위한 서비스  </h4></aside>
+				<aside><hr><h4>R 포인트 이용을 위한 서비스  </h4></aside>
 				<div class="content service">
 					<p><i class="far fa-credit-card"></i>카드 결제</p>
 					<p><i class="fas fa-coins"></i>코인 결제</p>

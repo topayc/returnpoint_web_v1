@@ -59,7 +59,7 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
 		
 		try {
 			String newLocale = request.getParameter("lang");
-			System.out.println("Local Lang : " + newLocale);
+			/*System.out.println("Local Lang : " + newLocale);*/
 			if(newLocale != null){
 				LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
 				if(localeResolver == null){
