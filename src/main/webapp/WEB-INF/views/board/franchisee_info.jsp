@@ -136,7 +136,7 @@ function searchList(){
 		<c:when test="${! empty franchiseeInfoList}">	
 		    <c:forEach var="list" items="${franchiseeInfoList}" varStatus="loop">
 		    <div class="fran_box container">
-                <div class="img_box"><img src="/resources/web_images/map.png"></div>
+                <div class="img_box"><img src="/resources/web_images/no_image.png"></div>
                 <div class="fran_text_box">
                     <ul>
                         <li>${list.affiliateName}</li>
