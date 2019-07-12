@@ -159,7 +159,7 @@ var appInfo = {
 	access : access,
 	share : {
 		title : 'R 포인트',
-		description : '쓴 만큼 100% 돌려주는 ReturnPoint , 언제 어디서나 쉽고 간편하게',
+		description : '쓴 만큼 100% 돌려주는 R 포인트 , 언제 어디서나 쉽고 간편하게',
 		imageUrl: host + '/resources/images/sns_url_link_img.png',
 		link : {
 			webUrl : {
