@@ -68,8 +68,8 @@ function resetGpointvalue(postfixId){
 	    </div>
       <div class="tab-content">      
       		<ul class="tabtitle">
-				<li><a href="/m/mypage/newpoint.do"><spring:message code="label.gpoint"/> 적립내역</a></li>
-				<li class="active"><a href="/m/mypage/point_gift.do"><spring:message code="label.gpoint"/> 선물하기</a></li>
+				<li><a href="/m/mypage/newpoint.do"><spring:message code="label.gPointEarningHistory" /></a></li>
+           	 	<li class="active"><a href="/m/mypage/point_gift.do"><spring:message code="label.pointGift" /></a></li>
 			</ul>		
 			
           <div id="Gpoint" class="tab-pane fade in active">               

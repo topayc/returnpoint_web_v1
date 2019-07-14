@@ -626,10 +626,10 @@ function checkVersion(){
         				/*$('#alert_ok').attr("onclick", "");*/
         				alertOpen(
         					"업데이트 알림", 
-        			 		"새로운 버젼의 앱이 출시되었습니다.<br>- 가카오톡 공유하기 수정 <br> - 수동, 자동 업데이트 (이후 부터 적용) <br> 구글 플레이스토어에서 'R 포인트' 를 검색해서 </br>업데이트를 받아주세요", 
+        					"새로운 버젼의 앱이 출시되었습니다.<br> 전체적인 시스템 수정으로 인하여 <br>업데이트를 받으셔야 원할한 서비스 제공이 가능합니다<br> 확인을 누르시면 업데이트 페이지로 이동합니다.",
         			 		true, 
         			 		false, 
-        			 	    function(){/*goUpdatePlayStore()*/},
+        			 	    function(){goPlayStore()},
         			 		null);	
         			}
         		})

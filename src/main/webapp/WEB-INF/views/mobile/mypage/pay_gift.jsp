@@ -57,18 +57,18 @@ function resetGpointvalue(postfixId){
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->
-		<h4>R-POINT</h4>
+		 <h4><spring:message code="label.rpoint" /></h4>
 	</header> 
 	<!-- content begin -->   
 	<section style="padding-top: 50px;">
 		<div class="rp_total">
 	      <p><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/>P</p>
-	      <h6>Total R-POINT</h6>
+	       <h6>Total <spring:message code="label.rpoint"/></h6>
 	    </div>
 		<div class="tab-content">
 			<ul class="tabtitle">
-				<li><a href="/m/mypage/newpay.do">R-POINT 전환내역</a></li>
-				<li class="active"><a href="/m/mypage/pay_gift.do">R-POINT 선물하기</a></li>
+				<li><a href="/m/mypage/newpay.do"><spring:message code="label.rPointconversionHistory"/></a></li>
+				<li class="active"><a href="/m/mypage/pay_gift.do"><spring:message code="label.rpay_gift"/></a></li>
 			</ul>  
           <div id="Rpoint" class="tab-pane fade in active">               
             <div class="listbox rplist">

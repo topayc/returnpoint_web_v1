@@ -238,7 +238,7 @@ function gpointDetailView(f, searchtime){
 	<section style="padding-top: 50px;">
 		<div class="rp_total">
 	      <p><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/>P</p>
-	      <h6>Total G 포인트</h6>
+	      <h6>Total <spring:message code="label.gpoint" /></h6>
 	    </div>
 		<!-- 노드 타입에 따라 글자, 색상이 구분을 나옴, foreach문 처리 -->
 		<!-- 1 회원 2 정회원 3 지사 4 대리점 5 협력업체 6 영업관리자 7 총판 -->
@@ -251,49 +251,49 @@ function gpointDetailView(f, searchtime){
 		    <div id="GpointM" class="tab-pane fade in active">
 				<c:if test="${model.myGreenPointSumMap.memberPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd1"><spring:message code="label.member" /></span></div>
+					<div class="listmember"><span class="node nd1"><spring:message code="label.member" /></span><spring:message code="label.gpoint"/></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.memberPoint}" pattern="###,###,###,###"/></span></div>
 					<a type="button" class="listbtn" onclick="gpointDetailView('1', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.recommenderPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd2"><spring:message code="label.recommender" /></span></div>
+					<div class="listmember"><span class="node nd2"><spring:message code="label.recommender" /></span><spring:message code="label.gpoint"/></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.recommenderPoint}" pattern="###,###,###,###"/></span></div>
 					<a type="button" class="listbtn" onclick="gpointDetailView('2', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.saleManagerPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd3"><spring:message code="label.saleManager" /></span></div>
+					<div class="listmember"><span class="node nd3"><spring:message code="label.saleManager" /></span><spring:message code="label.gpoint"/></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.saleManagerPoint}" pattern="###,###,###,###"/></span></div>
 					<a type="button" class="listbtn" onclick="gpointDetailView('6', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.affiliatePoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd4"><spring:message code="label.affiliate" /></span></div>
+					<div class="listmember"><span class="node nd4"><spring:message code="label.affiliate" /></span><spring:message code="label.gpoint"/></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.affiliatePoint}" pattern="###,###,###,###"/></span></div>
 					<a type="button" class="listbtn" onclick="gpointDetailView('5', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.agancyPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd5"><spring:message code="label.agency" /></span></div>
+					<div class="listmember"><span class="node nd5"><spring:message code="label.agency" /></span><spring:message code="label.gpoint"/></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.agancyPoint}" pattern="###,###,###,###"/></span></div>
 					<a type="button" class="listbtn" onclick="gpointDetailView('4', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.branchPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd6"><spring:message code="label.branch" /></span></div>
+					<div class="listmember"><span class="node nd6"><spring:message code="label.branch" /></span><spring:message code="label.gpoint"/></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.branchPoint}" pattern="###,###,###,###"/></span></div>
 					<a type="button" class="listbtn" onclick="gpointDetailView('3', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /></a>
 				</div>
 				</c:if>
 				<c:if test="${model.myGreenPointSumMap.SoleDistPoint != null}">
 				<div class="listbox">
-					<div class="listmember"><span class="node nd7"><spring:message code="label.soleDist" /></span></div>
+					<div class="listmember"><span class="node nd7"><spring:message code="label.soleDist" /></span><spring:message code="label.gpoint"/></div>
 					<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointSumMap.SoleDistPoint}" pattern="###,###,###,###"/></span></div>
 					<a type="button" class="listbtn" onclick="gpointDetailView('7', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /></a>
 				</div>
