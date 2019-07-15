@@ -244,6 +244,7 @@ function searchMap(){
 if (appInfo && appInfo['access'] && appInfo['access'] == "APP") {
 	checkVersion()
 }
+
 </script>
 </body>
 <!-- body end -->

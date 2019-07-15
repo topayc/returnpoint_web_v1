@@ -13,36 +13,38 @@
 	<script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
 	<script>
-	/*  	var height  = window.screen.height;
-	 	
-	 	if (appInfo && appInfo['access'] && appInfo['access'] == "APP") {
-	 		bridge.isNavigationBar(function(result){
-				result = JSON.parse(result);
-				alert(result.deviceHeight);
-				if (result.result == "Y"){
-					height = result.deviceHeight;
-				}
-				$(".swiper-container").height(height);
-			});
-	 	} */
+		var height  = window.screen.height - 90;
+	    var width = window.screen.width
+	
+	    if (appInfo && appInfo['access'] && appInfo['access'] == "APP") {
+			 if (window.returnpAndroidBridge.getDeviceResolution) {
+				 bridge.getDeviceResolution(function(result){
+					if (result) {
+			 			result = JSON.parse(result);
+			 			if (result.result == "100"){
+							height = Number(result.deviceHeight ) / window.devicePixelRatio;
+						}
+					}
+				});		 
+			 }
+	 	}  
 	
 		$(document).ready(function(){
+			$('body').height(height + "px");
 			new Swiper('.swiper-container', {
-			    pagination : { 
+				pagination : {
 			        el : '.swiper-pagination',
-			        clickable : true, 
+			        clickable : true,
 			    },
+	             calculateHeight:true,
+	             autoHeight: true
 			});
-			
-		/* 	$('img').each(function(){
-				$(this).height(window.screen.height);
-			}); */
 		});
-	</script>  
+	</script>
 </head>
 
 <body>
-    <div class="swiper-container">
+    <div class="swiper-container" style = "height: 100%">
         <div class="swiper-wrapper">
             <div class="swiper-slide swiper_text">
                 <img src="/resources/images/intro/ser1.png">
@@ -61,7 +63,7 @@
             </div>
             <div class="swiper-slide swiper_text">
                 <img src="/resources/images/intro/ser2.png">
-                <p class = "title">R-POINT 결제</p>
+                <p class = "title">R 포인트 결제</p>
                 <div class="text_box">
                     <ul>
                      <li>뚱뚱한 지갑은 이제 그만</li>

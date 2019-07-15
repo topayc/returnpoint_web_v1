@@ -307,7 +307,7 @@ function getOriginalCurrentPosition(){
 		      },
 	      { timeout: 10000 });
    } else {
-      alertOpen("확인", "위치 서비스를 사용할 수 없습니다.", true, false);   
+      alertOpen("확인", "[303] 위치 서비스를 사용할 수 없습니다.", true, false);   
    }
 }
 
@@ -342,17 +342,12 @@ function getDeviceMyLocation(){
 }
 
  function getCurrentPosition() {
-
-		if (appInfo.access == "APP") {
+		getCurrentPosition2();
+	/* 	if (appInfo.access == "APP") {
 			getCurrentPosition2();
-	/*    if(current.secure == 'false'){
-				getCurrentPosition2();
-			}else {
-				getOriginalCurrentPosition();
-			}*/
 		}else {
 			getOriginalCurrentPosition();
-		}
+		} */
 	}
 
 function setMapCenter(seq, latLng) {

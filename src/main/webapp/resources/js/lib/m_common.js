@@ -357,6 +357,16 @@ var bridge = (function () {
 		window.returnpAndroidBridge.isNavigationBar();
 	}
 	
+	function getDeviceResolution(func){
+		callbackFunc = func;
+		window.returnpAndroidBridge.getDeviceResolution();
+	}
+	
+	function getNavbarHeight(func){
+		callbackFunc = func;
+		window.returnpAndroidBridge.getNavbarHeight();
+	}
+	
 	/*
 	 * 안드로이드, IOS 여부에 따라 모듈 함수 세팅
 	 * ( 이부분은 차후 진행, 일단 안드로이드만 제공)
@@ -380,7 +390,9 @@ var bridge = (function () {
 		sendSMS : sendSMS,
 		afterJoinComplete : afterJoinComplete,
 		setPushToken : setPushToken,
-		isNavigationBar : isNavigationBar
+		isNavigationBar : isNavigationBar,
+		getDeviceResolution : getDeviceResolution,
+		getNavbarHeight : getNavbarHeight
 	}
 	return exportFunc;
 })();

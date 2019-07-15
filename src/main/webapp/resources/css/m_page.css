@@ -81,7 +81,8 @@ section hr{display:none;}
 .index .tab-content p i{font-size:12px;}
 .index .tab-content #main_rpoint p{color: #ff4273;}
 .index .tab-content #main_gpoint p{color: #9db500;}
-.index .search{position: relative;padding: 0 37px 0 163px;}
+/* .index .search{position: relative;padding: 0 37px 0 163px;} */
+.index .search{position: relative;padding: 0 37px 0 140px}
 .index .search .searchbtn{position: absolute;left: 15px;top: 11px;}
 .index .search input{border: 0;border-left: 1px solid #efefef;margin: 10px 0;padding: 10px;height: auto;text-align: left;}
 .index .search .fa-search{position: absolute;right: 13px;top: 11px;}     
