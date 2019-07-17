@@ -62,12 +62,12 @@ function sendRecommendSMSCheck(memberName, memberEmail){
 
 	bridge.checkPermission(appInfo.permission.SEND_SMS, function(result){
 		result = JSON.parse(result);
-		if (result.permission == appInfo.permissionResult.PERMITTEED) {
+		if (result.permissionState == appInfo.permissionResult.PERMITTEED) {
 			sendSMS(smsData);
 		}else {
 			bridge.requestPermission(appInfo.permission.SEND_SMS, function(result){
 				result = JSON.parse(result);
-				if (result.permission == appInfo.permissionResult.PERMITTEED) {
+				if (result.permissionState == appInfo.permissionResult.PERMITTEED) {
 					sendSMS(smsData);
 				}else {
 					 alertOpen("확인", result.permissionName + " 권한을 허용하셔야 해당 기능을 사용할 수  있습니다.", true, false, null, null);

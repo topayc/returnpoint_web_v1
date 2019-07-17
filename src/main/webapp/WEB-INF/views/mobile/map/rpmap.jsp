@@ -326,16 +326,21 @@ function getDeviceMyLocation(){
  function getCurrentPosition2(){
 	bridge.checkPermission(appInfo.permission.ACCESS_FINE_LOCATION, function(result){
 		result = JSON.parse(result);
-		if (result.permission == appInfo.permissionResult.PERMITTEED) {
+		if (result.permissionState == appInfo.permissionResult.PERMITTEED) {
 			getDeviceMyLocation();
 		}else {
 			bridge.requestPermission(appInfo.permission.ACCESS_FINE_LOCATION, function(result){
 				result = JSON.parse(result);
-				if (result.permission == appInfo.permissionResult.PERMITTEED) {
-					getDeviceMyLocation();
+				if (result.result == "100"){
+					if (result.permissionState == appInfo.permissionResult.PERMITTEED) {
+						getDeviceMyLocation();
+					}else {
+						 alertOpen("확인", result.permissionName + " 권한을 허용하셔야 해당 기능을 사용할 수  있습니다.", true, false, null, null);
+					}	
 				}else {
-					 alertOpen("확인", result.permissionName + " 권한을 허용하셔야 해당 기능을 사용할 수  있습니다.", true, false, null, null);
+					alertOpen("알림", "앱 오류 발생", true, false, null, null);
 				}
+				
 			});
 		}
 	});

@@ -150,6 +150,7 @@ var access = (function () {
 	}
 })();
 
+
 var host = window.location.protocol + "//" + window.location.host;
 //var host = "http://124.49.211.77:9090";
 var appInfo = {
@@ -157,6 +158,7 @@ var appInfo = {
 	appSchem : "rp://returnp",
 	appPackage : "com.tophappyworld.returnpapp",
 	access : access,
+	deviceType : null,
 	share : {
 		title : 'R 포인트',
 		description : '쓴 만큼 100% 돌려주는 R 포인트 , 언제 어디서나 쉽고 간편하게',
@@ -201,6 +203,41 @@ var appInfo = {
 	}
 };
 
+function isApp(){
+	if (appInfo && appInfo['access'] && appInfo['access'] == "APP"){
+		return true;
+	}else {
+		return false;
+	}
+}
+
+function isMobile(){
+	if (appInfo['access'] == "MOBILE"){
+		return true;
+	}else {
+		return false;
+	}
+}
+
+function isPc(){
+	if (appInfo['access'] == "PC"){
+		return true;
+	}else {
+		return false;
+	}
+}
+
+function getDeviceType(){
+}
+
+function getDeviceResolution(func){
+	 if (window.returnpAndroidBridge.getDeviceResolution) {
+		 bridge.getDeviceResolution(func);		 
+	 }else {
+		 func({result : 200});
+	 }
+}
+
 function executeApp() {
 	document.location.href = appInfo.appSchem;
 }
@@ -243,6 +280,10 @@ function goAppStore() {
 }
 
 
+/*
+ * 
+ * 
+ * */
 /* 안드로이드 브릿지 관련 코드 */
 var bridge = (function () {
 	var callbackFunc;
@@ -270,9 +311,9 @@ var bridge = (function () {
 	}
 
 	/* 디바이스 세션 설정*/
-	function setDeviceSession(userName, userEmail , userAuthToken, func) {
+	function setDeviceSession(session, func) {
 		callbackFunc = func;
-		var session = [userName, userEmail, userAuthToken].join(":");
+		//var session = [userName, userEmail, userAuthToken].join(":");
 		window.returnpAndroidBridge.setDeviceSession(session);
 	}
 	
@@ -288,7 +329,7 @@ var bridge = (function () {
 		window.returnpAndroidBridge.getSessionValue(key);
 	}
 	
-	/* 해당 키의 세션 밸류 가져오기*/
+	/* 웹 뷰 로드 */
 	function loadUrl(url, func){
 		callbackFunc = func;
 		window.returnpAndroidBridge.loadUrl(url);
@@ -352,20 +393,12 @@ var bridge = (function () {
 		window.returnpAndroidBridge.getData(key, defaultValue);
 	}
 
-	function isNavigationBar(func){
-		callbackFunc = func;
-		window.returnpAndroidBridge.isNavigationBar();
-	}
 	
 	function getDeviceResolution(func){
 		callbackFunc = func;
 		window.returnpAndroidBridge.getDeviceResolution();
 	}
 	
-	function getNavbarHeight(func){
-		callbackFunc = func;
-		window.returnpAndroidBridge.getNavbarHeight();
-	}
 	
 	/*
 	 * 안드로이드, IOS 여부에 따라 모듈 함수 세팅
@@ -390,9 +423,7 @@ var bridge = (function () {
 		sendSMS : sendSMS,
 		afterJoinComplete : afterJoinComplete,
 		setPushToken : setPushToken,
-		isNavigationBar : isNavigationBar,
-		getDeviceResolution : getDeviceResolution,
-		getNavbarHeight : getNavbarHeight
+		getDeviceResolution : getDeviceResolution
 	}
 	return exportFunc;
 })();
@@ -435,25 +466,22 @@ function startGiftCardProcess(cmd, giftCardStatus, accableStatus, payableStatus)
 	}
 	//var qrData = $("#giftCardQrData").val().trim();
 	var pinNumber= $("#pinNumber").val().trim();
-	//var decodeQrData = atob(qrData);
-	console.log(pinNumber);
 	var qrParams = {
 		qr_cmd :  cmd,
 		pinNumber : pinNumber.trim()
 	}
-	bridge.getSesssionAndDeviceInfo(function(info){
-		info = JSON.parse(info);
-		qrParams["memberEmail"] = info.user_email;
-		qrParams["memberName"] = info.user_name;
-		qrParams["memberPhone"] = info.phoneNumber;
-		qrParams["memberPhoneCountry"]  = info.phoneNumberCountry;
+	bridge.getSesssionAndDeviceInfo(function(data){
+		data = JSON.parse(data);
+		if (result.result != "100")  {
+			alertOpen("알림", "앱 오류 발생", true, false, null, null);
+			return;
+		}
+		
+		qrParams["memberEmail"] = data.user_email;
+		qrParams["memberName"] = data.user_name;
+		qrParams["memberPhone"] = data.phoneNumber;
+		qrParams["memberPhoneCountry"]  = data.phoneNumberCountry;
 		qrParams["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
-	/*	for (key in qrParams){
-			if (qrParams.hasOwnProperty(key)) {
-				qrParams[key] = encodeURIComponent(qrParams[key]);
-			}
-		}*/
-		//var sendQrData =  btoa(unescape(encodeURIComponent(JSON.stringify(qrParams))))
 		var sendQrData = encodeURIComponent(btoa(JSON.stringify(qrParams)));
 	
 		var  giftCardQrControlUrl = window.location.protocol + "//" + window.location.host + "/m/mypage/m_gift_card_command.do";
@@ -504,16 +532,21 @@ function startGiftCardProcess(cmd, giftCardStatus, accableStatus, payableStatus)
 /*서버로 푸시 토큰 전송*/ 
 function sendPushTokenToServer(data){
 	data = JSON.parse(data);
+	if (data.result != "100" ) {
+		alertOpen("알림", "앱 오류 발생", true, false, null, null);
+		return;
+	}
+	
 	var  url = window.location.protocol + "//" + window.location.host + "/m/device/registPushToken.do";
 	$.ajax({
        	type: "POST",
         url: url,
         data: data,
         success: function (result) {
-        	if (res.resultCode  == "100") {
-        		$.messager.alert('알림', res.message);
+        	if (result.resultCode  == "100") {
+        		//$.messager.alert('알림', result.message);
         	}else {
-        		$.messager.alert('알림', res.message);
+        		//$.messager.alert('알림', result.message);
         	}
         },
         error : function(request, status, error){
@@ -530,14 +563,20 @@ function startPointBack(){
 		param[$(this).attr("id")]  = $(this).val().trim().replace(",","");
 	});
 	function execPointback(){
-		bridge.getSesssionAndDeviceInfo(function(info){
-			info = JSON.parse(info);
-			param["memberEmail"] = info.user_email;
-			param["memberName"] = info.user_name;
-			param["phoneNumber"] = info.phoneNumber;
-			param["phoneNumberCountry"]  = info.phoneNumberCountry;
+		bridge.getSesssionAndDeviceInfo(function(data){
+			data = JSON.parse(data);
+			
+			if (data.result != "100")  {
+				alertOpen("알림", "앱 오류 발생", true, false, null, null);
+				return;
+			}
+			
+			param["memberEmail"] = data.user_email;
+			param["memberName"] = data.user_name;
+			param["phoneNumber"] = data.phoneNumber;
+			param["phoneNumberCountry"]  = data.phoneNumberCountry;
 			param["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
-			console.log(param["phoneNumber"] + "</br>" + param["phoneNumberCountry"]);
+			//console.log(param["phoneNumber"] + "</br>" + param["phoneNumberCountry"]);
 			for (key in param){
 				if (param.hasOwnProperty(key)) {
 					param[key] = encodeURIComponent(param[key]);
@@ -605,19 +644,24 @@ function startPointBack(){
 		});	
 	}
 	
-	bridge.checkPermission(appInfo.permission.READ_PHONE_STATE, function(result){
-		result = JSON.parse(result);
-		if (result.permission == appInfo.permissionResult.PERMITTEED) {
-			execPointback();
+	bridge.checkPermission(appInfo.permission.READ_PHONE_STATE, function(data){
+		data = JSON.parse(data);
+		if (data.result == "100") {
+			if (data.permissionState == appInfo.permissionResult.PERMITTEED) {
+				execPointback();
+			}else {
+				bridge.requestPermission(appInfo.permission.READ_PHONE_STATE, function(data){
+					data = JSON.parse(data);
+					if (data.permissionState == appInfo.permissionResult.PERMITTEED) {
+						execPointback();
+					}else {
+						 alertOpen("확인", result.permissionName + " 권한을 허용하셔야 적립이 가능합니다", true, false, null, null);
+					}
+				});
+			}
 		}else {
-			bridge.requestPermission(appInfo.permission.READ_PHONE_STATE, function(result){
-				result = JSON.parse(result);
-				if (result.permission == appInfo.permissionResult.PERMITTEED) {
-					execPointback();
-				}else {
-					 alertOpen("확인", result.permissionName + " 권한을 허용하셔야 적립이 가능합니다", true, false, null, null);
-				}
-			});
+			alertOpen("알림", "앱 오류 발생", true, false, null, null);
+			return;
 		}
 	});
 }
@@ -633,16 +677,19 @@ function checkVersion(){
         	var sVersion = sVersionInfo.split(":")[0];
         	var sVersionApply = sVersionInfo.split(":")[1];
         	if (sVersion != null && sVersion != "" && sVersionApply == "Y") {
-        		bridge.getSessionValue("version", function(aVersion){
-        			if (aVersion == null || aVersion == "" || Number(aVersion) < Number(sVersion)){
-        				/*$('#alert_ok').attr("onclick", "");*/
-        				alertOpen(
-        					"업데이트 알림", 
-        					"새로운 버젼의 앱이 출시되었습니다.<br> 전체적인 시스템 수정으로 인하여 <br>업데이트를 받으셔야 원할한 서비스 제공이 가능합니다<br> 확인을 누르시면 업데이트 페이지로 이동합니다.",
-        			 		true, 
-        			 		false, 
-        			 	    function(){goPlayStore()},
-        			 		null);	
+        		bridge.getSessionValue("version", function(data){
+        			if (data.result == "100"){
+        				if (data == null || data == "" || Number(data['version']) < Number(sVersion)){
+        					alertOpen(
+        						"업데이트 알림", 
+        						"새로운 버젼의 앱이 출시되었습니다.<br> 전체적인 시스템 수정으로 인하여 <br>업데이트를 받으셔야 원할한 서비스 제공이 가능합니다<br> 확인을 누르시면 업데이트 페이지로 이동합니다.",
+        						true, 
+        						false, 
+        						function(){goPlayStore()},
+        						null);	
+        				}
+        			}else {
+        				alertOpen("알림", "앱 오류 발생", true, false, null, null);
         			}
         		})
         	}
@@ -654,7 +701,7 @@ function checkVersion(){
        });
 }
 function startQRScan(){
-	if (appInfo.access != "APP")  {
+	if (!isApp())  {
 		executeAppOrGoStore();
 		return;
 	}
@@ -670,7 +717,6 @@ function startQRScan(){
 					qrInfoUrl = window.location.protocol + "//" + window.location.host + "/m/qr/kiccQrinfo.do?qr_data=" + btoa(unescape(encodeURIComponent(qrData)));
 					webview_redirect(qrInfoUrl);
 					return;
-					
 				} 
 				
 				/*KICC 외의 다른 밴사로 부터 온 QR 요청*/
@@ -689,14 +735,6 @@ function startQRScan(){
 			}else{
 				/*큐알로 부터 읽어들인 데이타가 URL 형태가 아닌 경우 RETURNP 자체  큐알 명령 */
 				accumulateGiftCardQr(qrData);
-			/*	bridge.getPhoneNumber(function(phone){
-					console.log(phone);
-					phone = JSON.parse(phone);
-					var phoneNumber = phone.phoneNumber;
-					var phoneNumberCountry = phone.phoneNumberCountry;
-					var qrInfoUrl = window.location.protocol + "//" + window.location.host + "/qr/qrinfo.do?data=" + url;
-					webview_redirect(qrInfoUrl);
-				});	*/
 			}
 		}
 	});

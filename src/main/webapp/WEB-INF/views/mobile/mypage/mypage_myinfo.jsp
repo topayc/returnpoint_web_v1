@@ -155,12 +155,12 @@ function recommendSms(data){
 	
 	bridge.checkPermission(appInfo.permission.READ_CONTACTS, function(result){
 		result = JSON.parse(result);
-		if (result.permission == appInfo.permissionResult.PERMITTEED) {
+		if (result.permissionState == appInfo.permissionResult.PERMITTEED) {
 			location.href = "/m/mypage/recommend_sms.do?recommender=" +data;
 		}else {
 			bridge.requestPermission(appInfo.permission.READ_CONTACTS, function(result){
 				result = JSON.parse(result);
-				if (result.permission == appInfo.permissionResult.PERMITTEED) {
+				if (result.permissionState == appInfo.permissionResult.PERMITTEED) {
 					location.href = "/m/mypage/recommend_sms.do?r=" +data;
 				}else {
 					 alertOpen("확인", result.permissionName + " 권한을 허용하셔야 해당 기능을 사용할 수  있습니다.", true, false, null, null);

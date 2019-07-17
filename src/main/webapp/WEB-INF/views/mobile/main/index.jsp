@@ -59,9 +59,9 @@ $(document).on('ready', function() {
         var mbrE = (p["mbrE"]);
         var userAT = (p["userAT"]);
         if (typeof mbrE != "undefined" && typeof userAT != "undefined") {
-           bridge.setDeviceSession(mbrE, mbrE, userAT, function(result) {
-        	   bridge.getSessionValue('PREF_ALL_SESSION', function(result){
-              });
+           var session = {userName :mbrE , userEmail : mbrE, userAuthToken : userAT }
+        	bridge.setDeviceSession(JSON.stringify(session), function(result) {
+        	 
            });
         }
      }
@@ -89,10 +89,8 @@ $(document).ready(function(){
       var mbrE = (p["mbrE"]);
       var userAT = (p["userAT"]);
       if (typeof mbrE != "undefined" && typeof userAT != "undefined") {
-         bridge.setDeviceSession(mbrE, mbrE, userAT, function(result) {
-            bridge.getSessionValue('PREF_ALL_SESSION', function(result){
-            });
-         });
+   	  	var session = {userName :mbrE , userEmail : mbrE, userAuthToken : userAT }
+      	bridge.setDeviceSession(JSON.stringify(session), function(result) {});
       }
    }
    var p = getParams();

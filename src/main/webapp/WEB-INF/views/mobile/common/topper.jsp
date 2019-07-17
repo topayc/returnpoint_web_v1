@@ -55,13 +55,13 @@
 						</c:choose>
 						<c:choose>
 							<c:when	test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
-								<li><a href="/m/member/login.do"><i class="fas fa-credit-card"></i><spring:message code="label.topper.menu.check_rpay" /></a></li>
-								<li><a href="/m/member/login.do"><i class="fas fa-coins"></i><spring:message code="label.topper.menu.check_rpoint" /></a></li>
+								<li><a href="/m/member/login.do"><i class="fas fa-credit-card"></i><spring:message code="label.rpoint" /></a></li>
+								<li><a href="/m/member/login.do"><i class="fas fa-coins"></i><spring:message code="label.gpoint" /></a></li>
 								<li><a onclick="startQRScan()"><i class="fas fa-qrcode"></i><spring:message code="label.topper.menu.sacnqr" /></a></li>
 							</c:when>
 							<c:otherwise>
-								<li><a href="/m/mypage/newpay.do"><i class="fas fa-credit-card"></i><spring:message code="label.topper.menu.check_rpay" /></a></li>
-								<li><a href="/m/mypage/newpoint.do"><i class="fas fa-coins"></i><spring:message code="label.topper.menu.check_rpoint" /></a></li>
+								<li><a href="/m/mypage/newpay.do"><i class="fas fa-credit-card"></i><spring:message code="label.rpoint" /></a></li>
+								<li><a href="/m/mypage/newpoint.do"><i class="fas fa-coins"></i><spring:message code="label.gpoint" /></a></li>
 								<li><a onclick="startQRScan()"><i class="fas fa-qrcode"></i><spring:message code="label.topper.menu.sacnqr" /></a></li>
 								<li><a href="/m/mypage/manage_qr.do"><i class="fas fa-laptop"></i><spring:message code="label.manage_qr_code" /></a></li>
 							</c:otherwise>

@@ -49,22 +49,40 @@ $(document).ready(function(){
 		$('#alert_cancel').hide();
 	}
 	
-	if (appInfo.access == "APP") {
+	if (isApp()) {
+		/*앱인 경우 전화번호 입력박스 입력 금지*/
+		$("#phone").attr('readonly', true);
 		bridge.checkPermission(appInfo.permission.READ_PHONE_STATE, function(result){
-			if (result.permission == appInfo.permissionResult.PERMITTEED) {
-				setPhoneNumber();
+			result = JSON.parse(result);
+			if (result.result == '100'){
+				if (result.permissionState == appInfo.permissionResult.PERMITTEED) {
+					setPhoneNumber();
+				}else {
+					bridge.requestPermission(appInfo.permission.READ_PHONE_STATE, function(result){
+						result = JSON.parse(result);
+						if (result.result == '100'){
+							if (result.permissionState == appInfo.permissionResult.PERMITTEED) {
+								setPhoneNumber();
+							}else {
+								alertOpen(
+									"알림", 
+									"정상적인 서비스 제공을 위해서는 </br>기기 전화번호 가져오기 권한을 </br>활성화 해주셔야 합니다.", 
+									true, 
+									false, 
+									function(){}, 
+									null);
+							}
+						}else {
+							alertOpen("알림", "앱 오류 발생", true, false, null, null);
+						}
+					});
+				}
 			}else {
-				bridge.requestPermission(appInfo.permission.READ_PHONE_STATE, function(result){
-					result = JSON.parse(result);
-					if (result.permission == appInfo.permissionResult.PERMITTEED) {
-						setPhoneNumber();
-					}else {
-						/* 기기 전화번호 가져오는 것을 허용하지 않았을 때의 처리*/
-					}
-				});
+				alertOpen("알림", "앱 오류 발생", true, false, null, null);
 			}
 		});
 	}
+	
 	var parameters = getParams();
 	if (parameters['recommender'] && typeof parameters['recommender'] != "undefined" && parameters['recommender'].trim() != '') {
 		$('#recommend').val(decodeURIComponent(atob(parameters['recommender'])).trim());
@@ -73,11 +91,14 @@ $(document).ready(function(){
 });
 
 function setPhoneNumber(){
-	bridge.getPhoneNumber(function(phone){
-		phone = JSON.parse(phone);
-		$("#phone").val(phone.phoneNumberCountry);
-		//$("#phone").attr('readonly', true);
-		$("#phoneOri").val(phone.phoneNumberCountry);
+	bridge.getPhoneNumber(function(data){
+		data = JSON.parse(data);
+		if (data.result == "100"){
+			$("#phone").val(data.phoneNumberCountry);
+			$("#phoneOri").val(data.phoneNumberCountry);
+		}else {
+			alertOpen("알림", "앱 오류 발생", true, false, null, null);
+		}
 	});	
 }
 </script>

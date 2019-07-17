@@ -24,15 +24,22 @@
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	if (appInfo && appInfo['access'] && appInfo['access'] == "APP") {
+	if (isApp()) {
 		var p = getParams();
 		var mbrE = (p["mbrE"]);
 		var userAT = (p["userAT"]);
+		
 		if (typeof mbrE != "undefined" && typeof userAT != "undefined") {
-		   bridge.setDeviceSession(mbrE, mbrE, userAT, function(result) {
-			   location.href = "/m/main/index.do"
-		   });
-		   bridge.setPushToken();
+	   	   var session = {userName :mbrE , userEmail : mbrE, userAuthToken : userAT }
+	       bridge.setDeviceSession(JSON.stringify(session), function(result) {
+	    	   result = JSON.parse(result);
+	    	   if (result.result == "100") {
+	   			 bridge.setPushToken();
+	        	 location.href = "/m/main/index.do";
+	         }else {
+	        	 alertOpen("알림", "앱 오류 발생", true, false, null, null);
+	         }
+	       });
 		}
    }else {
 	   location.href = "/m/main/index.do"

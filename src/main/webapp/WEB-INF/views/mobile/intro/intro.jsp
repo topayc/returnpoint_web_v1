@@ -16,17 +16,15 @@
 		var height  = window.screen.height - 90;
 	    var width = window.screen.width
 	
-	    if (appInfo && appInfo['access'] && appInfo['access'] == "APP") {
-			 if (window.returnpAndroidBridge.getDeviceResolution) {
-				 bridge.getDeviceResolution(function(result){
-					if (result) {
-			 			result = JSON.parse(result);
-			 			if (result.result == "100"){
-							height = Number(result.deviceHeight ) / window.devicePixelRatio;
-						}
+	    if (isApp()) {
+	    	getDeviceResolution(function(result){
+				if (result) {
+		 			result = JSON.parse(result);
+		 			if (result.result == "100"){
+						height = Number(result.deviceHeight ) / window.devicePixelRatio;
 					}
-				});		 
-			 }
+				}
+			}) 
 	 	}  
 	
 		$(document).ready(function(){
