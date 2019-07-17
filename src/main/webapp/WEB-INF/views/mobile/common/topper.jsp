@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Nanum+Gothic|Sunflower:300&display=swap" rel="stylesheet">
 <div class="alert_wrap" id="alertView" name="alertView" style="display:none;">
   <div class="alert alert-info">
     <div class="alert_body">
@@ -67,6 +68,7 @@
 							</c:otherwise>
 						</c:choose>				 
 						<li><a onclick="location='/m/map/rpmap.do'"><i class="fas fa-map-marker-alt"></i><spring:message code="label.topper.menu.search_aff" /></a></li>
+						<li><a href ="/board/franchisee_info.do"><i class="fas fa-map-marker-alt"></i>가맹점 찾기</a></li>
 						<%-- <li><a href="/m/giftCard/giftCardDetail.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> --%>
 						<li><a href="/m/giftCard/giftCardList.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> 
 						<li><a href="/m/mypage/m_selectLanguage.do"><i class="fas fa-globe-americas"></i> <i class="fas fa-sort-down"></i><spring:message code="label.mypageLanguage" /></a></li>

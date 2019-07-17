@@ -18,7 +18,6 @@ $(document).ready(function(){
 });
 
 function franchiseeInfoGoogleMapPopup(affiliateNo){
-	alert(affiliateNo);
 	url = "/board/franchiseeInfoGoogleMap.do?affiliateNo="+affiliateNo;
 	window.open(url, "url", "width=615, height=615, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes");
 }
