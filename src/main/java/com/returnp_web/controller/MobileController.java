@@ -1,5 +1,6 @@
 package com.returnp_web.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.returnp_web.svc.FrontMainService;
 import com.returnp_web.svc.MobileMainService;
 import com.returnp_web.utils.RPMap;
 import com.returnp_web.utils.Util;
@@ -26,6 +28,9 @@ public class MobileController extends MallBaseController {
 
 	@Autowired
 	private MobileMainService mms;
+	
+	@Autowired
+	private FrontMainService fms;
 
 	/*
 	 * @Autowired private MessageSourceAware messageSourceAware; public void
@@ -46,6 +51,62 @@ public class MobileController extends MallBaseController {
 			bret = mms.prepareIntro(Util.toRPap(p), dataMap, request, response); 
 		}
 		return page(bret, modelMap, dataMap);
+	}
+	
+	// WEB 가맹점찾기
+	@RequestMapping("/affiliate/affiliateSearch")
+	public String franchiseeInfoSearch(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+		
+		/****Paging*******************/
+		int page = 1; 		// 현재 선택된 페이지
+		int upperPage= 1;	// 현재 선택된 상위페이지
+		int recordCount = 0; //데이터 총 갯수
+		int recordPerPage = 20; //페이지당 레코드수
+		int pageCount = 1;	//페이지 총 갯수
+		int upperPageCount = 1;	//상위페이지수
+		int pagePerUpperPage = 5;	//한화면에 보여지는 페이지수
+		int s_seq=0;
+		int e_seq=0;
+		/*****************************/
+		
+		try{
+			if (params.get("city") != null) {
+				String affiliateAddress = params.get("city").toString() +" "+ params.get("country").toString();
+				params.put("affiliateAddress", affiliateAddress);
+			}
+	
+			recordCount = fms.selectWebFranchiseeInfoListTotalCount(params);
+			pageCount = (int) Math.ceil((double)recordCount/recordPerPage); //페이지 총 갯수
+			
+			if (params.get("page") != null) page = Integer.parseInt(params.get("page").toString());	//현재 페이지
+			if (params.get("upperPage") != null) upperPage = Integer.parseInt(params.get("upperPage").toString());		//현재 선택된 상위페이지
+			if (params.get("recordPerPage") != null) recordPerPage = Integer.parseInt(params.get("recordPerPage").toString());		//페이지당 레코드수
+			
+			s_seq = (page-1) * recordPerPage + 1;		//s_seq = 현재페이지 * 페이지당레코드
+			e_seq = page * recordPerPage;
+	
+			upperPageCount =(int)Math.ceil((double)pageCount / pagePerUpperPage);		//올림(토탈페이지수 / 슈퍼페이지당 페이지)
+			
+			params.put("page", page);
+			params.put("upperPage", upperPage);
+			params.put("recordCount", recordCount);
+			params.put("recordPerPage", recordPerPage);
+			params.put("pageCount", pageCount);
+			params.put("upperPageCount", upperPageCount);
+			params.put("pagePerUpperPage", pagePerUpperPage);
+			params.put("S_SEQ", s_seq);
+			params.put("E_SEQ", e_seq);
+			params.put("breakValue", "N");
+	
+			ArrayList<HashMap<String, Object>> franchiseeInfoList = fms.selectWebFranchiseeInfoSearchList(params);
+	
+			map.addAttribute("franchiseeInfoList", franchiseeInfoList);
+			map.addAttribute("params", params);
+		}catch(Exception e){
+			e.printStackTrace();
+		}	
+			return "/mobile/affiliate/affiliateSearch";
+		
 	}
 	
 	// 프론트 메인페이지
