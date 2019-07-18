@@ -24,6 +24,7 @@
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		 $(".fran_top").show();
 		$(".fran_button1").click(function(){
 	        $(".fran_top").slideToggle(300);
 	   });	
