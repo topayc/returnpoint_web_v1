@@ -20,22 +20,21 @@
 <!-- js -->
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
-<script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <link rel="stylesheet" href="/resources/web_css/common.css">
+<script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		  $(".fran_button1").click(function(){
+		$(".fran_button1").click(function(){
 	        $(".fran_top").slideToggle(300);
 	   });	
 		searchCity();
 		var country = '${params.country}';
 		searchCountry('${params.city}');
-		
 	});
 	
 	function franchiseeInfoGoogleMapPopup(affiliateNo){
 		url = "/board/franchiseeInfoGoogleMap.do?affiliateNo="+affiliateNo;
-		window.open(url, "url", "width=615, height=615, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes");
+		window.open(url, "url", " toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes");
 	}
 	
 	function searchCity(){
@@ -118,16 +117,24 @@
 	  document.viewList.submit();
 	}
 </script>
+<style >
+nav { padding-top : 0px}
+h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+</style>
 </head>
 <!-- header end -->
 <!-- body begin -->
-<body class="affiliate_search_container">	
+<body class="affiliate_search_container" style="padding-top: 0px;">	
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
 		<h4><spring:message code="label.franchise" /></h4>
 	</header> 
-	<section style="padding-top: 0px;">
+	<section>
 		<div class="fran container">
 	        <div class="fran_text1"><spring:message code="label.web.findaMerchant"/><button type="button" class="btn btn-primary btn-lg fran_button1">검색창</button></div>
 	        <div class="fran1">
