@@ -1111,8 +1111,10 @@ tr a:hover {
 
 @media (max-width:800px) {
     .fran_text_box li:first-child {
-        font-size: 15px;
+        font-size: 14px;
+        font-weight : 550;
         margin-top: 5px;
+        color : #555555
     }
 }
 

@@ -111,7 +111,7 @@
 			alert("시도를 선택해주세요.");
 			return false;
 		}
-		document.viewList.action = "/m/affiliate/affiliateSearch.do";
+		document.viewList.action = "/m/affiliate/affiliateSearchList.do";
 	  document.franchiseeform.submit();
 	}
 	
@@ -122,7 +122,7 @@
 	}
 	
 	function searchList(){
-		document.viewList.action = "/m/affiliate/affiliateSearch.do";
+		document.viewList.action = "/m/affiliate/affiliateSearchList.do";
 	  document.viewList.submit();
 	}
 </script>
