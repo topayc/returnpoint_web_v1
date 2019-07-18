@@ -9,6 +9,7 @@
 <head>
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 <script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script> 
+<script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript" src="/resources/js/lib/common.js"></script>
 <script>
 function initMap() { 
@@ -47,8 +48,13 @@ function initMap() {
 <body>
 <div id="map" ></div> 
 <script>
-$("#map").css("width" , window.screen.width + "px");
-$("#map").css("height" , window.screen.height + "px");
+if (isPc()){
+	$("#map").css("width" , "600px");
+	$("#map").css("height" , "600px");
+}else {
+	$("#map").css("width" , window.screen.width + "px");
+	$("#map").css("height" , window.screen.height + "px");
+}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=${params.key}&callback=initMap" async defer></script> 
 </body>

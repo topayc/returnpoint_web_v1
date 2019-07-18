@@ -25,9 +25,25 @@
 <script type="text/javascript" src="/resources/js/lib/markerwithlabel.js"></script>
 <script type="text/javascript">
 
+var height  = window.screen.height - 90;
+var width = window.screen.width
+
+if (isApp()) {
+	getDeviceResolution(function(result){
+		if (result) {
+ 			result = JSON.parse(result);
+ 			if (result.result == "100"){
+				height = Number(result.deviceHeight ) / window.devicePixelRatio;
+			}
+		}
+	}) 
+}  
+
+
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
+	$('body').height(height + "px");
 });
 
 google.maps.event.addDomListener(window, 'load', getCurrentPosition);
@@ -83,8 +99,7 @@ var current = {
       var imageSec = $("<div/>",{"class":"img_area"});
       var detailSec = $("<a/>",{href:"#"});
       var img = $("<img/>",{src:(photos!=undefined && photos.length> 0 )
-         ?photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
-         :"https://search.pstatic.net/common/?autoRotate=true&amp;quality=95&amp;src=http%3A%2F%2Fblogfiles.naver.net%2F20160318_29%2Fcncmgm1_1458305454051BTUBK_JPEG%2FNaverBlog_20160318_215053_25.jpg%23740x555&amp;type=f82_82"});
+         ?photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100}) :"/resources/web_images/no_image.png"});
       var detailArea = $("<div/>",{"class":"info_area"});
       var sec1 = $("<div/>",{"class":"info_tit"});
       var sec2 = $("<div/>",{"class":"info_sub ellp",text:o.jibunAddr});
@@ -280,15 +295,13 @@ function createMarker(o){
    });
    
    current.markers[i].addListener('click', function(e) { 
-	current.selected = true;
+   	  current.selected = true;
       if($(".rpmap").hasClass("noshop"))$(".rpmap").removeClass("noshop");
       $(".storelist_area li").hide();
       $(".storelist_area li.page"+o.memberNo).show();
       setMapCenter(i, new google.maps.LatLng(o.lat, o.lng));
-      
    });
 }
-
 
 function getOriginalCurrentPosition(){
 	if (navigator.geolocation) {
@@ -380,8 +393,6 @@ function searchMap() {
    current.service.findPlaceFromQuery(request, function(results, status) {
       
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-         
-         
          if(results.length>0){
             current.latLng = results[0].geometry.location;   
             current.map.setCenter(current.latLng);
@@ -405,11 +416,11 @@ function searchMap() {
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->
-      <h4>내 주변 가맹점</h4>
+      <h4><spring:message code="label.topper.menu.search_aff" /></h4>
    </header> 
    <!-- content begin -->   
-   <section>
-      <div class="rpmap_wrap">      
+   <section style ="height:100%">
+      <div style ="height:100%" class="rpmap_wrap">      
       <div class="rpmap noshop" id="map_canvas"></div>
 <!-- <div class="store_point" style="top: 103px; left: 160px;"><i class="fas fa-sort-down"></i>아고라</div>
 <div class="store_point" style="top: 126px; left: 101px;"><i class="fas fa-sort-down"></i>포마토</div>

@@ -33,8 +33,17 @@
 	});
 	
 	function franchiseeInfoGoogleMapPopup(affiliateNo){
+		var windowHeight = 0;
+		var windowWidth= 0;
+		if (isPc()){
+			windowHeight = 600;
+			windowWidth  = 600;
+		}else {
+			windowHeight = window.screen.height;
+			windowWidth = window.screen.width;
+		}
 		url = "/board/franchiseeInfoGoogleMap.do?affiliateNo="+affiliateNo;
-		window.open(url, "url", "width="+ window.screen.width + ", height="+window.screen.height +  ", fullscreen=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no");
+		window.open(url, "url", "width="+ windowWidth + ", height="+windowHeight +  ", fullscreen=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no");
 	}
 	
 	function searchCity(){
