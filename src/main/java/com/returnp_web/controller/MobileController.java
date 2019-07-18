@@ -54,7 +54,7 @@ public class MobileController extends MallBaseController {
 	}
 	
 	// WEB 가맹점찾기
-	@RequestMapping("/affiliate/affiliateSearch")
+	@RequestMapping("/affiliate/affiliateSearchList")
 	public String franchiseeInfoSearch(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
 		
 		/****Paging*******************/
@@ -105,8 +105,18 @@ public class MobileController extends MallBaseController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}	
-			return "/mobile/affiliate/affiliateSearch";
+			return "/mobile/affiliate/affiliateSearchList";
 		
+	}
+	
+	// 프론트 메인페이지
+	@RequestMapping("/affiliate/affiliateSearch.do")
+	public String affiliateSearch(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/affiliate/affiliateSearch");
+       // mms.memberTotal(Util.toRPap(p), rmap, request, response);
+		//boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
+		boolean bret  = true;
+		return page(bret, map, rmap);
 	}
 	
 	// 프론트 메인페이지

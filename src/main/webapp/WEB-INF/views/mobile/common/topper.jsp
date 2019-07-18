@@ -68,7 +68,8 @@
 							</c:otherwise>
 						</c:choose>				 
 						<li><a onclick="location='/m/map/rpmap.do'"><i class="fas fa-map-marker-alt"></i><spring:message code="label.topper.menu.search_aff" /></a></li>
-						<li><a href ="/m/affiliate/affiliateSearch.do"><i class="fas fa-map-marker-alt"></i>가맹점 찾기</a></li>
+						<li><a href ="/m/affiliate/affiliateSearchList.do"><i class="fas fa-map-marker-alt"></i>가맹점 찾기</a></li>
+						<li><a href ="/m/affiliate/affiliateSearch.do"><i class="fas fa-map-marker-alt"></i> new 가맹점 찾기</a></li>
 						<%-- <li><a href="/m/giftCard/giftCardDetail.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> --%>
 						<li><a href="/m/giftCard/giftCardList.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> 
 						<li><a href="/m/mypage/m_selectLanguage.do"><i class="fas fa-globe-americas"></i> <i class="fas fa-sort-down"></i><spring:message code="label.mypageLanguage" /></a></li>

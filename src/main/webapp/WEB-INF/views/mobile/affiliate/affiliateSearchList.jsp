@@ -34,7 +34,7 @@
 	
 	function franchiseeInfoGoogleMapPopup(affiliateNo){
 		url = "/board/franchiseeInfoGoogleMap.do?affiliateNo="+affiliateNo;
-		window.open(url, "url", " toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes");
+		window.open(url, "url", "width="+ window.screen.width + ", height="+window.screen.height +  ", fullscreen=yes, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no");
 	}
 	
 	function searchCity(){
@@ -102,7 +102,7 @@
 			alert("시도를 선택해주세요.");
 			return false;
 		}
-		document.franchiseeform.action = "/board/franchisee_info.do";
+		document.viewList.action = "/m/affiliate/affiliateSearch.do";
 	  document.franchiseeform.submit();
 	}
 	
@@ -113,7 +113,7 @@
 	}
 	
 	function searchList(){
-		document.viewList.action = "/board/franchisee_info.do";
+		document.viewList.action = "/m/affiliate/affiliateSearch.do";
 	  document.viewList.submit();
 	}
 </script>
@@ -136,9 +136,9 @@ h4, .h4, h5, .h5, h6, .h6 {
 	</header> 
 	<section>
 		<div class="fran container">
-	        <div class="fran_text1"><spring:message code="label.web.findaMerchant"/><button type="button" class="btn btn-primary btn-lg fran_button1">검색창</button></div>
+	        <div class="fran_text1"><spring:message code="label.web.findaMerchant"/><!-- &nbsp; --><button type="button" class="btn btn-primary btn-lg fran_button1"><i class="fas fa-search-plus "></i></button></div>
 	        <div class="fran1">
-				 <div class="fran_top">
+				 <div class="fran_top" style ="padding-top:18px; margin-bottom:20px">
 				<form id="franchiseeform" name="franchiseeform">
 					  <div class="fran2 col-lg-6">
 	                    <select class="form-control fran4_text1" id="city" name="city" onchange="searchCountry($('select[name=city]').val());" value="${params.city}">
@@ -152,7 +152,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	                </div>
 					  <div class="form-group has-success has-feedback frna5">
 	                        <div class="col-lg-12 fran5_1">
-	                            <input type="text" class="form-control" placeholder="매장명을 입력해 주세요.">
+	                            <input type="text" class="form-control" placeholder="검색할 매장명을 입력해 주세요." style = "text-align : left">
 	                        </div>
 	                        <div class="col-lg-12 fran5_2">
 	                            <button onclick="searchFranchisee();" style ="width:90px"><spring:message code="label.web.search"/></button>
@@ -166,7 +166,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 			    <c:forEach var="list" items="${franchiseeInfoList}" varStatus="loop">
 			    <div class="fran_box container">
 	                <div class="img_box"><img src="/resources/web_images/no_image.png"></div>
-	                <div class="fran_text_box">
+	                <div class="fran_text_box" style = "margin-left : 10px">
 	                    <ul>
 	                        <li>${list.affiliateName}</li>
 	                        <li>${list.affiliateTel}</li>

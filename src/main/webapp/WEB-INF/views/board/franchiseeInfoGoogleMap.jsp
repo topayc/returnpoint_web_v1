@@ -7,6 +7,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+<script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script> 
 <script type="text/javascript" src="/resources/js/lib/common.js"></script>
 <script>
 function initMap() { 
@@ -43,7 +45,11 @@ function initMap() {
 <title>가맹점 상세정보-${affiliateGoogleMapView.affiliateName}</title>
 </head>
 <body>
-<div id="map" style="height: 600px;width: 600px;"></div> 
+<div id="map" ></div> 
+<script>
+$("#map").css("width" , window.screen.width + "px");
+$("#map").css("height" , window.screen.height + "px");
+</script>
 <script src="https://maps.googleapis.com/maps/api/js?key=${params.key}&callback=initMap" async defer></script> 
 </body>
 </html>
