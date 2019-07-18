@@ -248,7 +248,7 @@ input:checked + .sslider:before {-webkit-transform: translateX(26px);-ms-transfo
 .p_qna .open>.dropdown-toggle.btn-default:hover{background:none;}
 .p_qna .qna_cate{font-weight: 500;font-size: 12px;color: #7b7b7b;}  
   
-/* Point old - 페이지 나뉘면 삭제 */
+/* Point old - �럹�씠吏� �굹�돇硫� �궘�젣 */
 .p_point section{padding:0;} 	
 .p_point hr{margin-bottom: 0px;}
 .p_point .tab-content{position:relative;}
@@ -331,7 +331,7 @@ background: #fff;border: 0;border-left: 1px solid #f3f3f3;font-size: 13px;color:
 .m_point_transfer .pointinfo{ background: #fff;Width: 89%;margin: 25px auto;}
 .m_point_transfer .pointinfo li{color: #666;font-size: 11px;float: none;width: 100%;text-align: left;}
 
-/* find email / pw / 회원정보수정*/
+/* find email / pw / �쉶�썝�젙蹂댁닔�젙*/
 .txtarea{padding: 15px; position: relative;text-align:center;}
 .txtarea i{font-size: 40px;color: #777;}
 .txtarea h3{font-size: 14px;font-family: 'Jeju Gothic';color: #391dab;padding-top: 12px;}
@@ -393,7 +393,7 @@ background: #fff;border: 0;border-left: 1px solid #f3f3f3;font-size: 13px;color:
 width: 100%; height: 100%; text-align: center; position: fixed; background: rgba(245, 245, 245, 0.61);z-index: 100000000;}
 #progress_loading i{top: 45%;position: absolute;}
 
-/* 이용약관 */
+/* �씠�슜�빟愿� */
 .p_terms section{padding:55px 0 0 0;}
 .p_terms section .m_txtarea{padding:17px;}
 .p_terms section .m_txtarea{text-align:left;}
