@@ -39,7 +39,7 @@ $(document).ready(function(){
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>Point info</h4>
+		<h4><spring:message code="label.point_acc_info" /></h4>
 	</header> 
 	<!-- content begin -->
 	<c:choose>
@@ -62,14 +62,14 @@ $(document).ready(function(){
 				<c:if test = "${not empty model.paymentRouterName}"> <input type = "hidden" class = "returnp_qr"  id ="paymentRouterName" value = "${model.paymentRouterName}"/> </c:if>
 				<c:if test = "${not empty model.seq}"> <input type = "hidden" class = "returnp_qr"  id ="seq" value = "${model.seq}"/> </c:if>
 				
-				<li><span  class = "gift_qr_title">결제 방식</span> ${model.pay_type_str}</li>
-				<li><span id = "pam"  class = "gift_qr_title" >결제 금액</span> <fmt:formatNumber value="${model.pam}" pattern="###,###,###,###"/></li>
-				<li><span  class = "gift_qr_title">가맹점 이름</span> ${model.affiliateName}</li>
-				<li><span  class = "gift_qr_title">단말기 코드</span> ${model.af_id}</li>
-				<li><span  class = "gift_qr_title">승인 일자</span> ${model.pat}</li>
-				<li><span  class = "gift_qr_title">승인 번호</span> ${model.pan}</li>
-				<li style = "display: none"><span >승인 상태</span> ${model.pas}</li>
-				<li><span   class = "gift_qr_title">승인 상태</span> ${model.pas_str}</li>
+				<li><span  class = "gift_qr_title"><spring:message code="label.payment_method" /></span> ${model.pay_type_str}</li>
+				<li><span id = "pam"  class = "gift_qr_title" ><spring:message code="label.amount_of_payment" /></span> <fmt:formatNumber value="${model.pam}" pattern="###,###,###,###"/></li>
+				<li><span  class = "gift_qr_title"><spring:message code="label.merchange_name" /></span> ${model.affiliateName}</li>
+				<li><span  class = "gift_qr_title"><spring:message code="label.unit_code" /></span> ${model.af_id}</li>
+				<li><span  class = "gift_qr_title"><spring:message code="label.approval_date" /></span> ${model.pat}</li>
+				<li><span  class = "gift_qr_title"><spring:message code="label.approval_number" /></span> ${model.pan}</li>
+				<li style = "display: none"><span ><spring:message code="label.approval_status" /></span> ${model.pas}</li>
+				<li><span   class = "gift_qr_title"><spring:message code="label.approval_status" /></span> ${model.pas_str}</li>
 				<li><span   class = "gift_qr_title">VAN</span> ${model.paymentRouterName}</li>
 			</ul>	
 		</div>			
