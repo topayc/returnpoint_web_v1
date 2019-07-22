@@ -419,7 +419,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			dbparams.put("spam", "on".equals(p.getStr("spam").trim()) ? "Y" : "N");
 			dbparams.put("recommend", p.getStr("email").trim()); // 이메일 중복 체크용 파라미터
 
-			System.out.println("회원가입 파리미터 dbparams::" + dbparams);
+			//System.out.println("회원가입 파리미터 dbparams::" + dbparams);
 			if (p.getStr("email").trim() == null || p.getStr("email").trim().equals("")) {
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
 				return false;

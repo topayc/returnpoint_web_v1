@@ -55,13 +55,13 @@ public class RemoteServiceImpl implements RemoteService {
 					response2.append(inputLine);
 				}
 				in.close();
-				System.out.println("응답");
-				System.out.println(response2.toString());
+				//System.out.println("응답");
+				//System.out.println(response2.toString());
 			} else {
 				System.out.println("Saida 포인트 백 적립 요청 에러");
 			}
-			System.out.println("Saida  포인트 백 적립 요청");
-			System.out.println(remoteCallURL + "?" + Util.mapToQueryParam(paramMap));
+			//System.out.println("Saida  포인트 백 적립 요청");
+			//System.out.println(remoteCallURL + "?" + Util.mapToQueryParam(paramMap));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -471,9 +471,9 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 		try {
 			decode64Qr = BASE64Util.decodeString(p.getStr("qr_data"));
-			System.out.println("------------------------------commonQrImgView 범용 QR 데이타--------------------------------------");
-			System.out.println(decode64Qr);
-			System.out.println("------------------------------------------------------------------------------------------------------------");
+			//System.out.println("------------------------------commonQrImgView 범용 QR 데이타--------------------------------------");
+			//System.out.println(decode64Qr);
+			//System.out.println("------------------------------------------------------------------------------------------------------------");
 			
 			URL url = new URL(decode64Qr);
 			String queryParmStr = url.getQuery();
@@ -519,10 +519,10 @@ public class MobileMainServiceImpl implements MobileMainService {
 					rmap.put("affiliateName", affiliateInfo.get("affiliateName"));
 
 					float amountAccumulated = Float.parseFloat(qrParsemap.get("pam")); // 
-					System.out.println("amountAccumulated::" + amountAccumulated);
+					//System.out.println("amountAccumulated::" + amountAccumulated);
 					HashMap<String, Object> policy = mobileMemberDao.selectPolicyPointTranslimit(dbparams);
 					float customerComm = (float) policy.get("customerComm");
-					System.out.println("customerComm::" + customerComm);
+					//System.out.println("customerComm::" + customerComm);
 					float qramountAcc = (amountAccumulated * customerComm);
 					rmap.put("qramountAcc", qramountAcc);
 				}
@@ -540,7 +540,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 	 */
 	@Override
 	public boolean giftCardQrImgView(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
-		System.out.println(">>>>>> giftCardQrImgView");
+		//System.out.println(">>>>>> giftCardQrImgView");
 		HashMap<String, Object> dbparams = new HashMap<String, Object>();
 		SessionManager sm = new SessionManager(request, response);
 		
@@ -549,8 +549,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 		String qr_cmd;
 		try {
 			
-			System.out.println(p.getStr("qr_data"));
-			System.out.println(BASE64Util.decodeString(p.getStr("qr_data")));
+			//System.out.println(p.getStr("qr_data"));
+			//System.out.println(BASE64Util.decodeString(p.getStr("qr_data")));
 			jsonParser = new JSONParser();
 			qrJson = (JSONObject) jsonParser.parse(BASE64Util.decodeString(p.getStr("qr_data")));
 			
@@ -650,8 +650,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 			} else {
 				System.out.println("포인트 백 적립 요청 에러");
 			}
-			System.out.println("포인트 백 적립 요청");
-			System.out.println(remoteCallURL + "?" + Util.mapToQueryParam(p));
+			//System.out.println("포인트 백 적립 요청");
+			//System.out.println(remoteCallURL + "?" + Util.mapToQueryParam(p));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -688,13 +688,13 @@ public class MobileMainServiceImpl implements MobileMainService {
 					response2.append(inputLine);
 				}
 				in.close();
-				System.out.println("응답");
-				System.out.println(response2.toString());
+				//System.out.println("응답");
+				//System.out.println(response2.toString());
 			} else {
 				System.out.println("포인트 백 적립 요청 에러");
 			}
-			System.out.println("포인트 백 적립 요청");
-			System.out.println(remoteCallURL + "?" + Util.mapToQueryParam(p));
+			//System.out.println("포인트 백 적립 요청");
+			//System.out.println(remoteCallURL + "?" + Util.mapToQueryParam(p));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
