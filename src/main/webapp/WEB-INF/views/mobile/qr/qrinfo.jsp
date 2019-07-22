@@ -47,7 +47,7 @@ $(document).ready(function(){
 	<section>
 		<div class="page point qrinfo">
 			<div class="qrimg"><img src="${model.qrAccessUrl}"></div>
-			<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.qramountAcc}" pattern="###,###,###,###"/></span> 적립</div>
+			<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.qramountAcc}" pattern="###,###,###,###"/></span> <spring:message code="label.acc_word" /></div>
 				<ul class="pointinfo">
 				<input type = "hidden" class = "returnp_qr"  id ="qr_org"  value = "${model.qr_org}" />
 				<input type = "hidden" class = "returnp_qr"  id ="pay_type" value = "${model.pay_type}"/>
@@ -74,8 +74,8 @@ $(document).ready(function(){
 			</ul>	
 		</div>			
 		<div class="btns2">
-			<button type="button" class="btn btn-submit" onclick = "startPointBack()">확인</button>
-			<button type="button" class="btn btn-submit-cancel"  onclick = "history.back()">취소</button>
+			<button type="button" class="btn btn-submit" onclick = "startPointBack()"><spring:message code="label.ok" /></button>
+			<button type="button" class="btn btn-submit-cancel"  onclick = "history.back()"><spring:message code="label.cancel" /></button>
 		</div>
 	</section>
 	</c:when>
@@ -84,7 +84,7 @@ $(document).ready(function(){
 		<div> 
 			<i class="fas fa-exclamation-triangle"></i>${model.qr_parsing_error_message}
 		</div>
-		<button type="button" class="btn btn-submit"  onclick = "history.back()">취소</button>
+		<button type="button" class="btn btn-submit"  onclick = "history.back()"><spring:message code="label.cancel" /></button>
 	</section>	
 	</c:otherwise>
 	</c:choose>
