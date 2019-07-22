@@ -120,7 +120,6 @@ public class MobileMemberController extends MallBaseController{
 	//나의 멤버 리스트 보기 
 	@RequestMapping("/mypage/m_myMemberList")
 	public String mMyMemberList(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("mMyMemberList");
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/m_my_member_list");
 		boolean bret = mms.myMemberList(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
