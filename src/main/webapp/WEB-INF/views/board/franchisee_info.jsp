@@ -16,12 +16,10 @@ $(document).ready(function(){
 	searchCountry('${params.city}');
 	
 });
-
 function franchiseeInfoGoogleMapPopup(affiliateNo){
 	url = "/board/franchiseeInfoGoogleMap.do?affiliateNo="+affiliateNo;
 	window.open(url, "url", "width=615, height=615, toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=yes");
 }
-
 function searchCity(){
 	var content = "";
 	$.ajax({
@@ -43,7 +41,6 @@ function searchCity(){
 		}
 	});		
 }
-
 function searchCountry(city_name){
 	var content = "";
 	if(city_name != "세종특별자치시" && city_name != null && city_name != ""){ //세종시는 구/군 없음
@@ -78,7 +75,6 @@ function searchCountry(city_name){
 		document.all.country.options[0] = new Option('구/군','');
 	}	 
 }
-
 function searchFranchisee(){
 	var city= $("#city option:selected").text(); //selectbox에서 선택된 value를 가져오는 방법은 다음과 같다. 
 	var country= $("#country option:selected").text(); //selectbox에서 선택된 value를 가져오는 방법은 다음과 같다. 
@@ -90,13 +86,11 @@ function searchFranchisee(){
 	document.franchiseeform.action = "/board/franchisee_info.do";
     document.franchiseeform.submit();
 }
-
 function searchList_page(page, upperPage){
 	$("#page").val(page);
     $("#upperPage").val(upperPage);
     searchList();
 }
-
 function searchList(){
 	document.viewList.action = "/board/franchisee_info.do";
     document.viewList.submit();
@@ -122,7 +116,7 @@ function searchList(){
                 </div>
 				  <div class="form-group has-success has-feedback frna5">
                         <div class="col-lg-12 fran5_1">
-                            <input type="text" class="form-control" placeholder="매장명을 입력해 주세요.">
+                            <input id = "affiliateName" name = "affiliateName"  type="text" class="form-control" placeholder="매장명을 입력해 주세요." style = "text-align : left">
                         </div>
                         <div class="col-lg-12 fran5_2">
                             <button onclick="searchFranchisee();" style ="width:90px"><spring:message code="label.web.search"/></button>

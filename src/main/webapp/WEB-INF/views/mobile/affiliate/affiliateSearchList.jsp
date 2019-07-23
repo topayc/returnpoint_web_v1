@@ -162,7 +162,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	                </div>
 					  <div class="form-group has-success has-feedback frna5">
 	                        <div class="col-lg-12 fran5_1">
-	                            <input type="text" class="form-control" placeholder="검색할 매장명을 입력해 주세요." style = "text-align : left">
+	                            <input type="text" id = "affiliateName" name = "affiliateName"  class="form-control" placeholder="검색할 매장명을 입력해 주세요." style = "text-align : left">
 	                        </div>
 	                        <div class="col-lg-12 fran5_2">
 	                            <button onclick="searchFranchisee();" style ="width:90px"><spring:message code="label.web.search"/></button>

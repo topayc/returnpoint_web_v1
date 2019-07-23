@@ -212,8 +212,8 @@
 				AND affiliateAddress LIKE CONCAT('%',#{affiliateAddress},'%')
 				</if>
 				ORDER BY affiliateNo DESC
-			)TEMP_T
-				WHERE ROWNUM BETWEEN '1' AND '10'
+			) TEMP_T
+				WHERE ROWNUM BETWEEN #{S_SEQ} AND #{E_SEQ}
 				ORDER BY ROWNUM ASC 
 	</select>
 
