@@ -19,10 +19,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="/resources/images/sns_url_link_img.png">
   
-<!-- css   -->
-<!-- font -->
 <link rel="stylesheet" href="/resources/css/m_common.css">
-<!-- js -->
 <!-- <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script> -->
 <script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script> 
 
@@ -34,8 +31,6 @@
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
-
-
 <script type="text/javascript">
 	if (isApp()) {
 		checkVersion();
@@ -96,8 +91,6 @@
 	        }
 	     }
 	});
-	
-	
 </script>
 </head>
 <!-- header end -->

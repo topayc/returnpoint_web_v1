@@ -147,7 +147,7 @@ function rpointDetailView(f, searchtime){
    <section style="padding-top: 50px;">
       <div class="rp_total">
          <p><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/>P</p>
-         <h6>Total R-POINT</h6>
+         <h6 style = "font-weight:600;">Total <spring:message code="label.gpoint" /></h6>
        </div>
       <div class="tab-content">
           <!-- 레드포인트 내역  -->
