@@ -37,105 +37,67 @@
 
 
 <script type="text/javascript">
-// 가맹점롤링 시작
-$(document).on('ready', function() {
-    $(".center").slick({
-      infinite: true,
-      centerMode: true,
-      arrows: false,
-      slidesToShow: 4,
-      slidesToScroll: 3,
-      autoplay:true
-    });
+	if (isApp()) {
+		checkVersion();
+	}
+	
+	$(document).on('ready', function() {
+		   var pageContextlocale = '${pageContext.response.locale}';
+		   if(pageContextlocale == "ko"){
+		         $("#sel1").val("ko");
+		   }else{
+		       $("#sel1").val("ch");
+		   }
+		    //탈퇴완료 후 모달 호출
+		   if(location.href.match('form=out')){
+		       location.href = '/m/mypage/m_memberout.do';
+		    }
 
-    var memberTotal = '${model.memberTotal}';
-
-    if(memberTotal!=""){
-       $(".total").text(comma(memberTotal) + " 명");
-    }
-    
-    if (appInfo && appInfo['access'] && appInfo['access'] == "APP") {
-        var p = getParams();
-        var mbrE = (p["mbrE"]);
-        var userAT = (p["userAT"]);
-        if (typeof mbrE != "undefined" && typeof userAT != "undefined") {
-           var session = {userName :mbrE , userEmail : mbrE, userAuthToken : userAT }
-        	bridge.setDeviceSession(JSON.stringify(session), function(result) {
-        	 
-           });
-        }
-     }
-  });
-// 가맹점롤링 끝
-
-//콤마찍기
-function comma(str) {
-    str = String(str);
-    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-}
-$(document).ready(function(){
-   var pageContextlocale = '${pageContext.response.locale}';
-   if(pageContextlocale == "ko"){
-         $("#sel1").val("ko");
-   }else{
-       $("#sel1").val("ch");
-   }
-    //탈퇴완료 후 모달 호출
-   if(location.href.match('form=out')){
-       location.href = '/m/mypage/m_memberout.do';
-    }
-   if (appInfo && appInfo['access'] && appInfo['access'] == "APP") {
-      var p = getParams();
-      var mbrE = (p["mbrE"]);
-      var userAT = (p["userAT"]);
-      if (typeof mbrE != "undefined" && typeof userAT != "undefined") {
-   	  	var session = {userName :mbrE , userEmail : mbrE, userAuthToken : userAT }
-      	bridge.setDeviceSession(JSON.stringify(session), function(result) {});
-      }
-   }
-   var p = getParams();
-   var alertView = (p["alertView"]);
-   var Message  = (p["Message"]);
-   var message = "";
-   var title = "확인";
-   if(Message =="1"){
-      message = "잘못된 경로입니다.";
-   }else if(Message =="2"){
-      message = "이메일 인증이 완료된 고객입니다.";
-   }else if(Message =="3"){
-      message = "이메일 인증완료되었습니다.";
-   }else if(Message =="4"){
-      message = "미인증 고객입니다. 이메일인증완료후 사용해주세요.";
-   }else if(Message =="5"){
-      message = "가입하신 이메일로 발송이 완료되었습니다.";
-   }
-   if(alertView =="t"){
-      var alertMessageHtml = "";
-      var alertTitleHtml = "";
-      document.getElementById('alertView').style.display='flex';
-      alertMessageHtml += "<p>"+message+"</p>";
-      $('#alertMassage').html(alertMessageHtml);
-      alertTitleHtml += "<strong><i class='fas fa-info-circle'></i>"+title+"</strong>";
-      $('#alertTitle').html(alertTitleHtml);
-      $('#alert_ok').show();
-      $('#alert_cancel').hide();
-   }
-   if(getCookie("notToday")=="Y"){
-	$("#alertView").hide();
-	} 
-  
-   //$("#alertView").hide();
-});
-
-function searchMap(){
-
-   var searchText = $("#text_address").val();
-   if(searchText == "" || searchText.length < 3 ){
-      alertOpen("확인", "찾고자하는 위치정보를 입력하시거나 2글자 이상 입력해 주세요.", true, false);
-      return;
-   }
-   location.href = '/m/map/rpmap.do?search=' + searchText;;
-}
+		   var p = getParams();
+		   var alertView = (p["alertView"]);
+		   var Message  = (p["Message"]);
+		   var message = "";
+		   var title = "확인";
+		   if(Message =="1"){
+		      message = "잘못된 경로입니다.";
+		   }else if(Message =="2"){
+		      message = "이메일 인증이 완료된 고객입니다.";
+		   }else if(Message =="3"){
+		      message = "이메일 인증완료되었습니다.";
+		   }else if(Message =="4"){
+		      message = "미인증 고객입니다. 이메일인증완료후 사용해주세요.";
+		   }else if(Message =="5"){
+		      message = "가입하신 이메일로 발송이 완료되었습니다.";
+		   }
+		   if(alertView =="t"){
+		      var alertMessageHtml = "";
+		      var alertTitleHtml = "";
+		      document.getElementById('alertView').style.display='flex';
+		      alertMessageHtml += "<p>"+message+"</p>";
+		      $('#alertMassage').html(alertMessageHtml);
+		      alertTitleHtml += "<strong><i class='fas fa-info-circle'></i>"+title+"</strong>";
+		      $('#alertTitle').html(alertTitleHtml);
+		      $('#alert_ok').show();
+		      $('#alert_cancel').hide();
+		   }
+		   if(getCookie("notToday")=="Y"){
+			$("#alertView").hide();
+			} 
+		  
+		   //$("#alertView").hide();
+		   
+	    if (isApp()) {
+	        var mbrE = (p["mbrE"]);
+	        var userAT = (p["userAT"]);
+	        if (typeof mbrE != "undefined" && typeof userAT != "undefined") {
+	           var session = {userName :mbrE , userEmail : mbrE, userAuthToken : userAT }
+	        	bridge.setDeviceSession(JSON.stringify(session), function(result) {
+	           });
+	        }
+	     }
+	});
+	
+	
 </script>
 </head>
 <!-- header end -->
@@ -218,8 +180,9 @@ function searchMap(){
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
        <div style = "width:20%" ><a href="https://sincar.co.kr/UID=rp4282"><img width = "58" height = "58" src="/resources/banner/new_car_mall_circle.png" ></a></div>
-
      </div>
+     
+     <script></script>
      <div class="search">
         <p class="searchbtn"><a href="/m/map/rpmap.do"><i class="fas fa-map-marker-alt"></i> <spring:message code="label.find_merchants" /></a></p>
       <input id="text_address" type="text" class="form-control" placeholder="ex)강남역, 시청역, 김포 ...">
@@ -239,10 +202,14 @@ function searchMap(){
    </section>
 </div>
 <script>
-if (appInfo && appInfo['access'] && appInfo['access'] == "APP") {
-	checkVersion()
-}
-
+	$(".center").slick({
+	    infinite: true,
+	    centerMode: true,
+	    arrows: false,
+	    slidesToShow: 4,
+	    slidesToScroll: 3,
+	    autoplay:true
+	  });
 </script>
 </body>
 <!-- body end -->

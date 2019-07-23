@@ -119,12 +119,13 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}
 	
-	// 프론트 메인페이지
+	// 모바일 메인페이지
 	@RequestMapping("/main/index.do")
 	public String home(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/main/index");
-        mms.memberTotal(Util.toRPap(p), rmap, request, response);
-		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
+        //mms.memberTotal(Util.toRPap(p), rmap, request, response);
+		//boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
+		boolean bret = mms.initMain(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
 

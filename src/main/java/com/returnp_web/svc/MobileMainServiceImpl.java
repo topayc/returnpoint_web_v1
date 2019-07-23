@@ -191,6 +191,36 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 		return true;
 	}
+	
+	@Override
+	public boolean initMain(RPMap paramMap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+
+		try {
+			if(sm.getMemberEmail() == null ) {
+				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/member/login.do", "T"));
+				return false;
+			}
+			dbparams.put("memberNo", sm.getMemberNo());
+
+			HashMap<String, Object> mypageMyinfo = mobileMemberDao.selectMypageMyinfo(dbparams); // my info
+			if (mypageMyinfo == null) {
+				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
+				return false;
+			}
+			HashMap<String, Object> myRedPointSumInfo = mobileMainDao.selectMyRedPointSumInfo(dbparams); // red point search.
+			HashMap<String, Object> myGreenPointSumInfo = mobileMainDao.selectMyGreenPointSumInfo(dbparams); // green point Sum search.
+
+			rmap.put("myRedPointSumInfo", myRedPointSumInfo);
+			rmap.put("myGreenPointSumInfo", myGreenPointSumInfo);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Throwable.class })

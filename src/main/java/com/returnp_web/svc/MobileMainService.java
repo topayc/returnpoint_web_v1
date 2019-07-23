@@ -259,5 +259,7 @@ public interface MobileMainService {
 
 	boolean prepareIntro(RPMap paramMap, RPMap dataMap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean initMain(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 }
 

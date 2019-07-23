@@ -1,3 +1,26 @@
+function searchMap(){
+	var searchText = $("#text_address").val();
+	if(searchText == "" || searchText.length < 3 ){
+		alertOpen("확인", "찾고자하는 위치정보를 입력하시거나 2글자 이상 입력해 주세요.", true, false);
+		return;
+	}
+	location.href = '/m/map/rpmap.do?search=' + searchText;;
+}
+	
+
+function comma(str) {
+	str = String(str);
+	return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+}
+
+function isEmpty(obj){
+	if(typeof obj.value.trim() == "undefined" || obj.value.trim() == null || obj.value.trim() == ""){
+		return true
+	}else{
+		return false
+	}
+}
+
 function setCookie(name, value, expiredays) {
 	var today = new Date();
 	    today.setDate(today.getDate() + expiredays);
@@ -678,6 +701,7 @@ function checkVersion(){
         	var sVersionApply = sVersionInfo.split(":")[1];
         	if (sVersion != null && sVersion != "" && sVersionApply == "Y") {
         		bridge.getSessionValue("version", function(data){
+        			data = JSON.parse(data);
         			if (data.result == "100"){
         				if (data == null || data == "" || Number(data['version']) < Number(sVersion)){
         					alertOpen(
