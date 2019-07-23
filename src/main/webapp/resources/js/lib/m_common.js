@@ -701,19 +701,31 @@ function checkVersion(){
         	var sVersionApply = sVersionInfo.split(":")[1];
         	if (sVersion != null && sVersion != "" && sVersionApply == "Y") {
         		bridge.getSessionValue("version", function(data){
-        			data = JSON.parse(data);
-        			if (data.result == "100"){
-        				if (data == null || data == "" || Number(data['version']) < Number(sVersion)){
-        					alertOpen(
-        						"업데이트 알림", 
-        						"새로운 버젼의 앱이 출시되었습니다.<br> 전체적인 시스템 수정으로 인하여 <br>업데이트를 받으셔야 원할한 서비스 제공이 가능합니다<br> 확인을 누르시면 업데이트 페이지로 이동합니다.",
-        						true, 
-        						false, 
-        						function(){goPlayStore()},
-        						null);	
-        				}
+        			jsonData = JSON.parse(data);
+        			if (jsonData['result']){
+        				if (jsonData.result == "100"){
+            				if (jsonData['version'] == null || jsonData['version'] == "" || Number(jsonData['version']) < Number(sVersion)){
+            					alertOpen(
+            						"업데이트 알림", 
+            						"새로운 버젼의 앱이 출시되었습니다.<br> 전체적인 시스템 수정으로 인하여 <br>업데이트를 받으셔야 원할한 서비스 제공이 가능합니다<br> 확인을 누르시면 업데이트 페이지로 이동합니다.",
+            						true, 
+            						false, 
+            						function(){goPlayStore()},
+            						null);	
+            				}
+            			}else {
+            				alertOpen("알림", "앱 오류 발생", true, false, null, null);
+            			}
         			}else {
-        				alertOpen("알림", "앱 오류 발생", true, false, null, null);
+        				if (data == null || data == "" || Number(data) < Number(sVersion)){
+            				alertOpen(
+            						"업데이트 알림",
+            						"새로운 버젼의 앱이 출시되었습니다.<br> 전체적인 시스템 수정으로 인하여 <br>업데이트를 받으셔야 원할한 서비스 제공이 가능합니다<br> 확인을 누르시면 업데이트 페이지로 이동합니다.",
+            						true,
+            						false,
+            						function(){goPlayStore()},
+            						null);
+            			}
         			}
         		})
         	}
@@ -724,6 +736,7 @@ function checkVersion(){
         dataType: 'text'
        });
 }
+
 function startQRScan(){
 	if (!isApp())  {
 		executeAppOrGoStore();

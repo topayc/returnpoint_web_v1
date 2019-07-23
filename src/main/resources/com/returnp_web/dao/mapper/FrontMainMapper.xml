@@ -41,7 +41,7 @@
 		from(
 			SELECT
 				A.mainBbsNo
-			FROM MAIN_BBS A, SUB_BBS B, (SELECT @RNUM := 0 ) AS ROWNUM
+			FROM main_bbs A, sub_bbs B, (SELECT @RNUM := 0 ) AS ROWNUM
 			WHERE A.isPublic ='Y'
 			AND A.bbsType1 = '1'
 			AND A.mainBbsNo = B.mainBbsNo
@@ -76,7 +76,7 @@
 				,A.createTime
 				,A.updateTime
 				,(@RNUM := @RNUM + 1 ) AS ROWNUM
-			FROM MAIN_BBS A, SUB_BBS B, (SELECT @RNUM := 0 ) AS ROWNUM
+			FROM main_bbs A, sub_bbs B, (SELECT @RNUM := 0 ) AS ROWNUM
 			WHERE A.isPublic ='Y'
 			AND A.bbsType1 = '1'
 			AND A.mainBbsNo = B.mainBbsNo
@@ -109,7 +109,7 @@
 		from(
 			SELECT
 				A.mainBbsNo
-			FROM MAIN_BBS A, SUB_BBS B, (SELECT @RNUM := 0 ) AS ROWNUM
+			FROM main_bbs A, sub_bbs B, (SELECT @RNUM := 0 ) AS ROWNUM
 			WHERE A.mainBbsNo = B.mainBbsNo
 			AND A.isPublic ='Y'
 			AND A.bbsType1 = '2'
@@ -147,7 +147,7 @@
 				,A.createTime
 				,A.updateTime
 				,(@RNUM := @RNUM + 1 ) AS ROWNUM
-			FROM MAIN_BBS A, SUB_BBS B, (SELECT @RNUM := 0 ) AS ROWNUM
+			FROM main_bbs A, sub_bbs B, (SELECT @RNUM := 0 ) AS ROWNUM
 			WHERE A.mainBbsNo = B.mainBbsNo
 			AND A.isPublic ='Y'
 			AND A.bbsType1 = '2'
