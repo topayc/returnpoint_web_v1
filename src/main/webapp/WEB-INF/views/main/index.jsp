@@ -28,7 +28,7 @@
 	}
 </script>
 <body>
-    <div class="modal2">
+<%--     <div class="modal2">
         <div class="modal-content col-lg-4 col-md-6 col-sm-6 col-xs-11">
             <span class="close-button">&times;</span>
             <p class="modal_text1">returnP</p>
@@ -43,7 +43,7 @@
                 <input type="button" id="cancel" onclick="toggleModal();" value="창닫기">
             </form>
         </div>
-    </div>
+    </div> --%>
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
 	<div class="wrap1">
         <!-----page1------------------------------------------------------------>

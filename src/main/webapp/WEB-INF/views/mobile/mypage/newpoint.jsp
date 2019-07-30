@@ -181,6 +181,9 @@ function gpointDetailView(f, searchtime){
 			nodeType		: nodeType,
 			SEARCHTIME		: SEARCHTIME
 		},
+		beforeSend : function(xhr){
+			 xhr.setRequestHeader("AJAX","true");
+		},
 		success: function(data) {
 			returnHtml += "<div class='pointdate'>"+"<a href='#' onclick=\"javascript:gpointDetailView('"+nodeType+"' , '"+data.PREWMONTH+"'    );\">"
 			returnHtml += "<i class='fas fa-chevron-circle-left'></i> </a>"
