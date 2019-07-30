@@ -159,7 +159,7 @@ function rpointDetailView(f, searchtime){
             <div class="listbox">
                <div class="listmember"><span class="node nd1"><spring:message code="label.member" /></span></div>
                <div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myRedPointSumMap.pointAmount}" pattern="###,###,###,###"/></span></div>
-               <a type="button" class="listbtn" onclick="rpointDetailView('1', '');"><i class="fas fa-search"></i><spring:message code="label.detail_view" /> </a>
+               <a type="button" class="listbtn" onclick="rpointDetailView('1', '');"><i class="fas fa-list"></i><spring:message code="label.detail_view" /> </a>
             </div>
           </div>
           <!-- 레드포인트  노드별 상세 내역   -->

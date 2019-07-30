@@ -272,7 +272,7 @@ input:checked + .sslider:before {-webkit-transform: translateX(26px);-ms-transfo
 
 /* Point & Pay
 .p_point section{padding-top:51px;} */
-.p_point .listbox{position:relative;border-bottom: 1px solid #eee;padding: 23px 20px 23px 20px;font-size: 12px;}
+.p_point .listbox{position:relative;border-bottom: 1px solid #eee;padding: 15px 20px 15px 20px;font-size: 12px;}
 .p_point .listbox:after{display:block;clear:both;content:'';}
 .p_point .listbox .listmember{height: 25px;line-height: 25px; padding-left: 0;}
 .p_point .listbox .listmember span.node{color: #fff;padding: 2px 8px;margin-right: 6px;border-radius: 50px;}
@@ -285,7 +285,7 @@ input:checked + .sslider:before {-webkit-transform: translateX(26px);-ms-transfo
 .p_point .listbox .listmember span.nd7{background:#fbc658;}
 .p_point .listbox .listpoint{font-size: 20px; color: #333;}
 .p_point .listbox .listpoint small{border: 1px solid #333; border-radius: 50px; padding: 0px 6px;margin-right: 5px;font-size: 14px; vertical-align: middle;}
-.p_point .listbtn{position: absolute;top: 20px;right: 0;width: 100px;height: 57px;padding: 4px 0px;line-height: 31px;background: #fff;border: 0; border-left: 1px solid #f3f3f3; font-size: 13px; color: #888; text-align: center; box-sizing: border-box;}
+.p_point .listbtn{position: absolute;top: 20px;right: 0;width: 100px;height: 30px;padding: 4px 0px;line-height: 31px;background: #fff;border: 0; border-left: 1px solid #f3f3f3; font-size: 13px; color: #888; text-align: center; box-sizing: border-box;}
 .p_point .listbtn i {display: block;font-size: 17px;padding-right: 10px;}
 .p_point .listbox.detail .listdate{float: left;padding: 0;border-right: 0;height: 25px;line-height: 25px;}
 .p_point .listbox.detail .listdate i{font-size: 17px;vertical-align: text-top;padding-right:5px;}
