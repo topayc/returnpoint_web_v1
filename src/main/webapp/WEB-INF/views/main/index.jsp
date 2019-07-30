@@ -49,8 +49,11 @@
         <!-----page1------------------------------------------------------------>
         <div class="main_page1 img-responsive center-block col-xs-12">
             <p class="text-center main_text1 " data-scroll="toggle(.scaleDownIn, .scaleDownOut)">About R POINT</p>
-            <p class="text-center main_text2 col-md-6 col-md-offset-3" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexTitleM1"/><br><spring:message code="label.web.indexTitleS1"/></p>
-            <a href="#"  onclick = "goPlayStore()"class="col-lg-2 col-lg-offset-5 col-xs-4 col-xs-offset-4 google_icon"><img src="/resources/web_images/goo.png"><b>Google</b> play</a>
+            <p class="text-center main_text2 col-lg-12 col-md-12" data-scroll="toggle(.scaleDownIn, .scaleDownOut)"><spring:message code="label.web.indexTitleM1"/><br><spring:message code="label.web.indexTitleS1"/></p>
+            <div class="main_page1_icon">
+            	<a href = "#" onclick = "goPlayStore()"class="google_icon"><img src="/resources/web_images/goo.png" width = "25"  height = "25"/>Google play</a>
+            	<a href="https://www.returnp.com/m/main/index.do"  class="google_icon" style ="padding:0.5% 1.1% 0.5% 1.1%">Mobile 보기</a>
+            </div>
         </div>
         <!-----page2------------------------------------------------------------>
         <div class="main_page2 block">

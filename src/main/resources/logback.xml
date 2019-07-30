@@ -69,7 +69,7 @@
 
 	<!-- ROOT LEVEL LOGGING 정책 설정 -->
     <root>
-		<level value="INFO" />
+		<level value="WARN" />
 		<appender-ref ref="FILE"/>
 		<appender-ref ref="console"/><!-- console log mode -->
     </root>

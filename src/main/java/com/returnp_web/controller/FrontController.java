@@ -332,7 +332,7 @@ public class FrontController extends MallBaseController {
 	public String selectAjax(@RequestParam HashMap<String, Object> params, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
 		ArrayList<HashMap<String, Object>> countryNameList = fms.selectWebCountryNameList(params);
 		JSONObject json = new JSONObject();
-		if (countryNameList.size() != '0') {
+		if (countryNameList.size() != 0) {
 			JSONArray json_arr = new JSONArray();
 			JSONObject obj = new JSONObject();
 			for (int i = 0; i < countryNameList.size(); i++) {
