@@ -18,10 +18,10 @@
 <meta property="og:title" content="ReturnP">
 <meta property="og:type" content="website">
 <meta property="og:image" content="/resources/images/sns_url_link_img.png">
-  
+
 <link rel="stylesheet" href="/resources/css/m_common.css">
 <!-- <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script> -->
-<script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script> 
+<script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script>
 
 <!-- 가맹점롤링 -->
 <!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script> -->
@@ -32,65 +32,66 @@
 <script type="text/javascript" src="/resources/js/lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript">
-	if (isApp()) {
-		checkVersion();
-	}
-	
-	$(document).on('ready', function() {
-		   var pageContextlocale = '${pageContext.response.locale}';
-		   if(pageContextlocale == "ko"){
-		         $("#sel1").val("ko");
-		   }else{
-		       $("#sel1").val("ch");
-		   }
-		    //탈퇴완료 후 모달 호출
-		   if(location.href.match('form=out')){
-		       location.href = '/m/mypage/m_memberout.do';
-		    }
+  if (isApp()) {
+    checkVersion();
+  }
 
-		   var p = getParams();
-		   var alertView = (p["alertView"]);
-		   var Message  = (p["Message"]);
-		   var message = "";
-		   var title = "확인";
-		   if(Message =="1"){
-		      message = "잘못된 경로입니다.";
-		   }else if(Message =="2"){
-		      message = "이메일 인증이 완료된 고객입니다.";
-		   }else if(Message =="3"){
-		      message = "이메일 인증완료되었습니다.";
-		   }else if(Message =="4"){
-		      message = "미인증 고객입니다. 이메일인증완료후 사용해주세요.";
-		   }else if(Message =="5"){
-		      message = "가입하신 이메일로 발송이 완료되었습니다.";
-		   }
-		   if(alertView =="t"){
-		      var alertMessageHtml = "";
-		      var alertTitleHtml = "";
-		      document.getElementById('alertView').style.display='flex';
-		      alertMessageHtml += "<p>"+message+"</p>";
-		      $('#alertMassage').html(alertMessageHtml);
-		      alertTitleHtml += "<strong><i class='fas fa-info-circle'></i>"+title+"</strong>";
-		      $('#alertTitle').html(alertTitleHtml);
-		      $('#alert_ok').show();
-		      $('#alert_cancel').hide();
-		   }
-		   if(getCookie("notToday")=="Y"){
-			$("#alertView").hide();
-			} 
-		  
-		   //$("#alertView").hide();
-		   
-	    if (isApp()) {
-	        var mbrE = (p["mbrE"]);
-	        var userAT = (p["userAT"]);
-	        if (typeof mbrE != "undefined" && typeof userAT != "undefined") {
-	           var session = {userName :mbrE , userEmail : mbrE, userAuthToken : userAT }
-	        	bridge.setDeviceSession(JSON.stringify(session), function(result) {
-	           });
-	        }
-	     }
-	});
+  $(document).on('ready', function() {
+       if(getCookie("notToday")=="Y"){
+        $("#alertView").hide();
+       }
+      var pageContextlocale = '${pageContext.response.locale}';
+       if(pageContextlocale == "ko"){
+             $("#sel1").val("ko");
+       }else{
+           $("#sel1").val("ch");
+       }
+        //탈퇴완료 후 모달 호출
+       if(location.href.match('form=out')){
+           location.href = '/m/mypage/m_memberout.do';
+        }
+
+       var p = getParams();
+       var alertView = (p["alertView"]);
+       var Message  = (p["Message"]);
+       var message = "";
+       var title = "확인";
+       if(Message =="1"){
+          message = "잘못된 경로입니다.";
+       }else if(Message =="2"){
+          message = "이메일 인증이 완료된 고객입니다.";
+       }else if(Message =="3"){
+          message = "이메일 인증완료되었습니다.";
+       }else if(Message =="4"){
+          message = "미인증 고객입니다. 이메일인증완료후 사용해주세요.";
+       }else if(Message =="5"){
+          message = "가입하신 이메일로 발송이 완료되었습니다.";
+       }
+       if(alertView =="t"){
+          var alertMessageHtml = "";
+          var alertTitleHtml = "";
+          document.getElementById('alertView').style.display='flex';
+          alertMessageHtml += "<p>"+message+"</p>";
+          $('#alertMassage').html(alertMessageHtml);
+          alertTitleHtml += "<strong><i class='fas fa-info-circle'></i>"+title+"</strong>";
+          $('#alertTitle').html(alertTitleHtml);
+          $('#alert_ok').show();
+          $('#alert_cancel').hide();
+       }
+
+
+       //$("#alertView").hide();
+
+      if (isApp()) {
+          var mbrE = (p["mbrE"]);
+          var userAT = (p["userAT"]);
+          if (typeof mbrE != "undefined" && typeof userAT != "undefined") {
+             var session = {userName :mbrE , userEmail : mbrE, userAuthToken : userAT }
+            bridge.setDeviceSession(JSON.stringify(session), function(result) {
+             });
+          }
+       }
+  });
 </script>
 </head>
 <!-- header end -->
@@ -114,27 +115,27 @@
    </div>   --%>
    <!-- 0831 서버점검 노티 -->
    <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }">
-  	<div class="alert_wrap noti" id="alertView" name="alertView"  ><!--  style 부분에 display:none;을 빼주심 활성화되요 -->
+    <div class="alert_wrap noti" id="alertView" name="alertView"  ><!--  style 부분에 display:none;을 빼주심 활성화되요 -->
      <div class="alert alert-info">
         <button type="button" class="close" id="alertClose" name="alertClose"  onclick='javascript:alertClose("noti");' style = "color : #000000">&times;</button>
        <div class="alert_body">
-           <i class="fas fa-volume-up"></i>
-           <div class="error_desk">
-               <p style = "margin-bottom : 15px">
-               		<span style = "font-size : 20px; font-weight : bold">R-포인트 출금 수수료 조정</span>
-               	</p>
-               <h4>현행 6,3% 수수료를 플랫폼 부가세 납부 수준을 반영하여, </br>13%(부가세 10% + 운영비 3%)로 부득불 시행함을 알려드립니다.</h4>
-               </br>
-               <h4>
-               	<p>시행일시 : 2019년 5월 15일 0시</p>
-               
-               </h4>
-               </br>
-              <h4><a href = "javascript:closePopupNotToday('alertView')" ><strong style = "color : #666666"><spring:message code="label.not_view_today" /></strong></a></h4>
+         <!--   <i class="fas fa-volume-up"></i> -->
+           <div class="error_desk" style = "font-family: 'Nanum Gothic', sans-serif;'">
+               <p style = "margin-bottom : 1px">
+                  <span style = "font-size : 20px; font-weight : bold;color :#DF01A5 ;font-family: 'Nanum Gothic', sans-serif;'" >'100% R포인트 캐시백'</span></br>
+                  <span style = "font-size : 20px; font-weight : bold;color :#DF01A5;font-family: 'Nanum Gothic', sans-serif;'">U 몰 (쇼핑몰)오픈</span>
+
+                </p>
+        <!-- <p style = "font-size : 15px; font-weight : bold;font-family: 'Nanum Gothic', sans-serif;'">R 포인트 U몰(쇼핑몰)  오픈!</p> -->
+        <p style = "font-size : 15px; font-weight : bold;font-family: 'Nanum Gothic', sans-serif;'">네이버의 동일 제품과 가격  비교해 보시고 제휴사 U몰을 많이 이용해 주시기 바랍니다</p>
+        <p style = "font-size : 15px; font-weight : bold;font-family: 'Nanum Gothic', sans-serif;'">감사합니다</p>
+        <p style = "font-size : 15px; font-weight : bold;font-family: 'Nanum Gothic', sans-serif;'">주식회사 탑해피월드 임직원 일동</p>
+        <p style = "font-size : 15px; font-weight : bold;font-family: 'Nanum Gothic', sans-serif;'"><a class = "reverse_text1" href = "javascript:closePopupNotToday('alertView')" ><span class ="reverse_text"><%-- <spring:message code="label.not_view_today" /> --%>그만 보기</span></a></p>
+
            </div>
        </div>
      </div>
-   </div> 
+   </div>
    </c:if>
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
@@ -174,7 +175,7 @@
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
        <div style = "width:20%" ><a href="https://sincar.co.kr/UID=rp4282"><img width = "58" height = "58" src="/resources/banner/new_car_mall_circle.png" ></a></div>
      </div>
-     
+
      <script></script>
      <div class="search">
         <p class="searchbtn"><a href="/m/map/rpmap.do"><i class="fas fa-map-marker-alt"></i> <spring:message code="label.find_merchants" /></a></p>
@@ -182,9 +183,10 @@
       <i class="fas fa-search" onclick="searchMap()"></i>
       </div>
    <ul class="banner">
+     <li><a href="http://rp.umallok.com"><img src="/resources/banner/umall.jpg" /></a></li>
         <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo3"><img src="/resources/banner/gift_card_banner.jpg" /></a></li>
-          <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo1"><img src="/resources/banner/20190502_133801490.jpg" /></a></li>
-       <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo2"><img src="/resources/banner/insurance_banner.jpg" /></a></li>
+        <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo1"><img src="/resources/banner/20190502_133801490.jpg" /></a></li>
+      <!--  <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo2"><img src="/resources/banner/insurance_banner.jpg" /></a></li> -->
      </ul>
      <div class="footinfo">
         <a href="/m/company/service_member.do"><spring:message code="label.what_return_point" /></a><small>/</small>
@@ -195,14 +197,14 @@
    </section>
 </div>
 <script>
-	$(".center").slick({
-	    infinite: true,
-	    centerMode: true,
-	    arrows: false,
-	    slidesToShow: 4,
-	    slidesToScroll: 3,
-	    autoplay:true
-	  });
+  $(".center").slick({
+      infinite: true,
+      centerMode: true,
+      arrows: false,
+      slidesToShow: 4,
+      slidesToScroll: 3,
+      autoplay:true
+    });
 </script>
 </body>
 <!-- body end -->
