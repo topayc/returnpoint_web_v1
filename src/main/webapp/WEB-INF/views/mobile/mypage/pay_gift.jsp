@@ -72,6 +72,7 @@ function resetGpointvalue(postfixId){
 			</ul>  
           <div id="Rpoint" class="tab-pane fade in active">               
             <div class="listbox rplist">
+               <div class="listmember"><span class="node nd1"><spring:message code="label.member" /></span></div>
                <div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/></span></div>
                <a type="button"  class="listbtn" onclick="resetRpointvalue();"><i class="fas fa-gift"></i><spring:message code="label.gift"/></a>
             </div>

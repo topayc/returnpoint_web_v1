@@ -303,7 +303,7 @@ input:checked + .sslider:before {-webkit-transform: translateX(26px);-ms-transfo
 .p_point ul.tabtitle li a{width: 100%;display: block;line-height: 65px;text-align: center; color: #333; font-weight: 600; font-size: 14px;}
 .p_point ul.tabtitle li.active{border-bottom:2px solid #ff4273;}
 .p_point ul.tabtitle li.active a{color: #ff4273;}
-.p_point .listbox.rplist .listbtn{top:9px;}
+.p_point .listbox.rplist .listbtn{/* top:9px; */}
 
 /* point transfer
 section.point_tarnsfer h4 span{background-color:#efefef;text-align:center;}
