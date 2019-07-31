@@ -84,7 +84,7 @@ function resetGpointvalue(postfixId){
             <!-- 정회원 -->
             <c:if test="${model.myGreenPointMap.recommenderPoint != null}">
             <div class="listbox gplist">
-               <div class="listmember"><span class="node nd2"><spring:message code="label.mfullMembership"/></span><spring:message code="label.gpoint"/></div>
+               <div class="listmember"><span class="node nd2"><spring:message code="label.recommender" /></span><spring:message code="label.gpoint"/></div>
                <div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointMap.recommenderPoint}" pattern="###,###,###,###"/></span></div>
                <a type="button" class="listbtn" onclick="resetGpointvalue('2');"><i class="fas fa-gift"></i><spring:message code="label.gift"/></a>
             </div>
@@ -102,7 +102,7 @@ function resetGpointvalue(postfixId){
             <!-- 협력업체 -->
             <c:if test="${model.myGreenPointMap.affiliatePoint != null}">
             <div class="listbox gplist">
-               <div class="listmember"><span class="node nd4"><spring:message code="label.mpartners"/></span><spring:message code="label.gpoint"/></div>
+               <div class="listmember"><span class="node nd4"><spring:message code="label.affiliate" /></span><spring:message code="label.gpoint"/></div>
                <div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.myGreenPointMap.affiliatePoint}" pattern="###,###,###,###"/></span></div>
                <a type="button" data-toggle="modal" data-target="#gpoint_gift3" class="listbtn" onclick="resetGpointvalue('5');"><i class="fas fa-gift"></i><spring:message code="label.gift"/></a>
             </div>   
