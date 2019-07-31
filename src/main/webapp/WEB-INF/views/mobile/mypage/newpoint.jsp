@@ -200,19 +200,19 @@ function gpointDetailView(f, searchtime){
 					returnHtml +="<div class='listshop'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].source+"</div>"
 				}else if(data.json_arr[i].paymentPointbackRecordDetailList[i].nodeType == '2'){
 					returnHtml +="<div class='listmember'><span class='type node nd2'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].accumulate+"</span></div>"
-					returnHtml +="<div class='listshop'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+"</div>"
+					returnHtml +="<div class='listshop'>"+/* data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+ */"</div>"
 				}else if(data.json_arr[i].paymentPointbackRecordDetailList[i].nodeType == '3'){
 					returnHtml +="<div class='listmember'><span class='type node nd6'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].accumulate+"</span></div>"
-					returnHtml +="<div class='listshop'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+"</div>"
+					returnHtml +="<div class='listshop'>"+/* data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+ */"</div>"
 				}else if(data.json_arr[i].paymentPointbackRecordDetailList[i].nodeType == '4'){
 					returnHtml +="<div class='listmember'><span class='type node nd5'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].accumulate+"</span></div>"
-					returnHtml +="<div class='listshop'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+"</div>"
+					returnHtml +="<div class='listshop'>"+/* data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+ */"</div>"
 				}else if(data.json_arr[i].paymentPointbackRecordDetailList[i].nodeType == '5'){
 					returnHtml +="<div class='listmember'><span class='type node nd4'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].accumulate+"</span></div>"
-					returnHtml +="<div class='listshop'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+"</div>"
+					returnHtml +="<div class='listshop'>"+/* data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+ */"</div>"
 				}else if(data.json_arr[i].paymentPointbackRecordDetailList[i].nodeType == '6'){
 					returnHtml +="<div class='listmember'><span class='type node nd3'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].accumulate+"</span></div>"
-					returnHtml +="<div class='listshop'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+"</div>"
+					returnHtml +="<div class='listshop'>"+/* data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+ */"</div>"
 				}else{
 					returnHtml +="<div class='listmember'><span class='type node nd7'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].accumulate+"</span></div>"
 					returnHtml +="<div class='listshop'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+"</div>"
