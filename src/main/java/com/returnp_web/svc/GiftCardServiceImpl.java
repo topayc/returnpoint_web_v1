@@ -32,15 +32,19 @@ public class GiftCardServiceImpl implements GiftCardService {
 			switch(paramMap.getStr("giftCardStatus")) {
 			case "1": //결제 완료
 				dbparams.put("payableStatus", "N");
+				rpMap.put("giftCardStatusStr", "결제 완료");
 				break;
 			case "2": //적립 완료
 				dbparams.put("accableStatus", "N");
+				rpMap.put("giftCardStatusStr", "적립 완료");
 				break;
 			case "3": // 결제 가능
 				dbparams.put("payableStatus", "Y");
+				rpMap.put("giftCardStatusStr", "결제 가능");
 				break;
 			case "4": // 적립 가능
 				dbparams.put("accableStatus", "Y");
+				rpMap.put("giftCardStatusStr", "적립 가능");
 				break;
 			}
 			ArrayList<HashMap<String, Object>> myGiftCards = this.giftCardDao.selectMyGiftCards(dbparams);
