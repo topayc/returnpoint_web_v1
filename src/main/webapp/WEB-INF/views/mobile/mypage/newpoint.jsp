@@ -197,7 +197,7 @@ function gpointDetailView(f, searchtime){
 				
 				if(data.json_arr[i].paymentPointbackRecordDetailList[i].nodeType == '1'){
 					returnHtml +="<div class='listmember'><span class='type node nd1'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].accumulate+"</span></div>"
-					returnHtml +="<div class='listshop'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+"</div>"
+					returnHtml +="<div class='listshop'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].source+"</div>"
 				}else if(data.json_arr[i].paymentPointbackRecordDetailList[i].nodeType == '2'){
 					returnHtml +="<div class='listmember'><span class='type node nd2'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].accumulate+"</span></div>"
 					returnHtml +="<div class='listshop'>"+data.json_arr[i].paymentPointbackRecordDetailList[i].companyname+"</div>"

@@ -495,7 +495,7 @@ function startGiftCardProcess(cmd, giftCardStatus, accableStatus, payableStatus)
 	}
 	bridge.getSesssionAndDeviceInfo(function(data){
 		data = JSON.parse(data);
-		if (result.result != "100")  {
+		if (data.result != "100")  {
 			alertOpen("알림", "앱 오류 발생", true, false, null, null);
 			return;
 		}

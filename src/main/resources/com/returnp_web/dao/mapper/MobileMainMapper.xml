@@ -315,14 +315,14 @@
 	</select>
 
 	<select id="selectPaymentPointbackRecordDetailList" parameterType="HashMap" resultType="HashMap">
-	SELECT 	paymentPointbackRecordNo, memberNo, FORMAT(pointbackAmount, 0) AS pointbackAmount, nodeNo, nodeType, createTime, accumulate, companyname
+	SELECT 	paymentPointbackRecordNo, memberNo, FORMAT(pointbackAmount, 0) AS pointbackAmount, nodeNo, nodeType, createTime, accumulate, companyname,source
 		FROM (
-		SELECT paymentPointbackRecordNo
-				,memberNo
-				,pointbackAmount
-				,nodeNo
-				,nodeType
-				,date_format(createTime,'%Y-%m-%d %I:%i:%s') as createTime
+		SELECT PPR.paymentPointbackRecordNo
+				,PPR.memberNo
+				,PPR.pointbackAmount
+				,PPR.nodeNo
+				,PPR.nodeType
+				,date_format(PPR.createTime,'%Y-%m-%d %I:%i:%s') as createTime
 				,'구매적립' as accumulate
 				<if test="nodeType !=null and nodeType !='' ">
 				<choose>
@@ -352,13 +352,16 @@
 				</otherwise>
 				</choose>
 				</if>
-				AS companyname
-		FROM payment_pointback_record
-		WHERE memberNo = #{memberNo}
+				AS companyname,
+				AF.affiliateName as source
+		FROM payment_pointback_record as PPR
+        inner join payment_transaction as PT on (PPR.paymentTransactionNo = PT.paymentTransactionNo) 
+        inner join affiliate as AF on (PT.affiliateNo = AF.affiliateNo) 
+		WHERE PPR.memberNo = #{memberNo}
 		<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
-		AND left(createTime, 7) = left( #{SEARCHTIME} , 7)
+		AND left(PPR.createTime, 7) = left( #{SEARCHTIME} , 7)
 		</if>
-		AND nodeType = #{nodeType}
+		AND PPR.nodeType = #{nodeType}
 		UNION ALL
 		SELECT 		a.pointTransferTransactionNo as paymentPointbackRecordNo
 					,a.pointReceiver as memberNo
@@ -367,10 +370,11 @@
 				    ,a.pointType as nodeType
 				    ,date_format(a.createTime,'%Y-%m-%d %I:%i:%s') as createTime
 				    ,'선물적립' as accumulate
-				    ,b.memberName as companyname
-		FROM point_transfer_transaction a, member b
-		WHERE a.pointReceiver = b.memberNo
- 		AND a.pointReceiver = #{memberNo}
+				    ,M.memberName as companyname,
+				    M.memberName as source
+		FROM point_transfer_transaction a 
+		inner join member as M on (a.pointTransferer = M.memberNo) 
+ 		where a.pointReceiver = #{memberNo}
  		<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
 		AND left(a.createTime, 7) = left( #{SEARCHTIME} , 7)
 		</if>
