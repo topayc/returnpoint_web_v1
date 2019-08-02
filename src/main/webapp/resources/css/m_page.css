@@ -32,7 +32,7 @@ background-size: 100%;padding: 25px 0 18px 62px;height: 88px;}
 nav #myNavbar .navbar-nav .userprofile .profilename{color:#fff;}
 nav #myNavbar .navbar-nav .userprofile .profileemail{color: rgba(255, 255, 255, 0.5);}
 nav #myNavbar .navbar-nav>li {border-bottom:1px solid #ddd;}
-nav #myNavbar .navbar-nav>li>a{color:#777;padding: 18px 30px; font-weight: 501;font-family: 'Nanum Gothic', sans-serif;}
+nav #myNavbar .navbar-nav>li>a{color:#222;padding: 18px 30px; font-weight: 500;font-family: 'Nanum Gothic', sans-serif;}
 nav #myNavbar .navbar-nav>li>a .fas {padding-right:10px;color:#666;}
 nav #myNavbar .navbar-nav>li>a .fa-sort-down {display:none;}
 nav #myNavbar .navbar-nav>li.member{background: #f5f5f5;}
