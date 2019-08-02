@@ -54,7 +54,7 @@
 	<c:choose>
 		<c:when test = "${empty model.myGiftCards}">
 			<section class="qr_nodata" style = "background-color : #eeeeee;height:100%">
-				<div style = "hight : 100%"> 
+				<div style = "height : 100%"> 
 					<i style = "color : #ccc;font-size : 60px" class="fas fa-exclamation-triangle"></i>
 					<span style = "font-size : 16px; color : #555555;font-weight: 400"><spring:message code="label.no_gift_card"/></span></div>
 			</section>
