@@ -66,7 +66,7 @@
 						<a href="#">
 							<img src="/resources/images/giftcard/rp${giftCard.giftCardAmount}.jpg" alt="상품권이미지1"/>
 							<ul>
-								<li class="con_box_icon1"><spring:message code="label.returnp_gift_card" /></li>
+								<li class="con_box_icon1"><b><spring:message code="label.returnp_gift_card" /></b></li>
 								<li class="con_box_icon2"><fmt:formatNumber value="${giftCard.giftCardAmount}" pattern="###,###,###,###"/>원</li>
 							</ul>
 						</a>
