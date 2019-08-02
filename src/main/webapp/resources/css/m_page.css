@@ -624,3 +624,14 @@ background-position: top left; background-position-x: 0px;background-position-y:
     color : #fff;
 
 }
+
+@media (min-width:768px){.navbar-header{float:left; width : 100%}}
+
+.navbar-toggle{
+    display: block !important;
+}
+
+
+.navbar-nav>li {
+    clear :both  !important;
+    width : 100%;
