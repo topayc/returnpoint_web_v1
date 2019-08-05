@@ -41,24 +41,24 @@ $(document).ready(function(){
 		<div class="listS01">
 			<div class="list_title"><i class="fas fa-pencil-alt"></i><spring:message code="label.board" /></div>		
 			
-			<!-- 자주 묻는 질문-->
-			<div class="list_li" onclick = "movePage('/m/board/faq.do')">
-				<span class= "item_title"><spring:message code="label.faq" /></span><i class="fas fa-chevron-right"></i> 
-			</div>
-			
 			<!--공지 사항-->
 			<div class="list_li" onclick = "movePage('/m/board/notice.do')">
 				<span class= "item_title"><spring:message code="label.notice" /></span><span><i class="fas fa-chevron-right"></i></span> 
 			</div>
 			
-			<!--일반 상담-->
-			<div class="list_li" onclick = "movePage('/m/board/qna.do')">
-				<span class= "item_title"><spring:message code="label.general_enquiries" /></span><span><i class="fas fa-chevron-right"></i></span> 
+			<!-- 자주 묻는 질문-->
+			<div class="list_li" onclick = "movePage('/m/board/faq.do')">
+				<span class= "item_title"><spring:message code="label.faq" /></span><i class="fas fa-chevron-right"></i> 
 			</div>
+			
+			<!--일반 상담-->
+		<%-- 	<div class="list_li" onclick = "movePage('/m/board/qna.do')">
+				<span class= "item_title"><spring:message code="label.general_enquiries" /></span><span><i class="fas fa-chevron-right"></i></span> 
+			</div> --%>
 			
 			<!--제휴 상담-->
 			<div class="list_li" onclick = "movePage('/m/board/qna_node.do')">
-				<span class= "item_title"><spring:message code="label.affiliated_inquiry" /></span><span><i class="fas fa-chevron-right"></i></span> 
+				<span class= "item_title"><spring:message code="label.general_enquiries" /> / <spring:message code="label.affiliated_inquiry" /></span><span><i class="fas fa-chevron-right"></i></span> 
 			</div>
 			
 			<div class="list_title"><i class="fas fa-user-shield"></i><spring:message code="label.terms_policy" /></div>		

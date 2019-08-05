@@ -816,6 +816,111 @@ $.fn.serializeObject = function () {
     return result;
 };
 
+//이메일 형식 체크 
+function checkEmail(str) {
+	var pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	if (str.match(pattern) != null) {
+		return true;
+	} else {
+		return false;
+	}
+} 
+
+//제휴문의 신청하기 저장
+function partnerAskSave(){ 
+	event.preventDefault();
+	
+	var f = document.partnerAskSaveForm;
+	var bbsType2 = $("#bbsType2 option:selected").val();
+	if(bbsType2 == null || bbsType2 ==""){
+		commonAlert('질문 유형을 선택해 주세요.', false, null);
+		$("#modal3").modal('show');
+		return false;
+	}
+	if (isEmpty(f.rerv1)) {
+		commonAlert('상호명을 입력해주세요.', false, null);
+		$("#modal3").modal('show');
+		return false;
+	}
+ 	if (isEmpty(f.rerv2)) {
+		commonAlert('대표자명을 입력해주세요.', false, null);
+		$("#modal3").modal('show');
+		return false;
+	}
+	if (isEmpty(f.rerv3)) {
+		commonAlert('주소를 입력해주세요.', false, null);
+		$("#modal3").modal('show');
+		return false;
+	}
+	if (isEmpty(f.rerv4)) {
+		commonAlert('담당자를 입력해주세요.', false, null);
+		$("#modal3").modal('show');
+		return false;
+	}
+	if (isEmpty(f.rerv5)) {
+		commonAlert('연락처를 입력해주세요.', false, null);
+		$("#modal3").modal('show');
+		return false;
+	}
+	if (isEmpty(f.rerv6)) {
+		commonAlert('이메일 입력해주세요.', false, null);
+		$("#modal3").modal('show');
+		return false;
+	}
+	var rerv6 = $("#rerv6").val();
+	if (!checkEmail(rerv6)){
+		commonAlert('올바른 이메일주소를 입력해주세요.', false, null);
+		$("#modal3").modal('show');
+		return false;
+	} 
+	if (isEmpty(f.title)) {
+		commonAlert('제목을 입력해주세요.', false, null);
+		$("#modal3").modal('show');
+		return false;
+	}
+	if (isEmpty(f.content)) {
+		commonAlert('문의사항을 입력해주세요.', false, null);
+		$("#modal3").modal('show');
+		return false;
+	}
+    var isBbsTypeChk = false; 
+   	var arr_bbsType2 = document.getElementsByName("gb");
+    for(var i=0;i<arr_bbsType2.length;i++){
+        if(arr_bbsType2[i].checked == true) {
+        	isBbsTypeChk = true;
+            break;
+        }
+    }
+    if(!isBbsTypeChk){
+        commonAlert('개인정보 수집 및 약관동의(필수)"예"를 하셔야 문의신청이 가능합니다.', false, null);
+		$("#modal3").modal('show');
+        return false;
+    }
+    var gbval = $("#gbval").val();
+    if(gbval != 'Y'){
+        commonAlert('개인정보 수집 및 약관동의(필수)에 "예" 를 하셔야 문의신청이 가능합니다.', false, null);
+		$("#modal3").modal('show');    	
+        return false;
+    }
+    var params = jQuery("#partnerAskSaveForm").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+	$.ajax({
+		method : "post",
+		url    : "/board/partnerAskSave.do",
+		dataType: "json",
+		data   :  params,
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+		success: function(data) {
+			if (data.code == 1 ) {
+				 commonAlert("제휴문의에 등록이 완료되었습니다.", true, 'refresh()');
+				 $("#modal3").modal('show');  
+			}
+		},
+		error: function (request, status, error) {
+			commonAlert("잠시후에 다시 시도해주세요.", true, 'refresh()');
+			$("#modal3").modal('show');  
+		}
+	})
+}
 /*var uAgent = navigator.userAgent.toLowerCase();
 //아래는 모바일 장치들의 모바일 페이지 접속을위한 스크립트
 var mobilePhones = new Array('iphone', 'ipod', 'ipad', 'android', 'blackberry', 'windows ce','nokia', 'webos', 'opera mini', 'sonyericsson', 'opera mobi', 'iemobile');

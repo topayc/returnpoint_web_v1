@@ -177,7 +177,7 @@ section hr{display:none;}
 .listS01 .list_li i.fa-chevron-right{position:absolute;right:0px;top:-2px;padding: 28px 22px 22px 30px;}
 .listS01 .list_li i.list_blt{transform: rotate(90deg);transition: 0.7s;}
 .listS01 .list_li.collapsed i.list_blt{transform: rotate(0deg);transition: 0.7s;}
-.listS01 .list_toggle{background:#f9f9f9;color: #888;padding: 0;font-size:12px;}
+.listS01 .list_toggle{background:#f9f9f9;color: #444;padding: 0px 3px;font-size:13px;border-bottom:1px solid #eee}
 .listS01 .list_toggle p{padding: 16px;}
 /* list-style02 */
 .listS02{}
@@ -234,7 +234,7 @@ input:checked + .sslider:before {-webkit-transform: translateX(26px);-ms-transfo
 .p_notice .listS01 .list_li small{display:block;color:#aaa;padding-bottom:5px;}
 .p_qna .listS01 .list_li span{display:block;padding-top:10px;clear:both;}
 .p_qna .listS01 .list_li small{color:#aaa; padding: 0 10px 0 10px;border-left: 1px solid #eee;}
-.p_qna .listS01 .list_li small.date{padding-left:0;border:0;}
+.p_qna .listS01 .list_li small.date{padding-left:0;border:0;color : #666}
 .p_qna .listS01 .list_li small.state_off{background: #a5a5a5;padding: 3px;color: #fff;border-radius: 3px;border: 0;float: right;}
 .p_qna .listS01 .list_li small.state_on{background: #ff9ea5;padding: 3px;color: #fff;border-radius: 3px;border: 0;float: right;}
 .p_qna .listS01 .list_toggle{overflow:hidden;}

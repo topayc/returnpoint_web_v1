@@ -80,14 +80,14 @@ function addlist(noticecount){
 	<!-- content begin -->
 	<section>
 		<div class="listS01">			
-			<div class="list_title"><i class="fas fa-pencil-alt"></i>&nbsp;<spring:message code="label.notice" /></div>			
+			<%-- <div class="list_title"><i class="fas fa-pencil-alt"></i>&nbsp;<spring:message code="label.notice" /></div>		 --%>	
 			<div id="table">	
 			<c:choose>
 				<c:when test="${! empty model.noticeList}">
 			<c:forEach var="list" items="${model.noticeList}" varStatus="loop">
 			<div data-toggle="collapse" data-target="#notice_${list.boardNo}" class="list_li collapsed ellp">
-				<small><i class="fas fa-calendar-alt"></i> ${list.createTime}</small>
-				<span>${list.boardTitle}</span> 
+				<small ><!-- <i class="fas fa-calendar-alt"></i> --> ${list.createTime}</small>
+				<span class = "item_title" >[공지]${list.boardTitle}</span> <span><i class="fas fa-chevron-right list_blt"></i></span>
 			</div>
 			<div id="notice_${list.boardNo}" class="list_toggle collapse">
 				<p>${f:decQuote(list.boardContent)}</p>

@@ -151,10 +151,10 @@ function rpointDetailView(f, searchtime){
        </div>
       <div class="tab-content">
           <!-- 레드포인트 내역  -->
-            <ul class="tabtitle">
+         <%--    <ul class="tabtitle">
                <li class="active"><a href="/m/mypage/newpay.do"><spring:message code="label.rPointconversionHistory" /></a></li>
                <li><a href="/m/mypage/pay_gift.do"><spring:message code="label.rPointPresents" /></a></li>
-            </ul>
+            </ul> --%>
             <div id="RpointM" class="tab-pane fade in active">
             <div class="listbox">
                <div class="listmember"><span class="node nd1"><spring:message code="label.member" /></span></div>

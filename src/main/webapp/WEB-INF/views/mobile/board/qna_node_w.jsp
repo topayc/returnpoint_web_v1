@@ -36,60 +36,88 @@ function isEmpty(obj) {
 	return (obj.value.stripspace()=='' ? true : false);
 }
 
-function saveQnaNodeW(){
+//제휴문의 신청하기 저장
+function partnerAskSave(){ 
 	event.preventDefault();
 	
-	var f = document.Frm;
-	
-	var boardCate = $("#boardCate option:selected").val();
-	if(boardCate == null || boardCate ==""){
-		alertOpen("확인", "회원 유형을 선택 주세요.", true, false, null, null);
+	var f = document.partnerAskSaveForm;
+	var bbsType2 = $("#bbsType2 option:selected").val();
+	if(bbsType2 == null || bbsType2 ==""){
+		alertOpen( "알림", "질문 유형을 선택해 주세요", true, null, null, null);
 		return false;
 	}
 	if (isEmpty(f.rerv1)) {
-		alertOpen("확인", "상호명을 입력해 주세요.", true, false, null, null);
-		f.rerv1.focus();
+		alertOpen( "알림", "상호명을 입력해주세요", true, null, null, null);
 		return false;
 	}
-	if (isEmpty(f.rerv2)) {
-		alertOpen("확인", "대표자명을 입력해 주세요.", true, false, null, null);
-		f.rerv2.focus();
+ 	if (isEmpty(f.rerv2)) {
+ 		alertOpen( "알림", "대표자명을 입력해주세요", true, null, null, null);
 		return false;
 	}
 	if (isEmpty(f.rerv3)) {
-		alertOpen("확인", "주소를 입력해 주세요.", true, false, null, null);
-		f.rerv3.focus();
+ 		alertOpen( "알림", "주소를 입력해주세요", true, null, null, null);
 		return false;
 	}
 	if (isEmpty(f.rerv4)) {
-		alertOpen("확인", "담당자를 입력해 주세요.", true, false, null, null);
-		f.rerv4.focus();
+ 		alertOpen( "알림", "담당자를 입력해주세요", true, null, null, null);
 		return false;
 	}
 	if (isEmpty(f.rerv5)) {
-		alertOpen("확인", "연락처를 입력해 주세요.", true, false, null, null);
-		f.rerv5.focus();
+ 		alertOpen( "알림", "연락처를 입력해주세요", true, null, null, null);
 		return false;
 	}
 	if (isEmpty(f.rerv6)) {
-		alertOpen("확인", "이메일을 입력해 주세요.", true, false, null, null);
-		f.rerv6.focus();
+ 		alertOpen( "알림", "이메일 입력해주세요", true, null, null, null);
 		return false;
 	}
-	if (isEmpty(f.boardTitle)) {
-		alertOpen("확인", "제목을 입력해 주세요.", true, false, null, null);
-		f.boardTitle.focus();
+	var rerv6 = $("#rerv6").val();
+	if (!checkEmail(rerv6)){
+ 		alertOpen( "알림", "올바른 이메일주소를 입력해주세요", true, null, null, null);
+		return false;
+	} 
+	if (isEmpty(f.title)) {
+ 		alertOpen( "알림", "제목을 입력해주세요", true, null, null, null);
 		return false;
 	}
-	if (isEmpty(f.boardContent)) {
-		alertOpen("확인", "문의사항을 입력해 주세요.", true, false, null, null);
-		f.boardContent.focus();
+	if (isEmpty(f.content)) {
+ 		alertOpen( "알림", "문의사항을 입력해주세요", true, null, null, null);
 		return false;
 	}
-	
-	f.target = "";
-	f.action = "/m/member/saveQnaNodeW_act.do";
-	f.submit();
+/*     var isBbsTypeChk = false; 
+   	var arr_bbsType2 = document.getElementsByName("gb");
+    for(var i=0;i<arr_bbsType2.length;i++){
+        if(arr_bbsType2[i].checked == true) {
+        	isBbsTypeChk = true;
+            break;
+        }
+    }
+    if(!isBbsTypeChk){
+        commonAlert('개인정보 수집 및 약관동의(필수)"예"를 하셔야 문의신청이 가능합니다.', false, null);
+		$("#modal3").modal('show');
+        return false;
+    }
+    var gbval = $("#gbval").val();
+    if(gbval != 'Y'){
+        commonAlert('개인정보 수집 및 약관동의(필수)에 "예" 를 하셔야 문의신청이 가능합니다.', false, null);
+		$("#modal3").modal('show');    	
+        return false;
+    } */
+    var params = jQuery("#partnerAskSaveForm").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+	$.ajax({
+		method : "post",
+		url    : "/m/board/partnerAskSave.do",
+		dataType: "json",
+		data   :  params,
+		contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+		success: function(data) {
+			if (data.code == 1 ) {
+				alertOpen( "알림", "제휴 문의에 등록이 완료되었습니다.", true, null, function(){location.href = "/m/mypage/mypage_myinfo.do"}, null);
+			}
+		},
+		error: function (request, status, error) {
+			alertOpen( "알림", "잠시후에 다시 시도해주세요.", true, null, null, null);
+		}
+	})
 }
 </script>
 </head>
@@ -99,61 +127,64 @@ function saveQnaNodeW(){
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>Member Q & A</h4>
+		<h4> <spring:message code="label.affiliated_inquiry_qna" /></h4>
 	</header> 
 	<!-- content begin -->
 	<section>
 		<div class="listS01">			
-			<div class="list_title"><i class="fas fa-pencil-alt"></i> RETURNP 제휴 문의</div><br />			
-			<form name="Frm">
-				<div class="form-group">
-					<select class="form-control qna_cate" id="boardCate" name="boardCate">
+			<form name="partnerAskSaveForm" id="partnerAskSaveForm">
+				<div class="form-group" style = "margin-top:10px">
+					<select class="form-control qna_cate" id="bbsType2" name="bbsType2">
 					    <option value="" >선택</option>
-					    <option value="1" >일반회원신청</option>
-					    <option value="2" >정회원신청</option>
-					    <option value="3" >지사신청</option>
-					    <option value="4" >대리점신청</option>
-					    <option value="5" >협력업체신청</option>
-					    <option value="6" >영업관리자신청</option>
-					    <option value="7" >총판신청</option>
+						<option value="1">일반 회원 문의</option>
+                    	<option value="2">정회원 문의</option>
+                    	<option value="3">영업 관리자 문의</option>
+                    	<option value="4">협력업체 문의</option>
+                    	<option value="5">대리점 문의</option>
+                    	<option value="6">지사 문의</option>
+                    	<option value="7">기타 제휴 문의</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="company">상호명</label> 
-					<input type="text"	class="form-control" name="rerv1" id="rerv1" maxlength="50">
+					<label for="rerv1">상호명</label> 
+					<input type="text"	class="form-control" name="rerv1" id="rerv1" maxlength="50" >
 				</div>
 				<div class="form-group">
-					<label for="ceo">대표자명</label> 
+					<label for="rerv2">대표자명</label> 
 					<input type="text"	class="form-control" name="rerv2" id="rerv2" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="add">지역(주소)</label> 
+					<label for="rerv3">지역(주소)</label> 
 					<input type="text"	class="form-control" name="rerv3" id="rerv3" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="name">담당자</label> 
+					<label for="rerv4">담당자</label> 
 					<input type="text"	class="form-control" name="rerv4" id="rerv4" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="tel">연락처</label> 
+					<label for="rerv5">연락처</label> 
 					<input type="text"	class="form-control" name="rerv5" id="rerv5" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="mail">이메일</label> 
+					<label for="rerv6">이메일</label> 
 					<input type="text"	class="form-control" name="rerv6" id="rerv6" maxlength="50">
 				</div>
 				<!-- 조회목록이랑 테스트 디비에는 제목이 있는데 ui에는 제목이 없음. 우선은 포함하였으니. 최종 결정나시면 수정하시면 될듯요. 09.25 -->
 				<div class="form-group">
-					<label for="subject">제목</label> 
-					<input type="text"	class="form-control" id="boardTitle" name="boardTitle" maxlength="50">
+					<label for="title">제목</label> 
+					<input type="text"	class="form-control" id="title" name="title" maxlength="50">
 				</div>
 				<div class="form-group">
-					<label for="contents">문의사항</label> 
-					<textarea rows="5" cols="50"  name="boardContent" id="boardContent" class="form-control"></textarea>
+					<label for="content">문의사항</label> 
+					<textarea rows="5" cols="50"  name="content" id="content" class="form-control"></textarea>
 				</div>
 			</form> 
 		</div>
-		<button type="button" class="btn btn-submit" onclick="saveQnaNodeW();">글쓰기</button>  
+		<div class="btns2">
+			<button type="button" class="btn btn-submit" onclick = "partnerAskSave()"><spring:message code="label.ok" /></button>
+			<button type="button" class="btn btn-submit-cancel"  onclick = "history.back()"><spring:message code="label.cancel" /></button>
+		</div>
+		
 	</section>
 	<!-- content end -->
 </div>

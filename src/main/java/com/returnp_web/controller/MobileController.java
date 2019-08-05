@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.returnp_web.svc.FrontMainService;
 import com.returnp_web.svc.MobileMainService;
 import com.returnp_web.utils.RPMap;
+import com.returnp_web.utils.SessionManager;
 import com.returnp_web.utils.Util;
 
 @Controller
@@ -106,7 +107,24 @@ public class MobileController extends MallBaseController {
 			e.printStackTrace();
 		}	
 			return "/mobile/affiliate/affiliateSearchList";
+	}
+	
+	// WEB 제휴안내 저장
+	@ResponseBody
+	@RequestMapping(value = "/board/partnerAskSave", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	public Map<String, Object> partnerAskSave(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
 		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try{
+			params.put("writerNo", sm.getMemberNo());
+			fms.insertMainBbsPartnerAskSave(params);
+			resultMap.put("code", "1");
+		}catch(Exception e) {
+			//resultMap.put("message", e.getMessage());
+			return resultMap;
+		}
+			return resultMap;
 	}
 	
 	// 프론트 메인페이지

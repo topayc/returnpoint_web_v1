@@ -154,7 +154,7 @@
          <p><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/>P</p>
          <ul>
             <li><a onclick = "movePage('/m/mypage/m_rpay_use_manage.do?memberNo=${model.memberTypeInfo.memberNo}')" ><i class="fas fa-qrcode"></i>&nbsp;<spring:message code="label.use" /></a></li>
-            <li><a href="/m/mypage/pay_gift.do"><i class="fas fa-gift"></i>&nbsp;<spring:message code="label.gift" /></a></li>
+           <%--  <li><a href="/m/mypage/pay_gift.do"><i class="fas fa-gift"></i>&nbsp;<spring:message code="label.gift" /></a></li> --%>
             <li><a href="/m/mypage/newpay.do"><i class="fas fa-list-ul"></i>&nbsp;<spring:message code="label.transition_history" /></a></li>
          </ul>
        </div>

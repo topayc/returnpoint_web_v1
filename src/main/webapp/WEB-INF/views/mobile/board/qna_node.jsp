@@ -39,14 +39,17 @@ $(document).ready(function(){
 	<!-- content begin -->
 	<section>
 		<div class="listS01">			
-			<div class="list_title"><i class="fas fa-pencil-alt"></i><spring:message code="label.affiliated_inquiry" /></div>			
+			<%-- <div class="list_title"><i class="fas fa-pencil-alt"></i><spring:message code="label.affiliated_inquiry" /></div> --%>			
 
 		<c:choose>
 			<c:when test="${! empty model.qnaNodeList}">	
 			<c:forEach var="list" items="${model.qnaNodeList}" varStatus="loop">
 			<div data-toggle="collapse" data-target="#faq_${list.boardNo}" class="list_li collapsed ellp">
-				<small class="date"><i class="fas fa-calendar-alt"></i> ${list.createTime2}</small><small>${list.boardWriterName}</small><small>${list.boardName}</small>
-				<span>${list.boardTitle}</span>
+				<small class="date"><!-- <i class="fas fa-calendar-alt"></i> --> ${list.createTime2}</small>
+				<small class="date">${list.boardWriterName}</small>
+				<small class="date">${list.boardName}</small>
+				<span class = "item_title" > ${list.boardTitle}</span>
+				<span><i class="fas fa-chevron-right list_blt"></i></span>
 			</div>
 			<div id="faq_${list.boardNo}" class="list_toggle collapse">
 				<p>${f:decQuote(list.answerContent)}</p>
