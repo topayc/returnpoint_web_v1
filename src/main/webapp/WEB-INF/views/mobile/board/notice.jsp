@@ -81,7 +81,7 @@ function addlist(noticecount){
 	<section>
 		<div class="listS01">			
 			<%-- <div class="list_title"><i class="fas fa-pencil-alt"></i>&nbsp;<spring:message code="label.notice" /></div>		 --%>	
-			<div id="table">	
+	<%-- 		<div id="table">	
 			<c:choose>
 				<c:when test="${! empty model.noticeList}">
 			<c:forEach var="list" items="${model.noticeList}" varStatus="loop">
@@ -101,7 +101,10 @@ function addlist(noticecount){
 					</div>
 				</c:otherwise>
 			</c:choose>				
-			</div>
+			</div> --%>
+					<div class="list_li collapsed ellp">
+					<p><spring:message code="label.no_post" /></p>
+					</div>
 		</div>
 		<input type="hidden" id="morecount" name="morecount"/>
 		<input type="hidden" id="noticeTotalCnt" name="noticeTotalCnt" value="${model.noticeTotalCnt.CNT}"/>
