@@ -224,6 +224,10 @@ function recommendSms(data){
 				<button class="btn btn-sbasic" type="button" onclick="location.href='/m/mypage/mypage_myinfo_confirm.do' "><spring:message code="label.mypageDesc04" /></button></h4>
 			</div> 		
 			
+			<div class="list_li"  onclick = "movePage('/m/mypage/mypage_myinfo_confirm.do')">
+				<span class = "item_title"><spring:message code="label.mypageConfirmDesc01" /></span><span><i class="fas fa-chevron-right" ></i></span>
+			</div>
+			
 			<div class="list_li"  onclick = "movePage('./m_myMemberList.do?memberNo=${model.memberTypeInfo.memberNo}')">
 				<span class = "item_title"><spring:message code="label.mypageMyMember" /></span><span><i class="fas fa-chevron-right" ></i></span>
 			</div>
