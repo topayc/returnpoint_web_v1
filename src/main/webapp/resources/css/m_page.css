@@ -177,7 +177,7 @@ section hr{display:none;}
 .listS01 .list_li i.fa-chevron-right{position:absolute;right:0px;top:-2px;padding: 28px 22px 22px 30px;}
 .listS01 .list_li i.list_blt{transform: rotate(90deg);transition: 0.7s;}
 .listS01 .list_li.collapsed i.list_blt{transform: rotate(0deg);transition: 0.7s;}
-.listS01 .list_toggle{background:#f4f4f4;color: #444;padding: 0px 3px;font-size:13px;border-bottom:1px solid #eee}
+.listS01 .list_toggle{background:#f2f2f2;color: #555;padding: 0px 3px;font-size:13px;font-weight: 400;border-bottom:1px solid #eee}
 .listS01 .list_toggle p{padding: 16px;}
 /* list-style02 */
 .listS02{}
@@ -647,7 +647,7 @@ background-position: top left; background-position-x: 0px;background-position-y:
 	background-color:#1abebd; color:#fff; 
 }
 
-input {color : #000; font-weight:400}
+input {color : #000; font-weight:400; }
 button {color : #000; font-weight:400}
 .main_notice {  
 	position : relative;
@@ -667,4 +667,5 @@ button {color : #000; font-weight:400}
   .main_notice span.notice_time{
     font-weight : 300;
     float : right;
+    font-size : 12px;
  }

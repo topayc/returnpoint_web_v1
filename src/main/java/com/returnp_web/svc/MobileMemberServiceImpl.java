@@ -748,17 +748,19 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			dbparams.put("memberNo", sm.getMemberNo());
 			mobileMemberDao.updateUser(dbparams);
 
-			String[] url = request.getRequestURL().toString().split(request.getRequestURI());
-			String mail_sign = "<a href =" + url[0] + "/m/member/login.do target ='_blank'>";
+			/*메일 서비스는 일시적으로 중단함 
+			 * 차후 사용할 시 아래의 코드 주석 해제*/
+			/*String[] url = request.getRequestURL().toString().split(request.getRequestURI());
+			String mail_sign = "<a href =" + url[0] + "/m/member/login.do target ='_blank'>";*/
 
 			/* send email ->계정:gmail, 운영 반영시에 실제사용값으로 수정요청드립니다.(참고파일: root-context.xml) */
-			email.setSubject("회원님께서 수정하신 정보를 보내드립니다.");
+			/*email.setSubject("회원님께서 수정하신 정보를 보내드립니다.");
 			email.setReceiver(mypageMyinfo.get("memberEmail").toString());
 			email.setHtmlYn("Y");
 			email.setVeloTemplate("mail_infomodify.vm");
 			dbparams.put("mail_sign", mail_sign);
 			email.setEmailMap(dbparams);
-			emailSender.sendVelocityEmail(email);
+			emailSender.sendVelocityEmail(email);*/
 			/* send email ->계정:gmail, 운영 반영시에 실제사용값으로 수정요청드립니다.(참고파일: root-context.xml) */
 
 			rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/mypage/mypage_myinfo.do", "T"));

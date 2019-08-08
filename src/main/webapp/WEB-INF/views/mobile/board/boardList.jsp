@@ -86,7 +86,12 @@ function moveFaq(bbsType2){
 			<c:when test="${! empty model.boardList}">
 			<c:forEach var="list" items="${model.boardList}" varStatus="loop">
 			<div data-toggle="collapse" data-target="#notice_${list.mainBbsNo}" class="list_li collapsed ellp" style = "padding: 12px 20px">
-				<small style ="padding: 0 3px"><!-- <i class="fas fa-calendar-alt"></i> --> ${list.createTime}</small>
+				<c:if test = "${model.bbsType1 != '2'}">
+				<small style ="padding: 0 3px">
+					<fmt:parseDate value="${list.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
+					<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
+				 </small>
+				</c:if>
 				<span class = "item_title" >${list.title}
 					<c:if test = "${model.bbsType1 == '4' and list.replyCompleted == 'Y'}">
 					<span class ="badge badge-success" style = "background-color: #04B404;display : inline;font-weight : 300;font-size: 10px">완료</span>

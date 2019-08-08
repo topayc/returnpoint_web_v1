@@ -83,7 +83,7 @@ function validSubmit(f) {
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>Mypage</h4>
+		<h4><spring:message code="label.mypageConfirmDesc01" /></h4>
 	</header> 
 	<!-- content begin -->
 	<section>

@@ -26,14 +26,52 @@
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
-	if (appInfo.access == "APP") {
-		bridge.getPhoneNumber(function(phone){
-			phone = JSON.parse(phone);
-			$("#phone").val(phone.phoneNumber);
-			$("#phoneOri").val(phone.phoneNumber);
+	if (isApp()) {
+		/*앱인 경우 전화번호 입력박스 입력 금지*/
+		$("#phone").attr('readonly', true); 
+		bridge.checkPermission(appInfo.permission.READ_PHONE_STATE, function(result){
+			result = JSON.parse(result);
+			if (result.result == '100'){
+				if (result.permissionState == appInfo.permissionResult.PERMITTEED) {
+					setPhoneNumber();
+				}else {
+					bridge.requestPermission(appInfo.permission.READ_PHONE_STATE, function(result){
+						result = JSON.parse(result);
+						if (result.result == '100'){
+							if (result.permissionState == appInfo.permissionResult.PERMITTEED) {
+								setPhoneNumber();
+							}else {
+								alertOpen(
+									"알림", 
+									"정상적인 서비스 제공을 위해서는 </br>기기 전화번호 가져오기 권한을 </br>활성화 해주셔야 합니다.", 
+									true, 
+									false, 
+									function(){}, 
+									null);
+							}
+						}else {
+							alertOpen("알림", "앱 오류 발생", true, false, null, null);
+						}
+					});
+				}
+			}else {
+				alertOpen("알림", "앱 오류 발생", true, false, null, null);
+			}
 		});
 	}
 });
+
+function setPhoneNumber(){
+	bridge.getPhoneNumber(function(data){
+		data = JSON.parse(data);
+		if (data.result == "100"){
+			$("#phone").val(data.phoneNumberCountry);
+			$("#phoneOri").val(data.phoneNumberCountry);
+		}else {
+			alertOpen("알림", "앱 오류 발생", true, false, null, null);
+		}
+	});	
+}
 </script>
 <script type="text/javascript">
 //추천인 유효성 체크
@@ -142,7 +180,7 @@ function memberUpdateSubmit() {
 
 	if( (phoneOriM != phone) ){ // 인증받은 phone와 입력한 phone의 일치여부 확인
 		//alert("휴대폰 중복가입을 해주세요.");
-		alertOpen("확인", "휴대폰 중복가입을 해주세요.", true, false, null, null);
+		alertOpen("확인", "휴대폰 중복 검사를 해주세요.", true, false, null, null);
 		return false;
 	}
 	
@@ -229,7 +267,7 @@ function searchPhoneOverlap(){
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>Mypage</h4>
+		<h4><spring:message code="label.mypageConfirmDesc01" /></h4>
 	</header> 
 	<!-- content begin -->
 	<section>
@@ -237,11 +275,21 @@ function searchPhoneOverlap(){
 		<hr>
 		<form name="Frm">	
 			<div class="form-group">
-				<label for="email"><spring:message code="label.joinDesc03" /></label> <input type="email"	class="form-control" name="email" id="email"  value="${model.mypageMyinfo.memberEmail}" disabled>
+				<label for="email" class = ""><spring:message code="label.joinDesc03" /></label> <input type="email"	class="form-control" name="email" id="email"  value="${model.mypageMyinfo.memberEmail}" disabled>
 			</div>
 			<div class="form-group">
 				<label for="name"><spring:message code="label.joinDesc07" /></label> <input type="text"	class="form-control"  name="name" id="name"  value="${model.mypageMyinfo.memberName}" disabled>
 			</div>
+			
+			<div class="form-group recommend">
+				<label for="phone"> <spring:message code="label.joinDesc09" /></label>
+				<input type="tel"	class="form-control"  name="phone" id="phone" value="${model.mypageMyinfo.memberPhone}" >
+				<button type="button" class="btn btn-basic" onclick="searchPhoneOverlap();"><spring:message code="label.joinDesc04" /></button>
+				<input type="hidden" name="phoneOri" id="phoneOri" value="${model.mypageMyinfo.memberPhone}" style="display:none;">
+				<input type="hidden" name="phoneOriM" id="phoneOriM" style="display:none;">
+				<input type="hidden" name="phoneConfirm" id="phoneConfirm" value="N" style="display:none;">
+			</div>
+			
 			<div class="form-group">
 				<label for="pwd"><spring:message code="label.joinDesc05" /></label> <input type="password" class="form-control" name="pwd" id="pwd"  minlength="8" maxlength="12">
 			</div>
