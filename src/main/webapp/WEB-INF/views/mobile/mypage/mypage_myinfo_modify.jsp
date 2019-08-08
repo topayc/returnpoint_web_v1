@@ -46,7 +46,7 @@ $(document).ready(function(){
 									"정상적인 서비스 제공을 위해서는 </br>기기 전화번호 가져오기 권한을 </br>활성화 해주셔야 합니다.", 
 									true, 
 									false, 
-									function(){}, 
+									function(){location.reload()}, 
 									null);
 							}
 						}else {
@@ -283,9 +283,9 @@ function searchPhoneOverlap(){
 			
 			<div class="form-group recommend">
 				<label for="phone"> <spring:message code="label.joinDesc09" /></label>
-				<input type="tel"	class="form-control"  name="phone" id="phone" value="${model.mypageMyinfo.memberPhone}" >
+				<input type="tel"	class="form-control"  name="phone" id="phone" value >
 				<button type="button" class="btn btn-basic" onclick="searchPhoneOverlap();"><spring:message code="label.joinDesc04" /></button>
-				<input type="hidden" name="phoneOri" id="phoneOri" value="${model.mypageMyinfo.memberPhone}" style="display:none;">
+				<input type="hidden" name="phoneOri" id="phoneOri" value style="display:none;">
 				<input type="hidden" name="phoneOriM" id="phoneOriM" style="display:none;">
 				<input type="hidden" name="phoneConfirm" id="phoneConfirm" value="N" style="display:none;">
 			</div>

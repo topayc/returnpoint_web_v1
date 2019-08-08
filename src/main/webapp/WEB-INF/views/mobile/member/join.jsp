@@ -69,7 +69,7 @@ $(document).ready(function(){
 									"정상적인 서비스 제공을 위해서는 </br>기기 전화번호 가져오기 권한을 </br>활성화 해주셔야 합니다.", 
 									true, 
 									false, 
-									function(){}, 
+									function(){location.reload()}, 
 									null);
 							}
 						}else {
