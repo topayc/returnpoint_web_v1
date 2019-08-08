@@ -255,7 +255,7 @@ input:checked + .sslider:before {-webkit-transform: translateX(26px);-ms-transfo
 .p_point .pointdate{padding: 27px 0 20px;text-align: center;color:#484848;    border-bottom: 1px solid #eee;}
 .p_point .pointdate a{color:#686868;font-size:18px;}
 .p_point .pointdate a.disable{color:#c8c8c8;}
-.p_point .pointdate span{padding: 0 30px;font-size: 17px;font-weight: 600;}
+.p_point .pointdate span{padding: 0 30px;font-size: 18px;font-weight: 400;}
 .p_point section>ul{overflow: hidden;margin: 0;padding:8px;background: #efefef;list-style: none;}
 .p_point section>ul:after{display:block;clear:both;content:'';}
 .p_point section>ul li{position:relative;float:left;width:49.5%;text-align:center;color:#fff;font-size: 20px;}
@@ -287,7 +287,7 @@ input:checked + .sslider:before {-webkit-transform: translateX(26px);-ms-transfo
 .p_point .listbox .listpoint small{border: 1px solid #333; border-radius: 50px; padding: 0px 6px;margin-right: 5px;font-size: 14px; vertical-align: middle;}
 .p_point .listbtn{position: absolute;top: 20px;right: 0;width: 100px;height: 30px;padding: 4px 0px;line-height: 31px;background: #fff;border: 0; border-left: 1px solid #f3f3f3; font-size: 13px; color: #888; text-align: center; box-sizing: border-box;}
 .p_point .listbtn i {display: block;font-size: 17px;padding-right: 10px;}
-.p_point .listbox.detail .listdate{float: left;padding: 0;border-right: 0;height: 25px;line-height: 25px;}
+.p_point .listbox.detail .listdate{float: left;padding: 0;border-right: 0;height: 25px;line-height: 25px;font-weight:300}
 .p_point .listbox.detail .listdate i{font-size: 17px;vertical-align: text-top;padding-right:5px;}
 .p_point .listbox.detail .listshop{float:left;clear:both;font-size:14px;font-weight: 505;color:#242424;height: 25px;line-height: 25px;padding: 0px;color : #666}
 .p_point .listbox.detail .listmember{float:right;}
