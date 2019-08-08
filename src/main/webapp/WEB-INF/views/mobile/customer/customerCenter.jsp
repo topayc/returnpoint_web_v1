@@ -39,15 +39,15 @@ $(document).ready(function(){
 	<!-- content begin -->
 	<section>
 		<div class="listS01">
-			<div class="list_title"><i class="fas fa-pencil-alt"></i><spring:message code="label.board" /></div>		
+			<div class="list_title"><i class="fas fa-clipboard"></i><spring:message code="label.board" /></div>		
 			
 			<!--공지 사항-->
-			<div class="list_li" onclick = "movePage('/boardList.do?bbsType1=1')">
+			<div class="list_li" onclick = "movePage('/m/board/boardList.do?bbsType1=1&')">
 				<span class= "item_title"><spring:message code="label.notice" /></span><span><i class="fas fa-chevron-right"></i></span> 
 			</div>
 			
 			<!-- 자주 묻는 질문-->
-			<div class="list_li" onclick = "movePage('/m/board/boardList.do?bbsType1=2)">
+			<div class="list_li" onclick = "movePage('/m/board/boardList.do?bbsType1=2&&bbsType2=0')">
 				<span class= "item_title"><spring:message code="label.faq" /></span><i class="fas fa-chevron-right"></i> 
 			</div>
 			
@@ -57,7 +57,7 @@ $(document).ready(function(){
 			</div> --%>
 			
 			<!--제휴 상담-->
-			<div class="list_li" onclick = "movePage('/boardList.do?bbsType1=4')">
+			<div class="list_li" onclick = "movePage('/m/board/boardList.do?bbsType1=4')">
 				<span class= "item_title"><spring:message code="label.general_enquiries" /> / <spring:message code="label.affiliated_inquiry" /></span><span><i class="fas fa-chevron-right"></i></span> 
 			</div>
 			

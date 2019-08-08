@@ -346,6 +346,8 @@ public class MobileController extends MallBaseController {
 	@RequestMapping("/board/qna_node_w")
 	public String bQna_node_w(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/board/qna_node_w");
+		SessionManager sm = new SessionManager(request, response);
+		rmap.put("memberEmail", sm.getMemberEmail());
 		return page(true, map, rmap);
 	}
 
@@ -365,10 +367,10 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}
 
-	// 게시판메인
-	@RequestMapping("/board/board")
+	// 고객 센터 메인
+	@RequestMapping("/customer/customerCenter")
 	public String bBoard(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/board/board");
+		RPMap rmap = Util.getRPRmap("/mobile/customer/customerCenter");
 		return page(true, map, rmap);
 	}
 
@@ -522,4 +524,24 @@ public class MobileController extends MallBaseController {
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
+	
+	/*
+	 * 게시글 가져오기
+	 * */
+	@RequestMapping("/board/boardList")
+	public String getBoardList(@RequestParam Map<String, Object> paramMap, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/board/boardList");
+		boolean bret = mms.getBoardList(Util.toRPap(paramMap), rmap, request, response);
+		return page(bret, modelMap, rmap);
+	}
+	/*
+	 * 게시글 가져오기
+	 * */
+	@RequestMapping("/board/boardDetail")
+	public String getBoardDetail(@RequestParam Map<String, Object> paramMap, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/board/board_detail");
+		boolean bret = mms.getBoardReply(Util.toRPap(paramMap), rmap, request, response);
+		return page(bret, modelMap, rmap);
+	}
+	
 }

@@ -793,4 +793,29 @@
 		ORDER BY boardNo
 	</select>
 	
+	<select id="selectBoards" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			*
+		FROM main_bbs
+		WHERE 1 = 1
+		<if test="mainBbsNo != null"> AND mainBbsNo = #{mainBbsNo} </if> 
+		<if test="bbsType1 != null"> AND bbsType1 = #{bbsType1} </if> 
+		<if test="bbsType2 != null"> AND bbsType2 = #{bbsType2} </if> 
+		<if test="writerNo != null"> AND writerNo = #{writerNo} </if> 
+		<if test="status != null"> AND status = #{status} </if> 
+		<if test="rerv6 != null"> AND rerv6 = #{rerv6} </if> 
+		order by createTime desc
+		<if test="bbsLimit !=null"> limit #{bbsLimit} </if> 
+	</select>
+	
+	<select id="selectSubBbs" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			*
+		FROM sub_bbs
+		WHERE 1 = 1
+		<if test="subBbsNo != null"> AND subBbsNo = #{subBbsNo} </if> 
+		<if test="mainBbsNo != null"> AND mainBbsNo = #{mainBbsNo} </if> 
+		<if test="wirterNo != null"> AND wirterNo = #{wirterNo} </if> 
+		order by createTime desc;
+	</select>
 </mapper>

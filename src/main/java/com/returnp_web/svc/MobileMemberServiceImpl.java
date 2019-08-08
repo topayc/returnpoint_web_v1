@@ -82,8 +82,8 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 
 		RPMap dbparams = new RPMap();
 		SessionManager sm = new SessionManager(request, response);
-		String id = p.getStr("email");
-		String pw = p.getStr("pwd");
+		String id = p.getStr("email").trim();
+		String pw = p.getStr("pwd").trim();
 		Boolean isSaveId = "on".equals(p.getStr("isSave")) ? true : false;
 
 		dbparams.put("memberEmail", id);
@@ -761,7 +761,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			emailSender.sendVelocityEmail(email);
 			/* send email ->계정:gmail, 운영 반영시에 실제사용값으로 수정요청드립니다.(참고파일: root-context.xml) */
 
-			rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/mypage/newpoint.do", "T"));
+			rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/mypage/mypage_myinfo.do", "T"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();

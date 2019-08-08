@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<link href="https://fonts.googleapis.com/css?family=Do+Hyeon|Nanum+Gothic|Sunflower:300&display=swap" rel="stylesheet">
+
 <div class="alert_wrap" id="alertView" name="alertView" style="display:none;">
   <div class="alert alert-info">
     <div class="alert_body">
@@ -73,7 +73,7 @@
 						<%-- <li><a href="/m/giftCard/giftCardDetail.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> --%>
 						<li><a href="/m/giftCard/giftCardList.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> 
 						<li><a href="/m/mypage/m_selectLanguage.do"><i class="fas fa-globe-americas"></i> <i class="fas fa-sort-down"></i><spring:message code="label.mypageLanguage" /></a></li>
-						<li><a href="/m/board/board.do"><i	class="fas fa-comment"></i><i class="fas fa-sort-down"></i><spring:message code="label.topper.menu.customer_center" /></a></li>
+						<li><a href="/m/customer/customerCenter.do"><i class="fas fa-comment"></i><i class="fas fa-sort-down"></i><spring:message code="label.topper.menu.customer_center" /></a></li>
 						<c:choose>
 							<c:when test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
 								<li class="member form-login-in"><a href="/m/member/login.do"><i class="fas fa-sign-in-alt"></i><spring:message code="login.form.submit" /></a></li>

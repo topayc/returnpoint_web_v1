@@ -177,7 +177,7 @@ section hr{display:none;}
 .listS01 .list_li i.fa-chevron-right{position:absolute;right:0px;top:-2px;padding: 28px 22px 22px 30px;}
 .listS01 .list_li i.list_blt{transform: rotate(90deg);transition: 0.7s;}
 .listS01 .list_li.collapsed i.list_blt{transform: rotate(0deg);transition: 0.7s;}
-.listS01 .list_toggle{background:#f9f9f9;color: #444;padding: 0px 3px;font-size:13px;border-bottom:1px solid #eee}
+.listS01 .list_toggle{background:#f4f4f4;color: #444;padding: 0px 3px;font-size:13px;border-bottom:1px solid #eee}
 .listS01 .list_toggle p{padding: 16px;}
 /* list-style02 */
 .listS02{}
@@ -232,8 +232,8 @@ input:checked + .sslider:before {-webkit-transform: translateX(26px);-ms-transfo
 .p_faq .listS01 ul li:first-child{border-left: 0;}
 .p_faq .listS01 ul li.active{color:#391dab;font-weight:bold;}
 .p_notice .listS01 .list_li small{display:block;color:#aaa;padding-bottom:5px;}
-.p_qna .listS01 .list_li span{display:block;padding-top:10px;clear:both;}
-.p_qna .listS01 .list_li small{color:#aaa; padding: 0 10px 0 10px;border-left: 1px solid #eee;}
+.p_qna .listS01 .list_li span{display:block;padding-top:3px;clear:both;}
+.p_qna .listS01 .list_li small{color:#aaa; padding: 0 10px 0 10px;}
 .p_qna .listS01 .list_li small.date{padding-left:0;border:0;color : #666}
 .p_qna .listS01 .list_li small.state_off{background: #a5a5a5;padding: 3px;color: #fff;border-radius: 3px;border: 0;float: right;}
 .p_qna .listS01 .list_li small.state_on{background: #ff9ea5;padding: 3px;color: #fff;border-radius: 3px;border: 0;float: right;}
@@ -283,7 +283,7 @@ input:checked + .sslider:before {-webkit-transform: translateX(26px);-ms-transfo
 .p_point .listbox .listmember span.nd5{background:#ef8157;}
 .p_point .listbox .listmember span.nd6{background:#6bd098;}
 .p_point .listbox .listmember span.nd7{background:#fbc658;}
-.p_point .listbox .listpoint{font-size: 20px; color: #333;}
+.p_point .listbox .listpoint{font-size: 20px; color: #333;font-weight: 320}
 .p_point .listbox .listpoint small{border: 1px solid #333; border-radius: 50px; padding: 0px 6px;margin-right: 5px;font-size: 14px; vertical-align: middle;}
 .p_point .listbtn{position: absolute;top: 20px;right: 0;width: 100px;height: 30px;padding: 4px 0px;line-height: 31px;background: #fff;border: 0; border-left: 1px solid #f3f3f3; font-size: 13px; color: #888; text-align: center; box-sizing: border-box;}
 .p_point .listbtn i {display: block;font-size: 17px;padding-right: 10px;}
@@ -295,8 +295,8 @@ input:checked + .sslider:before {-webkit-transform: translateX(26px);-ms-transfo
 
 .p_point section .rp_total{background: #f6f6f6;text-align:center; padding:15px;border-bottom: 1px solid #ddd;}
 .p_point section .rp_total:after{display:block;clear:both;content:'';}
-.p_point section .rp_total h6{float: left;color: #7b7b7b;font-weight: 300;line-height: 28px;}
-.p_point section .rp_total p{float: right;font-size: 22px;line-height: 28px;}
+.p_point section .rp_total h6{float: left;color: #7b7b7b;font-weight: 300;line-height: 28px;font-weight: 600}
+.p_point section .rp_total p{float: right;font-size: 22px;line-height: 28px;font-weight:320}
 .p_point ul.tabtitle{border:0;}
 .p_point ul.tabtitle:after{display:block;clear:both;content:'';}
 .p_point ul.tabtitle li{display: block; width: 50%; float: left; border-bottom: 2px solid #e5e5e5; color: #333;}
@@ -329,7 +329,7 @@ background: #fff;border: 0;border-left: 1px solid #f3f3f3;font-size: 13px;color:
 .m_point_transfer .pointinput .gift_user{position: relative;padding-bottom: 10px;}
 .m_point_transfer .pointinput .gift_user button{position: absolute;top: -9px;right: 0;background: #dddddd;color: #525252;font-size:15px;line-height: 39px; border: 0;font-family: 'Jeju Gothic';}
 .m_point_transfer .pointinfo{ background: #fff;Width: 89%;margin: 25px auto;}
-.m_point_transfer .pointinfo li{color: #666;font-size: 11px;float: none;width: 100%;text-align: left;}
+.m_point_transfer .pointinfo li{color: #333;font-size: 13px;float: none;width: 100%;text-align: left;font-weight : 400}
 
 /* find email / pw / �쉶�썝�젙蹂댁닔�젙*/
 .txtarea{padding: 15px; position: relative;text-align:center;}
@@ -635,3 +635,36 @@ background-position: top left; background-position-x: 0px;background-position-y:
 .navbar-nav>li {
     clear :both  !important;
     width : 100%;
+}
+
+.table_box{width:100%;padding:3%;background-color: #efefef;margin:0 auto;}
+.table_box table{border-collapse: collapse;border-spacing: 0;width:100%;}
+.table_box td{border:1px solid #efefef;width: 25%;height:40px;text-align: center;background-color: #fff;}
+.table_box td a{font-size: 13px;width: 100%;height: 100%;line-height: 60px; display:table;font-weight: bold;}
+.table_box td a:active{background-color:#1abebd; color:#fff; }
+
+.faq_select{
+	background-color:#1abebd; color:#fff; 
+}
+
+input {color : #000; font-weight:400}
+button {color : #000; font-weight:400}
+.main_notice {  
+	position : relative;
+	height :50px;
+	border-top : 1px solid #eee;
+	border-bottom: 1px solid #eee;
+    padding: 20px 15px;
+    padding-bottom : 35px;
+    /* background-color : #efefef; */
+ }	
+ .main_notice span.notice_title{
+    font-weight : 400;
+    font-size : 13px;
+    
+ }
+ 
+  .main_notice span.notice_time{
+    font-weight : 300;
+    float : right;
+ }

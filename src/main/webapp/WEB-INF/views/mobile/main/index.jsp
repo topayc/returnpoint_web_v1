@@ -6,6 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page import="java.net.URL" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,7 +141,7 @@
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->
-   <a href="/m/main/index.do"><h4>RETURN<span>P</span></h4></a>
+   <a href="/m/main/index.do"><h4>RETURN<span>P</span> </h4></a>
    </header>
    <!-- main begin -->
    <section class="nobtn">
@@ -168,6 +169,7 @@
          </ul>
        </div>
      </div>
+     
      <div class="center store">
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg"  /></div>
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
@@ -176,12 +178,22 @@
        <div style = "width:20%" ><a href="https://sincar.co.kr/UID=rp4282"><img width = "58" height = "58" src="/resources/banner/new_car_mall_circle.png" ></a></div>
      </div>
 
-     <script></script>
      <div class="search">
-        <p class="searchbtn"><a href="/m/map/rpmap.do"><i class="fas fa-map-marker-alt"></i> <spring:message code="label.find_merchants" /></a></p>
+       <p class="searchbtn"><a href="/m/map/rpmap.do"><i class="fas fa-map-marker-alt"></i> <spring:message code="label.find_merchants" /></a></p>
       <input id="text_address" type="text" class="form-control" placeholder="ex)강남역, 시청역, 김포 ...">
       <i class="fas fa-search" onclick="searchMap()"></i>
       </div>
+      <c:if test = "${! empty model.notice}">
+            <div class="main_notice">
+              <span class = "notice_title"><a href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">${model.notice.title}</a></span>&nbsp;  
+              <span class ="badge" style = "background-color: #04B404;display : inline;font-weight : 300">new</span>
+              <span class = "notice_time">
+              	<fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
+				<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
+              	</span>  
+            </div>
+        </c:if>
+    
    <ul class="banner">
      <li><a href="http://rp.umallok.com"><img src="/resources/banner/umall.jpg" /></a></li>
         <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo3"><img src="/resources/banner/gift_card_banner.jpg" /></a></li>
@@ -190,8 +202,9 @@
      </ul>
      <div class="footinfo">
         <a href="/m/company/service_member.do"><spring:message code="label.what_return_point" /></a><small>/</small>
-        <a href="/m/board/qna_node.do"><spring:message code="label.affiliated_inquiry" /></a><small>/</small>
-        <a href="/m/board/faq.do">FAQ</a>
+          <a href="/m/board/boardList.do?bbsType1=1"><spring:message code="label.notice" /></a><small>/</small>
+        <a href="/m/board/boardList.do?bbsType1=4"><spring:message code="label.affiliated_inquiry" /></a><small>/</small>
+        <a href="/m/board/boardList.do?bbsType1=2&&bbsType2=0"><spring:message code="label.web.faq" /></a>
       <%--   <p>TOTAL<br /><span class="total">${model.memberTotal} </span></p> --%>
      </div>
    </section>

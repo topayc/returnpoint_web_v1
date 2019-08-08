@@ -167,7 +167,7 @@ function partnerAskSave(){
 				</div>
 				<div class="form-group">
 					<label for="rerv6">이메일</label> 
-					<input type="text"	class="form-control" name="rerv6" id="rerv6" maxlength="50">
+					<input type="text"	class="form-control" name="rerv6" id="rerv6" maxlength="50" value = "${model.memberEmail}" readonly>
 				</div>
 				<!-- 조회목록이랑 테스트 디비에는 제목이 있는데 ui에는 제목이 없음. 우선은 포함하였으니. 최종 결정나시면 수정하시면 될듯요. 09.25 -->
 				<div class="form-group">

@@ -9,7 +9,7 @@ a {
     font-family: 'Nanum Gothic', sans-serif;
 }
 
-body {
+body 
     padding-top: 70px;
     font-family: 'Nanum Gothic', sans-serif;
 }
@@ -1053,7 +1053,8 @@ tr a:hover {
 
 .fran_text_box li {
     font-size: 15px;
-    color: #3a3a3a;
+    color: #999;
+    font-weight: 500
 }
 
 .fran_map {
@@ -1124,15 +1125,14 @@ tr a:hover {
 @media (max-width:800px) {
     .fran_text_box li:first-child {
         font-size: 14px;
-        font-weight : 550;
         margin-top: 5px;
-        color : #555555
+        color : #000
     }
 }
 
 @media (max-width:800px) {
     .fran_text_box li {
-        font-size: 12px;
+        font-size: 13px;
     }
 }
 

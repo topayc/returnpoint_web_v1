@@ -14,7 +14,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.tagext.TryCatchFinally;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -211,7 +210,15 @@ public class MobileMainServiceImpl implements MobileMainService {
 			}
 			HashMap<String, Object> myRedPointSumInfo = mobileMainDao.selectMyRedPointSumInfo(dbparams); // red point search.
 			HashMap<String, Object> myGreenPointSumInfo = mobileMainDao.selectMyGreenPointSumInfo(dbparams); // green point Sum search.
-
+			
+			dbparams.clear();
+			dbparams.put("bbsType1", "1");
+			dbparams.put("bbsLimit", 1);
+			
+			ArrayList<HashMap<String, Object>> notices = this.mobileMainDao.selectBoards(dbparams);
+			if (notices.size() ==1) {
+				rmap.put("notice", notices .get(0));
+			}
 			rmap.put("myRedPointSumInfo", myRedPointSumInfo);
 			rmap.put("myGreenPointSumInfo", myGreenPointSumInfo);
 
@@ -734,6 +741,69 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return response2.toString();
 	}
 	
+	@SuppressWarnings("unused")
+	@Override
+	public boolean getBoardList(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			dbparams.put("bbsType1", rPap.getStr("bbsType1"));
+			
+			if (rPap.containsKey("bbsType2") && !rPap.getStr("bbsType2").equals("0")) {
+				dbparams.put("bbsType2", rPap.getStr("bbsType2"));
+			}
+			
+			if (rPap.getStr("bbsType1").equals("4")) {
+				if (sm != null) {
+					if (sm.getMemberEmail() != null) {
+						dbparams.put("writerNo", sm.getMemberNo());
+						dbparams.put("rerv6", sm.getMemberEmail().trim());
+					}else {
+						rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다", "/m/member/login.do", "T"));
+						return false;
+					}
+				}else {
+					rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다", "/m/member/login.do", "T"));
+					return false;
+				}
+			}
+			ArrayList<HashMap<String, Object>> boardList = this.mobileMainDao.selectBoards(dbparams);
+			rmap.put("boardList", boardList);
+			rmap.put("bbsType1", rPap.getStr("bbsType1"));
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+		}
+		return true;
+	}
+	
+	@Override
+	public boolean getBoardReply(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			dbparams.put("mainBbsNo", rPap.getStr("mainBbsNo"));
+			dbparams.put("status", "1");
+			ArrayList<HashMap<String, Object>> mainBbs = this.mobileMainDao.selectBoards(dbparams);
+			rmap.put("mainBbs", mainBbs.get(0));
+
+			if (rPap.containsKey("dType") && rPap.getStr("dType").equals("mainBbs")) {
+				rmap.put("detailTargetBbs", mainBbs.get(0));
+			}else {
+				HashMap<String, Object> subBbs = this.mobileMainDao.selectSubBbs(dbparams);
+				rmap.put("subBbs", subBbs);
+				rmap.put("detailTargetBbs", subBbs);
+			}
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+		}
+		return true;
+	}
 	@Override
 	public HashMap<String, Object> getFooter(RPMap rmap) throws Exception {
 

@@ -88,6 +88,8 @@ function checkUrlForm(strUrl) {
 function closeAlert(){
 	$('#alert_wrap').show();
 }
+
+
 function alertOpen(title, message, okbutt, obcancle, f1, f2){
 	
 	var alertMessageHtml = "";

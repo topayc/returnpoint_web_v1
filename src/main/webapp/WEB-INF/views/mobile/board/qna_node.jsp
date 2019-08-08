@@ -64,7 +64,7 @@ $(document).ready(function(){
 			</c:otherwise>
 			</c:choose>
 		</div>
-		<button type="submit" class="btn btn-submit" onclick="location='./qna_node_w.do'"><spring:message code="label.write" /></button>  
+		<button type="submit" class="btn btn-submit" onclick="location='./qna_node_w.do'"><spring:message code="label.question" /></button>  
 	</section>
 	<!-- content end -->
 </div>

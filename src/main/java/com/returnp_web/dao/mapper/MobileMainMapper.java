@@ -391,4 +391,8 @@ public interface MobileMainMapper {
 	
 	//FAQ 상세
 	HashMap<String,Object> selectWebFAQContent(HashMap<String, Object> params);
+
+	ArrayList<HashMap<String, Object>> selectBoards(HashMap<String, Object> params);
+
+	HashMap<String, Object> selectSubBbs(HashMap<String, Object> params);
 }

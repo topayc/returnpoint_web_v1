@@ -387,4 +387,12 @@ public class MobileMainDao {
 		return sqlSession.getMapper(MobileMainMapper.class).qnaNodeTotalCnt(params);
 	}
 
+	public ArrayList<HashMap<String, Object>> selectBoards(HashMap<String, Object> params) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectBoards(params);
+	}
+
+	public HashMap<String, Object> selectSubBbs(HashMap<String, Object> params) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectSubBbs(params);
+	}
+
 }

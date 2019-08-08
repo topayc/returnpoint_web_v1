@@ -80,11 +80,6 @@ function addlist(faqcount){
 	<section>
 		<div class="listS01">			
 			<div class="list_title"><i class="fas fa-pencil-alt"></i>&nbsp;<spring:message code="label.faq" /></div>			
-			<ul><li class="active"><a href="/m/board/faq.do?code=1"><spring:message code="label.general_membership" /></a></li>
-				<li><a href="/m/board/faq.do?code=2"><spring:message code="label.member_info" /></a></li>
-				<li><a href="/m/board/faq.do?code=3"><spring:message code="label.pay_point" /></a></li>
-				<li><a href="/m/board/faq.do?code=4"><spring:message code="label.etc" /></a></li>
-			</ul>
 			<div id="table">
 				<c:choose>
 					<c:when test="${! empty model.faqList}">

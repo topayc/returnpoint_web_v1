@@ -261,5 +261,9 @@ public interface MobileMainService {
 
 	boolean initMain(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean getBoardList(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	boolean getBoardReply(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 }
 
