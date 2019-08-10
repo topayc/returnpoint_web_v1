@@ -203,6 +203,7 @@
         </c:if>
     
    <ul class="banner">
+   <li><a href="http://rp.umallok.com"><img src="/resources/banner/umall.jpg" /></a></li>
         <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo3"><img src="/resources/banner/gift_card_banner.jpg" /></a></li>
         <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo1"><img src="/resources/banner/20190502_133801490.jpg" /></a></li>
       <!--  <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo2"><img src="/resources/banner/insurance_banner.jpg" /></a></li> -->
