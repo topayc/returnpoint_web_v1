@@ -186,16 +186,23 @@
       <c:if test = "${! empty model.notice}">
             <div class="main_notice">
               <span class = "notice_title"><a href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">${model.notice.title}</a></span>
-              <span class ="badge" style = "border : 1px solid #04B404; background-color: #fff;color : #088A08;display : inline;font-weight : 400;font-size: 10px">new</span>
+              
+              <c:set var="now" value="<%=new java.util.Date()%>"/>
+              <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
+              
+              <fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
+              <fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
+			  <c:if test="${today - postData <= 6}">
+			  	<span class ="badge" style = "border : 1px solid #04B404; background-color: #fff;color : #088A08;display : inline;font-weight : 400;font-size: 10px">new</span>
+			   </c:if> 
+              
               <span class = "notice_time">
-              	<fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
-				<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
+              	 <fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
               	</span>  
             </div>
         </c:if>
     
    <ul class="banner">
-     <li><a href="http://rp.umallok.com"><img src="/resources/banner/umall.jpg" /></a></li>
         <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo3"><img src="/resources/banner/gift_card_banner.jpg" /></a></li>
         <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo1"><img src="/resources/banner/20190502_133801490.jpg" /></a></li>
       <!--  <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo2"><img src="/resources/banner/insurance_banner.jpg" /></a></li> -->
