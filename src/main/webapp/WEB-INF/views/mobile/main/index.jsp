@@ -186,10 +186,10 @@
       <c:if test = "${! empty model.notice}">
             <div class="main_notice">
               <span class = "notice_title"><a href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">${model.notice.title}</a></span>
-              <span class ="badge" style = "background-color: #04B404;display : inline;font-weight : 300;font-size: 10px">new</span>
+              <span class ="badge" style = "border : 1px solid #04B404; background-color: #fff;color : #088A08;display : inline;font-weight : 400;font-size: 10px">new</span>
               <span class = "notice_time">
-              	<%-- <fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
-				<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/> --%>
+              	<fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
+				<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
               	</span>  
             </div>
         </c:if>
