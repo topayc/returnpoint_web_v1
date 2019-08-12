@@ -90,7 +90,7 @@ section hr{display:none;}
 .index .banner{background: #f3f3f3;padding: 8px 8px 1px 8px;}
 .index .banner li{margin-bottom:8px;}
 .index .banner li img{width:100%;}
-.index .footinfo{position:relative;width: 100%;padding: 20px 15px;background: #391dab;font-size: 12px;}
+.index .footinfo{position:relative;width: 100%;padding: 20px 15px;background: #391dab;font-size: 12px;vertical-align: top;text-align: center;color : #898e98}
 .index .footinfo a{color: #fff;}
 .index .footinfo small{color: #958ac2;padding: 0 10px;}
 .index .footinfo p{position:absolute;right:20px;top:13px;color:#ff6600;font-weight:600;text-align:right;font-size:11px;}

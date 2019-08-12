@@ -53,7 +53,7 @@ function moveFaq(bbsType2){
 		<h4>&nbsp;
 		<c:choose>
          <c:when test = "${model.bbsType1 == '1'}"> <spring:message code="label.notice" /> </c:when>
-         <c:when test = "${model.bbsType1 == '4'}"> <spring:message code="label.affiliated_inquiry_qna" /> </c:when>
+         <c:when test = "${model.bbsType1 == '4'}"> <spring:message code="label.general_affiliated_inquiry" /> </c:when>
          <c:when test = "${model.bbsType1 == '2'}"> <spring:message code="label.faq" /> </c:when>
       </c:choose>
 		

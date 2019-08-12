@@ -142,7 +142,7 @@ function partnerAskSave(){
                     	<option value="4">협력업체 문의</option>
                     	<option value="5">대리점 문의</option>
                     	<option value="6">지사 문의</option>
-                    	<option value="7">기타 제휴 문의</option>
+                    	<option value="7">기타 일반 문의</option>
 					</select>
 				</div>
 				<div class="form-group">

@@ -211,7 +211,7 @@
      <div class="footinfo">
         <a href="/m/company/service_member.do"><spring:message code="label.what_return_point" /></a><small>|</small>
           <a href="/m/board/boardList.do?bbsType1=1"><spring:message code="label.notice" /></a><small>|</small>
-        <a href="/m/board/boardList.do?bbsType1=4"><spring:message code="label.affiliated_inquiry" /></a><small>|</small>
+        <a href="/m/board/boardList.do?bbsType1=4"><spring:message code="label.general_affiliated_inquiry" /></a><small>|</small>
         <a href="/m/board/boardList.do?bbsType1=2&&bbsType2=0"><spring:message code="label.web.faq" /></a>
       <%--   <p>TOTAL<br /><span class="total">${model.memberTotal} </span></p> --%>
      </div>
