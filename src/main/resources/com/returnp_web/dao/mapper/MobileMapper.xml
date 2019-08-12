@@ -145,7 +145,7 @@
 			regType,
 			createTime,
 			updateTime,
-			joinRoute
+			joinRoute,
 			country
 		) VALUES (
 			#{name},
@@ -160,8 +160,9 @@
 			'U',   
 			NOW(),
 			NOW(),
-			#{country},
-			#{joinRoute}		
+			#{joinRoute},	
+			#{country}
+				
 		)
 	</insert> 
 	
