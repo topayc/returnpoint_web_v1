@@ -61,7 +61,6 @@ $(document).ready(function(){
 						<div class="gift_user"><input type="text" id="redPointGiftMemberEmail2" name="redPointGiftMemberEmail2" placeholder="<spring:message code="label.mpointGiftMemberEnter"/>" ><button type="button" onclick="searchPointGiftMemberEmail('2', 'gpoint_gift1');"><spring:message code="label.msearch"/></button></div>
 						<input type="hidden" name="redPointGiftMemberEmailOri2" id="redPointGiftMemberEmailOri2">
 						<input type="number" placeholder="<spring:message code="label.mrpointTransformEnter"/>" id="point2" name="point2" onblur="changeAttribute('point2', 1, 'gpoint_gift1');"/>			
-						
 						<button type="button" id="thousandwon2"><i class="fa fa-plus-circle"></i>1,000</button>
 						<button type="button" id="tenthousandwon2"><i class="fa fa-plus-circle"></i>10,000</button>
 						<button type="button" id="fiftythousandwon2"><i class="fa fa-plus-circle"></i>50,000</button>
