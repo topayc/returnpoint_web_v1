@@ -417,6 +417,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			dbparams.put("terms", "on".equals(p.getStr("terms").trim()) ? "Y" : "N");
 			dbparams.put("privacy", "on".equals(p.getStr("privacy").trim()) ? "Y" : "N");
 			dbparams.put("spam", "on".equals(p.getStr("spam").trim()) ? "Y" : "N");
+			dbparams.put("joinRoute", "www.returnp.com");
 			dbparams.put("recommend", p.getStr("email").trim()); // 이메일 중복 체크용 파라미터
 
 			//System.out.println("회원가입 파리미터 dbparams::" + dbparams);
