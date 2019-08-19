@@ -592,7 +592,7 @@ function startPointBack(){
 			data = JSON.parse(data);
 			
 			if (data.result != "100")  {
-				alertOpen("알림", "앱 오류 발생", true, false, null, null);
+				alertOpen("알림", "앱을 업데이트 받아주시기 바랍니다.", true, false, null, null);
 				return;
 			}
 			
