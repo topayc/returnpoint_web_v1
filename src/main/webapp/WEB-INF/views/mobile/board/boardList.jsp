@@ -74,7 +74,7 @@ function moveFaq(bbsType2){
 		         </tr>
 		         <tr>
 		            <td><a id ="faq_4"onclick = "moveFaq('4')">가맹</a></td>
-		            <td><a id ="faq_5"onclick = "moveFaq('5')">결제</a></td>
+		            <td><a id ="faq_5"onclick = "moveFaq('5')">상품권</a></td>
 		            <td><a id ="faq_6"onclick = "moveFaq('6')">쇼핑몰</a></td>
 		            <td><a id ="faq_10"onclick = "moveFaq('10')">기타</a></td>
 		         </tr>
