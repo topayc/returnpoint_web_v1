@@ -1696,6 +1696,10 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		if ("create".equals(action)) {
 			rmap.put("title", this.messageUtils.getMessage("label.regist_bank_account"));
 			rmap.put("button_label", this.messageUtils.getMessage("label.regist_bank_account"));
+			
+			HashMap<String, Object> initBankMap = new HashMap<String, Object> ();
+			initBankMap.put("accountOwner", request.getSession().getAttribute("memberName"));
+			rmap.put("memberBankAccount", initBankMap);
 			return true;
 		}
 

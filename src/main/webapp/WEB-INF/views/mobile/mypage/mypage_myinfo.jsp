@@ -245,8 +245,23 @@ function recommendSms(data){
 			<div class="list_li"  onclick = "movePage('./m_mybank_account_list.do?memberNo=${model.memberTypeInfo.memberNo}')" >
 				<span class = "item_title"><spring:message code="label.manage_bank_account" /></span><span><i class="fas fa-chevron-right" ></i></span>
 			</div>
-			<div class="list_li" onclick = "movePage('./m_rpay_use_manage.do?memberNo=${model.memberTypeInfo.memberNo}')" >
+		<%-- 	<div class="list_li" onclick = "movePage('./m_rpay_use_manage.do?memberNo=${model.memberTypeInfo.memberNo}')" >
 				<span class = "item_title"><spring:message code="label.rpay_use" /></span><span><i class="fas fa-chevron-right" ></i></span>
+			</div> --%>
+			
+			<div class="list_li"  onclick = "movePage('./m_rpay_withdrawal_list.do?memberNo=${model.memberTypeInfo.memberNo}')">
+				<span class ="item_title"><spring:message code="label.rpay_withdrawal" /></span><span><i class="fas fa-chevron-right" ></i></span></br>
+				<span class ="item_des"><spring:message code="label.rpay_withdrawal_des" /></br></span>
+			</div>
+
+			<div class="list_li"  onclick = "movePage('./m_rpay_payment.do?memberNo=${model.memberTypeInfo.memberNo}')" >
+				<span class ="item_title"><spring:message code="label.rpay_payment" /></span><i class="fas fa-chevron-right" ></i></span></br>
+				<span class ="item_des"><spring:message code="label.rpay_payment_des" /></span></br>
+			</div>
+
+			<div class="list_li"  onclick = "movePage('./m_rpay_payment.do?memberNo=${model.memberTypeInfo.memberNo}')" >
+				<span class ="item_title"><spring:message code="label.rpay_gift" /></span><i class="fas fa-chevron-right" ></i></span></br>
+				<span class ="item_des"><spring:message code="label.rpay_gift_des" /></br></span>
 			</div>
 			
 			<!-- 알림 설정 -->

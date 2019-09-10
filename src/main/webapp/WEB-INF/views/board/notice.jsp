@@ -16,15 +16,16 @@ function searchList_page(page, upperPage){
 <body>
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
    <hr class="top_line">
-    <div class="faq_tab container">
+    <div class="faq_tab container page_title">
         <div class="faq_text1"><spring:message code="label.web.notice"/></div>
         <div role="tabpanel" class="faq_table tab-pane fade in active" id="home" aria-labelledby="home-tab">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col" class="col-lg-1 col-md-1 col-xs-2">번호</th>
-                        <th scope="col" colspan="2" class="col-lg-9 col-xs-8">제목</th>
+                        <th scope="col" colspan="2" class="col-lg-7 col-xs-6">제목</th>
                         <th scope="col" class="col-lg-2 col-md-2 col-xs-2">작성자</th>
+                        <th scope="col" class="col-lg-4 col-md-2 col-xs-4">등록일</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,9 +33,14 @@ function searchList_page(page, upperPage){
 					<c:when test="${! empty noticeList}">			  
 						<c:forEach var="list" items="${noticeList}" varStatus="loop">
 						<tr>
-					      <th scope="row">${params.recordCount - loop.index - (params.page-1) * 20}</th> 
+					      <%-- <th scope="row">${params.recordCount - loop.index - (params.page-1) * 20}</th>  --%>
+					     <th scope="row">${list.ROWNUM}</th> 
 					      <td colspan="2"><a href="#" onclick="moveNoticeContent('${list.mainBbsNo}');">${list.title}</a></td>
 					      <td>관리자</td>
+					      <td>
+					      	<fmt:parseDate value="${list.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
+					      	 <fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
+					      </td>
 					    </tr>						
 						</c:forEach>			  
 					</c:when>

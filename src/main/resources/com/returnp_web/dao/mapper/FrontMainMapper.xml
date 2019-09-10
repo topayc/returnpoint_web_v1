@@ -76,10 +76,9 @@
 				,A.createTime
 				,A.updateTime
 				,(@RNUM := @RNUM + 1 ) AS ROWNUM
-			FROM main_bbs A, sub_bbs B, (SELECT @RNUM := 0 ) AS ROWNUM
+			FROM main_bbs A, (SELECT @RNUM := 0 ) AS ROWNUM
 			WHERE A.isPublic ='Y'
 			AND A.bbsType1 = '1'
-			AND A.mainBbsNo = B.mainBbsNo
 			ORDER BY A.mainBbsNo DESC
 		)TEMP_T
 			WHERE ROWNUM BETWEEN #{S_SEQ} AND #{E_SEQ}
@@ -94,11 +93,10 @@
 				,A.bbsType2
 				,A.writerNo
 				,A.title
-				,B.content
+				,A.content
 				,A.viewCount
-		FROM main_bbs A, sub_bbs b
+		FROM main_bbs A
 		WHERE A.isPublic ='Y'
-		AND A.mainBbsNo = B.mainBbsNo
 		AND A.mainBbsNo = #{mainBbsNo}
 	</select>
 	
@@ -109,9 +107,9 @@
 		from(
 			SELECT
 				A.mainBbsNo
-			FROM main_bbs A, sub_bbs B, (SELECT @RNUM := 0 ) AS ROWNUM
-			WHERE A.mainBbsNo = B.mainBbsNo
-			AND A.isPublic ='Y'
+			FROM main_bbs A, (SELECT @RNUM := 0 ) AS ROWNUM
+			WHERE 
+			A.isPublic ='Y'
 			AND A.bbsType1 = '2'
 			<if test="bbsType2 !=null and bbsType2 !='' and bbsType2 !=0 ">
 				AND A.bbsType2 = #{bbsType2}
@@ -147,9 +145,9 @@
 				,A.createTime
 				,A.updateTime
 				,(@RNUM := @RNUM + 1 ) AS ROWNUM
-			FROM main_bbs A, sub_bbs B, (SELECT @RNUM := 0 ) AS ROWNUM
-			WHERE A.mainBbsNo = B.mainBbsNo
-			AND A.isPublic ='Y'
+			FROM main_bbs A,  (SELECT @RNUM := 0 ) AS ROWNUM
+			WHERE 
+			 A.isPublic ='Y'
 			AND A.bbsType1 = '2'
 			<if test="bbsType2 !=null and bbsType2 !='' and bbsType2 !=0 ">
 				AND A.bbsType2 = #{bbsType2}
@@ -168,11 +166,11 @@
 				,A.bbsType2
 				,A.writerNo
 				,A.title
-				,B.content
+				,A.content
 				,A.viewCount
-		FROM main_bbs A, sub_bbs B
-		WHERE A.mainBbsNo = B.mainBbsNo
-		AND A.isPublic = 'Y'
+		FROM main_bbs A
+		WHERE 
+		A.isPublic = 'Y'
 		AND A.mainBbsNo = #{mainBbsNo}
 	</select>
 
@@ -180,7 +178,7 @@
 		SELECT count(affiliateNo) as totalCount 
 		FROM affiliate
 		WHERE 1 = 1
-		AND affiliatestatus = '1'
+		AND affiliateStatus = '1'
 		<if test="affiliateName !=null and affiliateName !='' ">
 		AND affiliateName LIKE CONCAT('%',TRIM(#{affiliateName}),'%')
 		</if>
@@ -204,7 +202,7 @@
 				,(@RNUM := @RNUM + 1 ) AS ROWNUM
 				FROM affiliate , (SELECT @RNUM := 0 ) AS ROWNUM
 				WHERE 1 = 1
-				AND affiliatestatus = '1'
+				AND affiliateStatus = '1'
 				<if test="affiliateName !=null and affiliateName !='' ">
 				AND affiliateName LIKE CONCAT('%',TRIM(#{affiliateName}),'%')
 				</if>

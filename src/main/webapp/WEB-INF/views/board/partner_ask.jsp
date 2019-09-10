@@ -9,7 +9,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
     <hr class="top_line">
-    <div class="partnership container">
+    <div class="partnership container page_title">
      <form name="partnerAskSaveForm" id="partnerAskSaveForm">
         <div class="fran_text1"><spring:message code="label.web.contactUs"/></div>
         <div class="partnership1">

@@ -9,7 +9,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
     <hr class="top_line">
-    <div class="ser_img">
+    <div class="ser_img page_title">
         <p class="ser_text1 col-lg-7 col-lg-offset-1 col-md-7 col-md-offset-2">Service</p>
         <p class="ser_text2 col-lg-7 col-lg-offset-1 col-md-7 col-md-offset-2"><spring:message code="label.web.serviceinfo"/></p>
     </div>

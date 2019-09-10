@@ -21,14 +21,18 @@ function searchList_page(page, upperPage){
 <body>
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
 <hr class="top_line">
-	<div class="faq_tab container">
+	<div class="faq_tab container page_title">
 		<div class="faq_text1">FAQ</div>
 		<div class="faq_nav">
 			<ul id="class_cd">
 				<li id="bbsType2_sub0" cls_cd="750000"><a href="#" onclick="searchFaqTapList('0');">전체</a></li>
-				<li id="bbsType2_sub1" cls_cd="750001"><a href="#" onclick="searchFaqTapList('1');">회원/가입/탈퇴</a></li>
+				<li id="bbsType2_sub1" cls_cd="750001"><a href="#" onclick="searchFaqTapList('1');">회원</a></li>
 				<li id="bbsType2_sub2" cls_cd="750002"><a href="#" onclick="searchFaqTapList('2');">포인트</a></li>
-				<li id="bbsType2_sub3" cls_cd="750003"><a href="#" onclick="searchFaqTapList('3');">적립 및 출금</a></li>
+				<li id="bbsType2_sub3" cls_cd="750003"><a href="#" onclick="searchFaqTapList('3');">적립</a></li>
+				<li id="bbsType2_sub4" cls_cd="750004"><a href="#" onclick="searchFaqTapList('4');">포인트 사용</a></li>
+				<li id="bbsType2_sub5" cls_cd="750004"><a href="#" onclick="searchFaqTapList('5');">상품권</a></li>
+				<li id="bbsType2_sub6" cls_cd="750004"><a href="#" onclick="searchFaqTapList('6');">쇼핑몰</a></li>
+				<li id="bbsType2_sub7" cls_cd="750004"><a href="#" onclick="searchFaqTapList('7');">가맹</a></li>
 				<li id="bbsType2_sub10" cls_cd="750004"><a href="#" onclick="searchFaqTapList('10');">기타</a></li>
 			</ul>
 		</div>
@@ -37,8 +41,9 @@ function searchList_page(page, upperPage){
                 <thead>
                     <tr>
                         <th scope="col" class="col-lg-1 col-md-1 col-xs-2">번호</th>
-                        <th scope="col" colspan="2" class="col-lg-9 col-xs-8">제목</th>
+                        <th scope="col" colspan="2" class="col-lg-7 col-xs-6">제목</th>
                         <th scope="col" class="col-lg-2 col-md-2 col-xs-2">작성자</th>
+                       <!--  <th scope="col" class="col-lg-4 col-md-2 col-xs-4">등록일</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -46,9 +51,13 @@ function searchList_page(page, upperPage){
 				<c:when test="${! empty faqList}">			  
 					<c:forEach var="list" items="${faqList}" varStatus="loop">
 		 				<tr>
-					      <th scope="row">${params.recordCount - loop.index - (params.page-1) * 20}</th> 
+					      <th scope="row">${list.ROWNUM}</th> 
 					      <td colspan="2"><a href="#" onclick="moveFaqContent('${list.mainBbsNo}');">${list.title}</a></td>
 					      <td>관리자</td>
+					 <%--         <td>
+					      	<fmt:parseDate value="${list.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
+					      	 <fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
+					      </td> --%>
 					    </tr>					
 					</c:forEach>			  
 				</c:when>

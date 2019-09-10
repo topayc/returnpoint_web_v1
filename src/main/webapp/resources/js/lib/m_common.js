@@ -498,7 +498,7 @@ function startGiftCardProcess(cmd, giftCardStatus, accableStatus, payableStatus)
 	bridge.getSesssionAndDeviceInfo(function(data){
 		data = JSON.parse(data);
 		if (data.result != "100")  {
-			alertOpen("알림", "앱 오류 발생", true, false, null, null);
+			alertOpen("알림", "업데이트가 필요합니다</br>확인을 누르시면 업데이트 페이지로 이동합니다.", true, false, null, null);
 			return;
 		}
 		
@@ -558,7 +558,7 @@ function startGiftCardProcess(cmd, giftCardStatus, accableStatus, payableStatus)
 function sendPushTokenToServer(data){
 	data = JSON.parse(data);
 	if (data.result != "100" ) {
-		alertOpen("알림", "앱 오류 발생", true, false, null, null);
+		alertOpen("알림", "업데이트가 필요합니다</br>확인을 누르시면 업데이트 페이지로 이동합니다.", true, false, null, null);
 		return;
 	}
 	
@@ -685,7 +685,7 @@ function startPointBack(){
 				});
 			}
 		}else {
-			alertOpen("알림", "앱 오류 발생", true, false, null, null);
+			alertOpen("알림", "업데이트가 필요합니다</br>확인을 누르시면 업데이트 페이지로 이동합니다.", true, false, null, null);
 			return;
 		}
 	});
@@ -716,7 +716,7 @@ function checkVersion(){
             						null);	
             				}
             			}else {
-            				alertOpen("알림", "앱 오류 발생", true, false, null, null);
+            				alertOpen("알림", "업데이트가 필요합니다</br>확인을 누르시면 업데이트 페이지로 이동합니다.", true, false, function(){goPlayStore()}, null);
             			}
         			}else {
         				if (data == null || data == "" || Number(data) < Number(sVersion)){

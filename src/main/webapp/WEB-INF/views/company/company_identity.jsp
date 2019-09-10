@@ -9,9 +9,9 @@
 <body>
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
     <hr class="top_line">
-    <div class="_company">
+    <div class="_company page_title">
         <p class="_company_text1">Company</p>
-        <p class="_company_text2"><spring:message code="label.web.companyIdentityTitle"/></p>
+        <p class="_company_text2"><spring:message code="label.web.companyIdentityTitle"/></p>	
     </div>
     <div class="_company1 img-responsive center-block"></div>
     <div class="_company2 container">

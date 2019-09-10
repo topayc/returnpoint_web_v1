@@ -88,6 +88,7 @@ nav {
     width: 35%;
     margin-left: 50px;
     display: none;
+    margin-top: 10px;
 }
 
 .after>a {
@@ -121,6 +122,7 @@ nav {
 .back_button {
     display: none;
     float: left;
+    
 }
 
 @media (max-width:766px) {
@@ -129,7 +131,7 @@ nav {
         width: 30px;
         height: 30px;
         margin-left: 20px;
-        margin-top: 5px;
+        margin-top: 20px;
         background: url("../web_images/back.png") no-repeat;
     }
 }
@@ -675,7 +677,7 @@ nav {
 /***********************고객센터페이지****************************************************/
 .top_line {
     border: 3px solid #0076be;
-    margin-top: -1px;
+    margin-top: 71px;
 }
 
 @media (max-width:800px) {
@@ -747,15 +749,15 @@ tr a:hover {
 }
 
 .faq_text2 {
-    font-size: 2vw;
+    font-size: 1.7vw;
     color: #3c3d3e;
     font-weight: bold;
 }
 
 .faq_text3 {
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     color: #3c3d3e;
-    line-height: 2.5vw;
+    line-height: 1.7vw;
 }
 
 .faq_button {
@@ -1673,6 +1675,12 @@ textarea {
         margin-bottom: 5%;
         width: 90%;
         padding-left: 5%;
+    }
+}
+
+@media (max-width:800px) {
+    .page_title{
+        margin-top: 70px;
     }
 }
 

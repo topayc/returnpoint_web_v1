@@ -99,8 +99,8 @@ function searchList(){
 <body>
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
    <hr class="top_line">
-    <div class="fran container">
-        <div class="fran_text1"><spring:message code="label.web.findaMerchant"/><button type="button" class="btn btn-primary btn-lg fran_button1">검색창</button></div>
+    <div class="fran container page_title">
+        <div class="fran_text1"><spring:message code="label.web.findaMerchant"/><!-- <button type="button" class="btn btn-primary btn-lg fran_button1">검색창</button> --></div>
         <div class="fran1">
 			 <div class="fran_top">
 			<form id="franchiseeform" name="franchiseeform">

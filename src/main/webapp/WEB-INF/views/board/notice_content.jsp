@@ -5,6 +5,7 @@
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<% pageContext.setAttribute("LF", "\n"); %>
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 <body>
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
@@ -15,9 +16,12 @@
 		 	<span class="faq_text2">${noticeContent.title}</span>
 		</div>
 		<div class="faq_sub3">
-		 	<span class="faq_text3">${noticeContent.content}</span>
+		 	<span class="faq_text3">
+		 	<c:set var = "content" value ="${fn:replace(noticeContent.content, LF, '<br>')}"/>
+					${f:decQuote(content)}
+		 	</span>
 		</div>
-		<a href="#" onclick="moveNoticeList();"><button type="button" class="btn btn-primary faq_button">목록</button></a>
+		<a href="#" onclick="javascript: history.go(-1);"><button type="button" class="btn btn-primary faq_button">목록</button></a>
 </div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<form id="noticeList" name="noticeList">

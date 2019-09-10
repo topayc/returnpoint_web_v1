@@ -108,10 +108,10 @@
 		var city= $("#city option:selected").text(); //selectbox에서 선택된 value를 가져오는 방법은 다음과 같다. 
 		var country= $("#country option:selected").text(); //selectbox에서 선택된 value를 가져오는 방법은 다음과 같다. 
 		var affiliateName = $("#affiliateName").val();
-		if( (city == "" || city =="시/도") &&  (affiliateName == "" || affiliateName == null)){
+	/* 	if( (city == "" || city =="시/도") &&  (affiliateName == "" || affiliateName == null)){
 			alert("시도를 선택해주세요.");
 			return false;
-		}
+		} */
 		document.viewList.action = "/m/affiliate/affiliateSearchList.do";
 	  document.franchiseeform.submit();
 	}
@@ -146,7 +146,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	</header> 
 	<section>
 		<div class="fran container">
-	        <div class="fran_text1"><spring:message code="label.web.findaMerchant"/><!-- &nbsp; --><button type="button" class="btn btn-primary btn-lg fran_button1"><i class="fas fa-search-plus "></i></button></div>
+	        <div class="fran_text1"><%-- <spring:message code="label.web.findaMerchant"/> --%><!-- &nbsp; --><!-- <button type="button" class="btn btn-primary btn-lg fran_button1"><i class="fas fa-search-plus "> --></i></button></div>
 	        <div class="fran1">
 				 <div class="fran_top" style ="padding-top:18px; margin-bottom:20px">
 				<form id="franchiseeform" name="franchiseeform">
@@ -175,8 +175,9 @@ h4, .h4, h5, .h5, h6, .h6 {
 			<c:when test="${! empty franchiseeInfoList}">	
 			    <c:forEach var="list" items="${franchiseeInfoList}" varStatus="loop">
 			    <div class="fran_box container">
+	                <c:if test = "${! empty list.affiliateAddress}">
 	                <div class="img_box"><img src="/resources/web_images/no_image.png"></div>
-	                <div class="fran_text_box" style = "margin-left : 10px">
+	      			<div class="fran_text_box" style = "margin-left : 10px">
 	                    <ul>
 	                        <li>${list.affiliateName}</li>
 	                        <li>${list.affiliateTel}</li>
@@ -185,7 +186,8 @@ h4, .h4, h5, .h5, h6, .h6 {
 	                </div>
 	                <a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');">
 	                    <div class="fran_map"><img src="/resources/web_images/map.png"></div>
-	                </a>
+	                </a>          
+	      			</c:if>
 				</div>
 	            </c:forEach>
 	        </c:when>

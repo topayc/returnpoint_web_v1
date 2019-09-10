@@ -10,7 +10,7 @@
     	<a href="javascript:history.back()"><div class="back_button"></div></a>
 	</c:if>
         <div class="after"><a href="/main/index.do"><br><br></a></div>
-        <div class="container-fluid">
+        <div class="container-fluid" style = "margin-top:14px">
             <div class="navbar-header main_img">
                 <button type="button" class="navbar-toggle top_button" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" data-collapsed="true">
                     <span class="sr-only"></span>

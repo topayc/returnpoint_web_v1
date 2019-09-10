@@ -70,13 +70,19 @@ function moveFaq(bbsType2){
 		            <td><a id ="faq_0" onclick = "moveFaq('0')">전체</a></td>
 		            <td><a id ="faq_1"onclick = "moveFaq('1')">회원</a></td>
 		            <td><a id ="faq_2"onclick = "moveFaq('2')">포인트</a></td>
-		            <td><a id ="faq_3"onclick = "moveFaq('3')">적립/출금</a></td>
+		            <td><a id ="faq_3"onclick = "moveFaq('3')">적립</a></td>
 		         </tr>
 		         <tr>
-		            <td><a id ="faq_4"onclick = "moveFaq('4')">가맹</a></td>
+		            <td><a id ="faq_4"onclick = "moveFaq('4')">포인트 사용</a></td>
 		            <td><a id ="faq_5"onclick = "moveFaq('5')">상품권</a></td>
 		            <td><a id ="faq_6"onclick = "moveFaq('6')">쇼핑몰</a></td>
-		            <td><a id ="faq_10"onclick = "moveFaq('10')">기타</a></td>
+		            <td><a id ="faq_7"onclick = "moveFaq('7')">가맹</a></td>
+		         </tr>
+		          <tr>
+		            <td><a id ="faq_10"onclick = "moveFaq('10')">기타</a></td>	
+		            <td></td>	
+		            <td></td>	
+		            <td></td>	
 		         </tr>
 		      </table>
 		   </div>

@@ -70,6 +70,12 @@ $(document).ready(function(){
 	$('#cancelGoback').click(function(){
 		history.go(-1);
 	});
+	
+	if (action == "create"){
+		$("#accountOwner").attr("readonly", true);
+		$("#accountOwner").prop("readonly", true);
+	}
+
 	if (action == "modify"){
 		$("#bankName").val("${model.memberBankAccount.bankName}");
 	}
