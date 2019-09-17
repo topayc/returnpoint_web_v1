@@ -737,7 +737,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		System.out.println("적립 요청 결과");
+		System.out.println(response2.toString());
 		return response2.toString();
 	}
 	
