@@ -164,7 +164,7 @@
          <p><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/>P</p>
          <ul>
             <li><a onclick="startQRScan()"><i class="fas fa-qrcode"></i>&nbsp;<spring:message code="label.accumulate" /></a></li>
-            <li><a href="/m/mypage/point_gift.do"><i class="fas fa-gift">&nbsp;</i><spring:message code="label.gift" /></a></li>
+         <%--    <li><a href="/m/mypage/point_gift.do"><i class="fas fa-gift">&nbsp;</i><spring:message code="label.gift" /></a></li> --%>
             <li><a href="/m/mypage/newpoint.do"><i class="fas fa-list-ul">&nbsp;</i><spring:message code="label.transition_history" /></a></li>
          </ul>
        </div>

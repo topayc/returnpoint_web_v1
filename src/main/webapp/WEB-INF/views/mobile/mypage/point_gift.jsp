@@ -33,7 +33,7 @@ function resetRpointvalue(){
 
 //green point reset
 function resetGpointvalue(postfixId){
-   if(postfixId == "1"){ //회원
+/*    if(postfixId == "1"){ //회원
       location.replace("/m/mypage/m_gpoint_gift.do");
    }else if(postfixId == "2"){ //정회원
       location.replace("/m/mypage/m_gpoint_gift1.do");
@@ -47,7 +47,7 @@ function resetGpointvalue(postfixId){
       location.replace("/m/mypage/m_gpoint_gift2.do");
    }else if(postfixId == "7"){ //총판
       location.replace("/m/mypage/m_gpoint_gift6.do");
-   }
+   } */
 }
 </script>
 </head>

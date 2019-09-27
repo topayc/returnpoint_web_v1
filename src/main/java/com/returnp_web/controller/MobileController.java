@@ -202,13 +202,13 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}
 
-	// 포인트 조회
-	@RequestMapping("/mypage/point_gift")
+	// G 포인트 선물
+/*	@RequestMapping("/mypage/point_gift")
 	public String myPointGift(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/point_gift");
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
-	}
+	}*/
 
 	// 페이 조회
 	@RequestMapping("/mypage/pay_gift")
@@ -462,68 +462,68 @@ public class MobileController extends MallBaseController {
 	}
 
 	//G포인트 선물하기 모달(회원)
-	@RequestMapping("/mypage/m_gpoint_gift")
+/*	@RequestMapping("/mypage/m_gpoint_gift")
 	public String mGpointGift(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/m_gpoint_gift");
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
-	}
+	}*/
 
 	//G포인트 선물하기 모달(정직원)
-	@RequestMapping("/mypage/m_gpoint_gift1")
+/*	@RequestMapping("/mypage/m_gpoint_gift1")
 	public String mGpointGift1(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/m_gpoint_gift1");
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
-	}
+	}*/
 
 	//G포인트 선물하기 모달(2)
-	@RequestMapping("/mypage/m_gpoint_gift2")
+/*	@RequestMapping("/mypage/m_gpoint_gift2")
 	public String mGpointGift2(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/m_gpoint_gift2");
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
-	}
+	}*/
 
 	//G포인트 선물하기 모달(3)
-	@RequestMapping("/mypage/m_gpoint_gift3")
+/*	@RequestMapping("/mypage/m_gpoint_gift3")
 	public String mGpointGift3(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/m_gpoint_gift3");
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
-	}
+	}*/
 
 	//G포인트 선물하기 모달(4)
-	@RequestMapping("/mypage/m_gpoint_gift4")
+/*	@RequestMapping("/mypage/m_gpoint_gift4")
 	public String mGpointGift4(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/m_gpoint_gift4");
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
-	}
+	}*/
 
 	//G포인트 선물하기 모달(지사)
-	@RequestMapping("/mypage/m_gpoint_gift5")
+/*	@RequestMapping("/mypage/m_gpoint_gift5")
 	public String mGpointGift5(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/m_gpoint_gift5");
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
-	}
+	}*/
 
 	//G포인트 선물하기 모달(6)
-	@RequestMapping("/mypage/m_gpoint_gift6")
+/*	@RequestMapping("/mypage/m_gpoint_gift6")
 	public String mGpointGift6(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/m_gpoint_gift6");
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
-	}
+	}*/
 
 	//R포인트 선물하기 모달
-	@RequestMapping("/mypage/m_rpoint_gift")
+/*	@RequestMapping("/mypage/m_rpoint_gift")
 	public String mRpointGift(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/m_rpoint_gift");
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
-	}
+	}*/
 	
 	/*
 	 * 게시글 가져오기

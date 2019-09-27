@@ -249,10 +249,10 @@ function gpointDetailView(f, searchtime){
 		<!-- 1 회원 2 정회원 3 지사 4 대리점 5 협력업체 6 영업관리자 7 총판 -->
 		<div class="tab-content">
 		<!-- 그린포인트 노드별 포인트 합 -->
-			<ul class="tabtitle">
+		<%-- 	<ul class="tabtitle">
 				<li class="active"><a href="/m/mypage/newpoint.do"><spring:message code="label.gPointEarningHistory" /></a></li>
 				<li><a href="/m/mypage/point_gift.do"><spring:message code="label.gPointPresents" /></a></li>
-			</ul>
+			</ul> --%>
 		    <div id="GpointM" class="tab-pane fade in active">
 				<c:if test="${model.myGreenPointSumMap.memberPoint != null}">
 				<div class="listbox">
