@@ -43,7 +43,7 @@ if (isApp()) {
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
-	$('body').height(height + "px");
+	$('body').height(height+ "px");
 });
 
 google.maps.event.addDomListener(window, 'load', getCurrentPosition);
@@ -107,7 +107,7 @@ var current = {
       var sec3 = $("<div/>",{"class":"info_tag ellp"});
       var sec4 = $("<div/>",{"class":"info_etc ellp"});
       
-      $("<span/>",{"class":"name",text:o.affiliateName}).appendTo(sec1);
+      $("<span/>",{"class":"name",text:o.affiliateName}).appendTo(sec1).css("display", "block");
       $("<span/>",{"class":"cate",text:o.engAddr}).appendTo(sec1);
       $.each(o.types,function(i,t){
          /* 해시태그 */if(i<3) $("<span/>",{"class":"item",text:t}).appendTo(sec3);
@@ -195,7 +195,6 @@ function more(obj){
    $(obj).data("page",page);
    
    //console.log($(obj).data("page"));
-   
    $(".storelist_area li.page"+$(obj).data("page")).show();
 }
 
@@ -419,7 +418,7 @@ function searchMap() {
       <h4><spring:message code="label.topper.menu.search_aff" /></h4>
    </header> 
    <!-- content begin -->   
-   <section style ="height:100%">
+   <section style ="height:100%"  id = "map_container" >
       <div style ="height:100%" class="rpmap_wrap">      
       <div class="rpmap noshop" id="map_canvas"></div>
 <!-- <div class="store_point" style="top: 103px; left: 160px;"><i class="fas fa-sort-down"></i>아고라</div>
@@ -443,8 +442,7 @@ function searchMap() {
                   <a class="ellp"><input id="text_address" type="text" class="form-control" placeholder="ex)강남역, 시청역, 김포한강로 ..."></a>
                   <i class="fas fa-search" onclick="searchMap()"></i>
                </div>
-               <ul class="storelist_area" >
-                  
+               <ul  class="storelist_area" >
                </ul>   
             </div>
          </div>
