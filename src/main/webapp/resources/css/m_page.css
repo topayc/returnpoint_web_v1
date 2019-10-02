@@ -519,9 +519,10 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 .p_rpmap .img_area img{width:85%;height:95%;}
 .p_rpmap .info_area{display: block;overflow: hidden;}
 .p_rpmap .info_area .info_tit .strong{color: #3b8584;}
-.p_rpmap .info_area .info_tit .name{margin-right: 4px; font-size: 13px;color: #391dab;font-weight: 700;}
+.p_rpmap .info_area .info_tit .name{margin-right: 4px; font-size: 13px;color: #333;font-weight: 700;}
 .p_rpmap .info_area .info_tit .cate{color: #a6a6a6;font-size: 12px;}
-.p_rpmap .info_area .info_sub{margin-top:5px;}
+.p_rpmap .info_area .info_sub{margin-top:5px;color: #666;}
+.p_rpmap .info_area .info_tel{color: #666;}
 .p_rpmap .info_area .info_tag{margin-top:5px;}
 .p_rpmap .info_area .info_tag .item{display: inline-block; padding: 2px;margin:2px; background: #f2f4f6;font-size: 11px;color: #535353;line-height: 14px;vertical-align: top}
 .p_rpmap .info_area .info_etc{margin-top:5px;}
@@ -675,3 +676,4 @@ button {color : #000; font-weight:400}
  padding : 0px 5px;
  border-radius: 15px;
  }
+ 

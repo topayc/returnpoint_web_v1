@@ -523,6 +523,7 @@
 	<select id="selectRpmapLoadList" parameterType="HashMap" resultType="HashMap">
 		SELECT
 			memberAddressNo
+			,b.affiliateNo
 			,affiliateName
 			,a.memberNo
 			,affiliateTel

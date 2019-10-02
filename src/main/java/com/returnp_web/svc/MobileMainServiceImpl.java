@@ -1013,6 +1013,14 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return true;
 	}
 
+	
+	@Override
+	public boolean viewAffiliateDetail(RPMap rPap, RPMap rmap, HttpServletRequest request,
+			HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Throwable.class })
 	public boolean faqMoreAct(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -1240,5 +1248,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 		return true;
 	}
+
+
 
 }

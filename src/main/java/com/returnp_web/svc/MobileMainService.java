@@ -265,5 +265,7 @@ public interface MobileMainService {
 
 	boolean getBoardReply(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean viewAffiliateDetail(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 }
 

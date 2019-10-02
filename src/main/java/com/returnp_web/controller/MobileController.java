@@ -407,6 +407,15 @@ public class MobileController extends MallBaseController {
 		boolean bret = mms.rpmapLoadAct(Util.toRPap(p), rmap, request, response);
 		return rmap.get("json");
 	}
+	
+	// 업체 세부 정보 보기 
+	@RequestMapping(value = "/affiliate/affiliateDetail")
+	public Object viewAffilaiteDetail(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/affiliate/affiliateDetail");
+		boolean bret = mms.viewAffiliateDetail(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
+	
 
 	// FAQ더보기
 	@RequestMapping(value = "/board/faqMoreAct", produces = "application/text; charset=utf8")

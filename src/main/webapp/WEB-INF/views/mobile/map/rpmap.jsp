@@ -65,7 +65,6 @@ var current = {
       /* fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'], */
    },
    callback:function (results, status){
-      
       if (status == google.maps.places.PlacesServiceStatus.OK || status == 100) {
          
          $("ul.storelist_area").empty();
@@ -96,6 +95,9 @@ var current = {
       var i = $(".storelist_area li").length;
       var paging = Math.floor((i)/3);
       var li = $("<li/>",{"class":"page" + o.memberNo });
+      li.on("click", function(){
+    	  location.href = "/m/affiliate/affiliateDetail.do?memberNo=" + o.memberNo + "&memberAddressNo=" + o.memberAddressNo + "&affiliateNo="+ o.affiliateNo+ "&affiliateName="+ o.affiliateName
+      });
       var imageSec = $("<div/>",{"class":"img_area"});
       var detailSec = $("<a/>",{href:"#"});
       var img = $("<img/>",{src:(photos!=undefined && photos.length> 0 )
@@ -103,7 +105,7 @@ var current = {
       var detailArea = $("<div/>",{"class":"info_area"});
       var sec1 = $("<div/>",{"class":"info_tit"});
       var sec2 = $("<div/>",{"class":"info_sub ellp",text:o.jibunAddr});
-      var sec5 = $("<div/>",{"class":"info_tel ellp",text: "Tel " + o.affiliateTel});
+      var sec5 = $("<div/>",{"class":"info_tel ellp",text: "Tel : " + o.affiliateTel});
       var sec3 = $("<div/>",{"class":"info_tag ellp"});
       var sec4 = $("<div/>",{"class":"info_etc ellp"});
       
@@ -225,7 +227,6 @@ function initLocation(latLng) {
 	   if(current.selected){
 		   return;
 	   }
-	   
 	   $(".rpmap").addClass("noshop");
 	   
        var bounds =  current.map.getBounds();
@@ -255,7 +256,7 @@ function initLocation(latLng) {
             distance   : current.distance
          },
          success: function(data) {
-            
+        	
         	if(data.length < 1){
         		return false;
         	}
