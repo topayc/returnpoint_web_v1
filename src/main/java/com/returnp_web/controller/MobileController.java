@@ -416,7 +416,14 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}
 	
-
+	// 리뷰 폼 
+	@RequestMapping(value = "/affiliate/reviewForm")
+	public Object reviewForm(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/affiliate/reviewForm");
+		boolean bret = mms.viewAffiliateDetail(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
+	
 	// FAQ더보기
 	@RequestMapping(value = "/board/faqMoreAct", produces = "application/text; charset=utf8")
 	@ResponseBody
