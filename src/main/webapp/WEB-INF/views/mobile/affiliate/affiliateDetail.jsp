@@ -34,7 +34,9 @@ h4, .h4, h5, .h5, h6, .h6 {
     margin-top: 0px;
     margin-bottom: 10px;
 }
-* {color : #000;font-weight: 400}
+* {color : #000;font-weight: 400;}
+.bt_box>button {font-family: 'Nanum Gothic', sans-serif !important;}
+
 </style>
 </head>
 <!-- header end -->
@@ -67,7 +69,8 @@ h4, .h4, h5, .h5, h6, .h6 {
         </div>
         <div class="bt_box">
             <button type="button" class="btn btn-default">홈페이지</button>
-            <button type="button" class="btn btn-default black_box">찜 196</button>
+            <button type="button" class="btn btn-default etc_link">youTube</button>
+           <!--  <button type="button" class="btn btn-default black_box">찜 196</button> -->
             <button type="button" class="btn btn-default">공유</button>
         </div>
 
@@ -75,7 +78,7 @@ h4, .h4, h5, .h5, h6, .h6 {
     <div class="bs-example bs-example-tabs tab" role="tabpanel" data-example-id="togglable-tabs">
         <ul id="myTab" class="aff_nav nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">정보</a></li>
-            <li role="presentation"><a href="#review" role="tab" id="review-tab" data-toggle="tab" aria-controls="review">리뷰</a></li>
+            <li role="presentation"><a href="#review" role="tab" id="review-tab" data-toggle="tab" aria-controls="review">소식</a></li>
             <li role="presentation"><a href="#position" role="tab" id="position-tab" data-toggle="tab" aria-controls="position">위치</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
@@ -185,7 +188,17 @@ h4, .h4, h5, .h5, h6, .h6 {
       
             </div>
             <div role="tabpanel" class="tab-pane fade" id="review" aria-labelledBy="review-tab">
-                <div class="btn_box"><button type="button" class="btn btn-default" onclick = "movePage('/m/affiliate/reviewForm.do')">리뷰를 남겨주세요</button></div>
+          		
+          		  <div class="information">
+                    <ul>
+                        <li><img src="/resources/images/back_img5.png">소식</li>
+                        <li>
+                            2019년 12월 10일에서 30일까지 오픈 이벤트를 진행합니다.
+          			100만원 이상 구매지 핸드폰 악세서리 10종을 무료로 드립니다.
+                        </li>
+                    </ul>
+                </div>
+           <!--      <div class="btn_box"><button type="button" class="btn btn-default" onclick = "movePage('/m/affiliate/reviewForm.do')">리뷰를 남겨주세요</button></div>
                 <div class="review">
                     <div class="left_img"><img src="/resources/images/profile_img.png"></div>
                     <div class="right_text">
@@ -219,7 +232,7 @@ h4, .h4, h5, .h5, h6, .h6 {
                     <div class="review_text">
                         정말 맛있게 잘 먹었습니다. 음식도 너무 깔끔하고 맛있고 사장님도 너무 친절하셔서 다시 또 방문할것 같습니다.
                     </div>
-                </div>
+                </div> -->
             </div>
             <div role="tabpanel" class="tab-pane fade" id="position" aria-labelledBy="position-tab">
                 <div class="position">
