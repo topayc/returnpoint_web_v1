@@ -1015,9 +1015,34 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 	
 	@Override
-	public boolean viewAffiliateDetail(RPMap rPap, RPMap rmap, HttpServletRequest request,
+	public boolean viewAffiliateDetail(RPMap paramMap, RPMap rmap, HttpServletRequest request,
 			HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		SessionManager sm = new SessionManager(request, response);
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		
+		try {
+			dbparams.put("affiliateNo", paramMap.getInt("affiliateNo"));
+			HashMap<String, Object> affiliateMap = this.mobileMainDao.selectAffiliate(dbparams);
+			rmap.put("affiliate", affiliateMap);
+			
+			HashMap<String, Object> affiliateDetailMap = this.mobileMainDao.selectAffiliateDetail(dbparams);
+			rmap.put("affiliateDetail", affiliateDetailMap);
+			
+			dbparams.clear();
+			dbparams.put("memberNo", affiliateMap.get("memberNo"));
+			rmap.put("memberAddress", this.mobileMainDao.selectMemberAddress(dbparams));
+			rmap.put("affiliateMember", this.mobileMainDao.selectMember(dbparams));
+
+			/*	ArrayList<String> affiliateMainImages = new ArrayList<String>();
+			affiliateMainImages.add((String)affiliateDetail.get("affiliateMainImage1") );
+			affiliateMainImages.add((String)affiliateDetail.get("affiliateMainImage2") );
+			affiliateMainImages.add((String)affiliateDetail.get("affiliateMainImage3") );
+			affiliateMainImages.add((String)affiliateDetail.get("affiliateMainImage4") );
+			rmap.put("affiliateMainImages", affiliateMainImages);*/
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 		return true;
 	}
 	

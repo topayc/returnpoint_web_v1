@@ -178,7 +178,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	                <c:if test = "${! empty list.affiliateAddress}">
 	                <div class="img_box"><img src="/resources/web_images/no_image.png"></div>
 	      			<div class="fran_text_box" style = "margin-left : 10px">
-	                    <ul>
+	                    <ul onclick = "location.href = '/m/affiliate/affiliateDetail.do?affiliateNo=${list.affiliateNo}'">
 	                        <li>${list.affiliateName}</li>
 	                        <li>${list.affiliateTel}</li>
 	                        <li>${list.affiliateAddress}</li>

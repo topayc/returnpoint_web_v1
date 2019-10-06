@@ -819,4 +819,39 @@
 		<if test="wirterNo != null"> AND wirterNo = #{wirterNo} </if> 
 		order by createTime desc;
 	</select>
+	
+	<select id="selectMemberAddress" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			*
+		FROM member_address
+		WHERE 1 = 1
+		<if test="memberAddressNo != null"> AND memberAddressNo = #{memberAddressNo} </if> 
+		<if test="memberNo != null"> AND memberNo = #{memberNo} </if> 
+	</select>
+	
+	<select id="selectAffiliate" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			*
+		FROM affiliate
+		WHERE 1 = 1
+		<if test="affiliateNo != null"> AND affiliateNo = #{affiliateNo} </if> 
+	</select>
+	
+	<select id="selectAffiliateDetail" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			*
+		FROM affiliate_detail
+		WHERE 1 = 1
+		<if test="affiliateNo != null"> AND affiliateNo = #{affiliateNo} </if> 
+	</select>
+	
+	<select id="selectMember" parameterType="HashMap" resultType="HashMap">
+		SELECT
+			*
+		FROM member
+		WHERE 1 = 1
+		<if test="memberNo != null"> AND memberNo = #{memberNo} </if> 
+	</select>
+	
+	
 </mapper>

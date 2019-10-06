@@ -395,4 +395,12 @@ public interface MobileMainMapper {
 	ArrayList<HashMap<String, Object>> selectBoards(HashMap<String, Object> params);
 
 	HashMap<String, Object> selectSubBbs(HashMap<String, Object> params);
+
+	HashMap<String, Object> selectMemberAddress(HashMap<String, Object> params);
+
+	HashMap<String, Object> selectAffiliate(HashMap<String, Object> params);
+
+	HashMap<String, Object> selectAffiliateDetail(HashMap<String, Object> params);
+	HashMap<String, Object> selectMember(HashMap<String, Object> params);
+
 }

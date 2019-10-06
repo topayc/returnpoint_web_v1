@@ -394,5 +394,21 @@ public class MobileMainDao {
 	public HashMap<String, Object> selectSubBbs(HashMap<String, Object> params) {
 		return sqlSession.getMapper(MobileMainMapper.class).selectSubBbs(params);
 	}
+	
+	public HashMap<String, Object> selectMemberAddress(HashMap<String, Object> params) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectMemberAddress(params);
+	}
+	
+	public HashMap<String, Object> selectAffiliate(HashMap<String, Object> params) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectAffiliate(params);
+	}
+	
+	public HashMap<String, Object> selectAffiliateDetail(HashMap<String, Object> params) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectAffiliateDetail(params);
+	}
+
+	public HashMap<String, Object> selectMember(HashMap<String, Object> params) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectMember(params);
+	}
 
 }

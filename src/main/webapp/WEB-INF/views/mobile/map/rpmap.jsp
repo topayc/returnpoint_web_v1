@@ -96,6 +96,7 @@ var current = {
       var paging = Math.floor((i)/3);
       var li = $("<li/>",{"class":"page" + o.memberNo });
       li.on("click", function(){
+    	/*   alert(o.memberNo + ":" + o.memberAddressNo + ":" + o.affiliateNo); */
     	  location.href = "/m/affiliate/affiliateDetail.do?memberNo=" + o.memberNo + "&memberAddressNo=" + o.memberAddressNo + "&affiliateNo="+ o.affiliateNo+ "&affiliateName="+ o.affiliateName
       });
       var imageSec = $("<div/>",{"class":"img_area"});
