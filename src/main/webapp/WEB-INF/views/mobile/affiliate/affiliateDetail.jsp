@@ -156,36 +156,33 @@ h4, .h4, h5, .h5, h6, .h6 {
                         <div class="information">
                     <ul>
                         <li><img src="/resources/images/back_img1.png">영업 정보</li>
-                        
-                        <li>
-                            <ul>
-                                <li>영업시간</li>
-                                <li>${model.affiliateDetail.openingHours}</li>
-                            </ul>
-                        </li>
                         <li>
                             <ul>
                                 <li>전화번호</li>
                                 <li>${model.affiliate.affiliateTel}</li>
                             </ul>
-                        </li>
                          <li>
                             <ul>
                                 <li>핸드폰</li>
                                 <li>${model.affiliate.affiliatePhone}</li>
                             </ul>
                         </li>
+                         <li>
+                            <ul>
+                                <li>적립정보</li>
+                                <li>결제 시 <span  style = "padding: 4px;background-color : #33cc33"  class="badge badge-pill badge-success">100%</span> G POINT  적립</li>
+                            </ul>
+                        </li>
+                         <li>
+                            <ul>
+                                <li>영업시간</li>
+                                <li>${model.affiliateDetail.openingHours}</li>
+                            </ul>
+                        </li>
                           <li>
                             <ul>
                                 <li>휴무일</li>
                                 <li>${model.affiliateDetail.holiday}</li>
-                            </ul>
-                        </li>
-                        
-                        <li>
-                            <ul>
-                                <li>적립정보</li>
-                                <li>결제 시 <span  style = "padding: 7px;background-color : #33cc33"  class="badge badge-pill badge-success">100%</span> G POINT  적립</li>
                             </ul>
                         </li>
                     </ul>
@@ -195,8 +192,8 @@ h4, .h4, h5, .h5, h6, .h6 {
                     <ul>
                         <li><img src="/resources/images/back_img2.png">사업장 정보</li>
                         <li> <ul> <li>상호명</li> <li>${model.affiliate.affiliateName}</li> </ul> </li>
-                        <li> <ul> <li>사업자 번호</li> <li>${model.affiliateDetail.businessNumber} </li></ul></li>
                         <li> <ul> <li>대표자</li> <li>${model.affiliateMember.memberName}</li></ul></li>
+                        <li> <ul> <li>사업자 번호</li> <li>${model.affiliateDetail.businessNumber} </li></ul></li>
                         <li> <ul> <li>업종</li> <li>${model.affiliateDetail.businessItem}</li></ul></li>
                         <li> <ul> <li>업태</li> <li>${model.affiliateDetail.businessType} </li></ul></li><li>
                     </ul>
