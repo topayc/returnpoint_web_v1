@@ -1274,6 +1274,19 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return true;
 	}
 
+	/*포인트 적립 세부 정보 */
+	@Override
+	public boolean pointDetailAccInfo(RPMap rPap, RPMap rmap, HttpServletRequest request,
+			HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
 
+		try {
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
 }

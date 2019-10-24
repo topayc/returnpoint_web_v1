@@ -267,5 +267,7 @@ public interface MobileMainService {
 
 	boolean viewAffiliateDetail(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean pointDetailAccInfo(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 }
 

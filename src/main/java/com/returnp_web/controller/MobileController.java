@@ -193,6 +193,15 @@ public class MobileController extends MallBaseController {
 		boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
+	
+	// 포인트 세부 적립 정보 조회
+	@RequestMapping("/mypage/point_detail_info")
+	public String pointDetailAccInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/mypage/point_detail_info");
+		boolean bret = mms.pointDetailAccInfo(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
+	
 
 	// 페이 조회
 	@RequestMapping("/mypage/newpay")
