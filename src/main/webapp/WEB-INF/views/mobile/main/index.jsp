@@ -169,14 +169,25 @@
          </ul>
        </div>
      </div>
-
-     <div class="center store">
+	
+	  <div class="center store">
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg"  /></div>
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
        <div style = "width:20%" ><a href="https://sincar.co.kr/UID=rp4282"><img width = "58" height = "58" src="/resources/banner/new_car_mall_circle.png" ></a></div>
      </div>
+     
+<!-- 	<div class="main_link">
+      <ul>
+         <li><img src="/resources/images/img_qr.png"><p>QR스캔</p></li>
+         <li><img src="/resources/images/img_credit.png"><p>적립권</p></li>
+         <li><img src="/resources/images/img_coin.png"><p>R출금</p></li>
+         <li><img src="/resources/images/img_location.png"><p>내주변</p></li>
+      </ul>
+   </div> -->
+   
+   
 
      <div class="search">
        <p class="searchbtn"><a href="/m/map/rpmap.do"><i class="fas fa-map-marker-alt"></i> <spring:message code="label.find_merchants" /></a></p>

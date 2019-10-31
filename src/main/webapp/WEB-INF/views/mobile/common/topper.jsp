@@ -72,6 +72,7 @@
 		<!-- 				<li><a href ="/m/affiliate/affiliateSearch.do"><i class="fas fa-map-marker-alt"></i> new 가맹점 찾기</a></li> -->
 						<%-- <li><a href="/m/giftCard/giftCardDetail.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> --%>
 						<li><a href="/m/giftCard/giftCardList.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> 
+						<li><a href="/m/mypage/point_coupon_info.do"><i class="fas fa-gift"></i><%-- <spring:message code="label.mygiftcard" /> --%>포인트 쿠폰 정보 </a></li> 
 						<li><a href="/m/mypage/m_selectLanguage.do"><i class="fas fa-globe-americas"></i> <i class="fas fa-sort-down"></i><spring:message code="label.mypageLanguage" /></a></li>
 						<li><a href="/m/customer/customerCenter.do"><i class="fas fa-comment"></i><i class="fas fa-sort-down"></i><spring:message code="label.topper.menu.customer_center" /></a></li>
 						<c:choose>

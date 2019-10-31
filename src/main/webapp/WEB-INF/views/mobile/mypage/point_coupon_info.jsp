@@ -23,6 +23,7 @@
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
+	$('header').remove();
 });
 </script>
 </head>
@@ -32,12 +33,26 @@ $(document).ready(function(){
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4> 포인트 세부 적립 정보</h4>
+		<h4> 포인트 쿠폰 코드</h4>
 	</header>
 	<!-- content begin -->
-	<section style="padding-top: 50px;">
+	<section style="">
 		<div>
-			이곳에 HTML 작성
+			<div class="point_coupon_info">
+            <div>
+               <ul>
+                  <li>차미라님 적립 코드</li>
+                  <li>200,000 P</li>
+                  <li><img src="/resources/images/code.png">&nbsp;적립 코드 <span>AAAAAAAAAAAAAAAAA</span></li>
+                  <li><img src="/resources/images/time.png">&nbsp;발급 일자 <span>2017-10-10 10:10:10</span></li>
+                  <li><img src="/resources/images/money.png">&nbsp;기준 금액<span>10,000</span></li>
+                  <li><img src="/resources/images/percent.png">&nbsp;적립율 <span>14%</span></li>
+               </ul>
+            </div>
+         <ul>
+            <li>- 고객센터 : 1234-5678</li>
+         </ul>
+      </div>
 		</div>
 	</section>
 	<!-- content end -->

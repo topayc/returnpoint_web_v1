@@ -678,3 +678,38 @@ button {color : #000; font-weight:400}
  }
  
  
+  /* 메인페이지 링크 index.jsp */
+ .main_link{overflow:hidden;width:100%;padding:14px 0 5px 0;border-top:1px solid #eee;}
+ .main_link > ul{display:block;}
+ .main_link > ul > li {display:inline-block;width:24%;text-align:center;padding:5px 0 5px 0;line-height:30px;color:#333;font-size:14px;}
+  .main_link > ul > li >img{margin-bottom:2px;}
+  
+ /* 포인트 세부 정보 페이지 point_detail_info.jsp */
+ 
+ 
+  /* 포인트 세부 정보 페이지 point_detail_info.jsp */
+ /* 핑크색*/
+.point_coupon_info > ul {margin-top:30px;}
+.point_coupon_info > ul > li {margin:0 auto;width:86%;font-size:15px;color:#666;padding-bottom:15px;}
+.point_coupon_info > div {width:100%;overfolow:hidden;margin:0 auto;padding:20px;background:linear-gradient(330deg,#ff4273,#fd80a0);}
+.point_coupon_info > div > ul > li:nth-child(1) {font-size:18px;border-left:3px solid #b4cf00;text-indent:5px;color:#fff;}
+.point_coupon_info > div > ul > li:nth-child(2){font-size:50px;font-weight:bold;padding:40px 0 30px 0;text-align:center;color:#fff;}
+.point_coupon_info > div > ul > li:nth-child(6){margin-bottom:20px;}
+.point_coupon_info > div > ul > li {font-size:16px;margin-top:10px;border:none;padding:0;text-align:left;color:#ffcad8;text-indent:5px;}  
+.point_coupon_info > div > ul > li > span{font-size:15px;width:65%;float:right;}
+
+
+
+ 
+ /* 연두색 */
+/*  
+.point_coupon_info > ul {margin-top:30px;}
+.point_coupon_info > ul > li {margin:0 auto;width:86%;font-size:13px;color:#666;padding-bottom:15px;}
+.point_coupon_info > div {width:100%;overfolow:hidden;margin:0 auto;padding:20px;background:linear-gradient(330deg,#b4cf00,#d1e44f);}
+.point_coupon_info > div > ul > li:nth-child(1) {font-size:20px;font-weight:bold;border-left:3px solid #ff4273;text-indent:5px;color:#fff;}
+.point_coupon_info > div > ul > li:nth-child(2){font-size:50px;font-weight:bold;padding:20px 0 20px 0;text-align:center;color:#fff;}
+.point_coupon_info > div > ul > li:nth-child(6){margin-bottom:20px;}
+.point_coupon_info > div > ul > li {font-size:18px;margin-top:10px;border:none;padding:0;text-align:left;color:#edfa93;text-indent:5px;}  
+.point_coupon_info > div > ul > li > span{font-size:15px;width:55%;float:right;}
+.point_coupon_info > div > ul > li > b {color:#ff4273;} */
+ 
