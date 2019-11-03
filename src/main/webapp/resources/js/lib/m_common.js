@@ -841,12 +841,11 @@ function checkVersion(){
 function startQRScan(){
 	if (!isApp())  {
 		executeAppOrGoStore();
-		return;
+		return; 
 	}
 	var qrInfoUrl; 
 	bridge.startQRCodeScan(function(qrData){
 		if (!qrData || qrData == 'null' || qrData== '') {
-			//alertOpen("확인", "QR Code로 부터 읽어들인 데이타가 없습니다" , true, false, null, null);
 		}else {
 			if (checkUrlForm(qrData)) {
 				/*KICC 전용 QR 포맷에 의한 적립 요청*/
