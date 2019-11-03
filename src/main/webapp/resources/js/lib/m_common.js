@@ -581,6 +581,101 @@ function sendPushTokenToServer(data){
        });
 
 } 
+
+/*포인트 쿠폰에 의한 적립*/
+function accPointCoupon(){
+	var param = {};
+	$('.returnp_pc').each(function(){
+		param[$(this).attr("id")]  = $(this).val().trim().replace(",","");
+	});
+	
+	function execPointback(){
+		bridge.getSesssionAndDeviceInfo(function(data){
+			data = JSON.parse(data);
+			if (data.result != "100")  {
+				alertOpen("알림", "앱을 업데이트 받아주시기 바랍니다.", true, false, null, null);
+				return;
+			}
+			param["memberEmail"] = data.user_email;
+			param["memberName"] = data.user_name;
+			param["phoneNumber"] = data.phoneNumber;
+			param["phoneNumberCountry"]  = data.phoneNumberCountry;
+			param["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
+			param["status"]  = "0";
+			for (key in param){
+				if (param.hasOwnProperty(key)) {
+					param[key] = encodeURIComponent(param[key]);
+				}
+			}
+			
+			var url = window.location.protocol + "//" + window.location.host + "/m/mypage/acc_point_coupon.do";
+ 			$.ajax({
+	           	type: "POST",
+	               url: url,
+	               data: param,
+	               success: function (result) {
+	            	   $("#progress_loading").hide();
+	            	   if (result && typeof result !="undefined") {
+	            		  $("#progress_loading").hide();
+	            		  
+	            		  /* result obj 설명
+	               		  * resultCode : 성공 실패 값(100 이 아니면 실패)
+	               		  * message : 메시지
+	               		  * url : 이동할 URL 
+	               		  */ 
+	            		 var alertText = "";
+	            		 if (result.resultCode  == "100") {
+	            			 alertText = result.message
+	            		 }else {
+	            			 alertText = result.resultCode + " : " + result.message
+	            		 }
+	            		 
+	            		 alertOpen("확인", 
+	            			alertText, 
+	            			true, 
+	            			false, 
+	            			function(){
+	            			 if (result.resultCode == "100") {
+	            				 document.location.href = window.location.protocol + "//" + window.location.host + "/m/mypage/newpoint.do";
+	            			 }
+	            		 	}, 
+	            			null);
+	               	 }else{
+	               		 alertOpen("알림", "네트워크 장애 발생. 다시 시도해주세요.", true, false, null, null);
+	               	 }
+	               },
+	               error : function(request, status, error){
+	            	   $("#progress_loading").hide();
+	            	   alertOpen("알림 ", "네트워크 장애 발생 !  다시 시도해주세요", true, false, null, null);
+	               },
+	               dataType: 'json'
+	           });
+		});	
+	}
+	
+	bridge.checkPermission(appInfo.permission.READ_PHONE_STATE, function(data){
+		data = JSON.parse(data);
+		if (data.result == "100") {
+			if (data.permissionState == appInfo.permissionResult.PERMITTEED) {
+				execPointback();
+			}else {
+				bridge.requestPermission(appInfo.permission.READ_PHONE_STATE, function(data){
+					data = JSON.parse(data);
+					if (data.permissionState == appInfo.permissionResult.PERMITTEED) {
+						execPointback();
+					}else {
+						 alertOpen("확인", result.permissionName + " 권한을 허용하셔야 적립이 가능합니다", true, false, null, null);
+					}
+				});
+			}
+		}else {
+			alertOpen("알림", "업데이트가 필요합니다</br>확인을 누르시면 업데이트 페이지로 이동합니다.", true, false, null, null);
+			return;
+		}
+	});
+}
+
+/*큐알 코드에 의한 적립 시작*/
 function startPointBack(){
 	//$("#progress_loading").show();
 	var param = {};
@@ -590,12 +685,10 @@ function startPointBack(){
 	function execPointback(){
 		bridge.getSesssionAndDeviceInfo(function(data){
 			data = JSON.parse(data);
-			
 			if (data.result != "100")  {
 				alertOpen("알림", "앱을 업데이트 받아주시기 바랍니다.", true, false, null, null);
 				return;
 			}
-			
 			param["memberEmail"] = data.user_email;
 			param["memberName"] = data.user_name;
 			param["phoneNumber"] = data.phoneNumber;
@@ -609,7 +702,6 @@ function startPointBack(){
 			}
 			
 			var  pointBackUrl;
-
 			/* KICC 외의 일반 QR에 의한 적립 요청 주소 */
 			if (param["paymentRouterType"] && param["paymentRouterType"].trim().length != 0 &&  param["paymentRouterType"] == "VAN"){
 				if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KFTC" ){

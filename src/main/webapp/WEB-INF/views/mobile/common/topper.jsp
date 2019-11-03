@@ -66,13 +66,13 @@
 								<li><a onclick="startQRScan()"><i class="fas fa-qrcode"></i><spring:message code="label.topper.menu.sacnqr" /></a></li>
 								<li><a href="/m/mypage/manage_qr.do"><i class="fas fa-laptop"></i><spring:message code="label.manage_qr_code" /></a></li>
 							</c:otherwise>
-						</c:choose>				 
+						</c:choose>
+						<li><a href="/m/mypage/point_coupon_reg_form.do"><i class="fas fa-gift"></i><spring:message code="label.topper.menu.reg_point_coupon" /> </a></li> 				 
 						<li><a onclick="location='/m/map/rpmap.do'"><i class="fas fa-map-marker-alt"></i><spring:message code="label.topper.menu.search_aff" /></a></li>
 						<li><a href ="/m/affiliate/affiliateSearchList.do"><i class="fas fa-search"></i><spring:message code="label.topper.menu.search_aff2" /></a></li>
 		<!-- 				<li><a href ="/m/affiliate/affiliateSearch.do"><i class="fas fa-map-marker-alt"></i> new 가맹점 찾기</a></li> -->
 						<%-- <li><a href="/m/giftCard/giftCardDetail.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> --%>
 						<li><a href="/m/giftCard/giftCardList.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> 
-						<li><a href="/m/mypage/point_coupon_info.do"><i class="fas fa-gift"></i><%-- <spring:message code="label.mygiftcard" /> --%>포인트 쿠폰 정보 </a></li> 
 						<li><a href="/m/mypage/m_selectLanguage.do"><i class="fas fa-globe-americas"></i> <i class="fas fa-sort-down"></i><spring:message code="label.mypageLanguage" /></a></li>
 						<li><a href="/m/customer/customerCenter.do"><i class="fas fa-comment"></i><i class="fas fa-sort-down"></i><spring:message code="label.topper.menu.customer_center" /></a></li>
 						<c:choose>

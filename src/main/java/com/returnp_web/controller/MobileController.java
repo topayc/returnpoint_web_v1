@@ -195,14 +195,35 @@ public class MobileController extends MallBaseController {
 	}
 	
 	// 포인트 쿠폰 세부 적립 정보 조회
-	@RequestMapping("/mypage/point_coupon_info")
+/*	@RequestMapping("/mypage/point_coupon_info")
 	public String pointDetailAccInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/point_coupon_info");
 		boolean bret = mms.pointDetailAccInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
+	}*/
+	
+	// G 포인트 적립권 등록 폼 
+	@RequestMapping(value = "/mypage/point_coupon_reg_form", method = RequestMethod.GET)
+	public String regGpointCouponForm(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/mypage/point_coupon_info");
+		return page(true, map, rmap);
 	}
 	
-
+	// G 포인트 적립권 세부 정도 
+	@RequestMapping(value = "/mypage/detail_point_coupon_info", method = RequestMethod.GET)
+	public String showPointCouponInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/mypage/point_coupon_info");
+		boolean bret = mms.showPointCouponInfo(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
+	
+	// G 포인트 적립권 등록 프로세스
+	@ResponseBody
+	@RequestMapping(value = "/mypage/acc_point_coupon", method = RequestMethod.POST)
+	public String accPointCoupon(@RequestParam HashMap<String, String> paramMap, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return mms.accPointCoupon(paramMap, modelMap, request, response);
+	}
+		
 	// 페이 조회
 	@RequestMapping("/mypage/newpay")
 	public String myNewPay(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {

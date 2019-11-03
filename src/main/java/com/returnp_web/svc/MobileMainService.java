@@ -1,6 +1,7 @@
 package com.returnp_web.svc;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -268,6 +269,12 @@ public interface MobileMainService {
 	boolean viewAffiliateDetail(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
 	boolean pointDetailAccInfo(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+
+	boolean showPointCouponInfo(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	String accPointCoupon(HashMap<String, String> paramMap, ModelMap modelMap, HttpServletRequest request,
+			HttpServletResponse response);
 
 }
 
