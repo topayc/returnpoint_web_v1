@@ -67,7 +67,7 @@
 								<li><a href="/m/mypage/manage_qr.do"><i class="fas fa-laptop"></i><spring:message code="label.manage_qr_code" /></a></li>
 							</c:otherwise>
 						</c:choose>
-						<li><a href="/m/mypage/point_coupon_reg_form.do"><i class="fas fa-gift"></i><spring:message code="label.topper.menu.reg_point_coupon" /> </a></li> 				 
+						<li><a href="/m/coupon/point_coupon_reg.do"><i class="far fa-credit-card"></i>&nbsp;<spring:message code="label.topper.menu.reg_point_coupon" /> </a></li> 				 
 						<li><a onclick="location='/m/map/rpmap.do'"><i class="fas fa-map-marker-alt"></i><spring:message code="label.topper.menu.search_aff" /></a></li>
 						<li><a href ="/m/affiliate/affiliateSearchList.do"><i class="fas fa-search"></i><spring:message code="label.topper.menu.search_aff2" /></a></li>
 		<!-- 				<li><a href ="/m/affiliate/affiliateSearch.do"><i class="fas fa-map-marker-alt"></i> new 가맹점 찾기</a></li> -->

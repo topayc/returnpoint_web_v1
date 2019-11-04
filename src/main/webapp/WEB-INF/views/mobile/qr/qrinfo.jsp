@@ -21,10 +21,19 @@
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
+<script type="text/javascript" src="/resources/js/lib/jquery.animateNumber.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale); 
+	
+	var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
+	var accCount = ${model.qramountAcc};
+	$('#accPoint').animateNumber(
+		{ 
+			number: accCount, 
+			numberStep: comma_separator_number_step
+		});
 });
 </script>
 <style type="text/css">
@@ -47,8 +56,10 @@ $(document).ready(function(){
 	<section>
 		<div class="page point qrinfo">
 			<div class="qrimg"><img src="${model.qrAccessUrl}"></div>
-			<div class="listpoint"><small>P</small><span><fmt:formatNumber value="${model.qramountAcc}" pattern="###,###,###,###"/></span> <spring:message code="label.acc_word" /></div>
-				<ul class="pointinfo">
+			<div class="listpoint">
+				<span id = "accPoint" style = "font-weight: 500;font-size : 40px"></span></br><small>P</small> <spring:message code="label.acc_word" />
+			</div>
+			<ul class="pointinfo">
 				<input type = "hidden" class = "returnp_qr"  id ="qr_org"  value = "${model.qr_org}" />
 				<input type = "hidden" class = "returnp_qr"  id ="pay_type" value = "${model.pay_type}"/>
 				<input type = "hidden" class = "returnp_qr"  id ="pam" value = "${model.pam}"/>
@@ -70,7 +81,7 @@ $(document).ready(function(){
 				<li><span  class = "gift_qr_title"><spring:message code="label.approval_number" /></span> ${model.pan}</li>
 				<li style = "display: none"><span ><spring:message code="label.approval_status" /></span> ${model.pas}</li>
 				<li><span   class = "gift_qr_title"><spring:message code="label.approval_status" /></span> ${model.pas_str}</li>
-				<li><span   class = "gift_qr_title">VAN</span> ${model.paymentRouterName}</li>
+				<%-- <li><span   class = "gift_qr_title">VAN</span> ${model.paymentRouterName}</li> --%>
 			</ul>	
 		</div>			
 		<div class="btns2">

@@ -585,7 +585,7 @@ function sendPushTokenToServer(data){
 /*포인트 쿠폰에 의한 적립*/
 function accPointCoupon(){
 	var param = {};
-	$('.returnp_pc').each(function(){
+	$('.returnp_coupon').each(function(){
 		param[$(this).attr("id")]  = $(this).val().trim().replace(",","");
 	});
 	
@@ -607,8 +607,8 @@ function accPointCoupon(){
 					param[key] = encodeURIComponent(param[key]);
 				}
 			}
-			
-			var url = window.location.protocol + "//" + window.location.host + "/m/mypage/acc_point_coupon.do";
+			console.log(param);
+			var url = window.location.protocol + "//" + window.location.host + "/m/coupon/acc_point_coupon.do";
  			$.ajax({
 	           	type: "POST",
 	               url: url,

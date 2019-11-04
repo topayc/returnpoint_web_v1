@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.returnp_web.dao.mapper.MobileMainMapper;
+import com.returnp_web.dao.mapper.MobileMapper;
 
 
 /**
@@ -409,6 +410,10 @@ public class MobileMainDao {
 
 	public HashMap<String, Object> selectMember(HashMap<String, Object> params) {
 		return sqlSession.getMapper(MobileMainMapper.class).selectMember(params);
+	}
+	
+	public HashMap<String, Object> selectPointCoupon(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectPointCoupon(dbparams);
 	}
 
 }

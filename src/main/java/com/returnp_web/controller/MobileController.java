@@ -203,23 +203,23 @@ public class MobileController extends MallBaseController {
 	}*/
 	
 	// G 포인트 적립권 등록 폼 
-	@RequestMapping(value = "/mypage/point_coupon_reg_form", method = RequestMethod.GET)
+	@RequestMapping(value = "/coupon/point_coupon_reg", method = RequestMethod.GET)
 	public String regGpointCouponForm(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/mypage/point_coupon_info");
+		RPMap rmap = Util.getRPRmap("/mobile/coupon/point_coupon_reg");
 		return page(true, map, rmap);
 	}
 	
 	// G 포인트 적립권 세부 정도 
-	@RequestMapping(value = "/mypage/detail_point_coupon_info", method = RequestMethod.GET)
+	@RequestMapping(value = "/coupon/detail_point_coupon_info", method = RequestMethod.GET)
 	public String showPointCouponInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/mypage/point_coupon_info");
+		RPMap rmap = Util.getRPRmap("/mobile/coupon/point_coupon_info");
 		boolean bret = mms.showPointCouponInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
 	
 	// G 포인트 적립권 등록 프로세스
 	@ResponseBody
-	@RequestMapping(value = "/mypage/acc_point_coupon", method = RequestMethod.POST)
+	@RequestMapping(value = "/coupon/acc_point_coupon", method = RequestMethod.POST)
 	public String accPointCoupon(@RequestParam HashMap<String, String> paramMap, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		return mms.accPointCoupon(paramMap, modelMap, request, response);
 	}

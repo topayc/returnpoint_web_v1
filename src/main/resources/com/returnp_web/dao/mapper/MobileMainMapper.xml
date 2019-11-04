@@ -378,8 +378,29 @@
  		<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
 		AND left(a.createTime, 7) = left( #{SEARCHTIME} , 7)
 		</if>
-		AND a.pointTransferStatus in ('1')
-		AND a.pointType in ('1')
+	AND a.pointTransferStatus in ('1')
+	AND a.pointType in ('1')
+
+	UNION ALL
+	select
+		PC.pointCouponPointbackRecord as paymentPointbackRecordNo,
+		PC.memberNo as memberNo,
+		PC.accPoint as pointbackAmount,
+		PC.nodeNo as nodeNo,
+		PC.nodeType as nodeType,
+		date_format(PC.createTime,'%Y-%m-%d %I:%i:%s') as createTime,
+		'포인트 적립권' as accumulate,
+		M.memberName as companyname,
+		M.memberName as source
+	from point_coupon_pointback_record as PC
+	inner join member as M on (PC.memberNo = M.memberNo)
+	where
+		PC.memberNo = #{memberNo}
+		<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
+		AND left(PC.createTime, 7) = left( #{SEARCHTIME} , 7)
+		</if>
+		AND nodeType = #{nodeType}
+		
 	) T_TEMP ORDER BY createTime DESC
 	</select>
 
@@ -853,5 +874,13 @@
 		<if test="memberNo != null"> AND memberNo = #{memberNo} </if> 
 	</select>
 	
+	<select id="selectPointCoupon" parameterType="HashMap" resultType="HashMap">
+		SELECT *
+		FROM point_coupon
+		WHERE 
+		1 =1 
+		<if test="pointCouponNo != null "> AND pointCouponNo = #{pointCouponNo} </if>
+      	<if test="couponNumber != null"> AND couponNumber =  #{couponNumber} </if>
+	</select> 
 	
 </mapper>

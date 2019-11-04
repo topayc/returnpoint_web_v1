@@ -1276,7 +1276,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 	/*포인트 적립 세부 정보 */
 	@Override
-	public boolean pointDetailAccInfo(RPMap rPap, RPMap rmap, HttpServletRequest request,
+	public boolean pointDetailAccInfo(RPMap p, RPMap rmap, HttpServletRequest request,
 			HttpServletResponse response) {
 		HashMap<String, Object> dbparams = new HashMap<String, Object>();
 		SessionManager sm = new SessionManager(request, response);
@@ -1290,10 +1290,50 @@ public class MobileMainServiceImpl implements MobileMainService {
 	}
 
 	@Override
-	public boolean showPointCouponInfo(RPMap rPap, RPMap rmap, HttpServletRequest request,
-			HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean showPointCouponInfo(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		SessionManager sm = new SessionManager(request, response);
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		try {
+			if(sm.getMemberEmail() == null ) {
+                rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/member/login.do", "T"));
+                return false;
+            }
+			dbparams.put("couponNumber", p.getStr("couponNumber"));
+			HashMap<String, Object> pointCoupon = this.mobileMainDao.selectPointCoupon(dbparams);
+			
+			if (pointCoupon == null) {
+				 rmap.put("result", "error");
+                 rmap.put("message", "등록 되지 않는 적립 코드 ");
+                 return true;
+			}
+			switch((String)pointCoupon.get("useStatus")) {
+			case "1":
+				rmap.put("result", "success");
+				switch((String)pointCoupon.get("couponType")) {
+					case "1":
+						pointCoupon.put("couponTypeStr", "영수증에 의한 포인트 적립");
+					break;
+				}
+				rmap.put("pointCoupon", pointCoupon);
+				break;
+			case "2":
+				 rmap.put("result", "error");
+				  rmap.put("message", "사용 중지된 적립 코드 입니다");
+				break;
+			case "3":
+				 rmap.put("result", "error");
+				  rmap.put("message", "사용 완료된 적립 코드입니다");
+				break;
+			case "4":
+				  rmap.put("message", "사용 등록이 해제된 적립 코드입니다");
+				 rmap.put("result", "error");
+				break;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	@Override

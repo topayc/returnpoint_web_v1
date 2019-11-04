@@ -402,5 +402,6 @@ public interface MobileMainMapper {
 
 	HashMap<String, Object> selectAffiliateDetail(HashMap<String, Object> params);
 	HashMap<String, Object> selectMember(HashMap<String, Object> params);
+	HashMap<String, Object> selectPointCoupon(HashMap<String, Object> dbparams);
 
 }
