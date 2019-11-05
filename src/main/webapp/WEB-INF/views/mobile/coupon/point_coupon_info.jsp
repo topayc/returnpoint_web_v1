@@ -59,10 +59,10 @@ $(document).ready(function(){
 	<section>
 		<div class="page point qrinfo">
 			<div class="listpoint" style = "margin-top:20px;">
-				<span style = "font-weight: bold;font-size : 50px" id = "accPoint"> </span>
-				<span style = "font-size : 30px"><i class="fab fa-product-hunt"></i></span>
-			<!-- 	<small style = "font-weight: bold; font-size : 13px">P</small> -->
-				 </br>
+				<span style = "font-weight: 500;font-size : 40px" id = "accPoint"> </span>
+				</br><!-- <span style = "font-size : 30px"><i class="fab fa-product-hunt"></i></span> -->
+				<small style = "font-weight: bold; font-size : 13px">P</small>
+				 
 				 &nbsp;<span style = "font-size : 20px"><spring:message code="label.acc_word" /></span>
 			</div>
 			<ul class="pointinfo" style = "width: 80%;margin-top:70px">

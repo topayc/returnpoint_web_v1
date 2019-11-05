@@ -25,6 +25,7 @@
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
+	/* $("#couponNumber").val(""); */
 });
 
 
@@ -55,7 +56,7 @@ function checkPointCoupon(){
 					</div>
 					<div class="pointinput" style = "width: 90%;">
 						<div class="">
-							<input  type="text" id="couponNumber" name="couponNumber" style = "background-color : #fefefe; ;"/ placeholder = "<spring:message code="label.point_coupon_input"/>">			
+							<input  type="text" id="couponNumber" name="couponNumber" style = "background-color : #fefefe;font-size : 15px" placeholder = "<spring:message code="label.point_coupon_input"/>">			
 					</div>
 					<ul class="pointinfo">
 						<li>- 한번 사용하신 적립코드는 재 사용이 불가능합니다.</li>
