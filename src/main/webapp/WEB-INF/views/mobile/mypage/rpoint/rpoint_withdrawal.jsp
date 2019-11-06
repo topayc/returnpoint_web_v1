@@ -118,6 +118,13 @@ function deleteAccount(memberBankAccountNo) {
 					<button>출금 리스트</button>
 				</div>
 			</div>
+			<div class="rpoint_withdrawal03">
+				<ul>
+					<li>출금정책</li>
+					<li>ㆍ텍스트 들어가는 자리입니다.</li>
+					<li>ㆍ텍스트 들어가는 자리입니다.</li>
+				</ul>
+			</div>
 			<div class="rpoint_withdrawal_button">
 				<button>출금 리스트</button>
 				<button>출금 신청</button>

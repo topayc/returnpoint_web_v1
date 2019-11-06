@@ -722,6 +722,7 @@ button {color : #000; font-weight:400}
  .rpoint_withdrawal .rpoint_withdrawal01{float:left;}
  .rpoint_withdrawal .rpoint_withdrawal01 > ul > li:nth-child(1){color:#666;font-size:13px;}
  .rpoint_withdrawal .rpoint_withdrawal01 > ul > li:nth-child(2){color:#000;font-weight:bold;font-size:15px;margin-top:5px;}
+ .rpoint_withdrawal .rpoint_withdrawal03 > ul > li:first-child{font-size:15px;font-weight:bold;margin-bottom:10px;}
  
   .rpoint_withdrawal .rpoint_withdrawal01 > ul > li.sub{color:#333;font-size:12px;font-weight:300}
  .rpoint_withdrawal .rpoint_withdrawal01 > ul > li.title{color:#222;font-weight:400;font-size:22px;margin-top:1px;}
