@@ -191,10 +191,10 @@
         </c:if>
  	<div class="main_link">
       <ul>
-         <li><img src="/resources/images/img_qr.png"><p>QR 스캔</p></li>
-         <li><img src="/resources/images/img_credit.png"><p>포인트적립권</p></li>
-         <li><img src="/resources/images/img_coin.png"><p>R.P출금</p></li>
-         <li><img src="/resources/images/img_location.png"><p>내주변/검색</p></li>
+         <li onclick="startQRScan()"'><img src="/resources/images/img_qr.png"><p>QR 스캔</p></li>
+         <li ><img src="/resources/images/img_credit.png"><p>포인트적립권</p></li>
+         <li onclick = "movePage('/m/mypage/m_rpay_withdrawal_list.do?memberNo=${model.memberTypeInfo.memberNo}')"><img src="/resources/images/img_coin.png"><p>R.P출금</p></li>
+         <li onclick = "movePage('/m/map/rpmap.do')"><img src="/resources/images/img_location.png"><p>내주변/검색</p></li>
       </ul>
    </div>
    
