@@ -174,9 +174,9 @@
      
  	<div class="main_link">
       <ul>
-         <li><img src="/resources/images/img_qr.png"><p>QR스캔</p></li>
-         <li><img src="/resources/images/img_credit.png"><p>적립권</p></li>
-         <li><img src="/resources/images/img_coin.png"><p>R출금</p></li>
+         <li><img src="/resources/images/img_qr.png"><p>QR 스캔</p></li>
+         <li><img src="/resources/images/img_credit.png"><p>포인트적립권</p></li>
+         <li><img src="/resources/images/img_coin.png"><p>R.P출금</p></li>
          <li><img src="/resources/images/img_location.png"><p>내주변</p></li>
       </ul>
    </div>
