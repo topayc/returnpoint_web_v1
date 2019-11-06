@@ -87,8 +87,45 @@ function deleteAccount(memberBankAccountNo) {
 	</header> 
 	<!-- content begin -->
 	<section>
-		<div class="rpont_withdrawal">
-		여기다 작성
+		<div class="rpoint_withdrawal">
+			<div>
+				<div class="rpoint_withdrawal01">
+					<ul>
+						<li>이달의 결제내역 〉</li>
+						<li>11월 (11.01~오늘)</li>
+					</ul>
+				</div>
+				<div class="rpoint_withdrawal02">
+					<span>0</span>
+					<span>원</span>
+				</div>
+			</div>
+			<div>
+				<div class="rpoint_withdrawal01">
+					<ul>
+						<li>출금가능한금액 〉</li>
+						<li>총 출금가능한 금액</li>
+					</ul>
+				</div>
+				<div class="rpoint_withdrawal02">
+					<button>출금 리스트</button>
+				</div>
+			</div>
+			<div>
+				<div class="rpoint_withdrawal01">
+					<ul>
+						<li>출금 금액 〉</li>
+						<li>출금 리스트</li>
+					</ul>
+				</div>
+				<div class="rpoint_withdrawal02">
+					<button>출금 리스트</button>
+				</div>
+			</div>
+			<div class="rpoint_withdrawal_button">
+				<button>출금리스트보기</button>
+				<button>출금등록하기</button>
+			</div>
 		</div>
 	</section>
 	<!-- content end -->
