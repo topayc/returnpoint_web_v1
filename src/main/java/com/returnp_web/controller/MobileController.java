@@ -202,6 +202,15 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}*/
 	
+	
+	// 포인트 적립 코드 소개 
+	@RequestMapping(value = "/coupon/point_coupon", method = RequestMethod.GET)
+	public String pointCoupon(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/coupon/point_coupon");
+		return page(true, map, rmap);
+	}
+		
+	
 	// G 포인트 적립권 등록 폼 
 	@RequestMapping(value = "/coupon/point_coupon_reg", method = RequestMethod.GET)
 	public String regGpointCouponForm(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {

@@ -383,7 +383,7 @@
 
 	UNION ALL
 	select
-		PC.pointCouponPointbackRecord as paymentPointbackRecordNo,
+		PC.pointCouponPointbackRecordNo as paymentPointbackRecordNo,
 		PC.memberNo as memberNo,
 		PC.accPoint as pointbackAmount,
 		PC.nodeNo as nodeNo,

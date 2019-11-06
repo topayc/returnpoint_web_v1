@@ -168,6 +168,15 @@ public class MobileMemberController extends MallBaseController{
 		return rmap.getStr("json");
 	}	
 		
+	
+	//new R point 출금 
+	@RequestMapping("/mypage/rpoint/rpoint_withdrawal")
+	public String rpointWithdrawal(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/mypage/rpoint/rpoint_withdrawal");
+		boolean bret = true;/*mms.preparePointwithdrawalList(Util.toRPap(p), rmap, request, response);*/
+		return page(bret, map, rmap);
+	}	
+	
 	//출금 요청 리스트 화면  
 	@RequestMapping("/mypage/m_rpay_withdrawal_list")
 	public String mPointwithdrawalList(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
