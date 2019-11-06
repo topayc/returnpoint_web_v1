@@ -1382,7 +1382,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		SessionManager sm = new SessionManager(request, response);
 		try {
 			dbparams.put("memberNo", sm.getMemberNo());
-
+			rmap.put("memberTypeInfo", mobileMemberDao.selectMypageMyinfo(dbparams));
 			rmap.put("memberBankAccounts", mobileMemberDao.selectBankAccounts(dbparams));
 			rmap.put("rPayInfo", mobileMemberDao.selectMyRedPointMapinfo(dbparams));
 			rmap.put("policy", mobileMemberDao.selectPolicyPointTranslimit(dbparams));

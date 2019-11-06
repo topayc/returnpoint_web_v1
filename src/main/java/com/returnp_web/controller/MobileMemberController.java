@@ -173,7 +173,7 @@ public class MobileMemberController extends MallBaseController{
 	@RequestMapping("/mypage/rpoint/rpoint_withdrawal")
 	public String rpointWithdrawal(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/mypage/rpoint/rpoint_withdrawal");
-		boolean bret = true;/*mms.preparePointwithdrawalList(Util.toRPap(p), rmap, request, response);*/
+		boolean bret = mms.preparePointwithdrawlForm(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}	
 	

@@ -135,10 +135,14 @@ function deleteAccount(memberBankAccountNo) {
 						</div>
 					</c:forEach>
 				</div>
-				<a class="btn btn-submit"  onclick = "movePage('/m/mypage/m_withdrawl_point_form.do')" >
-					<i class="fas fa-sign-out-alt"></i>
-					<spring:message code="label.withdrawl_req"/>
-				</a>
+				<div class="btns2">
+					<button type="button" class="btn btn-submit" onclick = "movePage('/m/mypage/m_withdrawl_point_form.do')">
+						<i class="fas fa-sign-out-alt"></i>
+						<spring:message code="label.withdrawl_req"/>
+					</button>
+					<button type="button" class="btn btn-submit-cancel"  onclick = "movePage('/m/mypage/rpoint/rpoint_withdrawal.do')">출금 홈으로 가기</button>
+				</div>
+				
 			</section>	
 		</c:otherwise>
 	</c:choose>

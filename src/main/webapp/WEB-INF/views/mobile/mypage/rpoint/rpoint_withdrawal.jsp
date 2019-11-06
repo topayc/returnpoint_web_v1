@@ -21,60 +21,29 @@
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
+<script type="text/javascript" src="/resources/js/lib/jquery.animateNumber.min.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
-	$('.del_account').click(function(){
-		var target = $(this);
-		alertOpen(
-			"확인", 
-			"정말로 계좌를 삭제하시겠습니까? ", 
-			true, 
-			true, 
-			function(){deleteAccount(target.attr('memberBankNo').trim());}, 
-			null);
-		
-	})
-});
-
-function deleteAccount(memberBankAccountNo) {
-	  bridge.getSessionValue('PREF_ALL_SESSION', function(result){
-		  var userAuthToken;
-		  var ajax;
-		  if (!result) {
-			  ajax = true;
-		  }else {
-			  result = JSON.parse(result)
-			  userAuthToken = result.user_auth_token;
-		  }
-		  
-		$.ajax({
-			method : "get",
-			url    : "/m/mypage/m_delete_bank_account.do",
-			dataType: "json",
-			data   : {
-				memberBankAccountNo : memberBankAccountNo
-			},
-			 beforeSend : function(xhr){
-			     if (!userAuthToken) {
-					 xhr.setRequestHeader("AJAX","true");
-			     }else {
-			    	 xhr.setRequestHeader("user_auth_token",userAuthToken);
-			     }
-			 },
-			success: function(data) {
-				if (data.result.code == 0 ) {
-					alertOpen("확인", "계좌 삭제 완료", true, false, function(){location.reload();}, null);
-				}else{
-					alertOpen("확인", data.result.msg, false, true, null, null);
-				}
-			},
-			error: function (request, status, error) {
-				alertOpen("확인", data.result.msg, false, true, null, null);
-			}
-			});
-	  });
-}
-
+	var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
+	var p1 = ${model.rPayInfo.pointAmount};
+	$('#member_rpoint').animateNumber({
+			number : p1,
+			numberStep : comma_separator_number_step
+		});
+	
+/* 	var p2 = ${model.rpayTotalWithdrawal};
+	$('#today_withdrawal_rpoint').animateNumber({
+			number : p2,
+			numberStep : comma_separator_number_step
+		});
+	
+	var p3 = ${model.policy.rPayWithdrawalMaxLimit - model.rpayTotalWithdrawal};
+	$('#remain_today_withdrawal_rpoint').animateNumber({
+			number : p3,
+			numberStep : comma_separator_number_step
+		}); */
+	});
 </script>
 </head>
 <!-- header end -->
@@ -91,43 +60,48 @@ function deleteAccount(memberBankAccountNo) {
 			<div>
 				<div class="rpoint_withdrawal01">
 					<ul>
-						<li class = "sub">금일 출금 금액 (2010-10-10)</li>
-						<li class = "title">100,000 P</li>
+						<li class = "sub">현재 보유 R 포인트</li>
+						<li class = "title"><span id = "member_rpoint"></span> P</li>
 					</ul>
+				</div>
+			</div>
+			<div>
+				<c:set var="now" value="<%=new java.util.Date()%>" />
+				<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일" /></c:set> 
+				<div class="rpoint_withdrawal01">
+					<ul>
+						<li class = "sub">금일 총 출금 금액 (<c:out value="${sysYear}" />)</li>
+						<li class = "title"><span id = "today_withdrawal_rpoint"><fmt:formatNumber value="${model.rpayTotalWithdrawal}" pattern="###,###,###,###"/></span> P</li>
+					</ul>
+				</div>
+				<div class="rpoint_withdrawal02">
+					<button onclick = "movePage('/m/mypage/m_rpay_withdrawal_list.do?memberNo=${model.memberTypeInfo.memberNo}')">출금 리스트</button>
 				</div>
 			</div>
 			<div>
 				<div class="rpoint_withdrawal01">
 					<ul>
-						<li class = "sub">금일 출금 금액 (2010-10-10)</li>
-						<li class = "title">100,000 P</li>
+						<li class = "sub">금일 출금 잔여 가능 금액 (<c:out value="${sysYear}" />)</li>
+						<li class = "title"><span id = "remain_today_withdrawal_rpoint"><fmt:formatNumber value="${model.policy.rPayWithdrawalMaxLimit - model.rpayTotalWithdrawal}" pattern="###,###,###,###"/></span> P</li>
 					</ul>
 				</div>
 				<div class="rpoint_withdrawal02">
-					<button>출금 리스트</button>
-				</div>
-			</div>
-			<div>
-				<div class="rpoint_withdrawal01">
-					<ul>
-						<li class = "sub">금일 출금 가능 금액 (2010-10-10)</li>
-						<li class = "title">400,000 P</li>
-					</ul>
-				</div>
-				<div class="rpoint_withdrawal02">
-					<button>출금 리스트</button>
+					<<!-- button>출금 리스트</button> -->
 				</div>
 			</div>
 			<div class="rpoint_withdrawal03">
-				<ul>
-					<li>출금정책</li>
-					<li>ㆍ텍스트 들어가는 자리입니다.</li>
-					<li>ㆍ텍스트 들어가는 자리입니다.</li>
+				<ul style = "padding-left:10px">
+					<li style = "list-style-type: none">출금 정책</li>
+					<li style = "list-style-type: disc;font-weight:300">실제 입금금액은 수수료 15% 공제합니다.</li>
+					<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_min_quide" arguments="${model.policy.rPayWithdrawalMinLimit}" /></li>
+					<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_max_quide" arguments="${model.policy.rPayWithdrawalMaxLimit}" /></li>
+					<li style = "list-style-type: disc;font-weight:300">출금 신청 후 2 영업일 이내 고객님이 등록하신 계좌로 입금됩니다</li>
+					<li style = "list-style-type: disc;font-weight:300">출금 정책은 예고없이 변경될 수 있습니다</li>
 				</ul>
 			</div>
 			<div class="rpoint_withdrawal_button">
-				<button>출금 리스트</button>
-				<button>출금 신청</button>
+				<button onclick = "movePage('/m/mypage/m_rpay_withdrawal_list.do?memberNo=${model.memberTypeInfo.memberNo}')">출금 리스트</button>
+				<button onclick = "movePage('/m/mypage/m_withdrawl_point_form.do')">출금 신청</button>
 			</div>
 		</div>
 	</section>
