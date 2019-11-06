@@ -76,7 +76,7 @@ section hr{display:none;}
 .index .nav-tabs>li.active>a,
 .index .nav-tabs>li.active>a:focus,
 .index .nav-tabs>li.active>a:hover{border:0;}
-.index .tab-content>.active {padding: 30px 30px;}
+.index .tab-content>.active {padding: 30px 30px 55px 30px;}
 .index .tab-content>.active ul li{float: left; padding:14px 20px 14px 0;}
 .index .tab-content p{font-size: 33px;font-family: 'Open Sans', sans-serif; font-weight: 400; padding-top: 11px;}
 .index .tab-content p i{font-size:12px;}
