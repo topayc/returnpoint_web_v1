@@ -716,6 +716,8 @@ button {color : #000; font-weight:400}
  /* rpoint_withdrawal 페이지 */
  .rpoint_withdrawal{width:100%;padding:20px;}
  .rpoint_withdrawal > div {border:1.5px solid #e6e5e5;border-radius:5px;overflow:hidden;padding:23px 15px;margin:7px 0;}
+ .rpoint_withdrawal > div:first-child{border:none;}
+ .rpoint_withdrawal > div:first-child .rpoint_withdrawal01{width:100%;text-align:center;} 
  .rpoint_withdrawal .rpoint_withdrawal01{float:left;}
  .rpoint_withdrawal .rpoint_withdrawal01 > ul > li:nth-child(1){color:#666;font-size:13px;}
  .rpoint_withdrawal .rpoint_withdrawal01 > ul > li:nth-child(2){color:#000;font-weight:bold;font-size:15px;margin-top:5px;}

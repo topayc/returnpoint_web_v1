@@ -95,10 +95,6 @@ function deleteAccount(memberBankAccountNo) {
 						<li class = "title">100,000 P</li>
 					</ul>
 				</div>
-				<div class="rpoint_withdrawal02">
-					<span>0</span>
-					<span>원</span>
-				</div>
 			</div>
 			<div>
 				<div class="rpoint_withdrawal01">
