@@ -182,12 +182,12 @@
    </div>
    
    
-
+<%-- 
      <div class="search">
        <p class="searchbtn"><a href="/m/map/rpmap.do"><i class="fas fa-map-marker-alt"></i> <spring:message code="label.find_merchants" /></a></p>
       <input id="text_address" type="text" class="form-control" placeholder="ex)강남역, 시청역, 김포 ...">
       <i class="fas fa-search" onclick="searchMap()"></i>
-      </div>
+      </div> --%>
       <c:if test = "${! empty model.notice}">
             <div class="main_notice">
               <span class = "notice_title"><a href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">[공지]&nbsp;${model.notice.title}</a></span>
