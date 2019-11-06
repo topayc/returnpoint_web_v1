@@ -91,8 +91,8 @@ function deleteAccount(memberBankAccountNo) {
 			<div>
 				<div class="rpoint_withdrawal01">
 					<ul>
-						<li>이달의 결제내역 〉</li>
-						<li>11월 (11.01~오늘)</li>
+						<li class = "sub">금일 출금 금액 (2010-10-10)</li>
+						<li class = "title">100,000 P</li>
 					</ul>
 				</div>
 				<div class="rpoint_withdrawal02">
@@ -103,8 +103,8 @@ function deleteAccount(memberBankAccountNo) {
 			<div>
 				<div class="rpoint_withdrawal01">
 					<ul>
-						<li>출금가능한금액 〉</li>
-						<li>총 출금가능한 금액</li>
+						<li class = "sub">금일 출금 금액 (2010-10-10)</li>
+						<li class = "title">100,000 P</li>
 					</ul>
 				</div>
 				<div class="rpoint_withdrawal02">
@@ -114,8 +114,8 @@ function deleteAccount(memberBankAccountNo) {
 			<div>
 				<div class="rpoint_withdrawal01">
 					<ul>
-						<li>출금 금액 〉</li>
-						<li>출금 리스트</li>
+						<li class = "sub">금일 출금 가능 금액 (2010-10-10)</li>
+						<li class = "title">400,000 P</li>
 					</ul>
 				</div>
 				<div class="rpoint_withdrawal02">
@@ -123,8 +123,8 @@ function deleteAccount(memberBankAccountNo) {
 				</div>
 			</div>
 			<div class="rpoint_withdrawal_button">
-				<button>출금리스트보기</button>
-				<button>출금등록하기</button>
+				<button>출금 리스트</button>
+				<button>출금 신청</button>
 			</div>
 		</div>
 	</section>
