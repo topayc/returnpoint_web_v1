@@ -96,7 +96,7 @@ section hr{display:none;}
 .index .footinfo small{color: #958ac2;padding: 0 10px;}
 .index .footinfo p{position:absolute;right:20px;top:13px;color:#ff6600;font-weight:600;text-align:right;font-size:11px;}
 .index .footinfo span.total{font-weight:200;color:#fff;}
-.index .store{border-top: 7px solid #eee;border-bottom: 1px solid #eee;width:100%;padding: 20px 0;}
+.index .store{border-top: 7px solid #eee;border-bottom: 1px solid #eee;width:100%;padding: 20px 0px;}
 .index .store:after{display:block;clear:both;content:'';}
 .index .store li{width: 58px;border-radius: 50%; overflow: hidden; border: 1px solid #eee;float: left;margin:0 7px;}
 .index .store li img{width:100%;}
@@ -655,7 +655,6 @@ button {color : #000; font-weight:400}
 	position : relative;
 	height :50px;
 	border-top : 1px solid #eee;
-	border-bottom: 1px solid #eee;
     padding: 20px 15px;
     padding-bottom : 35px;
     /* background-color : #efefef; */
@@ -672,10 +671,10 @@ button {color : #000; font-weight:400}
     font-size : 12px;
  }
  
- .main_banner{
+/*  .main_banner{
  padding : 0px 5px;
  border-radius: 15px;
- }
+ } */
  
  
   /* 메인페이지 링크 index.jsp */

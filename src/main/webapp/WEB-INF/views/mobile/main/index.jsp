@@ -171,24 +171,7 @@
      </div>
 	
 
-     
- 	<div class="main_link">
-      <ul>
-         <li><img src="/resources/images/img_qr.png"><p>QR 스캔</p></li>
-         <li><img src="/resources/images/img_credit.png"><p>포인트적립권</p></li>
-         <li><img src="/resources/images/img_coin.png"><p>R.P출금</p></li>
-         <li><img src="/resources/images/img_location.png"><p>내주변</p></li>
-      </ul>
-   </div>
-   
-   
-<%-- 
-     <div class="search">
-       <p class="searchbtn"><a href="/m/map/rpmap.do"><i class="fas fa-map-marker-alt"></i> <spring:message code="label.find_merchants" /></a></p>
-      <input id="text_address" type="text" class="form-control" placeholder="ex)강남역, 시청역, 김포 ...">
-      <i class="fas fa-search" onclick="searchMap()"></i>
-      </div> --%>
-      <c:if test = "${! empty model.notice}">
+           <c:if test = "${! empty model.notice}">
             <div class="main_notice">
               <span class = "notice_title"><a href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">[공지]&nbsp;${model.notice.title}</a></span>
 
@@ -206,6 +189,23 @@
                 </span>
             </div>
         </c:if>
+ 	<div class="main_link">
+      <ul>
+         <li><img src="/resources/images/img_qr.png"><p>QR 스캔</p></li>
+         <li><img src="/resources/images/img_credit.png"><p>포인트적립권</p></li>
+         <li><img src="/resources/images/img_coin.png"><p>R.P출금</p></li>
+         <li><img src="/resources/images/img_location.png"><p>내주변/검색</p></li>
+      </ul>
+   </div>
+   
+   
+<%-- 
+     <div class="search">
+       <p class="searchbtn"><a href="/m/map/rpmap.do"><i class="fas fa-map-marker-alt"></i> <spring:message code="label.find_merchants" /></a></p>
+      <input id="text_address" type="text" class="form-control" placeholder="ex)강남역, 시청역, 김포 ...">
+      <i class="fas fa-search" onclick="searchMap()"></i>
+      </div> --%>
+
 
 	<div class="center store">
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg"  /></div>
