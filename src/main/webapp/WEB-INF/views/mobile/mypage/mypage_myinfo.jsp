@@ -249,7 +249,7 @@ function recommendSms(data){
 				<span class = "item_title"><spring:message code="label.rpay_use" /></span><span><i class="fas fa-chevron-right" ></i></span>
 			</div> --%>
 			
-			<div class="list_li"  onclick = "movePage('./m_rpay_withdrawal_list.do?memberNo=${model.memberTypeInfo.memberNo}')">
+			<div class="list_li"  onclick = "movePage('/m/mypage/rpoint/rpoint_withdrawal.do?memberNo=${model.memberTypeInfo.memberNo}')">
 				<span class ="item_title"><spring:message code="label.rpay_withdrawal" /></span><span><i class="fas fa-chevron-right" ></i></span></br>
 				<span class ="item_des"><spring:message code="label.rpay_withdrawal_des" /></br></span>
 			</div>

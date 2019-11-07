@@ -22,6 +22,7 @@
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_point_gift.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery-number.js"></script>
+<script type="text/javascript" src="/resources/js/lib/jquery.animateNumber.min.js"></script>
 <script type="text/javascript">
 
 function submitWithdrawl(){
@@ -127,6 +128,12 @@ $(document).ready(function(){
 	$('#withdrawalCancel').click(function(){
 		history.go(-1);
 	})
+	var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
+	var p1 =${model.rPayInfo.pointAmount}
+	$('#holding_rpoint').animateNumber({
+			number : p1,
+			numberStep : comma_separator_number_step
+		});
 });
 
 </script>
@@ -151,13 +158,15 @@ $(document).ready(function(){
 				<div class="m_point_transfer">
 					<form name="point_withdraw_form"  id = "point_withdraw_form">
 						<div class="modal-body">
-							<div class="listmember"><strong><span class="node nd1"><spring:message code="label.mmember"/></span>&nbsp;<spring:message code="label.rpay"/></strong></div>
-							<div class="listpoint"><strong><small>P</small>&nbsp;<span><fmt:formatNumber value="${model.rPayInfo.pointAmount}" pattern="###,###,###,###"/></span></strong></div>
-							<div class="pointinput">
-								<div class="form-group">
+							<div class="listmember" style = "font-size : 12px;font-weight:300"><spring:message code="label.holding_rpoint"/></div>
+							<div class="listpoint" >
+								<strong><span style = "font-size: 35px;font-weight: 500;" id = "holding_rpoint"></span>
+								<span style = "font-size: 35px;font-weight: 500;">P</span></strong></div>
+							<div class="pointinput" >
+								<div class="form-group" style = "margin: 0 10px 10px 0">
 									<input type="number" placeholder="<spring:message code="label.desc_withdraw"/>" id="withdrawalAmount" name="withdrawalAmount""/>			
 								</div>
-								<div class="form-group">
+								<div class="form-group" style = "margin: 0 10px 10px 0">
 									<select class="form-control" id="memberBankAccountNo" name="memberBankAccountNo"> 
 									<c:forEach var = 'bank'  items = "${model.memberBankAccounts}">
 										<option value = "${bank.memberBankAccountNo}">${bank.bankName} - ${bank.bankAccount} - ${bank.accountOwner}</option>
@@ -169,22 +178,13 @@ $(document).ready(function(){
 								<button type="button" id="fiftythousandwon1"><i class="fa fa-plus-circle"></i>50,000</button>
 								<button type="button" id="onehundredthousandwon1"><i class="fa fa-plus-circle"></i>100,000</button>			
 							</div>
-						<%-- 	<fmt:formatNumber var = "rpayWithdrawMinLimit" value="${model.policy.rPayWithdrawalMinLimit}" pattern="###,###,###,###" scope = "page"/>
-							<fmt:formatNumber var = "rpayWithdrawMaxLimit"  value="${model.policy.rPayWithdrawalMaxLimit}" pattern="###,###,###,###" scope = "page"/> --%>
-							<ul class="pointinfo">
-								<%-- <li>- <strong><spring:message code="label.rpay_withdrawal_quide" arguments="${model.policy.rPayWithdrawalMinLimit}, ${model.policy.rPayWithdrawalMaxLimit}" /></strong></li> --%>
-								<li>- <span style = "color : green;"><strong><spring:message code="label.rpay_withdrawal_fee_policy" /></strong></span></li>
-								<li>- <strong><spring:message code="label.rpay_total_withdrawal_one_day" arguments="${model.rpayTotalWithdrawal}" /></strong></li>
-								<li>- <strong><spring:message code="label.rpay_withdrawable_amount" arguments="${model.policy.rPayWithdrawalMaxLimit - model.rpayTotalWithdrawal}" /></strong></li>
-							</ul>
-							<ul class="pointinfo">
-								<%-- <li>- <strong><spring:message code="label.rpay_withdrawal_quide" arguments="${model.policy.rPayWithdrawalMinLimit}, ${model.policy.rPayWithdrawalMaxLimit}" /></strong></li> --%>
-								<li>- <strong><spring:message code="label.rpay_withdrawal_min_quide" arguments="${model.policy.rPayWithdrawalMinLimit}" /></strong></li>
-								<li>- <strong><spring:message code="label.rpay_withdrawal_max_quide" arguments="${model.policy.rPayWithdrawalMaxLimit}" /></strong></li>
-							</ul>
-
-							<ul class="pointinfo">
-								<li>- <strong><spring:message code="label.rpay_withdrawal_day" /></strong></li>
+							<ul class="pointinfo" style = "padding-left:20px;margin-top:30px">
+								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_fee_policy" /></li>
+								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_total_withdrawal_one_day" arguments="${model.rpayTotalWithdrawal}" /></li>
+								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawable_amount" arguments="${model.policy.rPayWithdrawalMaxLimit - model.rpayTotalWithdrawal}" /></li>
+								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_min_quide" arguments="${model.policy.rPayWithdrawalMinLimit}" /></li>
+								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_max_quide" arguments="${model.policy.rPayWithdrawalMaxLimit}" /></li>
+								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_day" /></li>
 							</ul>
 						</div>
 						<div class="btns2">

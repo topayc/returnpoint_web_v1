@@ -173,7 +173,8 @@
 
            <c:if test = "${! empty model.notice}">
             <div class="main_notice">
-              <span class = "notice_title"><a href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">[공지]&nbsp;${model.notice.title}</a></span>
+              <span class = "notice_title">
+              	<a style = "font-weight:bold" href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">${model.notice.title}</a></span>
 
               <c:set var="now" value="<%=new java.util.Date()%>"/>
               <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
@@ -184,9 +185,9 @@
           <span class ="badge" style = "border : 1px solid #04B404; background-color: #fff;color : #088A08;display : inline;font-weight : 400;font-size: 10px">new</span>
          </c:if>
 
-              <span class = "notice_time">
+            <%--   <span class = "notice_time">
                  <fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
-                </span>
+                </span> --%>
             </div>
         </c:if>
  	<div class="main_link">
