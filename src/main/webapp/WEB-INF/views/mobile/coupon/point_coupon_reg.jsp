@@ -59,8 +59,8 @@ function checkPointCoupon(){
 							<input  type="text" id="couponNumber" name="couponNumber" style = "background-color : #fefefe;font-size : 15px" placeholder = "<spring:message code="label.point_coupon_input"/>">			
 					</div>
 					<ul class="pointinfo">
-						<li>- 한번 사용하신 적립코드는 재 사용이 불가능합니다.</li>
-						<li>- 고객센터 : 02-585-5993</li>
+						<li style = "list-style-type: disc">한번 사용하신 적립코드는 재 사용이 불가능합니다.</li>
+						<li style = "list-style-type: disc">고객센터 : 02-585-5993</li>
 					</ul>
 				</div>
 				<button type="button" id = "chkCoupon" class="btn btn-submit" onclick = "checkPointCoupon()"><spring:message code="label.ok"/></button>

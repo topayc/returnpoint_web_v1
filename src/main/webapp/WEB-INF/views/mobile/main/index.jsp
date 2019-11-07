@@ -192,9 +192,9 @@
         </c:if>
  	<div class="main_link">
       <ul>
-         <li onclick="startQRScan()"'><img src="/resources/images/img_qr.png"><p>QR 스캔</p></li>
+         <li onclick="startQRScan()"'><img src="/resources/images/img_qr.png"><p>QR스캔</p></li>
+         <li onclick = "movePage('/m/mypage/rpoint/rpoint_withdrawal.do')"><img src="/resources/images/img_coin.png"><p>R포인트출금</p></li>
          <li onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/img_credit.png"><p>포인트적립권</p></li>
-         <li onclick = "movePage('/m/mypage/rpoint/rpoint_withdrawal.do')"><img src="/resources/images/img_coin.png"><p>R.P출금</p></li>
          <li onclick = "movePage('/m/map/rpmap.do')"><img src="/resources/images/img_location.png"><p>내주변/검색</p></li>
       </ul>
    </div>
