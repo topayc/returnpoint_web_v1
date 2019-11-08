@@ -6,6 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="f" uri="/WEB-INF/tld/f.tld" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en"> 
 <head> 
@@ -104,7 +105,10 @@ function deleteAccount(memberBankAccountNo) {
 						    <div style = "width:35%;text-align:left">${pointWithdrawal.bankAccount}</span></div> --%>
 						    <div style = "width:35%;text-align:left" >
 						    	<strong><i class="fab fa-product-hunt" ></i>&nbsp;<fmt:formatNumber value="${pointWithdrawal.withdrawalAmount}" pattern="###,###,###,###"/></strong></small></div>
-						     <div style = "width:55%;text-align:left">${pointWithdrawal.createTime}</div>
+						     <div style = "width:55%;text-align:left">
+						     	<fmt:formatDate value="${pointWithdrawal.createTime}" pattern="yyyy년 MM월 dd일"/>
+						     	
+						     </div>
 						    <div style = "width:20%;text-align:left" >
 						    <c:choose>
 						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '1'}"><span class="label label-primary" >${pointWithdrawal.withdrawalStatusText}</span></c:when>
@@ -117,12 +121,12 @@ function deleteAccount(memberBankAccountNo) {
 						</div>		
 						<div id = "point_withdraw_${pointWithdrawal.pointWithdrawalNo}" class="list_li list_toggle collapse">
 							<div>
-								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#555555;font-weight:405"><!-- <i class="fas fa-chevron-right list_blt">&nbsp;</i> --><span>출금 은행 : ${pointWithdrawal.bankName}</span></p>
-								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#555555;font-weight:405"><span>출금 계좌:  ${pointWithdrawal.bankAccount}</span></p>
-								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#555555;font-weight:405"><span>예금주 :  ${pointWithdrawal.accountOwner}</span></p>
-								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#555555;font-weight:405"><span>출금 요청일 :  ${pointWithdrawal.createTime}</span></p>
-								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#555555;font-weight:405"><span>출금 금액:  <fmt:formatNumber value="${pointWithdrawal.withdrawalAmount}" pattern="###,###,###,###"/></span></p>
-								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#555555;font-weight:405"><span>출금 상태:  &nbsp;
+								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><!-- <i class="fas fa-chevron-right list_blt">&nbsp;</i> --><span>출금 은행 : ${pointWithdrawal.bankName}</span></p>
+								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 계좌:  ${pointWithdrawal.bankAccount}</span></p>
+								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>예금주 :  ${pointWithdrawal.accountOwner}</span></p>
+								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 요청일 :  <fmt:formatDate value="${pointWithdrawal.createTime}" pattern="yyyy년 MM월 dd일 HH:MM:ss"/> </span></p>
+								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 금액:  <fmt:formatNumber value="${pointWithdrawal.withdrawalAmount}" pattern="###,###,###,###"/></span></p>
+								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 상태:  &nbsp;
 								<c:choose>
 						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '1'}"><span class="label label-primary">${pointWithdrawal.withdrawalStatusText}</span></c:when>
 						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '2'}"><span class="label label-success">${pointWithdrawal.withdrawalStatusText}</span></c:when>

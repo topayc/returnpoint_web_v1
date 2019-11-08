@@ -76,7 +76,7 @@ section hr{display:none;}
 .index .nav-tabs>li.active>a,
 .index .nav-tabs>li.active>a:focus,
 .index .nav-tabs>li.active>a:hover{border:0;}
-.index .tab-content>.active {padding: 45px 30px 70px 30px;}
+.index .tab-content>.active {padding: 30px 30px 60px 30px;}
 .index .tab-content>.active ul li{float: left; padding:14px 20px 14px 0;}
 .index .tab-content p{font-size: 33px;font-family: 'Open Sans', sans-serif; font-weight: 400; padding-top: 11px;}
 .index .tab-content p i{font-size:12px;}
@@ -173,7 +173,7 @@ section hr{display:none;}
 /* list-style01 */
 .listS01{}
 .listS01 .list_title{padding: 13px 15px 10px;background: #eee; color: #000;font-weight: 404}
-.listS01 .list_li{position: relative;padding:18px 20px 18px;border-bottom: 1px solid #eee;font-weight: 400}
+.listS01 .list_li{position: relative;padding:18px 20px 18px;border-bottom: 1px solid #eee;font-weight: 400;font-size : 14px}
 .listS01 .list_li a{font-weight:400;color : #000000;font-size:14px}
 .listS01 .list_li i.fa-chevron-right{position:absolute;right:0px;top:-2px;padding: 28px 22px 22px 30px;}
 .listS01 .list_li i.list_blt{transform: rotate(90deg);transition: 0.7s;}

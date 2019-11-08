@@ -164,10 +164,10 @@ $(document).ready(function(){
 								<span style = "font-size: 35px;font-weight: 500;">P</span></strong></div>
 							<div class="pointinput" >
 								<div class="form-group" style = "margin: 0 10px 10px 0">
-									<input type="number" placeholder="<spring:message code="label.desc_withdraw"/>" id="withdrawalAmount" name="withdrawalAmount""/>			
+									<input type="number"  style = "font-weight:400;font-size : 14px" placeholder="<spring:message code="label.desc_withdraw"/>" id="withdrawalAmount" name="withdrawalAmount""/>			
 								</div>
 								<div class="form-group" style = "margin: 0 10px 10px 0">
-									<select class="form-control" id="memberBankAccountNo" name="memberBankAccountNo"> 
+									<select class="form-control" id="memberBankAccountNo" name="memberBankAccountNo" style = "font-weight:400;font-size : 14px"> 
 									<c:forEach var = 'bank'  items = "${model.memberBankAccounts}">
 										<option value = "${bank.memberBankAccountNo}">${bank.bankName} - ${bank.bankAccount} - ${bank.accountOwner}</option>
 									</c:forEach>

@@ -169,12 +169,12 @@
          </ul>
        </div>
      </div>
-	
+
 
            <c:if test = "${! empty model.notice}">
             <div class="main_notice">
               <span class = "notice_title">
-              	<a style = "font-weight:bold" href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">${model.notice.title}</a></span>
+                <a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">${model.notice.title}</a></span>
 
               <c:set var="now" value="<%=new java.util.Date()%>"/>
               <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
@@ -190,7 +190,7 @@
                 </span> --%>
             </div>
         </c:if>
- 	<div class="main_link">
+  <div class="main_link">
       <ul>
          <li onclick="startQRScan()"'><img src="/resources/images/img_qr.png"><p>QR스캔</p></li>
          <li onclick = "movePage('/m/mypage/rpoint/rpoint_withdrawal.do')"><img src="/resources/images/img_coin.png"><p>R포인트출금</p></li>
@@ -198,9 +198,9 @@
          <li onclick = "movePage('/m/map/rpmap.do')"><img src="/resources/images/img_location.png"><p>내주변/검색</p></li>
       </ul>
    </div>
-   
-   
-<%-- 
+
+
+<%--
      <div class="search">
        <p class="searchbtn"><a href="/m/map/rpmap.do"><i class="fas fa-map-marker-alt"></i> <spring:message code="label.find_merchants" /></a></p>
       <input id="text_address" type="text" class="form-control" placeholder="ex)강남역, 시청역, 김포 ...">
@@ -208,7 +208,7 @@
       </div> --%>
 
 
-	<div class="center store">
+  <div class="center store">
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg"  /></div>
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
        <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
@@ -216,9 +216,9 @@
        <div style = "width:20%" ><a href="https://sincar.co.kr/UID=rp4282"><img width = "58" height = "58" src="/resources/banner/new_car_mall_circle.png" ></a></div>
      </div>
    <ul class="banner">
-   		<li><a href="http://rp.umallok.com"><img class = "main_banner" src="/resources/banner/umall.jpg" /></a></li>
+      <li><a href="http://rp.umallok.com"><img class = "main_banner" src="/resources/banner/umall.jpg" /></a></li>
         <li><a href="http://returnpoint.net  "><img class = "main_banner" src="/resources/banner/rewa.jpg" /></a></li>
-        <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo1"><img class = "main_banner" src="/resources/banner/20190502_133801490.jpg" /></a></li>
+        <!--  <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo1"><img class = "main_banner" src="/resources/banner/20190502_133801490.jpg" /></a></li> -->
       <!--   <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo3"><img src="/resources/banner/gift_card_banner.jpg" /></a></li> -->
       <!--  <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo2"><img src="/resources/banner/insurance_banner.jpg" /></a></li> -->
      </ul>
