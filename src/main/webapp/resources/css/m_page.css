@@ -747,7 +747,7 @@ button {color : #000; font-weight:400}
 #main .main_rpoint span{padding:0 20px;}
 #main .main_gpoint span{padding:0 20px;}
 
-#main .m_noti{padding:13px 0;font-size:12px;color:#333;font-weight:bold;}
+#main .m_noti{padding:13px 0;font-size:12px;color:#333;font-weight:bold;border-bottom:1px solid #f1f1f1;}
 #main .m_noti span:nth-child(1){padding:0 5px 0 10px;}
 #main .m_noti span:nth-child(2){color:#fff;background-color:#ec1c1c;border-radius:10px;font-size:9px;padding:5px;}
 #main .m_noti span:nth-child(3){float:right;padding-right:10px;}
