@@ -194,8 +194,10 @@
 		<div><img src="/resources/images/r_search.png"><p>가맹점검색</p></div>
 		<div><img src="/resources/images/r_phone.png"><p>고객센터</p></div>
 	</div>
-	<div class="m_search">
-		<span>가맹점 검색</span><span><img src="/resources/images/r_bottom_search.png"></span>
+	<div style="background-color:#f1f1f1;padding:1px 0;">
+		<div class="m_search">
+			<span>가맹점 검색</span><span><img src="/resources/images/r_bottom_search.png"></span>
+		</div>
 	</div>
 	<div class="m_banner">
 		<img src="/resources/images/r_banner.png">
