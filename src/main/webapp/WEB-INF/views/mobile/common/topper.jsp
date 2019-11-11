@@ -30,11 +30,11 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a href="javascript:history.back()" class="navbar-back"><i class="fas fa-chevron-left"></i></a>
-					<a onclick="startQRScan()" class="navbar-qr"><i class="fas fa-qrcode"></i></a>
+					<a onclick="startQRScan()" class="navbar-qr"><i class="far fa-bell" style="color:#333;"></i></a>
 					<button type="button" class="navbar-toggle" onclick="openNav()">
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span	class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/m/main/index.do"><img src="/resources/images/logo.png" /></a>
+					<a class="navbar-brand" href="/m/main/index.do"><img src="/resources/images/logo.png" />1111</a>
 				</div>
 				<div id="myNavbarbg"></div>
 				<div class=" navbar-collapse" id="myNavbar">

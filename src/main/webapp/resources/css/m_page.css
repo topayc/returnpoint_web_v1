@@ -9,8 +9,8 @@ a, a:hover, a:focus{ text-decoration:none;color:#333;font-weight:400;outline:non
 input[type=checkbox], input[type=radio]{margin:0;}
 
 .wrap{ position: fixed;overflow-x: hidden; width: 100%;height: 100%;overflow-y: scroll !important;}
-header{position:fixed;width:100%;height:51px;border-top:3px solid #391dab;border-bottom:1px solid #ddd;top:0;z-index: 2;background: #fff;}
-header h4{position: absolute;top: 18px; width: 100%; text-align:center;color:#391dab; font-size:15px;font-family: 'Nanum Gothic', sans-serif;font-weight: 700;}
+header{position:fixed;width:100%;height:51px;border-top:3px solid #33cccc;border-bottom:1px solid #ddd;top:0;z-index: 2;background: #fff;}
+header h4{position: absolute;top: 18px; width: 100%; text-align:center;color:#333; font-size:15px;font-family: 'Nanum Gothic', sans-serif;font-weight: 700;}
 header h4 span{color:#ff6600;}
 nav{border-bottom:1px solid rgba(255, 255, 255, 0.22);z-index: 1;}
 nav .navbar-back{float: left;}
@@ -21,7 +21,7 @@ nav .navbar-qr>i{padding: 12px 16px; color: #391dab; font-size: 21px;}
 nav .navbar-brand{display:none;}
 nav .navbar-brand>img{width:98px;}
 nav .navbar-toggle {padding: 7px 0px;}
-nav .navbar-toggle .icon-bar {background: #391dab; border-radius: 1px;}
+nav .navbar-toggle .icon-bar {background: #333; border-radius: 1px;}
 nav #myNavbar{position: fixed;width:100%;top: -1px; right: -100%; height: 100%;transition: 0.3s;padding: 0;margin:0;}
 nav #myNavbar .navbar-nav {width: 70%;position: absolute;margin:0;right: 0;top: 0px;background: #fff;height: 101%;overflow : auto;}
 nav #myNavbar .closebtn{width: 100%;height: 100%; position: absolute;}
@@ -733,3 +733,31 @@ button {color : #000; font-weight:400}
  .rpoint_withdrawal .rpoint_withdrawal_button{border:none;padding:20px 0;}
  .rpoint_withdrawal .rpoint_withdrawal_button button{width:49.5%;border:none;border-radius:5px;background-color:#391eab;color:#fff;padding:10px 0;}
  .rpoint_withdrawal .rpoint_withdrawal_button button:nth-child(2){float:right;}
+ 
+ /*앱개편 페이지*/
+ 
+.badge{padding:10px 5px;border-radius:55px;}
+#main .main{width:100%;height:138px;overflow:hidden;position:relative;}
+#main .slide{width:100%;height:100%;position:absolute;}
+#main .slide img{width:100%;height:auto;}
+
+#main .main_point{overflow:hidden;}
+#main .main_rpoint{float:left;width:50%;text-align:center;padding:13px 0;font-size:13px;font-weight:bold;color:#fff;background-color:#ff0066;}
+#main .main_gpoint{float:right;width:50%;text-align:center;padding:13px 0;font-size:13px;font-weight:bold;color:#fff;background-color:#33cccc;}
+#main .main_rpoint span{padding:0 20px;}
+#main .main_gpoint span{padding:0 20px;}
+
+#main .m_noti{padding:13px 0;font-size:12px;color:#333;font-weight:bold;}
+#main .m_noti span:nth-child(1){padding:0 5px 0 10px;}
+#main .m_noti span:nth-child(2){color:#fff;background-color:#ec1c1c;border-radius:10px;font-size:9px;padding:5px;}
+#main .m_noti span:nth-child(3){float:right;padding-right:10px;}
+
+#main .main_img_box{overflow:hidden;border:1px solid #ccc;}
+#main .main_img_box div{float:left;width:33.33%;padding:15px 0;border:1px solid #ccc;overflow:hidden;font-size:10px;color:#333;text-align:center;font-weight:bold;}
+#main .main_img_box div img{margin-bottom:10px;}
+
+#main .m_search{border:1px solid #ccc;margin:10px;border-radius:10px;text-identy:20px;text-indent:10px;padding:8px;}
+#main .m_search img{float:right;}
+
+#main .m_banner{width:100%;overflow:hidden;border:2px solid #ccc;}
+#main .m_banner img{width:100%;height:auto;}

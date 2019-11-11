@@ -141,106 +141,71 @@
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->
-   <a href="/m/main/index.do"><h4>RETURN<span>P</span> </h4></a>
+   <a href="/m/main/index.do"><h4>RETURNP</h4></a>
    </header>
    <!-- main begin -->
-   <section class="nobtn">
-     <ul class="nav nav-tabs">
-       <li class="main_rpoint active"><a data-toggle="tab" href="#main_rpoint"><span style = "font-size : 11pt"><spring:message code="label.rpoint" /></span></a></li>
-       <li class="main_gpoint"><a data-toggle="tab" href="#main_gpoint"><span style = "font-size : 11pt"><spring:message code="label.gpoint" /></span></a></li>
-     </ul>
-     <div class="tab-content">
-       <div id="main_rpoint" class="tab-pane fade in active">
-         <h5><spring:message code="label.rpay_summary"  arguments = "${sessionScope.memberName}"/></h5>
-         <p><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/>P</p>
-         <ul>
-            <li><a onclick = "movePage('/m/mypage/m_rpay_use_manage.do?memberNo=${model.memberTypeInfo.memberNo}')" ><i class="fas fa-qrcode"></i>&nbsp;<spring:message code="label.use" /></a></li>
-           <%--  <li><a href="/m/mypage/pay_gift.do"><i class="fas fa-gift"></i>&nbsp;<spring:message code="label.gift" /></a></li> --%>
-            <li><a href="/m/mypage/newpay.do"><i class="fas fa-list-ul"></i>&nbsp;<spring:message code="label.transition_history" /></a></li>
-         </ul>
-       </div>
-       <div id="main_gpoint" class="tab-pane fade">
-         <h5><spring:message code="label.rpoint_summary"  arguments = "${sessionScope.memberName}"/></h5>
-         <p><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/>P</p>
-         <ul>
-            <li><a onclick="startQRScan()"><i class="fas fa-qrcode"></i>&nbsp;<spring:message code="label.accumulate" /></a></li>
-         <%--    <li><a href="/m/mypage/point_gift.do"><i class="fas fa-gift">&nbsp;</i><spring:message code="label.gift" /></a></li> --%>
-            <li><a href="/m/mypage/newpoint.do"><i class="fas fa-list-ul">&nbsp;</i><spring:message code="label.transition_history" /></a></li>
-         </ul>
-       </div>
-     </div>
+   <section class="nobtn" id = "main">
+   <!-- 이벤트 관련 슬라이드 이미지 스크립트 -->
+   <script type="text/javascript">
+	   $(document).ready(function(){
+			var current = 0;
+			var $slides = $(".slide");
+			var total = 2;
+	
+		$slides.css("right","-500px");
+		$slides.eq(0).css("right","0px");
+	
+		function setSlide(){
+			if (current+1 >= total) move(0);
+			else move(current + 1);
+		}
+	
+		function move(idx){
+			$slides.eq(current).animate({"right":"500px"});
+			$slides.eq(idx).css({"right":"-500px"});
+			$slides.eq(idx).animate({"right":"0px"});
+			current=idx;
+		}
+		setInterval(setSlide,2500);
+	});
+   </script>
+   <!-- 이벤트 관련 슬라이드 이미지 -->
+    <div class="main">
+		<div class="slide"><img src="/resources/images/slide1.png"/></div>
+		<div class="slide"><img src="/resources/images/slide2.png"/></div>
+		<div class="slide"><img src="/resources/images/slide3.png"/></div>
+	</div>
+	<div class="main_point">
+		<div class="main_rpoint"><span>R 포인트</span><span>98,000</span></div>
+		<div class="main_gpoint"><span>G 포인트</span><span>98,000</span></div>
+	</div>
+	<!-- 공지사항 -->
+	<div class="m_noti">
+		<span>[공지]현금 영수증 G 포인트 적립 개시</span><span>NEW</span><span>2019-11-11</span>
+	</div>
+	<div class="main_img_box">
+		<div><img src="/resources/images/r_point.png"><p>포인트</p></div>
+		<div><img src="/resources/images/r_money.png"><p>포인트 출금/계좌</p></div>
+		<div><img src="/resources/images/r_qrcode.png"><p>QR 코드스캔</p></div>
+		<div><img src="/resources/images/r_receipt.png"><p>포인트 적립권</p></div>
+		<div><img src="/resources/images/r_credit.png"><p>R POINT 상품권</p></div>
+		<div><img src="/resources/images/r_set.png"><p>환경설정</p></div>
+		<div><img src="/resources/images/r_my.png"><p>내정보</p></div>
+		<div><img src="/resources/images/r_search.png"><p>가맹점검색</p></div>
+		<div><img src="/resources/images/r_phone.png"><p>고객센터</p></div>
+	</div>
+	<div class="m_search">
+		<span>가맹점 검색</span><span><img src="/resources/images/r_bottom_search.png"></span>
+	</div>
+	<div class="m_banner">
+		<img src="/resources/images/r_banner.png">
+	</div>
 
 
-           <c:if test = "${! empty model.notice}">
-            <div class="main_notice">
-              <span class = "notice_title">
-                <a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">${model.notice.title}</a></span>
 
-              <c:set var="now" value="<%=new java.util.Date()%>"/>
-              <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
-
-              <fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
-              <fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
-        <c:if test="${today - postData <= 5}">
-          <span class ="badge" style = "border : 1px solid #04B404; background-color: #fff;color : #088A08;display : inline;font-weight : 400;font-size: 10px">new</span>
-         </c:if>
-
-            <%--   <span class = "notice_time">
-                 <fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
-                </span> --%>
-            </div>
-        </c:if>
-  <div class="main_link">
-      <ul>
-         <li onclick="startQRScan()"'><img src="/resources/images/img_qr.png"><p>QR스캔</p></li>
-         <li onclick = "movePage('/m/mypage/rpoint/rpoint_withdrawal.do')"><img src="/resources/images/img_coin.png"><p>R포인트출금</p></li>
-         <li onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/img_credit.png"><p>포인트적립권</p></li>
-         <li onclick = "movePage('/m/map/rpmap.do')"><img src="/resources/images/img_location.png"><p>내주변/검색</p></li>
-      </ul>
-   </div>
-
-
-<%--
-     <div class="search">
-       <p class="searchbtn"><a href="/m/map/rpmap.do"><i class="fas fa-map-marker-alt"></i> <spring:message code="label.find_merchants" /></a></p>
-      <input id="text_address" type="text" class="form-control" placeholder="ex)강남역, 시청역, 김포 ...">
-      <i class="fas fa-search" onclick="searchMap()"></i>
-      </div> --%>
-
-
-  <div class="center store">
-       <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg"  /></div>
-       <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
-       <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
-       <div style = "width:20%" ><img width = "58" height = "58" src="/resources/images/m_store01.jpg" /></div>
-       <div style = "width:20%" ><a href="https://sincar.co.kr/UID=rp4282"><img width = "58" height = "58" src="/resources/banner/new_car_mall_circle.png" ></a></div>
-     </div>
-   <ul class="banner">
-      <li><a href="http://rp.umallok.com"><img class = "main_banner" src="/resources/banner/umall.jpg" /></a></li>
-        <li><a href="http://returnpoint.net  "><img class = "main_banner" src="/resources/banner/rewa.jpg" /></a></li>
-        <!--  <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo1"><img class = "main_banner" src="/resources/banner/20190502_133801490.jpg" /></a></li> -->
-      <!--   <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo3"><img src="/resources/banner/gift_card_banner.jpg" /></a></li> -->
-      <!--  <li><a href="http://nowpay.80port.net/allpay/bbs/board.php?bo_table=qo2"><img src="/resources/banner/insurance_banner.jpg" /></a></li> -->
-     </ul>
-     <div class="footinfo">
-        <a href="/m/company/service_member.do"><spring:message code="label.what_return_point" /></a><small>|</small>
-          <a href="/m/board/boardList.do?bbsType1=1"><spring:message code="label.notice" /></a><small>|</small>
-        <a href="/m/board/boardList.do?bbsType1=4"><spring:message code="label.general_affiliated_inquiry" /></a><small>|</small>
-        <a href="/m/board/boardList.do?bbsType1=2&&bbsType2=0"><spring:message code="label.web.faq" /></a>
-      <%--   <p>TOTAL<br /><span class="total">${model.memberTotal} </span></p> --%>
-     </div>
    </section>
 </div>
-<script>
-  $(".center").slick({
-      infinite: true,
-      centerMode: true,
-      arrows: false,
-      slidesToShow: 4,
-      slidesToScroll: 3,
-      autoplay:true
-    });
-</script>
+
 </body>
 <!-- body end -->
 </html>
