@@ -175,6 +175,12 @@
 		<div class="slide"><img src="/resources/images/slide2.png"/></div>
 		<!--<div class="slide"><img src="/resources/images/slide3.png"/></div> -->
 	</div>
+	<div class="main_text">
+		<ul>
+			<li>소비가 저축이 되는 R POINT</li>
+			<li>R POINT 가맹점에서<br>결제 후 영수증 QR 코드<br>스캔만 하면 결제 금액<br>100%포인트 실시간 적립!</li>
+		</ul>
+	</div>
 	<div class="main_point">
 		<div class="main_rpoint"><span><spring:message code="label.n_rpoint" /></span><span>98,000</span></div>
 		<div class="main_gpoint"><span><spring:message code="label.n_gpoint" /></span><span>98,000</span></div>
