@@ -23,7 +23,7 @@ nav .navbar-brand>img{width:98px;}
 nav .navbar-toggle {padding: 7px 0px;}
 nav .navbar-toggle .icon-bar {background: #333; border-radius: 1px;}
 nav #myNavbar{position: fixed;width:100%;top: -1px; right: -100%; height: 100%;transition: 0.3s;padding: 0;margin:0;}
-nav #myNavbar .navbar-nav {width: 90%;position: absolute;margin:0;right: 0;top: 0px;background: #fff;height: 101%;overflow : auto;}
+nav #myNavbar .navbar-nav {width: 80%;position: absolute;margin:0;right: 0;top: 0px;background: #fff;height: 101%;overflow : auto;}
 nav #myNavbar .closebtn{width: 100%;height: 100%; position: absolute;}
 nav #myNavbar .navbar-nav .homelink{position: absolute; top: 27px; right: 27px; font-size: 25px;}
 nav #myNavbar .navbar-nav .homelink a{color:#fff;}
@@ -38,7 +38,7 @@ nav #myNavbar .navbar-nav>li>a .fa-sort-down {display:none;}
 nav #myNavbar .navbar-nav>li.member{background: #f5f5f5;}
 nav #myNavbar .navbar-nav>li.language{display:none;}
 #myNavbarbg{position:fixed;width:100%;height:100%;left:0;top:0;display:none;background-color:rgba(0,0,0,0.6);pointer-events: none;}
-footer{display:none;}
+
 
 .submenu{background-color:#391dab;text-align:center;padding-top: 50px;}
 .submenu li{display:inline-block;padding:15px 15px;font-weight:400;}
@@ -769,3 +769,11 @@ nav #myNavbar .navbar-nav .r_homelink li{padding:15px;border-bottom:1px solid #f
 nav #myNavbar .navbar-nav .r_homelink li:last-child{border:none;text-align:center;}
 nav #myNavbar .navbar-nav .r_homelink li span{color:#fff;background-color:red;border-radius:10px;font-size:10px;padding:3px;margin-left:7px;}
 nav #myNavbar .navbar-nav .r_homelink li img{float:right;}
+
+/*footer 페이지*/
+#main footer{background-color:#f1f1f1;padding:15px;color:#333;font-size:12px;}
+#main footer li{line-height:20px;}
+#main footer li span{border-right:1px solid #ccc;}
+#main footer li span:last-child{border:none;}
+#main footer li:nth-child(1){margin-bottom:10px;}
+#main footer li:nth-child(5){margin-top:10px;}

@@ -168,7 +168,7 @@
 		}
 		setInterval(setSlide,2500);
 	});
-   </script>-->
+   </script>
    <!-- 이벤트 관련 슬라이드 이미지 -->
     <div class="main">
 		<!-- <div class="slide"><img src="/resources/images/slide1.png"/></div>-->
@@ -202,6 +202,15 @@
 	<div class="m_banner">
 		<img src="/resources/images/r_banner.png">
 	</div>
+	 <footer>
+      <ul>
+         <li><small>(주)</small> <b>탑해피월드</b></li>
+         <li>서울특별시 구로구 구로동 170-5 우림 이비지센터 806호</li>
+         <li><span>대표자 : 윤동욱&nbsp;</span>&nbsp; 사업자들록번호 : 11101110111</li>
+         <li>고객센터 운영시간 : 10시 ~ 12시 30분, 13시 30분 ~ 18시</li>
+         <li><span><a href="#">회사소개</a>&nbsp;</span>&nbsp;<span><a href="#">이용약관</a>&nbsp;</span>&nbsp;<span><a href="#">개인정보 처리방침</a>&nbsp;</span>&nbsp;<span><a href="#">이메일 무단수 거부</a>&nbsp;</span></li>
+      </ul>
+   </footer>
 
 
 
