@@ -30,7 +30,8 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a href="javascript:history.back()" class="navbar-back"><i class="fas fa-chevron-left"></i></a>
-					<a onclick="startQRScan()" class="navbar-qr"><i class="far fa-bell" style="color:#333;"></i></a>
+					<a onclick="startQRScan()" class="navbar-qr"><i class="far fa-bell" style="color:#333;position:relative;"></i>
+					<span style="position:absolute;color:#fff;background-color:red;padding:1px 5px;font-size:5px;border-radius:10px;left:25px;top:10px;">1</span></a>
 					<button type="button" class="navbar-toggle" onclick="openNav()">
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span	class="icon-bar"></span>
 					</button>
@@ -41,6 +42,7 @@
 					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"></a>
 					<ul class="nav navbar-nav navbar-right"> 
 						<div class="homelink"> <a href="/m/main/index.do"><i class="fas fa-home"></i></a></div>
+						<div class="h_img_link"><img src="/resources/images/r_general.png"></div>
 						<c:choose>
 							<c:when	test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
 								<div class="userprofile">
@@ -54,36 +56,26 @@
 								</div>
 							</c:otherwise>
 						</c:choose>
-						<c:choose>
-							<c:when	test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
-								<li><a href="/m/member/login.do"><i class="fas fa-credit-card"></i><spring:message code="label.rpoint" /></a></li>
-								<li><a href="/m/member/login.do"><i class="fas fa-coins"></i><spring:message code="label.gpoint" /></a></li>
-								<li><a onclick="startQRScan()"><i class="fas fa-qrcode"></i><spring:message code="label.topper.menu.sacnqr" /></a></li>
-							</c:when>
-							<c:otherwise>
-								<li><a href="/m/mypage/newpay.do"><i class="fas fa-credit-card"></i><spring:message code="label.rpoint" /></a></li>
-								<li><a href="/m/mypage/newpoint.do"><i class="fas fa-coins"></i><spring:message code="label.gpoint" /></a></li>
-								<li><a onclick="startQRScan()"><i class="fas fa-qrcode"></i><spring:message code="label.topper.menu.sacnqr" /></a></li>
-								<li><a href="/m/mypage/manage_qr.do"><i class="fas fa-laptop"></i><spring:message code="label.manage_qr_code" /></a></li>
-							</c:otherwise>
-						</c:choose>
-						<li><a href="/m/coupon/point_coupon_reg.do"><i class="far fa-credit-card"></i>&nbsp;<spring:message code="label.topper.menu.reg_point_coupon" /> </a></li> 				 
-						<li><a onclick="location='/m/map/rpmap.do'"><i class="fas fa-map-marker-alt"></i><spring:message code="label.topper.menu.search_aff" /></a></li>
-						<li><a href ="/m/affiliate/affiliateSearchList.do"><i class="fas fa-search"></i><spring:message code="label.topper.menu.search_aff2" /></a></li>
-		<!-- 				<li><a href ="/m/affiliate/affiliateSearch.do"><i class="fas fa-map-marker-alt"></i> new 가맹점 찾기</a></li> -->
-						<%-- <li><a href="/m/giftCard/giftCardDetail.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> --%>
-						<li><a href="/m/giftCard/giftCardList.do"><i class="fas fa-gift"></i><spring:message code="label.mygiftcard" /></a></li> 
-						<li><a href="/m/mypage/m_selectLanguage.do"><i class="fas fa-globe-americas"></i> <i class="fas fa-sort-down"></i><spring:message code="label.mypageLanguage" /></a></li>
-						<li><a href="/m/customer/customerCenter.do"><i class="fas fa-comment"></i><i class="fas fa-sort-down"></i><spring:message code="label.topper.menu.customer_center" /></a></li>
+						<!-- 홈링크 하단 페이지 -->
+						<div class="r_homelink">
+							<ul>
+								<li><a href="#">공지 사항<span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#">이벤트<span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#">광고 문의<img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#">가맹점 등록<img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#">환경 설정<img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#">고객 센터<img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#">언어 설정<img src="/resources/images/r_home_button.png"></a></li>
+								<li>R POINT 고객 센터 <b>02-989-9812</b></li>
+							</ul>
+						</div>
+	
 						<c:choose>
 							<c:when test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
 								<li class="member form-login-in"><a href="/m/member/login.do"><i class="fas fa-sign-in-alt"></i><spring:message code="login.form.submit" /></a></li>
 								<li class="member form-login-in"><a href="/m/member/join.do"><i class="fas fa-user"></i><spring:message code="label.join" /></a></li>
 								<!-- 로그인 후 -->
-							</c:when>
-							<c:otherwise>
-								<li class="member form-login-out"><a href="/m/mypage/mypage_myinfo.do"><i class="fas fa-cog"></i><spring:message code="label.topper.menu.my_page" /></a></li>
-							</c:otherwise>
+							</c:when>	
 						</c:choose>
 						<!-- 추가 시작-->
 						<!-- language begin -->

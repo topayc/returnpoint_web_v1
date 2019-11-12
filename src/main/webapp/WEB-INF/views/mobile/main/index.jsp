@@ -185,10 +185,10 @@
 	</div>
 	<div class="main_img_box">
 		<div><img src="/resources/images/r_point.png"><p>포인트</p></div>
-		<div><img src="/resources/images/r_money.png"><p>포인트 출금/계좌</p></div>
-		<div><img src="/resources/images/r_qrcode.png"><p>QR 코드스캔</p></div>
-		<div><img src="/resources/images/r_receipt.png"><p>포인트 적립권</p></div>
-		<div><img src="/resources/images/r_credit.png"><p>R POINT 상품권</p></div>
+		<div><img src="/resources/images/r_money.png"><p>출금/계좌</p></div>
+		<div><img src="/resources/images/r_qrcode.png"><p>QR코드</p></div>
+		<div><img src="/resources/images/r_receipt.png"><p>적립권</p></div>
+		<div><img src="/resources/images/r_credit.png"><p>R_P 상품권</p></div>
 		<div><img src="/resources/images/r_set.png"><p>환경설정</p></div>
 		<div><img src="/resources/images/r_my.png"><p>내정보</p></div>
 		<div><img src="/resources/images/r_search.png"><p>가맹점검색</p></div>
