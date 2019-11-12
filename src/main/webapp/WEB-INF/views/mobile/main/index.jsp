@@ -171,8 +171,8 @@
    </script>
    <!-- 이벤트 관련 슬라이드 이미지 -->
     <div class="main">
-		<!-- <div class="slide"><img src="/resources/images/slide1.png"/></div>-->
-		<div class="slide"><img src="/resources/images/slide2.png"/></div>
+		 <div class="slide"><img src="/resources/images/slide1.png"/></div>
+		<!--<div class="slide"><img src="/resources/images/slide2.png"/></div>-->
 		<!--<div class="slide"><img src="/resources/images/slide3.png"/></div> -->
 	</div>
 	<div class="main_point">
