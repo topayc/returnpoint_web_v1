@@ -773,7 +773,7 @@ nav #myNavbar .navbar-nav .r_homelink li img{float:right;}
 /*footer 페이지*/
 #main footer{background-color:#f1f1f1;padding:15px;color:#333;font-size:12px;}
 #main footer li{line-height:20px;}
-#main footer li span{border-right:1px solid #ccc;}
+#main footer li span{border-right:1px solid #ccc;padding:0 3px;}
 #main footer li span:last-child{border:none;}
 #main footer li:nth-child(1){margin-bottom:10px;}
 #main footer li:nth-child(5){margin-top:10px;}
