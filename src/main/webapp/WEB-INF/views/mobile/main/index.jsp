@@ -145,7 +145,7 @@
    </header>
    <!-- main begin -->
    <section class="nobtn" id = "main">
-   <!-- 이벤트 관련 슬라이드 이미지 스크립트 -->
+   <!-- 이벤트 관련 슬라이드 이미지 스크립트 
    <script type="text/javascript">
 	   $(document).ready(function(){
 			var current = 0;
@@ -168,7 +168,7 @@
 		}
 		setInterval(setSlide,2500);
 	});
-   </script>
+   </script>-->
    <!-- 이벤트 관련 슬라이드 이미지 -->
     <div class="main">
 		<!-- <div class="slide"><img src="/resources/images/slide1.png"/></div>-->
