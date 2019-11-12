@@ -51,6 +51,7 @@
 							</c:when>
 							<c:otherwise> 
 								<div class="userprofile">
+								<%-- 	<div class="profilename"><spring:message code="label.n_nice_meet" /></div> --%>
 									<div class="profilename">${sessionScope.memberName} <spring:message code="label.topper.member" /></div>
 									<div class="profileemail">${sessionScope.memberEmail}</div>
 								</div>
@@ -59,14 +60,14 @@
 						<!-- 홈링크 하단 페이지 -->
 						<div class="r_homelink">
 							<ul>
-								<li><a href="#">공지 사항<span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#">이벤트<span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#">광고 문의<img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#">가맹점 등록<img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#">환경 설정<img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#">고객 센터<img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#">언어 설정<img src="/resources/images/r_home_button.png"></a></li>
-								<li>R POINT 고객 센터 <b>02-989-9812</b></li>
+								<li><a href="#"><spring:message code="label.n_notice" />공지 사항<span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#"><spring:message code="label.n_event" />이벤트<span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#"><spring:message code="label.n_add_call" />광고 문의<img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#"><spring:message code="label.n_register_affiliate" />가맹점 등록<img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#"><spring:message code="label.n_settings" />환경 설정<img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#"><spring:message code="label.n_cs" />고객 센터<img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#"><spring:message code="label.n_lang_settings" />언어 설정<img src="/resources/images/r_home_button.png"></a></li>
+								<li><spring:message code="label.n_en_rpoint" />&nbsp;<spring:message code="label.n_cs" />&nbsp;&nbsp;<b>02-989-9812</b></li>
 							</ul>
 						</div>
 	

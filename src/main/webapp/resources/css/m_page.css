@@ -1,5 +1,6 @@
 /* common */
 
+* {font-weight : 300}
 html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,img { margin:0; padding:0; }
 html,body{ width:100%; color:#000;font-size:13px;letter-spacing:0.5px;font-family: 'Nanum Gothic', sans-serif !important;font-weight:200;  height: 100%}
 html{height:100%;}
@@ -771,8 +772,8 @@ nav #myNavbar .navbar-nav .r_homelink li span{color:#fff;background-color:red;bo
 nav #myNavbar .navbar-nav .r_homelink li img{float:right;}
 
 /*footer 페이지*/
-#main footer{background-color:#f1f1f1;padding:15px;color:#333;font-size:12px;}
-#main footer li{line-height:20px;}
+#main footer{background-color:#f1f1f1;padding:15px;color:#333;font-size:11px;}
+#main footer li{line-height:18px;}
 #main footer li span{border-right:1px solid #ccc;padding:0 3px;}
 #main footer li span:last-child{border:none;}
 #main footer li:nth-child(1){margin-bottom:10px;}

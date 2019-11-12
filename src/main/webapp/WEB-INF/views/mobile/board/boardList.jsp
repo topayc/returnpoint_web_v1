@@ -78,12 +78,6 @@ function moveFaq(bbsType2){
 		            <td><a id ="faq_6"onclick = "moveFaq('6')">쇼핑몰</a></td>
 		            <td><a id ="faq_7"onclick = "moveFaq('7')">가맹</a></td>
 		         </tr>
-		          <tr>
-		            <td><a id ="faq_10"onclick = "moveFaq('10')">기타</a></td>	
-		            <td></td>	
-		            <td></td>	
-		            <td></td>	
-		         </tr>
 		      </table>
 		   </div>
 		   </c:if>

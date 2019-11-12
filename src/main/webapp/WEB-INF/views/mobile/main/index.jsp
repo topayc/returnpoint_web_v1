@@ -141,7 +141,7 @@
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->
-   <a href="/m/main/index.do"><h4>RETURNP</h4></a>
+   <a href="/m/main/index.do"><h4><spring:message code="label.n_returnp" /></h4></a>
    </header>
    <!-- main begin -->
    <section class="nobtn" id = "main">
@@ -176,27 +176,27 @@
 		<!--<div class="slide"><img src="/resources/images/slide3.png"/></div> -->
 	</div>
 	<div class="main_point">
-		<div class="main_rpoint"><span>R 포인트</span><span>98,000</span></div>
-		<div class="main_gpoint"><span>G 포인트</span><span>98,000</span></div>
+		<div class="main_rpoint"><span><spring:message code="label.n_rpoint" /></span><span>98,000</span></div>
+		<div class="main_gpoint"><span><spring:message code="label.n_gpoint" /></span><span>98,000</span></div>
 	</div>
 	<!-- 공지사항 -->
 	<div class="m_noti">
 		<span>[공지]현금 영수증 G 포인트 적립 개시</span><span>NEW</span><span>2019-11-11</span>
 	</div>
 	<div class="main_img_box">
-		<div><img src="/resources/images/r_point.png"><p>포인트</p></div>
-		<div><img src="/resources/images/r_money.png"><p>출금/계좌</p></div>
-		<div><img src="/resources/images/r_qrcode.png"><p>QR코드</p></div>
-		<div><img src="/resources/images/r_receipt.png"><p>적립권</p></div>
-		<div><img src="/resources/images/r_credit.png"><p>R_P 상품권</p></div>
-		<div><img src="/resources/images/r_set.png"><p>환경설정</p></div>
-		<div><img src="/resources/images/r_my.png"><p>내정보</p></div>
-		<div><img src="/resources/images/r_search.png"><p>가맹점검색</p></div>
-		<div><img src="/resources/images/r_phone.png"><p>고객센터</p></div>
+		<div><img src="/resources/images/r_point.png"><p><spring:message code="label.n_point" /></p></div>
+		<div><img src="/resources/images/r_money.png"><p><spring:message code="label.n_withdrawal" /></p></div>
+		<div><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.n_qrcode" /></p></div>
+		<div><img src="/resources/images/r_receipt.png"><p><spring:message code="label.n_point_certificate" /></p></div>
+		<div><img src="/resources/images/r_credit.png"><p><spring:message code="label.n_gift_card" /></p></div>
+		<div><img src="/resources/images/r_set.png"><p><spring:message code="label.n_settings" /></p></div>
+		<div><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" /></p></div>
+		<div><img src="/resources/images/r_search.png"><p><spring:message code="label.n_my_affiliate" /></p></div>
+		<div><img src="/resources/images/r_phone.png"><p><spring:message code="label.n_cs" /></p></div>
 	</div>
 	<div style="background-color:#f1f1f1;padding:1px 0;">
 		<div class="m_search">
-			<span>가맹점 검색</span><span><img src="/resources/images/r_bottom_search.png"></span>
+			<span><spring:message code="label.n_search_affiliate" /></span><span><img src="/resources/images/r_bottom_search.png"></span>
 		</div>
 	</div>
 	<div class="m_banner">
@@ -206,7 +206,7 @@
       <ul>
          <li><small>(주)</small> <b>탑해피월드</b></li>
          <li>서울특별시 구로구 구로동 170-5 우림 이비지센터 806호</li>
-         <li><span>대표자 : 윤동욱&nbsp;</span>&nbsp; 사업자들록번호 : 11101110111</li>
+         <li>대표자 : 윤동욱&nbsp;&nbsp; 사업자들록번호 : 11101110111</li>
          <li>고객센터 운영시간 : 10시 ~ 12시 30분, 13시 30분 ~ 18시</li>
          <li><span><a href="#">회사소개</a>&nbsp;</span>&nbsp;<span><a href="#">이용약관</a>&nbsp;</span>&nbsp;<span><a href="#">개인정보 처리방침</a>&nbsp;</span>&nbsp;<span><a href="#">이메일 무단수 거부</a>&nbsp;</span></li>
       </ul>
