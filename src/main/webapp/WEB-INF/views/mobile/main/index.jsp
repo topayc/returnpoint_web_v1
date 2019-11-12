@@ -190,15 +190,15 @@
 		<span>[공지]현금 영수증 G 포인트 적립 개시</span><span>NEW</span><span>2019-11-11</span>
 	</div>
 	<div class="main_img_box">
+		<div><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.n_qrcode" /></p></div>
 		<div><img src="/resources/images/r_point.png"><p><spring:message code="label.n_point" /></p></div>
 		<div><img src="/resources/images/r_money.png"><p><spring:message code="label.n_withdrawal" /></p></div>
-		<div><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.n_qrcode" /></p></div>
+		<div><img src="/resources/images/r_phone.png"><p><spring:message code="label.n_bank_account" /></p></div>
 		<div><img src="/resources/images/r_receipt.png"><p><spring:message code="label.n_point_certificate" /></p></div>
 		<div><img src="/resources/images/r_credit.png"><p><spring:message code="label.n_gift_card" /></p></div>
-		<div><img src="/resources/images/r_set.png"><p><spring:message code="label.n_settings" /></p></div>
-		<div><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" /></p></div>
 		<div><img src="/resources/images/r_search.png"><p><spring:message code="label.n_my_affiliate" /></p></div>
-		<div><img src="/resources/images/r_phone.png"><p><spring:message code="label.n_cs" /></p></div>
+		<div><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" /></p></div>
+		<div><img src="/resources/images/r_set.png"><p><spring:message code="label.n_settings" /></p></div>
 	</div>
 	<div style="background-color:#f1f1f1;padding:1px 0;">
 		<div class="m_search">
@@ -209,7 +209,7 @@
 		<img src="/resources/images/r_banner.png">
 	</div>
 	 <footer>
-      <ul>
+      <ul style = "font-weight:300">
          <li><small>(주)</small> <b>탑해피월드</b></li>
          <li>서울특별시 구로구 구로동 170-5 우림 이비지센터 806호</li>
          <li>대표자 : 윤동욱&nbsp;&nbsp; 사업자들록번호 : 11101110111</li>
