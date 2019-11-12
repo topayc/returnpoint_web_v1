@@ -182,39 +182,53 @@
 		</ul>
 	</div>
 	<div class="main_point">
-		<div class="main_rpoint"><span><spring:message code="label.n_rpoint" /></span><span>98,000</span></div>
-		<div class="main_gpoint"><span><spring:message code="label.n_gpoint" /></span><span>98,000</span></div>
+		<div class="main_rpoint"><span><spring:message code="label.n_rpoint" /></span><span><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/></span></div>
+		<div class="main_gpoint"><span><spring:message code="label.n_gpoint" /></span><span><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/></span></div>
 	</div>
 	<!-- 공지사항 -->
+	<c:if test = "${! empty model.notice}">
 	<div class="m_noti">
-		<span>[공지]현금 영수증 G 포인트 적립 개시</span><span>NEW</span><span>2019-11-11</span>
+		<span> <a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">${model.notice.title}</a></span>
+		
+		 <c:set var="now" value="<%=new java.util.Date()%>"/>
+         <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
+		 <fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
+          <fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
+		<c:if test="${today - postData <= 5}">
+		<span> NEW</span>
+		</c:if>
 	</div>
+	</c:if>
 	<div class="main_img_box">
-		<div><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.n_qrcode" /></p></div>
+		<div onclick="startQRScan()"><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.n_qrcode" /></p></div>
 		<div><img src="/resources/images/r_point.png"><p><spring:message code="label.n_point" /></p></div>
-		<div><img src="/resources/images/r_money.png"><p><spring:message code="label.n_withdrawal" /></p></div>
-		<div><img src="/resources/images/r_phone.png"><p><spring:message code="label.n_bank_account" /></p></div>
-		<div><img src="/resources/images/r_receipt.png"><p><spring:message code="label.n_point_certificate" /></p></div>
-		<div><img src="/resources/images/r_credit.png"><p><spring:message code="label.n_gift_card" /></p></div>
-		<div><img src="/resources/images/r_search.png"><p><spring:message code="label.n_my_affiliate" /></p></div>
-		<div><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" /></p></div>
-		<div><img src="/resources/images/r_set.png"><p><spring:message code="label.n_settings" /></p></div>
+		<div onclick = "movePage('/m/mypage/rpoint/rpoint_withdrawal.do?memberNo=${model.memberTypeInfo.memberNo}')"><img src="/resources/images/r_money.png"><p><spring:message code="label.n_withdrawal" /></p></div>
+		<div onclick = "movePage('/m/mypage/m_mybank_account_list.do?memberNo=${model.memberTypeInfo.memberNo}')" ><img src="/resources/images/r_phone.png"><p><spring:message code="label.n_bank_account" /></p></div>
+		<div onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/r_receipt.png"><p><spring:message code="label.n_point_certificate" /></p></div>
+		<div onclick = "movePage('/m/giftCard/giftCardList.do')"><img src="/resources/images/r_credit.png"><p><spring:message code="label.n_gift_card" /></p></div>
+		<div onclick = "movePage('/m/map/rpmap.do')"><img src="/resources/images/r_search.png"><p><spring:message code="label.n_my_affiliate" /></p></div>
+		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" /></p></div>
+		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_set.png"><p><spring:message code="label.n_settings" /></p></div>
 	</div>
 	<div style="background-color:#f1f1f1;padding:1px 0;">
-		<div class="m_search">
+		<div class="m_search" onclick = "movePage('/m/affiliate/affiliateSearchList.do')">
 			<span><spring:message code="label.n_search_affiliate" /></span><span><img src="/resources/images/r_bottom_search.png"></span>
 		</div>
 	</div>
-	<div class="m_banner">
+	<div class="m_banner" onclick = "movePage('http://rp.umallok.com')">
 		<img src="/resources/images/r_banner.png">
 	</div>
 	 <footer>
       <ul style = "font-weight:300">
          <li><small>(주)</small> <b>탑해피월드</b></li>
          <li>서울특별시 구로구 구로동 170-5 우림 이비지센터 806호</li>
-         <li>대표자 : 윤동욱&nbsp;&nbsp; 사업자들록번호 : 11101110111</li>
-         <li>고객센터 운영시간 : 10시 ~ 12시 30분, 13시 30분 ~ 18시</li>
-         <li><span><a href="#">회사소개</a>&nbsp;</span>&nbsp;<span><a href="#">이용약관</a>&nbsp;</span>&nbsp;<span><a href="#">개인정보 처리방침</a>&nbsp;</span>&nbsp;<span><a href="#">이메일 무단수 거부</a>&nbsp;</span></li>
+         <li>대표자 : 윤동욱&nbsp;&nbsp; <spring:message code="label.biz_number" /> : 754-86-01056</li>
+         <li><spring:message code="label.web.tophappyworldCustomerCenterOperationHours" /> : 10시 ~ 12시 30분, 13시 30분 ~ 18시</li>
+         <li>
+         	<span><a href="/m/customer/customerCenter.do"><spring:message code="label.web.companyIntroduction" /></a>&nbsp;</span>&nbsp;
+         	<span><a href="/m/company/service_member.do"><spring:message code="label.what_return_point" /></a>&nbsp;</span>&nbsp;
+         	<span><a href="/m/company/m_termsofuse.do"><spring:message code="label.web.termsAndConditions" /></a>&nbsp; </span>&nbsp;
+         	<span><a href="/m/company/m_privacypolicy.do"><spring:message code="label.web.personalInformationHandlingAndHandlingPolicy" /></a>&nbsp;</span>&nbsp;</li>
       </ul>
    </footer>
 

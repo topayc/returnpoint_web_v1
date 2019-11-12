@@ -775,7 +775,7 @@ nav #myNavbar .navbar-nav .r_homelink li span{color:#fff;background-color:red;bo
 nav #myNavbar .navbar-nav .r_homelink li img{float:right;}
 
 /*footer 페이지*/
-#main footer{background-color:#f1f1f1;padding:15px;color:#333;font-size:11px;}
+#main footer{background-color:#f1f1f1;padding:15px 15px 25px 15px;color:#333;font-size:11px;}
 #main footer li{line-height:18px;}
 #main footer li span{border-right:1px solid #ccc;padding:0 3px;}
 #main footer li span:last-child{border:none;}
