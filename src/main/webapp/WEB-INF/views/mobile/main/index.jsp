@@ -152,7 +152,7 @@
 			var $slides = $(".slide");
 			var total = 2;
 	
-		$slides.css("right","-500px");
+		$slides.css("right","-400px");
 		$slides.eq(0).css("right","0px");
 	
 		function setSlide(){
@@ -161,8 +161,8 @@
 		}
 	
 		function move(idx){
-			$slides.eq(current).animate({"right":"500px"});
-			$slides.eq(idx).css({"right":"-500px"});
+			$slides.eq(current).animate({"right":"400px"});
+			$slides.eq(idx).css({"right":"-400px"});
 			$slides.eq(idx).animate({"right":"0px"});
 			current=idx;
 		}
@@ -171,9 +171,9 @@
    </script>
    <!-- 이벤트 관련 슬라이드 이미지 -->
     <div class="main">
-		<div class="slide"><img src="/resources/images/slide1.png"/></div>
+		<!-- <div class="slide"><img src="/resources/images/slide1.png"/></div>-->
 		<div class="slide"><img src="/resources/images/slide2.png"/></div>
-		<div class="slide"><img src="/resources/images/slide3.png"/></div>
+		<!--<div class="slide"><img src="/resources/images/slide3.png"/></div> -->
 	</div>
 	<div class="main_point">
 		<div class="main_rpoint"><span>R 포인트</span><span>98,000</span></div>
