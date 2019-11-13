@@ -138,7 +138,7 @@
                </div>
                <div class="main_link">
                   <ul>
-                     <li><img src="/resources/images/r_phone.png"><span><p>R POINT</p>QR 스캔</span></li>
+                     <li><img src="/resources/images/r_qr.png"><span><p>R POINT</p>QR 스캔</span></li>
                      <li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립 내역 조회</span></li>
                   </ul>
                </div>
