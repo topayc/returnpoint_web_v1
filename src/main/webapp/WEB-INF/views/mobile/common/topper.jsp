@@ -30,8 +30,8 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a href="javascript:history.back()" class="navbar-back"><i class="fas fa-chevron-left"></i></a>
-					<a onclick="startQRScan()" class="navbar-qr"><i class="far fa-bell" style="color:#333;position:relative;"></i>
-					<span style="position:absolute;color:#fff;background-color:red;padding:1px 5px;font-size:5px;border-radius:10px;left:25px;top:10px;">1</span></a>
+				<!-- 	<a onclick="startQRScan()" class="navbar-qr"><i class="far fa-bell" style="color:#333;position:relative;"></i>
+					<span style="position:absolute;color:#fff;background-color:red;padding:1px 5px;font-size:5px;border-radius:10px;left:25px;top:10px;">1</span></a> -->
 					<button type="button" class="navbar-toggle" onclick="openNav()">
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span	class="icon-bar"></span>
 					</button>
@@ -60,13 +60,24 @@
 						<!-- 홈링크 하단 페이지 -->
 						<div class="r_homelink">
 							<ul>
-								<li><a href="#"><spring:message code="label.n_notice" /><span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#"><spring:message code="label.n_event" /><span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
+								<li>
+									<a href="/m/board/boardList.do?bbsType1=1">
+										<spring:message code="label.n_notice" />
+										<c:set var="now" value="<%=new java.util.Date()%>"/>
+									    <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
+									    <fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
+									    <fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
+										<c:if test="${today - postData <= 5}">
+											<span> NEW</span>
+										</c:if>
+										<img src="/resources/images/r_home_button.png"></a>
+								</li>
+							<%-- 	<li><a href="#"><spring:message code="label.n_event" /><span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
 								<li><a href="#"><spring:message code="label.n_add_call" /><img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#"><spring:message code="label.n_register_affiliate" /><img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#"><spring:message code="label.n_settings" /><img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#"><spring:message code="label.n_cs" /><img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#"><spring:message code="label.n_lang_settings" /><img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="#"><spring:message code="label.n_register_affiliate" /><img src="/resources/images/r_home_button.png"></a></li> --%>
+								<li><a href="/m/mypage/mypage_myinfo.do"><spring:message code="label.n_settings" /><img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="/m/customer/customerCenter.do"><spring:message code="label.n_cs" /><img src="/resources/images/r_home_button.png"></a></li>
+								<li><a href="/m/mypage/m_selectLanguage.do"><spring:message code="label.n_lang_settings" /><img src="/resources/images/r_home_button.png"></a></li>
 								<li><spring:message code="label.n_en_rpoint" />&nbsp;<spring:message code="label.n_cs" />&nbsp;&nbsp;<b>02-989-9812</b></li>
 							</ul>
 						</div>
