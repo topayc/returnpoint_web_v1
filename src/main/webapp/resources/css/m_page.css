@@ -806,5 +806,6 @@ li.on > .contents{height:auto;top:60px;width: 100%;}
 .point_detail_info .main_link > ul{display:inline;}
 .point_detail_info .main_link > ul > li {color:#000;height:67px;display:inline-block;width:48.5%;padding:5px 0 5px 0;color:#333;font-size:14px;font-weight:bold;border:1px solid #ccc;position: relative;}
 .point_detail_info .main_link > ul > li img{position: absolute;left:10px;top:10px;}
+.point_detail_info .g_link > ul > li img{position: absolute;left:10px;top:13px;}
 .point_detail_info .main_link > ul > li span{left:75px;top:16px;position: absolute;}
 .point_detail_info .main_link > ul > li p{font-size: 11px;color:#888;text-align:left;}

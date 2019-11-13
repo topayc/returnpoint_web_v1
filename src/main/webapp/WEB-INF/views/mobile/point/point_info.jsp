@@ -119,7 +119,7 @@
                <div class="main_link">
                   <ul>
                      <li><img src="/resources/images/r_cash.png"><span><p>R POINT</p>출금하기</span></li>
-                     <li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
+                     <li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립 내역 조회</span></li>
                   </ul>
                </div>
             </div>
@@ -136,7 +136,7 @@
                      <li><img src="/resources/images/time.png">&nbsp;발급 일자<span>2017-10-10 10:10:10</span></li>
                   </ul>
                </div>
-               <div class="main_link">
+               <div class="main_link g_link">
                   <ul>
                      <li><img src="/resources/images/r_qr.png"><span><p>R POINT</p>QR 스캔</span></li>
                      <li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립 내역 조회</span></li>
