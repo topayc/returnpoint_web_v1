@@ -106,28 +106,11 @@
    <section class="nobtn" id = "main">
 	 		<div class="point_detail_info">
 			<ul>
-		    <li>G POINT</li>
-		    <li>R POINT</li>
+		    <li class="main_rpoint active"><a data-toggle="tab" href="#tab-2"><span style = "font-size : 11pt"><spring:message code="label.rpoint" /></span></a></li>
+		    <li class="main_gpoint"><a data-toggle="tab" href="#tab-1"><span style = "font-size : 11pt"><spring:message code="label.gpoint" /></span></a></li>
 		  </ul>
-				<div class="top_detail" id="tab-1">
-					<ul>
-						<li>현재 차미라님의 보유 G POINT</li>
-						<li><p>200,000 P</p></li>
-						<li><img src="./images/code.png">&nbsp;적립 코드<span>AAAAAAAAAAAAAAAAA</span></li>
-						<li><img src="./images/time.png">&nbsp;발급 일자<span>2017-10-10 10:10:10</span></li>
-						<li><img src="./images/money.png">&nbsp;기준 금액<span>10,000</span></li>
-						<li><img src="./images/percent.png">&nbsp;적립율<span>14%</span></li>
-						<li><img src="./images/percent.png">&nbsp;적립 포인트<span>4,000</span></li>
-						<li><img src="./images/percent.png">&nbsp;적립 타입<span>영수증에 의한 포인트 적립</span></li>
-					</ul>
-				</div>
-				<div class="main_link">
-					<ul>
-						<li><img src="./images/r_phone.png"><span><p>R POINT</p>출금하기</span></li>
-						<li><img style="top:15px;"src="./images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
-					</ul>
-				</div>
-				<div class="top_detail" id="tab-2">
+				
+			<div class="top_detail" id="tab-2">
 					<ul>
 						<li>현재 차미라님의 보유  POINT</li>
 						<li><p>200,000 P</p></li>
@@ -141,10 +124,30 @@
 				</div>
 				<div class="main_link">
 					<ul>
-						<li><img src="/resources/r_cash.png"><span><p>R POINT</p>출금하기</span></li>
-						<li><img style="top:15px;"src="/resources/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
+						<li><img src="/resources/images/r_cash.png"><span><p>R POINT</p>출금하기</span></li>
+						<li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
 					</ul>
 				</div>
+				
+				<div class="top_detail" id="tab-1">
+					<ul>
+						<li>현재 차미라님의 보유 G POINT</li>
+						<li><p>200,000 P</p></li>
+						<li><img src="/resources/images/r_code.png"">&nbsp;적립 코드<span>AAAAAAAAAAAAAAAAA</span></li>
+						<li><img src="/resources/images/r_code.png"">&nbsp;발급 일자<span>2017-10-10 10:10:10</span></li>
+						<li><img src="/resources/images/r_code.png"">&nbsp;기준 금액<span>10,000</span></li>
+						<li><img src="/resources/images/r_code.png"">&nbsp;적립율<span>14%</span></li>
+						<li><img src="/resources/images/r_code.png"">&nbsp;적립 포인트<span>4,000</span></li>
+						<li><img src="/resources/images/r_code.png"">&nbsp;적립 타입<span>영수증에 의한 포인트 적립</span></li>
+					</ul>
+				</div>
+				<div class="main_link">
+					<ul>
+						<li><img src="/resources/images/r_cash.png"><span><p>R POINT</p>출금하기</span></li>
+						<li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
+					</ul>
+				</div>
+		
 		</div>
 	 
 	 <footer>
