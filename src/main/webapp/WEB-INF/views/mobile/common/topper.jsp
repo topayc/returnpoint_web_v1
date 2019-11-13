@@ -59,9 +59,8 @@
 						</c:choose>
 						<!-- 홈링크 하단 페이지 -->
 						<div class="r_homelink">
-							<ul>
-								<li>
-									<a href="/m/board/boardList.do?bbsType1=1">
+							<ul class = "topper_menu" >
+								<li onclick = "movePage('/m/board/boardList.do?bbsType1=1')">
 										<spring:message code="label.n_notice" />
 										<c:set var="now" value="<%=new java.util.Date()%>"/>
 									    <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
@@ -70,15 +69,15 @@
 										<c:if test="${today - postData <= 5}">
 											<span> NEW</span>
 										</c:if>
-										<img src="/resources/images/r_home_button.png"></a>
+										<img src="/resources/images/r_home_button.png">
 								</li>
 							<%-- 	<li><a href="#"><spring:message code="label.n_event" /><span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
 								<li><a href="#"><spring:message code="label.n_add_call" /><img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="#"><spring:message code="label.n_register_affiliate" /><img src="/resources/images/r_home_button.png"></a></li> --%>
-								<li><a href="/m/mypage/mypage_myinfo.do"><spring:message code="label.n_settings" /><img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="/m/customer/customerCenter.do"><spring:message code="label.n_cs" /><img src="/resources/images/r_home_button.png"></a></li>
-								<li><a href="/m/mypage/m_selectLanguage.do"><spring:message code="label.n_lang_settings" /><img src="/resources/images/r_home_button.png"></a></li>
-								<li><spring:message code="label.n_en_rpoint" />&nbsp;<spring:message code="label.n_cs" />&nbsp;&nbsp;<b>02-989-9812</b></li>
+								<li ><a href="#"><spring:message code="label.n_register_affiliate" /><img src="/resources/images/r_home_button.png"></a></li> --%>
+								<li onclick = "movePage('/m/mypage/mypage_myinfo.do')"><spring:message code="label.n_settings" /><img src="/resources/images/r_home_button.png"></li>
+								<li onclick = "movePage('/m/customer/customerCenter.do')"><spring:message code="label.n_cs" /><img src="/resources/images/r_home_button.png"></li>
+								<li onclick = "movePage('/m/mypage/m_selectLanguage.do')"><spring:message code="label.n_lang_settings" /><img src="/resources/images/r_home_button.png"></li>
+								<li ><spring:message code="label.n_en_rpoint" />&nbsp;<spring:message code="label.n_cs" />&nbsp;&nbsp;<b>02-989-9812</b></li>
 							</ul>
 						</div>
 	
@@ -90,15 +89,6 @@
 							</c:when>	
 						</c:choose>
 						<!-- 추가 시작-->
-						<!-- language begin -->
-						<li class="language">
-							<select class="form-control"  id="sel1" onchange='javascript:changeLang(this.value)'>
-								<option value="ko">KOR</option>
-								<option value="en">ENG</option>
-								<option value="ch">CHA</option>
-							</select>
-						</li>
-						<!-- language end -->
 					</ul>
 				</div>
 			</div>
