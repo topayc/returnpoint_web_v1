@@ -215,8 +215,9 @@
 			<span><spring:message code="label.n_search_affiliate" /></span><span><img src="/resources/images/r_bottom_search.png"></span>
 		</div>
 	</div>
-	<div class="m_banner" onclick = "movePage('http://rp.umallok.com')">
-		<img src="/resources/images/r_banner.png">
+	<div class = "m_main_banner"> 
+		<div class="m_banner" onclick = "movePage('http://rp.umallok.com')"> <img src="/resources/images/r_banner.png"> 
+	</div>
 	</div>
 	 <footer>
       <ul style = "font-weight:300">
