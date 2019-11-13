@@ -104,63 +104,64 @@
    <a href="/m/main/index.do"><h4><spring:message code="label.n_returnp" /></h4></a>
    </header>
    <section class="nobtn" id = "main">
-	 		<div class="point_detail_info">
-			<ul>
-		    <li class="main_rpoint active"><a data-toggle="tab" href="#tab-2"><span style = "font-size : 11pt"><spring:message code="label.rpoint" /></span></a></li>
-		    <li class="main_gpoint"><a data-toggle="tab" href="#tab-1"><span style = "font-size : 11pt"><spring:message code="label.gpoint" /></span></a></li>
-		  </ul>
-				
-			<div class="top_detail" id="tab-2">
-					<ul>
-						<li>현재 차미라님의 보유  POINT</li>
-						<li><p>200,000 P</p></li>
-						<li><img src="/resources/images/r_code.png">&nbsp;적립 코드<span>AAAAAAAAAAAAAAAAA</span></li>
-						<li><img src="/resources/images/r_code.png">&nbsp;발급 일자<span>2017-10-10 10:10:10</span></li>
-						<li><img src="/resources/images/r_code.png">&nbsp;기준 금액<span>10,000</span></li>
-						<li><img src="/resources/images/r_code.png">&nbsp;적립율<span>14%</span></li>
-						<li><img src="/resources/images/r_code.png">&nbsp;적립 포인트<span>4,000</span></li>
-						<li><img src="/resources/images/r_code.png">&nbsp;적립 타입<span>영수증에 의한 포인트 적립</span></li>
-					</ul>
-				</div>
-				<div class="main_link">
-					<ul>
-						<li><img src="/resources/images/r_cash.png"><span><p>R POINT</p>출금하기</span></li>
-						<li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
-					</ul>
-				</div>
-				
-				<div class="top_detail" id="tab-1">
-					<ul>
-						<li>현재 차미라님의 보유 G POINT</li>
-						<li><p>200,000 P</p></li>
-						<li><img src="/resources/images/r_code.png"">&nbsp;적립 코드<span>AAAAAAAAAAAAAAAAA</span></li>
-						<li><img src="/resources/images/r_code.png"">&nbsp;발급 일자<span>2017-10-10 10:10:10</span></li>
-						<li><img src="/resources/images/r_code.png"">&nbsp;기준 금액<span>10,000</span></li>
-						<li><img src="/resources/images/r_code.png"">&nbsp;적립율<span>14%</span></li>
-						<li><img src="/resources/images/r_code.png"">&nbsp;적립 포인트<span>4,000</span></li>
-						<li><img src="/resources/images/r_code.png"">&nbsp;적립 타입<span>영수증에 의한 포인트 적립</span></li>
-					</ul>
-				</div>
-				<div class="main_link">
-					<ul>
-						<li><img src="/resources/images/r_cash.png"><span><p>R POINT</p>출금하기</span></li>
-						<li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
-					</ul>
-				</div>
-		
-		</div>
-	 
-	 <footer>
+          <div class="point_detail_info">
+         <ul>
+          <li class="main_rpoint active"><a data-toggle="tab" href="#tab-2"><span style = "font-size : 11pt"><spring:message code="label.rpoint" /></span></a></li>
+          <li class="main_gpoint"><a data-toggle="tab" href="#tab-1"><span style = "font-size : 11pt"><spring:message code="label.gpoint" /></span></a></li>
+        </ul>
+         <div>   
+         <div class="top_detail" id="tab-2">
+               <ul>
+                  <li>현재 차미라님의 보유  POINT</li>
+                  <li><p>200,000 P</p></li>
+                  <li><img src="/resources/images/r_code.png">&nbsp;적립 코드<span>AAAAAAAAAAAAAAAAA</span></li>
+                  <li><img src="/resources/images/r_code.png">&nbsp;발급 일자<span>2017-10-10 10:10:10</span></li>
+                  <li><img src="/resources/images/r_code.png">&nbsp;기준 금액<span>10,000</span></li>
+                  <li><img src="/resources/images/r_code.png">&nbsp;적립율<span>14%</span></li>
+                  <li><img src="/resources/images/r_code.png">&nbsp;적립 포인트<span>4,000</span></li>
+                  <li><img src="/resources/images/r_code.png">&nbsp;적립 타입<span>영수증에 의한 포인트 적립</span></li>
+               </ul>
+            </div>
+            <div class="main_link">
+               <ul>
+                  <li><img src="/resources/images/r_cash.png"><span><p>R POINT</p>출금하기</span></li>
+                  <li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
+               </ul>
+            </div>
+            </div>
+            <div>
+            <div class="top_detail" id="tab-1">
+               <ul>
+                  <li>현재 차미라님의 보유 G POINT</li>
+                  <li><p>200,000 P</p></li>
+                  <li><img src="/resources/images/r_code.png"">&nbsp;적립 코드<span>AAAAAAAAAAAAAAAAA</span></li>
+                  <li><img src="/resources/images/r_code.png"">&nbsp;발급 일자<span>2017-10-10 10:10:10</span></li>
+                  <li><img src="/resources/images/r_code.png"">&nbsp;기준 금액<span>10,000</span></li>
+                  <li><img src="/resources/images/r_code.png"">&nbsp;적립율<span>14%</span></li>
+                  <li><img src="/resources/images/r_code.png"">&nbsp;적립 포인트<span>4,000</span></li>
+                  <li><img src="/resources/images/r_code.png"">&nbsp;적립 타입<span>영수증에 의한 포인트 적립</span></li>
+               </ul>
+            </div>
+            <div class="main_link">
+               <ul>
+                  <li><img src="/resources/images/r_cash.png"><span><p>R POINT</p>출금하기</span></li>
+                  <li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
+               </ul>
+            </div>
+      </div>
+      </div>
+    
+    <footer>
       <ul style = "font-weight:300">
          <li><small>(주)</small> <b>탑해피월드</b></li>
          <li>서울특별시 구로구 구로동 170-5 우림 이비지센터 806호</li>
          <li>대표자 : 윤동욱&nbsp;&nbsp; <spring:message code="label.biz_number" /> : 754-86-01056</li>
          <li><spring:message code="label.web.tophappyworldCustomerCenterOperationHours" /> : 10시 ~ 12시 30분, 13시 30분 ~ 18시</li>
          <li>
-         	<span><a href="/m/customer/customerCenter.do"><spring:message code="label.web.companyIntroduction" /></a>&nbsp;</span>&nbsp;
-         	<span><a href="/m/company/service_member.do"><spring:message code="label.what_return_point" /></a>&nbsp;</span>&nbsp;
-         	<span><a href="/m/company/m_termsofuse.do"><spring:message code="label.web.termsAndConditions" /></a>&nbsp; </span>&nbsp;
-         	<span><a href="/m/company/m_privacypolicy.do"><spring:message code="label.web.personalInformationHandlingAndHandlingPolicy" /></a>&nbsp;</span>&nbsp;</li>
+            <span><a href="/m/customer/customerCenter.do"><spring:message code="label.web.companyIntroduction" /></a>&nbsp;</span>&nbsp;
+            <span><a href="/m/company/service_member.do"><spring:message code="label.what_return_point" /></a>&nbsp;</span>&nbsp;
+            <span><a href="/m/company/m_termsofuse.do"><spring:message code="label.web.termsAndConditions" /></a>&nbsp; </span>&nbsp;
+            <span><a href="/m/company/m_privacypolicy.do"><spring:message code="label.web.personalInformationHandlingAndHandlingPolicy" /></a>&nbsp;</span>&nbsp;</li>
       </ul>
    </footer>
    </section>

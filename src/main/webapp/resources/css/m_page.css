@@ -681,7 +681,7 @@ button {color : #000; font-weight:400}
   /* 메인페이지 링크 index.jsp */
  .main_link{overflow:hidden;width:100%;padding:14px 0 5px 0;border-top: 7px solid #eee;;}
  .main_link > ul{display:block;}
- .main_link > ul > li {display:inline-block;width:24%;text-align:center;padding:5px 0 5px 0;line-height:30px;color:#333;font-size:13px;font-weight:500;}
+ .main_link > ul > li {display:inline-block;width:24%;text-align:center;padding:5px 0 5px 0;line-height:15px;color:#333;font-size:13px;font-weight:500;}
  .main_link > ul > li >img{margin-bottom:2px;}
   
  /* 포인트 세부 정보 페이지 point_detail_info.jsp */
@@ -798,7 +798,7 @@ nav #myNavbar .navbar-nav .r_homelink li img{float:right;}
 
 .point_detail_info .main_link{overflow:hidden;margin: 10px 0;padding:0 5px;}
 .point_detail_info .main_link > ul{display:inline;}
-.point_detail_info .main_link > ul > li {color:#000;height:55px;display:inline-block;width:48%;padding:5px 0 5px 0;color:#333;font-size:14px;font-weight:bold;border:1px solid #ccc;position: relative;}
+.point_detail_info .main_link > ul > li {color:#000;height:67px;display:inline-block;width:48%;padding:5px 0 5px 0;color:#333;font-size:14px;font-weight:bold;border:1px solid #ccc;position: relative;}
 .point_detail_info .main_link > ul > li img{position: absolute;left:10px;top:10px;}
 .point_detail_info .main_link > ul > li span{left:75px;top:16px;position: absolute;}
-.point_detail_info .main_link > ul > li p{font-size: 11px;color:#888;}
+.point_detail_info .main_link > ul > li p{font-size: 11px;color:#888;text-align:left;}
