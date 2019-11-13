@@ -78,7 +78,7 @@
 								<li onclick = "movePage('/m/mypage/mypage_myinfo.do')"><spring:message code="label.n_settings" /><img src="/resources/images/r_home_button.png"></li>
 								<li onclick = "movePage('/m/customer/customerCenter.do')"><spring:message code="label.n_cs" /><img src="/resources/images/r_home_button.png"></li>
 								<li onclick = "movePage('/m/mypage/m_selectLanguage.do')"><spring:message code="label.n_lang_settings" /><img src="/resources/images/r_home_button.png"></li>
-								<li ><spring:message code="label.n_en_rpoint" />&nbsp;<spring:message code="label.n_cs" />&nbsp;&nbsp;<b>02-989-9812</b></li>
+								<li ><spring:message code="label.n_en_rpoint" />&nbsp;<spring:message code="label.n_cs" />&nbsp;&nbsp;<b>02-585-5993</b></li>
 							</ul>
 						</div>
 	

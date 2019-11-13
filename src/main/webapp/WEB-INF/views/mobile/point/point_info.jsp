@@ -32,67 +32,26 @@
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
+<script type="text/javascript" src="/resources/js/lib/jquery.animateNumber.min.js"></script>
 <script type="text/javascript">
   if (isApp()) {
     checkVersion();
   }
+  $(document).ready(function(){
+	var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
 
-  $(document).on('ready', function() {
-       if(getCookie("notToday")=="Y"){
-        $("#alertView").hide();
-       }
-      var pageContextlocale = '${pageContext.response.locale}';
-       if(pageContextlocale == "ko"){
-             $("#sel1").val("ko");
-       }else{
-           $("#sel1").val("ch");
-       }
-        //탈퇴완료 후 모달 호출
-       if(location.href.match('form=out')){
-           location.href = '/m/mypage/m_memberout.do';
-        }
+	var rs = ${model.myRedPointSumInfo.redPointAmountSum};
+	$('#r_PointSum').animateNumber({
+			number : rs,
+			numberStep : comma_separator_number_step
+		});
 
-       var p = getParams();
-       var alertView = (p["alertView"]);
-       var Message  = (p["Message"]);
-       var message = "";
-       var title = "확인";
-       if(Message =="1"){
-          message = "잘못된 경로입니다.";
-       }else if(Message =="2"){
-          message = "이메일 인증이 완료된 고객입니다.";
-       }else if(Message =="3"){
-          message = "이메일 인증완료되었습니다.";
-       }else if(Message =="4"){
-          message = "미인증 고객입니다. 이메일인증완료후 사용해주세요.";
-       }else if(Message =="5"){
-          message = "가입하신 이메일로 발송이 완료되었습니다.";
-       }
-       if(alertView =="t"){
-          var alertMessageHtml = "";
-          var alertTitleHtml = "";
-          document.getElementById('alertView').style.display='flex';
-          alertMessageHtml += "<p>"+message+"</p>";
-          $('#alertMassage').html(alertMessageHtml);
-          alertTitleHtml += "<strong><i class='fas fa-info-circle'></i>"+title+"</strong>";
-          $('#alertTitle').html(alertTitleHtml);
-          $('#alert_ok').show();
-          $('#alert_cancel').hide();
-       }
-
-
-       //$("#alertView").hide();
-
-      if (isApp()) {
-          var mbrE = (p["mbrE"]);
-          var userAT = (p["userAT"]);
-          if (typeof mbrE != "undefined" && typeof userAT != "undefined") {
-             var session = {userName :mbrE , userEmail : mbrE, userAuthToken : userAT }
-            bridge.setDeviceSession(JSON.stringify(session), function(result) {
-             });
-          }
-       }
-  });
+	var ps = ${model.myGreenPointSumInfo.greenPointAmountSum};
+	$('#g_PointSum').animateNumber({
+			number : ps,
+			numberStep : comma_separator_number_step
+		});
+  })
 </script>
 </head>
 <!-- header end -->
@@ -101,7 +60,7 @@
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->
-   <a href="/m/main/index.do"><h4><spring:message code="label.n_returnp" /></h4></a>
+   <a href="/m/main/index.do"><h4><spring:message code="label.point" /></h4></a>
    </header>
    <section class="nobtn" id = "main">
 <ul class="tab_menu">
@@ -110,16 +69,16 @@
          <div class="point_detail_info">
             <div class="top_detail r_contents">
                   <ul>
-                     <li>현재 차미라님의 보유 R POINT</li>
-                     <li><p>200,000 P</p></li>
-                     <li><img src="/resources/images/code.png">&nbsp;적립 코드<span>AAAAAAAAAAAAAAAAA</span></li>
-                     <li><img src="/resources/images/time.png">&nbsp;발급 일자<span>2017-10-10 10:10:10</span></li>
+                     <li>${sessionScope.memberName} 님의 보유 R POINT</li>
+                     <li><span id = "r_PointSum"></span>&nbsp;P</li>
+                     <li></li>
+                     <li style = "font-weight:300;color : #fff"><p>* 매일 1:00 G 포인트가 일정 비율로 R 포인트로 전환됩니다</p></li>
                   </ul>
                </div>
                <div class="main_link">
                   <ul>
-                     <li><img src="/resources/images/r_cash.png"><span><p>R POINT</p>출금하기</span></li>
-                     <li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
+                     <li onclick = "movePage('/m/mypage/rpoint/rpoint_withdrawal.do?memberNo=${model.memberTypeInfo.memberNo}')"><img src="/resources/images/r_cash.png"><span><p>R POINT</p>출금하기</span></li>
+                     <li onclick="movePage('/m/mypage/newpay.do')"><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
                   </ul>
                </div>
             </div>
@@ -130,16 +89,15 @@
          <div class="point_detail_info">
             <div class="top_detail g_contents">
                   <ul>
-                     <li>현재 차미라님의 보유 G POINT</li>
-                     <li><p>200,000 P</p></li>
-                     <li><img src="/resources/images/code.png">&nbsp;적립 코드<span>AAAAAAAAAAAAAAAAA</span></li>
-                     <li><img src="/resources/images/time.png">&nbsp;발급 일자<span>2017-10-10 10:10:10</span></li>
+                     <li>${sessionScope.memberName}  보유 G POINT</li>
+                     <li><span id = "g_PointSum">${model.myGreenPointSumInfo.greenPointAmountSum}</span> &nbsp;P</li>
+                      <li style = "font-weight:300;color : #fff"><p>* 영수증 큐알 코드 스캔시 G 포인트가 실시간 적립됩니다</p></li>
                   </ul>
                </div>
-               <div class="main_link">
+               <div class="main_link g_link" >
                   <ul>
-                     <li><img src="/resources/images/r_qr.png"><span><p>R POINT</p>QR 스캔</span></li>
-                     <li><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립 내역 조회</span></li>
+                     <li onclick="startQRScan()"><img src="/resources/images/r_qr.png"><span><p>R POINT</p>적립QR 스캔</span></li>
+                     <li onclick="movePage('/m/mypage/newpoint.do')"><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
                   </ul>
                </div>
             </div>
@@ -147,7 +105,7 @@
       </div>
    </li>
 </ul>
-    
+
 <%--     <footer>
       <ul style = "font-weight:300">
          <li><small>(주)</small> <b>탑해피월드</b></li>
