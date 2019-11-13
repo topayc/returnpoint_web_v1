@@ -30,8 +30,9 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a href="javascript:history.back()" class="navbar-back"><i class="fas fa-chevron-left"></i></a>
-				<!-- 	<a onclick="startQRScan()" class="navbar-qr"><i class="far fa-bell" style="color:#333;position:relative;"></i>
-					<span style="position:absolute;color:#fff;background-color:red;padding:1px 5px;font-size:5px;border-radius:10px;left:25px;top:10px;">1</span></a> -->
+					<a class="navbar-qr"><i class="far fa-bell" style="color:#333;position:relative;"></i>
+						<!-- <span style="position:absolute;color:#fff;background-color:red;padding:1px 5px;font-size:5px;border-radius:10px;left:25px;top:10px;">1</span> -->
+					</a>
 					<button type="button" class="navbar-toggle" onclick="openNav()">
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span	class="icon-bar"></span>
 					</button>
