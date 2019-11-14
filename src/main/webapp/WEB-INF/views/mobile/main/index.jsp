@@ -216,8 +216,8 @@
 		</div>
 	</div>
 	<div class = "m_main_banner"> 
-		<div class="m_banner" onclick = "movePage('http://rp.umallok.com')"> <img src="/resources/images/r_banner.png"> 
-	</div>
+		<div class="m_banner" onclick = "movePage('http://rp.umallok.com')"> <img src="/resources/images/r_umall.png"></div>
+		<div class="m_banner" style ="margin-top:7px;" onclick = "movePage('http://returnpoint.net ')"> <img src="/resources/images/r_wamall.png"></div> 
 	</div>
 	 <footer>
       <ul style = "font-weight:300">

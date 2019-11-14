@@ -810,3 +810,5 @@ li.on a {font-weight:600;}
 .point_detail_info .main_link > ul > li span{left:75px;top:16px;position: absolute;}
 .point_detail_info .main_link > ul > li p{font-size: 11px;color:#888;text-align:left;}
 .point_detail_info .g_link > ul > li img{position: absolute;left:10px;top:13px;}
+
+.m_main_banner{background-color:#f1f1f1;padding;5px}
