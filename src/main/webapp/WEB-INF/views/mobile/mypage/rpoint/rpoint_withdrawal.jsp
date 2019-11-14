@@ -92,10 +92,11 @@ $(document).ready(function(){
 			<div class="rpoint_withdrawal03">
 				<ul style = "padding-left:10px">
 					<li style = "list-style-type: none">출금 정책</li>
-					<li style = "list-style-type: disc;font-weight:300">실제 입금금액은 수수료 15% 공제합니다.</li>
+					<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_fee_policy" /></li>
 					<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_min_quide" arguments="${model.policy.rPayWithdrawalMinLimit}" /></li>
 					<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_max_quide" arguments="${model.policy.rPayWithdrawalMaxLimit}" /></li>
-					<li style = "list-style-type: disc;font-weight:300">출금 신청 후 2 영업일 이내 고객님이 등록하신 계좌로 입금됩니다</li>
+					<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_max_quide" arguments="${model.policy.rPayWithdrawalMaxLimit}" /></li>
+						<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_day" /></li>
 					<li style = "list-style-type: disc;font-weight:300">출금 정책은 예고없이 변경될 수 있습니다</li>
 				</ul>
 			</div>

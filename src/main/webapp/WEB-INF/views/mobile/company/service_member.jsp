@@ -74,7 +74,7 @@ $(document).ready(function(){
 					<p><strong>[<spring:message code="label.gpoint" /> 적립방법]</strong> <span>협력점에 매출의 발생 할 때 마다 <spring:message code="label.gpoint" /> 가 적립됩니다.
 					소비자는 매출의 100%를 <spring:message code="label.gpoint" /> 로 적립 받으며, 협력점은 매출의 15%의 매출 예치금을 현금으로 본사에 즉시 납입합니다</span>
 					</p>
-					<p><strong>[<spring:message code="label.rpoint" /> 적립방법]</strong> <span><spring:message code="label.gpoint" /> 발생 후 익일부터 <spring:message code="label.gpoint" /> 의 <strong>1/2000 </strong>이 매출 금액의100%가 될 때까지 R Pay로 적립됩니다.</span></p>
+					<p><strong>[<spring:message code="label.rpoint" /> 적립방법]</strong> <span><spring:message code="label.gpoint" /> 발생 후 익일부터 <spring:message code="label.gpoint" /> 의 <strong> 약 1/2000 </strong>이 매출 금액의100%가 될 때까지 R Pay로 적립됩니다.</span></p>
 					<p><strong>[<spring:message code="label.rpoint" /> 사용방법]</strong> <span><spring:message code="label.gpoint" /> 에서 전환된 <spring:message code="label.rpoint" /> 는 포인트 사용처에서 이용 가능합니다.</span></p>
 				</div>
 			</li>

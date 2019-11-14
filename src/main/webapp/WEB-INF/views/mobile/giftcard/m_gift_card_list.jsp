@@ -39,7 +39,7 @@
    <jsp:include page="../common/topper.jsp" />
       <h4><spring:message code="label.mygiftcard" /></h4>
    </header>
- <section style="padding-top: 45px;">
+ <section style="padding-top: 45px;height:84.7%">
  <div class="top_text"><h1>${fn:length(model.myGiftCards)}개의 ${model.giftCardStatusStr} <br/>R 포인트 상품권이 있습니다. </h1></div>
  <div class="gift_card_nav">
 	<ul>

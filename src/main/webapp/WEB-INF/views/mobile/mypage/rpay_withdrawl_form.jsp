@@ -185,6 +185,7 @@ $(document).ready(function(){
 								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_min_quide" arguments="${model.policy.rPayWithdrawalMinLimit}" /></li>
 								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_max_quide" arguments="${model.policy.rPayWithdrawalMaxLimit}" /></li>
 								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_day" /></li>
+								<li style = "list-style-type: disc;font-weight:300">출금 정책은 예고없이 변경될 수 있습니다</li>
 							</ul>
 						</div>
 						<div class="btns2">
