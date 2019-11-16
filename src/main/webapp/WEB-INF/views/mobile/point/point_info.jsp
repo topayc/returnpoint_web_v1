@@ -94,11 +94,7 @@
                       <li style = "font-weight:300;color : #fff"><p>* 영수증 큐알 코드 스캔시 G 포인트가 실시간 적립됩니다</p></li>
                   </ul>
                </div>
-<<<<<<< HEAD
                <div class="main_link g_link" >
-=======
-               <div class="main_link g_link">
->>>>>>> branch 'master' of https://github.com/topayc/returnpoint_web_v1.git
                   <ul>
                      <li onclick="startQRScan()"><img src="/resources/images/r_qr.png"><span><p>R POINT</p>적립QR 스캔</span></li>
                      <li onclick="movePage('/m/mypage/newpoint.do')"><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
