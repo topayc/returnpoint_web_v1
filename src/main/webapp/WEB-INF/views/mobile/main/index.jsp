@@ -182,9 +182,16 @@
 		</ul>
 	</div>
 	<div class="main_point">
-		<div class="main_rpoint"><span><spring:message code="label.n_rpoint" /></span><span><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/></span></div>
-		<div class="main_gpoint"><span><spring:message code="label.n_gpoint" /></span><span><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/></span></div>
+		<div class="main_rpoint">
+			<span><spring:message code="label.n_rpoint" /></span>
+			<span><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/></span>
+		</div>
+		<div class="main_gpoint">
+			<span><spring:message code="label.n_gpoint" />
+			</span><span><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/></span>
+		</div>
 	</div>
+	
 	<!-- 공지사항 -->
 	<c:if test = "${! empty model.notice}">
 	<div class="m_noti">
@@ -199,6 +206,7 @@
 		</c:if>
 	</div>
 	</c:if>
+	
 	<div class="main_img_box">
 		<div onclick="startQRScan()"><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.n_qrcode" /></p></div>
 		<div onclick = "movePage('/m/point/pointInfo.do')"><img src="/resources/images/r_point.png"><p><spring:message code="label.n_point" /></p></div>
@@ -211,7 +219,7 @@
 		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_set.png"><p><spring:message code="label.n_settings" /></p></div>
 	</div>
 	<div style="background-color:#f1f1f1;padding:1px 0;">
-		<div class="m_search" onclick = "movePage('/m/affiliate/affiliateSearchList.do')">
+		<div class="m_search" onclick = "movePage('/m/affiliate/searchAffiliate.do')">
 			<span><spring:message code="label.n_search_affiliate" /></span><span><img src="/resources/images/r_bottom_search.png"></span>
 		</div>
 	</div>
@@ -233,12 +241,7 @@
          	<span><a href="/m/company/m_privacypolicy.do"><spring:message code="label.web.personalInformationHandlingAndHandlingPolicy" /></a>&nbsp;</span>&nbsp;</li>
       </ul>
    </footer>
-
-
-
    </section>
 </div>
-
 </body>
-<!-- body end -->
 </html>

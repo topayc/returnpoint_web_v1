@@ -27,21 +27,17 @@ import com.returnp_web.utils.Util;
 @RequestMapping("/m")
 public class MobileController extends MallBaseController {
 
-	@Autowired
-	private MobileMainService mms;
-	
-	@Autowired
-	private FrontMainService fms;
-
-	/*
-	 * @Autowired private MessageSourceAware messageSourceAware; public void
-	 * setMessageSource(MessageSource messageSource) throws BeansException {
-	 * this.messageSourceAware = messageSourceAware; }
-	 */
+	@Autowired private MobileMainService mms;
+	@Autowired private FrontMainService fms;
 
 	// intro 페이지
 	@RequestMapping("/intro/intro.do")
-	public String intro(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap modelMap, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String intro( @RequestParam(required = false) String lang,
+			@RequestParam Map<String, Object> p, 
+			ModelMap modelMap, 
+			HttpSession session, 
+			HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
 		RPMap dataMap = Util.getRPRmap("/mobile/intro/intro");
 		boolean bret = true;
 		/*
@@ -54,9 +50,26 @@ public class MobileController extends MallBaseController {
 		return page(bret, modelMap, dataMap);
 	}
 	
+	// 모바일 메인페이지
+	@RequestMapping("/main/index.do")
+	public String home(@RequestParam(required = false) String lang, 
+			@RequestParam Map<String, Object> p,
+			ModelMap map,
+			HttpSession session, 
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/main/index");
+		boolean bret = mms.initMain(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
+	
 	// WEB 가맹점찾기
 	@RequestMapping("/affiliate/affiliateSearchList")
-	public String franchiseeInfoSearch(@RequestParam HashMap<String, Object> params, HttpSession session, HttpServletRequest request, HttpServletResponse response, ModelMap map) throws Exception {
+	public String franchiseeInfoSearch(@RequestParam HashMap<String, Object> params, 
+			HttpSession session, 
+			HttpServletRequest request, 
+			HttpServletResponse response, 
+			ModelMap map) throws Exception {
 		
 		/****Paging*******************/
 		int page = 1; 		// 현재 선택된 페이지
@@ -109,6 +122,18 @@ public class MobileController extends MallBaseController {
 			return "/mobile/affiliate/affiliateSearchList";
 	}
 	
+	// 카테고리별  탭 가맹점리스트 
+	@RequestMapping("/affiliate/newAffiliateSearch")
+	public String searchAffilaite(@RequestParam Map<String,Object> paramMap, 
+			ModelMap modelMap, 
+			HttpSession session, 
+			HttpServletRequest request, 
+			HttpServletResponse responsp) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/affiliate/newAffiliateSearch");
+		boolean bret  = true;
+		return page(bret, modelMap, rmap);
+	}
+	
 	// WEB 제휴안내 저장
 	@ResponseBody
 	@RequestMapping(value = "/board/partnerAskSave", method = RequestMethod.POST, produces = "application/json; charset=utf8")
@@ -137,15 +162,6 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}
 	
-	// 모바일 메인페이지
-	@RequestMapping("/main/index.do")
-	public String home(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/main/index");
-        //mms.memberTotal(Util.toRPap(p), rmap, request, response);
-		//boolean bret = mms.myPointInfo(Util.toRPap(p), rmap, request, response);
-		boolean bret = mms.initMain(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
-	}
 	
 	@RequestMapping("/point/pointInfo.do")
 	public String pointInfo(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
