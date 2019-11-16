@@ -31,9 +31,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.ui.ModelMap;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.returnp_web.dao.MobileMainDao;
 import com.returnp_web.dao.MobileMemberDao;
 import com.returnp_web.utils.BASE64Util;
+import com.returnp_web.utils.CodeGenerator;
 import com.returnp_web.utils.Const;
 import com.returnp_web.utils.Converter;
 import com.returnp_web.utils.QRManager;
@@ -487,9 +490,25 @@ public class MobileMainServiceImpl implements MobileMainService {
 					float customerComm = (float) policy.get("customerComm");
 					float qramountAcc = (amountAccumulated * customerComm);
 					rmap.put("qramountAcc", qramountAcc);
+					
+					/* 기존 적립 키 정보 삭제 */
+					String accKeyName = (String)request.getSession().getAttribute("accKeyName");
+					if (accKeyName != null) {
+						request.getSession().removeAttribute(accKeyName);
+						request.getSession().removeAttribute(accKeyName+ "_type");
+						request.getSession().removeAttribute(accKeyName+ "_router");
+						request.getSession().removeAttribute(accKeyName+ "_time");
+					}
+
+					/* 포인트 적립을 위한 적립 유효성 코드를 세션에 저장 */
+					accKeyName = CodeGenerator.createTempKey(15);
+					request.getSession().setAttribute("accKeyName" ,accKeyName);
+					request.getSession().setAttribute(accKeyName + "_type" ,"qrcode");
+					request.getSession().setAttribute(accKeyName + "_router" ,qrParsemap.get("paymentRouterName"));
+					request.getSession().setAttribute(accKeyName + "_time" ,new Date());
 				}
 			}
-
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -562,8 +581,25 @@ public class MobileMainServiceImpl implements MobileMainService {
 					//System.out.println("customerComm::" + customerComm);
 					float qramountAcc = (amountAccumulated * customerComm);
 					rmap.put("qramountAcc", qramountAcc);
+					
+					/* 기존 적립 키 정보 삭제 */
+					String accKeyName = (String)request.getSession().getAttribute("accKeyName");
+					if (accKeyName != null) {
+						request.getSession().removeAttribute(accKeyName);
+						request.getSession().removeAttribute(accKeyName+ "_type");
+						request.getSession().removeAttribute(accKeyName+ "_router");
+						request.getSession().removeAttribute(accKeyName+ "_time");
+					}
+
+					/* 포인트 적립을 위한 적립 유효성 코드를 세션에 저장 */
+					accKeyName = CodeGenerator.createTempKey(15);
+					request.getSession().setAttribute("accKeyName" ,accKeyName);
+					request.getSession().setAttribute(accKeyName + "_type" ,"qrcode");
+					request.getSession().setAttribute(accKeyName + "_router" ,qrParsemap.get("paymentRouterName"));
+					request.getSession().setAttribute(accKeyName + "_time" ,new Date());
 				}
 			}
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -585,9 +621,6 @@ public class MobileMainServiceImpl implements MobileMainService {
 		JSONObject qrJson;
 		String qr_cmd;
 		try {
-			
-			//System.out.println(p.getStr("qr_data"));
-			//System.out.println(BASE64Util.decodeString(p.getStr("qr_data")));
 			jsonParser = new JSONParser();
 			qrJson = (JSONObject) jsonParser.parse(BASE64Util.decodeString(p.getStr("qr_data")));
 			
@@ -662,10 +695,47 @@ public class MobileMainServiceImpl implements MobileMainService {
 	 * */
 	@Override
 	public String kiccQrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request,	HttpServletResponse response) throws Exception {
+		
+		/*세션 여부 조회*/
+		SessionManager sm = new SessionManager(request, response);
+		Gson gson = new Gson();
+		if (sm == null || sm.getMemberEmail() == null || sm.getMemberEmail().trim().equals("")) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9081");
+			object.addProperty("message", "잘못된 </br> 해당 요청에 대한 세션이 없습니다.");
+			return gson.toJson(object);
+		}
+		
+		/* refer 검사 */
+	/*	String referer = request.getHeader("referer");
+		if (referer == null || referer.trim().length() == 0 || !referer.trim().contains("/m/qr/kiccQrAcc.do")) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9091");
+			object.addProperty("message", "잘못된 직접 요청</br> 직접적인 적립 요청입니다.");
+			return gson.toJson(object);
+		}*/
+		
+		/* 적립 요청에 대한 유효성 검사 - 적립 세션 키 검사 */
+		String accKeyName = (String)request.getSession().getAttribute("accKeyName");
+		String type =(String) request.getSession().getAttribute(accKeyName+ "_type");
+        String router = (String)request.getSession().getAttribute(accKeyName + "_router");
+        Date time = (Date)request.getSession().getAttribute(accKeyName+ "_time");
+		
+        if (accKeyName == null || type == null || router == null ||  time == null ) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9094");
+			object.addProperty("message", "유효하지 않은 적립 요청</br> 적립을 위한 적립 코드 대한 정보가 유효하지 않습니다");
+			return gson.toJson(object);
+		}
+		
 		String runMode = environment.getProperty("run_mode");
 		String remoteCallURL = environment.getProperty(runMode + ".qr_accumulate_point");
 		String key = environment.getProperty("key");
 		StringBuffer response2 = null;
+		
 		try {
 			URL url = new URL(remoteCallURL + "?" + Util.mapToQueryParam(p));
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -684,11 +754,15 @@ public class MobileMainServiceImpl implements MobileMainService {
 				in.close();
 				System.out.println("응답");
 				System.out.println(response2.toString());
+				
+				/* 기존 적립 키 정보 삭제 */
+				request.getSession().removeAttribute(accKeyName);
+				request.getSession().removeAttribute(accKeyName+ "_type");
+				request.getSession().removeAttribute(accKeyName+ "_router");
+				request.getSession().removeAttribute(accKeyName+ "_time");
 			} else {
 				System.out.println("포인트 백 적립 요청 에러");
 			}
-			//System.out.println("포인트 백 적립 요청");
-			//System.out.println(remoteCallURL + "?" + Util.mapToQueryParam(p));
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -705,10 +779,47 @@ public class MobileMainServiceImpl implements MobileMainService {
 	@Override
 	public String commonQrAccProxy(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
+		/*세션 여부 조회*/
+		SessionManager sm = new SessionManager(request, response);
+		Gson gson = new Gson();
+		if (sm == null || sm.getMemberEmail() == null || sm.getMemberEmail().trim().equals("")) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9081");
+			object.addProperty("message", "잘못된 직접 요청</br>해당 요청에 대한 세션이 없습니다.");
+			return gson.toJson(object);
+		}
+		
+		/* refer 검사 */
+/*		String referer = request.getHeader("referer");
+		if (referer == null || referer.trim().length() == 0 || !referer.trim().contains("/m/qr/commonQrAcc.do")) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9082");
+			object.addProperty("message", "잘못된 직접 요청</br> 직접적인 적립 요청입니다.");
+			return gson.toJson(object);
+		}*/
+		
+		/* 적립 요청에 대한 유효성 검사 - 적립 세션 키 검사 */
+		String accKeyName = (String)request.getSession().getAttribute("accKeyName");
+		String type =(String) request.getSession().getAttribute(accKeyName+ "_type");
+        String router = (String)request.getSession().getAttribute(accKeyName + "_router");
+        Date time = (Date)request.getSession().getAttribute(accKeyName+ "_time");
+		
+        if (accKeyName == null || type == null || router == null ||  time == null ) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9087");
+			object.addProperty("message", "유효하지 않은 적립 요청</br> 적립을 위한 적립 코드 대한 정보가 유효하지 않습니다.");
+			return gson.toJson(object);
+		}
+
 		String runMode = environment.getProperty("run_mode");
 		String remoteCallURL = environment.getProperty(runMode + ".qr_accumulate_point");
 		String key = environment.getProperty("key");
 		StringBuffer response2 = null;
+		
 		try {
 			URL url = new URL(remoteCallURL + "?" + Util.mapToQueryParam(p));
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -725,8 +836,12 @@ public class MobileMainServiceImpl implements MobileMainService {
 					response2.append(inputLine);
 				}
 				in.close();
-				//System.out.println("응답");
-				//System.out.println(response2.toString());
+				
+				/* 기존 적립 키 정보 삭제 */
+				request.getSession().removeAttribute(accKeyName);
+				request.getSession().removeAttribute(accKeyName+ "_type");
+				request.getSession().removeAttribute(accKeyName+ "_router");
+				request.getSession().removeAttribute(accKeyName+ "_time");
 			} else {
 				System.out.println("포인트 백 적립 요청 에러");
 			}

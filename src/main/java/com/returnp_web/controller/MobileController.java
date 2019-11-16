@@ -329,7 +329,6 @@ public class MobileController extends MallBaseController {
 	}
 	
 	
-	// QR 코드 정보 생성
 	@RequestMapping("/qr/giftcard_qrinfo")
 	public String giftCardQrInfo(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/qr/giftCardQrInfo");

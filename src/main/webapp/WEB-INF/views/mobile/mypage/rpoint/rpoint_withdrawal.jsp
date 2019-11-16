@@ -74,9 +74,9 @@ $(document).ready(function(){
 						<li class = "title"><span id = "today_withdrawal_rpoint"><fmt:formatNumber value="${model.rpayTotalWithdrawal}" pattern="###,###,###,###"/></span> P</li>
 					</ul>
 				</div>
-				<div class="rpoint_withdrawal02">
+				<%-- <div class="rpoint_withdrawal02">
 					<button onclick = "movePage('/m/mypage/m_rpay_withdrawal_list.do?memberNo=${model.memberTypeInfo.memberNo}')">출금 리스트</button>
-				</div>
+				</div> --%>
 			</div>
 			<div>
 				<div class="rpoint_withdrawal01">

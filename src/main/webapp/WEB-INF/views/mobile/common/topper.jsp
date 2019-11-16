@@ -70,26 +70,20 @@
 										<c:if test="${today - postData <= 5}">
 											<span> NEW</span>
 										</c:if>
-										<!-- <img src="/resources/images/r_home_button.png"> -->
-								</li>
-							<%-- 	<li><a href="#"><spring:message code="label.n_event" /><span>NEW</span><img src="/resources/images/r_home_button.png"></a></li>
 								<li><a href="#"><spring:message code="label.n_add_call" /><img src="/resources/images/r_home_button.png"></a></li>
-								<li ><a href="#"><spring:message code="label.n_register_affiliate" /><img src="/resources/images/r_home_button.png"></a></li> --%>
+								<li ><a href="#"><spring:message code="label.n_register_affiliate" /><img src="/resources/images/r_home_button.png"></a></li> 
 								<li onclick = "movePage('/m/mypage/mypage_myinfo.do')"><spring:message code="label.n_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/customer/customerCenter.do')"><spring:message code="label.n_cs" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/mypage/m_selectLanguage.do')"><spring:message code="label.n_lang_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
+								<c:choose>
+									<c:when test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
+										<li onclick = "movePage('/m/member/login.do')"><spring:message code="login.form.submit" /></li>
+										<li onclick = "movePage('/m/member/join.do')"><spring:message code="label.join" /></li>
+									</c:when>	
+								</c:choose>
 								<li ><spring:message code="label.n_en_rpoint" />&nbsp;<spring:message code="label.n_cs" />&nbsp;&nbsp;<b>02-585-5993</b></li>
 							</ul>
 						</div>
-	
-						<c:choose>
-							<c:when test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
-								<li class="member form-login-in"><a href="/m/member/login.do"><i class="fas fa-sign-in-alt"></i><spring:message code="login.form.submit" /></a></li>
-								<li class="member form-login-in"><a href="/m/member/join.do"><i class="fas fa-user"></i><spring:message code="label.join" /></a></li>
-								<!-- 로그인 후 -->
-							</c:when>	
-						</c:choose>
-						<!-- 추가 시작-->
 					</ul>
 				</div>
 			</div>

@@ -219,8 +219,8 @@
 		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_set.png"><p><spring:message code="label.n_settings" /></p></div>
 	</div>
 	<div style="background-color:#f1f1f1;padding:1px 0;">
-		<!-- <div class="m_search" onclick = "movePage('/m/affiliate/searchAffiliate.do')"> -->
-		<div class="m_search" onclick = "movePage('/m/affiliate/newAffiliateSearch.do')">
+		<div class="m_search" onclick = "movePage('/m/affiliate/affiliateSearchList.do')">
+		<!-- <div class="m_search" onclick = "movePage('/m/affiliate/newAffiliateSearch.do')"> -->
 			<span><spring:message code="label.n_search_affiliate" /></span><span><img src="/resources/images/r_bottom_search.png"></span>
 		</div>
 	</div>

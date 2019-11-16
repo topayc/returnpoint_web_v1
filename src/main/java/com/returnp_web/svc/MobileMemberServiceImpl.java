@@ -35,6 +35,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.ui.ModelMap;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.returnp_web.dao.MobileMemberDao;
 import com.returnp_web.utils.BASE64Util;
 import com.returnp_web.utils.Const;
@@ -1603,6 +1605,28 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 	public String handleGiftCardQR(HashMap<String, String> paramMap, ModelMap modelMap, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		// System.out.println(">>> handleGiftCardQR");
+		
+		/*세션 여부 조회*/
+		SessionManager sm = new SessionManager(request, response);
+		Gson gson = new Gson();
+		if (sm == null || sm.getMemberEmail() == null || sm.getMemberEmail().trim().equals("")) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9081");
+			object.addProperty("message", "잘못된 요청</br> 해당 요청에 대한 세션이 없습니다.");
+			return gson.toJson(object);
+		}
+		
+		/* refer 검사 */
+		String referer = request.getHeader("referer");
+		if (referer == null || referer.trim().length() == 0 || !referer.trim().contains("/m/mypage/m_gift_card_command.do")) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9082");
+			object.addProperty("message", "잘못된 직접 요청</br> 직접적인 적립 요청입니다.");
+			return gson.toJson(object);
+		}
+		
 		String runMode = environment.getProperty("run_mode");
 		String remoteCallURL = environment.getProperty(runMode + ".handle_gift_card_Req");
 		String key = environment.getProperty("key");
