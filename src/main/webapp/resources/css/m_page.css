@@ -747,10 +747,10 @@ button {color : #000; font-weight:400}
 #main .slide img{width:100%;height:100%;}
 
 #main .main_point{overflow:hidden;}
-#main .main_rpoint{float:left;width:50%;text-align:center;padding:13px 0;font-size:13px;font-weight:bold;color:#fff;background-color:#ff0066;}
-#main .main_gpoint{float:right;width:50%;text-align:center;padding:13px 0;font-size:13px;font-weight:bold;color:#fff;background-color:#33cccc;}
-#main .main_rpoint span{padding:0 20px;}
-#main .main_gpoint span{padding:0 20px;}
+#main .main_rpoint{float:left;width:50%;text-align:center;padding:18px 0;font-size:14px;font-weight:bold;color:#fff;background-color:#ff0066;}
+#main .main_gpoint{float:right;width:50%;text-align:center;padding:18px 0;font-size:14px;font-weight:bold;color:#fff;background-color:#33cccc;}
+#main .main_rpoint span{padding:0 12px;}
+#main .main_gpoint span{padding:0 12px;}
 
 #main .m_noti{padding:13px 0;font-size:12px;color:#333;font-weight:300;border-bottom:1px solid #f1f1f1;}
 #main .m_noti span:nth-child(1){padding:0 5px 0 10px;}
