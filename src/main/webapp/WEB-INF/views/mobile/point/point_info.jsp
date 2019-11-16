@@ -89,7 +89,7 @@
          <div class="point_detail_info">
             <div class="top_detail g_contents">
                   <ul>
-                     <li>${sessionScope.memberName}  보유 G POINT</li>
+                     <li>${sessionScope.memberName}  님의 보유 G POINT</li>
                      <li><span id = "g_PointSum">${model.myGreenPointSumInfo.greenPointAmountSum}</span> &nbsp;P</li>
                       <li style = "font-weight:300;color : #fff"><p>* 영수증 큐알 코드 스캔시 G 포인트가 실시간 적립됩니다</p></li>
                   </ul>
