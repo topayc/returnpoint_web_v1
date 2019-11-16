@@ -29,16 +29,12 @@
 </script>
 <style >
 nav { padding-top : 0px}
-h4, .h4, h5, .h5, h6, .h6 {
-    margin-top: 0px;
-    margin-bottom: 10px;
-}
-
+h4, .h4, h5, .h5, h6, .h6 { margin-top: 0px; margin-bottom: 10px; } 
 </style>
 </head>
 <!-- header end -->
 <!-- body begin -->
-<body class="affiliate_search_container" style="padding-top: 0px;">	
+<body class="new_affiliate_container" >	
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->

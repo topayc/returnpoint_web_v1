@@ -813,3 +813,9 @@ li.on a {font-weight:600;}
 .point_detail_info .g_link > ul > li img{position: absolute;left:10px;top:13px;}
 
 .m_main_banner{background-color:#f1f1f1;padding;5px}
+
+/* newAffiliateSearch 업종별 탭 가맹점 리스트*/
+mbsc-page>.mbsc-page { margin: 0; padding: 0; height: 100%; overflow: visible; }
+.md-paging, .md-paging>div, .md-paging .md-page { height: 100%; padding: 0; overflow: hidden; }
+.md-paging .md-list-cont, .md-paging .mbsc-scv-item>.mbsc-lv-cont { -webkit-box-flex: 1; -webkit-flex: 1 auto; -ms-flex: 1 auto; flex: 1 auto; overflow: auto; -webkit-overflow-scrolling: touch; }
+.md-paging .mbsc-lv-img { pointer-events: none; border-radius: 2.8em; height: 2.8em; }
