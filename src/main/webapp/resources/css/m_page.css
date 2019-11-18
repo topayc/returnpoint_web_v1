@@ -385,7 +385,7 @@ background: #fff;border: 0;border-left: 1px solid #f3f3f3;font-size: 13px;color:
 .qrinfo .pointinfo li span{position: absolute; left: 0;}
 .qr_nodata{display: flex; align-items: center; height: 90%;}
 .qr_nodata>div{width: 100%; text-align: center;}
-.qr_nodata>div>i{font-size: 50px;display: block;color: #391dab;padding-bottom: 21px;}
+.qr_nodata>div>i{font-size: 50px;display: block;color: #b5b4bb;padding-bottom: 21px;}
 .qr_nodata .btn-submit{left:0;}
 .qr_gen_img_container{display: flex; align-items: center; height: 90%;}
 .qr_gen_img_container>div{width: 100%;text-align: center;}

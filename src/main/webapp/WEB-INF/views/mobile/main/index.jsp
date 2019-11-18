@@ -208,7 +208,7 @@
 	</c:if>
 	
 	<div class="main_img_box">
-		<div onclick="startQRScan()"><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.n_qrcode_acc" /></p></div>
+		<div onclick="startQRScan()"><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.qrcode_acc" /></p></div>
 		<div onclick = "movePage('/m/point/pointInfo.do')"><img src="/resources/images/r_point.png"><p><spring:message code="label.n_point" /></p></div>
 		<div onclick = "movePage('/m/mypage/rpoint/rpoint_withdrawal.do?memberNo=${model.memberTypeInfo.memberNo}')"><img src="/resources/images/r_money.png"><p><spring:message code="label.n_withdrawal" /></p></div>
 		<div onclick = "movePage('/m/mypage/m_mybank_account_list.do?memberNo=${model.memberTypeInfo.memberNo}')" ><img src="/resources/images/r_phone.png"><p><spring:message code="label.n_bank_account" /></p></div>
