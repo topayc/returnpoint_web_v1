@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="/resources/css/m_common.css">
 <!-- <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script> -->
 <script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="/resources/js/lib/jquery.mobile.js.js"></script>
 
 <!-- 가맹점롤링 -->
 <!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script> -->
