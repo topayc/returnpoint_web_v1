@@ -814,12 +814,14 @@ li.on a {font-weight:600;}
 
 .m_main_banner{background-color:#f1f1f1;padding;5px}
 
+
+/*카레고리별 가맹점 리스트*/
+
 .slick-initialized .swipe-tab-content {
   position: relative;
   min-height: 365px;
 }
 
-/*카레고리별 가맹점 리스트*/
 .slick-initialized .swipe-tab {
   display: -webkit-box;
   display: -webkit-flex;
@@ -847,6 +849,16 @@ li.on a {font-weight:600;}
 
 .slick-initialized .swipe-tab:hover { color: #000; }
 .slick-initialized .swipe-tab.active-tab { border-bottom-color: #000; color: #000; font-weight: bold; }
-.affiliate_tab_main-container { padding: 25px 15px; background: #f1f1f1 }
+.affiliate_tab_main-container { padding: 25px 15px; background: #fff ;border-top: 1px solid #eee}
  *:focus { outline:none; }
  .affiliate_category{margin:10px 0 0 0}
+ 
+ /*카레고리별 가맹점 리스트 아이템*/
+ .r_list{padding:5px;overflow: hidden;}
+.r_list ul li div{float: left;}
+.r_list ul li{overflow: hidden;padding:15px 0;}
+.r_list .list_img{width:24%;padding:0 10px;}
+.r_list .list_text{width: 70%;font-size: 12px;}
+.r_list .list_text p{margin-bottom:5px;}
+.r_list .list_text .list_text_box{background-color: #33cccc;border-radius: 5px;color: #fff;font-size: 11px;padding: 2px 10px;}
+.r_list .list_text .list_text_title{font-size: 13px;font-weight: bold;}
