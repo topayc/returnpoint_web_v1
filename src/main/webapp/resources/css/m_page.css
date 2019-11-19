@@ -123,7 +123,7 @@ section hr{display:none;}
 .slick-loading .slick-slide {visibility: hidden;}
 .slick-vertical .slick-slide {display: block;height: auto;border: 1px solid transparent;}
 
-.slick-slide {margin: 0px 10px;border-radius: 50%; overflow: hidden; border: 0;}
+
 .slick-slide img {width: 100%;}
 .slick-prev:before, .slick-next:before {color: black;}
 .slick-slide {transition: all ease-in-out .3s;  opacity: 1;}
@@ -814,3 +814,39 @@ li.on a {font-weight:600;}
 
 .m_main_banner{background-color:#f1f1f1;padding;5px}
 
+.slick-initialized .swipe-tab-content {
+  position: relative;
+  min-height: 365px;
+}
+
+/*카레고리별 가맹점 리스트*/
+.slick-initialized .swipe-tab {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 30px;
+  background: none;
+  border: 0;
+  color: #111;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  font-size:12px
+}
+
+.slick-initialized .swipe-tab:hover { color: #000; }
+.slick-initialized .swipe-tab.active-tab { border-bottom-color: #000; color: #000; font-weight: bold; }
+.affiliate_tab_main-container { padding: 25px 15px; background: #f1f1f1 }
+ *:focus { outline:none; }
+ .affiliate_category{margin:10px 0 0 0}

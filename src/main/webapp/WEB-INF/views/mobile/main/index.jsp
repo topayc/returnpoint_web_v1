@@ -143,33 +143,7 @@
    <!-- nav -->
    <a href="/m/main/index.do"><h4><spring:message code="label.n_returnp" /></h4></a>
    </header>
-   <!-- main begin -->
    <section class="nobtn" id = "main">
-   <!-- 이벤트 관련 슬라이드 이미지 스크립트 
-   <script type="text/javascript">
-	   $(document).ready(function(){
-			var current = 0;
-			var $slides = $(".slide");
-			var total = 2;
-	
-		$slides.css("right","-400px");
-		$slides.eq(0).css("right","0px");
-	
-		function setSlide(){
-			if (current+1 >= total) move(0);
-			else move(current + 1);
-		}
-	
-		function move(idx){
-			$slides.eq(current).animate({"right":"400px"});
-			$slides.eq(idx).css({"right":"-400px"});
-			$slides.eq(idx).animate({"right":"0px"});
-			current=idx;
-		}
-		setInterval(setSlide,2500);
-	});
-   </script>
-   <!-- 이벤트 관련 슬라이드 이미지 -->
     <div class="main">
 		<!-- <div class="slide"><img src="/resources/images/slide1.png"/></div>-->
 		<div class="slide"><img src="/resources/images/slide2.png"/></div>
@@ -215,12 +189,12 @@
 		<div onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/r_receipt.png"><p><spring:message code="label.n_point_certificate" /></p></div>
 		<div onclick = "movePage('/m/giftCard/giftCardList.do')"><img src="/resources/images/r_credit.png"><p><spring:message code="label.n_gift_card" /></p></div>
 		<div onclick = "movePage('/m/map/rpmap.do')"><img src="/resources/images/r_search.png"><p><spring:message code="label.n_my_affiliate" /></p></div>
-		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" /></p></div>
-		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_set.png"><p><spring:message code="label.n_settings" /></p></div>
+		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" />/<spring:message code="label.n_settings" /></p></div>
+		<div onclick = "movePage('/m/mypage/manage_qr.do')"><img src="/resources/images/r_qr_manage.png"><p><spring:message code="label.create_recom_qr" /></p></div>
 	</div>
 	<div style="background-color:#f1f1f1;padding:1px 0;">
-		<div class="m_search" onclick = "movePage('/m/affiliate/affiliateSearchList.do')">
-		<!-- <div class="m_search" onclick = "movePage('/m/affiliate/newAffiliateSearch.do')"> -->
+		<!-- <div class="m_search" onclick = "movePage('/m/affiliate/affiliateSearchList.do')"> -->
+		<div class="m_search" onclick = "movePage('/m/affiliate/newAffiliateSearch.do')">
 			<span><spring:message code="label.n_search_affiliate" /></span><span><img src="/resources/images/r_bottom_search.png"></span>
 		</div>
 	</div>
