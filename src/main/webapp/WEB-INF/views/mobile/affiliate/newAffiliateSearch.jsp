@@ -127,8 +127,8 @@
 									<p>02-677-1291</p>
 									<p>경기도 수원시 서둔동 17-180</p>
 									<p>
-										<span> <img src="/resources/images/guest.png"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png"></span>&nbsp;<span>121km</span></p>
+										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
+										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
 								</div>
 							</li>
 						</ul>
