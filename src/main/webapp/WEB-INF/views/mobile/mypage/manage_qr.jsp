@@ -61,7 +61,7 @@ $(document).ready(function(){
 	<!-- content begin -->	
 		<section>
 		<div class="listS02">
-			<div class="list_title"><i class="fas fa-qrcode">&nbsp;</i><spring:message code="label.gen_qr_code" /></div>
+		<%-- 	<div class="list_title"><i class="fas fa-qrcode">&nbsp;</i><spring:message code="label.gen_qr_code" /></div> --%>
 			<div class="list_li" >
 				<a onclick = "genQR('10000')">
 					<span class ="item_title"><spring:message code="label.gen_join_qr_code" /></span></br>
