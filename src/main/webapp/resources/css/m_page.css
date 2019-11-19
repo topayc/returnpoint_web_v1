@@ -124,7 +124,7 @@ section hr{display:none;}
 .slick-vertical .slick-slide {display: block;height: auto;border: 1px solid transparent;}
 
 
-.slick-slide img {width: 100%;}
+/* .slick-slide img {width: 100%;} */
 .slick-prev:before, .slick-next:before {color: black;}
 .slick-slide {transition: all ease-in-out .3s;  opacity: 1;}
 .slick-active {opacity: 1;}
