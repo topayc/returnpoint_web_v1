@@ -819,7 +819,7 @@ li.on a {font-weight:600;}
 
 .slick-initialized .swipe-tab-content {
   position: relative;
-  min-height: 365px;
+  min-height: 600px;
 }
 
 .slick-initialized .swipe-tab {
