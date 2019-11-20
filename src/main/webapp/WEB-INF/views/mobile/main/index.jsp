@@ -203,8 +203,6 @@
 			<div class="r_fran_right">지역별 가맹점</div>
 		</div>
 	</div>
-	<!-- 업종별 가맹점,지역별 가맹점 -->
-	
 	<div class = "m_main_banner"> 
 		<div class="m_banner" onclick = "movePage('http://rp.umallok.com')"> <img src="/resources/images/r_umall.png"></div>
 		<div class="m_banner" style ="margin-top:7px;" onclick = "movePage('http://returnpoint.net ')"> <img src="/resources/images/r_wamall.png"></div> 
