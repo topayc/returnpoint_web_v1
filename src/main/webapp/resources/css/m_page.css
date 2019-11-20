@@ -862,3 +862,8 @@ li.on a {font-weight:600;}
 .r_list .list_text p{margin-bottom:5px;}
 .r_list .list_text .list_text_box{background-color: #33cccc;border-radius: 5px;color: #fff;font-size: 11px;padding: 2px 10px;}
 .r_list .list_text .list_text_title{font-size: 13px;font-weight: bold;}
+
+/*업종별 가맹점,지역별 가맹점*/
+.r_fran_page{overflow:hidden;text-align:center;background-color:#f1f1f1;padding:0 10px 10px 10px;}
+.r_fran_page .r_fran_left{float:left;width:49%;padding:8px 0;background-color:#fff;border-radius:10px;border:1px solid #e7e7e7;}
+.r_fran_page .r_fran_right{float:right;width:49%;padding:8px 0;background-color:#fff;border-radius:10px;border:1px solid #e7e7e7;}
