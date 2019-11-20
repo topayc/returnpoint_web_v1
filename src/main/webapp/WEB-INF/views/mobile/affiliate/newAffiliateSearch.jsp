@@ -131,17 +131,6 @@
 										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
 								</div>
 							</li>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
 						</ul>
 					</div>
 			    
@@ -149,17 +138,6 @@
 			    <div class="swipe-tab-content">
 			    	<div class="r_list">
 						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
 							<li>
 								<div class="list_img"><img src="/resources/images/list_img.png"></div>
 								<div class="list_text">
