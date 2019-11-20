@@ -57,6 +57,7 @@
 			$swipeTabsContentContainer = $('.swipe-tabs-container'), 
 			currentIndex = 0, 
 			activeTabClassName = 'active-tab';
+		var curCategory = 0;
 		$swipeTabsContainer.on('init', function(event, slick) {
 			$swipeTabsContentContainer.removeClass('invisible');
 			$swipeTabsContainer.removeClass('invisible');
