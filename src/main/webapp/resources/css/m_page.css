@@ -761,7 +761,7 @@ button {color : #000; font-weight:400}
 #main .main_img_box div{float:left;width:33.33%;padding:15px 0;overflow:hidden;font-size:12px;color:#333;text-align:center;font-weight:400;}
 #main .main_img_box div img{margin-bottom:10px;}
 
-#main .m_search{border:1px solid #e7e7e7;margin:10px 10px 1px 10px;text-identy:20px;text-indent:10px;padding:8px;background-color:#fff;}
+#main .m_search{border:1px solid #e7e7e7;margin:10px 10px 5px 10px;text-identy:20px;text-indent:10px;padding:8px;background-color:#fff;}
 #main .m_search img{float:right;}
 
 #main .m_banner{width:100%;overflow:hidden;border:1px solid #f1f1f1;height:80px;}
@@ -865,5 +865,5 @@ li.on a {font-weight:600;}
 
 /*업종별 가맹점,지역별 가맹점*/
 .r_fran_page{overflow:hidden;text-align:center;background-color:#f1f1f1;padding:0 10px 10px 10px;font-size:13px;}
-.r_fran_page .r_fran_left{float:left;width:49.8%;padding:8px 0;background-color:#fff;border:1px solid #e7e7e7;}
-.r_fran_page .r_fran_right{float:right;width:49.8%;padding:8px 0;background-color:#fff;border:1px solid #e7e7e7;}
+.r_fran_page .r_fran_left{float:left;width:49.2%;padding:8px 0;background-color:#fff;border:1px solid #e7e7e7;}
+.r_fran_page .r_fran_right{float:right;width:49.2%;padding:8px 0;background-color:#fff;border:1px solid #e7e7e7;}
