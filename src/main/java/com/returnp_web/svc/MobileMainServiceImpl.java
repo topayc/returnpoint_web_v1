@@ -1490,4 +1490,19 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return response2.toString();
 	}
 
+	@Override
+	public boolean prepareNewAffiliateSearch(RPMap paramMap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			dbparams.put("parentCategoryNo", 0);
+			ArrayList<HashMap<String, Object>> affiliateCategories = this.mobileMemberDao.selectAffiliateCategories(dbparams);
+			rmap.put("affiliateCategories", affiliateCategories);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
 }

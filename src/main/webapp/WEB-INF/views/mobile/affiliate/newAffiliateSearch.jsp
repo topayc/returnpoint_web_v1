@@ -25,15 +25,33 @@
 
 <script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
+<script type="text/javascript" src="/resources/js/lib/handlebars-v4.4.3.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<script id="entry-template" type="text/x-handlebars-template">
+	{{#affiliates}} 
+	<li>
+		<div class="list_img"><img src="/resources/images/list_img.png"></div>
+		<div class="list_text">
+			<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
+			<p>02-677-1291</p>
+			<p>경기도 수원시 서둔동 17-180</p>
+			<p>
+			<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
+			<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
+		</div>
+	</li>
+	{{/affiliates}} 
+</script>
 
 <script type="text/javascript">
-  if (isApp()) {
+/*   if (isApp()) {
     checkVersion();
   }
-  
-  $(function () {
-		'use strict';
+   */
+   var source,template;
+   $(function () {
+	 /* 스와이프 탭 초기화	 */
+	  'use strict';
 		var $swipeTabsContainer = $('.swipe-tabs'), 
 			$swipeTabs = $('.swipe-tab'), 
 			$swipeTabsContentContainer = $('.swipe-tabs-container'), 
@@ -88,6 +106,10 @@
 					$('.swipe-tab[data-slick-index=' + currentIndex + ']')
 							.addClass(activeTabClassName);
 				});
+		 source = $("#entry-template").html(); 
+		 template = Handlebars.compile(source); 
+		
+		 /* 초기화 한 후 해당 카테고리의 가맹점 리스트  Ajax Loading */
 	});
 </script>
 </head>
@@ -98,201 +120,51 @@
    <a href="/m/main/index.do"><h4><spring:message code="label.n_returnp" /></h4></a>
    </header>
    <!-- main begin -->
+   <c:choose>
+   <c:when test="${fn:length(model.affiliateCategories) > 0}">
    <section >
 	   <div class = "affiliate_category">
-		   <div class="sub-header ">
+			<div class="sub-header ">
 			  <div class="swipe-tabs">
-			    <div class="swipe-tab">의류</div>
-			    <div class="swipe-tab">음식</div>
-			    <div class="swipe-tab">유통</div>
-			    <div class="swipe-tab">건설</div>
-			    <div class="swipe-tab">배달</div>
-			    
-			     <div class="swipe-tab">유흥</div>
-			    <div class="swipe-tab">노래방</div>
-			    <div class="swipe-tab">오락</div>
-			     <div class="swipe-tab">마트</div>
-			    <div class="swipe-tab">편의점</div>
+			    <c:forEach var="category" items="${model.affiliateCategories}">
+			    	<div class="swipe-tab">${category.categoryName}</div>
+			    </c:forEach>
 			  </div>
 			</div>
 			<div class="affiliate_tab_main-container"   >
 			  <div class="swipe-tabs-container " >
-			    <div class="swipe-tab-content">
-			    	<div class="r_list">
-						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-			    
-			     </div>
-			    <div class="swipe-tab-content">
-			    	<div class="r_list">
-						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			    <div class="swipe-tab-content">
-			    	<div class="r_list">
-						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			    <div class="swipe-tab-content">
-			    	<div class="r_list">
-						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			    <div class="swipe-tab-content">
-			    	<div class="r_list">
-						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			    
-			    <div class="swipe-tab-content">
-			    	<div class="r_list">
-						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			    <div class="swipe-tab-content">
-			    	<div class="r_list">
-						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			    <div class="swipe-tab-content">
-			    	<div class="r_list">
-						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			    <div class="swipe-tab-content">
-			    	<div class="r_list">
-						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-			    </div>
-			    <div class="swipe-tab-content">
-			    	<div class="r_list">
-						<ul>
-							<li>
-								<div class="list_img"><img src="/resources/images/list_img.png"></div>
-								<div class="list_text">
-									<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-									<p>02-677-1291</p>
-									<p>경기도 수원시 서둔동 17-180</p>
-									<p>
-										<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-										<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-								</div>
-							</li>
-						</ul>
-					</div>
-			    </div>
+			   	    <c:forEach var="category" items="${model.affiliateCategories}">
+			    	<div class="swipe-tab-content">
+			    		<div class="r_list">
+							<ul>
+								<li>
+									<div class="list_img"><img src="/resources/images/list_img.png"></div>
+									<div class="list_text">
+										<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
+										<p>02-677-1291</p>
+										<p>경기도 수원시 서둔동 17-180</p>
+										<p>
+											<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
+											<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
+									</div>
+								</li>
+							</ul>
+						</div>
+			     	</div>
+			    	</c:forEach>
 			  </div>
 			</div>
    		</div>
    </section>
+   </c:when>
+	<c:otherwise>
+		<section class="qr_nodata"><!-- 0824 -->
+			<div> 
+				<i class="fas fa-exclamation-triangle"></i>등록된 카테고리가 없습니다.
+			</div>
+	</section>
+	</c:otherwise>
+	</c:choose>
 </div>
 </body>
 </html>

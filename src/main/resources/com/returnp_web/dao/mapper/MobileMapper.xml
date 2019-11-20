@@ -1052,4 +1052,12 @@
       </if>
 		
 	</select> 
+	
+		<!-- Affiliate Category 가져오기  -->
+	<select id="selectAffiliateCategories" parameterType="HashMap" resultType="HashMap">
+		SELECT *
+		FROM category
+		WHERE 1 = 1
+		 <if test="parentCategoryNo != null "> AND parentCategoryNo= #{parentCategoryNo} </if>
+	</select>
 </mapper>

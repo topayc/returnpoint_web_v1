@@ -555,4 +555,7 @@ public interface MobileMapper {
 
 	HashMap<String, Object> selectAffiliateCommand(HashMap<String, Object> dbparams);
 
+
+	ArrayList<HashMap<String, Object>> selectAffiliateCategories(HashMap<String, Object> dbparams);
+
 }

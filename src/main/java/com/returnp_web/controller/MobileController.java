@@ -124,13 +124,13 @@ public class MobileController extends MallBaseController {
 	
 	// 카테고리별  탭 가맹점리스트 
 	@RequestMapping("/affiliate/newAffiliateSearch")
-	public String searchAffilaite(@RequestParam Map<String,Object> paramMap, 
+	public String searchAffilaite(
+			@RequestParam Map<String,Object> paramMap, 
 			ModelMap modelMap, 
-			HttpSession session, 
 			HttpServletRequest request, 
-			HttpServletResponse responsp) throws Exception {
+			HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/affiliate/newAffiliateSearch");
-		boolean bret  = true;
+		boolean bret  = mms.prepareNewAffiliateSearch(Util.toRPap(paramMap), rmap, request, response);
 		return page(bret, modelMap, rmap);
 	}
 	

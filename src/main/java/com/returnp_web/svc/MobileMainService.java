@@ -276,5 +276,7 @@ public interface MobileMainService {
 	String accPointCoupon(HashMap<String, String> paramMap, ModelMap modelMap, HttpServletRequest request,
 			HttpServletResponse response);
 
+	boolean prepareNewAffiliateSearch(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 }
 

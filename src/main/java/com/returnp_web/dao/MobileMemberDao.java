@@ -603,4 +603,8 @@ public class MobileMemberDao {
 	public HashMap<String, Object> selectAffiliateCommand(HashMap<String, Object> dbparams) {
 		return sqlSession.getMapper(MobileMapper.class).selectAffiliateCommand(dbparams);
 	}
+
+	public ArrayList<HashMap<String, Object>> selectAffiliateCategories(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMapper.class).selectAffiliateCategories(dbparams);
+	}
 }
