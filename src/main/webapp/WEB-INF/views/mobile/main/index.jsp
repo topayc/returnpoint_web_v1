@@ -203,8 +203,9 @@
 		</div>
 	</div>
 	<div class = "m_main_banner"> 
-		<div class="m_banner" onclick = "movePage('http://rp.umallok.com')"> <img src="/resources/images/r_umall.png"></div>
-		<div class="m_banner" style ="margin-top:7px;" onclick = "movePage('http://returnpoint.net ')"> <img src="/resources/images/r_wamall.png"></div> 
+		<div class="m_banner" onclick = "movePage('http://rp.umallok.com')"> <img class = "m_banner_img" src="/resources/images/r_umall.jpg"></div>
+		<div class="m_banner" onclick = "movePage('http://yourental.co.kr/index.do')"> <img class = "m_banner_img" src="/resources/images/r_umall_rental.jpg"></div>
+		<div class="m_banner" style ="margin-top:7px;" onclick = "movePage('http://returnpoint.net ')"> <img class = "m_banner_img" src="/resources/images/r_wamall.png"></div> 
 	</div>
 	 <footer>
       <ul style = "font-weight:300">
