@@ -32,9 +32,9 @@
 	<li>
 		<div class="list_img"><img src="/resources/images/list_img.png"></div>
 		<div class="list_text">
-			<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-			<p>02-677-1291</p>
-			<p>경기도 수원시 서둔동 17-180</p>
+			<p><span class="list_text_box">{{categoryName}}</span>&nbsp;<span class="list_text_title">{{affiliateName}}</span></p>
+			<p>{{affiliatePhone}}</p>
+			<p>{{affiliateAddress}}</p>
 			<p>
 			<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
 			<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
@@ -91,12 +91,14 @@
 
 		$swipeTabs.on('click', function(event) {
 			// gets index of clicked tab
+			$("ul[data-cate-list='"+$(this).data("tab-cate")+"']").empty();
 			currentIndex = $(this).data('slick-index');
 			$swipeTabs.removeClass(activeTabClassName);
 			$('.swipe-tab[data-slick-index=' + currentIndex + ']').addClass(
 					activeTabClassName);
 			$swipeTabsContainer.slick('slickGoTo', currentIndex);
 			$swipeTabsContentContainer.slick('slickGoTo', currentIndex);
+			getAffiliatesByCate($(this).data("tab-cate"));
 		});
 
 		//initializes slick navigation tabs swipe handler
@@ -106,12 +108,36 @@
 					$swipeTabs.removeClass(activeTabClassName);
 					$('.swipe-tab[data-slick-index=' + currentIndex + ']')
 							.addClass(activeTabClassName);
+					$('.swipe-tab[data-slick-index=' + currentIndex + ']').click();
 				});
+		
 		 source = $("#entry-template").html(); 
 		 template = Handlebars.compile(source); 
-		
-		 /* 초기화 한 후 해당 카테고리의 가맹점 리스트  Ajax Loading */
+		 
+		 getAffiliatesByCate(10);
 	});
+   
+   var curCategory1 = 10;
+   function getAffiliatesByCate(cate){
+	   var data = {category1No : cate};	
+		$.getJSON("/m/affiliate/findAffiliateByCate.do", data, function (result) {
+			if (result.length > 0) {
+				curCategory1 = result[0].category1No;
+				addAffiliateListItem(result)
+			}else {
+				
+			}
+        });
+   }
+   function addAffiliateListItem(list){
+	   var data = {affiliates : list};
+	   if (!template ) {
+		  source = $("#entry-template").html(); 
+	      template = Handlebars.compile(source); 
+	   }
+	   var html = template(data);
+	   $("ul[data-cate-list='"+curCategory1+"']").append(html)
+   }
 </script>
 </head>
 <body class="index">
@@ -128,27 +154,16 @@
 			<div class="sub-header ">
 			  <div class="swipe-tabs">
 			    <c:forEach var="category" items="${model.affiliateCategories}">
-			    	<div class="swipe-tab">${category.categoryName}</div>
+			    	<div class="swipe-tab"  data-tab-cate = "${category.categoryNo}">${category.categoryName}</div>
 			    </c:forEach>
 			  </div>
 			</div>
 			<div class="affiliate_tab_main-container"   >
 			  <div class="swipe-tabs-container " >
 			   	    <c:forEach var="category" items="${model.affiliateCategories}">
-			    	<div class="swipe-tab-content">
+			    	<div class="swipe-tab-content" data-tab-content-cate = "${category.categoryNo}">
 			    		<div class="r_list">
-							<ul>
-								<li>
-									<div class="list_img"><img src="/resources/images/list_img.png"></div>
-									<div class="list_text">
-										<p><span class="list_text_box">음식점</span>&nbsp;<span class="list_text_title">치즈 피자 전문점</span></p>
-										<p>02-677-1291</p>
-										<p>경기도 수원시 서둔동 17-180</p>
-										<p>
-											<span> <img src="/resources/images/guest.png" style = "display: inline"></span>&nbsp;<span>73명방문</span>&nbsp;&nbsp;
-											<span><img src="/resources/images/location.png" style = "display: inline"></span>&nbsp;<span>121km</span></p>
-									</div>
-								</li>
+							<ul data-cate-list = "${category.categoryNo}">
 							</ul>
 						</div>
 			     	</div>

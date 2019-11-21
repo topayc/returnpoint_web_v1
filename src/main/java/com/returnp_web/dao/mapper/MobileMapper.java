@@ -3,6 +3,7 @@ package com.returnp_web.dao.mapper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface MobileMapper {
 		
@@ -557,5 +558,8 @@ public interface MobileMapper {
 
 
 	ArrayList<HashMap<String, Object>> selectAffiliateCategories(HashMap<String, Object> dbparams);
+
+
+	ArrayList<HashMap<String, Object>> findAffiliatesByCate(Map<String, Object> paramMap);
 
 }

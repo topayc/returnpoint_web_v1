@@ -98,15 +98,17 @@ h4, .h4, h5, .h5, h6, .h6 {
         </div>
         <div class="main">
             <p class="text1">${model.affiliate.affiliateName}</p>
-            <span class="text2"><span style = "padding: 7px;background-color : #33cc33" class="badge badge-pill badge-success">100% 적립</span> </span>
+            <span class="text2">
+            	<span style = "padding: 7px;background-color : #33cc33" class="badge badge-pill badge-success">100% 적립</span>
+             </span>
             <!-- <span class="text2">최근리뷰 <span class="badge badge-pill badge-success">245</span></span> -->
         </div>
-        <div class="bt_box">
-            <button type="button" class="btn btn-default <c:if test = "${model.affiliateDetail.commonWeb ne null }">web_link_active</c:if>"  
+        <div class="bt_box" >
+            <button style = "font-size : 12px" type="button" class="btn btn-default <c:if test = "${model.affiliateDetail.commonWeb ne null }">web_link_active</c:if>"  
             <c:if test = "${model.affiliateDetail.commonWeb ne null }">onclick = "location.href='${model.affiliateDetail.commonWeb}'"</c:if> >
             	홈페이지
             </button>
-            <button type="button" class="btn btn-default etc_link <c:if test = "${model.affiliateDetail.etcLink ne null }">etc_link_active</c:if>" 
+            <button style = "font-size : 12px" type="button" class="btn btn-default etc_link <c:if test = "${model.affiliateDetail.etcLink ne null }">etc_link_active</c:if>" 
             	<c:if test = "${model.affiliateDetail.etcLink ne null }">onclick = "location.href='${fn:split(model.affiliateDetail.etcLink,'@')[1]}'"</c:if>>
             	<c:choose>
             		<c:when test = "${model.affiliateDetail.etcLink ne null }">
@@ -132,30 +134,33 @@ h4, .h4, h5, .h5, h6, .h6 {
         </ul>
         <div id="myTabContent" class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="profile" aria-labelledBy="profile-tab">
+                 <c:if test = "${!empty model.affiliateDetail.overview}">
                  <div class="information">
                     <ul>
-                        <li><img src="/resources/images/back_img5.png">소개</li>
+                        <li><!-- <img src="/resources/images/back_img5.png"> -->&nbsp;&nbsp;소개</li>
                         <li>
                            <c:set var = "overview" value ="${fn:replace(model.affiliateDetail.overview, LF, '<br>')}"/>
 							${f:decQuote(overview)}
                         </li>
                     </ul>
                 </div>
+                </c:if>
                 
-                
+                <c:if test = "${!empty model.affiliateDetail.afffiliateNotice}">
                 <div class="information">
                     <ul>
-                        <li><img src="/resources/images/back_img5.png">사장님 인사말</li>
+                        <li><!-- <img src="/resources/images/back_img5.png"> -->&nbsp;&nbsp;사장님 인사말</li>
                         <li>
                             <c:set var = "afffiliateNotice" value ="${fn:replace(model.affiliateDetail.afffiliateNotice, LF, '<br>')}"/>
 							${f:decQuote(afffiliateNotice)}
                         </li>
                     </ul>
                 </div>
+                 </c:if>
                  
-                        <div class="information">
+                 <div class="information">
                     <ul>
-                        <li><img src="/resources/images/back_img1.png">영업 정보</li>
+                        <li><!-- <img src="/resources/images/back_img1.png"> -->&nbsp;&nbsp;영업 정보</li>
                         <li>
                             <ul>
                                 <li>전화번호</li>
@@ -190,7 +195,7 @@ h4, .h4, h5, .h5, h6, .h6 {
                 
                  <div class="information">
                     <ul>
-                        <li><img src="/resources/images/back_img2.png">사업장 정보</li>
+                        <li><!-- <img src="/resources/images/back_img2.png"> -->&nbsp;&nbsp;사업장 정보</li>
                         <li> <ul> <li>상호명</li> <li>${model.affiliate.affiliateName}</li> </ul> </li>
                         <li> <ul> <li>대표자</li> <li>${model.affiliateMember.memberName}</li></ul></li>
                         <li> <ul> <li>사업자 번호</li> <li>${model.affiliateDetail.businessNumber} </li></ul></li>
@@ -198,18 +203,20 @@ h4, .h4, h5, .h5, h6, .h6 {
                         <li> <ul> <li>업태</li> <li>${model.affiliateDetail.businessType} </li></ul></li><li>
                     </ul>
                 </div>
+               
+               <c:if test = "${!empty model.affiliateDetail.etc}">
                 <div class="information">
                     <ul>
-                        <li><img src="/resources/images/back_img5.png">부가 정보</li> 
+                        <li><!-- <img src="/resources/images/back_img5.png"> -->&nbsp;&nbsp;부가 정보</li> 
                         <li> <c:set var = "etc" value ="${fn:replace(model.affiliateDetail.etc, LF, '<br>')}"/> ${f:decQuote(etc)} </li>
                     </ul>
                 </div>
+                </c:if>
             </div>
-            
             <div role="tabpanel" class="tab-pane fade" id="review" aria-labelledBy="review-tab">
           		  <div class="information">
                     <ul>
-                        <li><img src="/resources/images/back_img5.png">소식</li> 
+                        <li><!-- <img src="/resources/images/back_img5.png"> -->&nbsp;&nbsp;소식</li> 
                         <li> <c:set var = "affiliateNews" value ="${fn:replace(model.affiliateDetail.affiliateNews, LF, '<br>')}"/> ${f:decQuote(affiliateNews)} </li>
                     </ul>
                 </div>

@@ -1060,4 +1060,21 @@
 		WHERE 1 = 1
 		 <if test="parentCategoryNo != null "> AND parentCategoryNo= #{parentCategoryNo} </if>
 	</select>
+
+		<!-- 카테고리 가맹점 리스트  -->
+	<select id="findAffiliatesByCate" parameterType="HashMap" resultType="HashMap">
+			SELECT 
+			A.*, 
+		    C.affiliateCategoryNo,
+		    C.category1No,
+		    C.category2No,
+		    B.categoryName
+		from affiliate as A
+		inner join affiliate_category as C on (A.affiliateNo = C.affiliateNo)
+		inner join category as B  on (C.category1No= B.categoryNo)
+		WHERE 1 = 1
+		 <if test="category1No != null "> AND C.category1No= #{category1No} </if>
+		 <if test="category2No != null "> AND C.category2No= #{category2No} </if>
+		 <if test="pagination"> limit ${offset} ,  ${pageSize} </if>
+	</select>
 </mapper>

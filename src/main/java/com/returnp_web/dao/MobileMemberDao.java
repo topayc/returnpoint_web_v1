@@ -607,4 +607,8 @@ public class MobileMemberDao {
 	public ArrayList<HashMap<String, Object>> selectAffiliateCategories(HashMap<String, Object> dbparams) {
 		return sqlSession.getMapper(MobileMapper.class).selectAffiliateCategories(dbparams);
 	}
+
+	public ArrayList<HashMap<String, Object>> findAffiliatesByCate(Map<String, Object> paramMap) {
+		return sqlSession.getMapper(MobileMapper.class).findAffiliatesByCate(paramMap);
+	}
 }

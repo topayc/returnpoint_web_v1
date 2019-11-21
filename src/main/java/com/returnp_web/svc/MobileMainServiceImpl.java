@@ -1505,4 +1505,23 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return true;
 	}
 
+	@Override
+	public ArrayList<HashMap<String, Object>> findAffiliatesByCate(Map<String, Object> paramMap, HttpServletRequest request, HttpServletResponse response) {
+		try {
+			int pageSize = 500;
+
+			paramMap.put("pagination", "1"); 
+			paramMap.put("pageSize", pageSize); 
+			if (!paramMap.containsKey("page")) {
+				paramMap.put("offset", "0"); 
+			}else {
+				paramMap.put("offset",(Integer.valueOf((String)paramMap.get("page")) -1) * pageSize );
+			}
+			ArrayList<HashMap<String, Object>> selectedAffiliates= this.mobileMemberDao.findAffiliatesByCate(paramMap);
+			return selectedAffiliates;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

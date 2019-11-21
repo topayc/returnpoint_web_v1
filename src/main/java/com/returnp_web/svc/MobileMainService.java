@@ -1,5 +1,6 @@
 package com.returnp_web.svc;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -277,6 +278,10 @@ public interface MobileMainService {
 			HttpServletResponse response);
 
 	boolean prepareNewAffiliateSearch(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	ArrayList<HashMap<String, Object>> findAffiliatesByCate(Map<String, Object> paramMap, HttpServletRequest request,
+			HttpServletResponse response);
+
 
 }
 
