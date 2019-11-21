@@ -199,7 +199,7 @@
 		</div>
 		<div class="r_fran_page">
 			<div class="r_fran_left"  onclick = "movePage('/m/affiliate/newAffiliateSearch.do')">업종별 가맹점</div>
-			<div class="r_fran_right">지역별 가맹점</div>
+			<div class="r_fran_right" onclick = "movePage('/m/affiliate/affiliateSearchList.do')">지역별 가맹점</div>
 		</div>
 	</div>
 	<div class = "m_main_banner"> 
