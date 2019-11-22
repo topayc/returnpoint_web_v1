@@ -747,8 +747,8 @@ button {color : #000; font-weight:400}
 #main .slide img{width:100%;height:100%;}
 
 #main .main_point{overflow:hidden;}
-#main .main_rpoint{float:left;width:50%;text-align:center;padding:18px 0;font-size:14px;font-weight:bold;color:#fff;background-color:#ff0066;}
-#main .main_gpoint{float:right;width:50%;text-align:center;padding:18px 0;font-size:14px;font-weight:bold;color:#fff;background-color:#33cccc;}
+#main .main_rpoint{float:left;width:50%;text-align:center;padding:12px 0;font-size:14px;font-weight:bold;color:#fff;background-color:#ff0066;}
+#main .main_gpoint{float:right;width:50%;text-align:center;padding:12px 0;font-size:14px;font-weight:bold;color:#fff;background-color:#33cccc;}
 #main .main_rpoint span{padding:0 12px;}
 #main .main_gpoint span{padding:0 12px;}
 
@@ -814,11 +814,22 @@ li.on a {font-weight:600;}
 
 .m_main_banner{background-color:#f1f1f1;padding;5px}
 
-
+.sub-header {
+	position: fixed; 
+    width: 100%;
+    z-index : 1;
+    background-color : #fff;
+    padding-top:13px;
+    border-bottom:1px  solid #eee
+}
 /*카레고리별 가맹점 리스트*/
 .slick-initialized .swipe-tab-content {
   position: relative;
   min-height: 300px;
+}
+
+.affiliate_tab_main-container{
+	z-index : 10000;
 }
 
 .slick-initialized .swipe-tab {
@@ -850,10 +861,10 @@ li.on a {font-weight:600;}
 .slick-initialized .swipe-tab.active-tab { border-bottom-color: #000; color: #000; font-weight: bold; }
 .affiliate_tab_main-container { padding: 10px 15px; background: #fff ;border-top: 1px solid #eee}
  *:focus { outline:none; }
- .affiliate_category{margin:10px 0 0 0;font-weight:300}
+ .affiliate_category{margin:0 0 0 0;font-weight:300}
  
  /*카레고리별 가맹점 리스트 아이템*/
- .r_list{padding:5px;overflow: hidden;}
+ .r_list{padding:35px 0;overflow: hidden;}
 .r_list ul li div{float: left;}
 .r_list ul li{overflow: hidden;padding:0 0;padding:15px 0;}
 .r_list .list_img{width:24%;padding:0 0;}
