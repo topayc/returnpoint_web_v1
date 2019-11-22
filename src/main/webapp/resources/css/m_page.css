@@ -862,6 +862,7 @@ li.on a {font-weight:600;}
 .affiliate_tab_main-container { padding: 10px 15px; background: #fff ;border-top: 1px solid #eee}
  *:focus { outline:none; }
  .affiliate_category{margin:0 0 0 0;font-weight:300}
+ /* .affiliate_category{font-weight:300} */
  
  /*카레고리별 가맹점 리스트 아이템*/
  .r_list{padding:35 px 0;overflow: hidden;}
@@ -877,3 +878,6 @@ li.on a {font-weight:600;}
 .r_fran_page{overflow:hidden;text-align:center;background-color:#f1f1f1;padding:0 10px 10px 10px;font-size:13px;}
 .r_fran_page .r_fran_left{float:left;width:49.2%;padding:8px 0;background-color:#fff;border:1px solid #e7e7e7;}
 .r_fran_page .r_fran_right{float:right;width:49.2%;padding:8px 0;background-color:#fff;border:1px solid #e7e7e7;}
+
+.sub-header{padding-top:10px;position:fixed;background-color:#fff;z-index:1000;}
+
