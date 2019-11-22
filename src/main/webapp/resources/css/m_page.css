@@ -864,7 +864,7 @@ li.on a {font-weight:600;}
  .affiliate_category{margin:0 0 0 0;font-weight:300}
  
  /*카레고리별 가맹점 리스트 아이템*/
- .r_list{padding:35px 0;overflow: hidden;}
+ .r_list{padding:35 px 0;overflow: hidden;}
 .r_list ul li div{float: left;}
 .r_list ul li{overflow: hidden;padding:0 0;padding:15px 0;}
 .r_list .list_img{width:24%;padding:0 0;}
