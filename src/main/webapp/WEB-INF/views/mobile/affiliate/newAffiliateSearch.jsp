@@ -32,7 +32,21 @@
 	<li>
 		<div class="list_img"><img src="/resources/images/list_img.png"></div>
 		<div class="list_text">
-			<p><span class="list_text_box">{{categoryName}}</span>&nbsp;<span class="list_text_title">{{affiliateName}}</span></p>
+			<p><span class="list_text_box">{{category2Name}}</span>&nbsp;<span class="list_text_title">{{affiliateName}}</span></p>
+			<p>{{affiliatePhone}}</p>
+			<p>{{affiliateAddress}}</p>
+			<p>
+		</div>
+	</li>
+	{{/affiliates}} 
+</script>
+
+<script id="entry-template-2-copy" type="text/x-handlebars-template">
+	{{#affiliates}} 
+	<li>
+		<div class="list_img"><img src="/resources/images/list_img.png"></div>
+		<div class="list_text">
+			<p><span class="list_text_box">{{category2Name}}</span>&nbsp;<span class="list_text_title">{{affiliateName}}</span></p>
 			<p>{{affiliatePhone}}</p>
 			<p>{{affiliateAddress}}</p>
 			<p>
@@ -88,14 +102,13 @@
 			draggable : false,
 			touchThreshold : 10
 		});
-
+		
 		$swipeTabs.on('click', function(event) {
 			// gets index of clicked tab
-			$("ul[data-cate-list='"+$(this).data("tab-cate")+"']").empty();
+			//$("ul[data-cate-list='"+$(this).data("tab-cate")+"']").empty();
 			currentIndex = $(this).data('slick-index');
 			$swipeTabs.removeClass(activeTabClassName);
-			$('.swipe-tab[data-slick-index=' + currentIndex + ']').addClass(
-					activeTabClassName);
+			$('.swipe-tab[data-slick-index=' + currentIndex + ']').addClass( activeTabClassName);
 			$swipeTabsContainer.slick('slickGoTo', currentIndex);
 			$swipeTabsContentContainer.slick('slickGoTo', currentIndex);
 			getAffiliatesByCate($(this).data("tab-cate"));
@@ -106,18 +119,17 @@
 				function(event, slick, direction) {
 					currentIndex = $(this).slick('slickCurrentSlide');
 					$swipeTabs.removeClass(activeTabClassName);
-					$('.swipe-tab[data-slick-index=' + currentIndex + ']')
-							.addClass(activeTabClassName);
+					$('.swipe-tab[data-slick-index=' + currentIndex + ']') .addClass(activeTabClassName);
 					$('.swipe-tab[data-slick-index=' + currentIndex + ']').click();
 				});
-		
+
 		 source = $("#entry-template").html(); 
 		 template = Handlebars.compile(source); 
-		 
-		 getAffiliatesByCate(10);
+		 getAffiliatesByCate(18);
 	});
    
-   var curCategory1 = 10;
+   var curCategory1 = 18;
+   
    function getAffiliatesByCate(cate){
 	   var data = {category1No : cate};	
 		$.getJSON("/m/affiliate/findAffiliateByCate.do", data, function (result) {
@@ -130,13 +142,16 @@
         });
    }
    function addAffiliateListItem(list){
+	   console.log(list);
 	   var data = {affiliates : list};
 	   if (!template ) {
 		  source = $("#entry-template").html(); 
 	      template = Handlebars.compile(source); 
 	   }
 	   var html = template(data);
-	   $("ul[data-cate-list='"+curCategory1+"']").append(html)
+	   var fHtml = $("<ul data-cate-list='"+ curCategory1 +"'></ul>");
+	   fHtml.append(html)
+	   $("ul[data-cate-list='"+curCategory1+"']").replaceWith(fHtml)
    }
 </script>
 </head>
