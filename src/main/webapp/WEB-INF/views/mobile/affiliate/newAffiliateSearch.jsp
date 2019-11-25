@@ -29,7 +29,7 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 <script id="entry-template" type="text/x-handlebars-template">
 	{{#affiliates}} 
-	<li>
+	<li onclick = "movePage( '/m/affiliate/affiliateDetail.do?affiliateNo={{affiliateNo}}')" >
 		<div class="list_img"><img src="/resources/images/list_img.png"></div>
 		<div class="list_text">
 			<p><span class="list_text_box">{{category2Name}}</span>&nbsp;<span class="list_text_title">{{affiliateName}}</span></p>
@@ -43,7 +43,7 @@
 
 <script id="entry-template-2-copy" type="text/x-handlebars-template">
 	{{#affiliates}} 
-	<li>
+	<li onclick = "movePage( '/m/affiliate/affiliateDetail.do?affiliateNo={{affiliateNo}}')" >
 		<div class="list_img"><img src="/resources/images/list_img.png"></div>
 		<div class="list_text">
 			<p><span class="list_text_box">{{category2Name}}</span>&nbsp;<span class="list_text_title">{{affiliateName}}</span></p>

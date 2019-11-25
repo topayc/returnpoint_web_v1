@@ -24,7 +24,7 @@ nav .navbar-brand>img{width:98px;}
 nav .navbar-toggle {padding: 7px 0px;}
 nav .navbar-toggle .icon-bar {background: #333; border-radius: 1px;}
 nav #myNavbar{position: fixed;width:100%;top: -1px; right: -100%; height: 100%;transition: 0.3s;padding: 0;margin:0;}
-nav #myNavbar .navbar-nav {width: 80%;position: absolute;margin:0;right: 0;top: 0px;background: #fff;height: 101%;overflow : auto;}
+nav #myNavbar .navbar-nav {width: 80%;position: absolute;margin:0;right: 0;top: 0px;background: #fff;height: 101%;overflow : auto;z-index:10}
 nav #myNavbar .closebtn{width: 100%;height: 100%; position: absolute;}
 nav #myNavbar .navbar-nav .homelink{position: absolute; top: 27px; right: 27px; font-size: 25px;}
 nav #myNavbar .navbar-nav .homelink a{color:#fff;}
@@ -392,7 +392,7 @@ background: #fff;border: 0;border-left: 1px solid #f3f3f3;font-size: 13px;color:
 .qr_gen_img_container>div>i{font-size: 50px;display: block;color: #391dab;padding-bottom: 21px;}
 .qr_gen_img_container .btn-submit{left:0;}
 #progress_loading{line-height: 100%;height: 100%;font-size: 30px;vertical-align: middle;color: #626262;padding-right: 30px;
-width: 100%; height: 100%; text-align: center; position: fixed; background: rgba(245, 245, 245, 0.61);z-index: 100000000;}
+width: 100%; height: 100%; text-align: center; position: fixed; background: rgba(245, 245, 245, 0.61);}
 #progress_loading i{top: 45%;position: absolute;}
 
 /* �씠�슜�빟愿� */
@@ -817,7 +817,6 @@ li.on a {font-weight:600;}
 .sub-header {
 	position: fixed; 
     width: 100%;
-    z-index : 1;
     background-color : #fff;
     padding-top:13px;
     border-bottom:1px  solid #eee
@@ -828,9 +827,6 @@ li.on a {font-weight:600;}
   min-height: 300px;
 }
 
-.affiliate_tab_main-container{
-	z-index : 10000;
-}
 
 .slick-initialized .swipe-tab {
   display: -webkit-box;
@@ -859,7 +855,7 @@ li.on a {font-weight:600;}
 
 .slick-initialized .swipe-tab:hover { color: #000; }
 .slick-initialized .swipe-tab.active-tab { border-bottom:3px solid #000; color: #000; font-weight: bold; }
-.affiliate_tab_main-container { padding: 10px 15px; background: #fff ;border-top: 1px solid #eee}
+.affiliate_tab_main-container { padding: 10px 0px; background: #fff ;border-top: 1px solid #eee}
  *:focus { outline:none; }
  .affiliate_category{margin:0 0 0 0;font-weight:300}
  /* .affiliate_category{font-weight:300} */
@@ -867,16 +863,17 @@ li.on a {font-weight:600;}
  /*카레고리별 가맹점 리스트 아이템*/
  .r_list{padding:35px 0;overflow: hidden;}
 .r_list ul li div{float: left;}
-.r_list ul li{overflow: hidden;padding:0 0;padding:15px 0;}
+.r_list ul li{overflow: hidden;padding:0 0;padding:15px 15px;}
 .r_list .list_img{width:24%;padding:0 0;}
 .r_list .list_text{width: 70%;font-size: 12px;margin-left:5px}
 .r_list .list_text p{margin-bottom:5px;}
 .r_list .list_text .list_text_box{font-weight: bold; background-color: #FE642E;border-radius: 20px;color: #fff;font-size: 11px;padding: 2px 7px;}
 .r_list .list_text .list_text_title{font-size: 13px;font-weight: bold;}
+.r_list li:active{background-color : #F4F4F4}
 
 /*업종별 가맹점,지역별 가맹점*/
 .r_fran_page{overflow:hidden;text-align:center;background-color:#f1f1f1;padding:0 10px 10px 10px;font-size:13px;}
 .r_fran_page .r_fran_left{float:left;width:49.2%;padding:8px 0;background-color:#fff;border:1px solid #e7e7e7;}
 .r_fran_page .r_fran_right{float:right;width:49.2%;padding:8px 0;background-color:#fff;border:1px solid #e7e7e7;}
 
-.sub-header{padding-top:10px;position:fixed;background-color:#fff;z-index:1000;}
+.sub-header{padding-top:10px;position:fixed;background-color:#fff;z-index:2}
