@@ -63,7 +63,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4><spring:message code="label.affiliate_detail" /></h4>
+		<h4><%-- <spring:message code="label.affiliate_detail" /> --%>${model.affiliate.affiliateName}</h4>
 	</header> 
 	<section>
         <div class="main_slide">
