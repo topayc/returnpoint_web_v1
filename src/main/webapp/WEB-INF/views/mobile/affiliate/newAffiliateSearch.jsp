@@ -44,7 +44,7 @@
 <script id="entry-template-2-copy" type="text/x-handlebars-template">
 	{{#affiliates}} 
 	<li onclick = "movePage( '/m/affiliate/affiliateDetail.do?affiliateNo={{affiliateNo}}')" >
-		<div class="list_img"><img src="/resources/images/list_img.png"></div>
+		<div class="list_img"><img src="/resources/images/list_img.png" width = "75" height = "75"></div>
 		<div class="list_text">
 			<p><span class="list_text_box">{{category2Name}}</span>&nbsp;<span class="list_text_title">{{affiliateName}}</span></p>
 			<p>{{affiliatePhone}}</p>
