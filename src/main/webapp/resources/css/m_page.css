@@ -865,6 +865,7 @@ li.on a {font-weight:600;}
 .r_list ul li div{float: left;}
 .r_list ul li{overflow: hidden;padding:0 0;padding:15px 15px;}
 .r_list .list_img{width:24%;padding:0 0;}
+.r_list .list_img img{height : 75px; width : 75px;}
 .r_list .list_text{width: 70%;font-size: 12px;margin-left:5px}
 .r_list .list_text p{margin-bottom:5px;}
 .r_list .list_text .list_text_box{font-weight: bold; background-color: #FE642E;border-radius: 20px;color: #fff;font-size: 11px;padding: 2px 7px;}
