@@ -191,7 +191,7 @@
 		<div onclick = "movePage('/m/giftCard/giftCardList.do')"><img src="/resources/images/r_credit.png"><p><spring:message code="label.n_gift_card" /></p></div>
 		<div onclick = "movePage('/m/map/rpmap.do')"><img src="/resources/images/r_search.png"><p><spring:message code="label.n_my_affiliate" /></p></div>
 		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" />/<spring:message code="label.n_settings" /></p></div>
-		<div onclick = "movePage('/m/mypage/manage_qr.do')"><img src="/resources/images/r_qr_manage.png"><p><spring:message code="label.create_recom_qr" /></p></div>
+		<div onclick = "movePage('/m/mypage/manage_qr.do')"><img src="/resources/images/r_qr_manage.png"><p><%-- <spring:message code="label.create_recom_qr" /> --%>추천QR생성</p></div>
 	</div>
 	<div style="background-color:#f1f1f1;padding:1px 0;">
 		<%-- <div class="m_search" onclick = "movePage('/m/affiliate/affiliateSearchList.do')"> 
