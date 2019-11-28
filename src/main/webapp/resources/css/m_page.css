@@ -849,7 +849,7 @@ li.on a {font-weight:600;}
   text-align: center;
   border-bottom: 2px solid transparent;
   -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  transition: all 0.5s;866
   font-size:12px
 }
 
@@ -863,7 +863,7 @@ li.on a {font-weight:600;}
  /*카레고리별 가맹점 리스트 아이템*/
  .r_list{padding:35px 0;overflow: hidden;}
 .r_list ul li div{float: left;}
-.r_list ul li{overflow: hidden;padding:0 0;padding:15px 15px;}
+.r_list ul li{overflow: hidden;padding:0 0;padding:15px 20px;}
 .r_list .list_img{width:24%;padding:0 0;}
 .r_list .list_img img{height : 75px; width : 75px;}
 .r_list .list_text{width: 70%;font-size: 12px;margin-left:5px}

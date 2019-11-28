@@ -145,7 +145,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 		<h4><%-- <spring:message code="label.franchise" /> --%><spring:message code="label.n_returnp" /></h4>
 	</header> 
 	<section>
-		<div class="fran container">
+		<div class="fran">
 	        <div class="fran_text1"><%-- <spring:message code="label.web.findaMerchant"/> --%><!-- &nbsp; --><!-- <button type="button" class="btn btn-primary btn-lg fran_button1"><i class="fas fa-search-plus "> --></i></button></div>
 	        <div class="fran1">
 				 <div class="fran_top">
