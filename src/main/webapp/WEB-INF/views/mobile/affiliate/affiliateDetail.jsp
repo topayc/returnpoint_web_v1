@@ -166,12 +166,12 @@ h4, .h4, h5, .h5, h6, .h6 {
                                 <li>전화번호</li>
                                 <li>${model.affiliate.affiliateTel}</li>
                             </ul>
-                         <li>
+                 <%--         <li>
                             <ul>
                                 <li>핸드폰</li>
                                 <li>${model.affiliate.affiliatePhone}</li>
                             </ul>
-                        </li>
+                        </li> --%>
                          <li>
                             <ul>
                                 <li>적립정보</li>

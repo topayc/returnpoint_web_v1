@@ -999,7 +999,7 @@ tr a:hover {
 
 .fran4_text1 {
     background-color: #f8f8f8;
-    border: 1px solid #ccc;
+    border: 1px solid #888;
     color: #555;
     border-radius:0;
 }
@@ -1014,6 +1014,11 @@ tr a:hover {
     margin-top:3px;
     width: 70px !important;
         height: 34px;
+}
+
+.fran5_2 > button:active {
+    background-color: #f8f8f8;
+    border: 1px solid #666;
 }
 .fran5_2 {
 	float:left;
