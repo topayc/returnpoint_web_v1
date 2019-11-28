@@ -179,7 +179,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	                <div class="img_box"><img src="/resources/images/list_img.png"/></div>
 	      			<div class="fran_text_box" style = "margin-left : 10px">
 	                    <ul onclick = "location.href = '/m/affiliate/affiliateDetail.do?affiliateNo=${list.affiliateNo}'">
-	                        <li>${list.affiliateName}</li>
+	                        <li><span class="list_text_box">${list.category2Name}</span>&nbsp;${list.affiliateName}</li>
 	                        <li>${list.affiliateTel}</li>
 	                        <li>${list.affiliateAddress}</li>
 	                    </ul>
