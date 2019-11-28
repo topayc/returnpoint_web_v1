@@ -33,7 +33,7 @@
 		<div class="list_img"><img src="/resources/images/list_img.png"></div>
 		<div class="list_text">
 			<p><span class="list_text_box">{{category2Name}}</span>&nbsp;<span class="list_text_title">{{affiliateName}}</span></p>
-			<p>{{affiliatePhone}}</p>
+			<p>{{affiliateTel}}</p>
 			<p>{{affiliateAddress}}</p>
 			<p>
 		</div>
