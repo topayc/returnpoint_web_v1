@@ -142,7 +142,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4><spring:message code="label.franchise" /></h4>
+		<h4><%-- <spring:message code="label.franchise" /> --%><spring:message code="label.n_returnp" /></h4>
 	</header> 
 	<section>
 		<div class="fran container">
@@ -176,7 +176,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 			    <c:forEach var="list" items="${franchiseeInfoList}" varStatus="loop">
 			    <div class="fran_box container">
 	                <c:if test = "${! empty list.affiliateAddress}">
-	                <div class="img_box"><img src="/resources/web_images/no_image.png"></div>
+	                <div class="img_box"><img src="/resources/images/list_img.png"/></div>
 	      			<div class="fran_text_box" style = "margin-left : 10px">
 	                    <ul onclick = "location.href = '/m/affiliate/affiliateDetail.do?affiliateNo=${list.affiliateNo}'">
 	                        <li>${list.affiliateName}</li>
