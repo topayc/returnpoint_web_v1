@@ -1004,6 +1004,7 @@ tr a:hover {
     border-radius:0;
 }
 
+
 .fran5_2 > button {
     background-color: #f8f8f8;
     border: 1px solid #ccc;
@@ -1019,10 +1020,6 @@ tr a:hover {
     width: 20%
 }
 
-.fran5_2 > button:hover{
-	background-color: #ccf2ff33;
-    color: #fff;
-}
 
 .fran4_text {
     width: 97%;
