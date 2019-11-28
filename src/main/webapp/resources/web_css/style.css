@@ -1246,6 +1246,7 @@ textarea {
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 
+
 .form-control:focus{box-shadow:none !important;border:1px solid #ccc;}
 
 .modal-content {
