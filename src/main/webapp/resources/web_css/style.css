@@ -895,8 +895,9 @@ tr a:hover {
 
 .fran2 {
     margin-top: 1%;
-    width:21%;
+    width:24%;
     float:left;
+    height:50px;
 }
 
 .fran3 {
@@ -968,18 +969,20 @@ tr a:hover {
 .frna5 {
     margin-left: 0.1% !important;
     float:left;
+    width:50%;
 }
 
 .frna5 input {
     background-color: #fff;
     border: 1px solid #ccc !important;
     color: #555;
+    border-radius:0;
 }
 
 .fran5_1 {
-    margin-top: 0.5% !important;
     margin-left:4px;
     float:left;
+    width:57%;
 }
 
 @media (max-width: 800px) {
@@ -996,20 +999,20 @@ tr a:hover {
     background-color: #fff;
     border: 1px solid #ccc;
     color: #555;
+    border-radius:0;
 }
 
 .fran5_2 > button {
-	width:50px !important;
     background-color: #fff;
     border: 1px solid #ccc;
     color: #555;
     padding:6px 0;
-    border-radius: 5px;
-    margin-top:4px;
     margin-left:2px;
+    margin-top:3px;
+    width:55px !important;
 }
 .fran5_2 {
-	float:right;
+	float:left;
 }
 
 .fran5_2 > button:hover{
