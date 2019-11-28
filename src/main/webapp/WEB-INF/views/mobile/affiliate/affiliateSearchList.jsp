@@ -148,7 +148,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 		<div class="fran container">
 	        <div class="fran_text1"><%-- <spring:message code="label.web.findaMerchant"/> --%><!-- &nbsp; --><!-- <button type="button" class="btn btn-primary btn-lg fran_button1"><i class="fas fa-search-plus "> --></i></button></div>
 	        <div class="fran1">
-				 <div class="fran_top" style ="padding-top:18px; margin-bottom:9px">
+				 <div class="fran_top">
 				<form id="franchiseeform" name="franchiseeform">
 					  <div class="fran2">
 	                    <select class="form-control fran4_text1" id="city" name="city" onchange="searchCountry($('select[name=city]').val());" value="${params.city}">
@@ -165,7 +165,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	                            <input type="text" id = "affiliateName" name = "affiliateName"  class="form-control" placeholder="매장명" style = "text-align : left">
 	                        </div>
 	                        <div class="fran5_2">
-	                            <button onclick="searchFranchisee();" style ="width:90px"><spring:message code="label.web.search"/></button>
+	                            <button onclick="searchFranchisee();"><spring:message code="label.web.search"/></button>
 	                        </div>
 	                    </div>
 				</form>

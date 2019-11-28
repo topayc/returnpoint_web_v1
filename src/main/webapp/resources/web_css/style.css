@@ -982,7 +982,7 @@ tr a:hover {
 .fran5_1 {
     margin-left:4px;
     float:left;
-    width:57%;
+    width:64%;
 }
 
 @media (max-width: 800px) {
@@ -1033,6 +1033,10 @@ tr a:hover {
 	position:fixed;
 	background-color:#fff;
 	top:51px;
+	left:0;
+	padding:10px;
+	height:62px;
+	border-bottom:1px solid #efefef;
 }
 
 @media (max-width:499px) {
