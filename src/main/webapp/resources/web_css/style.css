@@ -970,6 +970,7 @@ tr a:hover {
     margin-left: 0.1% !important;
     float:left;
     width:50%;
+    margin-top:1px;
 }
 
 .frna5 input {
