@@ -184,7 +184,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	                        <li>${list.affiliateAddress}</li>
 	                    </ul>
 	                </div>
-	                <a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');">
+	                <a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');return false">
 	                    <div class="fran_map"><img src="/resources/web_images/map.png"></div>
 	                </a>          
 	      			</c:if>
