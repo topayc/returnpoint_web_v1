@@ -100,12 +100,11 @@
 			infinite : false,
 			swipeToSlide : true,
 			draggable : false,
-			touchThreshold : 10,
+			touchThreshold : 10
 		});
 		
 		$swipeTabs.on('click', function(event) {
 			// gets index of clicked tab
-			//$("ul[data-cate-list='"+$(this).data("tab-cate")+"']").empty();
 			currentIndex = $(this).data('slick-index');
 			$swipeTabs.removeClass(activeTabClassName);
 			$('.swipe-tab[data-slick-index=' + currentIndex + ']').addClass( activeTabClassName);
@@ -152,9 +151,7 @@
 	   var fHtml = $("<ul data-cate-list='"+ curCategory1 +"'></ul>");
 	   fHtml.append(html)
 	   $("ul[data-cate-list='"+curCategory1+"']").replaceWith(fHtml);
-	/*    $('.swipe-tabs-container').slick({
-			 adaptiveHeight: true
-		}); */
+
    }
 </script>
 </head>

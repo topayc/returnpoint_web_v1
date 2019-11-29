@@ -824,7 +824,7 @@ li.on a {font-weight:600;}
 /*카레고리별 가맹점 리스트*/
 .slick-initialized .swipe-tab-content {
   position: relative;
-  min-height: 300px;
+  min-height: 100%;
 }
 
 
