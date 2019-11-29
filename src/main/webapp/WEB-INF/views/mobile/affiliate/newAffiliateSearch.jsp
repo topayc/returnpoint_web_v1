@@ -58,7 +58,8 @@
 </script>
 
 <script type="text/javascript">
-/*   if (isApp()) {
+	
+	/*   if (isApp()) {
     checkVersion();
   }
    */
