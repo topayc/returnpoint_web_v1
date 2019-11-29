@@ -155,8 +155,7 @@
    }
 </script>
 </head>
-<body class="index">
-   <!-- nav -->
+<body >
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->
    <a href="/m/main/index.do"><h4><spring:message code="label.n_returnp" /></h4></a>

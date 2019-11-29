@@ -56,7 +56,7 @@
 </head>
 <!-- header end -->
 <!-- body begin -->
-<body class="index">
+<body>
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->
