@@ -100,7 +100,7 @@
 			infinite : false,
 			swipeToSlide : true,
 			draggable : false,
-			touchThreshold : 10
+			touchThreshold : 10,
 		});
 		
 		$swipeTabs.on('click', function(event) {
@@ -151,7 +151,10 @@
 	   var html = template(data);
 	   var fHtml = $("<ul data-cate-list='"+ curCategory1 +"'></ul>");
 	   fHtml.append(html)
-	   $("ul[data-cate-list='"+curCategory1+"']").replaceWith(fHtml)
+	   $("ul[data-cate-list='"+curCategory1+"']").replaceWith(fHtml);
+	/*    $('.swipe-tabs-container').slick({
+			 adaptiveHeight: true
+		}); */
    }
 </script>
 </head>
