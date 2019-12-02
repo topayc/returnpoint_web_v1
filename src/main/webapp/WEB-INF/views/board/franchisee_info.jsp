@@ -96,12 +96,20 @@ function searchList(){
     document.viewList.submit();
 }
 </script>
+<style>
+@media (max-width:1000px) {
+    .fran1 {
+        padding:2% 2% 0 2% !important;
+    }
+}
+.fran1{position:fixed; top:70px; padding:1% 20% 0 20%;}
+</style>
 <body>
 <jsp:include page="/WEB-INF/views/common/topper.jsp" />
    <hr class="top_line">
     <div class="fran container page_title">
         <div class="fran_text1"><spring:message code="label.web.findaMerchant"/><!-- <button type="button" class="btn btn-primary btn-lg fran_button1">검색창</button> --></div>
-        <div class="fran1" style="position:fixed; top:70px; padding:1% 20% 0 20%;">
+        <div class="fran1">
 			 <div class="fran_top">
 			<form id="franchiseeform" name="franchiseeform">
 				  <div class="fran2">
