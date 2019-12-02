@@ -1070,9 +1070,11 @@
 		    C.category1No,
 		    C.category2No,
 		    (select categoryName from category where categoryNo  = C.category1No) as category1Name,
-		    (select categoryName from category where categoryNo  = C.category2No) as category2Name
+		    (select categoryName from category where categoryNo  = C.category2No) as category2Name,
+			AT.affiliateTag
 		from affiliate as A
 		inner join affiliate_category as C on (A.affiliateNo = C.affiliateNo)
+		left outer join affiliate_tag as AT on (A.affiliateNo = AT.affiliateNo)
 		WHERE 1 = 1
 		 <if test="category1No != null "> AND C.category1No= #{category1No} </if>
 		 <if test="category2No != null "> AND C.category2No= #{category2No} </if>

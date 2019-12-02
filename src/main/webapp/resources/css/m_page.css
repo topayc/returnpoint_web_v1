@@ -880,5 +880,5 @@ li.on a {font-weight:600;}
 .r_fran_page .r_fran_left{float:left;width:49.2%;padding:8px 0;background-color:#fff;border:1px solid #e7e7e7;}
 .r_fran_page .r_fran_right{float:right;width:49.2%;padding:8px 0;background-color:#fff;border:1px solid #e7e7e7;}
 .sub-header{padding-top:10px;position:fixed;background-color:#fff;z-index:1}
-
+.tag_box{font-weight: bold; background-color: #04B45F;border-radius: 20px;color: #fff;font-size: 11px;padding: 2px 7px;}
 
