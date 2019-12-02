@@ -35,7 +35,7 @@
 			<p><span class="list_text_box">{{category2Name}}</span>&nbsp;<span class="list_text_title">{{affiliateName}}</span></p>
 			<p><span style = "font-weight:bold" >{{affiliateTag}}</span> </p>
 			<p>{{affiliateTel}}</p>
-			<p>{{affiliateAddress}}</p>
+			<p>{{add affiliateAddress}}</p>
 		</div>
 	</li>
 	{{/affiliates}} 
@@ -58,7 +58,12 @@
 </script>
 
 <script type="text/javascript">
-	
+	Handlebars.registerHelper('add', function(affiliateAddress){
+    	return affiliateAddress.substr(6,affiliateAddress.length );
+	});
+
+
+
 	/*   if (isApp()) {
     checkVersion();
   }

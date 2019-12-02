@@ -181,7 +181,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 	                    <ul onclick = "location.href = '/m/affiliate/affiliateDetail.do?affiliateNo=${list.affiliateNo}'">
 	                        <li><span class="list_text_box"><%-- ${list.category2Name} --%></span>${list.affiliateName}</li>
 	                        <li>${list.affiliateTel}</li>
-	                        <li>${list.affiliateAddress}</li>
+	                        <li>${fn:substring(list.affiliateAddress,6, fn:length(list.affiliateAddress)) }</li>
 	                    </ul>
 	                </div>
 	             <%--    <a href="#" onclick="franchiseeInfoGoogleMapPopup('${list.affiliateNo}');return false">
