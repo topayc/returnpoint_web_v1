@@ -102,6 +102,7 @@ function searchList(){
         padding:2% 2% 0 2% !important;
     }
 }
+
 .fran1{position:fixed; top:70px; padding:1% 20% 0 20%;}
 </style>
 <body>
