@@ -28,6 +28,9 @@ $(document).ready(function(){
 });
 
 </script>
+<style>
+ * {font-weight:300}
+</style>
 </head>
 <!-- header end -->
 <!-- body begin -->
@@ -39,7 +42,7 @@ $(document).ready(function(){
 	</header> 	
 	<section>
 		<ul class="coupon_tab">
-		   <li class="on" ><a href="#" style="margin-left:2%;">적립요약</a>
+		   <li class = "on"><a href="#" style="margin-left:2%;" id  = "first_tab" >적립요약</a>
 		      <div class="coupon_contents">
 		      	<div class="coupon_top">
 		      		<div class="coupon_top1">
@@ -209,14 +212,13 @@ $(document).ready(function(){
 		   </li>
 		</ul>
    </section>
-</div>
 <script>
 	$(".coupon_tab > li > a ").click(function(){
 	   $(this).parent().addClass("on").siblings().removeClass("on");
 	   return false;
-	});</script>
-	</section>	
-</div>
+	});
+	
+	</script>
 </body>
 <!-- body end -->
 </html>
