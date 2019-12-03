@@ -112,7 +112,7 @@ function searchList(){
         <div class="fran1">
 			 <div class="fran_top">
 			<form id="franchiseeform" name="franchiseeform">
-				  <div class="fran2">
+				  <div class="fran2" style="width:24%; margin-right:3px;">
                     <select class="form-control fran4_text1" id="city" name="city" onchange="searchCountry($('select[name=city]').val());" value="${params.city}">
                       <option value="">시/도</option> 
                     </select>
