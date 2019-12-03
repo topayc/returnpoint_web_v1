@@ -890,7 +890,7 @@ li.on a {font-weight:600;}
 li.on > .coupon_contents{height:auto;top:40px;width: 100%;}
 .coupon_contents{position: absolute;overflow: hidden;height: 0;background-color:#f1f1f1;}
 
-.coupon_contents .coupon_top{margin:5px;overflow:hidden;text-align:center;border:1px solid #ccc;padding:5% 0;background-color:#fff;}
+.coupon_contents .coupon_top{margin:0 5px 5px 5px;overflow:hidden;text-align:center;border:1px solid #ccc;padding:5% 0;background-color:#fff;}
 .coupon_contents .coupon_top div{float:left;width:33%;padding:5% 0;border-right:1px solid #ccc;}
 .coupon_contents .coupon_top div:last-child{border:none;}
 .coupon_contents .coupon_top li {line-height:23px;}
@@ -905,3 +905,4 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;}
 .coupon_contents .coupon_code .code_text2{font-size:15px;color:#333;font-weight:bold;}
 
 .coupon_contents .coupon_upload{border:1px solid red;overflow:hidden;margin:5px;}
+.coupon_contents .coupon_upload div{width:32%;overflow:hidden;border:1px soid red;}
