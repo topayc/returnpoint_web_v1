@@ -56,7 +56,16 @@ public class MobileController extends MallBaseController {
 		boolean bret = mms.initMain(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
-
+	
+	// 모바일 메인페이지
+	@RequestMapping("/pointCoupon/index.do")
+	public String pointCouponMain(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/index");
+		boolean bret = true;
+		return page(bret, map, rmap);
+	}
+	
 	// WEB 가맹점찾기
 	@RequestMapping("/affiliate/affiliateSearchList")
 	public String franchiseeInfoSearch(@RequestParam HashMap<String, Object> params, HttpSession session,
