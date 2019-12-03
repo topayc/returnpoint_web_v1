@@ -101,19 +101,110 @@ $(document).ready(function(){
 		        <div class="coupon_upload">
 		        	<div>
 		        		<div class="coupon_img_box"></div>
-		        		<p>1982-09-17</p>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
 		        	</div>
 		        </div>
+		        <div class="coupon_upload">
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        </div>
+		        <div class="coupon_upload">
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        </div>
+		       <!--추가시 이미지 줄 추가   
+		       <div class="coupon_upload">
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<span>1982-09-17</span>
+		        	</div>
+		        </div> -->
 		      </div>
 		   </li>
 		   <li><a href="#" style="left:50%;">사용완료</a>
 		      <div class="coupon_contents">
-		        3번내용
+		        <div class="coupon_code_page1">
+		        	<ul>
+		      			<li>
+		      				<ul>
+		      					<li class="code_text1">1982-09-17</li>
+		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text1">기준 금액 : 10,000</li>
+		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
+		      				</ul>
+		      			</li>
+		      			<li>
+		      				<ul>
+		      					<li class="code_text1">1982-09-17</li>
+		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text1">기준 금액 : 10,000</li>
+		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
+		      				</ul>
+		      			</li>
+		      		</ul>
+		        </div>
 		      </div>
 		   </li>
 		   <li><a href="#"style="left:75%;margin-right:2%;">사용가능</a>
 		      <div class="coupon_contents">
-		        4번내용
+		        <div class="coupon_code_page2">
+		        	<ul>
+		      			<li>
+		      				<ul>
+		      					<li class="code_text1">1982-09-17</li>
+		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text1">기준 금액 : 10,000</li>
+		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
+		      					<button>적립</button>
+		      				</ul>
+		      			</li>
+		      			<li>
+		      				<ul>
+		      					<li class="code_text1">1982-09-17</li>
+		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text1">기준 금액 : 10,000</li>
+		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
+		      					<button>적립</button>
+		      				</ul>
+		      			</li>
+		      		</ul>
+		        </div>
 		      </div>
 		   </li>
 		</ul>
