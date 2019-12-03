@@ -39,7 +39,7 @@ $(document).ready(function(){
 	</header> 	
 	<section>
 		<ul class="coupon_tab">
-		   <li class="on" ><a href="#">적립요약</a>
+		   <li class="on" ><a href="#" style="margin-left:2%;">적립요약</a>
 		      <div class="coupon_contents">
 		      	<div class="coupon_top">
 		      		<div class="coupon_top1">
@@ -98,7 +98,12 @@ $(document).ready(function(){
 		   </li>
 		   <li><a href="#">업로드내역</a>
 		      <div class="coupon_contents">
-		        2번내용
+		        <div class="coupon_upload">
+		        	<div>
+		        		<div class="coupon_img_box"></div>
+		        		<p>1982-09-17</p>
+		        	</div>
+		        </div>
 		      </div>
 		   </li>
 		   <li><a href="#" style="left:50%;">사용완료</a>
@@ -106,7 +111,7 @@ $(document).ready(function(){
 		        3번내용
 		      </div>
 		   </li>
-		   <li><a href="#"style="left:75%;">사용가능</a>
+		   <li><a href="#"style="left:75%;margin-right:2%;">사용가능</a>
 		      <div class="coupon_contents">
 		        4번내용
 		      </div>
