@@ -944,7 +944,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;}
 .upload_receipt .bg_img img{width:100%;height:100%;}
 .upload_receipt .upload_conbox{padding:5%;}
 .upload_receipt .upload_conbox p{color:#555; font-size:13px;}
-.upload_receipt .upload_conbox input{width:100%;padding:2%;font-size:13px;color:#555;margin-top:10px;}
+.upload_receipt .upload_conbox input{width:100%;padding:2%;font-size:13px;color:#555;margin-top:10px;border:5px solid #e1e1e1;margin-bottom:15px;}
 .upload_receipt .upload_text{width:100%;margin-top:10px;background-color:#33cccc;color:#fff;padding:5%;}
 .upload_receipt .upload_text .upload_text1{font-size:13px;}
 .upload_receipt .upload_text .upload_text2{font-size:20px;font-weight:bold;margin-top:10px;}
