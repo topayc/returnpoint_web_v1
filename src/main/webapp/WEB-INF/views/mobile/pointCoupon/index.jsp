@@ -38,7 +38,7 @@ $(document).ready(function(){
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>포인트 쿠폰</h4>
+		<h4>RETURNP</h4>
 	</header> 
 	
 	<!-- 팝업창 -->
@@ -83,15 +83,15 @@ $(document).ready(function(){
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
-		      		<div class="upload"><a href="#">영수증 업로드 하기</a></div>
-		      		<div class="register"><a href="#">적립코드 등록하기</a></div>
+		      		<div class="upload"><a>영수증 업로드 하기</a></div>
+		      		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')">적립코드 등록하기</a></div>
 		      	</div>
 		      	<div class="coupon_code">
 		      		<ul>
 		      			<li>
 		      				<ul>
 		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text2">SDIJUYWGIOPLLSLFJN</li>
 		      					<li class="code_text1">기준 금액 : 10,000</li>
 		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
 		      				</ul>
@@ -99,7 +99,7 @@ $(document).ready(function(){
 		      			<li>
 		      				<ul>
 		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text2">SDIJUYWGIOPLLSLFJN</li>
 		      					<li class="code_text1">기준 금액 : 10,000</li>
 		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
 		      				</ul>
@@ -117,7 +117,7 @@ $(document).ready(function(){
 		      	</div>
 		      </div>
 		   </li>
-		   <li><a>업로드내역</a>
+		   <li><a>영수증내역</a>
 		      <div class="coupon_contents">
 		        <div class="coupon_upload">
 		        	<div>
@@ -178,31 +178,7 @@ $(document).ready(function(){
 		        </div> -->
 		      </div>
 		   </li>
-		   <li><a style="left:50%;">사용완료</a>
-		      <div class="coupon_contents">
-		        <div class="coupon_code_page1">
-		        	<ul>
-		      			<li>
-		      				<ul>
-		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
-		      					<li class="code_text1">기준 금액 : 10,000</li>
-		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
-		      				</ul>
-		      			</li>
-		      			<li>
-		      				<ul>
-		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
-		      					<li class="code_text1">기준 금액 : 10,000</li>
-		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
-		      				</ul>
-		      			</li>
-		      		</ul>
-		        </div>
-		      </div>
-		   </li>
-		   <li><a style="left:75%;margin-right:2%;">사용가능</a>
+		   <li><a style="left:50%;">사용가능</a>
 		      <div class="coupon_contents">
 		        <div class="coupon_code_page2">
 		        	<ul>
@@ -227,6 +203,31 @@ $(document).ready(function(){
 		      		</ul>
 		        </div>
 		      </div>
+		   </li>
+		   <li><a style="left:75%;margin-right:2%;">사용완료</a>
+		      	      <div class="coupon_contents">
+		        <div class="coupon_code_page1">
+		        	<ul>
+		      			<li>
+		      				<ul>
+		      					<li class="code_text1">1982-09-17</li>
+		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text1">기준 금액 : 10,000</li>
+		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
+		      				</ul>
+		      			</li>
+		      			<li>
+		      				<ul>
+		      					<li class="code_text1">1982-09-17</li>
+		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text1">기준 금액 : 10,000</li>
+		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
+		      				</ul>
+		      			</li>
+		      		</ul>
+		        </div>
+		      </div>
+		      
 		   </li>
 		</ul>
    </section>
