@@ -60,7 +60,7 @@ $(document).ready(function(){
 		
 	<section>
 		<ul class="coupon_tab">
-		   <li class = "on"><a href="#" style="margin-left:2%;" id  = "first_tab" >적립요약</a>
+		   <li class = "on"><a style="margin-left:2%;" id  = "first_tab" >적립요약</a>
 		      <div class="coupon_contents">
 		      	<div class="coupon_top">
 		      		<div class="coupon_top1">
@@ -117,7 +117,7 @@ $(document).ready(function(){
 		      	</div>
 		      </div>
 		   </li>
-		   <li><a href="#">업로드내역</a>
+		   <li><a>업로드내역</a>
 		      <div class="coupon_contents">
 		        <div class="coupon_upload">
 		        	<div>
@@ -178,7 +178,7 @@ $(document).ready(function(){
 		        </div> -->
 		      </div>
 		   </li>
-		   <li><a href="#" style="left:50%;">사용완료</a>
+		   <li><a style="left:50%;">사용완료</a>
 		      <div class="coupon_contents">
 		        <div class="coupon_code_page1">
 		        	<ul>
@@ -202,7 +202,7 @@ $(document).ready(function(){
 		        </div>
 		      </div>
 		   </li>
-		   <li><a href="#"style="left:75%;margin-right:2%;">사용가능</a>
+		   <li><a style="left:75%;margin-right:2%;">사용가능</a>
 		      <div class="coupon_contents">
 		        <div class="coupon_code_page2">
 		        	<ul>

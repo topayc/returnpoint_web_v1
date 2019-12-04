@@ -885,7 +885,7 @@ li.on a {font-weight:600;}
 /*쿠폰페이지*/
 .coupon_tab{position: relative;}
 .coupon_tab > li > a {position: absolute;color:#333;font-size: 13px;width:24%;text-align: center;padding:10px 0;}
-.coupon_tab > li > a:focus{color:#fff;background-color:#33cccc;}
+.coupon_tab > li.on > a {color:#fff;background-color:#33cccc;}
 .coupon_tab > li + li > a {left:25%;}
 li.on > .coupon_contents{height:auto;top:40px;width: 100%;}
 .coupon_contents{position: absolute;overflow: hidden;height: 0;background-color:#eee;}
