@@ -81,7 +81,7 @@ $(document).ready(function(){
 				<li><span  class = "gift_qr_title"><spring:message code="label.approval_number" /></span> ${model.pan}</li>
 				<li style = "display: none"><span ><spring:message code="label.approval_status" /></span> ${model.pas}</li>
 				<li><span   class = "gift_qr_title"><spring:message code="label.approval_status" /></span> ${model.pas_str}</li>
-				<%-- <li><span   class = "gift_qr_title">VAN</span> ${model.paymentRouterName}</li> --%>
+				<li><span   class = "gift_qr_title">VAN</span> ${model.paymentRouterName}</li>
 			</ul>	
 		</div>			
 		<div class="btns2">
