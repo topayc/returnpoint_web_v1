@@ -36,7 +36,25 @@ $(document).ready(function(){
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
 		<h4>포인트 쿠폰</h4>
-	</header> 	
+	</header> 
+	
+	<!-- 팝업창 -->
+	
+	
+	<div id="popup">
+	<div class="body">
+		<div class="box">
+			<div class="popup_top">영수증 업로드 방법을 선택해주세요.<img src="/resources/images/close.png"></div>
+			<div class="popup_box">
+				<div class="popup_img_box" style="margin-right:2%;"><img src="/resources/images/popup_file.png"><p>파일에서 올리기</p></div>
+				<div class="popup_img_box"><img src="/resources/images/popup_camera.png"><p>사진찍어 올리기</p></div>
+			</div>
+		</div>
+	</div>
+  </div>
+  
+  
+		
 	<section>
 		<ul class="coupon_tab">
 		   <li class="on" ><a href="#" style="margin-left:2%;">적립요약</a>
@@ -62,8 +80,8 @@ $(document).ready(function(){
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
-		      		<div class="upload">영수증 업로드 하기</div>
-		      		<div class="register">적립코드 등록하기</div>
+		      		<div class="upload"><a href="#">영수증 업로드 하기</a></div>
+		      		<div class="register"><a href="#">적립코드 등록하기</a></div>
 		      	</div>
 		      	<div class="coupon_code">
 		      		<ul>
@@ -214,7 +232,16 @@ $(document).ready(function(){
 	$(".coupon_tab > li > a ").click(function(){
 	   $(this).parent().addClass("on").siblings().removeClass("on");
 	   return false;
-	});</script>
+	});
+	
+	$(".upload > a").click(function(){
+		$("#popup").addClass("active");
+		});
+		$("#popup img").click(function(){
+		$("#popup").removeClass("active");
+		});
+	
+	</script>
 	</section>	
 </div>
 </body>
