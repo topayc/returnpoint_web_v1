@@ -47,7 +47,7 @@ $(document).ready(function(){
 		<div class="box">
 			<div class="popup_top">영수증 업로드 방법을 선택해주세요.<img src="/resources/images/close.png"></div>
 			<div class="popup_box">
-				<div class="popup_img_box" style="margin-right:2%;"><img src="/resources/images/popup_file.png"><p>파일에서 올리기</p></div>
+				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do')" class="popup_img_box" style="margin-right:2%;"><img src="/resources/images/popup_file.png"><p>파일에서 올리기</p></div>
 				<div class="popup_img_box"><img src="/resources/images/popup_camera.png"><p>사진찍어 올리기</p></div>
 			</div>
 		</div>
