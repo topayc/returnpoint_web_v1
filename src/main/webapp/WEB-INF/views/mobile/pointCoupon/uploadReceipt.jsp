@@ -20,7 +20,6 @@
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
-<script type="text/javascript" src="/resources/js/lib/m_point_gift.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
@@ -28,9 +27,6 @@ $(document).ready(function(){
 });
 
 </script>
-<style>
- * {font-weight:300}
-</style>
 </head>
 <!-- header end -->
 <!-- body begin -->
