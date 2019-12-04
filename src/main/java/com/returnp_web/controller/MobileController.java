@@ -57,7 +57,7 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}
 	
-	// 모바일 메인페이지
+	// 포인트 쿠폰 메인 페이지 
 	@RequestMapping("/pointCoupon/index.do")
 	public String pointCouponMain(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -65,6 +65,16 @@ public class MobileController extends MallBaseController {
 		boolean bret = true;
 		return page(bret, map, rmap);
 	}
+	
+	// 포인트 쿠폰 메인 페이지 
+	@RequestMapping("/pointCoupon/uploadReceipt.do")
+	public String uploadReceipt(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/uploadReceipt");
+		boolean bret = true;
+		return page(bret, map, rmap);
+	}
+	
 	
 	// WEB 가맹점찾기
 	@RequestMapping("/affiliate/affiliateSearchList")
