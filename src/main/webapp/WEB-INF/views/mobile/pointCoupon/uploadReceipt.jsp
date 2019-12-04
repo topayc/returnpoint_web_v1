@@ -37,7 +37,29 @@ $(document).ready(function(){
 		<h4>영수증 올리기</h4>
 	</header> 
 	<section>
-	ㄴㅇㄴㅇㅇㄴㄹ
+	<div class="upload_receipt">
+		<div class="bg_black">
+			<div class="bg_white">
+				<div class="bg_img">
+					<img src="/resources/images/bg_img.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="upload_conbox">
+			<p>영수증상의 결제 금액 합계를 입력해주세요.</p>
+			<input type="text" placeholder="숫자만 입력해주세요.">
+			<div class="upload_text">
+				<ul>
+					<li class="upload_text1">고객님이 입금하실 금액은 결제금액의 15%인</li>
+					<li class="upload_text2">27,900원입니다.</li>
+				</ul>
+			</div>
+		</div>
+		<div class="bottom_btn">
+			<div class="bottom_btn1">올리기</div>
+			<div class="bottom_btn2">취소</div>
+		</div>
+	</div>
    </section>
 </body>
 <!-- body end -->
