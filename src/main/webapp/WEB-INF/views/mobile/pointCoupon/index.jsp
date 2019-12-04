@@ -42,8 +42,6 @@ $(document).ready(function(){
 	</header> 
 	
 	<!-- 팝업창 -->
-	
-	
 	<div id="popup">
 	<div class="body">
 		<div class="box">
@@ -56,8 +54,6 @@ $(document).ready(function(){
 	</div>
   </div>
   
-  
-		
 	<section>
 		<ul class="coupon_tab">
 		   <li class = "on"><a style="margin-left:2%;" id  = "first_tab" >적립요약</a>
@@ -83,8 +79,8 @@ $(document).ready(function(){
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
-		      		<div class="upload"><a>영수증 업로드 하기</a></div>
-		      		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')">적립코드 등록하기</a></div>
+		      		<div class="upload"><a>영수증 업로드</a></div>
+		      		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')">적립코드 등록</a></div>
 		      	</div>
 		      	<div class="coupon_code">
 		      		<ul>
@@ -117,7 +113,7 @@ $(document).ready(function(){
 		      	</div>
 		      </div>
 		   </li>
-		   <li><a>영수증내역</a>
+		   <li><a>영수증</a>
 		      <div class="coupon_contents">
 		        <div class="coupon_upload">
 		        	<div>
