@@ -83,8 +83,8 @@ $(document).ready(function(){
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
-		      		<div class="upload"><a>영수증 업로드 하기</a></div>
-		      		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')">적립코드 등록하기</a></div>
+		      		<div class="upload"><a><img src="/resources/images/upload.png">&nbsp;영수증 업로드 하기</a></div>
+		      		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div>
 		      	</div>
 		      	<div class="coupon_code">
 		      		<ul>
