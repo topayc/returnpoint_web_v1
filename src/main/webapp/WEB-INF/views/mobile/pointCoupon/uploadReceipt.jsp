@@ -27,6 +27,9 @@ $(document).ready(function(){
 });
 
 </script>
+<style>
+* {font-weight:400}
+</style>
 </head>
 <!-- header end -->
 <!-- body begin -->
@@ -47,7 +50,9 @@ $(document).ready(function(){
 		</div>
 		<div class="upload_conbox">
 			<p>영수증상의 결제 금액 합계를 입력해주세요.</p>
-			<input type="text" placeholder="숫자만 입력해주세요.">
+			<form>
+				<input type="text" placeholder="숫자만 입력해주세요."  >
+			</form>
 			<div class="upload_text">
 				<ul>
 					<li class="upload_text1">고객님이 입금하실 금액은 결제금액의 15%인</li>
