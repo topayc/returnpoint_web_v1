@@ -951,4 +951,4 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;}
 .upload_receipt .bottom_btn div{float:left;width:50%;text-align:center;font-size:15px;padding:3%;font-weight:400;}
 .upload_receipt .bottom_btn{position:fixed;bottom:0;width:100%;}
 .upload_receipt .bottom_btn .bottom_btn1{background-color:#33cccc;color:#fff;border:1px solid #33cccc;}
-.upload_receipt .bottom_btn .bottom_btn2{border:1px solid #33cccc;color:#555;}
+.upload_receipt .bottom_btn .bottom_btn2{border:1px solid #33cccc;color:#33cccc;background-color:#fff}

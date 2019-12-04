@@ -49,9 +49,9 @@ $(document).ready(function(){
 			</div>
 		</div>
 		<div class="upload_conbox">
-			<p>영수증상의 결제 금액 합계를 입력해주세요.</p>
+			<p>결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
 			<form>
-				<input type="text" placeholder="숫자만 입력해주세요."  >
+				<input type="text" placeholder="숫자만 입력해주세요."   >
 			</form>
 			<div class="upload_text">
 				<ul>
@@ -64,6 +64,10 @@ $(document).ready(function(){
 			<div class="bottom_btn1">올리기</div>
 			<div class="bottom_btn2">취소</div>
 		</div>
+		<%-- <div class="btns2">
+			<button type="button" class="btn btn-submit" onclick = "startPointBack()"><spring:message code="label.ok" /></button>
+			<button type="button" class="btn btn-submit-cancel"  onclick = "history.back()"><spring:message code="label.cancel" /></button>
+		</div> --%>
 	</div>
    </section>
 </body>
