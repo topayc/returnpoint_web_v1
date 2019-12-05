@@ -24,11 +24,20 @@
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
+	
+	 $('#toggle_push').change(function() {
+		 // PUSH 메시지로 받기 선택 : true
+		 // PUSH 메시지로 받기 선택 : false
+		 console.log($(this).prop('checked'));
+	    })
 });
 
 </script>
 <style>
 * {font-weight:400}
+.toggle {width:100%}
+.btn-success {background-color: #5cb85c !importtant;}
+.btn-danger {background-color: #ccc !importtant;}
 </style>
 </head>
 <!-- header end -->
@@ -51,7 +60,11 @@ $(document).ready(function(){
 		<div class="upload_conbox">
 			<p>결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
 			<form>
-				<input type="text" placeholder="숫자만 입력해주세요."   >
+				<input type="text" placeholder="결제 금액 입력(숫자)"   >
+				
+				<p>적립코드를 받을 방법을 선택해주세요(PUSH/SMS)</p>
+				<div class="btn-group" role="group" style = "width:100%">
+				</div>
 			</form>
 			<div class="upload_text">
 				<ul>
