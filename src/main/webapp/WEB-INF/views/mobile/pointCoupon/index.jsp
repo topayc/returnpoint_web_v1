@@ -118,60 +118,58 @@ $(document).ready(function(){
 		        <div class="coupon_upload">
 		        	<div onclick = "movePage('/m/pointCoupon/receiptDetail.do')">
 		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span>
+		        		<span>1982-09-17</span></br>
+		        		<span class="coupon_upload_text1">입금확인중</span>
 		        	</div>
 		        	<div>
 		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span>
+		        		<span>1982-09-17</span></br>
+		        		<span class="coupon_upload_text2">입금완료</span>
 		        	</div>
 		        	<div>
 		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span>
+		        		<span>1982-09-17</span></br>
+		        		<span class="coupon_upload_text3">코드발송완료</span>
 		        	</div>
 		        </div>
 		        <div class="coupon_upload">
-		        	<div>
+		        	<div onclick = "movePage('/m/pointCoupon/receiptDetail.do')">
 		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span>
+		        		<span>1982-09-17</span></br>
+		        		<span class="coupon_upload_text1">입금확인중</span>
 		        	</div>
 		        	<div>
 		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span>
+		        		<span>1982-09-17</span></br>
+		        		<span class="coupon_upload_text2">입금완료</span>
 		        	</div>
 		        	<div>
 		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span>
-		        	</div>
-		        </div>
-		        <div class="coupon_upload">
-		        	<div>
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span>
-		        	</div>
-		        	<div>
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span>
-		        	</div>
-		        	<div>
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span>
+		        		<span>1982-09-17</span></br>
+		        		<span class="coupon_upload_text3">코드발송완료</span>
 		        	</div>
 		        </div>
+		        
+		        
 		       <!--추가시 이미지 줄 추가   
 		       <div class="coupon_upload">
-		        	<div>
+		        	<div onclick = "movePage('/m/pointCoupon/receiptDetail.do')">
 		        		<div class="coupon_img_box"></div>
 		        		<span>1982-09-17</span>
+		        		<p class="coupon_upload_text1">입금확인중</p>
 		        	</div>
 		        	<div>
 		        		<div class="coupon_img_box"></div>
 		        		<span>1982-09-17</span>
+		        		<p class="coupon_upload_text2">입금완료</p>
 		        	</div>
 		        	<div>
 		        		<div class="coupon_img_box"></div>
 		        		<span>1982-09-17</span>
+		        		<p class="coupon_upload_text3">코드발송완료</p>
 		        	</div>
-		        </div> -->
+		        </div>
+		      -->
 		      </div>
 		   </li>
 		   <li><a style="left:50%;">사용가능</a>

@@ -40,6 +40,48 @@ $(document).ready(function(){
 		<h4>영수증 업로드 세부 정보</h4>
 	</header> 
 	<section>
+	<div class="receipt_detail">
+		<div class="bg_black">
+			<div class="bg_white">
+				<div class="bg_img">
+					<img src="/resources/images/bg_img.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="upload_conbox">
+			<div>
+				<ul>
+					<li>
+						<ul>
+							<li class="upload_conbox_text1">결제금액</li>
+							<li class="upload_conbox_text2">100,000</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li class="upload_conbox_text1">이체금액</li>
+							<li class="upload_conbox_text2">15,000</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li class="upload_conbox_text1">적립금액</li>
+							<li class="upload_conbox_text2">100,000</li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li class="upload_conbox_text1">상태</li>
+							<li class="upload_conbox_text2"><span>입금확인중</span></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<button>입금 확인 요청하기</button>
+			<p>입금이 완료되어야 적립코드가 발송되며,입금을 하셨을 경우 입금확인 요청하기 버튼을 클릭하시면 빠른 처리가 가능합니다.</p>
+		</div>	
+		
+	</div>
    </section>
 </body>
 <!-- body end -->
