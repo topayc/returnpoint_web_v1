@@ -974,3 +974,4 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;}
 .receipt_detail .upload_conbox button{width:100%;background-color:#fff;border:1px solid #ccc;text-align:center;color:#555;padding:3%;margin:15px 0;}
 .receipt_detail .upload_conbox button:active{background-color:#33cccc;color:#fff;border:1px solid #33cccc;}
 .receipt_detail .upload_conbox p{font-size:12px;color:#999;}
+.receipt_detail .upload_conbox b{color:#ff5c03;}
