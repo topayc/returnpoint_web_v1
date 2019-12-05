@@ -66,11 +66,29 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}
 	
-	// 포인트 쿠폰 메인 페이지 
-	@RequestMapping("/pointCoupon/uploadReceipt.do")
+	// 영수증 업로드 폼 
+	@RequestMapping(value = "/pointCoupon/uploadReceipt.do",  method = RequestMethod.GET)
+	public String uploadReceiptForm(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/uploadReceipt");
+		boolean bret = true;
+		return page(bret, map, rmap);
+	}
+	
+	// 영수증 업로드 액션
+	@RequestMapping(value = "/pointCoupon/uploadReceipt.do",  method = RequestMethod.POST)
 	public String uploadReceipt(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/uploadReceipt");
+		boolean bret = true;
+		return page(bret, map, rmap);
+	}
+	
+	// 영수증 업로드 내역 세부 페이지 
+	@RequestMapping("/pointCoupon/receiptDetail.do")
+	public String receiptDetail(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/receiptDetail");
 		boolean bret = true;
 		return page(bret, map, rmap);
 	}

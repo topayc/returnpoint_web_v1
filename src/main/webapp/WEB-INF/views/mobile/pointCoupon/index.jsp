@@ -116,7 +116,7 @@ $(document).ready(function(){
 		   <li><a>영수증</a>
 		      <div class="coupon_contents">
 		        <div class="coupon_upload">
-		        	<div>
+		        	<div onclick = "movePage('/m/pointCoupon/receiptDetail.do')">
 		        		<div class="coupon_img_box"></div>
 		        		<span>1982-09-17</span>
 		        	</div>
