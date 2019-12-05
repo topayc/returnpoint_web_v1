@@ -25,11 +25,11 @@ $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
 	
-	 $('#toggle_push').change(function() {
-		 // PUSH 메시지로 받기 선택 : true
-		 // PUSH 메시지로 받기 선택 : false
-		 console.log($(this).prop('checked'));
-	    })
+	 $(".recv_method").click(function(){
+		 $(".recv_method").removeClass("push_select");
+		 $(this).addClass("push_select");
+		 return false;
+	 });
 });
 
 </script>
@@ -62,17 +62,15 @@ $(document).ready(function(){
 			<form>
 				<input type="text" placeholder="결제 금액 입력(숫자)"   >
 				
-				<p>적립코드를 받을 방법을 선택해주세요(PUSH/SMS)</p>
-				<div>
-					<button class="push_select">푸쉬로받기</button>
-					<button style="margin-left:-2%;">문자로받기</button>
+				<p style = "margin-top:15px">적립코드를 받을 방법을 선택해주세요(PUSH/SMS)</p>
+				<div >
+					<button class="push_select recv_method">푸쉬로받기</button>
+					<button class = "recv_method" style="margin-left:-2%;">문자로받기</button>
 				</div>
 			</form>
-			<div class="upload_text">
-				<ul>
-					<li class="upload_text1">고객님이 입금하실 금액은 결제금액의 15%인</li>
-					<li class="upload_text2">27,900원입니다.</li>
-				</ul>
+			<div style = "margin-top:20px">
+				<p>회원님이 입금하셔야 할 금액</p>
+				<p style = "margin-top:5px;font-size : 25px;font-weight:bold;color : #888">27,900원</p>
 			</div>
 		</div>
 		<div class="bottom_btn">
