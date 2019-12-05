@@ -70,7 +70,7 @@ $(document).ready(function(){
 			</form>
 			<div style = "margin-top:20px">
 				<p>회원님이 입금하셔야 할 금액</p>
-				<p style = "margin-top:5px;font-size : 25px;font-weight:bold;color : #888">27,900원</p>
+				<p class="upload_conbox_p" style = "margin-top:5px;font-size : 25px;font-weight:bold;color : #888">27,900원</p>
 			</div>
 		</div>
 		<div class="bottom_btn">
