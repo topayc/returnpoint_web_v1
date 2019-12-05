@@ -65,7 +65,7 @@ $(document).ready(function(){
 				<p>적립코드를 받을 방법을 선택해주세요(PUSH/SMS)</p>
 				<div>
 					<button class="push_select">푸쉬로받기</button>
-					<button>문자로받기</button>
+					<button style="margin-left:-2%;">문자로받기</button>
 				</div>
 			</form>
 			<div class="upload_text">
