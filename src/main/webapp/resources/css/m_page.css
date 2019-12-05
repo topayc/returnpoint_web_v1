@@ -948,6 +948,9 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;}
 .upload_receipt .upload_conbox{padding:5%;}
 .upload_receipt .upload_conbox p{color:#555; font-size:13px;}
 .upload_receipt .upload_conbox input{width:100%;padding:3% 2%;font-size:13px;color:#555;margin-top:10px;border:5px solid #e1e1e1;margin-bottom:15px;}
+.upload_receipt .upload_conbox div{margin-top:20px;}
+.upload_receipt .upload_conbox button{width:48%;background-color:#fff;border:1px solid #ccc;padding:2.5% 0;color:#555;font-size:13px;}
+.upload_receipt .upload_conbox .push_select{background-color:#33cccc;color:#fff;}
 .upload_receipt .upload_text{width:100%;margin-top:10px;background-color:#33cccc;color:#fff;padding:5%;}
 .upload_receipt .upload_text .upload_text1{font-size:13px;}
 .upload_receipt .upload_text .upload_text2{font-size:20px;font-weight:bold;margin-top:10px;}
@@ -976,68 +979,3 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;}
 .receipt_detail .upload_conbox p{font-size:12px;color:#999;}
 .receipt_detail .upload_conbox b{color:#ff5c03;}
 
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  vertical-align:middle;
-}
- 
-/* Hide default HTML checkbox */
-.switch input {display:none;}
- 
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
- 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
- 
-input:checked + .slider {
-  background-color: #2196F3;
-}
- 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
- 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
- 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
- 
-.slider.round:before {
-  border-radius: 50%;
-}
- 
-#toggle_push p {
-  margin:0px;
-  display:inline-block;
-  font-size:15px;
-  font-weight:bold;
-}
