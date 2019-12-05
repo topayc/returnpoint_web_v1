@@ -68,7 +68,7 @@ $(document).ready(function(){
 					<button class = "recv_method" style="margin-left:-2%;">문자로받기</button>
 				</div>
 			</form>
-			<div style = "margin-top:20px">
+			<div style = "margin-top:30px">
 				<p>회원님이 입금하셔야 할 금액</p>
 				<p class="upload_conbox_p" style = "margin-top:10px;font-size : 25px;font-weight:bold;color : #888">27,900원</p>
 			</div>
