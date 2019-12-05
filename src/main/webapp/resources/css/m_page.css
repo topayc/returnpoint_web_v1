@@ -949,7 +949,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;}
 .upload_receipt .upload_conbox p{color:#555; font-size:13px;margin-top:15px}
 .upload_receipt .upload_conbox input{width:100%;padding:3% 2%;font-size:13px;color:#555;margin-top:10px;border:5px solid #e1e1e1;margin-bottom:15px;}
 .upload_receipt .upload_conbox div{margin-top:10px;}
-.upload_receipt .upload_conbox button{width:49%;background-color:#fff;border:1px solid #ccc;padding:2.5% 0;color:#555;font-size:13px;}
+.upload_receipt .upload_conbox button{width:50%;background-color:#fff;border:1px solid #ccc;padding:2.5% 0;color:#555;font-size:13px;}
 .upload_receipt .upload_conbox .push_select{background-color:#33cccc;color:#fff;}
 .upload_receipt .upload_text{width:100%;margin-top:10px;background-color:#33cccc;color:#fff;padding:5%;}
 .upload_receipt .upload_text .upload_text1{font-size:13px;}
