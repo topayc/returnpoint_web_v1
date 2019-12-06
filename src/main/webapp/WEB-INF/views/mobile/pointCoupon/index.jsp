@@ -107,7 +107,7 @@ $(document).ready(function(){
 		      </div>
 		   </li>
 		   <li><a>영수증</a>
-		      <div class="coupon_contents">
+		      <div class="coupon_contents" style="background-color:#eee;">
 		        <div class="coupon_upload">
 		        	<div onclick = "movePage('/m/pointCoupon/receiptDetail.do')">
 		        		<div class="coupon_img_box"></div>
@@ -166,7 +166,7 @@ $(document).ready(function(){
 		      </div>
 		   </li>
 		   <li><a style="left:50%;">사용가능</a>
-		      <div class="coupon_contents">
+		      <div class="coupon_contents" style="background-color:#eee;">
 		        <div class="coupon_code_page2">
 		        	<ul>
 		      			<li>
@@ -192,7 +192,7 @@ $(document).ready(function(){
 		      </div>
 		   </li>
 		   <li><a style="left:75%;margin-right:2%;">사용완료</a>
-		      	      <div class="coupon_contents">
+		      	      <div class="coupon_contents" style="background-color:#eee;">
 		        <div class="coupon_code_page1">
 		        	<ul>
 		      			<li>
