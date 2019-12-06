@@ -56,7 +56,7 @@ $(document).ready(function(){
   
 	<section>
 		<ul class="coupon_tab">
-		   <li class = "on"><a style="margin-left:2%;" id  = "first_tab" >적립요약</a>
+		   <li class = "on"><a style="margin-left:2%;" id  = "first_tab" >적립홈</a>
 		      <div class="coupon_contents">
 		      	<div class="coupon_top">
 		      		<div class="coupon_top1">
@@ -79,8 +79,8 @@ $(document).ready(function(){
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
-		      		<div class="upload"><a><img src="/resources/images/upload.png">&nbsp;영수증 업로드</a></div>
-		      		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록</a></div>
+		      		<div class="upload"><a><img src="/resources/images/upload.png">&nbsp;일반 영수증 올리기</a></div>
+		      		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div>
 		      	</div>
 		      	<div class="coupon_code1">
 		      		<p>일반 영수증 적립 서비스란</p>
@@ -88,9 +88,9 @@ $(document).ready(function(){
 		      	</div>
 		      	<div class="coupon_code2">
 		      		<p>일반 영수증 적립 방법</p>
-		      		<div>영수증 업로드 > 금액입금 > 입금확인 > 적립코드발송</div>
+		      		<div>영수증 올리기 > 금액입금 > 입금확인 > 적립코드발송</div>
 		      		<ul style="list-style-type:disc;">
-		      			<li>- 영수증 업로드 : 상단의 영수증 업로드 버튼 클릭</li>
+		      			<li>- 영수증 올리기 : 상단의 일반 영수증 올리기 버튼 클릭 후 진행</li>
 		      			<li>- 금액 입금 : 영수증 총 결제 금액의 15% 입금</li>
 		      			<li>- 임금 확인 : 15% 금액 입금 확인 </li>
 		      			<li>- 적립코드 발송  :  앱 푸시, 문자메시지 등으로 적립코드 발송</li>
@@ -105,14 +105,14 @@ $(document).ready(function(){
 		      	</div>
 		      	<div class="coupon_code4">
 		      		<p>일반 영수증 적립 처리 규정</p>
-		      		<ul style="list-style-type:disc;">
-		      			<li style="list-style-type:disc;">일반 영수증 적립 처리와 관련한 입금 확인은 매일 오후 4시에 일괄 확인되며, 입금 확인된 건에 대하여 발송됩니다.</li>
-		      			<li style="list-style-type:disc;">코드 발송은 문자메시지,맵 푸시 메시지중 회원님이 영수증 업로드시 선택하신 방법에 의하여 발송됩니다.</li>
+		      		<ul style="list-style-type:none;">
+		      			<li style="list-style-type:none">일반 영수증 적립 처리와 관련한 입금 확인은 매일 오후 4시에 일괄 확인되며, 입금 확인된 건에 대하여 발송됩니다.</li>
+		      			<li style="list-style-type:none;">코드 발송은 문자메시지,앱 푸시 메시지중 회원님이 영수증 업로드시 선택하신 방법에 의하여 발송됩니다.</li>
 		      		</ul>
 		      	</div>
 		      </div>
 		   </li>
-		   <li><a>영수증상태</a>
+		   <li><a>영수증처리</a>
 		      <div class="coupon_contents" style="background-color:#eee;">
 		        <div class="coupon_upload">
 		        	<div onclick = "movePage('/m/pointCoupon/receiptDetail.do')">

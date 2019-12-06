@@ -887,10 +887,10 @@ li.on a {font-weight:600;}
 .coupon_tab > li > a {position: absolute;color:#333;font-size: 13px;width:24%;text-align: center;padding:10px 0;}
 .coupon_tab > li.on > a {color:#fff;background-color:#33cccc;}
 .coupon_tab > li + li > a {left:25%;}
-li.on > .coupon_contents{height:auto;top:40px;width: 100%;}
+li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid #ddd;}
 .coupon_contents{position: absolute;overflow: hidden;height: 0;}
 
-.coupon_contents .coupon_top{margin:5px;overflow:hidden;text-align:center;padding:5% 0;background-color:#f1f1f1;}
+.coupon_contents .coupon_top{margin:0px 5px 5px 5px;overflow:hidden;text-align:center;padding:5% 0;background-color:#f1f1f1;border-bottom: 1px solid #ddd;}
 .coupon_contents .coupon_top div{float:left;width:33%;padding:5% 0;border-right:1px solid #ccc;}
 .coupon_contents .coupon_top div:last-child{border:none;}
 .coupon_contents .coupon_top li {line-height:23px;}
