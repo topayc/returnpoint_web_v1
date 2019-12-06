@@ -82,33 +82,26 @@ $(document).ready(function(){
 		      		<div class="upload"><a><img src="/resources/images/upload.png">&nbsp;영수증 업로드</a></div>
 		      		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록</a></div>
 		      	</div>
-		      	<div class="coupon_code">
+		      	<div class="coupon_code1">
+		      		<p>일반 영수증 적립 서비스란</p>
+		      		<span>R 포인트 가맹점에서 사용한 영수증만 적립이 가능한 서비스에서 이제는 R 포인트 개맹점이 아닌 일반 영수증도 결제한 만큼 G 포인트를 100% 적립해 드리는 서비스 입니다.</span>
+		      	</div>
+		      	<div class="coupon_code2">
+		      		<p>일반 영수증 적립 방법</p>
+		      		<div>영수증 업로드 > 해당 금액 입금 > 입금확인 > 적립 코드 발송</div>
+		      		<span>해당 금액을 입금한 후, 입금 확인 요청 버튼을 클릭하시면 더욱 빠른 처리가 가능합니다.</span>
+		      	</div>
+		      	<div class="coupon_code3">
+		      		<p>입금 은행</p>
+		      		<div>
+		      			<img src="/resources/images/bank.png">999-9999-9999 예금주 : 안영철
+		      		</div>
+		      	</div>
+		      	<div class="coupon_code4">
+		      		<p>일반 영수증 적립 처리 규정</p>
 		      		<ul>
-		      			<li>
-		      				<ul>
-		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text2">SDIJUYWGIOPLLSLFJN</li>
-		      					<li class="code_text1">기준 금액 : 10,000</li>
-		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
-		      				</ul>
-		      			</li>
-		      			<li>
-		      				<ul>
-		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text2">SDIJUYWGIOPLLSLFJN</li>
-		      					<li class="code_text1">기준 금액 : 10,000</li>
-		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
-		      				</ul>
-		      			</li>
-		      			<!--  코드 단 추가시 복사 붙여넣기 하시면되요 
-		      			<li>
-		      				<ul>
-		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
-		      					<li class="code_text1">기준 금액 : 10,000</li>
-		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
-		      				</ul>
-		      			</li>--->
+		      			<li>일반 영수증 적립 처리와 관련한 입금 확인은 매일 오후 4시에 일괄 확인되며, 입금 확인된 건에 대하여 발송됩니다.</li>
+		      			<li>코드 발송은 문자메시지,맵 푸시 메시지중 회원님이 영수증 업로드시 선택하신 방법에 의하여 발송됩니다.</li>
 		      		</ul>
 		      	</div>
 		      </div>
@@ -178,8 +171,8 @@ $(document).ready(function(){
 		        	<ul>
 		      			<li>
 		      				<ul>
-		      					<li class="code_text1">1982-09-17</li>
 		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text1">1982-09-17</li>
 		      					<li class="code_text1">기준 금액 : 10,000</li>
 		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
 		      					<button>적립</button>
@@ -187,8 +180,8 @@ $(document).ready(function(){
 		      			</li>
 		      			<li>
 		      				<ul>
-		      					<li class="code_text1">1982-09-17</li>
 		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text1">1982-09-17</li>
 		      					<li class="code_text1">기준 금액 : 10,000</li>
 		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
 		      					<button>적립</button>
@@ -204,16 +197,16 @@ $(document).ready(function(){
 		        	<ul>
 		      			<li>
 		      				<ul>
-		      					<li class="code_text1">1982-09-17</li>
 		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text1">1982-09-17</li>
 		      					<li class="code_text1">기준 금액 : 10,000</li>
 		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
 		      				</ul>
 		      			</li>
 		      			<li>
 		      				<ul>
-		      					<li class="code_text1">1982-09-17</li>
 		      					<li class="code_text2">코드:SDIJUYWGIOPLLSLFJN</li>
+		      					<li class="code_text1">1982-09-17</li>
 		      					<li class="code_text1">기준 금액 : 10,000</li>
 		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
 		      				</ul>
