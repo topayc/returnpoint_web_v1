@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 </script>
 <style>
- * {font-weight:300}
+ * {font-weight:350}
 </style>
 </head>
 <!-- header end -->
@@ -88,7 +88,7 @@ $(document).ready(function(){
 		      	</div>
 		      	<div class="coupon_code2">
 		      		<p>일반 영수증 적립 방법</p>
-		      		<div>영수증 업로드 > 해당 금액 입금 > 입금확인 > 적립 코드 발송</div>
+		      		<div>영수증 업로드 > 금액입금 > 입금확인 > 적립코드발송</div>
 		      		<span>해당 금액을 입금한 후, 입금 확인 요청 버튼을 클릭하시면 더욱 빠른 처리가 가능합니다.</span>
 		      	</div>
 		      	<div class="coupon_code3">

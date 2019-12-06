@@ -711,6 +711,10 @@ function startPointBack(){
 				else if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KIS" ){
 					pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrAcc.do";
 				}
+				
+				else if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KOVAN" ){
+					pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrAcc.do";
+				}
 				/* KICC 전용 QR 에 의한 적립 요청 주소 */
 				else if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KICC" ){
 					pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/kiccQrAcc.do";
@@ -722,6 +726,7 @@ function startPointBack(){
 			
 			if (pointBackUrl == null || pointBackUrl == "" || pointBackUrl.trim().length == 0 ){
 				alertOpen("알림", "적립경로 오류 :  잘못된 QR 정보입니다. <br/>관리자에게 문의해주세요", true, false, null, null);
+				return;
 			}
 			
  			$.ajax({
@@ -755,12 +760,12 @@ function startPointBack(){
 	            		 	}, 
 	            			null);
 	               	 }else{
-	               		 alertOpen("알림", "네트워크 장애 발생. 다시 시도해주세요.", true, false, null, null);
+	               		 alertOpen("알림", "1.네트워크 장애 발생. 다시 시도해주세요.", true, false, null, null);
 	               	 }
 	               },
 	               error : function(request, status, error){
 	            	   $("#progress_loading").hide();
-	            	   alertOpen("알림 ", "네트워크 장애 발생 !  다시 시도해주세요", true, false, null, null);
+	            	   alertOpen("알림 ", "2.네트워크 장애 발생 !  다시 시도해주세요", true, false, null, null);
 	               },
 	               dataType: 'json'
 	           });
