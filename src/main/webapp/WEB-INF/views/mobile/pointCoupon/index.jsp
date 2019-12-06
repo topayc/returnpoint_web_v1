@@ -99,9 +99,9 @@ $(document).ready(function(){
 		      	</div>
 		      	<div class="coupon_code4">
 		      		<p>일반 영수증 적립 처리 규정</p>
-		      		<ul>
-		      			<li>일반 영수증 적립 처리와 관련한 입금 확인은 매일 오후 4시에 일괄 확인되며, 입금 확인된 건에 대하여 발송됩니다.</li>
-		      			<li>코드 발송은 문자메시지,맵 푸시 메시지중 회원님이 영수증 업로드시 선택하신 방법에 의하여 발송됩니다.</li>
+		      		<ul style="list-style-type:disc;">
+		      			<li style="list-style-type:disc;">일반 영수증 적립 처리와 관련한 입금 확인은 매일 오후 4시에 일괄 확인되며, 입금 확인된 건에 대하여 발송됩니다.</li>
+		      			<li style="list-style-type:disc;">코드 발송은 문자메시지,맵 푸시 메시지중 회원님이 영수증 업로드시 선택하신 방법에 의하여 발송됩니다.</li>
 		      		</ul>
 		      	</div>
 		      </div>
