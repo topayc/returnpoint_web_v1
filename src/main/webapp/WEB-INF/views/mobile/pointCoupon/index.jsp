@@ -89,7 +89,13 @@ $(document).ready(function(){
 		      	<div class="coupon_code2">
 		      		<p>일반 영수증 적립 방법</p>
 		      		<div>영수증 업로드 > 금액입금 > 입금확인 > 적립코드발송</div>
-		      		<span>해당 금액을 입금한 후, 입금 확인 요청 버튼을 클릭하시면 더욱 빠른 처리가 가능합니다.</span>
+		      		<ul style="list-style-type:disc;">
+		      			<li>- 영수증 업로드 : 상단의 영수증 업로드 버튼 클릭</li>
+		      			<li>- 금액 입금 : 영수증 총 결제 금액의 15% 입금</li>
+		      			<li>- 임금 확인 : 15% 금액 입금 확인 </li>
+		      			<li>- 적립코드 발송  :  앱 푸시, 문자메시지 등으로 적립코드 발송</li>
+		      			<li style = "margin-top:10px">- 해당 금액을 입금한 후, 입금 확인 요청 버튼을 클릭하시면 더욱 빠른 처리가 가능합니다</li>
+		      		</ul>
 		      	</div>
 		      	<div class="coupon_code3">
 		      		<p>입금 은행</p>
@@ -106,7 +112,7 @@ $(document).ready(function(){
 		      	</div>
 		      </div>
 		   </li>
-		   <li><a>영수증</a>
+		   <li><a>영수증상태</a>
 		      <div class="coupon_contents" style="background-color:#eee;">
 		        <div class="coupon_upload">
 		        	<div onclick = "movePage('/m/pointCoupon/receiptDetail.do')">
