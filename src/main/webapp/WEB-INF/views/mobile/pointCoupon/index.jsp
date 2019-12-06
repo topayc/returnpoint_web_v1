@@ -93,14 +93,14 @@ $(document).ready(function(){
 		      			<li>- 영수증 올리기 : 상단의 일반 영수증 올리기 버튼 클릭 후 진행</li>
 		      			<li>- 금액 입금 : 영수증 총 결제 금액의 15% 입금</li>
 		      			<li>- 임금 확인 : 15% 금액 입금 확인 </li>
-		      			<li>- 적립코드 발송  :  앱 푸시, 문자메시지 등으로 적립코드 발송</li>
-		      			<li style = "margin-top:10px">- 해당 금액을 입금한 후, 입금 확인 요청 버튼을 클릭하시면 더욱 빠른 처리가 가능합니다</li>
+		      			<li>- 적립코드 발송  :  100% G.POINT 적립코드 발송</li>
+		      			<li style = "margin-top:10px">&#42; 해당 금액을 입금한 후, 상단 탭 메뉴중 '영수증처리' 탭을 선택후 표시되는 영수증에서   <span style = "color : #2E9AFE">입금확인 요청버튼</span>을 클릭하시면 더욱 빠른 처리가 가능합니다</li>
 		      		</ul>
 		      	</div>
 		      	<div class="coupon_code3">
 		      		<p>입금 은행</p>
 		      		<div>
-		      			<img src="/resources/images/bank.png">999-9999-9999 예금주 : 안영철
+		      			<img src="/resources/images/bank.png">999-9999-9999 예금주:안영철
 		      		</div>
 		      	</div>
 		      	<div class="coupon_code4">
