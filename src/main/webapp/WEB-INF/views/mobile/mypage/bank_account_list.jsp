@@ -22,7 +22,7 @@
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <style>
-* {font-weight:400}
+* {font-weight:350}
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -109,7 +109,9 @@ function deleteAccount(memberBankAccountNo) {
 				      				<ul>
 				      					<li class="code_text2">
 											<div class="code_bank1">${account.bankName}</div>
-											<div class="code_bank2">2019-12-09 등록</div>
+											<div class="code_bank2">
+											<fmt:parseDate value="${account.createTime}" var="date1" pattern="yyyy-MM-dd HH:mm:ss"/>
+											<fmt:formatDate value="${date1}" pattern="yyyy년 M월 d일"/> 등록</div>
 				      					</li>
 				      					<li class="code_text1">계좌번호 : <span>${account.bankAccount}</span></li>
 				      					<li class="code_text1">계좌 주 : <span>${account.accountOwner}</span></li>

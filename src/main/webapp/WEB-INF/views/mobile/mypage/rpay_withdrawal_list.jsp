@@ -97,15 +97,15 @@ function deleteAccount(memberBankAccountNo) {
 		<c:otherwise>
 			<section>
 				<div class="listS01" id = "account_list_frame">
-					<div class="list_title" style="font-size:12px;">*출금 요청 세부 내역을 보려면 해당 항목을 클릭하세요 <%-- <i class="fas fa-building"></i> <spring:message code="label.desc_point_withdrawal_list"/> --%> </div>
+					<div class="list_title" style="font-size:12px;">* 출금 요청 세부 내역을 보려면 해당 항목을 클릭하세요 <%-- <i class="fas fa-building"></i> <spring:message code="label.desc_point_withdrawal_list"/> --%> </div>
 					<c:forEach var="pointWithdrawal"  items="${model.pointWithdrawals}"  >
 						<div class="list_li collapsed" data-toggle="collapse" data-target="#point_withdraw_${pointWithdrawal.pointWithdrawalNo}">
 						   <%--  <div style = "width:25%;text-align:left">${pointWithdrawal.bankName} </div>
 						    <div style = "width:20%;text-align:left">${pointWithdrawal.accountOwner}</span></div>
 						    <div style = "width:35%;text-align:left">${pointWithdrawal.bankAccount}</span></div> --%>
 						    <div style = "width:100%;text-align:left" >
-						    	<strong><fmt:formatNumber value="${pointWithdrawal.withdrawalAmount}" pattern="###,###,###,###"/>원 출금 요청</strong></small></div>
-						     <div style = "width:100%;text-align:left">
+						    	<span style = "font-size : 15px"><fmt:formatNumber value="${pointWithdrawal.withdrawalAmount}" pattern="###,###,###,###"/>원 출금 요청</span></div>
+						     <div style = "width:100%;text-align:left;color : #888;font-size : 13px">
 						     	<fmt:formatDate value="${pointWithdrawal.createTime}" pattern="yyyy년 MM월 dd일"/>
 						     	
 						     </div>
