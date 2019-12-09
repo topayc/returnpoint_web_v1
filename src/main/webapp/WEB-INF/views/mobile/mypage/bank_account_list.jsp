@@ -86,6 +86,8 @@ function deleteAccount(memberBankAccountNo) {
 		<h4><spring:message code="label.manage_bank_account"/></h4>
 	</header> 
 	<!-- content begin -->
+	
+	
 	<c:choose>
 		<c:when test = "${empty model.memberBankAccounts }">
 			<section class="qr_nodata"><!-- 0824 -->
@@ -107,6 +109,34 @@ function deleteAccount(memberBankAccountNo) {
 					    <div style = "width:15%" onclick = "movePage('/m/mypage/m_mybank_account_form.do?action=modify&memberBankAccountNo=' + ${account.memberBankAccountNo})"  ><i class="fas fa-edit"></i><spring:message code="label.edit"/></div>
 					</div>		
 					</c:forEach>
+					<div class="r_bank">
+						<div class="coupon_code_page2">
+			        	<ul>
+			      			<li>
+			      				<ul>
+			      					<li class="code_text2">
+										<div class="code_bank1">국민은행</div>
+										<div class="code_bank2">2019-12-09 등록</div>
+			      					</li>
+			      					<li class="code_text1">계좌번호 : <span>1001-9087-0191212</span></li>
+			      					<li class="code_text1">계좌 주 : <span>안영철</span></li>
+			      					<button>수정</button>
+			      				</ul>
+			      			</li>
+			      			<li>
+			      				<ul>
+			      					<li class="code_text2">
+										<div class="code_bank1">국민은행</div>
+										<div class="code_bank2">2019-12-09 등록</div>
+			      					</li>
+			      					<li class="code_text1">계좌번호 : <span>1001-9087-0191212</span></li>
+			      					<li class="code_text1">계좌 주 : <span>안영철</span></li>
+			      					<button>수정</button>
+			      				</ul>
+			      			</li>
+			      		</ul>
+			        </div>
+			       </div>
 				</div>
 				<a class="btn btn-submit"  onclick = "movePage('/m/mypage/m_mybank_account_form.do?action=create')" >
 					<i class="fas fa-sign-out-alt"></i>
