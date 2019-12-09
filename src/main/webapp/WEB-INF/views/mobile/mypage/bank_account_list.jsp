@@ -21,6 +21,9 @@
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
+<style>
+* {font-weight:400}
+</style>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('.del_account').click(function(){
@@ -98,45 +101,25 @@ function deleteAccount(memberBankAccountNo) {
 		<c:otherwise>
 			<section>
 				<div class="listS01" id = "account_list_frame">
-					<div class="list_title">
-						<i class="fas fa-building"></i> 계좌 목록 
-					</div>
-					<c:forEach var="account"  items="${model.memberBankAccounts}"  >
-						<div class="list_li" style = "display:flex">
-					    <div style = "width:20%">${account.bankName} </div>
-					    <div style = "width:20%">${account.accountOwner}</div>
-					    <div style = "width:45%">${account.bankAccount}</div>
-					    <div style = "width:15%" onclick = "movePage('/m/mypage/m_mybank_account_form.do?action=modify&memberBankAccountNo=' + ${account.memberBankAccountNo})"  ><i class="fas fa-edit"></i><spring:message code="label.edit"/></div>
-					</div>		
-					</c:forEach>
 					<div class="r_bank">
 						<div class="coupon_code_page2">
-			        	<ul>
-			      			<li>
-			      				<ul>
-			      					<li class="code_text2">
-										<div class="code_bank1">국민은행</div>
-										<div class="code_bank2">2019-12-09 등록</div>
-			      					</li>
-			      					<li class="code_text1">계좌번호 : <span>1001-9087-0191212</span></li>
-			      					<li class="code_text1">계좌 주 : <span>안영철</span></li>
-			      					<button>수정</button>
-			      				</ul>
-			      			</li>
-			      			<li>
-			      				<ul>
-			      					<li class="code_text2">
-										<div class="code_bank1">국민은행</div>
-										<div class="code_bank2">2019-12-09 등록</div>
-			      					</li>
-			      					<li class="code_text1">계좌번호 : <span>1001-9087-0191212</span></li>
-			      					<li class="code_text1">계좌 주 : <span>안영철</span></li>
-			      					<button>수정</button>
-			      				</ul>
-			      			</li>
-			      		</ul>
-			        </div>
-			       </div>
+							<ul>
+								<c:forEach var="account"  items="${model.memberBankAccounts}"  >
+								<li>
+				      				<ul>
+				      					<li class="code_text2">
+											<div class="code_bank1">${account.bankName}</div>
+											<div class="code_bank2">2019-12-09 등록</div>
+				      					</li>
+				      					<li class="code_text1">계좌번호 : <span>${account.bankAccount}</span></li>
+				      					<li class="code_text1">계좌 주 : <span>${account.accountOwner}</span></li>
+				      					<button onclick = "movePage('/m/mypage/m_mybank_account_form.do?action=modify&memberBankAccountNo=' + ${account.memberBankAccountNo})" >수정</button>
+				      				</ul>
+				      			</li>		
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
 				</div>
 				<a class="btn btn-submit"  onclick = "movePage('/m/mypage/m_mybank_account_form.do?action=create')" >
 					<i class="fas fa-sign-out-alt"></i>
