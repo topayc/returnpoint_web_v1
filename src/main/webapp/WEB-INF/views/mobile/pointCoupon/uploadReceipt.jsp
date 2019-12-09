@@ -58,12 +58,15 @@ $(document).ready(function(){
 			</div>
 		</div>
 		<div class="upload_conbox">
-			<p>결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
 			<form>
+				<p>결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
 				<input type="text" placeholder="결제 금액 입력(숫자)"   >
 				
+				<p>입금자명</p>
+				<input type="text" placeholder=""   >
+				
 				<p style = "margin-top:15px">적립코드를 받을 방법을 선택해주세요(PUSH/SMS)</p>
-				<div >
+				<div>
 					<button class="push_select recv_method">푸쉬로받기</button>
 					<button class = "recv_method" style="margin-left:-2%;">문자로받기</button>
 				</div>
