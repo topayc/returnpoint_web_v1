@@ -125,10 +125,10 @@ function deleteAccount(memberBankAccountNo) {
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 계좌:  ${pointWithdrawal.bankAccount}</span></p>
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>예금주 :  ${pointWithdrawal.accountOwner}</span></p>
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 요청일 :  <fmt:formatDate value="${pointWithdrawal.createTime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/> </span></p>
-								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 금액:  <fmt:formatNumber value="${pointWithdrawal.withdrawalAmount}" pattern="###,###,###,###"/></span></p>
-								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span >출금 상태:  &nbsp;
+								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 요청금액:  <fmt:formatNumber value="${pointWithdrawal.withdrawalAmount}" pattern="###,###,###,###"/> 원</span></p>
+								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span >출금 처리상태:  &nbsp;
 								<c:choose>
-						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '1'}"><span class="label label-primary" style="padding:2%;border-radius:20px;">${pointWithdrawal.withdrawalStatusText}</span></c:when>
+						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '1'}"><span class="label label-danger" style="padding:2%;border-radius:20px;">${pointWithdrawal.withdrawalStatusText}</span></c:when>
 						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '2'}"><span class="label label-success" style="padding:2%;border-radius:20px;">${pointWithdrawal.withdrawalStatusText}</span></c:when>
 						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '3'}"><span class="label label-warning" style="padding:2%;border-radius:20px;">${pointWithdrawal.withdrawalStatusText}</span></c:when>
 						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '4'}"><span class="label label-danger" style="padding:2%;border-radius:20px;">${pointWithdrawal.withdrawalStatusText}</span></c:when>
