@@ -35,9 +35,6 @@ $(document).ready(function(){
 </script>
 <style>
 * {font-weight:400}
-.toggle {width:100%}
-.btn-success {background-color: #5cb85c !importtant;}
-.btn-danger {background-color: #ccc !importtant;}
 </style>
 </head>
 <!-- header end -->
