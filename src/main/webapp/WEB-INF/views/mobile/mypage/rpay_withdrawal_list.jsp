@@ -97,7 +97,7 @@ function deleteAccount(memberBankAccountNo) {
 		<c:otherwise>
 			<section>
 				<div class="listS01" id = "account_list_frame">
-					<div class="list_title" style="font-size:11px;">* 출금 요청 세부 내역을 보려면 해당 항목을 클릭하세요 <%-- <i class="fas fa-building"></i> <spring:message code="label.desc_point_withdrawal_list"/> --%> </div>
+					<div class="list_title" style="font-size:12px;">* 출금 요청 세부 내역을 보려면 해당 항목을 클릭하세요 <%-- <i class="fas fa-building"></i> <spring:message code="label.desc_point_withdrawal_list"/> --%> </div>
 					<c:forEach var="pointWithdrawal"  items="${model.pointWithdrawals}"  >
 						<div class="list_li collapsed" data-toggle="collapse" data-target="#point_withdraw_${pointWithdrawal.pointWithdrawalNo}">
 						   <%--  <div style = "width:25%;text-align:left">${pointWithdrawal.bankName} </div>
@@ -106,12 +106,12 @@ function deleteAccount(memberBankAccountNo) {
 						    <div style = "width:100%;text-align:left" >
 						    	<span style = "font-size : 15px"><fmt:formatNumber value="${pointWithdrawal.withdrawalAmount}" pattern="###,###,###,###"/>원 출금 요청</span></div>
 						     <div style = "width:100%;text-align:left;color : #888;font-size : 13px">
-						     	<fmt:formatDate value="${pointWithdrawal.createTime}" pattern="yyyy년 MM월 dd일"/>
+						     	<fmt:formatDate value="${pointWithdrawal.createTime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
 						     	
 						     </div>
 						    <div style = "width:20%;text-align:left;position:absolute;right:7%;bottom:40%;" >
 						    <c:choose>
-						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '1'}"><span class="label label-primary" style="padding:12%;border-radius:20px;font-size:12px;">${pointWithdrawal.withdrawalStatusText}</span></c:when>
+						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '1'}"><span class="label label-danger" style="padding:12%;border-radius:20px;font-size:12px;">${pointWithdrawal.withdrawalStatusText}</span></c:when>
 						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '2'}"><span class="label label-success" style="padding:12%;border-radius:20px;font-size:12px;">${pointWithdrawal.withdrawalStatusText}</span></c:when>
 						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '3'}"><span class="label label-warning" style="padding:12%;border-radius:20px;font-size:12px;">${pointWithdrawal.withdrawalStatusText}</span></c:when>
 						    	<c:when test = "${pointWithdrawal.withdrawalStatus == '4'}"><span class="label label-danger" style="padding:12%;border-radius:20px;font-size:12px;">${pointWithdrawal.withdrawalStatusText}</span></c:when>
@@ -120,11 +120,11 @@ function deleteAccount(memberBankAccountNo) {
 						    </div>
 						</div>		
 						<div id = "point_withdraw_${pointWithdrawal.pointWithdrawalNo}" class="list_li list_toggle collapse">
-							<div>
+							<div style = "background-color:#fff">
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><!-- <i class="fas fa-chevron-right list_blt">&nbsp;</i> --><span>출금 은행 : ${pointWithdrawal.bankName}</span></p>
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 계좌:  ${pointWithdrawal.bankAccount}</span></p>
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>예금주 :  ${pointWithdrawal.accountOwner}</span></p>
-								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 요청일 :  <fmt:formatDate value="${pointWithdrawal.createTime}" pattern="yyyy년 MM월 dd일 HH:MM:ss"/> </span></p>
+								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 요청일 :  <fmt:formatDate value="${pointWithdrawal.createTime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/> </span></p>
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 금액:  <fmt:formatNumber value="${pointWithdrawal.withdrawalAmount}" pattern="###,###,###,###"/></span></p>
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span >출금 상태:  &nbsp;
 								<c:choose>
