@@ -24,6 +24,16 @@
 <script type="text/javascript">
 
 function registBankAccount(){
+	if ($("#bankAccount").val().trim().length < 1) {
+		alertOpen("알림", "은행 계좌번호를 입력해주세요", false, true, null, null);
+		return;
+	}
+	
+	if ($("#accountOwner").val().trim().length < 1) {
+		alertOpen("알림", "예금주를 입력해주세요", false, true, null, null);
+		return;
+	}
+	
 	bridge.getSessionValue('PREF_ALL_SESSION', function(result){
 		  var userAuthToken;
 		  var ajax;
