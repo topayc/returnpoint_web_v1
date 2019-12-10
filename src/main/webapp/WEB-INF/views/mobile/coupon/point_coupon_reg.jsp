@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 function checkPointCoupon(){
 	var number = $('#couponNumber').val().trim();
-	if (number.length == 0 ){
+	if (number.length < 1 ){
 		alertOpen("알림", "포인트 적립 코드를 입력해주세요", true, false, null, null);
 		return;
 	}
