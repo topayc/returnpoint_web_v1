@@ -174,7 +174,7 @@ section hr{display:none;}
 /* list-style01 */
 .listS01{}
 .listS01 .list_title{padding: 13px 15px 10px;background: #eee; color: #000;font-weight: 404}
-.listS01 .list_li{position: relative;padding:18px 20px 18px;border: 1px solid #ddd;background-color:#fff;font-weight: 400;font-size : 14px;}
+.listS01 .list_li{position: relative;padding:18px 20px 18px;border-bottom: 1px solid #ddd;background-color:#fff;font-weight: 400;font-size : 14px;}
 .listS01 .list_li a{font-weight:400;color : #000000;font-size:14px}
 .listS01 .list_li i.fa-chevron-right{position:absolute;right:0px;top:-2px;padding: 28px 22px 22px 30px;}
 .listS01 .list_li i.list_blt{transform: rotate(90deg);transition: 0.7s;}

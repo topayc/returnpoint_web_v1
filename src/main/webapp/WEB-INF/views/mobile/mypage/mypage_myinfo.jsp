@@ -189,7 +189,7 @@ function recommendSms(data){
 			<div data-toggle="collapse" data-target="#mypage_myinfo" class="list_li collapsed">
 				<a><span class = "item_title"><spring:message code="label.mypageViewMemberInfo" /></span> <span><i class="fas fa-chevron-right list_blt"></i></span></a>
 			</div>
-			<div id="mypage_myinfo" class="list_toggle collapse" style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#555555;font-weight:405">
+			<div id="mypage_myinfo" class="list_toggle collapse" style = "border-bottom: 1px solid #eeeeee;color:#555555;font-weight:405">
 				<div class="member_node">
 				<c:if test="${!empty model.memberTypeInfo.memberNo}">
 					<p class="node nd1"><spring:message code="label.member" /></p>

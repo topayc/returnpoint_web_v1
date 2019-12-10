@@ -99,7 +99,7 @@ function deleteAccount(memberBankAccountNo) {
 				<div class="listS01" id = "account_list_frame" style="padding:2%;background-color:#f1f1f1;">
 					<div class="list_title" style="font-size:12px;">* 출금 요청 세부 내역을 보려면 해당 항목을 클릭하세요 <%-- <i class="fas fa-building"></i> <spring:message code="label.desc_point_withdrawal_list"/> --%> </div>
 					<c:forEach var="pointWithdrawal"  items="${model.pointWithdrawals}"  >
-						<div class="list_li collapsed" data-toggle="collapse" data-target="#point_withdraw_${pointWithdrawal.pointWithdrawalNo}">
+						<div class="list_li collapsed" style="border:1px solid #ddd;"data-toggle="collapse" data-target="#point_withdraw_${pointWithdrawal.pointWithdrawalNo}">
 						   <%--  <div style = "width:25%;text-align:left">${pointWithdrawal.bankName} </div>
 						    <div style = "width:20%;text-align:left">${pointWithdrawal.accountOwner}</span></div>
 						    <div style = "width:35%;text-align:left">${pointWithdrawal.bankAccount}</span></div> --%>
