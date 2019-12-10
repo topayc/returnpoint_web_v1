@@ -119,8 +119,8 @@ function deleteAccount(memberBankAccountNo) {
 						    </c:choose>
 						    </div>
 						</div>		
-						<div id = "point_withdraw_${pointWithdrawal.pointWithdrawalNo}" class="list_li list_toggle collapse">
-							<div style = "background-color:#fff">
+						<div id = "point_withdraw_${pointWithdrawal.pointWithdrawalNo}" class="list_li list_toggle collapse" style="border:1px solid #ddd;border-top:none;">
+							<div style = "background-color:#fff; ">
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><!-- <i class="fas fa-chevron-right list_blt">&nbsp;</i> --><span>출금 은행 : ${pointWithdrawal.bankName}</span></p>
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>출금 계좌 : ${pointWithdrawal.bankAccount}</span></p>
 								<p style = "margin-left : 7px;border-bottom: 1px solid #eeeeee;color:#000;font-weight:405;"><span>예금주 : ${pointWithdrawal.accountOwner}</span></p>
