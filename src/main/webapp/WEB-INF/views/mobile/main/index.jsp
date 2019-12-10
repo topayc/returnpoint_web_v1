@@ -150,9 +150,9 @@
 		<div class="slide"><img src="/resources/images/slide4.png"/>
 			<div class="main_text2">
 				<ul>
-					<li>결제 영수증 이젠 버리지 마세요</li>
-					<li>일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>
-					<li style="margin-top:18px;"><span  class="main_text3">자세히보기</span></li>
+					<li><span style = "font-weight:400;color: #444">일반 영수증 적립 서비스 ! </span></br>결제 영수증 이젠 버리지 마세요</li>
+					<li style = "font-size : 14px;color : #777;font-weight:320">일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>
+					<li style="margin-top:15px;"><span  class="main_text3">자세히보기</span></li>
 				</ul>
 			</div>
 		</div>
@@ -253,7 +253,7 @@ function move(idx){
 	$slides.eq(idx).animate({"right":"0px"});
 	current=idx;
 }
-setInterval(setSlide,2500);
+setInterval(setSlide,4000);
 });
 </script>
 </body>

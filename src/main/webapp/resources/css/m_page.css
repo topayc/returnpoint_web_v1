@@ -743,7 +743,7 @@ button {color : #000; font-weight:400}
 #main .main_text1{position:absolute;top:45px;left:20px;color:#fff;}
 #main .main_text1 li:nth-child(1){font-size:13px;margin-bottom:14px;}
 #main .main_text1 li:nth-child(2){font-size:15px;font-weight:500;}
-#main .main_text2{position:absolute;top:40px;left:17px;color:#555;}
+#main .main_text2{position:absolute;top:30px;left:17px;color:#555;}
 #main .main_text2 li:nth-child(1){font-size:16px;margin-bottom:15px;}
 #main .main_text2 li:nth-child(2){font-size:16px;font-weight:500;}
 #main .main_text2 .main_text3{border:1px solid #555;color:#555;border-radius:15px;padding:2%;}
