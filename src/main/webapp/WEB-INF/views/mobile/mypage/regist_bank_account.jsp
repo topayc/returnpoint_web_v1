@@ -99,7 +99,7 @@ $(document).ready(function(){
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>출금 계좌 등록</h4>
+		<h4>출금 계좌</h4>
 	</header> 	
 		<section>
 			<div class="m_point_transfer">

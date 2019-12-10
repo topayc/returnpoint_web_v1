@@ -995,7 +995,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 /*계좌목록페이지*/
 .r_bank{padding:0.3% 0;background-color:#f1f1f1;}
 .r_bank .coupon_code_page2{margin:5px;}
-.r_bank .coupon_code_page2 > ul > li {border:1px solid #ddd;margin-bottom:5px;line-height:21px;background-color:#fff;position:relative;padding:0 0 3% 0;margin-bottom:10px;}
+.r_bank .coupon_code_page2 > ul > li {border:1px solid #ddd;margin-bottom:5px;line-height:21px;background-color:#fff;position:relative;padding:0 0 3% 0;margin-bottom:7px;}
 .r_bank .coupon_code_page2 .code_text1{font-size:13px;color:#555;padding:0 3%;}
 .r_bank .coupon_code_page2 .code_text2{color:#333;padding:2%;border-bottom:1px solid #f1f1f1;margin-bottom:10px;overflow:hidden;}
 .r_bank .coupon_code_page2 .code_text2 .code_bank2{font-size:12px;text-align:right;float:right;}
