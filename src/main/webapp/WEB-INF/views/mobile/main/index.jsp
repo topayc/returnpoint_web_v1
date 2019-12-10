@@ -152,7 +152,7 @@
 				<ul>
 					<li>결제 영수증 이젠 버리지 마세요</li>
 					<li>일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>
-					<li style="margin-top:16px;"><span  class="main_text3">자세히보기</span></li>
+					<li style="margin-top:18px;"><span  class="main_text3">자세히보기</span></li>
 				</ul>
 			</div>
 		</div>
