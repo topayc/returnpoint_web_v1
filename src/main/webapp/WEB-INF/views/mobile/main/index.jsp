@@ -147,14 +147,22 @@
    <section class="nobtn" id = "main">
     <div class="main">
 		<!-- <div class="slide"><img src="/resources/images/slide1.png"/></div>-->
-		<div class="slide"><img src="/resources/images/slide2.png"/></div>
-		<!--<div class="slide"><img src="/resources/images/slide3.png"/></div> -->
-	</div>
-	<div class="main_text">
-		<ul>
-			<li>소비가 저축이 되는 R POINT</li>
-			<li>R POINT 가맹점에서<br>결제 후 영수증 QR 코드<br>스캔만 하면 결제 금액<br>100%포인트 실시간 적립!</li>
-		</ul>
+		<div class="slide"><img src="/resources/images/slide2.png"/>
+			<div class="main_text1">
+				<ul>
+					<li>소비가 저축이 되는 R POINT</li>
+					<li>R POINT 가맹점에서<br>결제 후 영수증 QR 코드<br>스캔만 하면 결제 금액<br>100%포인트 실시간 적립!</li>
+				</ul>
+			</div>
+		</div>
+		<div class="slide"><img src="/resources/images/slide4.png"/>
+			<div class="main_text2">
+				<ul>
+					<li>결제 영수증 이젠 버리지 마세요</li>
+					<li>일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div class="main_point">
 		<div class="main_rpoint">
@@ -224,5 +232,28 @@
    </footer>
    </section>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	var current = 0;
+	var $slides = $(".slide");
+	var total = 2;
+
+$slides.css("right","-100%");
+$slides.eq(0).css("right","0px");
+
+function setSlide(){
+	if (current+1 >= total) move(0);
+	else move(current + 1);
+}
+
+function move(idx){
+	$slides.eq(current).animate({"right":"100%"});
+	$slides.eq(idx).css({"right":"-100%"});
+	$slides.eq(idx).animate({"right":"0px"});
+	current=idx;
+}
+setInterval(setSlide,2500);
+});
+</script>
 </body>
 </html>
