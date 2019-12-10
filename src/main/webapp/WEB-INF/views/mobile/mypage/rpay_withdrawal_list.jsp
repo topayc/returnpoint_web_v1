@@ -107,7 +107,6 @@ function deleteAccount(memberBankAccountNo) {
 						    	<span style = "font-size : 15px"><fmt:formatNumber value="${pointWithdrawal.withdrawalAmount}" pattern="###,###,###,###"/>원 출금 요청</span></div>
 						     <div style = "width:100%;text-align:left;color : #888;font-size : 13px">
 						     	<fmt:formatDate value="${pointWithdrawal.createTime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
-						     	
 						     </div>
 						    <div style = "width:20%;text-align:left;position:absolute;right:7%;bottom:40%;" >
 						    <c:choose>
