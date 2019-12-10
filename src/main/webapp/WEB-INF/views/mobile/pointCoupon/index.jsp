@@ -79,7 +79,7 @@ $(document).ready(function(){
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
-		      		<div class="upload"><a><!--<img src="/resources/images/upload.png">&nbsp; -->일반 영수증 올리기</a></div>
+		      		<div class="upload"><img src="/resources/images/upload.png">&nbsp;일반 영수증 올리기</div>
 		      		<!--<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div> -->
 		      	</div>
 		      	<div class="coupon_code1">
@@ -230,7 +230,7 @@ $(document).ready(function(){
 	   return false;
 	});
 	
-	$(".upload > a").click(function(){
+	$(".coupon_m .upload").click(function(){
 		$("#popup").addClass("active");
 		});
 		$("#popup img").click(function(){
