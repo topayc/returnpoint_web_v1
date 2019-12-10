@@ -162,7 +162,7 @@ $(document).ready(function(){
 						<input type="text"	class="form-control" name="accountOwner" id="accountOwner" maxlength="50" value = "${model.memberBankAccount.accountOwner}">
 					</div>
 					<div class="btns2">
-						<button type="button" class="btn btn-submit" onclick="registBankAccount();">출금 계좌 등록</button>
+						<button type="button" class="btn btn-submit" onclick="registBankAccount();"><spring:message code="label.ok"/></button>
 						<button type="button" class="btn btn-submit-cancel" id="cancelGoback"><spring:message code="label.cancel"/></button>
 					</div>					
 				</form>	
