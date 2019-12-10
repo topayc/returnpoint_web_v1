@@ -147,19 +147,19 @@
    <section class="nobtn" id = "main">
     <div class="main">
 		<!-- <div class="slide"><img src="/resources/images/slide1.png"/></div>-->
-		<div class="slide"><img src="/resources/images/slide2.png"/>
-			<div class="main_text1">
-				<ul>
-					<li>소비가 저축이 되는 R POINT</li>
-					<li>R POINT 가맹점에서<br>결제 후 영수증 QR 코드<br>스캔만 하면 결제 금액<br>100%포인트 실시간 적립!</li>
-				</ul>
-			</div>
-		</div>
 		<div class="slide"><img src="/resources/images/slide4.png"/>
 			<div class="main_text2">
 				<ul>
 					<li>결제 영수증 이젠 버리지 마세요</li>
 					<li>일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>
+				</ul>
+			</div>
+		</div>
+		<div class="slide"><img src="/resources/images/slide2.png"/>
+			<div class="main_text1">
+				<ul>
+					<li>소비가 저축이 되는 R POINT</li>
+					<li>R POINT 가맹점에서<br>결제 후 영수증 QR 코드<br>스캔만 하면 결제 금액<br>100%포인트 실시간 적립!</li>
 				</ul>
 			</div>
 		</div>
