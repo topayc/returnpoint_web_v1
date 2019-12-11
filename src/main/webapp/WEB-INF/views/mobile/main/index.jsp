@@ -146,23 +146,24 @@
    </header>
    <section class="nobtn" id = "main">
     <div class="main">
-		<!-- <div class="slide"><img src="/resources/images/slide1.png"/></div>-->
-		<div class="slide"><img src="/resources/images/slide4.png"/>
+		<div class="slide">
+			<img src="/resources/images/slide4.png"/>
 			<div class="main_text2">
 				<ul>
 					<li>
-						<span style = "font-weight:500;color: #555">일반 영수증 적립 서비스 OPEN! </span></br>
-						<span style = "color: #777;font-size : 14px;font-weight:400">결제 영수증 이젠 버리지 마세요</span></li>
-					<li style = "font-size : 14px;color : #777;font-weight:400">일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>
-					<li style="margin-top:15px;"><span  class="main_text3" style = "font-size:12px;padding:3%">자세히보기</span></li>
+						<span style = "font-weight:bold;color: #666">일반 영수증 적립 서비스 OPEN! </span></br>
+						<span style = "color: #777;font-size : 14px;font-weight:350">결제 영수증 이젠 버리지 마세요</span></li>
+					<li style = "font-size : 14px;color : #777;font-weight:350">일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>
+					<li style="margin-top:15px;"><span  class="main_text3" style = "font-size:11px;padding:2%">자세히보기</span></li>
 				</ul>
 			</div>
 		</div>
-		<div class="slide"><img src="/resources/images/slide2.png"/>
+		<div class="slide">
+			<img src="/resources/images/slide2.png"/>
 			<div class="main_text1">
 				<ul>
-					<li>소비가 저축이 되는 R POINT</li>
-					<li>R POINT 가맹점에서<br>결제 후 영수증 QR 코드<br>스캔만 하면 결제 금액<br>100%포인트 실시간 적립!</li>
+					<li><span style = "font-weight:500;color: #fff;font-size:17px;top:5px">소비가 저축이 되는 </br> 똑똑한 R POINT</span></li>
+					<li><span style = "font-weight:300;color: #fff;font-size:14px">R POINT 가맹점에서 결제 후 <br> 영수증 QR 코드를 스캔만 하면 <br> 결제 금액의 100% 포인트<br>  실시간 적립!</span></li>
 				</ul>
 			</div>
 		</div>
@@ -255,7 +256,7 @@ function move(idx){
 	$slides.eq(idx).animate({"right":"0px"});
 	current=idx;
 }
-setInterval(setSlide,4000);
+setInterval(setSlide,6000);
 });
 </script>
 </body>
