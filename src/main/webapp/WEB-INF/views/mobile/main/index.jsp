@@ -154,7 +154,7 @@
 						<span style = "font-weight:bold;color: #666">일반 영수증 적립 서비스 OPEN! </span></br>
 						<span style = "color: #777;font-size : 14px;font-weight:350">결제 영수증 이젠 버리지 마세요</span></li>
 					<li style = "font-size : 14px;color : #777;font-weight:350">일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>
-					<li style="margin-top:15px;"><span  class="main_text3" style = "font-size:11px;padding:2%">자세히보기</span></li>
+					<li style="margin-top:15px;"><span  class="main_text3" style = "font-size:12px;padding:2%">자세히보기</span></li>
 				</ul>
 			</div>
 		</div>
@@ -256,7 +256,7 @@ function move(idx){
 	$slides.eq(idx).animate({"right":"0px"});
 	current=idx;
 }
-setInterval(setSlide,6000);
+setInterval(setSlide,7000);
 });
 </script>
 </body>
