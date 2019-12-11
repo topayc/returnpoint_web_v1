@@ -162,7 +162,7 @@
 			<img src="/resources/images/slide2.png"/>
 			<div class="main_text1">
 				<ul>
-					<li><span style = "font-weight:500;color: #fff;font-size:17px;top:5px">소비가 저축이 되는 </br> 똑똑한 R POINT</span></li>
+					<li><span style = "font-weight:400;color: #fff;font-size:16px;top:5px">소비가 저축이 되는 R POINT</span></li>
 					<li><span style = "font-weight:300;color: #fff;font-size:14px">R POINT 가맹점에서 결제 후 <br> 영수증 QR 코드를 스캔만 하면 <br> 결제 금액의 100% 포인트<br>  실시간 적립!</span></li>
 				</ul>
 			</div>
