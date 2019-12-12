@@ -33,13 +33,24 @@
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <script type="text/javascript">
   if (isApp()) {
     checkVersion();
   }
 
   $(document).on('ready', function() {
-       if(getCookie("notToday")=="Y"){
+	$("#event_popup").modal({
+		  escapeClose: false,
+		  clickClose: false,
+		  showClose: false,
+		  fadeDuration: 300
+		}); 
+	  
+	  if(getCookie("notToday")=="Y"){
         $("#alertView").hide();
        }
       var pageContextlocale = '${pageContext.response.locale}';
@@ -100,26 +111,11 @@
 <!-- body begin -->
 <body class="index">
    <!-- 0921 이벤트 노티 -->
-<%--    <div class="alert_wrap event" id="eventAlert" name="eventAlert" style = "display:none">
-     <div class="alert alert-info">
-       <button type="button" class="close" id="alert_cancel" name="alertClose"  onclick='javascript:alertClose("event");'>&times;</button>
-       <c:choose>
-         <c:when
-            test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
-            <a href="/m/member/join.do" class="eventlink"><spring:message code="label.join_member" /><br /><spring:message code="label.shortcut" /></a>
-            <!-- 로그인 후 -->
-         </c:when>
-         <c:otherwise>
-            <a href="/m/mypage/m_fullmember.do" class="eventlink"><spring:message code="label.regular_member" /><br /><spring:message code="label.apply" /></a>
-         </c:otherwise>
-      </c:choose>
-     </div>
-   </div>   --%>
    <!-- 0831 서버점검 노티 -->
 <%--    <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }"> --%>
-    <div style="display:none;">
+    <div style="display:none;" id = "event_popup">
     	<div class="main_popuppage">
-		<div class="popup_list">
+		<div class="popup_list" >
 			<img src="/resources/images/popup_list_img.png">
 			<div class="list_box">
 				<ul>
