@@ -170,11 +170,11 @@
 	</div>
 	<div class="main_point">
 		<div class="main_rpoint">
-			<span><spring:message code="label.n_rpoint" /></span>
+			<span style = "font-weight:500;color : #777"><spring:message code="label.n_rpoint" /></span>
 			<span style="color:#ff0066;"><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/></span>
 		</div>
 		<div class="main_gpoint">
-			<span><spring:message code="label.n_gpoint" />
+			<span style = "font-weight:500;color : #777"><spring:message code="label.n_gpoint" />
 			</span><span style="color:#33cccc;"><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/></span>
 		</div>
 	</div>
