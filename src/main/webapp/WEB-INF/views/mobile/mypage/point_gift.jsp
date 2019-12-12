@@ -71,7 +71,6 @@ function resetGpointvalue(postfixId){
 				<li><a href="/m/mypage/newpoint.do"><spring:message code="label.gPointEarningHistory" /></a></li>
            	 	<li class="active"><a href="/m/mypage/point_gift.do"><spring:message code="label.pointGift" /></a></li>
 			</ul>		
-			
           <div id="Gpoint" class="tab-pane fade in active">               
             <!-- 회원 -->
             <c:if test="${model.myGreenPointMap.memberPoint != null}">   
