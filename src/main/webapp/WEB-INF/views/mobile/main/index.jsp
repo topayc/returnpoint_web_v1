@@ -116,29 +116,24 @@
      </div>
    </div>   --%>
    <!-- 0831 서버점검 노티 -->
-   <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }">
-    <div class="alert_wrap noti" id="alertView" name="alertView"  ><!--  style 부분에 display:none;을 빼주심 활성화되요 -->
-     <div class="alert alert-info">
-        <button type="button" class="close" id="alertClose" name="alertClose"  onclick='javascript:alertClose("noti");' style = "color : #000000">&times;</button>
-       <div class="alert_body">
-         <!--   <i class="fas fa-volume-up"></i> -->
-           <div class="error_desk" style = "font-family: 'Nanum Gothic', sans-serif;'">
-               <p style = "margin-bottom : 1px">
-                  <span style = "font-size : 20px; font-weight : bold;color :#DF01A5 ;font-family: 'Nanum Gothic', sans-serif;'" >'100% R포인트 캐시백'</span></br>
-                  <span style = "font-size : 20px; font-weight : bold;color :#DF01A5;font-family: 'Nanum Gothic', sans-serif;'">U 몰 (쇼핑몰)오픈</span>
-
-                </p>
-        <!-- <p style = "font-size : 15px; font-weight : bold;font-family: 'Nanum Gothic', sans-serif;'">R 포인트 U몰(쇼핑몰)  오픈!</p> -->
-        <p style = "font-size : 15px; font-weight : bold;font-family: 'Nanum Gothic', sans-serif;'">네이버의 동일 제품과 가격  비교해 보시고 제휴사 U몰을 많이 이용해 주시기 바랍니다</p>
-        <p style = "font-size : 15px; font-weight : bold;font-family: 'Nanum Gothic', sans-serif;'">감사합니다</p>
-        <p style = "font-size : 15px; font-weight : bold;font-family: 'Nanum Gothic', sans-serif;'">주식회사 탑해피월드 임직원 일동</p>
-        <p style = "font-size : 15px; font-weight : bold;font-family: 'Nanum Gothic', sans-serif;'"><a class = "reverse_text1" href = "javascript:closePopupNotToday('alertView')" ><span class ="reverse_text"><%-- <spring:message code="label.not_view_today" /> --%>그만 보기</span></a></p>
-
-           </div>
-       </div>
-     </div>
+<%--    <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }"> --%>
+    <div >
+    	<div class="main_popuppage">
+		<div class="popup_list">
+			<img src="/resources/images/popup_list_img.png">
+			<div class="list_box">
+				<ul>
+					<li><span>자세히보기</span></li>
+				</ul>
+			</div>
+			<div class="popup_btn_box">
+				<button>오늘 그만 보기</button>
+				<button style="margin-left: -4.5px;border-left:none;">닫기</button>
+			</div>
+		</div>
+	</div>
    </div>
-   </c:if>
+   <%-- </c:if> --%>
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />
    <!-- nav -->

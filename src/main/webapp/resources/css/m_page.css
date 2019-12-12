@@ -1006,3 +1006,11 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_bank .coupon_code_page2 .code_text2 .code_bank1{padding-left:3px;font-size:14px;font-weight:bold;float:left;}
 .r_bank .coupon_code_page2 button{position:absolute;bottom:10%;right:10px;font-size:12px;border-radius:20px;border:none;background-color:#33cccc;color:#fff;padding:10px;}
 
+/*일반영수증 적립 서비스 팝업페이지*/
+.main_popuppage{padding:5%;margin-top:51px;}
+.main_popuppage .popup_list{width:100%;height:300px;position: relative;}
+.main_popuppage .popup_list img{width:100%;height: 100%;}
+.main_popuppage .popup_list .list_box{width:100%;position: absolute;bottom:60px;text-align:center;}
+.main_popuppage .popup_list .list_box span{padding:1% 1.5%;border-radius: 20px;font-size: 13px;color:#fff;border:1px solid #fff;}
+.main_popuppage .popup_btn_box{width:100%;position:absolute;left: 0;bottom:0;}
+.main_popuppage .popup_btn_box button{width:50%;padding:3%;border:1px solid #fff;color:#fff;background-color: #ef1b8c;font-size: 15px;}
