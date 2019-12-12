@@ -170,10 +170,10 @@
 	</div>
 	<div class="main_point">
 		<div class="main_rpoint">
-			<span style="color:#ff0066;"><span class="circle_text">R</span><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/></span>
+			<span style="color:#ff0066;"><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/><span class="circle_text">R</span></span>
 		</div>
 		<div class="main_gpoint">
-			<span style="color:#33cccc;"><span class="circle_text">G</span><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/></span>
+			<span style="color:#33cccc;"><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/><span class="circle_text">G</span></span>
 		</div>
 	</div>
 	
