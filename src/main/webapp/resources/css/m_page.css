@@ -750,7 +750,7 @@ button {color : #000; font-weight:400}
 
 
 #main .main_point{overflow:hidden;}
-#main .main_rpoint{float:left;width:50%;text-align:center;padding:12px 0;font-size:14px;font-weight:bold;color:#555;background-color:#fff;border:1px solid #ddd;}
+#main .main_rpoint{float:left;width:50%;text-align:center;padding:12px 0;font-size:14px;font-weight:bold;color:#555;background-color:#fff;border:1px solid #ddd;border-right:none;}
 #main .main_gpoint{float:right;width:50%;text-align:center;padding:12px 0;font-size:14px;font-weight:bold;color:#555;background-color:#fff;border:1px solid #ddd;}
 #main .main_rpoint span{padding:0 12px;}
 #main .main_gpoint span{padding:0 12px;}
