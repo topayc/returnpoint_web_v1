@@ -256,7 +256,7 @@ function move(idx){
 	$slides.eq(idx).animate({"right":"0px"});
 	current=idx;
 }
-setInterval(setSlide,7000);
+setInterval(setSlide,5000);
 });
 </script>
 </body>
