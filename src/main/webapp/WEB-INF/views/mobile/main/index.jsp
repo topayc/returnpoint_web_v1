@@ -151,6 +151,9 @@
 			<div class="main_text2">
 				<ul>
 					<li>
+						<!--<span style = "font-weight:bold;color: #666">일반 영수증 적립 서비스 OPEN! </span></br>
+						<span style = "color: #777;font-size : 14px;font-weight:350">결제 영수증 이젠 버리지 마세요</span></li>
+					<li style = "font-size : 14px;color : #777;font-weight:350">일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>-->
 					<li><span  class="main_text3" style = "font-size:12px;">자세히보기</span></li>
 				</ul>
 			</div>
@@ -167,10 +170,10 @@
 	</div>
 	<div class="main_point">
 		<div class="main_rpoint">
-			<span style="color:#ff0066;"><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/><span class="circle_text">R</span></span>
+			<span style="color:#ff0066;"><span class="circle_text" style="color:#ff0066;border:1px solid #ff0066;">R</span><fmt:formatNumber value="${model.myRedPointSumInfo.redPointAmountSum}" pattern="###,###,###,###"/></span>
 		</div>
 		<div class="main_gpoint">
-			<span style="color:#33cccc;"><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/><span class="circle_text">G</span></span>
+			<span style="color:#33cccc;"><span class="circle_text" style="color:#33cccc;border:1px solid #33cccc;">G</span><fmt:formatNumber value="${model.myGreenPointSumInfo.greenPointAmountSum}" pattern="###,###,###,###"/></span>
 		</div>
 	</div>
 	
