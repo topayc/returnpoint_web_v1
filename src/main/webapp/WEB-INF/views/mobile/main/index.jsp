@@ -117,7 +117,7 @@
    </div>   --%>
    <!-- 0831 서버점검 노티 -->
 <%--    <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }"> --%>
-    <div >
+    <div style="display:none;">
     	<div class="main_popuppage">
 		<div class="popup_list">
 			<img src="/resources/images/popup_list_img.png">
