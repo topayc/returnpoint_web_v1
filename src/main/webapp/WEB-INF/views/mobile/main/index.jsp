@@ -43,13 +43,15 @@
   }
 
   $(document).on('ready', function() {
-/* 	$("#event_popup").modal({
+ /* 	$("#event_popup").modal({
 		  escapeClose: false,
 		  clickClose: false,
 		  showClose: false,
 		  fadeDuration: 100
-		});   */
-	  
+		});  
+	  $('.modal').css('background','none');
+	  $('.modal').css('text-align','center');
+	  $('.modal').css('box_shadow','none'); */
 	  if(getCookie("notToday")=="Y"){
         $("#alertView").hide();
        }
