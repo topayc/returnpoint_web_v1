@@ -118,10 +118,15 @@ $(document).ready(function(){
 		      </div>
 		   </li>
 		   <li><a tabcode = "2">영수증처리</a>
-		      <div class="coupon_contents" style="background-color:#eee;">
+		      <div class="coupon_contents">
 		        <div class="coupon_upload">
 		        	<c:choose>
-					<c:when test = "${empty model.receipts }">올리신 영수증이 없습니다.</c:when>
+					<c:when test = "${empty model.receipts }">
+						<div class="list_none" style="width:70%;margin-left:15%;margin-top:27%;height:200px;">
+							<img src="/resources/images/list_none_img.png">
+							<p>목록이 없습니다.</p>
+						</div>
+					</c:when>
 					<c:otherwise>
 						<c:forEach var="receipt"  items="${model.receipts}"  >
 							<div onclick = "movePage('/m/pointCoupon/receiptDetail.do?receiptNo=${receipt.pointCodeIssueRequestNo}')">
@@ -143,9 +148,14 @@ $(document).ready(function(){
 		      </div>
 		   </li>
 		   <li><a style="left:50%;" tabcode = "3">사용가능</a>
-				<div class="coupon_contents" style="background-color:#eee;">
+				<div class="coupon_contents">
 			    <c:choose>
-					<c:when test = "${empty model.pointCodes }">사용가능한 포인트 코드가 없습니다.</c:when>
+					<c:when test = "${empty model.pointCodes }">
+						<div class="list_none">
+							<img src="/resources/images/list_none_img.png">
+							<p>목록이 없습니다.</p>
+						</div>
+					</c:when>
 					<c:otherwise>
 				        <div class="coupon_code_page2">
 				        	<ul>
@@ -168,9 +178,14 @@ $(document).ready(function(){
 				
 		   </li>
 		   <li><a style="left:75%;margin-right:2%;" tabcode = "4">사용완료</a>
-		      <div class="coupon_contents" style="background-color:#eee;">
+		      <div class="coupon_contents">
 		           <c:choose>
-					<c:when test = "${empty model.pointCodes }">사용가능한 포인트 코드가 없습니다.</c:when>
+					<c:when test = "${empty model.pointCodes }">
+						<div class="list_none">
+							<img src="/resources/images/list_none_img.png">
+							<p>목록이 없습니다.</p>
+						</div>
+					</c:when>
 					<c:otherwise>
 		        <div class="coupon_code_page1">
 		        	<ul>
