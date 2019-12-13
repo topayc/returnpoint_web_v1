@@ -47,11 +47,15 @@
 }
 </style>
 <script type="text/javascript">
-  if (isApp()) {
+function closeMainModal(){
+	$('.jquery-modal').css("display", "none");
+} 
+
+if (isApp()) {
     checkVersion();
   }
 
-  $(document).on('ready', function() {
+ $(document).on('ready', function() {
  $("#event_popup").modal({
 		  escapeClose: false,
 		  clickClose: false,
@@ -143,7 +147,7 @@
 			 -->
 			<div class="popup_btn_box">
 				<button>오늘 그만 보기</button>
-				<button style="margin-left: -4.5px;border-left:none;">닫기</button>
+				<button style="margin-left: -4.5px;border-left:none;" onclick = "closeMainModal();return false">닫기</button>
 			</div>
 		</div>
 	</div>
