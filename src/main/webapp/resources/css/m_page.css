@@ -736,7 +736,7 @@ button {color : #000; font-weight:400}
  .rpoint_withdrawal .rpoint_withdrawal_button button{width:49.5%;border:none;border-radius:5px;background-color: #33cccc; color: #fff;padding:10px 0;}
  .rpoint_withdrawal .rpoint_withdrawal_button button:nth-child(2){float:right;}
  
- /*앱개편 페이지*/
+ /*앱개편 슬라이드 페이지*/
  
 .badge{padding:10px 5px;border-radius:55px;}
 #main .main{width:100%;height:200px;overflow:hidden;position:relative;}
@@ -745,6 +745,7 @@ button {color : #000; font-weight:400}
 #main .main_text1 li:nth-child(2){font-size:15px;font-weight:500;}
 #main .main_text2{position:absolute;top:168px;left:40%;color:#fff;width:20%;}
 #main .main_text2 .main_text3{border:1px solid #fff;color:#fff;border-radius:15px;padding:5%;}
+#main .main_text4{position:absolute;top:168px;color:#fff;width:100%;text-align:center;font-size:15px;color:#fafd00;font-weight:bold;}
 #main .slide{width:100%;height:200px;position:absolute;}
 #main .slide img{width:100%;height:100%;}
 
@@ -1011,6 +1012,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .main_popuppage .popup_list{width:100%;height:300px;position: relative;}
 .main_popuppage .popup_list img{width:100%;height: 100%;}
 .main_popuppage .popup_list .list_box{width:100%;position: absolute;bottom:60px;text-align:center;}
+.main_popuppage .popup_list .list_box1{width:100%;position: absolute;bottom:60px;text-align:center;color:#fafd00;font-weight:bold;}
 .main_popuppage .popup_list .list_box span{padding:1% 1.5%;border-radius: 20px;font-size: 13px;color:#fff;border:1px solid #fff;}
 .main_popuppage .popup_btn_box{width:100%;position:absolute;left: 0;bottom:0;}
 .main_popuppage .popup_btn_box button{width:50%;padding:3%;border:1px solid #fff;color:#fff;background-color: #ef1b8c;font-size: 15px;}

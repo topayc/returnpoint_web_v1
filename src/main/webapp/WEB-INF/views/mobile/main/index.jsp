@@ -43,12 +43,12 @@
   }
 
   $(document).on('ready', function() {
-	$("#event_popup").modal({
+/* 	$("#event_popup").modal({
 		  escapeClose: false,
 		  clickClose: false,
 		  showClose: false,
 		  fadeDuration: 100
-		});  
+		});   */
 	  
 	  if(getCookie("notToday")=="Y"){
         $("#alertView").hide();
@@ -116,12 +116,23 @@
     <div style="display:none;" id = "event_popup">
     	<div class="main_popuppage">
 		<div class="popup_list" >
-			<img src="/resources/images/popup_list_img.png">
+			
+			<!-- 이벤트 OPEN 예정 팝업 -->
+			<img src="/resources/images/event_popup1.png">
+			<div class="list_box1">
+				<ul>
+					<li>시행일시 : <span>2019.12.18</span></li>
+				</ul>
+			</div>
+			<!-- 이벤트 OPEN후 주석 풀어주세요 -->
+			<!--
+			<img src="/resources/images/event_popup2.png">
 			<div class="list_box">
 				<ul>
 					<li><span>자세히보기</span></li>
 				</ul>
 			</div>
+			 -->
 			<div class="popup_btn_box">
 				<button>오늘 그만 보기</button>
 				<button style="margin-left: -4.5px;border-left:none;">닫기</button>
@@ -138,14 +149,22 @@
    <section class="nobtn" id = "main">
     <div class="main">
 		<div class="slide">
-			<img src="/resources/images/slide5.png"/>
+			<img src="/resources/images/event_banner1.png"/>
+			<!-- 이벤트 OPEN시 아래 한줄 주석풀어주세요 -->
+			<!--
 			<div class="main_text2">
 				<ul>
 					<li>
-						<!--<span style = "font-weight:bold;color: #666">일반 영수증 적립 서비스 OPEN! </span></br>
+						<span style = "font-weight:bold;color: #666">일반 영수증 적립 서비스 OPEN! </span></br>
 						<span style = "color: #777;font-size : 14px;font-weight:350">결제 영수증 이젠 버리지 마세요</span></li>
-					<li style = "font-size : 14px;color : #777;font-weight:350">일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>-->
+					<li style = "font-size : 14px;color : #777;font-weight:350">일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>
+					
 					<li><span  class="main_text3" style = "font-size:12px;">자세히보기</span></li>
+				</ul>
+			</div> -->
+			<div class="main_text4">
+				<ul>
+					<li>시행일시 : <span>2019.12.18</span></li>
 				</ul>
 			</div>
 		</div>
