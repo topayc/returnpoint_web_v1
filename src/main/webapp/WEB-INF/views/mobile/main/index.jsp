@@ -146,8 +146,8 @@ if (isApp()) {
 			</div>
 			 -->
 			<div class="popup_btn_box">
-				<button>오늘 그만 보기</button>
-				<button style="margin-left: -4.5px;border-left:none;" onclick = "closeMainModal();return false">닫기</button>
+				<button style="border-top:1px solid #ff83c5;border-right:1px solid #ff83c5">오늘 그만 보기</button>
+				<button style="margin-left: -4.5px;border-top:1px solid #ff83c5;" onclick = "closeMainModal();return false">닫기</button>
 			</div>
 		</div>
 	</div>
