@@ -141,6 +141,7 @@ if (isApp()) {
 					<li><span>자세히보기</span></li>
 				</ul>
 			</div>
+			
 			 -->
 			<div class="popup_btn_box">
 				<button style="border-top:1px solid #ff83c5;border-right:1px solid #ff83c5" onclick = "closePopupNotToday('alertView')">오늘 그만 보기</button>
