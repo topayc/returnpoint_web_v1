@@ -120,103 +120,75 @@ $(document).ready(function(){
 		   <li><a tabcode = "2">영수증처리</a>
 		      <div class="coupon_contents" style="background-color:#eee;">
 		        <div class="coupon_upload">
-		        	<div onclick = "movePage('/m/pointCoupon/receiptDetail.do')">
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span></br>
-		        		<span class="coupon_upload_text1">입금확인중</span>
-		        	</div>
-		        	<div>
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span></br>
-		        		<span class="coupon_upload_text2">입금완료</span>
-		        	</div>
-		        	<div>
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span></br>
-		        		<span class="coupon_upload_text3">코드발송완료</span>
-		        	</div>
-		        	<div>
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span></br>
-		        		<span class="coupon_upload_text3">코드발송완료</span>
-		        	</div>
-		        	<div>
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span></br>
-		        		<span class="coupon_upload_text2">입금완료</span>
-		        	</div>
-		        	<div>
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span></br>
-		        		<span class="coupon_upload_text2">입금완료</span>
-		        	</div>
-		        	<div>
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span></br>
-		        		<span class="coupon_upload_text3">코드발송완료</span>
-		        	</div>
-		        	
-		        	<!-- 추가시
-		        	<div>
-		        		<div class="coupon_img_box"></div>
-		        		<span>1982-09-17</span></br>
-		        		<span class="coupon_upload_text2">입금완료</span>
-		        	</div>-->
+		        	<c:choose>
+					<c:when test = "${empty model.receipts }">올리신 영수증이 없습니다.</c:when>
+					<c:otherwise>
+						<c:forEach var="receipt"  items="${model.receipts}"  >
+							<div onclick = "movePage('/m/pointCoupon/receiptDetail.do?receiptNo=${receipt.pointCodeIssueRequestNo}')">
+		        				<div class="coupon_img_box"></div>
+		        				<span>${receipt.createTime}</span></br>
+		        				<span class="coupon_upload_text1">
+		        				<c:choose>
+							    	<c:when test = "${receipt.depositStatus == '1'}">입급 확인중</c:when>
+							    	<c:when test = "${receipt.depositStatus == '2'}">입금 확인 요청중</c:when>
+							    	<c:when test = "${receipt.depositStatus == '3'}">입금 확인 완료</c:when>
+							    	<c:when test = "${receipt.depositStatus == '4'}">입금 취소 </c:when>
+						    	</c:choose>
+		        				</span>
+		        			</div>
+						</c:forEach>
+					</c:otherwise>
+					</c:choose>
 		        </div>
 		      </div>
 		   </li>
 		   <li><a style="left:50%;" tabcode = "3">사용가능</a>
-		      <c:choose>
-				<c:when test = "${empty model.pointWithdrawals }"></c:when>
-				<c:otherwise></c:otherwise>
+				<div class="coupon_contents" style="background-color:#eee;">
+			    <c:choose>
+					<c:when test = "${empty model.pointCodes }">사용가능한 포인트 코드가 없습니다.</c:when>
+					<c:otherwise>
+				        <div class="coupon_code_page2">
+				        	<ul>
+				      		<c:forEach var="useablePointCode"  items="${model.useablePointCodes}"  >
+				      			<li>
+				      				<ul>
+				      					<li class="code_text2">${useablePointCode.pointCode}</li>
+				      					<li class="code_text1">${useablePointCode.createTime}</li>
+				      					<li class="code_text1">기준 금액 : ${useablePointCode.payAmount}</li>
+				      					<li class="code_text1">적립 금액 : ${useablePointCode.accPointAmount} (적립율 100%)</li>
+				      					<button>적립</button>
+				      				</ul>
+				      			</li>
+				      			</c:forEach>
+				      		</ul>
+				        </div>
+			    	</c:otherwise>
 				</c:choose>
-		      <div class="coupon_contents" style="background-color:#eee;">
-		        <div class="coupon_code_page2">
-		        	<ul>
-		      			<li>
-		      				<ul>
-		      					<li class="code_text2">SDIJUYWGIOPLLSLFJN</li>
-		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text1">기준 금액 : 10,000</li>
-		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
-		      					<button>적립</button>
-		      				</ul>
-		      			</li>
-		      			<li>
-		      				<ul>
-		      					<li class="code_text2">SDIJUYWGIOPLLSLFJN</li>
-		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text1">기준 금액 : 10,000</li>
-		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
-		      					<button>적립</button>
-		      				</ul>
-		      			</li>
-		      		</ul>
-		        </div>
 		      </div>
+				
 		   </li>
 		   <li><a style="left:75%;margin-right:2%;" tabcode = "4">사용완료</a>
-		      	      <div class="coupon_contents" style="background-color:#eee;">
+		      <div class="coupon_contents" style="background-color:#eee;">
+		           <c:choose>
+					<c:when test = "${empty model.pointCodes }">사용가능한 포인트 코드가 없습니다.</c:when>
+					<c:otherwise>
 		        <div class="coupon_code_page1">
 		        	<ul>
-		      			<li>
-		      				<ul>
-		      					<li class="code_text2">SDIJUYWGIOPLLSLFJN</li>
-		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text1">기준 금액 : 10,000</li>
-		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
-		      				</ul>
-		      			</li>
-		      			<li>
-		      				<ul>
-		      					<li class="code_text2">SDIJUYWGIOPLLSLFJN</li>
-		      					<li class="code_text1">1982-09-17</li>
-		      					<li class="code_text1">기준 금액 : 10,000</li>
-		      					<li class="code_text1">적립 금액 : 10,000 (적립율 100%)</li>
-		      				</ul>
-		      			</li>
+						<c:forEach var="completePointCode"  items="${model.completePointCodes}"  >
+			      			<li>
+			      				<ul>
+			      					<li class="code_text2">${completePointCode.pointCode}</li>
+			      					<li class="code_text1">${completePointCode.createTime}</li>
+			      					<li class="code_text1">기준 금액 : ${completePointCode.payAmount}</li>
+			      					<li class="code_text1">적립 금액 : ${completePointCode.accPointAmount} (적립율 100%)</li>
+			      					<button>적립</button>
+			      				</ul>
+			      			</li>
+			      			</c:forEach>
 		      		</ul>
 		        </div>
+		           	</c:otherwise>
+				</c:choose>
 		      </div>
 		      
 		   </li>
