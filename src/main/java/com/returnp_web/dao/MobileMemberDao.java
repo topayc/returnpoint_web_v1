@@ -615,4 +615,12 @@ public class MobileMemberDao {
 	public HashMap<String, Object> selectPointCodeSummary(HashMap<String, Object> dbparams) {
 		return sqlSession.getMapper(MobileMapper.class).selectPointCodeSummary(dbparams);
 	}
+
+	public ArrayList<HashMap<String, Object>> selectReceipts(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMapper.class).selectReceipts(dbparams);
+	}
+
+	public ArrayList<HashMap<String, Object>> selectPointCodes(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMapper.class).selectPointCodes(dbparams);
+	}
 }

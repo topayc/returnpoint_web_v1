@@ -177,6 +177,10 @@ $(document).ready(function(){
 		      </div>
 		   </li>
 		   <li><a style="left:50%;" tabcode = "3">사용가능</a>
+		      <c:choose>
+				<c:when test = "${empty model.pointWithdrawals }"></c:when>
+				<c:otherwise></c:otherwise>
+				</c:choose>
 		      <div class="coupon_contents" style="background-color:#eee;">
 		        <div class="coupon_code_page2">
 		        	<ul>

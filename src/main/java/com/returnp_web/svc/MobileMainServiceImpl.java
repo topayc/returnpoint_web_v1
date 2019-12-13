@@ -1537,7 +1537,12 @@ public class MobileMainServiceImpl implements MobileMainService {
 			}
 			dbparams.put("memberNo", sm.getMemberNo());
 			HashMap<String, Object> pointCodeSummaryMap = this.mobileMemberDao.selectPointCodeSummary(dbparams);
+			ArrayList<HashMap<String, Object>> receipts= this.mobileMemberDao.selectReceipts(dbparams);
+			ArrayList<HashMap<String, Object>> pointCodes= this.mobileMemberDao.selectPointCodes(dbparams);
+			
 			rmap.put("pointCodeSummary", pointCodeSummaryMap);
+			rmap.put("receipts", receipts);
+			rmap.put("pointCodes", pointCodes);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;

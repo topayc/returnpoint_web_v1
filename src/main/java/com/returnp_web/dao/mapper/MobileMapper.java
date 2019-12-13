@@ -565,4 +565,10 @@ public interface MobileMapper {
 
 	HashMap<String, Object> selectPointCodeSummary(HashMap<String, Object> dbparams);
 
+
+	ArrayList<HashMap<String, Object>> selectReceipts(HashMap<String, Object> dbparams);
+
+
+	ArrayList<HashMap<String, Object>> selectPointCodes(HashMap<String, Object> dbparams);
+
 }

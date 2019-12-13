@@ -1081,11 +1081,20 @@
 		 <if test="pagination"> limit ${offset} ,  ${pageSize} </if>
 	</select>
 	
+	<!-- PointCode summary-->
 	<select id="selectPointCodeSummary" parameterType="HashMap" resultType="HashMap">
 		select 
 		(select ifnull(sum(accPointAmount),0) from point_code_transaction where memberNo =${memberNo} ) as totalAccPoint,
 		(select count(pointCode) from point_code_issue where memberNo = ${memberNo} and useStatus = '1' ) as usableCount,
 		(select count(pointCode) from point_code_issue where memberNo = ${memberNo} and useStatus = '3' ) as completeCount
 	</select>
+
+	<select id="selectReceipts" parameterType="HashMap" resultType="HashMap">
+		select * from point_code_issue_request where memberNo = ${memberNo}
+ 	</select>
+ 	
+ 	<select id="selectPointCodes" parameterType="HashMap" resultType="HashMap">
+		select * from point_code_issue where memberNo = ${memberNo}
+ 	</select>
 	
 </mapper>
