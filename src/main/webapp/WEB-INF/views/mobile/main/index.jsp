@@ -51,7 +51,6 @@
 if (isApp()) {
     checkVersion();
   }
-\
  $(document).on('ready', function() {
 	 $("#event_popup").modal({
 		  escapeClose: false,
