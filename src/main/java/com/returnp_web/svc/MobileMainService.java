@@ -284,6 +284,8 @@ public interface MobileMainService {
 
 	boolean initPointCodeMain(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean selectReceiptDetailInfo(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 
