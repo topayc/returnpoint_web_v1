@@ -1555,4 +1555,26 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 		return true;
 	}
+
+	@Override
+	public boolean selectReceiptDetailInfo(RPMap rPap, RPMap rmap, HttpServletRequest request,
+			HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+
+		try {
+			if(sm.getMemberEmail() == null ) {
+				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/member/login.do", "T"));
+				return false;
+			}
+			dbparams.put("memberNo", sm.getMemberNo());
+			dbparams.put("pointCodeIssueRequestNo", rPap.getInt("pointCodeIssueRequestNo"));
+			HashMap<String, Object> receipt = this.mobileMemberDao.selectReceipt(dbparams);
+			rmap.put("receipt", receipt);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }

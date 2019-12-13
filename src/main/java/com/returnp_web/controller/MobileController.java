@@ -89,7 +89,7 @@ public class MobileController extends MallBaseController {
 	public String receiptDetail(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/receiptDetail");
-		boolean bret = true;
+		boolean bret =  mms.selectReceiptDetailInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
 	
