@@ -47,8 +47,8 @@
 		  escapeClose: false,
 		  clickClose: false,
 		  showClose: false,
-		  fadeDuration: 300
-		}); 
+		  fadeDuration: 100
+		});  
 	  
 	  if(getCookie("notToday")=="Y"){
         $("#alertView").hide();
