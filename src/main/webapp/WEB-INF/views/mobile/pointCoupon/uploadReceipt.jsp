@@ -61,17 +61,19 @@ $(document).ready(function(){
 				
 				<p>입금자명</p>
 				<input type="text" placeholder=""   >
-				
-				<p style = "margin-top:15px">적립코드를 받을 방법을 선택해주세요(PUSH/SMS)</p>
-				<div>
+			<!-- 	<div>
 					<button class="push_select recv_method">푸쉬로받기</button>
 					<button class = "recv_method" style="margin-left:-2%;">문자로받기</button>
-				</div>
+				</div> -->
 			</form>
 			<div style = "margin-top:30px">
 				<p>회원님이 입금하셔야 할 금액</p>
 				<p class="upload_conbox_p" style = "margin-top:10px;font-size : 25px;font-weight:bold;color : #888">27,900원</p>
 			</div>
+			<p style = "margin-top:15px">15% 금액 입금 계좌</p>
+				<div style = "border : 1px solid #ddd;margin-top:10px;    width: 100%; border: 1px solid #ccc; padding: 3% 2%; text-align: center">
+				국민은행   10000-11111   예금주 : 안영철
+				</div>
 		</div>
 		<div class="bottom_btn">
 			<div class="bottom_btn1">올리기</div>
