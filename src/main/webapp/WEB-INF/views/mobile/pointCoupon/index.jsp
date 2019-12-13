@@ -120,6 +120,7 @@ $(document).ready(function(){
 		   <li><a tabcode = "2">영수증처리</a>
 		      <div class="coupon_contents">
 		        <div class="coupon_upload">
+		        
 		        	<c:choose>
 					<c:when test = "${empty model.receipts }">
 						<div class="list_none" style="width:70%;margin-left:15%;margin-top:27%;height:200px;">
