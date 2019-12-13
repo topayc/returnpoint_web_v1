@@ -396,7 +396,7 @@ width: 100%; height: 100%; text-align: center; position: fixed; background: rgba
 #progress_loading i{top: 45%;position: absolute;}
 
 /* �씠�슜�빟愿� */
-.p_terms section{padding:55px 0 0 0;}
+.p_terms section{padding:53px 0 0 0;}
 .p_terms section .m_txtarea{padding:17px;}
 .p_terms section .m_txtarea{text-align:left;}
 
