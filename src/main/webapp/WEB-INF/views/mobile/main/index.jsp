@@ -36,22 +36,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
+<style>
+.modal {
+ background:none;
+ text-align : center;
+ box_shadow : none;
+ padding : 0;
+ -webkit-box-shadow : none;
+ width:100%;
+}
+</style>
 <script type="text/javascript">
   if (isApp()) {
     checkVersion();
   }
 
   $(document).on('ready', function() {
- /* 	$("#event_popup").modal({
+ $("#event_popup").modal({
 		  escapeClose: false,
 		  clickClose: false,
 		  showClose: false,
 		  fadeDuration: 100
 		});  
-	  $('.modal').css('background','none');
-	  $('.modal').css('text-align','center');
-	  $('.modal').css('box_shadow','none'); */
 	  if(getCookie("notToday")=="Y"){
         $("#alertView").hide();
        }
