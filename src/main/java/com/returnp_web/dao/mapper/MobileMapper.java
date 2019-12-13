@@ -562,4 +562,7 @@ public interface MobileMapper {
 
 	ArrayList<HashMap<String, Object>> findAffiliatesByCate(Map<String, Object> paramMap);
 
+
+	HashMap<String, Object> selectPointCodeSummary(HashMap<String, Object> dbparams);
+
 }

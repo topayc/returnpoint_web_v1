@@ -1080,4 +1080,12 @@
 		 <if test="category2No != null "> AND C.category2No= #{category2No} </if>
 		 <if test="pagination"> limit ${offset} ,  ${pageSize} </if>
 	</select>
+	
+	<select id="selectPointCodeSummary" parameterType="HashMap" resultType="HashMap">
+		select 
+		(select ifnull(sum(accPointAmount),0) from point_code_transaction where memberNo =${memberNo} ) as totalAccPoint,
+		(select count(pointCode) from point_code_issue where memberNo = ${memberNo} and useStatus = '1' ) as usableCount,
+		(select count(pointCode) from point_code_issue where memberNo = ${memberNo} and useStatus = '3' ) as completeCount
+	</select>
+	
 </mapper>

@@ -282,6 +282,8 @@ public interface MobileMainService {
 	ArrayList<HashMap<String, Object>> findAffiliatesByCate(Map<String, Object> paramMap, HttpServletRequest request,
 			HttpServletResponse response);
 
+	boolean initPointCodeMain(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 

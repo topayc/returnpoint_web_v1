@@ -611,4 +611,8 @@ public class MobileMemberDao {
 	public ArrayList<HashMap<String, Object>> findAffiliatesByCate(Map<String, Object> paramMap) {
 		return sqlSession.getMapper(MobileMapper.class).findAffiliatesByCate(paramMap);
 	}
+
+	public HashMap<String, Object> selectPointCodeSummary(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMapper.class).selectPointCodeSummary(dbparams);
+	}
 }

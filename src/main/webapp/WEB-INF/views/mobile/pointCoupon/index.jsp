@@ -56,31 +56,36 @@ $(document).ready(function(){
   
 	<section>
 		<ul class="coupon_tab">
-		   <li class = "on"><a style="margin-left:2%;" id  = "first_tab" >적립홈</a>
+		   <li class = "on"><a style="margin-left:2%;" id  = "first_tab"  tabcode = "1">적립홈</a>
 		      <div class="coupon_contents">
 		      	<div class="coupon_top">
 		      		<div class="coupon_top1">
 		      			<ul>
 		      				<li class="code_text1">적립총액</li>
-		      				<li class="code_text2">100,000</li>
+		      				<li class="code_text2">
+		      					<c:choose>
+		      					<c:when test = "${model.pointCodeSummary.totalAccPoint == 0.0}">0</c:when>
+		      					<c:otherwise>${model.pointCodeSummary.totalAccPoint}</c:otherwise>
+		      					</c:choose>
+		      				</li>
 		      			</ul>
 		      		</div>
 		      		<div class="coupon_top2">
 		      			<ul>
 		      				<li class="code_text1">사용가능</li>
-		      				<li class="code_text2">10</li>
+		      				<li class="code_text2">${model.pointCodeSummary.usableCount}</li>
 		      			</ul>
 		      		</div>
 		      		<div class="coupon_top3">
 		      			<ul>
 		      				<li class="code_text1">사용완료</li>
-		      				<li class="code_text2">20</li>
+		      				<li class="code_text2">${model.pointCodeSummary.completeCount}</li>
 		      			</ul>
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
 		      		<div class="upload"><img src="/resources/images/upload.png">&nbsp;일반 영수증 올리기</div>
-		      		<!-- <div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div> -->
+		      		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div>
 		      	</div>
 		      	<div class="coupon_code1">
 		      		<p>일반 영수증 적립 서비스란</p>
@@ -112,7 +117,7 @@ $(document).ready(function(){
 		      	</div>
 		      </div>
 		   </li>
-		   <li><a>영수증처리</a>
+		   <li><a tabcode = "2">영수증처리</a>
 		      <div class="coupon_contents" style="background-color:#eee;">
 		        <div class="coupon_upload">
 		        	<div onclick = "movePage('/m/pointCoupon/receiptDetail.do')">
@@ -171,7 +176,7 @@ $(document).ready(function(){
 		      -->
 		      </div>
 		   </li>
-		   <li><a style="left:50%;">사용가능</a>
+		   <li><a style="left:50%;" tabcode = "3">사용가능</a>
 		      <div class="coupon_contents" style="background-color:#eee;">
 		        <div class="coupon_code_page2">
 		        	<ul>
@@ -197,7 +202,7 @@ $(document).ready(function(){
 		        </div>
 		      </div>
 		   </li>
-		   <li><a style="left:75%;margin-right:2%;">사용완료</a>
+		   <li><a style="left:75%;margin-right:2%;" tabcode = "4">사용완료</a>
 		      	      <div class="coupon_contents" style="background-color:#eee;">
 		        <div class="coupon_code_page1">
 		        	<ul>
@@ -227,6 +232,7 @@ $(document).ready(function(){
 <script>
 	$(".coupon_tab > li > a ").click(function(){
 	   $(this).parent().addClass("on").siblings().removeClass("on");
+	   /* alert($(this).attr("tabcode")); */
 	   return false;
 	});
 	
