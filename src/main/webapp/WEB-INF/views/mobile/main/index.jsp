@@ -51,13 +51,13 @@
 if (isApp()) {
     checkVersion();
   }
-
+\
  $(document).on('ready', function() {
 	 $("#event_popup").modal({
 		  escapeClose: false,
 		  clickClose: false,
 		  showClose: false,
-		  fadeDuration: 100
+		  fadeDuration: 90
 		});  
 	  if(getCookie("notToday")=="Y"){
 		  closeMainModal();

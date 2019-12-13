@@ -56,7 +56,7 @@ $(document).ready(function(){
   
 	<section>
 		<ul class="coupon_tab">
-		   <li class = "on"><a style="margin-left:2%;" id  = "first_tab"  tabcode = "1">적립홈</a>
+		   <li class = "on"><a style="margin-left:2%;" id  = "first_tab"  tabcode = "1">홈</a>
 		      <div class="coupon_contents">
 		      	<div class="coupon_top">
 		      		<div class="coupon_top1">
@@ -125,7 +125,7 @@ $(document).ready(function(){
 					<c:when test = "${empty model.receipts }">
 						<div class="list_none" style="width:70%;margin-left:15%;margin-top:27%;height:200px;" onclick = "movePage('/m/pointCoupon/receiptDetail.do?receiptNo=${receipt.pointCodeIssueRequestNo}')">
 							<img src="/resources/images/list_none_img.png">
-							<p>목록이 없습니다.</p>
+							<p>등록하신 영수증이 없습니다.</p>
 						</div>
 					</c:when>
 					<c:otherwise>
@@ -154,7 +154,7 @@ $(document).ready(function(){
 					<c:when test = "${empty model.pointCodes }">
 						<div class="list_none">
 							<img src="/resources/images/list_none_img.png">
-							<p>목록이 없습니다.</p>
+							<p>사용 가능한 적립코드가 없습니다.</p>
 						</div>
 					</c:when>
 					<c:otherwise>
@@ -184,7 +184,7 @@ $(document).ready(function(){
 					<c:when test = "${empty model.pointCodes }">
 						<div class="list_none">
 							<img src="/resources/images/list_none_img.png">
-							<p>목록이 없습니다.</p>
+							<p>사용 완료된 적립코드가 없습니다.</p>
 						</div>
 					</c:when>
 					<c:otherwise>

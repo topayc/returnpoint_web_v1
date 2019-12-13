@@ -1017,4 +1017,4 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 
 /*목록이 없습니다.*/
 .list_none{width:70%;margin-left:15%;margin-top:30%;text-align:center;}
-.list_none p{margin-top:10px;color:#777;font-size:17px;font-weight:bold;}
+.list_none p{margin-top:5px;color:#777;font-size:15px;font-weight:400;}
