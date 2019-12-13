@@ -56,22 +56,22 @@ $(document).ready(function(){
 		</div>
 		<div class="upload_conbox">
 			<form>
-				<p>결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
-				<input type="text" placeholder="결제 금액 입력(숫자)"   >
+				<p style = "font-weight:550;margin-top:-10px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
+				<input type="number" / >
 				
-				<p>입금자명</p>
-				<input type="text" placeholder=""   >
+				<p style = "font-weight:550">입금자명</p>
+				<input type="text" />
 			<!-- 	<div>
 					<button class="push_select recv_method">푸쉬로받기</button>
 					<button class = "recv_method" style="margin-left:-2%;">문자로받기</button>
 				</div> -->
 			</form>
-			<div style = "margin-top:30px">
-				<p>회원님이 입금하셔야 할 금액</p>
+			<div style = "margin-top:5px">
+				<p style = "font-weight:550">회원님이 입금하셔야 할 금액</p>
 				<p class="upload_conbox_p" style = "margin-top:10px;font-size : 25px;font-weight:bold;color : #888">27,900원</p>
 			</div>
-			<p style = "margin-top:15px">15% 금액 입금 계좌</p>
-				<div style = "border : 1px solid #ddd;margin-top:10px;    width: 100%; border: 1px solid #ccc; padding: 3% 2%; text-align: center">
+			<p style = "margin-top:20px;font-weight:550">15% 금액 입금 계좌</p>
+				<div style = "border : 1px solid #ddd;margin-top:10px;    width: 100%; border: 1px solid #ccc; padding: 4% 2%; text-align: center;margin-bottom:100px">
 				국민은행   10000-11111   예금주 : 안영철
 				</div>
 		</div>
