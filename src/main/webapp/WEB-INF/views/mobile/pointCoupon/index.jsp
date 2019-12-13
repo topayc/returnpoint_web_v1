@@ -85,7 +85,7 @@ $(document).ready(function(){
 		      	</div>
 		      	<div class="coupon_m">
 		      		<div class="upload"><img src="/resources/images/upload.png">&nbsp;일반 영수증 올리기</div>
-		      		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div>
+		      		<!-- <div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div> -->
 		      	</div>
 		      	<div class="coupon_code1">
 		      		<p>일반 영수증 적립 서비스란</p>
