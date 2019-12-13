@@ -45,9 +45,13 @@ function getCookie(name) {
     return ""; 
 } 
 
+function closeMainModal(){
+	$('.jquery-modal').css("display", "none");
+} 
+
 function closePopupNotToday(elem){	             
 	setCookie('notToday','Y', 1);
-	$("#" + elem).hide('fade');
+	closeMainModal();
 } 
 
 function numberWithComma(x) {

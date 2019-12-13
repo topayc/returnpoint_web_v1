@@ -47,23 +47,20 @@
 }
 </style>
 <script type="text/javascript">
-function closeMainModal(){
-	$('.jquery-modal').css("display", "none");
-} 
-
+   
 if (isApp()) {
     checkVersion();
   }
 
  $(document).on('ready', function() {
- $("#event_popup").modal({
+	 $("#event_popup").modal({
 		  escapeClose: false,
 		  clickClose: false,
 		  showClose: false,
 		  fadeDuration: 100
 		});  
 	  if(getCookie("notToday")=="Y"){
-        $("#alertView").hide();
+		  closeMainModal();
        }
       var pageContextlocale = '${pageContext.response.locale}';
        if(pageContextlocale == "ko"){
@@ -146,7 +143,7 @@ if (isApp()) {
 			</div>
 			 -->
 			<div class="popup_btn_box">
-				<button style="border-top:1px solid #ff83c5;border-right:1px solid #ff83c5">오늘 그만 보기</button>
+				<button style="border-top:1px solid #ff83c5;border-right:1px solid #ff83c5" onclick = "closePopupNotToday('alertView')">오늘 그만 보기</button>
 				<button style="margin-left: -4.5px;border-top:1px solid #ff83c5;" onclick = "closeMainModal();return false">닫기</button>
 			</div>
 		</div>
