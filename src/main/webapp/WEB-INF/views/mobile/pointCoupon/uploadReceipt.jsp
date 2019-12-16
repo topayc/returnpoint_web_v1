@@ -61,20 +61,15 @@ $(document).ready(function(){
 	</header> 
 	<section>
 	<div class="upload_receipt">
-		<div class="bg_black">
-			<div class="bg_white">
-				<div class="bg_img">
-					<img id = "receipt_img">
-				</div>
-			</div>
-		</div>
-		
 		<div class="upload_conbox">
 			<form id = "receipt_upload_form">
 				<p style = "font-weight:550;margin-top:5px">영수증 가져올 방법을 선택해주세요</p>
-				<div>
+				<div class="receipt_imgbox">
+						<div class="bg_img">
+							<img id = "receipt_img">
+						</div>
 					<button class="recv_method" id = "selectPhoneImage"><img src="/resources/images/gallery_img.png">&nbsp;&nbsp;&nbsp;&nbsp;갤러리</button>
-					<button class = "recv_method" style="margin-left:-2%;" id = "selectCameraImage"><img src="/resources/images/camera_img.png">&nbsp;&nbsp;&nbsp;&nbsp;카메라 촬영</button>
+					<button class = "recv_method" style="margin-top:12px;" id = "selectCameraImage"><img src="/resources/images/camera_img.png">&nbsp;&nbsp;&nbsp;&nbsp;카메라 촬영</button>
 				</div> 
 			
 				<p style = "font-weight:550;margin-top:20px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
