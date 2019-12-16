@@ -26,9 +26,9 @@ $(document).ready(function(){
 	$("#sel1").val(pageContextlocale);
 	
 	$("#reqeust_deposit_check").click(function(){
-			$.ajax({
-	           	type: "POST",
-	               url: "/m/pointCoupon/checkDepositRequest.do",
+		$.ajax({
+	       	   type: "POST",
+	              url: "/m/pointCoupon/checkDepositRequest.do",
 	               data: {pointCodeIssueRequestNo : $(this).attr("requestNo")},
 	               success: function (result) {
 	            	  console.log(result);

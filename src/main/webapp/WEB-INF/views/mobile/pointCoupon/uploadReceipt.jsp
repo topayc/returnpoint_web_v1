@@ -36,6 +36,10 @@ $(document).ready(function(){
 		}
 		payAmount = parseInt(payAmount);
 		$(".upload_conbox_p").text( $.number(payAmount * 0.15) + ' 원');
+		$(".accPoint").text( $.number(payAmount) + ' 원');
+		
+		$('#depositAmount').val($.number(payAmount * 0.15));
+		$('#accPointAmount').val($(this).val(payAmount));
 	})
 
 	$("#selectPhoneImage").click(function(){
@@ -45,8 +49,58 @@ $(document).ready(function(){
 	$("#selectCameraImage").click(function(){
 		selectCameraImage();
 	})
-
+	
 	$("#receipt_submit").click(function(){
+		var data = {
+			receiptImg : $('#receipt_img').attr("src").trim(),
+			payAmount : $('#payAmount').val().trim(),
+			accAmount : $('#accPointAmount').val().trim(),
+			depositAmount : $('#depositAmount').val().trim(),
+			depositBankAccount : $('#depositBankAccount').val().trim(),
+			depositor: $('#depositor').val().trim()
+			
+		};
+		
+		var nameMapper = {
+			payAmount : "결제 금액",
+			depositBankAccount : "입금 은행 정보",
+			accAmount : "적립 금액",
+			depositAmount : "적립 금액",
+			depositor : "입금자",
+			receiptImg : "영수증 파일"	
+		}
+		
+		for (var prop in data){
+			if (data.hasOwnProperty(prop)) {
+				if (data[prop] == '' || data[prop].length < 1) {
+					alertOpen("알림", nameMapper[prop] + "항목이 입력되지 않았습니다", true, false, null, null); 
+					return;
+				}
+			}
+		}
+		
+			
+		$.ajax({
+	       	   type: "POST",
+	              url: "/m/pointCoupon/uploadReceipt.do",
+	               data: data,
+	               success: function (result) {
+	            	  console.log(result);
+	            	   if (result && typeof result !="undefined") {
+	            	   		if (result.result.code == 0) {
+	            	   			alertOpen("알림", result.result.msg, true, false,function(){location.href = "/m/pointCoupon/index.do"}, null); 
+							}else {
+								alertOpen("알림", result.result.msg, true, false, null, null); 
+							}
+		               }else{
+		              		alertOpen("알림", "1.장애 발생. 다시 시도해주세요.", true, false, null, null);
+		           	   }
+	               },
+	               error : function(request, status, error){
+	            	   alertOpen("알림 ", "2.장애 발생. 다시 시도해주세요", true, false, null, null);
+	               },
+	               dataType: 'json'
+	       });
 	})
 
 	$("#cancel").click(function(){history.go(-1); });
@@ -67,8 +121,7 @@ $(document).ready(function(){
 	<section>
 	<div class="upload_receipt">
 		<div class="upload_conbox">
-			<form id = "receipt_upload_form">
-				<p style = "font-weight:550;margin-top:5px">영수증 가져올 방법을 선택해주세요</p>
+				<p style = "font-weight:550;">영수증 가져올 방법을 선택해주세요</p>
 				<div class="receipt_imgbox">
 						<div class="bg_img">
 							<img id = "receipt_img" src = "/resources/images/image_icon.png">
@@ -78,25 +131,30 @@ $(document).ready(function(){
 				</div> 
 			
 				<p style = "font-weight:550;margin-top:20px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
-				<input type="number"  name = "payAmount" id = "payAmount"" style = "font-size:15px"/ >
+				<input type="number"  name = "payAmount" id = "payAmount"" style = "font-size:15px" / >
 				<input type = "file" name = "receiptFile" id = "receiptFile"  style = "display:none"/>
+				<input type = "hidden" name= "accPointAmount" id = "accPointAmount" />
 				<input type = "hidden" name= "depositBankAccount" id = "depositBankAccount" value = "국민은행:10000-11111:안영철"/>
-				<input type = "hidden" name= "depositAmount" id = "depositAmount" />
+				<input type = "hidden" name= "depositAmount" id = "depositAmount"  />
 				
-				<p style = "font-weight:550">입금자명</p>
-				<input type="text"  name = "depositor"  style = "font-size:16px"/>
-				</form>
+				<div style = "margin-top:5px">
+				<p style = "font-weight:550">적립 받을 포인트(100%) </p>
+				<p class="upload_conbox_p accPoint" style = "background-color : #eee; border:1px solid #ccc;color : #555;margin-top:10px;font-size : 15px;font-weight:400;">&nbsp;</p>
+				</div>
+			
+				<div style = "margin-top:20px">
+					<p style = "font-weight:550">회원님이 입금하셔야 할 금액(결제금액의 15%)</p>
+					<p class="upload_conbox_p" style = "background-color : #eee; border:1px solid #ccc;color : #555;margin-top:10px;font-size : 15px;font-weight:400;">&nbsp;</p>
+				</div>
+						
+				<p style = "margin-top:20px;font-weight:550">입금자명</p>
+				<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px" value = ""/>
 			
 			
-			<div style = "margin-top:5px">
-				<p style = "font-weight:550">회원님이 입금하셔야 할 금액(결제금액의 15%)</p>
-				<p class="upload_conbox_p" style = "background-color : #eee; border:1px solid #ccc;color : #555;margin-top:10px;font-size : 15px;font-weight:400;">&nbsp;</p>
-			</div>
-			
-			<p style = "margin-top:20px;font-weight:550">15% 금액 입금 계좌</p>
-			<div style = "font-size:15px;border:1px solid #ddd;margin-top:10px;width: 100%; border:1px solid #ccc; padding: 4% 2%; text-align: center;margin-bottom:70px">
+				<p style = "margin-top:7px;font-weight:550">15% 금액 입금 계좌</p>
+				<div style = "font-size:15px;border:1px solid #ddd;margin-top:10px;width: 100%; border:1px solid #ccc; padding: 4% 2%; text-align: center;margin-bottom:70px">
 				 국민은행    10000-11111    예금주 : 안영철 
-			</div>
+				</div>
 		</div>
 		<div class="bottom_btn">
 			<div class="bottom_btn1"  id = "receipt_submit">올리기</div>
