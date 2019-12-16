@@ -445,6 +445,7 @@ var bridge = (function () {
 		var image = result.split(':')[1];
 		var data = "data:" + mimeType + ";base64," + image;
 		$("#receipt_img").attr("src", data);
+		$("#receiptFile").val(data);
 	}
 	
 	function updateImage(result){
@@ -452,6 +453,7 @@ var bridge = (function () {
 		var image = result.split(':')[1];
 		var data = "data:" + mimeType + ";base64," + image;
 		$("#receipt_img").attr("src", data);
+		$("#receiptFile").val(data);
 	}
 	
 	

@@ -52,7 +52,7 @@ $(document).ready(function(){
 	
 	$("#receipt_submit").click(function(){
 		var data = {
-			receiptImg : $('#receipt_img').attr("src").trim(),
+			receiptFile : $('#receiptFile').val().trim(),
 			payAmount : $('#payAmount').val().trim(),
 			accAmount : $('#accPointAmount').val().trim(),
 			depositAmount : $('#depositAmount').val().trim(),
@@ -67,13 +67,14 @@ $(document).ready(function(){
 			accAmount : "적립 금액",
 			depositAmount : "적립 금액",
 			depositor : "입금자",
-			receiptImg : "영수증 파일"	
+			receiptFile : "영수증"	
 		}
 		
 		for (var prop in data){
 			if (data.hasOwnProperty(prop)) {
 				if (data[prop] == '' || data[prop].length < 1) {
-					alertOpen("알림", nameMapper[prop] + "항목이 입력되지 않았습니다", true, false, null, null); 
+					var message = prop == "receiptFile" ? " 파일이 등록되지 않았습니다.</br>갤러리 와 카메라로 영수증 파일을 등록할 수 있습니다. ": " 항목이 입력되지 않았습니다.";
+					alertOpen("알림", nameMapper[prop] + message, true, false, null, null); 
 					return;
 				}
 			}
@@ -124,7 +125,7 @@ $(document).ready(function(){
 				<p style = "font-weight:550;">영수증 가져올 방법을 선택해주세요</p>
 				<div class="receipt_imgbox">
 						<div class="bg_img">
-							<img id = "receipt_img" >
+							<img id = "receipt_img"  >
 						</div>
 					<button class="recv_method" id = "selectPhoneImage"><img src="/resources/images/gallery_img.png">&nbsp;&nbsp;&nbsp;&nbsp;갤러리</button>
 					<button class = "recv_method" style="margin-top:9px;" id = "selectCameraImage"><img src="/resources/images/camera_img.png">&nbsp;&nbsp;&nbsp;&nbsp;카메라 촬영</button>
@@ -132,7 +133,7 @@ $(document).ready(function(){
 			
 				<p style = "font-weight:550;margin-top:20px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
 				<input type="number"  name = "payAmount" id = "payAmount"" style = "font-size:15px" / >
-				<input type = "file" name = "receiptFile" id = "receiptFile"  style = "display:none"/>
+				<input type = "hidden" name = "receiptFile" id = "receiptFile" />
 				<input type = "hidden" name= "accPointAmount" id = "accPointAmount" />
 				<input type = "hidden" name= "depositBankAccount" id = "depositBankAccount" value = "국민은행:10000-11111:안영철"/>
 				<input type = "hidden" name= "depositAmount" id = "depositAmount"  />
