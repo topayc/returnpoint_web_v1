@@ -45,6 +45,11 @@ $(document).ready(function(){
 	$("#selectCameraImage").click(function(){
 		selectCameraImage();
 	})
+
+	$("#receipt_submit").click(function(){
+	})
+
+	$("#cancel").click(function(){history.go(-1); });
 });
 </script>
 <style>
@@ -66,10 +71,10 @@ $(document).ready(function(){
 				<p style = "font-weight:550;margin-top:5px">영수증 가져올 방법을 선택해주세요</p>
 				<div class="receipt_imgbox">
 						<div class="bg_img">
-							<img id = "receipt_img">
+							<img id = "receipt_img" src = "/resources/images/image_icon.png">
 						</div>
 					<button class="recv_method" id = "selectPhoneImage"><img src="/resources/images/gallery_img.png">&nbsp;&nbsp;&nbsp;&nbsp;갤러리</button>
-					<button class = "recv_method" style="margin-top:12px;" id = "selectCameraImage"><img src="/resources/images/camera_img.png">&nbsp;&nbsp;&nbsp;&nbsp;카메라 촬영</button>
+					<button class = "recv_method" style="margin-top:9px;" id = "selectCameraImage"><img src="/resources/images/camera_img.png">&nbsp;&nbsp;&nbsp;&nbsp;카메라 촬영</button>
 				</div> 
 			
 				<p style = "font-weight:550;margin-top:20px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
@@ -94,8 +99,8 @@ $(document).ready(function(){
 			</div>
 		</div>
 		<div class="bottom_btn">
-			<div class="bottom_btn1" >올리기</div>
-			<div class="bottom_btn2">취소</div>
+			<div class="bottom_btn1"  id = "receipt_submit">올리기</div>
+			<div class="bottom_btn2" id = "cancel">취소</div>
 		</div>
 		<%-- <div class="btns2">
 			<button type="button" class="btn btn-submit" onclick = "startPointBack()"><spring:message code="label.ok" /></button>
