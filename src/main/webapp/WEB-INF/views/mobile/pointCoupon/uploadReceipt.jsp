@@ -59,8 +59,8 @@ $(document).ready(function(){
 	<div class="upload_receipt">
 		<div class="bg_black">
 			<div class="bg_white">
-				<div class="bg_img">
-					<img id = "receipt_img" >
+				<div class="bg_img" style="text-align:center;">
+					<img id = "receipt_img" src="/resources/images/image_icon.png" style="width:100px;height:100px;margin-top:25%;">
 				</div>
 			</div>
 		</div>
