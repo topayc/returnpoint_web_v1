@@ -41,6 +41,10 @@ $(document).ready(function(){
 	$("#selectPhoneImage").click(function(){
 		selectImage();
 	})
+
+	$("#selectCameraImage").click(function(){
+		selectCameraImage();
+	})
 });
 </script>
 <style>
@@ -68,8 +72,8 @@ $(document).ready(function(){
 			<form id = "receipt_upload_form">
 				<p style = "font-weight:550;margin-top:5px">영수증 가져올 방법을 선택해주세요</p>
 				<div>
-					<button class="recv_method" id = "selectPhoneImage"><img src="/resources/images/gallery_img.png">&nbsp;&nbsp;갤러리</button>
-					<button class = "recv_method" style="margin-left:-2%;"><img src="/resources/images/camera_img.png">&nbsp;&nbsp;카메라 촬영</button>
+					<button class="recv_method" id = "selectPhoneImage">갤러리</button>
+					<button class = "recv_method" style="margin-left:-2%;" id = "selectCameraImage">카메라 촬영</button>
 				</div> 
 			
 				<p style = "font-weight:550;margin-top:20px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>

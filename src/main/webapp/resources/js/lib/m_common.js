@@ -434,12 +434,23 @@ var bridge = (function () {
 		window.returnpAndroidBridge.selectImage();
 	}
 	
-	function updateImage(result){
-		console.log(result);
+	
+	function selectCameraImage(func){
+		callbackFunc = func;
+		window.returnpAndroidBridge.selectCameraImage();
+	}
+	
+	function updateCameraImage(result){
 		var mimeType = result.split(':')[0];
 		var image = result.split(':')[1];
 		var data = "data:" + mimeType + ";base64," + image;
-		console.log(data);
+		$("#receipt_img").attr("src", data);
+	}
+	
+	function updateImage(result){
+		var mimeType = result.split(':')[0];
+		var image = result.split(':')[1];
+		var data = "data:" + mimeType + ";base64," + image;
 		$("#receipt_img").attr("src", data);
 	}
 	
@@ -469,7 +480,9 @@ var bridge = (function () {
 		setPushToken : setPushToken,
 		getDeviceResolution : getDeviceResolution,
 		selectImage : selectImage,
-		updateImage : updateImage
+		selectCameraImage : selectCameraImage,
+		updateImage : updateImage,
+		updateCameraImage : updateCameraImage
 	}
 	return exportFunc;
 })();
