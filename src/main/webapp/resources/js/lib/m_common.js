@@ -491,6 +491,10 @@ function selectImage(){
 	bridge.selectImage();
 }
 
+function selectCameraImage(){
+	bridge.selectCameraImage();
+}
+
 function unsupportedService(){
 	alertOpen("알림", "해당 기능은 곧 지원 예정입니다", true, false, null, null);
 	return;
