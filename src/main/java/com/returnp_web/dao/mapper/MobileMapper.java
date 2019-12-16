@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.returnp_web.utils.RPMap;
+
 public interface MobileMapper {
 		
 	/**
@@ -573,5 +575,8 @@ public interface MobileMapper {
 
 
 	HashMap<String, Object> selectReceipt(HashMap<String, Object> dbparams);
+
+
+	int checkDepositRequest(RPMap dbparams);
 
 }

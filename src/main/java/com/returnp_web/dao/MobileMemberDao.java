@@ -628,4 +628,9 @@ public class MobileMemberDao {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(MobileMapper.class).selectReceipt(dbparams);
 	}
+
+	public int checkDepositRequest(RPMap dbparams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMapper.class).checkDepositRequest(dbparams);
+	}
 }

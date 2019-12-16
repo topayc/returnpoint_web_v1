@@ -1577,4 +1577,34 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 		return true;
 	}
+
+	@Override
+	public boolean checkDepositRequest(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		RPMap dbparams = new RPMap();
+		try {
+			String json = null;
+			if (rPap.containsKey("pointCodeIssueRequestNo") ||  rPap.getStr("pointCodeIssueRequestNo").trim().length()  < 1  || rPap.get("pointCodeIssueRequestNo") == null) {
+				json = Util.printResult(1, String.format("109:잘못된 요청입니다.."), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
+			dbparams.put("pointCodeIssueRequestNo", Converter.toInt(rPap.getStr("pointCodeIssueRequestNo")));
+			int count = mobileMemberDao.checkDepositRequest(dbparams);
+
+			if (count == 0) {
+				json = Util.printResult(1, String.format("110:잘못된 요청입니다."), null);
+				rmap.put("json", json);
+				return true;
+			} else {
+				json = Util.printResult(0, String.format("입금 확인 요청 처리가 완료되었습니다."), null);
+				rmap.put("json", json);
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return true;
+	}
 }

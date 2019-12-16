@@ -29,7 +29,7 @@ $(document).ready(function(){
 
 </script>
 <style>
- * {font-weight:350}
+ * {font-weight:340}
 </style>
 </head>
 <!-- header end -->
@@ -47,8 +47,8 @@ $(document).ready(function(){
 		<div class="box">
 			<div class="popup_top">영수증 업로드 방법을 선택해주세요.<img src="/resources/images/close.png"></div>
 			<div class="popup_box">
-				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do')" class="popup_img_box" style="margin-right:2%;"><img src="/resources/images/popup_file.png"><p>파일에서 올리기</p></div>
-				<div class="popup_img_box"><img src="/resources/images/popup_camera.png"><p>사진찍어 올리기</p></div>
+				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?uploadMethod=file')" class="popup_img_box" style="margin-right:2%;"><img src="/resources/images/popup_file.png"><p>파일에서 올리기</p></div>
+				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?uploadMethod=camera')" class="popup_img_box"><img src="/resources/images/popup_camera.png"><p>사진찍어 올리기</p></div>
 			</div>
 		</div>
 	</div>
@@ -72,19 +72,19 @@ $(document).ready(function(){
 		      		</div>
 		      		<div class="coupon_top2">
 		      			<ul>
-		      				<li class="code_text1">사용가능</li>
+		      				<li class="code_text1">적립가능</li>
 		      				<li class="code_text2">${model.pointCodeSummary.usableCount}</li>
 		      			</ul>
 		      		</div>
 		      		<div class="coupon_top3">
 		      			<ul>
-		      				<li class="code_text1">사용완료</li>
+		      				<li class="code_text1">적립완료</li>
 		      				<li class="code_text2">${model.pointCodeSummary.completeCount}</li>
 		      			</ul>
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
-		      		<div class="upload"><img src="/resources/images/upload.png">&nbsp;일반 영수증 올리기</div>
+		      		<div class="upload" onclick = "movePage('/m/pointCoupon/uploadReceipt.do')" ><img src="/resources/images/upload.png">&nbsp;일반 영수증 올리기</div>
 		      		<!-- <div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div> -->
 		      	</div>
 		      	<div class="coupon_code1">
@@ -99,7 +99,7 @@ $(document).ready(function(){
 		      			<li>- 금액 입금 : 영수증 총 결제 금액의 15% 입금</li>
 		      			<li>- 임금 확인 : 15% 금액 입금 확인 </li>
 		      			<li>- 적립코드 발송  :  100% G.POINT 적립코드 발송</li>
-		      			<li style = "margin-top:10px">&#42; 해당 금액을 입금한 후, 상단 탭 메뉴중 '영수증처리' 탭을 선택후 표시되는 영수증에서   <span style = "color : #2E9AFE">입금확인 요청버튼</span>을 클릭하시면 더욱 빠른 처리가 가능합니다</li>
+		      			<li style = "margin-top:10px">&#42; 해당 금액을 입금한 후, 상단 탭 메뉴중 '영수증처리' 탭을 선택후 표시되는 영수증에서   <span style = "color : #2E9AFE;font-weight:500">입금확인 요청버튼</span>을 클릭하시면 더욱 빠른 처리가 가능합니다</li>
 		      		</ul>
 		      	</div>
 		      	<div class="coupon_code3">
@@ -124,7 +124,7 @@ $(document).ready(function(){
 		        	<c:choose>
 					<c:when test = "${empty model.receipts }">
 						<div class="list_none" style="width:70%;margin-left:15%;margin-top:27%;height:200px;" onclick = "movePage('/m/pointCoupon/receiptDetail.do?receiptNo=${receipt.pointCodeIssueRequestNo}')">
-							<img src="/resources/images/list_none_img.png">
+							<img src="/resources/images/list_none_img.png" width="80" height="80">
 							<p>등록하신 영수증이 없습니다.</p>
 						</div>
 					</c:when>
@@ -148,13 +148,13 @@ $(document).ready(function(){
 		        </div>
 		      </div>
 		   </li>
-		   <li><a style="left:50%;" tabcode = "3">사용가능</a>
+		   <li><a style="left:50%;" tabcode = "3">적립가능</a>
 				<div class="coupon_contents">
 			    <c:choose>
 					<c:when test = "${empty model.pointCodes }">
 						<div class="list_none">
-							<img src="/resources/images/list_none_img.png">
-							<p>사용 가능한 적립코드가 없습니다.</p>
+							<img src="/resources/images/list_none_img.png" width="80" height="80">
+							<p>적립 가능한 적립코드가 없습니다.</p>
 						</div>
 					</c:when>
 					<c:otherwise>
@@ -178,13 +178,13 @@ $(document).ready(function(){
 		      </div>
 				
 		   </li>
-		   <li><a style="left:75%;margin-right:2%;" tabcode = "4">사용완료</a>
+		   <li><a style="left:75%;margin-right:2%;" tabcode = "4">적립완료</a>
 		      <div class="coupon_contents">
 		           <c:choose>
 					<c:when test = "${empty model.pointCodes }">
 						<div class="list_none">
-							<img src="/resources/images/list_none_img.png">
-							<p>사용 완료된 적립코드가 없습니다.</p>
+							<img src="/resources/images/list_none_img.png" width="80" height="80">
+							<p>적립 완료된 적립코드가 없습니다.</p>
 						</div>
 					</c:when>
 					<c:otherwise>
@@ -217,12 +217,12 @@ $(document).ready(function(){
 	   return false;
 	});
 	
-	$(".coupon_m .upload").click(function(){
+/* 	$(".coupon_m .upload").click(function(){
 		$("#popup").addClass("active");
 		});
 		$("#popup img").click(function(){
 		$("#popup").removeClass("active");
-		});
+		}); */
 	
 	</script>
 </body>

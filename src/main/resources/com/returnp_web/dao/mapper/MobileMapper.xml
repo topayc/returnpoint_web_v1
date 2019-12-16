@@ -1100,5 +1100,9 @@
  	<select id="selectReceipt" parameterType="HashMap" resultType="HashMap">
 		select * from point_code_issue_request where memberNo = ${memberNo} and pointCodeIssueRequestNo = ${pointCodeIssueRequestNo}
  	</select>
+
+ 	<update id="checkDepositRequest" parameterType="HashMap" >
+		update point_code_issue_request set depositStatus = '3' where pointCodeIssueRequestNo = ${pointCodeIssueRequestNo}
+ 	</update>
 	
 </mapper>

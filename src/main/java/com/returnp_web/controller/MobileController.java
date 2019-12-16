@@ -65,6 +65,16 @@ public class MobileController extends MallBaseController {
 		boolean bret =  mms.initPointCodeMain(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
+
+	// 포인트 쿠폰 입금 확인 요청 
+	@RequestMapping(value = "/pointCoupon/checkDepositRequest.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String checkDepositRequest(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.checkDepositRequest(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}
 	
 	// 영수증 업로드 폼 
 	@RequestMapping(value = "/pointCoupon/uploadReceipt.do",  method = RequestMethod.GET)

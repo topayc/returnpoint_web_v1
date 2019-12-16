@@ -214,7 +214,8 @@ var appInfo = {
 		READ_PHONE_STATE : "READ_PHONE_STATE",
 		READ_CONTACTS : "READ_CONTACTS",
 		ACCESS_FINE_LOCATION : "ACCESS_FINE_LOCATION",
-		SEND_SMS : "SEND_SMS"
+		SEND_SMS : "SEND_SMS",
+		READ_EXTERNAL_STORAGE : "READ_EXTERNAL_STORAGE",
 		
 	},
 	
@@ -366,7 +367,7 @@ var bridge = (function () {
 	
 	/*  안드로이드 Bridge 호출후 앱에서 호출되는 콜백*/
 	function jsBridgeCallback(result) {
-		if (callbackFunc) callbackFunc(result)
+		if (callbackFunc) {callbackFunc(result)};
 	}
 	
 	function toast(messge){
@@ -428,6 +429,20 @@ var bridge = (function () {
 		window.returnpAndroidBridge.getDeviceResolution();
 	}
 	
+	function selectImage(func){
+		callbackFunc = func;
+		window.returnpAndroidBridge.selectImage();
+	}
+	
+	function updateImage(result){
+		console.log(result);
+		var mimeType = result.split(':')[0];
+		var image = result.split(':')[1];
+		var data = "data:" + mimeType + ";base64," + image;
+		console.log(data);
+		$("#receipt_img").attr("src", data);
+	}
+	
 	
 	/*
 	 * 안드로이드, IOS 여부에 따라 모듈 함수 세팅
@@ -452,16 +467,23 @@ var bridge = (function () {
 		sendSMS : sendSMS,
 		afterJoinComplete : afterJoinComplete,
 		setPushToken : setPushToken,
-		getDeviceResolution : getDeviceResolution
+		getDeviceResolution : getDeviceResolution,
+		selectImage : selectImage,
+		updateImage : updateImage
 	}
 	return exportFunc;
 })();
+
+function selectImage(){
+	bridge.selectImage();
+}
 
 function unsupportedService(){
 	alertOpen("알림", "해당 기능은 곧 지원 예정입니다", true, false, null, null);
 	return;
 	//bridge.toast("아직 지원되지 않는 기능입니다. 곧 추가될 예정입니다.");
 }
+
 
 /*상품권 QR 요청 처리*/
 function startGiftCardProcess(cmd, giftCardStatus, accableStatus, payableStatus){

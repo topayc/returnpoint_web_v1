@@ -286,6 +286,8 @@ public interface MobileMainService {
 
 	boolean selectReceiptDetailInfo(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean checkDepositRequest(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 

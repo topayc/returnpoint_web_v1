@@ -20,18 +20,28 @@
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
+<script type="text/javascript" src="/resources/js/lib/jquery-number.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
 	
-	 $(".recv_method").click(function(){
-		 $(".recv_method").removeClass("push_select");
-		 $(this).addClass("push_select");
-		 return false;
-	 });
-});
+	/* alert(getParams()['uploadMethod']); */
+	$("#payAmount").blur(function(){
+		
+		var payAmount = $(this).val().trim();
+		if (!$.isNumeric(payAmount)) {
+			alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
+			return false;
+		}
+		payAmount = parseInt(payAmount);
+		$(".upload_conbox_p").text( $.number(payAmount * 0.15) + ' 원');
+	})
 
+	$("#selectPhoneImage").click(function(){
+		selectImage();
+	})
+});
 </script>
 <style>
 * {font-weight:400}
@@ -50,33 +60,41 @@ $(document).ready(function(){
 		<div class="bg_black">
 			<div class="bg_white">
 				<div class="bg_img">
-					<img src="/resources/images/bg_img.jpg">
+					<img id = "receipt_img" >
 				</div>
 			</div>
 		</div>
 		<div class="upload_conbox">
-			<form>
-				<p style = "font-weight:550;margin-top:-10px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
-				<input type="number" / >
+			<form id = "receipt_upload_form">
+				<p style = "font-weight:550;margin-top:5px">영수증 가져올 방법을 선택해주세요</p>
+				<div>
+					<button class="recv_method" id = "selectPhoneImage">갤러리</button>
+					<button class = "recv_method" style="margin-left:-2%;">카메라 촬영</button>
+				</div> 
+			
+				<p style = "font-weight:550;margin-top:20px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
+				<input type="number"  name = "payAmount" id = "payAmount"" style = "font-size:15px"/ >
+				<input type = "file" name = "receiptFile" id = "receiptFile"  style = "display:none"/>
+				<input type = "hidden" name= "depositBankAccount" id = "depositBankAccount" value = "국민은행:10000-11111:안영철"/>
+				<input type = "hidden" name= "depositAmount" id = "depositAmount" />
 				
 				<p style = "font-weight:550">입금자명</p>
-				<input type="text" />
-			<!-- 	<div>
-					<button class="push_select recv_method">푸쉬로받기</button>
-					<button class = "recv_method" style="margin-left:-2%;">문자로받기</button>
-				</div> -->
-			</form>
+				<input type="text"  name = "depositor"  style = "font-size:16px"/>
+				</form>
+			
+			
 			<div style = "margin-top:5px">
-				<p style = "font-weight:550">회원님이 입금하셔야 할 금액</p>
-				<p class="upload_conbox_p" style = "margin-top:10px;font-size : 25px;font-weight:bold;color : #888">27,900원</p>
+				<p style = "font-weight:550">회원님이 입금하셔야 할 금액(결제금액의 15%)</p>
+				<p class="upload_conbox_p" style = "background-color : #eee; border:1px solid #ccc;color : #555;margin-top:10px;font-size : 15px;font-weight:400;">&nbsp;</p>
 			</div>
+			
 			<p style = "margin-top:20px;font-weight:550">15% 금액 입금 계좌</p>
-				<div style = "border : 1px solid #ddd;margin-top:10px;    width: 100%; border: 1px solid #ccc; padding: 4% 2%; text-align: center;margin-bottom:100px">
-				국민은행   10000-11111   예금주 : 안영철
-				</div>
+			<div style = "font-size:15px;border:1px solid #ddd;margin-top:10px;width: 100%; border:1px solid #ccc; padding: 4% 2%; text-align: center;margin-bottom:70px">
+				 국민은행    10000-11111    예금주 : 안영철 
+			</div>
 		</div>
 		<div class="bottom_btn">
-			<div class="bottom_btn1">올리기</div>
+			<div class="bottom_btn1" >올리기</div>
 			<div class="bottom_btn2">취소</div>
 		</div>
 		<%-- <div class="btns2">
