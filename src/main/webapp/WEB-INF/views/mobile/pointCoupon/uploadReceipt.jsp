@@ -68,6 +68,7 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
+		
 		<div class="upload_conbox">
 			<form id = "receipt_upload_form">
 				<p style = "font-weight:550;margin-top:5px">영수증 가져올 방법을 선택해주세요</p>
