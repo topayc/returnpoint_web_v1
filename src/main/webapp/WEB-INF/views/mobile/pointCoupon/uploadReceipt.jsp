@@ -73,7 +73,7 @@ $(document).ready(function(){
 		for (var prop in data){
 			if (data.hasOwnProperty(prop)) {
 				if (data[prop] == '' || data[prop].length < 1) {
-					var message = prop == "receiptFile" ? " 파일이 등록되지 않았습니다.</br>갤러리 와 카메라로 영수증 파일을 등록할 수 있습니다. ": " 항목이 입력되지 않았습니다.";
+					var message = prop == "receiptFile" ? " 파일이 등록되지 않았습니다.</br>갤러리와 카메라로 영수증 파일을 등록할 수 있습니다. ": " 항목이 입력되지 않았습니다.";
 					alertOpen("알림", nameMapper[prop] + message, true, false, null, null); 
 					return;
 				}
