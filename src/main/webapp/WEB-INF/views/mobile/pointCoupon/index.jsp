@@ -131,7 +131,7 @@ $(document).ready(function(){
 					<c:otherwise>
 						<c:forEach var="receipt"  items="${model.receipts}"  >
 							<div onclick = "movePage('/m/pointCoupon/receiptDetail.do?receiptNo=${receipt.pointCodeIssueRequestNo}')">
-		        				<div class="coupon_img_box"></div>
+		        				<div class="coupon_img_box"><img src = "${receipt.uploadFile}"/></div>
 		        				<span>${receipt.createTime}</span></br>
 		        				<span class="coupon_upload_text1">
 		        				<c:choose>

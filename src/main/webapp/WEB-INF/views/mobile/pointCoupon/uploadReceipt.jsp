@@ -95,10 +95,12 @@ $(document).ready(function(){
 								alertOpen("알림", result.result.msg, true, false, null, null); 
 							}
 		               }else{
-		              		alertOpen("알림", "1.장애 발생. 다시 시도해주세요.", true, false, null, null);
+		            	   $("#progress_loading").hide(); 	
+		            	   alertOpen("알림", "1.장애 발생. 다시 시도해주세요.", true, false, null, null);
 		           	   }
 	               },
 	               error : function(request, status, error){
+	            	   $("#progress_loading").hide(); 	
 	            	   alertOpen("알림 ", "2.장애 발생. 다시 시도해주세요", true, false, null, null);
 	               },
 	               dataType: 'json'
