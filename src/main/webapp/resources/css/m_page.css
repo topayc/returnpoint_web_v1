@@ -956,7 +956,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 
 /*upload_receipt css*/
 .upload_receipt .receipt_imgbox{width:100%;overflow:hidden;margin-top:10px;}
-.upload_receipt .bg_img{width:72%;height:200px;;overflow:hidden;float:left;background-color:#ededed;border : 1px solod #bbb}
+.upload_receipt .bg_img{width:72%;height:200px;;overflow:hidden;float:left;background-color:#ededed;border : 1px solid #bbb}
 .upload_receipt .bg_img img{width:100%;height:100%;}
 .upload_receipt .upload_conbox{padding:5%;}
 .upload_receipt .upload_conbox p{color:#555; font-size:13px;}
