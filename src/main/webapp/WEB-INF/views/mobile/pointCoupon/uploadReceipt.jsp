@@ -124,7 +124,7 @@ $(document).ready(function(){
 		<div class="upload_conbox">
 				<p style = "font-weight:550;">영수증 가져올 방법을 선택해주세요</p>
 				<div class="receipt_imgbox">
-					<button class="recv_method" id = "selectPhoneImage"><img src="/resources/images/gallery_img.png">&nbsp;&nbsp;&nbsp;&nbsp;갤러리</button>
+					<button class="recv_method" id = "selectPhoneImage" style="border-right:none;"><img src="/resources/images/gallery_img.png">&nbsp;&nbsp;&nbsp;&nbsp;갤러리</button>
 					<button class = "recv_method"  id = "selectCameraImage"><img src="/resources/images/camera_img.png">&nbsp;&nbsp;&nbsp;&nbsp;카메라 촬영</button>
 					<div class="bg_img">
 							<img id = "receipt_img"  >
