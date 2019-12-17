@@ -290,6 +290,8 @@ public interface MobileMainService {
 
 	boolean uploadReceipt(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean uploadReceiptForm(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 

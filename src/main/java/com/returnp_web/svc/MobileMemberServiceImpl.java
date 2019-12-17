@@ -224,7 +224,6 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			sm.setmemberName(memberName);
 			sm.setMemberEmail(memberEmail);
 			sm.setMemberPhone(memberPhone);
-
 			HttpSession session = request.getSession(true);
 			session.setAttribute("memberNo", memberNo);
 			Device device = DeviceUtils.getCurrentDevice(request);

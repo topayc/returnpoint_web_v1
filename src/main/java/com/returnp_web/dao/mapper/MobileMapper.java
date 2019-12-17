@@ -568,15 +568,20 @@ public interface MobileMapper {
 	HashMap<String, Object> selectPointCodeSummary(HashMap<String, Object> dbparams);
 
 
-	ArrayList<HashMap<String, Object>> selectReceipts(HashMap<String, Object> dbparams);
+	ArrayList<HashMap<String, Object>> selectPointCodeIssueRequests(HashMap<String, Object> dbparams);
 
 
-	ArrayList<HashMap<String, Object>> selectPointCodes(HashMap<String, Object> dbparams);
+	ArrayList<HashMap<String, Object>> selectPointCodeIssues(HashMap<String, Object> dbparams);
 
 
 	HashMap<String, Object> selectReceipt(HashMap<String, Object> dbparams);
 
 
 	int checkDepositRequest(RPMap dbparams);
+	
+	int insertPointCodeIssueRequest(RPMap dbparams);
+
+
+	int updatePointCodeIssueRequest(RPMap dbparams);
 
 }

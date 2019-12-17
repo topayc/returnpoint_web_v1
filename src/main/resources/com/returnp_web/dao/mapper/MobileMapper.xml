@@ -1089,11 +1089,11 @@
 		(select count(pointCode) from point_code_issue where memberNo = ${memberNo} and useStatus = '3' ) as completeCount
 	</select>
 
-	<select id="selectReceipts" parameterType="HashMap" resultType="HashMap">
+	<select id="selectPointCodeIssueRequests" parameterType="HashMap" resultType="HashMap">
 		select * from point_code_issue_request where memberNo = ${memberNo}
  	</select>
  	
- 	<select id="selectPointCodes" parameterType="HashMap" resultType="HashMap">
+ 	<select id="selectPointCodeIssues" parameterType="HashMap" resultType="HashMap">
 		select * from point_code_issue where memberNo = ${memberNo} and useStatus = ${useStatus}
  	</select>
 
@@ -1104,5 +1104,69 @@
  	<update id="checkDepositRequest" parameterType="HashMap" >
 		update point_code_issue_request set depositStatus = '3' where pointCodeIssueRequestNo = ${pointCodeIssueRequestNo}
  	</update>
+ 	
+ <insert id="insertPointCodeIssueRequest" parameterType="HashMap" >	
+  insert into point_code_issue_request (pointCodeIssueRequestNo, memberNo, 
+      issueType, issueStatus, payAmount, 
+      accPointRate, accPointAmount, accTargetRange, 
+      depositAmount, depositRate, depositStatus, 
+      uploadFile, depositBankAccount, status, 
+      publisher, 
+      createTime, updateTime)
+    values (#{pointCodeIssueRequestNo,jdbcType=INTEGER}, #{memberNo,jdbcType=INTEGER}, 
+      #{issueType,jdbcType=VARCHAR}, #{issueStatus,jdbcType=VARCHAR}, #{payAmount,jdbcType=INTEGER}, 
+      #{accPointRate,jdbcType=REAL}, #{accPointAmount,jdbcType=REAL}, #{accTargetRange,jdbcType=VARCHAR}, 
+      #{depositAmount,jdbcType=REAL}, #{depositRate,jdbcType=REAL}, #{depositStatus,jdbcType=VARCHAR}, 
+      #{uploadFile,jdbcType=VARCHAR}, #{depositBankAccount,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{publisher,jdbcType=VARCHAR}, NOW(), NOW())
+		
+	  <selectKey keyProperty="pointCodeIssueRequestNo" resultType="java.lang.Integer" order ="AFTER">
+		   SELECT LAST_INSERT_ID()
+	 </selectKey>	
+	</insert>
 	
+	<update id="updatePointCodeIssueRequest" parameterType="HashMap" >
+		UPDATE point_code_issue_request
+		<set>
+			<if test="memberNo !=null and memberNo !='' ">
+				memberNo=#{memberNo},
+			</if>
+			<if test="issueType !=null and issueType !='' ">
+				issueType=#{issueType},
+			</if>
+			<if test="issueStatus !=null and issueStatus !='' ">
+				issueStatus=#{issueStatus},
+			</if>
+			<if test="payAmount !=null and payAmount !='' ">
+				payAmount=#{payAmount},
+			</if>
+			<if test="accPointRate !=null and accPointRate !='' ">
+				accPointRate=#{accPointRate},
+			</if>
+			<if test="accPointAmount !=null and accPointAmount !='' ">
+				accPointAmount=#{accPointAmount},
+			</if>
+			
+			<if test="accTargetRange !=null and accTargetRange !='' ">
+				accTargetRange=#{accTargetRange},
+			</if><if test="depositAmount !=null and depositAmount !='' ">
+				depositAmount=#{depositAmount},
+			</if><if test="depositRate !=null and depositRate !='' ">
+				depositRate=#{depositRate},
+			</if><if test="depositStatus !=null and depositStatus !='' ">
+				depositStatus=#{depositStatus},
+			</if><if test="uploadFile !=null and uploadFile !='' ">
+				uploadFile=#{uploadFile},
+			</if><if test="status !=null and status !='' ">
+				status=#{status},
+			</if>
+			<if test="publisher !=null and publisher !='' ">
+				publisher=#{publisher},
+			</if>
+				updateTime=NOW()
+		</set>
+		<where>
+			AND pointCodeIssueRequestNo= #{pointCodeIssueRequestNo}
+		</where>		 
+	</update>
 </mapper>

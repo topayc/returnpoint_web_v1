@@ -81,12 +81,13 @@ public class MobileController extends MallBaseController {
 	public String uploadReceiptForm(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/uploadReceipt");
-		boolean bret = true;
+		boolean bret = mms.uploadReceiptForm(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
 	
 	// 영수증 업로드 액션
-	@RequestMapping(value = "/pointCoupon/uploadReceipt.do",  method = RequestMethod.POST)
+	@ResponseBody
+	@RequestMapping(value = "/pointCoupon/uploadReceipt.do", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	public String uploadReceipt(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap();

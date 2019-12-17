@@ -85,8 +85,8 @@ $(document).ready(function(){
 			
 			<div class="list_li"><span class= "item_title"><spring:message code="label.biz_name" /> : (주) 탑해피월드</span> </div>
 			<div class="list_li"><span class= "item_title"><spring:message code="label.phone_number" /> : 02-585-5993</span></div>		
-			<div class="list_li"><span class= "item_title"><spring:message code="label.fax" /> : 02-585-2590</span></div>
-			<div class="list_li"><span class= "item_title"><spring:message code="label.address" /> : 서울특별시 구로구 디지털로 33길 28 806호</span></div> 		
+			<div class="list_li"><span class= "item_title"><spring:message code="label.fax" /> : 02-585-2599</span></div>
+			<div class="list_li"><span class= "item_title"><spring:message code="label.address" /> : 서울특별시 구로구 구로동 170-5 우림 이비지센터 1차 806호</span></div> 		
 			<div class="list_li"><span class= "item_title"><spring:message code="label.biz_number" /> : 754-86-01056</span></div> 		
 		</div>
 	</section>

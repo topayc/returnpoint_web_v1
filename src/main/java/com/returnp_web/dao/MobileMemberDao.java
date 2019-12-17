@@ -616,12 +616,12 @@ public class MobileMemberDao {
 		return sqlSession.getMapper(MobileMapper.class).selectPointCodeSummary(dbparams);
 	}
 
-	public ArrayList<HashMap<String, Object>> selectReceipts(HashMap<String, Object> dbparams) {
-		return sqlSession.getMapper(MobileMapper.class).selectReceipts(dbparams);
+	public ArrayList<HashMap<String, Object>> selectPointCodeIssueRequests(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMapper.class).selectPointCodeIssueRequests(dbparams);
 	}
 
-	public ArrayList<HashMap<String, Object>> selectPointCodes(HashMap<String, Object> dbparams) {
-		return sqlSession.getMapper(MobileMapper.class).selectPointCodes(dbparams);
+	public ArrayList<HashMap<String, Object>> selectPointCodeIssuess(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMapper.class).selectPointCodeIssues(dbparams);
 	}
 
 	public HashMap<String, Object> selectReceipt(HashMap<String, Object> dbparams) {
@@ -632,5 +632,15 @@ public class MobileMemberDao {
 	public int checkDepositRequest(RPMap dbparams) {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(MobileMapper.class).checkDepositRequest(dbparams);
+	}
+
+	public int insertPointCodeIssueRequest(RPMap dbparams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMapper.class).insertPointCodeIssueRequest(dbparams);
+	}
+
+	public int updatePointCodeIssueRequest(RPMap dbparams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMapper.class).updatePointCodeIssueRequest(dbparams);
 	}
 }

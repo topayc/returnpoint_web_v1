@@ -1,6 +1,9 @@
 package com.returnp_web.svc;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -8,6 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -1537,13 +1541,13 @@ public class MobileMainServiceImpl implements MobileMainService {
 			}
 			dbparams.put("memberNo", sm.getMemberNo());
 			HashMap<String, Object> pointCodeSummaryMap = this.mobileMemberDao.selectPointCodeSummary(dbparams);
-			ArrayList<HashMap<String, Object>> receipts= this.mobileMemberDao.selectReceipts(dbparams);
+			ArrayList<HashMap<String, Object>> receipts= this.mobileMemberDao.selectPointCodeIssueRequests(dbparams);
 			
 			dbparams.put("useStatus", "1");
-			ArrayList<HashMap<String, Object>> useablePointCodes= this.mobileMemberDao.selectPointCodes(dbparams);
+			ArrayList<HashMap<String, Object>> useablePointCodes= this.mobileMemberDao.selectPointCodeIssuess(dbparams);
 			
 			dbparams.put("useStatus", "3");
-			ArrayList<HashMap<String, Object>> completePointCodes= this.mobileMemberDao.selectPointCodes(dbparams);
+			ArrayList<HashMap<String, Object>> completePointCodes= this.mobileMemberDao.selectPointCodeIssuess(dbparams);
 			
 			rmap.put("pointCodeSummary", pointCodeSummaryMap);
 			rmap.put("receipts", receipts);
@@ -1609,19 +1613,78 @@ public class MobileMainServiceImpl implements MobileMainService {
 	}
 
 	@Override
-	public boolean uploadReceipt(RPMap paramMap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+	public boolean uploadReceiptForm(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
 		RPMap dbparams = new RPMap();
+		SessionManager sm = new SessionManager(request, response);
 		try {
-			String json = null;
-			int accPointAmount = (int)(paramMap.getInt("payAmount") *  0.15);
-			System.out.println(paramMap.getInt("accPointAmount"));
-			System.out.println(accPointAmount);
-			/*point_code_issue_request 등록*/
-
+			dbparams.put("memberNo", sm.getMemberNo());
+			HashMap<String, Object> memberInfo= mobileMemberDao.selectMypageMyinfo(dbparams); 
+			rmap.put("memberInfo", memberInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
-
 		}
 		return true;
 	}
+
+	@Override
+	public boolean uploadReceipt(RPMap paramMap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		RPMap dbparams = new RPMap();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			System.out.println(Math.round(paramMap.getInt("payAmount") *  0.15));
+			System.out.println(paramMap.getInt("depositAmount"));
+			
+			/*point_code_issue_request */
+			dbparams.put("memberNo",sm.getMemberNo());
+			dbparams.put("issueType","1");
+			dbparams.put("issueStatus","2");
+			dbparams.put("payAmount",paramMap.getInt("payAmount"));
+			dbparams.put("accPointRate",1);
+			dbparams.put("accPointAmount",paramMap.getInt("payAmount"));
+			dbparams.put("accTargetRange","2");
+			dbparams.put("depositAmount",Math.round(paramMap.getInt("payAmount") *  0.15));
+			dbparams.put("depositRate",0.15);
+			dbparams.put("depositStatus","1");
+			dbparams.put("uploadFile","-");
+			dbparams.put("status","1");
+			dbparams.put("publisher",sm.getMemberNo());
+			
+			this.mobileMemberDao.insertPointCodeIssueRequest(dbparams);
+			
+			/* 
+			 * 영수증 파일 저장 후 업데이트 
+			 * 영수증 파일 제목은 receipt_멤버번호_요청번호로 구성함  
+			 */
+			
+			String fileName = "receipt_" + sm.getMemberNo() + "_" + paramMap.getInt("pointCodeIssueRequestNo") + ".png";
+			String dir = request.getSession().getServletContext().getRealPath("/cloud/images/receipt/");
+			
+			File saveDir = new File(dir);
+			if (!saveDir.exists()) {
+				saveDir.mkdirs();
+			}
+			
+			String fileFullName = dir + fileName;
+			
+			String base64EncodeImage = paramMap.getStr("receiptFile").split(",")[1].trim();
+			byte[] imgBytes = Base64.getDecoder().decode(base64EncodeImage);
+			
+			BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(fileFullName));
+	        writer.write(imgBytes);
+	        writer.flush();
+	        writer.close();
+	        
+	        dbparams.put("uploadFile", "/cloud/images/receipt/" + fileName);
+	        int count = this.mobileMemberDao.updatePointCodeIssueRequest(dbparams);
+	       
+	        String json = Util.printResult(0, String.format("영수증 업로드 처리가 완료되었습니다."), null);
+			rmap.put("json", json);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+		}
+		return true;
+	}
+
 }

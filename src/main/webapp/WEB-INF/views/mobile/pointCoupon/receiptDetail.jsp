@@ -68,14 +68,17 @@ $(document).ready(function(){
 		<div class="bg_black">
 			<div class="bg_white">
 				<div class="bg_img">
-					<img src="/resources/images/bg_img.jpg">
+						<c:choose>
+						<c:when test = "${empty model.pointCodes }"><img  src = "/resources/images/bg_img.jpg"/></c:when>
+						<c:otherwise><img  src = "${model.receipt.uploadFile }"/></c:otherwise>
+						 </c:choose>
 				</div>
 			</div>
 		</div>
 		<div class="upload_conbox">
 			<p style = "margin-bottom:10px;font-weight:550;color : #000; ">영수증 업로드 세부 정보</p>
 			<div>
-				<ul>
+		<!-- 		<ul>
 					<li>
 						<ul>
 							<li class="upload_conbox_text1">결제금액</li>
@@ -100,9 +103,9 @@ $(document).ready(function(){
 							<li class="upload_conbox_text2"><span class = "depositStatus"  style = "background-color : #DF0101">입금확인중</span></li>
 						</ul>
 					</li>
-				</ul>
+				</ul> -->
 				
-		<%-- 		<ul>
+			<ul>
 					<li>
 						<ul>
 							<li class="upload_conbox_text1">결제금액</li>
@@ -134,7 +137,7 @@ $(document).ready(function(){
 							</li>
 						</ul>
 					</li>
-				</ul> --%>
+				</ul> 
 			</div>
 			
 		<!-- 	<p style = "margin-top:20px;font-weight:550;color : #000">입금 상태</p>

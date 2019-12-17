@@ -35,11 +35,11 @@ $(document).ready(function(){
 			return false;
 		}
 		payAmount = parseInt(payAmount);
-		$(".upload_conbox_p").text( $.number(payAmount * 0.15) + ' 원');
+		$(".upload_conbox_p").text( $.number(Math.round(payAmount * 0.15)) + ' 원');
 		$(".accPoint").text( $.number(payAmount) + ' 원');
 		
 		$('#depositAmount').val($.number(payAmount * 0.15));
-		$('#accPointAmount').val($(this).val(payAmount));
+		$('#accPointAmount').val(payAmount);
 	})
 
 	$("#selectPhoneImage").click(function(){
@@ -54,8 +54,8 @@ $(document).ready(function(){
 		var data = {
 			receiptFile : $('#receiptFile').val().trim(),
 			payAmount : $('#payAmount').val().trim(),
-			accAmount : $('#accPointAmount').val().trim(),
-			depositAmount : $('#depositAmount').val().trim(),
+			accPointAmount : $('#accPointAmount').val().trim(),
+			depositAmount : $('#depositAmount').val().trim().replace(",",""),
 			depositBankAccount : $('#depositBankAccount').val().trim(),
 			depositor: $('#depositor').val().trim()
 			
@@ -64,7 +64,7 @@ $(document).ready(function(){
 		var nameMapper = {
 			payAmount : "결제 금액",
 			depositBankAccount : "입금 은행 정보",
-			accAmount : "적립 금액",
+			accPointAmount : "적립 금액",
 			depositAmount : "적립 금액",
 			depositor : "입금자",
 			receiptFile : "영수증"	
@@ -80,13 +80,14 @@ $(document).ready(function(){
 			}
 		}
 		
-			
+		$("#progress_loading").show(); 	
 		$.ajax({
 	       	   type: "POST",
 	              url: "/m/pointCoupon/uploadReceipt.do",
 	               data: data,
 	               success: function (result) {
 	            	  console.log(result);
+	            	  $("#progress_loading").hide(); 	
 	            	   if (result && typeof result !="undefined") {
 	            	   		if (result.result.code == 0) {
 	            	   			alertOpen("알림", result.result.msg, true, false,function(){location.href = "/m/pointCoupon/index.do"}, null); 
@@ -149,7 +150,7 @@ $(document).ready(function(){
 				</div>
 						
 				<p style = "margin-top:20px;font-weight:550">입금자명</p>
-				<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px" value = ""/>
+				<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px" value = "${model.memberInfo.memberName}"/>
 			
 			
 				<p style = "margin-top:7px;font-weight:550">15% 금액 입금 계좌</p>
@@ -167,6 +168,10 @@ $(document).ready(function(){
 		</div> --%>
 	</div>
    </section>
+   
+      <div id = "progress_loading">
+		<img src="/resources/images/progress_loading.gif"/>
+	</div>
 </body>
 <!-- body end -->
 </html>
