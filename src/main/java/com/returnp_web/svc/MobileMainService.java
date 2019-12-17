@@ -288,6 +288,8 @@ public interface MobileMainService {
 
 	boolean checkDepositRequest(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean uploadReceipt(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 

@@ -1607,4 +1607,21 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 		return true;
 	}
+
+	@Override
+	public boolean uploadReceipt(RPMap paramMap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		RPMap dbparams = new RPMap();
+		try {
+			String json = null;
+			int accPointAmount = (int)(paramMap.getInt("payAmount") *  0.15);
+			System.out.println(paramMap.getInt("accPointAmount"));
+			System.out.println(accPointAmount);
+			/*point_code_issue_request 등록*/
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return true;
+	}
 }
