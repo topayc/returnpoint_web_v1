@@ -1018,7 +1018,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .list_none p{margin-top:5px;color:#777;font-size:15px;font-weight:400;}
 
 #progress_loading
-	{width:14%;height:auto;
+	{width:14%;height:auto;display:none;
 	 position: absolute;
 	 left: 43%;
 	 top: 39%;
