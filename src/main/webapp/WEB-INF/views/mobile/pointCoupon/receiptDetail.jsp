@@ -36,6 +36,8 @@ $(document).ready(function(){
 	            	   		if (result.result.code == 0) {
 								$(".depositStatus").text("입금확인요청중");
 								$(".depositStatus").css("background-color","#BF00FF");
+							    $("#check_deposit_1").hide();
+							    $(".check_deposit_2").hide();
 							}
 	            		   	alertOpen("알림", result.result.msg, true, false, null, null); 
 		               }else{
@@ -68,10 +70,7 @@ $(document).ready(function(){
 		<div class="bg_black">
 			<div class="bg_white">
 				<div class="bg_img">
-						<c:choose>
-						<c:when test = "${empty model.pointCodes }"><img  src = "/resources/images/bg_img.jpg"/></c:when>
-						<c:otherwise><img  src = "${model.receipt.uploadFile }"/></c:otherwise>
-						 </c:choose>
+					<img  src = "${model.receipt.uploadFile }"/>
 				</div>
 			</div>
 		</div>
@@ -127,13 +126,15 @@ $(document).ready(function(){
 					<li>
 						<ul>
 							<li class="upload_conbox_text1">상태</li>
-							<li class="upload_conbox_text2">
+							<li class="">
+								<span>
 								<c:choose>
-							    	<c:when test = "${receipt.depositStatus == '1'}"><span class = "depositStatus" style = "background-color : #DF0101">입급 확인중</span></c:when>
-							    	<c:when test = "${receipt.depositStatus == '2'}"><span class = "depositStatus" style = "background-color : #BF00FF">입금 확인 요청중</span></c:when>
-							    	<c:when test = "${receipt.depositStatus == '3'}"><span class = "depositStatus" style = "background-color : #04B404">입금 확인 완료</span></c:when>
-							    	<c:when test = "${receipt.depositStatus == '4'}"><span class = "depositStatus" style = "background-color : #6E6E6E">입금 취소 </span></c:when>
+							    	<c:when test = "${model.receipt.depositStatus == '1'}"><span class = "depositStatus" style = "background-color : #DF0101">입급 확인중</span></c:when>
+							    	<c:when test = "${model.receipt.depositStatus == '2'}"><span class = "depositStatus" style = "background-color : #BF00FF">입금 확인 요청중</span></c:when>
+							    	<c:when test = "${model.receipt.depositStatus == '3'}"><span class = "depositStatus" style = "background-color : #04B404">입금 확인 완료</span></c:when>
+							    	<c:when test = "${model.receipt.depositStatus == '4'}"><span class = "depositStatus" style = "background-color : #6E6E6E">입금 취소 </span></c:when>
 						    	</c:choose>
+						    	</span>
 							</li>
 						</ul>
 					</li>
@@ -150,13 +151,14 @@ $(document).ready(function(){
 				국민은행   10000-11111   예금주 : 안영철
 			</div>
 		
-		<%-- 	<c:if test = "${receipt.depositStatus == '1'}"> --%>
-			<p style = "margin-top:20px;font-weight:550;color : #000; ">빠른 처리를 위해서 입금확인 요청을 해주세요</p>
-			<button id = "reqeust_deposit_check" requestNo = "${model.receipt.pointCodeIssueRequestNo}">입금 확인 요청하기</button>
-			<p >입금이 완료되어야 적립코드가 발행되며,입금을 하셨을 경우 </br>
+		<c:if test = "${model.receipt.depositStatus == '1'}"> 
+			<p style = "margin-top:20px;font-weight:550;color : #000; " id = "check_deposit_1">빠른 처리를 위해서 입금확인 요청을 해주세요</p>
+			<button id = "reqeust_deposit_check"  class = "check_deposit_2"  requestNo = "${model.receipt.pointCodeIssueRequestNo}">입금 확인 요청하기</button>
+			</br>
+			<p>입금이 완료되어야 적립코드가 발행되며,입금을 하셨을 경우 </br>
 				<b>입금확인 요청하기</b> 버튼을 클릭하시면 빠른 처리가 가능합니다.
 			</p>
-	<%-- 		</c:if> --%>
+		</c:if> 
 		</div>	
 		
 	</div>

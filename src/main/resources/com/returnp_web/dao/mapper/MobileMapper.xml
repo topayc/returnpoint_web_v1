@@ -1102,26 +1102,26 @@
  	</select>
 
  	<update id="checkDepositRequest" parameterType="HashMap" >
-		update point_code_issue_request set depositStatus = '3' where pointCodeIssueRequestNo = ${pointCodeIssueRequestNo}
+		update point_code_issue_request set depositStatus = '2' where pointCodeIssueRequestNo = ${pointCodeIssueRequestNo}
  	</update>
  	
- <insert id="insertPointCodeIssueRequest" parameterType="HashMap" >	
-  insert into point_code_issue_request (pointCodeIssueRequestNo, memberNo, 
+ <insert id="insertPointCodeIssueRequest" parameterType="HashMap" useGeneratedKeys = "true" keyProperty = "pointCodeIssueRequestNo">	
+  insert into point_code_issue_request (memberNo, 
       issueType, issueStatus, payAmount, 
       accPointRate, accPointAmount, accTargetRange, 
       depositAmount, depositRate, depositStatus, 
       uploadFile, depositBankAccount, status, 
       publisher, 
       createTime, updateTime)
-    values (#{pointCodeIssueRequestNo,jdbcType=INTEGER}, #{memberNo,jdbcType=INTEGER}, 
+    values (#{memberNo,jdbcType=INTEGER}, 
       #{issueType,jdbcType=VARCHAR}, #{issueStatus,jdbcType=VARCHAR}, #{payAmount,jdbcType=INTEGER}, 
       #{accPointRate,jdbcType=REAL}, #{accPointAmount,jdbcType=REAL}, #{accTargetRange,jdbcType=VARCHAR}, 
       #{depositAmount,jdbcType=REAL}, #{depositRate,jdbcType=REAL}, #{depositStatus,jdbcType=VARCHAR}, 
       #{uploadFile,jdbcType=VARCHAR}, #{depositBankAccount,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
       #{publisher,jdbcType=VARCHAR}, NOW(), NOW())
 		
-	  <selectKey keyProperty="pointCodeIssueRequestNo" resultType="java.lang.Integer" order ="AFTER">
-		   SELECT LAST_INSERT_ID()
+    <selectKey keyProperty="insertPointCodeIssueRequest" resultType="java.lang.Integer" order ="AFTER">
+		    SELECT LAST_INSERT_ID()
 	 </selectKey>	
 	</insert>
 	

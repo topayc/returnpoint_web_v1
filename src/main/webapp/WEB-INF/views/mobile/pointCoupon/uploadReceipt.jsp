@@ -49,7 +49,6 @@ $(document).ready(function(){
 	$("#selectCameraImage").click(function(){
 		selectCameraImage();
 	})
-	
 	$("#receipt_submit").click(function(){
 		var data = {
 			receiptFile : $('#receiptFile').val().trim(),
@@ -80,14 +79,14 @@ $(document).ready(function(){
 			}
 		}
 		
-		$("#progress_loading").show(); 	
+		$("#progress_loading2").show(); 	
 		$.ajax({
 	       	   type: "POST",
 	              url: "/m/pointCoupon/uploadReceipt.do",
 	               data: data,
 	               success: function (result) {
 	            	  console.log(result);
-	            	  $("#progress_loading").hide(); 	
+	            	  $("#progress_loading2").hide(); 	
 	            	   if (result && typeof result !="undefined") {
 	            	   		if (result.result.code == 0) {
 	            	   			alertOpen("알림", result.result.msg, true, false,function(){location.href = "/m/pointCoupon/index.do"}, null); 
@@ -95,12 +94,12 @@ $(document).ready(function(){
 								alertOpen("알림", result.result.msg, true, false, null, null); 
 							}
 		               }else{
-		            	   $("#progress_loading").hide(); 	
+		            	   $("#progress_loading2").hide(); 	
 		            	   alertOpen("알림", "1.장애 발생. 다시 시도해주세요.", true, false, null, null);
 		           	   }
 	               },
 	               error : function(request, status, error){
-	            	   $("#progress_loading").hide(); 	
+	            	   $("#progress_loading2").hide(); 	
 	            	   alertOpen("알림 ", "2.장애 발생. 다시 시도해주세요", true, false, null, null);
 	               },
 	               dataType: 'json'
@@ -140,23 +139,22 @@ $(document).ready(function(){
 				<input type = "hidden" name= "accPointAmount" id = "accPointAmount" />
 				<input type = "hidden" name= "depositBankAccount" id = "depositBankAccount" value = "국민은행:10000-11111:안영철"/>
 				<input type = "hidden" name= "depositAmount" id = "depositAmount"  />
+						
+				<p style = "margin-top:5px;font-weight:550">입금자명</p>
+				<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px" value = "${model.memberInfo.memberName}"/>
 				
-				<div style = "margin-top:5px">
+				<div style = "margin-top:10px">
 				<p style = "font-weight:550">적립 받을 포인트(100%) </p>
-				<p class="upload_conbox_p accPoint" style = "background-color : #eee; border:1px solid #ccc;color : #555;margin-top:10px;font-size : 15px;font-weight:400;">&nbsp;</p>
+				<p class="upload_conbox_p accPoint" style = "background-color : #eee; border:1px solid #ccc;color : #555;margin-top:10px;font-size : 16px;font-weight:400;">&nbsp;</p>
 				</div>
 			
 				<div style = "margin-top:20px">
 					<p style = "font-weight:550">회원님이 입금하셔야 할 금액(결제금액의 15%)</p>
-					<p class="upload_conbox_p" style = "background-color : #eee; border:1px solid #ccc;color : #555;margin-top:10px;font-size : 15px;font-weight:400;">&nbsp;</p>
+					<p class="upload_conbox_p" style = "background-color : #eee; border:1px solid #ccc;color : #555;margin-top:10px;font-size : 16px;font-weight:400;">&nbsp;</p>
 				</div>
-						
-				<p style = "margin-top:20px;font-weight:550">입금자명</p>
-				<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px" value = "${model.memberInfo.memberName}"/>
-			
-			
-				<p style = "margin-top:7px;font-weight:550">15% 금액 입금 계좌</p>
-				<div style = "font-size:15px;border:1px solid #ddd;margin-top:10px;width: 100%; border:1px solid #ccc; padding: 4% 2%; text-align: center;margin-bottom:70px">
+							
+				<p style = "margin-top:20px;font-weight:550">15% 금액 입금 계좌</p>
+				<div style = "font-size:16px;border:1px solid #ddd;margin-top:10px;width: 100%; border:1px solid #ccc; padding: 4% 2%; text-align: center;margin-bottom:70px">
 				 국민은행    10000-11111    예금주 : 안영철 
 				</div>
 		</div>
@@ -171,7 +169,7 @@ $(document).ready(function(){
 	</div>
    </section>
    
-      <div id = "progress_loading">
+      <div id = "progress_loading2">
 		<img src="/resources/images/progress_loading.gif"/>
 	</div>
 </body>

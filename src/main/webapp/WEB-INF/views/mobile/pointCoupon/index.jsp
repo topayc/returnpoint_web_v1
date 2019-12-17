@@ -130,17 +130,15 @@ $(document).ready(function(){
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="receipt"  items="${model.receipts}"  >
-							<div onclick = "movePage('/m/pointCoupon/receiptDetail.do?receiptNo=${receipt.pointCodeIssueRequestNo}')">
+							<div style = "padding-bottom:18px" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
 		        				<div class="coupon_img_box"><img src = "${receipt.uploadFile}"/></div>
 		        				<span>${receipt.createTime}</span></br>
-		        				<span class="coupon_upload_text1">
 		        				<c:choose>
-							    	<c:when test = "${receipt.depositStatus == '1'}">입급 확인중</c:when>
-							    	<c:when test = "${receipt.depositStatus == '2'}">입금 확인 요청중</c:when>
-							    	<c:when test = "${receipt.depositStatus == '3'}">입금 확인 완료</c:when>
-							    	<c:when test = "${receipt.depositStatus == '4'}">입금 취소 </c:when>
+							    	<c:when test = "${receipt.depositStatus == '1'}"><span class = "check_deposit_1">입급 확인중</span></c:when>
+							    	<c:when test = "${receipt.depositStatus == '2'}"><span class = "check_deposit_2">입금 확인 요청중</span></c:when>
+							    	<c:when test = "${receipt.depositStatus == '3'}"><span class = "check_deposit_3">입금 확인 완료</span></c:when>
+							    	<c:when test = "${receipt.depositStatus == '4'}"><span class = "check_deposit_4">입금 취소 </span></c:when>
 						    	</c:choose>
-		        				</span>
 		        			</div>
 						</c:forEach>
 					</c:otherwise>

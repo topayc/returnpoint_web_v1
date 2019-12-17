@@ -1587,7 +1587,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		RPMap dbparams = new RPMap();
 		try {
 			String json = null;
-			if (rPap.containsKey("pointCodeIssueRequestNo") ||  rPap.getStr("pointCodeIssueRequestNo").trim().length()  < 1  || rPap.get("pointCodeIssueRequestNo") == null) {
+			if (!rPap.containsKey("pointCodeIssueRequestNo") ||  rPap.getInt("pointCodeIssueRequestNo") == 0  || rPap.get("pointCodeIssueRequestNo") == null) {
 				json = Util.printResult(1, String.format("109:잘못된 요청입니다.."), null);
 				rmap.put("json", json);
 				return true;
@@ -1649,6 +1649,11 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("status","1");
 			dbparams.put("publisher",sm.getMemberNo());
 			
+			Date date = new Date();
+			String fileName = "receipt_" + sm.getMemberNo() + "_" + date.getTime() + ".png";
+			String dir = request.getSession().getServletContext().getRealPath("/cloud/images/receipt/");
+			dbparams.put("uploadFile","/cloud/images/receipt/"+ fileName);
+			
 			this.mobileMemberDao.insertPointCodeIssueRequest(dbparams);
 			
 			/* 
@@ -1656,20 +1661,15 @@ public class MobileMainServiceImpl implements MobileMainService {
 			 * 영수증 파일 제목은 receipt_멤버번호_요청번호로 구성함  
 			 */
 			
-			String fileName = "receipt_" + sm.getMemberNo() + "_" + paramMap.getInt("pointCodeIssueRequestNo") + ".png";
-			String dir = request.getSession().getServletContext().getRealPath("/cloud/images/receipt/");
-			
 			File saveDir = new File(dir);
 			if (!saveDir.exists()) {
 				saveDir.mkdirs();
 			}
 			
-			String fileFullName = dir + fileName;
-			
 			String base64EncodeImage = paramMap.getStr("receiptFile").split(",")[1].trim();
 			byte[] imgBytes = Base64.getDecoder().decode(base64EncodeImage);
-			
-			BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(fileFullName));
+			String localFilePath = dir + fileName;
+			BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(localFilePath));
 	        writer.write(imgBytes);
 	        writer.flush();
 	        writer.close();
