@@ -1018,12 +1018,11 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .list_none p{margin-top:5px;color:#777;font-size:15px;font-weight:400;}
 
 #progress_loading
-	{
+	{width:14%;height:auto;
 	 position: absolute;
-	 left: 50%;
-	 top: 45%;
-	 border : 1px solid #444444;
+	 left: 43%;
+	 top: 39%;
 	 padding : 5px 5px;
-	 background: #ffffff;
+	 background: rgba(255,255,255,0);
 	 z-index : 100
 	}
