@@ -956,15 +956,15 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 
 /*upload_receipt css*/
 .upload_receipt .receipt_imgbox{width:100%;overflow:hidden;margin-top:10px;}
-.upload_receipt .bg_img{width:72%;height:200px;;overflow:hidden;float:left;background-color:#ededed;border : 1px solid #bbb}
+.upload_receipt .bg_img{width:100%;padding:100px 0;overflow:hidden;background-color:#ededed;border : 1px solid #bbb;margin-top:10px;}
 .upload_receipt .bg_img img{width:100%;height:100%;}
 .upload_receipt .upload_conbox{padding:5%;}
 .upload_receipt .upload_conbox p{color:#555; font-size:13px;}
 .upload_receipt .upload_conbox input{width:100%;padding:3% 2%;font-size:13px;color:#555;margin-top:10px;border:1px solid #ccc;margin-bottom:15px;}
 .upload_receipt .upload_conbox div .upload_conbox_p{border:1px solid #ccc;padding:2%;text-align:center;background-color:#f7f7f7;}
-.upload_receipt .upload_conbox button{float:right;width:23%;border:none;background-color:#fff;padding:4% 0;}
-.upload_receipt .upload_conbox button:active {background-color:#33cccc;border:1px solid #33cccc;color : #fff}
-.upload_receipt .upload_conbox .push_select{background-color:#33cccc;color:#fff;border:1px solid #33cccc}
+.upload_receipt .upload_conbox button{width:49%;border:1px solid #bbb;background-color:#ededed;padding:2.5% 0;color:#777;font-size:14px;}
+.upload_receipt .upload_conbox button:active {background-color:#33cccc;border:1px solid #33cccc;color : #fff;}
+.upload_receipt .upload_conbox .push_select{background-color:#33cccc;color:#fff;border:1px solid #33cccc;}
 .upload_receipt .upload_text{width:100%;margin-top:10px;color:#666;}
 .upload_receipt .upload_text .upload_text1{font-size:13px;}
 .upload_receipt .upload_text .upload_text2{font-size:20px;font-weight:bold;margin-top:10px;}
