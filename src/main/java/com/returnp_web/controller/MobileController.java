@@ -89,9 +89,9 @@ public class MobileController extends MallBaseController {
 	@RequestMapping(value = "/pointCoupon/uploadReceipt.do",  method = RequestMethod.POST)
 	public String uploadReceipt(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/uploadReceipt");
-		boolean bret = true;
-		return page(bret, map, rmap);
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.uploadReceipt(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
 	}
 	
 	// 영수증 업로드 내역 세부 페이지 
