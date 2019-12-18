@@ -123,7 +123,7 @@ $(document).ready(function(){
 		        
 		        	<c:choose>
 					<c:when test = "${empty model.receipts }">
-						<div class="list_none" style="width:70%;margin-left:15%;margin-top:27%;height:200px;">
+						<div class="list_none" style="width:70%;margin-left:15%;margin-top:27%;height:200px;" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
 							<img src="/resources/images/list_none_img.png" width="80" height="80">
 							<p>등록하신 영수증이 없습니다.</p>
 						</div>
