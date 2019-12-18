@@ -132,11 +132,11 @@ $(document).ready(function(){
 						<c:forEach var="receipt"  items="${model.receipts}"  >
 							<div style = "padding-bottom:18px" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
 		        				<div class="coupon_img_box"><img src = "${receipt.uploadFile}"/></div>
-		        				<span style = "margin-bottom:10px">
+		        				<span>
 		        					<fmt:parseDate value="${receipt.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss"/>
 									<fmt:formatDate value="${createTime}" pattern="yyyy-MM-dd HH:mm"/> 
 		        				</span>
-		        			
+		        				</br>
 		        				<c:choose>
 							    	<c:when test = "${receipt.depositStatus == '1'}"><span class = "check_deposit_1"  style = "color : #fff">입급 확인중</span></c:when>
 							    	<c:when test = "${receipt.depositStatus == '2'}"><span class = "check_deposit_2" style = "color : #fff">입금 확인 요청중</span></c:when>
@@ -150,6 +150,7 @@ $(document).ready(function(){
 		        </div>
 		      </div>
 		   </li>
+		   
 		   <li><a style="left:50%;" tabcode = "3">적립가능</a>
 				<div class="coupon_contents">
 			    <c:choose>
