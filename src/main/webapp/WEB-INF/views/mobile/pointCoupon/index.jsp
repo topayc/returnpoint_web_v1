@@ -150,6 +150,7 @@ $(document).ready(function(){
 		        </div>
 		      </div>
 		   </li>
+		   
 		   <li><a style="left:50%;" tabcode = "3">적립가능</a>
 				<div class="coupon_contents">
 			    <c:choose>
