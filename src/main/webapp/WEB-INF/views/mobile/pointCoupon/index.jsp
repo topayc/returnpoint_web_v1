@@ -134,10 +134,10 @@ $(document).ready(function(){
 		        				<div class="coupon_img_box"><img src = "${receipt.uploadFile}"/></div>
 		        				<span>${receipt.createTime}</span></br>
 		        				<c:choose>
-							    	<c:when test = "${receipt.depositStatus == '1'}"><span class = "check_deposit_1">입급 확인중</span></c:when>
-							    	<c:when test = "${receipt.depositStatus == '2'}"><span class = "check_deposit_2">입금 확인 요청중</span></c:when>
-							    	<c:when test = "${receipt.depositStatus == '3'}"><span class = "check_deposit_3">입금 확인 완료</span></c:when>
-							    	<c:when test = "${receipt.depositStatus == '4'}"><span class = "check_deposit_4">입금 취소 </span></c:when>
+							    	<c:when test = "${receipt.depositStatus == '1'}"><span class = "check_deposit_1"  style = "color : #fff">입급 확인중</span></c:when>
+							    	<c:when test = "${receipt.depositStatus == '2'}"><span class = "check_deposit_2" style = "color : #fff">입금 확인 요청중</span></c:when>
+							    	<c:when test = "${receipt.depositStatus == '3'}"><span class = "check_deposit_3" style = "color : #fff">입금 확인 완료</span></c:when>
+							    	<c:when test = "${receipt.depositStatus == '4'}"><span class = "check_deposit_4" style = "color : #fff">입금 취소 </span></c:when>
 						    	</c:choose>
 		        			</div>
 						</c:forEach>
