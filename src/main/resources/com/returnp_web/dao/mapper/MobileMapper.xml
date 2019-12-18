@@ -1102,21 +1102,21 @@
  	</select>
 
  	<update id="checkDepositRequest" parameterType="HashMap" >
-		update point_code_issue_request set depositStatus = '2' where pointCodeIssueRequestNo = ${pointCodeIssueRequestNo}
+		update point_code_issue_request set status= '2' where pointCodeIssueRequestNo = ${pointCodeIssueRequestNo}
  	</update>
  	
  <insert id="insertPointCodeIssueRequest" parameterType="HashMap" useGeneratedKeys = "true" keyProperty = "pointCodeIssueRequestNo">	
   insert into point_code_issue_request (memberNo, 
-      issueType, issueStatus, payAmount, 
+      issueType,  payAmount, 
       accPointRate, accPointAmount, accTargetRange, 
-      depositAmount, depositRate, depositStatus, 
+      depositAmount, depositRate, 
       uploadFile, depositBankAccount, status, 
       publisher, 
       createTime, updateTime)
     values (#{memberNo,jdbcType=INTEGER}, 
-      #{issueType,jdbcType=VARCHAR}, #{issueStatus,jdbcType=VARCHAR}, #{payAmount,jdbcType=INTEGER}, 
+      #{issueType,jdbcType=VARCHAR},  #{payAmount,jdbcType=INTEGER}, 
       #{accPointRate,jdbcType=REAL}, #{accPointAmount,jdbcType=REAL}, #{accTargetRange,jdbcType=VARCHAR}, 
-      #{depositAmount,jdbcType=REAL}, #{depositRate,jdbcType=REAL}, #{depositStatus,jdbcType=VARCHAR}, 
+      #{depositAmount,jdbcType=REAL}, #{depositRate,jdbcType=REAL}, 
       #{uploadFile,jdbcType=VARCHAR}, #{depositBankAccount,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
       #{publisher,jdbcType=VARCHAR}, NOW(), NOW())
 		
@@ -1149,17 +1149,23 @@
 			
 			<if test="accTargetRange !=null and accTargetRange !='' ">
 				accTargetRange=#{accTargetRange},
-			</if><if test="depositAmount !=null and depositAmount !='' ">
+			</if>
+			
+			<if test="depositAmount !=null and depositAmount !='' ">
 				depositAmount=#{depositAmount},
-			</if><if test="depositRate !=null and depositRate !='' ">
+			</if>
+			
+			<if test="depositRate !=null and depositRate !='' ">
 				depositRate=#{depositRate},
-			</if><if test="depositStatus !=null and depositStatus !='' ">
-				depositStatus=#{depositStatus},
-			</if><if test="uploadFile !=null and uploadFile !='' ">
+			</if>
+			
+			<if test="uploadFile !=null and uploadFile !='' ">
 				uploadFile=#{uploadFile},
+			
 			</if><if test="status !=null and status !='' ">
 				status=#{status},
 			</if>
+			
 			<if test="publisher !=null and publisher !='' ">
 				publisher=#{publisher},
 			</if>

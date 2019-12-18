@@ -1637,15 +1637,12 @@ public class MobileMainServiceImpl implements MobileMainService {
 			/*point_code_issue_request */
 			dbparams.put("memberNo",sm.getMemberNo());
 			dbparams.put("issueType","1");
-			dbparams.put("issueStatus","2");
 			dbparams.put("payAmount",paramMap.getInt("payAmount"));
 			dbparams.put("accPointRate",1);
 			dbparams.put("accPointAmount",paramMap.getInt("payAmount"));
 			dbparams.put("accTargetRange","2");
 			dbparams.put("depositAmount",Math.round(paramMap.getInt("payAmount") *  0.15));
 			dbparams.put("depositRate",0.15);
-			dbparams.put("depositStatus","1");
-			dbparams.put("uploadFile","-");
 			dbparams.put("status","1");
 			dbparams.put("publisher",sm.getMemberNo());
 			

@@ -130,19 +130,25 @@ $(document).ready(function(){
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="receipt"  items="${model.receipts}"  >
-							<div style = "padding-bottom:18px" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
+							<div style = "padding-bottom:28px" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
 		        				<div class="coupon_img_box"><img src = "${receipt.uploadFile}"/></div>
-		        				<span>
-		        					<fmt:parseDate value="${receipt.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss"/>
-									<fmt:formatDate value="${createTime}" pattern="yyyy-MM-dd HH:mm"/> 
-		        				</span>
-		        				</br>
-		        				<c:choose>
-							    	<c:when test = "${receipt.depositStatus == '1'}"><span class = "check_deposit_1"  style = "color : #fff">입급 확인중</span></c:when>
-							    	<c:when test = "${receipt.depositStatus == '2'}"><span class = "check_deposit_2" style = "color : #fff">입금 확인 요청중</span></c:when>
-							    	<c:when test = "${receipt.depositStatus == '3'}"><span class = "check_deposit_3" style = "color : #fff">입금 확인 완료</span></c:when>
-							    	<c:when test = "${receipt.depositStatus == '4'}"><span class = "check_deposit_4" style = "color : #fff">입금 취소 </span></c:when>
-						    	</c:choose>
+		        				<p>
+		        					<span>
+		        						<fmt:parseDate value="${receipt.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss"/>
+										<fmt:formatDate value="${createTime}" pattern="yyyy-MM-dd HH:mm"/> 
+		        					</span>
+		        				</p>
+		        				
+		        				<p style = "margin-top:7px">
+			        				<c:choose>
+								    	<c:when test = "${receipt.status == '1'}"><span class = "check_deposit_1"  style = "color : #fff;">입급확인중</span></c:when>
+								    	<c:when test = "${receipt.status == '2'}"><span class = "check_deposit_2" style = "color : #fff">입금확인 요청중</span></c:when>
+								    	<c:when test = "${receipt.status == '3'}"><span class = "check_deposit_3" style = "color : #fff">입금확인 완료</span></c:when>
+								    	<c:when test = "${receipt.status == '4'}"><span class = "check_deposit_4" style = "color : #fff">처리완료 </span></c:when>
+								    	<c:when test = "${receipt.status == '5'}"><span class = "check_deposit_5" style = "color : #fff">입금취소 </span></c:when>
+								    	<c:when test = "${receipt.status == '6'}"><span class = "check_deposit_6" style = "color : #fff">처리불가 </span></c:when>
+							    	</c:choose>
+						    	</p>
 		        			</div>
 						</c:forEach>
 					</c:otherwise>
@@ -150,11 +156,10 @@ $(document).ready(function(){
 		        </div>
 		      </div>
 		   </li>
-		   
 		   <li><a style="left:50%;" tabcode = "3">적립가능</a>
 				<div class="coupon_contents">
 			    <c:choose>
-					<c:when test = "${empty model.pointCodes }">
+					<c:when test = "${empty model.useablePointCodes }">
 						<div class="list_none">
 							<img src="/resources/images/list_none_img.png" width="80" height="80">
 							<p>적립 가능한 적립코드가 없습니다.</p>
@@ -167,9 +172,12 @@ $(document).ready(function(){
 				      			<li>
 				      				<ul>
 				      					<li class="code_text2">${useablePointCode.pointCode}</li>
-				      					<li class="code_text1">${useablePointCode.createTime}</li>
-				      					<li class="code_text1">기준 금액 : ${useablePointCode.payAmount}</li>
-				      					<li class="code_text1">적립 금액 : ${useablePointCode.accPointAmount} (적립율 100%)</li>
+				      					<li class="code_text1" style = "font-weight:500;font-size">
+				      						<fmt:parseDate value="${useablePointCode.createTime}" var="createTime1" pattern="yyyy-MM-dd HH:mm:ss"/>
+											<fmt:formatDate value="${createTime1}" pattern="yyyy년 MM월 dd일  HH시 mm분"/> 
+				      					</li>
+				      					<li class="code_text1">기준금액 : ${useablePointCode.payAmount}</li>
+				      					<li class="code_text1">적립금액 : ${useablePointCode.accPointAmount} (적립율 100%)</li>
 				      					<button>적립</button>
 				      				</ul>
 				      			</li>
@@ -184,7 +192,7 @@ $(document).ready(function(){
 		   <li><a style="left:75%;margin-right:2%;" tabcode = "4">적립완료</a>
 		      <div class="coupon_contents">
 		           <c:choose>
-					<c:when test = "${empty model.pointCodes }">
+					<c:when test = "${empty model.completePointCodes }">
 						<div class="list_none">
 							<img src="/resources/images/list_none_img.png" width="80" height="80">
 							<p>적립 완료된 적립코드가 없습니다.</p>
@@ -197,10 +205,12 @@ $(document).ready(function(){
 			      			<li>
 			      				<ul>
 			      					<li class="code_text2">${completePointCode.pointCode}</li>
-			      					<li class="code_text1">${completePointCode.createTime}</li>
-			      					<li class="code_text1">기준 금액 : ${completePointCode.payAmount}</li>
-			      					<li class="code_text1">적립 금액 : ${completePointCode.accPointAmount} (적립율 100%)</li>
-			      					<button>적립</button>
+			      					<li class="code_text1" style = "font-weight:500;">
+			      						<fmt:parseDate value="${completePointCode.createTime}" var="createTime2" pattern="yyyy-MM-dd HH:mm:ss"/>
+										<fmt:formatDate value="${createTime2}" pattern="yyyy년 MM월 dd일  HH시 mm분"/> 
+			      					</li>
+			      					<li class="code_text1">기준금액 : ${completePointCode.payAmount}</li>
+			      					<li class="code_text1">적립금액 : ${completePointCode.accPointAmount} (적립율 100%)</li>
 			      				</ul>
 			      			</li>
 			      			</c:forEach>

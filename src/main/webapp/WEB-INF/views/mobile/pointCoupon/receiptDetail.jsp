@@ -81,77 +81,44 @@ $(document).ready(function(){
 					<li>
 						<ul>
 							<li class="upload_conbox_text1">결제금액</li>
-							<li class="upload_conbox_text2">100,000</li>
-						</ul>
-					</li>
-					<li style="border-top:none;">
-						<ul>
-							<li class="upload_conbox_text1">적립금액</li>
-							<li class="upload_conbox_text2">100,000</li>
-						</ul>
-					</li>
-					<li style="border-top:none;">
-						<ul>
-							<li class="upload_conbox_text1">입금금액</li>
-							<li class="upload_conbox_text2">15,000</li>
-						</ul>
-					</li>
-					<li style="border-top:none;">
-						<ul>
-							<li class="upload_conbox_text1">상태</li>
-							<li class="upload_conbox_text2"><span class = "depositStatus"  style = "background-color : #DF0101">입금확인중</span></li>
-						</ul>
-					</li>
-				</ul> 
-				
-		<%-- 	<ul>
-					<li>
-						<ul>
-							<li class="upload_conbox_text1">결제금액</li>
 							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.payAmount}" pattern="###,###,###,###"/></li>
 						</ul>
 					</li>
-					<li>
+					<li style="border-top:none;">
 						<ul>
 							<li class="upload_conbox_text1">적립금액</li>
 							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.accPointAmount}" pattern="###,###,###,###"/></li>
 						</ul>
 					</li>
-					<li>
+					<li style="border-top:none;">
 						<ul>
 							<li class="upload_conbox_text1">입금금액</li>
 							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.depositAmount}" pattern="###,###,###,###"/></li>
 						</ul>
 					</li>
-					<li>
+					<li style="border-top:none;">
 						<ul>
-							<li class="upload_conbox_text1">상태</li>
-							<li class="">
-								<span>
-								<c:choose>
-							    	<c:when test = "${model.receipt.depositStatus == '1'}"><span class = "depositStatus" style = "background-color : #DF0101">입급 확인중</span></c:when>
-							    	<c:when test = "${model.receipt.depositStatus == '2'}"><span class = "depositStatus" style = "background-color : #BF00FF">입금 확인 요청중</span></c:when>
-							    	<c:when test = "${model.receipt.depositStatus == '3'}"><span class = "depositStatus" style = "background-color : #04B404">입금 확인 완료</span></c:when>
-							    	<c:when test = "${model.receipt.depositStatus == '4'}"><span class = "depositStatus" style = "background-color : #6E6E6E">입금 취소 </span></c:when>
+							<li class="upload_conbox_text1">처리 상태</li>
+							<li class="upload_conbox_text2">
+								<p><c:choose>
+							    	<c:when test = "${model.receipt.status== '1'}"><span class = "depositStatus" style = "background-color : #DF0101">입급확인중</span></c:when>
+							    	<c:when test = "${model.receipt.status== '2'}"><span class = "depositStatus" style = "background-color : #BF00FF">입금확인 요청중</span></c:when>
+							    	<c:when test = "${model.receipt.status== '3'}"><span class = "depositStatus" style = "background-color : #4000FF">입금확인 완료</span></c:when>
+							    	<c:when test = "${model.receipt.status== '4'}"><span class = "depositStatus" style = "background-color : #04B404">처리완료</span></c:when>
+							    	<c:when test = "${model.receipt.status== '5'}"><span class = "depositStatus" style = "background-color : #FF8000">입금취소 </span></c:when>
+							    	<c:when test = "${model.receipt.status == '6'}"><span class = "depositStatus" style = "background-color : #6E6E6E">처리불가  </span></c:when>
 						    	</c:choose>
-						    	</span>
 							</li>
 						</ul>
 					</li>
-				</ul>  --%>
-			</div>
-			
-		<!-- 	<p style = "margin-top:20px;font-weight:550;color : #000">입금 상태</p>
-			<div style = "border : 1px solid #ddd;margin-top:10px;background-color : #BF00FF;color : #fff">
-				입금 확인중
-			</div> -->
+				</ul> 
 			
 			<p style = "margin-top:20px;font-weight:550;color : #000">입금 계좌 정보</p>
 			<div style = "border : 1px solid #ddd;margin-top:10px;">
 				국민은행   10000-11111   예금주 : 안영철
 			</div>
 		
-		<c:if test = "${model.receipt.depositStatus == '1'}"> 
+		<c:if test = "${model.receipt.status == '1'}"> 
 			<p style = "margin-top:20px;font-weight:550;color : #000; " id = "check_deposit_1">빠른 처리를 위해서 입금확인 요청을 해주세요</p>
 			<button id = "reqeust_deposit_check"   requestNo = "${model.receipt.pointCodeIssueRequestNo}">입금 확인 요청하기</button>
 			</br>
