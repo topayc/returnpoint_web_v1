@@ -84,19 +84,19 @@ $(document).ready(function(){
 							<li class="upload_conbox_text2">100,000</li>
 						</ul>
 					</li>
-					<li>
+					<li style="border-top:none;">
 						<ul>
 							<li class="upload_conbox_text1">적립금액</li>
 							<li class="upload_conbox_text2">100,000</li>
 						</ul>
 					</li>
-					<li>
+					<li style="border-top:none;">
 						<ul>
 							<li class="upload_conbox_text1">입금금액</li>
 							<li class="upload_conbox_text2">15,000</li>
 						</ul>
 					</li>
-					<li>
+					<li style="border-top:none;">
 						<ul>
 							<li class="upload_conbox_text1">상태</li>
 							<li class="upload_conbox_text2"><span class = "depositStatus"  style = "background-color : #DF0101">입금확인중</span></li>
