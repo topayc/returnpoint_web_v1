@@ -416,4 +416,9 @@ public class MobileMainDao {
 		return sqlSession.getMapper(MobileMainMapper.class).selectPointCoupon(dbparams);
 	}
 
+	public HashMap<String, Object> selectPointCodeIssue(HashMap<String, Object> dbparams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMainMapper.class).selectPointCodeIssue(dbparams);
+	}
+
 }

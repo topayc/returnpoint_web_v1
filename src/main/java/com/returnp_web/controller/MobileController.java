@@ -95,6 +95,15 @@ public class MobileController extends MallBaseController {
 		return rmap.getStr("json");
 	}
 	
+	//포인트 코드 세부 정보 
+	@RequestMapping(value = "/pointCoupon/pointCodeInfo.do", method = RequestMethod.GET)
+	public String pointCodeDetail(@RequestParam Map<String, Object> p, ModelMap map, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/pointCodeInfo");
+		boolean bret = mms.showPointCodeInfo(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
+	
 	// 영수증 업로드 내역 세부 페이지 
 	@RequestMapping("/pointCoupon/receiptDetail.do")
 	public String receiptDetail(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
@@ -104,6 +113,13 @@ public class MobileController extends MallBaseController {
 		return page(bret, map, rmap);
 	}
 	
+	// 영수증 적립 코드 적립 프로세스
+	@ResponseBody
+	@RequestMapping(value = "/pointCode/accPointCode", method = RequestMethod.POST)
+	public String accPointCode(@RequestParam HashMap<String, String> paramMap, ModelMap modelMap, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		return mms.accPointCode(paramMap, modelMap, request, response);
+	}
 	
 	// WEB 가맹점찾기
 	@RequestMapping("/affiliate/affiliateSearchList")

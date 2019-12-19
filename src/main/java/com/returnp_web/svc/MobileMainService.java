@@ -292,6 +292,11 @@ public interface MobileMainService {
 
 	boolean uploadReceiptForm(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean showPointCodeInfo(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	String accPointCode(HashMap<String, String> paramMap, ModelMap modelMap, HttpServletRequest request,
+			HttpServletResponse response);
+
 
 }
 

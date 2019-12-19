@@ -1631,8 +1631,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 		RPMap dbparams = new RPMap();
 		SessionManager sm = new SessionManager(request, response);
 		try {
-			System.out.println(Math.round(paramMap.getInt("payAmount") *  0.15));
-			System.out.println(paramMap.getInt("depositAmount"));
+			//System.out.println(Math.round(paramMap.getInt("payAmount") *  0.15));
+			//System.out.println(paramMap.getInt("depositAmount"));
 			
 			/*point_code_issue_request */
 			dbparams.put("memberNo",sm.getMemberNo());
@@ -1684,4 +1684,69 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return true;
 	}
 
+	@Override
+	public boolean showPointCodeInfo(RPMap paramMap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		SessionManager sm = new SessionManager(request, response);
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		try {
+			if(sm.getMemberEmail() == null ) {
+                rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/member/login.do", "T"));
+                return false;
+            }
+			dbparams.put("pointCode", paramMap.getStr("pointCode").trim());
+			HashMap<String, Object> pointCode = this.mobileMainDao.selectPointCodeIssue(dbparams);
+			
+			if (pointCode == null) {
+				 rmap.put("result", "error");
+                 rmap.put("message", "등록 되지 않는 적립 코드 ");
+			}else {
+				rmap.put("result", "success");
+                rmap.put("pointCode", pointCode);
+                return true;
+			}
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public String accPointCode(HashMap<String, String> p, ModelMap modelMap, HttpServletRequest request,
+			HttpServletResponse response) {
+		String runMode = environment.getProperty("run_mode");
+		String remoteCallURL = environment.getProperty(runMode + ".handle_point_code");
+		String key = environment.getProperty("key");
+		StringBuffer response2 = null;
+		try {
+			URL url = new URL(remoteCallURL + "?" + Util.mapToQueryParam(p));
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setDoInput(true);
+			con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			con.setRequestMethod("GET");
+			int responseCode = con.getResponseCode();
+			BufferedReader in = null;
+			if (responseCode == HttpURLConnection.HTTP_OK) {
+				in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+				String inputLine;
+				response2 = new StringBuffer();
+				while ((inputLine = in.readLine()) != null) {
+					response2.append(inputLine);
+				}
+				in.close();
+				//System.out.println("응답");
+				System.out.println(response2.toString());
+			} else {
+				//System.out.println("포인트 백 적립 요청 에러");
+			}
+			//System.out.println("포인트 백 적립 요청");
+			//System.out.println(remoteCallURL + "?" + Util.mapToQueryParam(p));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return response2.toString();
+	}
 }

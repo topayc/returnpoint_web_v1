@@ -894,13 +894,13 @@ li.on a {font-weight:600;}
 li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid #ddd;}
 .coupon_contents{position: absolute;overflow: hidden;height: 0;}
 
-.coupon_contents .coupon_top{margin:0px 5px 5px 5px;overflow:hidden;text-align:center;padding:5% 0;background-color:#f1f1f1;border-bottom: 1px solid #ddd;}
+.coupon_contents .coupon_top{margin:0px 5px 2px 5px;overflow:hidden;text-align:center;padding:5% 0;background-color:#f1f1f1;border-bottom: 1px solid #ddd;}
 .coupon_contents .coupon_top div{float:left;width:33%;padding:5% 0;border-right:1px solid #ccc;}
 .coupon_contents .coupon_top div:last-child{border:none;}
 .coupon_contents .coupon_top li {line-height:23px;}
 .coupon_contents .coupon_top .code_text1{font-size:12px;color:#555;}
-.coupon_contents .coupon_top .code_text2{font-size:20px;color:#333;font-weight:bold;}
-.coupon_contents .coupon_m{text-align:center;margin:6px 5px 3px 5px;overflow:hidden;padding-bottom:10px;}
+.coupon_contents .coupon_top .code_text2{font-size:15px;color:#333;font-weight:500;}
+.coupon_contents .coupon_m{text-align:center;margin:3px 5px 3px 5px;overflow:hidden;padding-bottom:10px;}
 .coupon_contents .coupon_m div{float:left;padding:3% 0;border:1px solid #ccc;width:100%;margin-right:1%;font-weight: 350;background-color:#fff;}
 .coupon_contents .coupon_m div:last-child{margin:0;}
 .coupon_contents .coupon_m img{margin-right:7px;}
@@ -1021,7 +1021,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 	{width:14%;height:auto;display:none;
 	 position: absolute;
 	 left: 43%;
-	 top: 60%;
+	 top: 44%;
 	 padding : 5px 5px;
 	 background: rgba(255,255,255,0);
 	 z-index : 1000

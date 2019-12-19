@@ -883,4 +883,13 @@
       	<if test="couponNumber != null"> AND couponNumber =  #{couponNumber} </if>
 	</select> 
 	
+		<select id="selectPointCodeIssue" parameterType="HashMap" resultType="HashMap">
+		SELECT *
+		FROM point_code_issue
+		WHERE 
+		1 =1 
+		<if test="pointCodeIssueNo != null "> AND pointCodeIssueNo = #{pointCodeIssueNo} </if>
+      	<if test="pointCode != null"> AND pointCode =  #{pointCode} </if>
+	</select> 
+	
 </mapper>

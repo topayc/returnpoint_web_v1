@@ -25,6 +25,11 @@
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
+	
+	$(".cord_acc_btn").click(function(){
+		var pointCode = $(this).attr("point_code");
+		location.href = "/m/pointCoupon/pointCodeInfo.do?pointCode=" + pointCode
+	});
 });
 
 </script>
@@ -65,7 +70,7 @@ $(document).ready(function(){
 		      				<li class="code_text2">
 		      					<c:choose>
 		      					<c:when test = "${model.pointCodeSummary.totalAccPoint == 0.0}">0</c:when>
-		      					<c:otherwise>${model.pointCodeSummary.totalAccPoint}</c:otherwise>
+		      					<c:otherwise><fmt:formatNumber value="${model.pointCodeSummary.totalAccPoint}" pattern="###,###,###,###"/> </c:otherwise>
 		      					</c:choose>
 		      				</li>
 		      			</ul>
@@ -85,7 +90,7 @@ $(document).ready(function(){
 		      	</div>
 		      	<div class="coupon_m">
 		      		<div class="upload" onclick = "movePage('/m/pointCoupon/uploadReceipt.do')" ><img src="/resources/images/upload.png">&nbsp;일반 영수증 올리기</div>
-		      		<!-- <div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div> -->
+		      <!-- 		<div class="register"><a onclick = "movePage('/m/coupon/point_coupon_reg.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div> -->
 		      	</div>
 		      	<div class="coupon_code1">
 		      		<p>일반 영수증 적립 서비스란</p>
@@ -176,9 +181,9 @@ $(document).ready(function(){
 				      						<fmt:parseDate value="${useablePointCode.createTime}" var="createTime1" pattern="yyyy-MM-dd HH:mm:ss"/>
 											<fmt:formatDate value="${createTime1}" pattern="yyyy년 MM월 dd일  HH시 mm분"/> 
 				      					</li>
-				      					<li class="code_text1">기준금액 : ${useablePointCode.payAmount}</li>
-				      					<li class="code_text1">적립금액 : ${useablePointCode.accPointAmount} (적립율 100%)</li>
-				      					<button>적립</button>
+				      					<li class="code_text1">기준금액 : <fmt:formatNumber value="${useablePointCode.payAmount}" pattern="###,###,###,###"/> </li>
+				      					<li class="code_text1">적립금액 : <fmt:formatNumber value="${useablePointCode.accPointAmount}" pattern="###,###,###,###"/>(적립율 100%)</li>
+				      					<button class = "cord_acc_btn" point_code = "${useablePointCode.pointCode}" >적립</button>
 				      				</ul>
 				      			</li>
 				      			</c:forEach>
@@ -209,8 +214,8 @@ $(document).ready(function(){
 			      						<fmt:parseDate value="${completePointCode.createTime}" var="createTime2" pattern="yyyy-MM-dd HH:mm:ss"/>
 										<fmt:formatDate value="${createTime2}" pattern="yyyy년 MM월 dd일  HH시 mm분"/> 
 			      					</li>
-			      					<li class="code_text1">기준금액 : ${completePointCode.payAmount}</li>
-			      					<li class="code_text1">적립금액 : ${completePointCode.accPointAmount} (적립율 100%)</li>
+			      					<li class="code_text1">기준금액 : <fmt:formatNumber value="${completePointCode.payAmount}" pattern="###,###,###,###"/></li>
+			      					<li class="code_text1">적립금액 : <fmt:formatNumber value="${completePointCode.accPointAmount}" pattern="###,###,###,###"/>(적립율 100%)</li>
 			      				</ul>
 			      			</li>
 			      			</c:forEach>
@@ -223,6 +228,9 @@ $(document).ready(function(){
 		   </li>
 		</ul>
    </section>
+     <div id = "progress_loading2">
+		<img src="/resources/images/progress_loading.gif"/>
+	</div>
 <script>
 	$(".coupon_tab > li > a ").click(function(){
 	   $(this).parent().addClass("on").siblings().removeClass("on");

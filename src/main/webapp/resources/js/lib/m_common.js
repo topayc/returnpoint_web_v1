@@ -628,6 +628,82 @@ function sendPushTokenToServer(data){
 } 
 
 /*포인트 쿠폰에 의한 적립*/
+function accPointCode(){
+	var param = {};
+	$('.returnp_point_code').each(function(){
+		param[$(this).attr("id")]  = $(this).val().trim().replace(",","");
+	});
+	
+	function execPointback(){
+		bridge.getSesssionAndDeviceInfo(function(data){
+			data = JSON.parse(data);
+			if (data.result != "100")  {
+				alertOpen("알림", "앱을 업데이트 받아주시기 바랍니다.", true, false, null, null);
+				return;
+			}
+			param["memberEmail"] = data.user_email;
+			param["memberName"] = data.user_name;
+			param["phoneNumber"] = data.phoneNumber;
+			param["phoneNumberCountry"]  = data.phoneNumberCountry;
+			param["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
+			param["status"]  = "0";
+			
+			for (key in param){
+				if (param.hasOwnProperty(key)) {
+					param[key] = encodeURIComponent(param[key]);
+				}
+			}
+			
+			console.log(param);
+			$("#progress_loading2").show();
+			var url = window.location.protocol + "//" + window.location.host + "/m/pointCode/accPointCode.do";
+ 			$.ajax({
+	           	type: "POST",
+	               url: url,
+	               data: param,
+	               success: function (result) {
+	            	   $("#progress_loading2").hide();
+	            	   if (result && typeof result !="undefined") {
+	            		  
+	            		  /* result obj 설명
+	               		  * resultCode : 성공 실패 값(100 이 아니면 실패)
+	               		  * message : 메시지
+	               		  * url : 이동할 URL 
+	               		  */ 
+	            		 var alertText = "";
+	            		 if (result.resultCode  == "100") {
+	            			 alertText = result.message
+	            		 }else {
+	            			 alertText = result.resultCode + " : " + result.message
+	            		 }
+	            		 
+	            		 alertOpen("확인", 
+	            			alertText, 
+	            			true, 
+	            			false, 
+	            			function(){
+	            			 if (result.resultCode == "100") {
+	            				 document.location.href = window.location.protocol + "//" + window.location.host + "/m/mypage/newpoint.do";
+	            			 }
+	            		 	}, 
+	            			null);
+	               	 }else{
+	               	  $("#progress_loading2").hide();
+	               		 alertOpen("알림", "1.네트워크 장애 발생. 다시 시도해주세요.", true, false, null, null);
+	               	 }
+	               },
+	               error : function(request, status, error){
+	            	   $("#progress_loading2").hide();
+	            	   alertOpen("알림 ", "2.네트워크 장애 발생 !  다시 시도해주세요", true, false, null, null);
+	               },
+	               dataType: 'json'
+	           });
+		});	
+	}
+	execPointback();
+}
+
+/*포인트 쿠폰에 의한 적립*/
 function accPointCoupon(){
 	var param = {};
 	$('.returnp_coupon').each(function(){
@@ -861,11 +937,11 @@ function checkVersion(){
             						"새로운 버젼의 앱이 출시되었습니다.<br> 전체적인 시스템 수정으로 인하여 <br>업데이트를 받으셔야 원할한 서비스 제공이 가능합니다<br> 확인을 누르시면 업데이트 페이지로 이동합니다.",
             						true, 
             						false, 
-            						function(){goPlayStore()},
+            						function(){goUpdatePlayStore()},
             						null);	
             				}
             			}else {
-            				alertOpen("알림", "업데이트가 필요합니다</br>확인을 누르시면 업데이트 페이지로 이동합니다.", true, false, function(){goPlayStore()}, null);
+            				alertOpen("알림", "업데이트가 필요합니다</br>확인을 누르시면 업데이트 페이지로 이동합니다.", true, false, function(){goUpdatePlayStore()}, null);
             			}
         			}else {
         				if (data == null || data == "" || Number(data) < Number(sVersion)){
@@ -874,7 +950,7 @@ function checkVersion(){
             						"새로운 버젼의 앱이 출시되었습니다.<br> 전체적인 시스템 수정으로 인하여 <br>업데이트를 받으셔야 원할한 서비스 제공이 가능합니다<br> 확인을 누르시면 업데이트 페이지로 이동합니다.",
             						true,
             						false,
-            						function(){goPlayStore()},
+            						function(){goUpdatePlayStore()},
             						null);
             			}
         			}
