@@ -927,7 +927,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .coupon_contents .coupon_upload div .coupon_upload_text2{background-color:#33cccc;border-radius:12px;font-size:10px;color:#fff;padding:3%;}
 .coupon_contents .coupon_upload div .coupon_upload_text3{background-color:#00b050;border-radius:12px;font-size:10px;color:#fff;padding:3%;}
 .coupon_contents .coupon_upload .coupon_img_box{width:100%;height:139px;margin-bottom:5px;background-color:#fff;}
-.coupon_contents .coupon_upload .coupon_img_box img{width:100%;height:100%;}
+.coupon_contents .coupon_upload .coupon_img_box img{width:100%;height:100%;border-radius: 13px;}
 
 .coupon_contents .coupon_code_page1{margin:10px;}
 .coupon_contents .coupon_code_page1 > ul > li {border:1px solid #ccc;margin-bottom:5px;line-height:21px;background-color:#fff;padding: 1% 3% 3% 3%;margin-bottom: 2.5%;}

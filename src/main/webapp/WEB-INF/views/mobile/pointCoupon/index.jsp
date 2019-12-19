@@ -140,7 +140,7 @@ $(document).ready(function(){
 		        				<p>
 		        					<span>
 		        						<fmt:parseDate value="${receipt.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss"/>
-										<fmt:formatDate value="${createTime}" pattern="yyyy-MM-dd HH:mm"/> 
+										<fmt:formatDate value="${createTime}" pattern="yyyy년 MM월 dd일  HH시 mm분"/> 
 		        					</span>
 		        				</p>
 		        				
