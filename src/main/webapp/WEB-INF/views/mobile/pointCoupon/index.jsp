@@ -149,7 +149,7 @@ $(document).ready(function(){
 								    	<c:when test = "${receipt.status == '1'}"><span class = "check_deposit_1"  style = "color : #fff;">입급확인중</span></c:when>
 								    	<c:when test = "${receipt.status == '2'}"><span class = "check_deposit_2" style = "color : #fff">입금확인 요청중</span></c:when>
 								    	<c:when test = "${receipt.status == '3'}"><span class = "check_deposit_3" style = "color : #fff">입금확인 완료</span></c:when>
-								    	<c:when test = "${receipt.status == '4'}"><span class = "check_deposit_4" style = "color : #fff">처리완료 </span></c:when>
+								    	<c:when test = "${receipt.status == '4'}"><span class = "check_deposit_4" style = "color : #fff">적립코드 발급완료</span></c:when>
 								    	<c:when test = "${receipt.status == '5'}"><span class = "check_deposit_5" style = "color : #fff">입금취소 </span></c:when>
 								    	<c:when test = "${receipt.status == '6'}"><span class = "check_deposit_6" style = "color : #fff">처리불가 </span></c:when>
 							    	</c:choose>

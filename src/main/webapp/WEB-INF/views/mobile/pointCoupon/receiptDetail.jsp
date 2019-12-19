@@ -37,7 +37,7 @@ $(document).ready(function(){
 								$(".depositStatus").text("입금확인요청중");
 								$(".depositStatus").css("background-color","#BF00FF");
 							    $("#check_deposit_1").hide();
-							    $(".check_deposit_2").hide();
+							    $("#reqeust_deposit_check").hide();
 							}
 	            		   	alertOpen("알림", result.result.msg, true, false, null, null); 
 		               }else{
@@ -80,20 +80,20 @@ $(document).ready(function(){
 			<ul>
 					<li>
 						<ul>
-							<li class="upload_conbox_text1">결제금액</li>
-							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.payAmount}" pattern="###,###,###,###"/></li>
+							<li class="upload_conbox_text1">결제 금액</li>
+							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.payAmount}" pattern="###,###,###,###"/> 원</li>
 						</ul>
 					</li>
 					<li style="border-top:none;">
 						<ul>
-							<li class="upload_conbox_text1">적립금액</li>
-							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.accPointAmount}" pattern="###,###,###,###"/></li>
+							<li class="upload_conbox_text1">적립  포인트</li>
+							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.accPointAmount}" pattern="###,###,###,###"/> P</li>
 						</ul>
 					</li>
 					<li style="border-top:none;">
 						<ul>
-							<li class="upload_conbox_text1">입금금액</li>
-							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.depositAmount}" pattern="###,###,###,###"/></li>
+							<li class="upload_conbox_text1">입금 금액</li>
+							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.depositAmount}" pattern="###,###,###,###"/> 원</li>
 						</ul>
 					</li>
 					<li style="border-top:none;">
@@ -104,7 +104,7 @@ $(document).ready(function(){
 							    	<c:when test = "${model.receipt.status== '1'}"><span class = "depositStatus" style = "background-color : #DF0101">입급확인중</span></c:when>
 							    	<c:when test = "${model.receipt.status== '2'}"><span class = "depositStatus" style = "background-color : #BF00FF">입금확인 요청중</span></c:when>
 							    	<c:when test = "${model.receipt.status== '3'}"><span class = "depositStatus" style = "background-color : #4000FF">입금확인 완료</span></c:when>
-							    	<c:when test = "${model.receipt.status== '4'}"><span class = "depositStatus" style = "background-color : #04B404">처리완료</span></c:when>
+							    	<c:when test = "${model.receipt.status== '4'}"><span class = "depositStatus" style = "background-color : #04B404">적립코드 발급완료</span></c:when>
 							    	<c:when test = "${model.receipt.status== '5'}"><span class = "depositStatus" style = "background-color : #FF8000">입금취소 </span></c:when>
 							    	<c:when test = "${model.receipt.status == '6'}"><span class = "depositStatus" style = "background-color : #6E6E6E">처리불가  </span></c:when>
 						    	</c:choose>

@@ -66,9 +66,9 @@ $(document).ready(function(){
 			<ul class="pointinfo" style = "width: 80%;margin-top:70px">
 				<input class = "returnp_point_code" type = "hidden"  id = "pointCode" value = "${model.pointCode.pointCode}"/>
 				<li class = "gift_qr_title" style = "padding : 15px 0 ; border-top: none"><span  >적립 코드</span> ${model.pointCode.pointCode}</li>
-				<li class = "gift_qr_title" style = "padding : 15px 0"><span  >기준 금액</span><fmt:formatNumber value="${model.pointCode.payAmount}" pattern="###,###,###,###"/> </li>
+				<li class = "gift_qr_title" style = "padding : 15px 0"><span  >결제 금액</span><fmt:formatNumber value="${model.pointCode.payAmount}" pattern="###,###,###,###"/> 원 </li>
 				<li class = "gift_qr_title" style = "padding : 15px 0"><span  >적립율</span><fmt:formatNumber value="${model.pointCode.accPointRate * 100}" pattern="###,###,###,###"/>%</li>
-				<li class = "gift_qr_title" style = "padding : 15px 0"><span  >적립 포인트</span><fmt:formatNumber value="${model.pointCode.accPointAmount}" pattern="###,###,###,###"/> </li>
+				<li class = "gift_qr_title" style = "padding : 15px 0"><span  >적립 포인트</span><fmt:formatNumber value="${model.pointCode.accPointAmount}" pattern="###,###,###,###"/> P</li>
 				<li class = "gift_qr_title" style = "padding : 15px 0"><span  >적립 타입</span>영수증 업로드 적립</li>
 				<li class = "gift_qr_title" style = "padding : 15px 0"><span  >발급 시기</span>
 					<fmt:parseDate value="${model.pointCode.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss"/>
