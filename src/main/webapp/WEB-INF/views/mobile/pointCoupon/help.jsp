@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/resources/css/m_common.css">
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
+<style>* {font-weight:400}</style>
 </head>
 <body>
 <div class="receipt_explain">
@@ -27,15 +28,15 @@
 		<span>영수증 올리기 버튼 클릭하여 업로드 </span>
 		<div class="receipt_explain_text" style="margin-top:20px;">
 			<p><b>상단 탭 설명</b> </p></br>
-			<p><b>영수증 처리</b></p><p>업로드된 영수증의 처리 상태를 확인할 수 있습니다.</p></br>
-			<p><b>적립 가능</b></p><p>적립가능한 적립 코드 내역을 확인할 수 있습니다.</p></br>
-			<p><b>적립 완료</b></p><p>적립이 완료된 적립 코드 내역을 확인할 수 있습니다.</p>
+			<p><b>영수증 처리</b></p><p>업로드된 영수증의 처리 상태 확인</p></br>
+			<p><b>적립 가능</b></p><p>적립가능한 적립 코드 내역을 확인</p></br>
+			<p><b>적립 완료</b></p><p>적립이 완료된 적립 코드 내역을 확인.</p>
 		</div>
 	</div>
 	<div class="receipt_explain_w">
 		<div class="receipt_explain_img"><img src="/resources/images/receipt_img3.png"></div>
 		<div class="receipt_explain_text">
-			<p>갤러리, 혹은 바로 사진 촬영하여 영수증을 첨부하고,결제 영수증 의 합계와 입금자명을 입력한 후 올리기 버튼을 클릭하면 영수증 업로드가 진행됩니다.</p></br>
+			<p>갤러리, 혹은 바로 사진 촬영하여 영수증을 첨부하고,결제 영수증 의 합계와 입금자명을 입력한 후 올리기 버튼을 클릭하면 영수증 올리기가 진행됩니다.</p></br>
 			<p>결제금액을 입력한 후, 다른 곳을 터치하시면 입금해야 하시는 금액을 확인할 수 있습니다.</p>
 		</div>
 	</div>
