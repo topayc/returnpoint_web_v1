@@ -89,13 +89,13 @@ $(document).ready(function(){
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
-		      		<div class="upload" onclick = "movePage('/m/pointCoupon/uploadReceipt.do')" ><img src="/resources/images/upload.png">&nbsp;일반 영수증 올리기</div>
-		      		<div class="register"><a onclick = "movePage('/m/pointCoupon/help.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div>
+		      		<div class="upload" onclick = "movePage('/m/pointCoupon/uploadReceipt.do')" ><img src="/resources/images/upload.png">&nbsp;비가맹점 영수증 올리기</div>
+		      		<!-- <div class="register"><a onclick = "movePage('/m/pointCoupon/help.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div> -->
 		      	</div>
 		      	<div class="coupon_code1">
 		      		<p>일반 영수증 적립 서비스란</p>
 		      		<span>R 포인트 가맹점에서 사용한 영수증만 적립이 가능한 서비스에서 이제는 R 포인트 개맹점이 아닌 일반 영수증도 결제한 만큼 G 포인트를 100% 적립해 드리는 서비스 입니다.</span>
-		      		<button><img src="/resources/images/receipt_search.png">서비스자세히보기</button>
+		      		<button onclick = "movePage('/m/pointCoupon/help.do')"><img src="/resources/images/receipt_search.png">서비스 자세히 보기</button>
 		      	</div>
 		      	<div class="coupon_code2">
 		      		<p>일반 영수증 적립 방법</p>
