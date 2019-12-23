@@ -905,13 +905,13 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .coupon_contents .coupon_m div:last-child{margin:0;}
 .coupon_contents .coupon_m img{margin-right:7px;}
 .coupon_contents .coupon_code1{margin:6px 5px 3px 5px;padding:0 15px 20px 15px;border-bottom:1px solid #f1f1f1;}
-.coupon_contents .coupon_code1 button{border:none;margin-top:10px;border-radius:20px;color:#fff;background-color:#ea5e38;padding:1.5% 2%;font-size:13px;width:41%;}
+.coupon_contents .coupon_code1 button{border:none;margin-top:20px;border-radius:20px;color:#fff;background-color:#04B431;padding:1.5% 2%;font-size:13px;width:30%;}
 .coupon_contents .coupon_code1 button img{margin-right:3px;}
 .coupon_contents .coupon_code1 .coupon_btn1{text-align:center;}
 .coupon_contents .coupon_code1 p{font-size:15px;font-weight:bold;color:#555;margin:20px 0 7px 0;}
 .coupon_contents .coupon_code1 span{font-size:13px;color:#555;}
 .coupon_contents .coupon_code2{margin:6px 5px 3px 5px;padding:0 15px 20px 15px;border-bottom:1px solid #f1f1f1;}
-.coupon_contents .coupon_code2 p{font-size:15px;font-weight:bold;color:#555;margin:20px 0;}
+.coupon_contents .coupon_code2 p{font-size:15px;font-weight:bold;color:#555;margin:20px 0 10px 0 ;}
 .coupon_contents .coupon_code2 span{font-size:13px;color:#555;}
 .coupon_contents .coupon_code2 div{color:#fff;background-color:#33cccc;font-size:13px;font-weight:400;border-radius:32px;text-align:center;padding:3% 0;margin-bottom:20px;}
 .coupon_contents .coupon_code3{margin:6px 5px 3px 5px;padding:0 15px 20px 15px;border-bottom:1px solid #f1f1f1;}

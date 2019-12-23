@@ -76,11 +76,19 @@ public class MobileController extends MallBaseController {
 		return rmap.getStr("json");
 	}
 	
-	// 포인트 쿠폰 메인 페이지 
+	// 포인트 코드 사용 설명 페이지  
 		@RequestMapping("/pointCoupon/help.do")
 		public String pointCodeHelp(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 				HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 			RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/help");
+			return page(true, map, rmap);
+		}
+		
+		// 포인트 쿠폰 메인 페이지 
+		@RequestMapping("/pointCoupon/help2.do")
+		public String pointCodeHelp2(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+				HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+			RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/help2");
 			return page(true, map, rmap);
 		}
 	
