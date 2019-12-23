@@ -15,10 +15,17 @@
 </head>
 <body>
 <div class="help2_container">
-	<div class="help2_container_wrap">
 		<div class="help2_content">
+			<h3>비가맹점 영수증 처리 규정</h3>
+			<p>[ 업무처리시간 ]</p>
+			<ol>
+				<li style="list-style:decimal;">가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하</li>
+				<li style="list-style:decimal;">b</li>
+				<li style="list-style:decimal;">c</li>
+				<li style="list-style:decimal;">d</li>
+				<li style="list-style:decimal;">e</li>
+			</ol>	
 		</div>
-	</div>
 </div>
 </body>
 </html>
