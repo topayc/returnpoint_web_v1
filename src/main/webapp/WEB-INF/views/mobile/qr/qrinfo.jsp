@@ -63,7 +63,7 @@ $(document).ready(function(){
 						<small>P</small> <spring:message code="label.acc_word" />
 					</c:when>
 					<c:otherwise>
-						<p style = "fonte-weight:800;color: #FF0000;font-size: 14px">
+						<p style = "color: #FF0000;font-size: 14px">
 							<b>${model.paymentRouterName} 밴사의 적립은 현재 중지중입니다. 
 							</br>비가맹점 영수증 적립을 이용해주세요</b>
 						</p>
