@@ -1105,6 +1105,14 @@
 		update point_code_issue_request set status= '2' where pointCodeIssueRequestNo = ${pointCodeIssueRequestNo}
  	</update>
  	
+ 	<select id="selectPaymentRouter" parameterType="HashMap" resultType="HashMap">
+		select * from payment_router 
+		where 1 =1 
+		<if test="paymentRouterNo != null "> AND paymentRouterNo   = #{paymentRouterNo} </if>
+		<if test="paymentRouterType != null "> AND paymentRouterType   = #{paymentRouterType} </if>
+		<if test="paymentRouterName != null "> AND paymentRouterName   = #{paymentRouterName} </if>
+ 	</select>
+
  <insert id="insertPointCodeIssueRequest" parameterType="HashMap" useGeneratedKeys = "true" keyProperty = "pointCodeIssueRequestNo">	
   insert into point_code_issue_request (memberNo, 
       issueType,  payAmount, 

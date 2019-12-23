@@ -449,8 +449,17 @@ public class MobileMainServiceImpl implements MobileMainService {
 			System.out.println(queryParmStr);
 			System.out.println("----------------------------------------------------------------------------------------------------------");*/
 
-			HashMap<String, String> qrParsemap = QRManager.parseQRToMap(queryParmStr);
+			HashMap<String, Object> dbparams2 = new HashMap<String, Object>();
+			dbparams2.put("paymentRouterType", "VAN");
+			dbparams2.put("paymentRouterName", "KICC");
+			HashMap<String, Object> routerMap = mobileMemberDao.selectPaymentRouter(dbparams2);
 			
+			if (!routerMap.get("status").equals("1")) {
+				rmap.put("routerStatus",routerMap.get("status"));
+				rmap.put("routerAccMsg","해당 밴사의 적립은 현재 중지중입니다. </br>불편하시더라도 서비스가 재개될때까지 비가맹점 영수증 적립을 이용해주시기 바랍니다.");
+			}
+			
+			HashMap<String, String> qrParsemap = QRManager.parseQRToMap(queryParmStr);
 			if (qrParsemap == null) {
 				rmap.put("qr_parsing_result", "error");
 				rmap.put("qr_parsing_error_message", "유효하지 않은 QR CODE");
@@ -534,6 +543,16 @@ public class MobileMainServiceImpl implements MobileMainService {
 			//System.out.println("------------------------------commonQrImgView 범용 QR 데이타--------------------------------------");
 			//System.out.println(decode64Qr);
 			//System.out.println("------------------------------------------------------------------------------------------------------------");
+			
+			HashMap<String, Object> dbparams2 = new HashMap<String, Object>();
+			dbparams2.put("paymentRouterType", "VAN");
+			dbparams2.put("paymentRouterName", "KICC");
+			HashMap<String, Object> routerMap = mobileMemberDao.selectPaymentRouter(dbparams2);
+			
+			if (!routerMap.get("status").equals("1")) {
+				rmap.put("routerStatus",((String)routerMap.get("status")).equals("2"));
+				rmap.put("routerAccMsg","해당 밴사의 적립은 현재 중지중입니다. </br>불편하시더라도 서비스가 재개될때까지 비가맹점 영수증 적립을 이용해주시기 바랍니다.");
+			}
 			
 			URL url = new URL(decode64Qr);
 			String queryParmStr = url.getQuery();

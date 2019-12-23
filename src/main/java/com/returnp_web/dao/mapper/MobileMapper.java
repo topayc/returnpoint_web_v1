@@ -584,4 +584,7 @@ public interface MobileMapper {
 
 	int updatePointCodeIssueRequest(RPMap dbparams);
 
+
+	HashMap<String, Object> selectPaymentRouter(HashMap<String, Object> dbparams2);
+
 }

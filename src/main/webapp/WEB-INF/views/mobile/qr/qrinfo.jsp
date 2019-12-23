@@ -57,7 +57,18 @@ $(document).ready(function(){
 		<div class="page point qrinfo">
 			<div class="qrimg"><img src="${model.qrAccessUrl}"></div>
 			<div class="listpoint">
-				<span id = "accPoint" style = "font-weight: 500;font-size : 40px"></span></br><small>P</small> <spring:message code="label.acc_word" />
+				<span id = "accPoint" style = "font-weight: 500;font-size : 40px"></span></br>
+				<c:choose>
+					<c:when test="${model.routerStatus == '1'}">
+						<small>P</small> <spring:message code="label.acc_word" />
+					</c:when>
+					<c:otherwise>
+						<p style = "fonte-weight:800;color: #FF0000;font-size: 14px">
+							<b>${model.paymentRouterName} 밴사의 적립은 현재 중지중입니다. 
+							</br>비가맹점 영수증 적립을 이용해주세요</b>
+						</p>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<ul class="pointinfo">
 				<input type = "hidden" class = "returnp_qr"  id ="qr_org"  value = "${model.qr_org}" />
@@ -85,8 +96,10 @@ $(document).ready(function(){
 			</ul>	
 		</div>			
 		<div class="btns2">
-			<button type="button" class="btn btn-submit" onclick = "startPointBack()"><spring:message code="label.ok" /></button>
+			<c:if test = "${model.routerStatus == '1'}">
+				<button type="button" class="btn btn-submit" onclick = "startPointBack()"><spring:message code="label.ok" /></button>
 			<button type="button" class="btn btn-submit-cancel"  onclick = "history.back()"><spring:message code="label.cancel" /></button>
+			</c:if>
 		</div>
 	</section>
 	</c:when>
@@ -94,8 +107,8 @@ $(document).ready(function(){
 	<section class="qr_nodata"><!-- 0824 -->
 		<div> 
 			<i class="fas fa-exclamation-triangle"></i>${model.qr_parsing_error_message}
+			<button type="button" class="btn btn-submit"  onclick = "history.back()"><spring:message code="label.cancel" /></button>
 		</div>
-		<button type="button" class="btn btn-submit"  onclick = "history.back()"><spring:message code="label.cancel" /></button>
 	</section>	
 	</c:otherwise>
 	</c:choose>
