@@ -449,15 +449,6 @@ public class MobileMainServiceImpl implements MobileMainService {
 			System.out.println(queryParmStr);
 			System.out.println("----------------------------------------------------------------------------------------------------------");*/
 
-			HashMap<String, Object> dbparams2 = new HashMap<String, Object>();
-			dbparams2.put("paymentRouterType", "VAN");
-			dbparams2.put("paymentRouterName", "KICC");
-			HashMap<String, Object> routerMap = mobileMemberDao.selectPaymentRouter(dbparams2);
-			
-			if (!routerMap.get("status").equals("1")) {
-				rmap.put("routerStatus",routerMap.get("status"));
-				rmap.put("routerAccMsg","해당 밴사의 적립은 현재 중지중입니다. </br>불편하시더라도 서비스가 재개될때까지 비가맹점 영수증 적립을 이용해주시기 바랍니다.");
-			}
 			
 			HashMap<String, String> qrParsemap = QRManager.parseQRToMap(queryParmStr);
 			if (qrParsemap == null) {
@@ -504,6 +495,13 @@ public class MobileMainServiceImpl implements MobileMainService {
 					float qramountAcc = (amountAccumulated * customerComm);
 					rmap.put("qramountAcc", qramountAcc);
 					
+					/*밴사 상태 조회 */
+					HashMap<String, Object> dbparams2 = new HashMap<String, Object>();
+					dbparams2.put("paymentRouterType", "VAN");
+					dbparams2.put("paymentRouterName", "KICC");
+					HashMap<String, Object> routerMap = mobileMemberDao.selectPaymentRouter(dbparams2);
+					rmap.put("routerMap", routerMap);
+					
 					/* 기존 적립 키 정보 삭제 */
 					String accKeyName = (String)request.getSession().getAttribute("accKeyName");
 					if (accKeyName != null) {
@@ -540,20 +538,6 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 		try {
 			decode64Qr = BASE64Util.decodeString(p.getStr("qr_data"));
-			//System.out.println("------------------------------commonQrImgView 범용 QR 데이타--------------------------------------");
-			//System.out.println(decode64Qr);
-			//System.out.println("------------------------------------------------------------------------------------------------------------");
-			
-			HashMap<String, Object> dbparams2 = new HashMap<String, Object>();
-			dbparams2.put("paymentRouterType", "VAN");
-			dbparams2.put("paymentRouterName", "KICC");
-			HashMap<String, Object> routerMap = mobileMemberDao.selectPaymentRouter(dbparams2);
-			
-			if (!routerMap.get("status").equals("1")) {
-				rmap.put("routerStatus",((String)routerMap.get("status")).equals("2"));
-				rmap.put("routerAccMsg","해당 밴사의 적립은 현재 중지중입니다. </br>불편하시더라도 서비스가 재개될때까지 비가맹점 영수증 적립을 이용해주시기 바랍니다.");
-			}
-			
 			URL url = new URL(decode64Qr);
 			String queryParmStr = url.getQuery();
 			HashMap<String, String> qrParsemap = QRManager.parseCommonQRToMap(queryParmStr);
@@ -604,6 +588,14 @@ public class MobileMainServiceImpl implements MobileMainService {
 					//System.out.println("customerComm::" + customerComm);
 					float qramountAcc = (amountAccumulated * customerComm);
 					rmap.put("qramountAcc", qramountAcc);
+					
+					/*밴사 상태 조회 */
+					HashMap<String, Object> dbparams2 = new HashMap<String, Object>();
+					dbparams2.put("paymentRouterType", "VAN");
+					dbparams2.put("paymentRouterName", qrParsemap.get("paymentRouterName"));
+					HashMap<String, Object> routerMap = mobileMemberDao.selectPaymentRouter(dbparams2);
+					/*System.out.println("Router Status " + routerMap.get("status"));*/
+					rmap.put("routerMap", routerMap);
 					
 					/* 기존 적립 키 정보 삭제 */
 					String accKeyName = (String)request.getSession().getAttribute("accKeyName");

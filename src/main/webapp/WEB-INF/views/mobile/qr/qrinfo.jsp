@@ -59,13 +59,15 @@ $(document).ready(function(){
 			<div class="listpoint">
 				<span id = "accPoint" style = "font-weight: 500;font-size : 40px"></span></br>
 				<c:choose>
-					<c:when test="${model.routerStatus == '1'}">
+					<c:when test="${model.routerMap.status == '1'}">
 						<small>P</small> <spring:message code="label.acc_word" />
 					</c:when>
 					<c:otherwise>
-						<p style = "color: #FF0000;font-size: 14px">
-							<b>${model.paymentRouterName} 밴사의 적립은 현재 중지중입니다.</br>비가맹점 영수증 적립을 이용해주세요</b> 
+					<div class="qr_kicc">
+						<p class = "text">
+							${model.paymentRouterName} 밴사의 적립은 현재 중지중입니다.</br>비가맹점 영수증 적립을 이용해주세요
 						</p>
+					</div>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -95,7 +97,7 @@ $(document).ready(function(){
 			</ul>	
 		</div>			
 		<div class="btns2">
-			<c:if test = "${model.routerStatus == '1'}">
+			<c:if test = "${model.routerMap.status == '1'}">
 				<button type="button" class="btn btn-submit" onclick = "startPointBack()"><spring:message code="label.ok" /></button>
 			<button type="button" class="btn btn-submit-cancel"  onclick = "history.back()"><spring:message code="label.cancel" /></button>
 			</c:if>
