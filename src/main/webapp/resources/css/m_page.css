@@ -1057,4 +1057,4 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 
 /*kicc밴사 적립 중지*/
 .qr_kicc{height: 100%;position: fixed;width: 100%; top: 52px; background-color: rgba(0,0,0,0.7); z-index: 10;}
-.qr_kicc .text{color: #fff;border: 1px solid #fff;padding: 4%;top: 45%;position: fixed;left: 14%;border-radius: 25px;font-size:15px;font-weight:300}
+.qr_kicc .text{color: #ddd;border: 1px solid #888;padding: 4%;top: 43%;position: fixed;left: 13%;border-radius: 25px;font-size:15px;font-weight:300;width: 75%;background-color : rgba(40,40,40,0.6)}
