@@ -65,7 +65,7 @@ $(document).ready(function(){
 					<c:otherwise>
 					<div class="qr_kicc">
 						<p class = "text">
-							${model.paymentRouterName} 밴사의 적립은 현재 중지중입니다.</br>비가맹점 영수증 적립을 이용해주세요
+							${model.paymentRouterName} 밴사의 적립은 현재 중지중입니다. </br>비가맹점 영수증 적립을 이용해주세요
 						</p>
 					</div>
 					</c:otherwise>

@@ -551,7 +551,6 @@ function startGiftCardProcess(cmd, giftCardStatus, accableStatus, payableStatus)
 		qrParams["memberName"] = data.user_name;
 		qrParams["memberPhone"] = data.phoneNumber;
 		qrParams["memberPhoneCountry"]  = data.phoneNumberCountry;
-		qrParams["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
 		var sendQrData = encodeURIComponent(btoa(JSON.stringify(qrParams)));
 	
 		var  giftCardQrControlUrl = window.location.protocol + "//" + window.location.host + "/m/mypage/m_gift_card_command.do";
@@ -645,7 +644,6 @@ function accPointCode(){
 			param["memberName"] = data.user_name;
 			param["phoneNumber"] = data.phoneNumber;
 			param["phoneNumberCountry"]  = data.phoneNumberCountry;
-			param["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
 			param["status"]  = "0";
 			
 			for (key in param){
@@ -654,7 +652,6 @@ function accPointCode(){
 				}
 			}
 			
-			console.log(param);
 			$("#progress_loading2").show();
 			var url = window.location.protocol + "//" + window.location.host + "/m/pointCode/accPointCode.do";
  			$.ajax({
@@ -721,14 +718,12 @@ function accPointCoupon(){
 			param["memberName"] = data.user_name;
 			param["phoneNumber"] = data.phoneNumber;
 			param["phoneNumberCountry"]  = data.phoneNumberCountry;
-			param["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
 			param["status"]  = "0";
 			for (key in param){
 				if (param.hasOwnProperty(key)) {
 					param[key] = encodeURIComponent(param[key]);
 				}
 			}
-			console.log(param);
 			var url = window.location.protocol + "//" + window.location.host + "/m/coupon/acc_point_coupon.do";
  			$.ajax({
 	           	type: "POST",
@@ -814,8 +809,6 @@ function startPointBack(){
 			param["memberName"] = data.user_name;
 			param["phoneNumber"] = data.phoneNumber;
 			param["phoneNumberCountry"]  = data.phoneNumberCountry;
-			param["key"]  = "AIzaSyB-bv2uR929DOUO8vqMTkjLI_E6QCDofb8";
-			//console.log(param["phoneNumber"] + "</br>" + param["phoneNumberCountry"]);
 			for (key in param){
 				if (param.hasOwnProperty(key)) {
 					param[key] = encodeURIComponent(param[key]);
@@ -1005,7 +998,6 @@ function startQRScan(){
 
 function accumulateGiftCardQr(data){
 	var data  = encodeURIComponent(data);
-	console.log(data);
 	qrInfoUrl = window.location.protocol + "//" + window.location.host + "/m//qr/giftcard_qrinfo.do?qr_data=" + data;
 	webview_redirect(qrInfoUrl);
 }

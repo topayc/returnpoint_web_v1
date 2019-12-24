@@ -752,6 +752,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		StringBuffer response2 = null;
 		
 		try {
+			p.put("key", key.split(",")[0]);
 			URL url = new URL(remoteCallURL + "?" + Util.mapToQueryParam(p));
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setDoInput(true);
@@ -836,6 +837,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		StringBuffer response2 = null;
 		
 		try {
+			p.put("key", key.split(",")[0]);
 			URL url = new URL(remoteCallURL + "?" + Util.mapToQueryParam(p));
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setDoInput(true);
@@ -1474,6 +1476,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		String key = environment.getProperty("key");
 		StringBuffer response2 = null;
 		try {
+			p.put("key", key.split(",")[0]);
 			URL url = new URL(remoteCallURL + "?" + Util.mapToQueryParam(p));
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setDoInput(true);
@@ -1730,6 +1733,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		String key = environment.getProperty("key");
 		StringBuffer response2 = null;
 		try {
+			p.put("key", key.split(",")[0]);
 			URL url = new URL(remoteCallURL + "?" + Util.mapToQueryParam(p));
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setDoInput(true);

@@ -1025,7 +1025,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 	 position: absolute;
 	 left: 43%;
 	 top: 44%;
-	 padding : 5px 5px;
+	 padding : 5px 5px; 
 	 background: rgba(255,255,255,0);
 	 z-index : 1000
 	}
@@ -1056,5 +1056,5 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .help2_container .help2_content > ol > li{width:95%;font-size:14px;color:#777;margin-bottom:10px;}
 
 /*kicc밴사 적립 중지*/
-.qr_kicc{height: 100%;position: fixed;width: 100%; top: 52px; background-color: rgba(0,0,0,0.6); z-index: 10;}
-.qr_kicc .text{color: #fff;border: 1px solid #fff;padding: 4%;top: 45%;position: fixed;left: 14%;border-radius: 25px;font-size:15px;font-weight:400}
+.qr_kicc{height: 100%;position: fixed;width: 100%; top: 52px; background-color: rgba(0,0,0,0.7); z-index: 10;}
+.qr_kicc .text{color: #fff;border: 1px solid #fff;padding: 4%;top: 45%;position: fixed;left: 14%;border-radius: 25px;font-size:15px;font-weight:300}
