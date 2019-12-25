@@ -963,9 +963,9 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .upload_receipt .bg_img img{width:100%;height:100%;}
 .upload_receipt .upload_conbox{padding:5%;}
 .upload_receipt .upload_conbox p{color:#555; font-size:13px;}
-.upload_receipt .upload_conbox input{width:100%;padding:3% 2%;font-size:13px;color:#555;margin-top:10px;border:1px solid #ccc;margin-bottom:15px;}
+.upload_receipt .upload_conbox input{width:100%;padding:3% 2%;font-size:13px;color:#999;margin-top:10px;border:1px solid #999;margin-bottom:15px;}
 .upload_receipt .upload_conbox div .upload_conbox_p{border:1px solid #ccc;padding:2%;text-align:center;background-color:#f7f7f7;}
-.upload_receipt .upload_conbox button{float:left;width:50%;border:1px solid #ccc;background-color:#eee;padding:2.5% 0;color:#777;font-size:14px;}
+.upload_receipt .upload_conbox button{float:left;width:50%;border:1px solid #aaa;background-color:#eee;padding:2.5% 0;color:#555;font-size:14px;}
 .upload_receipt .upload_conbox button:active {background-color:#33cccc;border:1px solid #33cccc;color : #fff;}
 .upload_receipt .upload_conbox .push_select{background-color:#33cccc;color:#fff;border:1px solid #33cccc;}
 .upload_receipt .upload_text{width:100%;margin-top:10px;color:#666;}
@@ -1057,4 +1057,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 
 /*kicc밴사 적립 중지*/
 .qr_kicc{height: 100%;position: fixed;width: 100%; top: 52px; background-color: rgba(0,0,0,0.7); z-index: 10;}
-.qr_kicc .text{color: #ddd;border: 1px solid #888;padding: 4%;top: 43%;position: fixed;left: 13%;border-radius: 25px;font-size:15px;font-weight:300;width: 75%;background-color : rgba(40,40,40,0.6)}
+.qr_kicc .text{color: #ddd;border: 1px solid #888;padding: 4%;top: 43%;position: fixed;left: 13%;border-radius: 25px;font-size:15px;font-weight:300;width: 75%;background-color : rgba(30,30,30,0.6);}
+.upload_type_1 {padding:10px;width:50%;border: 1px solid #333;float: left;border-right:none;text-align:center}
+.upload_type_2 {padding:10px;width:50%;border: 1px solid #333;float: left;text-align:center}
+.upload_type_select{background-color : #333; color : #fff;border: 1px solid #333;}

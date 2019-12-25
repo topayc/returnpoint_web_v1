@@ -27,12 +27,15 @@ $(document).ready(function(){
 	$("#sel1").val(pageContextlocale);
 	
 	/* alert(getParams()['uploadMethod']); */
-	$("#payAmount").blur(function(){
+	$("#payAmount").on("propertychange change keyup paste input", function() {
 		
 		var payAmount = $(this).val().trim();
-		if (!$.isNumeric(payAmount)) {
-			alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
-			return false;
+		if (payAmount.lenght > 1) {
+			if (!$.isNumeric(payAmount)) {
+				alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
+				$(this).val("");
+		}
+			
 		}
 		payAmount = parseInt(payAmount);
 		$(".upload_conbox_p").text( $.number(Math.round(payAmount * 0.15)) + ' 원');
@@ -49,6 +52,12 @@ $(document).ready(function(){
 	$("#selectCameraImage").click(function(){
 		selectCameraImage();
 	})
+	
+	$(".upload_type").click(function(){
+		$(".upload_type").removeClass('upload_type_select');
+		$(this).addClass('upload_type_select');
+	});
+	
 	$("#receipt_submit").click(function(){
 		var data = {
 			receiptFile : $('#receiptFile').val().trim(),
@@ -132,8 +141,18 @@ $(document).ready(function(){
 							<img id = "receipt_img"  >
 					</div>
 				</div> 
-			
-				<p style = "font-weight:550;margin-top:20px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
+				
+				<p style = "font-weight:550;margin-top:20px">매출 타입을 선택해주세요</p>
+				<ul style = "font-size : 12px; color : #777">
+					<li>- 가맹점 선택 : 기존 QR 적립절차와 동일하게 진행</li>
+					<li>- 일반 소비자 선택 : 본인과 2대까지 적립</li>
+				</ul>
+				<div style = "margin-top:10px;margin-bottom:20px">
+					<div class = "upload_type upload_type_1 upload_type_select"> 가맹점 </div>
+					<div class = "upload_type upload_type_2"> 일반 소비자</div>
+				</div>
+				
+				<p style = "font-weight:550;margin-top:75px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
 				<input type="number"  name = "payAmount" id = "payAmount"" style = "font-size:15px" / >
 				<input type = "hidden" name = "receiptFile" id = "receiptFile" />
 				<input type = "hidden" name= "accPointAmount" id = "accPointAmount" />
@@ -145,12 +164,12 @@ $(document).ready(function(){
 				
 				<div style = "margin-top:10px">
 				<p style = "font-weight:550">적립 받을 포인트(100%) </p>
-				<p class="upload_conbox_p accPoint" style = "background-color : #eee; border:1px solid #ccc;color : #555;margin-top:10px;font-size : 16px;font-weight:400;">&nbsp;</p>
+				<p class="upload_conbox_p accPoint" style = "background-color : #eee; border:1px solid #888;color : #000;margin-top:10px;font-size : 16px;font-weight:400;">&nbsp;0 원</p>
 				</div>
 			
 				<div style = "margin-top:20px">
 					<p style = "font-weight:550">회원님이 입금하셔야 할 금액(결제금액의 15%)</p>
-					<p class="upload_conbox_p" style = "background-color : #eee; border:1px solid #ccc;color : #555;margin-top:10px;font-size : 16px;font-weight:400;">&nbsp;</p>
+					<p class="upload_conbox_p" style = "background-color : #eee; border:1px solid #888;color : #000;margin-top:10px;font-size : 16px;font-weight:400;">&nbsp;0 원</p>
 				</div>
 							
 				<p style = "margin-top:20px;font-weight:550">15% 금액 입금 계좌</p>
