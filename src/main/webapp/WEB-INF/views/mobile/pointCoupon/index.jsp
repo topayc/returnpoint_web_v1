@@ -52,8 +52,8 @@ $(document).ready(function(){
 		<div class="box">
 			<div class="popup_top">영수증 업로드 방법을 선택해주세요.<img src="/resources/images/close.png"></div>
 			<div class="popup_box">
-				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?uploadMethod=file')" class="popup_img_box" style="margin-right:2%;"><img src="/resources/images/popup_file.png"><p>파일에서 올리기</p></div>
-				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?uploadMethod=camera')" class="popup_img_box"><img src="/resources/images/popup_camera.png"><p>사진찍어 올리기</p></div>
+				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=1')" class="popup_img_box" style="margin-right:2%;"><img src="/resources/images/popup_file.png"><p>파일에서 올리기</p></div>
+				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=2')" class="popup_img_box"><img src="/resources/images/popup_camera.png"><p>사진찍어 올리기</p></div>
 			</div>
 		</div>
 	</div>
@@ -89,7 +89,7 @@ $(document).ready(function(){
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
-		      		<div class="upload" onclick = "movePage('/m/pointCoupon/uploadReceipt.do')" ><img src="/resources/images/upload.png">&nbsp;비가맹점 영수증 올리기</div>
+		      		<div class="upload"  ><img src="/resources/images/upload.png">&nbsp;비가맹점 영수증 올리기</div>
 		      		<!-- <div class="register"><a onclick = "movePage('/m/pointCoupon/help.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div> -->
 		      	</div>
 		      	<div class="coupon_code1">
@@ -243,12 +243,12 @@ $(document).ready(function(){
 	   return false;
 	});
 	
-/* 	$(".coupon_m .upload").click(function(){
+$(".coupon_m .upload").click(function(){
 		$("#popup").addClass("active");
 		});
 		$("#popup img").click(function(){
 		$("#popup").removeClass("active");
-		}); */
+		}); 
 	
 	</script>
 </body>
