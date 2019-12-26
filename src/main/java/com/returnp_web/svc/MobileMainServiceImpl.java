@@ -1658,12 +1658,19 @@ public class MobileMainServiceImpl implements MobileMainService {
 			
 			/*point_code_issue_request */
 			dbparams.put("memberNo",sm.getMemberNo());
-			dbparams.put("issueType","1");
+			dbparams.put("issueType",paramMap.get("issueType"));
+			
+			if (paramMap.containsKey("affiliateNo") && paramMap.getStr("affiliateNo").trim().length() > 0  && !paramMap.getStr("affiliateNo").trim().equals("") && paramMap.getStr("affiliateNo") != null) {
+				dbparams.put("affiliateNo",paramMap.get("affiliateNo"));
+			}
+			
 			dbparams.put("payAmount",paramMap.getInt("payAmount"));
 			dbparams.put("accPointRate",1);
 			dbparams.put("accPointAmount",paramMap.getInt("payAmount"));
-			dbparams.put("accTargetRange","2");
+			dbparams.put("accTargetRange",paramMap.get("accTargetRange"));
+			
 			dbparams.put("depositAmount",Math.round(paramMap.getInt("payAmount") *  0.15));
+			dbparams.put("depositBankAccount",paramMap.getStr("depositBankAccount"));
 			dbparams.put("depositRate",0.15);
 			dbparams.put("status","1");
 			dbparams.put("publisher",sm.getMemberNo());

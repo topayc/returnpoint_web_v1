@@ -62,11 +62,13 @@ $(document).ready(function(){
 		var data = {
 				receiptFile : $('#receiptFile').val().trim(),
 				payAmount : $('#payAmount').val().trim(),
+				depositor: $('#depositor').val().trim(),
 				accPointAmount : $('#accPointAmount').val().trim(),
 				depositAmount : $('#depositAmount').val().trim().replace(",",""),
 				depositBankAccount : $('#depositBankAccount').val().trim(),
-				depositor: $('#depositor').val().trim(),
-				receiptType: $('#receiptType').val().trim()
+				accTargetRange: $('#accTargetRange').val().trim(),
+				issueType: $('#issueType').val().trim()
+				
 				
 			};
 			
@@ -77,7 +79,8 @@ $(document).ready(function(){
 				depositAmount : "적립 금액",
 				depositor : "입금자",
 				receiptFile : "영수증"	,
-				receiptType : "영수증타입"	
+				accTargetRange : "적립 대상 범위 "	,
+				issueType : "발행 타입 "	
 			}
 		
 		for (var prop in data){
@@ -160,7 +163,8 @@ $(document).ready(function(){
 				<input type = "hidden" name= "accPointAmount" id = "accPointAmount" />
 				<input type = "hidden" name= "depositBankAccount" id = "depositBankAccount" value = "국민은행:10000-11111:안영철"/>
 				<input type = "hidden" name= "depositAmount" id = "depositAmount"  />
-				<input type = "hidden" name= "receiptType" id = "2"  />
+				<input type = "hidden" name= "issueType" id = "issueType"   value = "2"/>
+				<input type = "hidden" name= "accTargetRange" id = "accTargetRange"  value = "3"/> <!-- 본인, 1대, 2대 적립 발행 -->
 						
 				<p style = "margin-top:5px;font-weight:550">입금자명</p>
 				<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px" value = "${model.memberInfo.memberName}"/>

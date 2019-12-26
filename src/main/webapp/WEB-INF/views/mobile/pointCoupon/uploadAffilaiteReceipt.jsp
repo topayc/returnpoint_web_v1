@@ -88,12 +88,14 @@ $(document).ready(function(){
 	$("#receipt_submit").click(function(){
 		var data = {
 			receiptFile : $('#receiptFile').val().trim(),
+			affiliateNo: $('#affiliateNo').val().trim(),
 			payAmount : $('#payAmount').val().trim(),
+			depositor: $('#depositor').val().trim(),
 			accPointAmount : $('#accPointAmount').val().trim(),
 			depositAmount : $('#depositAmount').val().trim().replace(",",""),
 			depositBankAccount : $('#depositBankAccount').val().trim(),
-			depositor: $('#depositor').val().trim(),
-			receiptType: $('#receiptType').val().trim()
+			accTargetRange: $('#accTargetRange').val().trim(),
+			issueType: $('#issueType').val().trim(),
 			
 		};
 		
@@ -104,11 +106,17 @@ $(document).ready(function(){
 			depositAmount : "적립 금액",
 			depositor : "입금자",
 			receiptFile : "영수증"	,
-			receiptType : "영수증타입"	
+			accTargetRange : "적립 대상 범위 "	,
+			affiliateNo : "가맹점 선택",
+			issueType : "발행 타입"
 		}
-		
+		console.log(data);
 		for (var prop in data){
 			if (data.hasOwnProperty(prop)) {
+				if (prop == "affiliateNo" &&   data[prop] == '0' ){
+					alertOpen("알림", nameMapper[prop]  + "을 하지 않으셨습니다", true, false, null, null); 
+					return;
+				}
 				if (data[prop] == '' || data[prop].length < 1) {
 					var message = prop == "receiptFile" ? " 파일이 등록되지 않았습니다.</br>갤러리와 카메라로 영수증 파일을 등록할 수 있습니다. ": " 항목이 입력되지 않았습니다.";
 					alertOpen("알림", nameMapper[prop] + message, true, false, null, null); 
@@ -185,7 +193,7 @@ $(document).ready(function(){
 				<ul style = "font-size : 12px; color : #777">
 					<li>가맹점 영수증 등록시에는 해당 가맹점을 선택해야 합니다.</li>
 					<li>
-						<select class="receipt_form">
+						<select class="receipt_form" id = "affiliateNo">
 	                      <option value="0">가맹점을 선택해주세요</option> 
 	                      <c:forEach var="affiliate" items="${model.affilaitesList}" varStatus="status">
 						   	<option value="${affiliate.affiliateNo}" ><strong>${affiliate.affiliateName}</strong></option>
@@ -200,7 +208,8 @@ $(document).ready(function(){
 				<input type = "hidden" name= "accPointAmount" id = "accPointAmount" />
 				<input type = "hidden" name= "depositBankAccount" id = "depositBankAccount" value = "국민은행:10000-11111:안영철"/>
 				<input type = "hidden" name= "depositAmount" id = "depositAmount"  />
-				<input type = "hidden" name= "receiptType" id = "2"  />
+				<input type = "hidden" name= "issueType" id = "issueType"   value = "1"/>
+				<input type = "hidden" name= "accTargetRange" id = "accTargetRange"  value = "10" /> <!-- 일반 QR 적립 범위  -->
 						
 				<p style = "margin-top:5px;font-weight:550">입금자명</p>
 				<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px" value = "${model.memberInfo.memberName}"/>

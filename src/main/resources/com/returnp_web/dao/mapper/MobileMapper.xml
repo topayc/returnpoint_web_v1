@@ -1120,13 +1120,16 @@
       depositAmount, depositRate, 
       uploadFile, depositBankAccount, status, 
       publisher, 
+      affiliateNo,
       createTime, updateTime)
     values (#{memberNo,jdbcType=INTEGER}, 
       #{issueType,jdbcType=VARCHAR},  #{payAmount,jdbcType=INTEGER}, 
       #{accPointRate,jdbcType=REAL}, #{accPointAmount,jdbcType=REAL}, #{accTargetRange,jdbcType=VARCHAR}, 
       #{depositAmount,jdbcType=REAL}, #{depositRate,jdbcType=REAL}, 
       #{uploadFile,jdbcType=VARCHAR}, #{depositBankAccount,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{publisher,jdbcType=VARCHAR}, NOW(), NOW())
+      #{publisher,jdbcType=VARCHAR}, 
+      #{affiliateNo,jdbcType=INTEGER}, 
+      NOW(), NOW())
 		
     <selectKey keyProperty="insertPointCodeIssueRequest" resultType="java.lang.Integer" order ="AFTER">
 		    SELECT LAST_INSERT_ID()
