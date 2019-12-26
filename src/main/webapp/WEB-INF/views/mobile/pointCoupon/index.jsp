@@ -57,7 +57,7 @@ $(document).ready(function(){
 					<div class="popup_box2">
 						<ul onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=1')">
 							<li class="popup_box2_text1">가맹점 영수증 올리기</li>
-							<li class="popup_box2_text2">가맹점 영수증의 경우 기존 QR 스캔 절차와 동일한 방식으로 포인트가 적립됩</li>
+							<li class="popup_box2_text2">가맹점 영수증의 경우 기존 QR 스캔 절차와 동일한 방식으로 포인트가 적립</li>
 						</ul>
 					</div>
 				</div>

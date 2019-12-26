@@ -60,23 +60,25 @@ $(document).ready(function(){
 	
 	$("#receipt_submit").click(function(){
 		var data = {
-			receiptFile : $('#receiptFile').val().trim(),
-			payAmount : $('#payAmount').val().trim(),
-			accPointAmount : $('#accPointAmount').val().trim(),
-			depositAmount : $('#depositAmount').val().trim().replace(",",""),
-			depositBankAccount : $('#depositBankAccount').val().trim(),
-			depositor: $('#depositor').val().trim()
+				receiptFile : $('#receiptFile').val().trim(),
+				payAmount : $('#payAmount').val().trim(),
+				accPointAmount : $('#accPointAmount').val().trim(),
+				depositAmount : $('#depositAmount').val().trim().replace(",",""),
+				depositBankAccount : $('#depositBankAccount').val().trim(),
+				depositor: $('#depositor').val().trim(),
+				receiptType: $('#receiptType').val().trim()
+				
+			};
 			
-		};
-		
-		var nameMapper = {
-			payAmount : "결제 금액",
-			depositBankAccount : "입금 은행 정보",
-			accPointAmount : "적립 금액",
-			depositAmount : "적립 금액",
-			depositor : "입금자",
-			receiptFile : "영수증"	
-		}
+			var nameMapper = {
+				payAmount : "결제 금액",
+				depositBankAccount : "입금 은행 정보",
+				accPointAmount : "적립 금액",
+				depositAmount : "적립 금액",
+				depositor : "입금자",
+				receiptFile : "영수증"	,
+				receiptType : "영수증타입"	
+			}
 		
 		for (var prop in data){
 			if (data.hasOwnProperty(prop)) {
@@ -158,6 +160,7 @@ $(document).ready(function(){
 				<input type = "hidden" name= "accPointAmount" id = "accPointAmount" />
 				<input type = "hidden" name= "depositBankAccount" id = "depositBankAccount" value = "국민은행:10000-11111:안영철"/>
 				<input type = "hidden" name= "depositAmount" id = "depositAmount"  />
+				<input type = "hidden" name= "receiptType" id = "2"  />
 						
 				<p style = "margin-top:5px;font-weight:550">입금자명</p>
 				<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px" value = "${model.memberInfo.memberName}"/>

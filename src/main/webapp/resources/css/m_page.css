@@ -952,7 +952,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 #popup .popup_top{color:#fff;padding:3%;background-color:#33cccc;}
 #popup .popup_top img{float:right;}
 #popup .popup_box{overflow:hidden;padding:3%;}
-#popup .popup_box .popup_img_box{overflow:hidden;width:100%;padding:5% 2% 5% 2%;border:1px solid #ddd;}
+#popup .popup_box .popup_img_box{overflow:hidden;width:100%;padding:5% 5% 5% 5%;border:1px solid #ddd;}
 #popup .popup_box .popup_img_box:active{background-color: #f1f1f1}
 #popup .popup_box .popup_img_box .popup_box1{float:left;width:20%;background-color:#33cccc;border-radius:50%;color:#fff;padding:7% 0;text-align:center;font-weight:bold;box-shadow:0px 0px 1px 5px #f1f1f1;}
 #popup .popup_box .popup_img_box .popup_box2{float:right;width:75%;}

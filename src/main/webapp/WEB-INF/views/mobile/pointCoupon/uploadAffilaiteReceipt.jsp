@@ -16,11 +16,14 @@
 <!-- css   -->
 <!-- font -->
 <link rel="stylesheet" href="/resources/css/m_common.css">
+<link rel="stylesheet" href="/resources/css/jquery-ui.css">
 <!-- js -->
 <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery-number.js"></script>
+
+<script type="text/javascript" src="/resources/js/lib/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
@@ -45,6 +48,30 @@ $(document).ready(function(){
 		$('#accPointAmount').val(payAmount);
 	})
 
+	var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
 	$("#selectPhoneImage").click(function(){
 		selectImage();
 	})
@@ -65,7 +92,8 @@ $(document).ready(function(){
 			accPointAmount : $('#accPointAmount').val().trim(),
 			depositAmount : $('#depositAmount').val().trim().replace(",",""),
 			depositBankAccount : $('#depositBankAccount').val().trim(),
-			depositor: $('#depositor').val().trim()
+			depositor: $('#depositor').val().trim(),
+			receiptType: $('#receiptType').val().trim()
 			
 		};
 		
@@ -75,7 +103,8 @@ $(document).ready(function(){
 			accPointAmount : "적립 금액",
 			depositAmount : "적립 금액",
 			depositor : "입금자",
-			receiptFile : "영수증"	
+			receiptFile : "영수증"	,
+			receiptType : "영수증타입"	
 		}
 		
 		for (var prop in data){
@@ -114,7 +143,7 @@ $(document).ready(function(){
 	               dataType: 'json'
 	       });
 	})
-
+	
 	$("#cancel").click(function(){history.go(-1); });
 });
 </script>
@@ -152,12 +181,18 @@ $(document).ready(function(){
 					<div class = "upload_type upload_type_2"> 일반 소비자</div>
 				</div> -->
 				
+				<p style = "font-weight:550;margin-top:22px;font-size: 13px" >가맹점 선택</p>
+				<ul style = "font-size : 12px; color : #777">
+					<li>가맹점 영수증 등록시에는 해당 가맹점을 선택해야 합니다.</li>
+				</ul>
+				
 				<p style = "font-weight:550;margin-top:22px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
 				<input type="number"  name = "payAmount" id = "payAmount"" style = "font-size:15px" / >
 				<input type = "hidden" name = "receiptFile" id = "receiptFile" />
 				<input type = "hidden" name= "accPointAmount" id = "accPointAmount" />
 				<input type = "hidden" name= "depositBankAccount" id = "depositBankAccount" value = "국민은행:10000-11111:안영철"/>
 				<input type = "hidden" name= "depositAmount" id = "depositAmount"  />
+				<input type = "hidden" name= "receiptType" id = "2"  />
 						
 				<p style = "margin-top:5px;font-weight:550">입금자명</p>
 				<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px" value = "${model.memberInfo.memberName}"/>
