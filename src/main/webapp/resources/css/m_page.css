@@ -951,12 +951,12 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 #popup.active{display:block;opacity:1;}
 #popup .popup_top{color:#fff;padding:3%;background-color:#33cccc;}
 #popup .popup_top img{float:right;}
-#popup .popup_box{overflow:hidden;padding:2%;}
-#popup .popup_box .popup_img_box{overflow:hidden;width:100%;padding:7% 2% 5% 2%;border:1px solid #f1f1f1;}
+#popup .popup_box{overflow:hidden;padding:3%;}
+#popup .popup_box .popup_img_box{overflow:hidden;width:100%;padding:5% 2% 5% 2%;border:1px solid #ddd;}
 #popup .popup_box .popup_img_box .popup_box1{float:left;width:25%;}
 #popup .popup_box .popup_img_box .popup_box2{float:right;width:75%;}
 #popup .popup_box .popup_img_box .popup_box2 .popup_box2_text1{font-size:15px;font-weight:bold;color:#555;}
-#popup .popup_box .popup_img_box .popup_box2 .popup_box2_text2{font-size:12px;color:#777;margin-top:5px;}
+#popup .popup_box .popup_img_box .popup_box2 .popup_box2_text2{font-size:13px;color:#999;margin-top:1px;}
 #popup .popup_box .popup_img_box p{width:100%;text-align:center;padding:2% 3%;margin-top: 20px;font-weight:400;}
 .upload{cursor:pointer;}
 .upload a{display:block;font-size:13px;color:#555;}
