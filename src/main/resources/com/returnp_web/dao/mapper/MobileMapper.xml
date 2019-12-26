@@ -1184,4 +1184,24 @@
 		</where>		 
 	</update>
 	
+	<select id="selectAffiliates" parameterType="HashMap" resultType="HashMap">
+		select * from affiliate 
+		where 1 =1 
+		<if test="affiliateNo != null "> AND affiliateNo   = #{affiliateNo} </if>
+		<if test="affiliateSerial != null "> AND affiliateSerial   = #{affiliateSerial} </if>
+		<choose>
+		   	<when test="order !=null">
+				order by ${order} 
+			</when>
+			<otherwise>
+				order by createTime desc
+			</otherwise>
+		</choose>
+		
+		<if test="pagination">
+			limit ${pageSize} offset ${offset}
+		</if>
+ 		</select>
+ 	
+	
 </mapper>

@@ -186,7 +186,10 @@ $(document).ready(function(){
 					<li>가맹점 영수증 등록시에는 해당 가맹점을 선택해야 합니다.</li>
 					<li>
 						<select class="receipt_form">
-	                      <option value="">할말없다</option> 
+	                      <option value="0">가맹점을 선택해주세요</option> 
+	                      <c:forEach var="affiliate" items="${model.affilaitesList}" varStatus="status">
+						   	<option value="${affiliate.affiliateNo}" ><strong>${affiliate.affiliateName}</strong></option>
+						</c:forEach>
 	                    </select>
 	                </li>
 				</ul>

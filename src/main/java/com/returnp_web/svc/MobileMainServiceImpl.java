@@ -1634,6 +1634,14 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("memberNo", sm.getMemberNo());
 			HashMap<String, Object> memberInfo= mobileMemberDao.selectMypageMyinfo(dbparams); 
 			rmap.put("memberInfo", memberInfo);
+			
+			ArrayList<HashMap<String, Object>> affilaitesList = null;
+			if (rPap.getStr("receiptType").equals("1")) {
+				dbparams.clear();
+				dbparams.put("order", "affiliateName ASC");
+				affilaitesList = this.mobileMemberDao.selectAffiliates(dbparams);
+				rmap.put("affilaitesList",affilaitesList );
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

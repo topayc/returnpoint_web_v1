@@ -648,4 +648,9 @@ public class MobileMemberDao {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(MobileMapper.class).selectPaymentRouter(dbparams2);
 	}
+
+	public ArrayList<HashMap<String, Object>> selectAffiliates(RPMap dbparams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMapper.class).selectAffiliates(dbparams);
+	}
 }

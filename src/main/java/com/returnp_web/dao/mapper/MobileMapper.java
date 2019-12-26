@@ -587,4 +587,7 @@ public interface MobileMapper {
 
 	HashMap<String, Object> selectPaymentRouter(HashMap<String, Object> dbparams2);
 
+
+	ArrayList<HashMap<String, Object>> selectAffiliates(RPMap dbparams);
+
 }
