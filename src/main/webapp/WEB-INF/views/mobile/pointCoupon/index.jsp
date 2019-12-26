@@ -52,7 +52,7 @@ $(document).ready(function(){
 		<div class="box">
 			<div class="popup_top">영수증 업로드 방법을 선택해주세요.<img src="/resources/images/close.png"></div>
 			<div class="popup_box">
-				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=1')" class="popup_img_box" style="margin-bottom:5px;">
+				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=1')" class="popup_img_box" style="margin-bottom:10px;">
 					<div class="popup_box1"><img src="/resources/images/popup_file.png"></div>
 					<div class="popup_box2">
 						<ul onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=1')">
