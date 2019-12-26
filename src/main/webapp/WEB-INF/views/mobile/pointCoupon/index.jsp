@@ -53,7 +53,7 @@ $(document).ready(function(){
 			<div class="popup_top">영수증 업로드 방법을 선택해주세요.<img src="/resources/images/close.png"></div>
 			<div class="popup_box">
 				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=1')" class="popup_img_box" style="margin-bottom:10px;">
-					<div class="popup_box1"><img src="/resources/images/popup_file.png"></div>
+					<div class="popup_box1">가맹점</div>
 					<div class="popup_box2">
 						<ul onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=1')">
 							<li class="popup_box2_text1">가맹점 영수증 올리기</li>
@@ -62,7 +62,7 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=2')" class="popup_img_box">
-					<div class="popup_box1"><img src="/resources/images/popup_camera.png"></div>
+					<div class="popup_box1">비가맹점</div>
 					<div class="popup_box2">
 						<ul onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=2')">
 							<li class="popup_box2_text1">비가맹점 영수증 올리기</li>
