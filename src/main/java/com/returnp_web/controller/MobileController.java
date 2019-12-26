@@ -99,7 +99,7 @@ public class MobileController extends MallBaseController {
 		RPMap rmap = null;
 		if (((String)p.get("receiptType")).equals("1")) {
 			rmap = Util.getRPRmap("/mobile/pointCoupon/uploadAffilaiteReceipt");
-		}else if (((String)p.get("receiptType")).equals("1")) {
+		}else if (((String)p.get("receiptType")).equals("2")) {
 			rmap = Util.getRPRmap("/mobile/pointCoupon/uploadCommonReceipt");
 		}
 		boolean bret = mms.uploadReceiptForm(Util.toRPap(p), rmap, request, response);

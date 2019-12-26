@@ -142,7 +142,7 @@ $(document).ready(function(){
 					</div>
 				</div> 
 				
-		<!-- 		<p style = "font-weight:550;margin-top:20px">매출 타입을 선택해주세요</p>
+			<!-- 	<p style = "font-weight:550;margin-top:20px">매출 타입을 선택해주세요</p>
 				<ul style = "font-size : 12px; color : #777">
 					<li>- 가맹점 선택 : 기존 QR 적립절차와 동일하게 진행</li>
 					<li>- 일반 소비자 선택 : 본인과 2대까지 적립</li>
