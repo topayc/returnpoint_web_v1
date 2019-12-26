@@ -105,7 +105,7 @@ $(document).ready(function(){
 		      		</div>
 		      	</div>
 		      	<div class="coupon_m">
-		      		<div class="upload"  ><img src="/resources/images/upload.png">&nbsp;비가맹점 영수증 올리기</div>
+		      		<div class="upload"  ><img src="/resources/images/upload.png">&nbsp;영수증 올리기</div>
 		      		<!-- <div class="register"><a onclick = "movePage('/m/pointCoupon/help.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div> -->
 		      	</div>
 		      	<div class="coupon_code1">
