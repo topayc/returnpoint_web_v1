@@ -52,8 +52,24 @@ $(document).ready(function(){
 		<div class="box">
 			<div class="popup_top">영수증 업로드 방법을 선택해주세요.<img src="/resources/images/close.png"></div>
 			<div class="popup_box">
-				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=1')" class="popup_img_box" style="margin-right:2%;"><img src="/resources/images/popup_file.png"><p>파일에서 올리기</p></div>
-				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=2')" class="popup_img_box"><img src="/resources/images/popup_camera.png"><p>사진찍어 올리기</p></div>
+				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=1')" class="popup_img_box" style="margin-bottom:5px;">
+					<div class="popup_box1"><img src="/resources/images/popup_file.png"></div>
+					<div class="popup_box2">
+						<ul>
+							<li class="popup_box2_text1">가맹점 영수증 올리기</li>
+							<li class="popup_box2_text2">R POINT 가맹점 영수증을 올릴 수 있으며 업 로드시 기존 QR 스캔 절차와 동일한 방식으로 포인트가 적립됩니다.</li>
+						</ul>
+					</div>
+				</div>
+				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=2')" class="popup_img_box">
+					<div class="popup_box1"><img src="/resources/images/popup_camera.png"></div>
+					<div class="popup_box2">
+						<ul>
+							<li class="popup_box2_text1">비가맹점 영수증 올리기</li>
+							<li class="popup_box2_text2">비 가맹점 영수증의 경우 올리신 회원분과 그 회원분의 2대까지 포인트가 적립됩니다.</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
