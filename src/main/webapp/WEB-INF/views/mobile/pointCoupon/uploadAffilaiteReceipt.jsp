@@ -184,6 +184,11 @@ $(document).ready(function(){
 				<p style = "font-weight:550;margin-top:22px;font-size: 13px" >가맹점 선택</p>
 				<ul style = "font-size : 12px; color : #777">
 					<li>가맹점 영수증 등록시에는 해당 가맹점을 선택해야 합니다.</li>
+					<li>
+						<select class="receipt_form">
+	                      <option value="">할말없다</option> 
+	                    </select>
+	                </li>
 				</ul>
 				
 				<p style = "font-weight:550;margin-top:22px">결제 영수증상의 결제 금액 합계를 입력해주세요.</p>
