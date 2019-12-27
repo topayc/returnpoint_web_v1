@@ -159,13 +159,18 @@ $(document).ready(function(){
 							<div style = "padding-bottom:28px" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
 		        				<div class="coupon_img_box"><img src = "${receipt.uploadFile}"/></div>
 		        				<p>
+		        					<c:choose>
+								    	<c:when test = "${receipt.issueType == '1'}"><span style = "font-weight:600;">가맹점 영수증</span></c:when>
+								    	<c:when test = "${receipt.issueType == '2'}"><span style = "font-weight:600;">비가맹점 영수증</span></c:when>
+							    	</c:choose>
+		        				</p>
+		        				<p>
 		        					<span>
 		        						<fmt:parseDate value="${receipt.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss"/>
-										<fmt:formatDate value="${createTime}" pattern="yyyy년 MM월 dd일  HH시 mm분"/> 
+										<fmt:formatDate value="${createTime}" pattern="yyyy-MM-dd HH:mm"/> 
 		        					</span>
 		        				</p>
-		        				
-		        				<p style = "margin-top:7px">
+								<p style = "margin-top:7px">
 			        				<c:choose>
 								    	<c:when test = "${receipt.status == '1'}"><span class = "check_deposit_1"  style = "color : #fff;">입급확인중</span></c:when>
 								    	<c:when test = "${receipt.status == '2'}"><span class = "check_deposit_2" style = "color : #fff">입금확인 요청중</span></c:when>
@@ -174,7 +179,7 @@ $(document).ready(function(){
 								    	<c:when test = "${receipt.status == '5'}"><span class = "check_deposit_5" style = "color : #fff">입금취소 </span></c:when>
 								    	<c:when test = "${receipt.status == '6'}"><span class = "check_deposit_6" style = "color : #fff">처리불가 </span></c:when>
 							    	</c:choose>
-						    	</p>
+						    	</p>		        				
 		        			</div>
 						</c:forEach>
 					</c:otherwise>

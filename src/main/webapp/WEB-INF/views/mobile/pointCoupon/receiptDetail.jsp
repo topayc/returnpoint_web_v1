@@ -75,25 +75,36 @@ $(document).ready(function(){
 			</div>
 		</div>
 		<div class="upload_conbox">
-			<p style = "margin-bottom:10px;font-weight:550;color : #000; ">영수증 업로드 세부 정보</p>
 			<div>
-			<ul>
+				<p style = "margin-bottom:10px;font-weight:550;color : #000">영수증 업로드 세부 정보</p>
+				<ul>
+					<li style="border-bottom:none;">
+						<ul>
+							<li class="upload_conbox_text1">영수증 타입</li>
+							<li class="upload_conbox_text2">
+								<c:choose>
+									<c:when test = "${model.receipt.issueType == '1'}"> ${model.receipt.affiliateName} 가맹점영수증</c:when>
+									<c:when test = "${model.receipt.issueType == '2'}">비가맹점</c:when>
+								 </c:choose>
+							</li>
+						</ul>
+					</li>
 					<li>
 						<ul>
 							<li class="upload_conbox_text1">결제 금액</li>
-							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.payAmount}" pattern="###,###,###,###"/> 원</li>
+							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.payAmount}" pattern="###,###,###,###"/>원</li>
 						</ul>
 					</li>
 					<li style="border-top:none;">
 						<ul>
 							<li class="upload_conbox_text1">적립  포인트</li>
-							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.accPointAmount}" pattern="###,###,###,###"/> P</li>
+							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.accPointAmount}" pattern="###,###,###,###"/>P</li>
 						</ul>
 					</li>
 					<li style="border-top:none;">
 						<ul>
-							<li class="upload_conbox_text1">입금 금액</li>
-							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.depositAmount}" pattern="###,###,###,###"/> 원</li>
+							<li class="upload_conbox_text1">입금할 금액</li>
+							<li class="upload_conbox_text2"><fmt:formatNumber value="${model.receipt.depositAmount}" pattern="###,###,###,###"/>원</li>
 						</ul>
 					</li>
 					<li style="border-top:none;">

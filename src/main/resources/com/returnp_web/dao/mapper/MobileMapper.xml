@@ -1098,7 +1098,12 @@
  	</select>
 
  	<select id="selectReceipt" parameterType="HashMap" resultType="HashMap">
-		select * from point_code_issue_request where memberNo = ${memberNo} and pointCodeIssueRequestNo = ${pointCodeIssueRequestNo}
+		select 
+		A.*, 
+		B.affiliateName
+		from point_code_issue_request A
+		left outer join affiliate as B on (A.affiliateNo= B.affiliateNo)
+		where A.memberNo = ${memberNo} and pointCodeIssueRequestNo = ${pointCodeIssueRequestNo}
  	</select>
 
  	<update id="checkDepositRequest" parameterType="HashMap" >
