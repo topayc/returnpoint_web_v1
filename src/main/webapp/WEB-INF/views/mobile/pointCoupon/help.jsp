@@ -24,23 +24,46 @@
 		<span>앱 메인의 비가맹점영수증 메뉴 클릭 </span>
 	</div>
 	<div class="receipt_explain_w">
+		<div class="receipt_explain_text">
+			<h3>영수증 올리기 메인</h3>
+		</div>
 		<div class="receipt_explain_img"><img src="/resources/images/receipt_img2.png"></div>
 		<span>영수증 올리기 버튼 클릭하여 업로드 </span>
 		<div class="receipt_explain_text" style="margin-top:20px;">
 			<p><b>상단 탭 설명</b> </p></br>
-			<p><b>영수증 처리</b></p><p>업로드된 영수증의 처리 상태를 확인합니다</p></br>
-			<p><b>적립 가능</b></p><p>적립가능한 적립 코드 내역을 확인합니다</p></br>
-			<p><b>적립 완료</b></p><p>적립이 완료된 적립 코드 내역을 확인합니다</p>
+			<p><b>영수증 처리</b></p><p>업로드된 영수증의 처리 상태를 확인할 수 있습니다.</p></br>
+			<p><b>적립 가능</b></p><p>적립가능한 적립 코드 내역을 확인할 수 있습니다.</p></br>
+			<p><b>적립 완료</b></p><p>적립이 완료된 적립 코드 내역을 확인할 수 있습니다.</p>
 		</div>
 	</div>
 	<div class="receipt_explain_w">
+		<div class="receipt_explain_text">
+			<h3>영수증 타입 선택</h3>
+		</div>
+		<div class="receipt_explain_img"><img src="/resources/images/receipt_img7.png"></div>
+		<div class="receipt_explain_text">
+			<p><b>영수증 타입에 따라 알맞은 항목을 선택하세요.</b></p></br>
+			<p><b>가맹점 영수증</b></p><p>일반 QR 스캔 적립과 동일하게 포인트 적립됨.</p></br>
+			<p><b>비가맹점 영수증</b></p><p>본인 및 본인의 1대 2대 까지 포인트 적립.</p>
+		</div>
+	</div>
+	<div class="receipt_explain_w">
+		<div class="receipt_explain_text">
+			<h3>영수증 올리기 항목 입력</h3>
+		</div>
 		<div class="receipt_explain_img"><img src="/resources/images/receipt_img3.png"></div>
 		<div class="receipt_explain_text">
-			<p>갤러리, 혹은 바로 사진 촬영하여 영수증을 첨부하고,결제 영수증 의 합계와 입금자명을 입력한 후 올리기 버튼을 클릭하면 영수증 올리기가 진행됩니다.</p></br>
-			<p>결제금액을 입력한 후, 다른 곳을 터치하시면 입금해야 하시는 금액을 확인할 수 있습니다.</p>
+			<p>1.갤러리나 카메라로 촬영하여 영수증을 선택</p>
+			<p>2.가맹점 영수증인 경우 발행 가맹점을 선택</p>
+			<p>3.영수증 상의 총 결제 금액 입력</p>
+			<p>4.입금자 입력</p>
+			<p>5.올리기 버튼을 클릭하여 업로드 진행</p>
 		</div>
 	</div>
 	<div class="receipt_explain_w">
+		<div class="receipt_explain_text">
+			<h3>영수증 처리상태 리스트</h3>
+		</div>
 		<div class="receipt_explain_img"><img src="/resources/images/receipt_img4.png"></div>
 		<div class="receipt_explain_text">
 			<p>상단 영수증 처리 탭을 클릭하여, 올리신 영수증의 처리 상태를 확인할 수 있습니다.</p></br>
@@ -48,6 +71,9 @@
 		</div>
 	</div>
 	<div class="receipt_explain_w">
+		<div class="receipt_explain_text">
+			<h3>영수증 처리상태 보기</h3>
+		</div>
 		<div class="receipt_explain_img"><img src="/resources/images/receipt_img5.png"></div>
 		<div class="receipt_explain_text">
 			<p>영수증을 업로드 하신 후, 상단 영수증 처리 탭을 클릭하시면 영수증 리스트가 보여지며, 각각의 항목을 선택하여,영수증 처리 상황을 확인할 수 있습니다.</p></br>
