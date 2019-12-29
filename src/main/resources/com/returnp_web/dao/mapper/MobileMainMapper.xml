@@ -362,44 +362,70 @@
 		AND left(PPR.createTime, 7) = left( #{SEARCHTIME} , 7)
 		</if>
 		AND PPR.nodeType = #{nodeType}
+		
 		UNION ALL
-		SELECT 		a.pointTransferTransactionNo as paymentPointbackRecordNo
-					,a.pointReceiver as memberNo
-					,a.pointTransferAmount as pointbackAmount
-				    ,a.pointNode as nodeNo
-				    ,a.pointType as nodeType
-				    ,date_format(a.createTime,'%Y-%m-%d %I:%i:%s') as createTime
-				    ,'선물적립' as accumulate
-				    ,M.memberName as companyname,
-				    M.memberName as source
-		FROM point_transfer_transaction a 
-		inner join member as M on (a.pointTransferer = M.memberNo) 
- 		where a.pointReceiver = #{memberNo}
- 		<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
-		AND left(a.createTime, 7) = left( #{SEARCHTIME} , 7)
-		</if>
-	AND a.pointTransferStatus in ('1')
-	AND a.pointType in ('1')
+			SELECT 	
+				a.pointTransferTransactionNo as paymentPointbackRecordNo
+				,a.pointReceiver as memberNo
+				,a.pointTransferAmount as pointbackAmount
+				,a.pointNode as nodeNo
+				,a.pointType as nodeType
+				,date_format(a.createTime,'%Y-%m-%d %I:%i:%s') as createTime
+				,'선물적립' as accumulate
+				,M.memberName as companyname,
+				M.memberName as source
+			FROM point_transfer_transaction a 
+			inner join member as M on (a.pointTransferer = M.memberNo) 
+	 		where a.pointReceiver = #{memberNo}
+	 		<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
+			AND left(a.createTime, 7) = left( #{SEARCHTIME} , 7)
+			</if>
+			AND a.pointTransferStatus in ('1')
+			AND a.pointType in ('1')
 
 	UNION ALL
-	select
-		PC.pointCouponPointbackRecordNo as paymentPointbackRecordNo,
-		PC.memberNo as memberNo,
-		PC.accPoint as pointbackAmount,
-		PC.nodeNo as nodeNo,
-		PC.nodeType as nodeType,
-		date_format(PC.createTime,'%Y-%m-%d %I:%i:%s') as createTime,
-		'포인트 적립권' as accumulate,
-		M.memberName as companyname,
-		M.memberName as source
-	from point_coupon_pointback_record as PC
-	inner join member as M on (PC.memberNo = M.memberNo)
-	where
-		PC.memberNo = #{memberNo}
-		<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
-		AND left(PC.createTime, 7) = left( #{SEARCHTIME} , 7)
-		</if>
-		AND nodeType = #{nodeType}
+		select
+			PC.pointCouponPointbackRecordNo as paymentPointbackRecordNo,
+			PC.memberNo as memberNo,
+			PC.accPoint as pointbackAmount,
+			PC.nodeNo as nodeNo,
+			PC.nodeType as nodeType,
+			date_format(PC.createTime,'%Y-%m-%d %I:%i:%s') as createTime,
+			'포인트 적립권' as accumulate,
+			M.memberName as companyname,
+			M.memberName as source
+		from point_coupon_pointback_record as PC
+		inner join member as M on (PC.memberNo = M.memberNo)
+		where
+			PC.memberNo = #{memberNo}
+			<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
+			AND left(PC.createTime, 7) = left( #{SEARCHTIME} , 7)
+			</if>
+			AND nodeType = #{nodeType}
+		
+	UNION ALL
+		select
+			PCPB.pointCodePointbackRecordNo as paymentPointbackRecordNo,
+			PCPB.memberNo as memberNo,
+			PCPB.accPoint as pointbackAmount,
+			PCPB.nodeNo as nodeNo,
+			PCPB.nodeType as nodeType,
+			date_format(PCPB.createTime,'%Y-%m-%d %I:%i:%s') as createTime,
+			'영수증 적립' as accumulate,
+			ME.memberName as companyname,
+			ME.affiliateName as source
+		from point_code_pointback_record as PCPB
+		inner join member as ME on (PCPB.memberNo = ME.memberNo)
+		inner join point_code_transaction as PCTR on (PCPB.pointCodeTransactionNo = PCTR.pointCodeTransactionNo) 
+		inner join point_code_issue as PCI on (PCTR.pointCodeIssueNo = PCI.pointCodeIssueNo) 
+		inner join point_code_issue_request as PCIR on (PCI.pointCodeIssueRequestNo = PCIR.pointCodeIssueRequestNo) 
+		left outer join affiliate as AFF on (PCIR.affiliateNo= AFF.affiliateNo) )	
+		where
+			PCPB.memberNo = #{memberNo}
+			<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
+			AND left(PCPB.createTime, 7) = left( #{SEARCHTIME} , 7)
+			</if>
+			AND nodeType = #{nodeType}
 		
 	) T_TEMP ORDER BY createTime DESC
 	</select>

@@ -126,22 +126,22 @@ if (isApp()) {
 		<div class="popup_list" >
 			
 			<!-- 이벤트 OPEN 예정 팝업 -->
-			<img src="/resources/images/event_popup1.png">
+		<!-- 	<img src="/resources/images/event_popup1.png">
 			<div class="list_box1">
 				<ul>
 					<li>시행일시 : <span>2019.12.18</span></li>
 				</ul>
-			</div>
+			</div> -->
 			<!-- 이벤트 OPEN후 주석 풀어주세요 -->
-			<!--
+			
 			<img src="/resources/images/event_popup2.png">
 			<div class="list_box">
 				<ul>
-					<li><span>자세히보기</span></li>
+					<li><span onclick = "movePage('/m/pointCoupon/index.do')">자세히보기</span></li>
 				</ul>
 			</div>
 			
-			 -->
+			
 			<div class="popup_btn_box">
 				<button style="border-top:1px solid #ff83c5;border-right:1px solid #ff83c5" onclick = "closePopupNotToday('alertView')">오늘 그만 보기</button>
 				<button style="margin-left: -4.5px;border-top:1px solid #ff83c5;" onclick = "closeMainModal();return false">닫기</button>
@@ -157,10 +157,10 @@ if (isApp()) {
    </header>
    <section class="nobtn" id = "main">
     <div class="main">
-		<div class="slide">
-			<img src="/resources/images/event_banner1.png"/>
+		<div class="slide" onclick = "movePage('/m/pointCoupon/index.do')">
+			<img src="/resources/images/event_banner2.png"/>
 			<!-- 이벤트 OPEN시 아래 한줄 주석풀어주세요 -->
-			<!--
+			
 			<div class="main_text2">
 				<ul>
 					<li>
@@ -169,11 +169,6 @@ if (isApp()) {
 					<li style = "font-size : 14px;color : #777;font-weight:350">일반 가맹점 영수증도<br>이젠 <b>100% G 포인트</b>를 드려요!</li>
 					
 					<li><span  class="main_text3" style = "font-size:12px;">자세히보기</span></li>
-				</ul>
-			</div> -->
-			<div class="main_text4">
-				<ul>
-					<li>시행일시 : <span>2019.12.18</span></li>
 				</ul>
 			</div>
 		</div>
