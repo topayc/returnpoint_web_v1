@@ -405,25 +405,25 @@
 		
 	UNION ALL
 		select
-			PCPB.pointCodePointbackRecordNo as paymentPointbackRecordNo,
-			PCPB.memberNo as memberNo,
-			PCPB.accPoint as pointbackAmount,
-			PCPB.nodeNo as nodeNo,
-			PCPB.nodeType as nodeType,
-			date_format(PCPB.createTime,'%Y-%m-%d %I:%i:%s') as createTime,
-			'영수증 적립' as accumulate,
-			ME.memberName as companyname,
-			ME.affiliateName as source
-		from point_code_pointback_record as PCPB
-		inner join member as ME on (PCPB.memberNo = ME.memberNo)
-		inner join point_code_transaction as PCTR on (PCPB.pointCodeTransactionNo = PCTR.pointCodeTransactionNo) 
-		inner join point_code_issue as PCI on (PCTR.pointCodeIssueNo = PCI.pointCodeIssueNo) 
-		inner join point_code_issue_request as PCIR on (PCI.pointCodeIssueRequestNo = PCIR.pointCodeIssueRequestNo) 
-		left outer join affiliate as AFF on (PCIR.affiliateNo= AFF.affiliateNo) )	
+			K.pointCodePointbackRecordNo as paymentPointbackRecordNo,
+			K.memberNo as memberNo,
+			K.accPoint as pointbackAmount,
+			K.nodeNo as nodeNo,
+			K.nodeType as nodeType,
+			date_format(K.createTime,'%Y-%m-%d %I:%i:%s') as createTime,
+			IF(J.affiliateName is null, '비가맹점 영수증 적립' , '가맹점 영수증 적립') as accumulate,
+			F.memberName as companyname,
+			IF(J.affiliateName is null , '', J.affiliateName)  as source
+		from point_code_pointback_record as K
+		inner join member as F on (K.memberNo = F.memberNo)
+		inner join point_code_transaction as  G on (K.pointCodeTransactionNo = G.pointCodeTransactionNo) 
+		inner join point_code_issue as H  on (G.pointCodeIssueNo = H.pointCodeIssueNo) 
+		inner join point_code_issue_request as I on (H.pointCodeIssueRequestNo = I.pointCodeIssueRequestNo) 
+		left outer join affiliate as J on (I.affiliateNo= J.affiliateNo)
 		where
-			PCPB.memberNo = #{memberNo}
+			K.memberNo = #{memberNo}
 			<if test="SEARCHTIME !=null and SEARCHTIME !='' ">
-			AND left(PCPB.createTime, 7) = left( #{SEARCHTIME} , 7)
+			AND left(K.createTime, 7) = left( #{SEARCHTIME} , 7)
 			</if>
 			AND nodeType = #{nodeType}
 		
