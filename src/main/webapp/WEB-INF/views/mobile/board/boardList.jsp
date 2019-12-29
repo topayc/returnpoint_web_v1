@@ -92,7 +92,7 @@ function moveFaq(bbsType2){
 					<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
 				 </small>
 				</c:if>
-				<span class = "item_title" >${list.title}
+				<span class = "item_title"  style = "font-size: 13px">${list.title}
 					<c:if test = "${model.bbsType1 == '4' and list.replyCompleted == 'Y'}">
 					<span class ="badge badge-success" style = "background-color: #04B404;display : inline;font-weight : 300;font-size: 10px">완료</span>
 					</c:if>

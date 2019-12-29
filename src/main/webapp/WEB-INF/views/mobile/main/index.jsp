@@ -199,7 +199,19 @@ if (isApp()) {
 	<!-- 공지사항 -->
 	<c:if test = "${! empty model.notice}">
 	<div class="m_noti">
-		<span> <a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">${model.notice.title}</a></span>
+		<span> 
+			<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">
+				<c:choose>
+					<c:when test="${fn:length(model.notice.title) gt 35}">
+				        <c:out value="${fn:substring(model.notice.title, 0, 35)}"></c:out>...
+				    </c:when>
+				    <c:otherwise>
+				        <c:out value="${model.notice.title}"> </c:out>
+				    </c:otherwise>
+				</c:choose>	
+			</a>
+		
+		</span>
 		
 		 <c:set var="now" value="<%=new java.util.Date()%>"/>
          <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
