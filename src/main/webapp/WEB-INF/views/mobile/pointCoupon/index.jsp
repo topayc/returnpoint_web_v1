@@ -212,7 +212,7 @@ $(document).ready(function(){
 				      					<li class="code_text1">결제금액 : <fmt:formatNumber value="${useablePointCode.payAmount}" pattern="###,###,###,###"/>원</li>
 				      					<li class="code_text1">적립금액 : <fmt:formatNumber value="${useablePointCode.accPointAmount}" pattern="###,###,###,###"/>원(적립율 100%)</li>
 				      					<li class="code_text1">입금금액 : <fmt:formatNumber value="${useablePointCode.depositAmount}" pattern="###,###,###,###"/>원</li>
-				      					<li class="code_text1" style = "font-weight:500;font-size">등록시기:
+				      					<li class="code_text1" style = "font-weight:500;font-size">등록시기 :
 				      						<fmt:parseDate value="${useablePointCode.createTime}" var="createTime1" pattern="yyyy-MM-dd HH:mm:ss"/>
 											<fmt:formatDate value="${createTime1}" pattern="yyyy년 MM월 dd일  HH시 mm분"/> 
 				      					</li>
@@ -252,7 +252,7 @@ $(document).ready(function(){
 			      					<li class="code_text1">결제금액 : <fmt:formatNumber value="${completePointCode.payAmount}" pattern="###,###,###,###"/>원</li>
 			      					<li class="code_text1">적립금액 : <fmt:formatNumber value="${completePointCode.accPointAmount}" pattern="###,###,###,###"/>원(적립율 100%)</li>
 			      					<li class="code_text1">입금금액 : <fmt:formatNumber value="${completePointCode.depositAmount}" pattern="###,###,###,###"/>원</li>
-			      					<li class="code_text1" style = "font-weight:500;">등록시기:
+			      					<li class="code_text1" style = "font-weight:500;">등록시기 :
 			      						<fmt:parseDate value="${completePointCode.createTime}" var="createTime2" pattern="yyyy-MM-dd HH:mm:ss"/>
 										<fmt:formatDate value="${createTime2}" pattern="yyyy년 MM월 dd일  HH시 mm분"/> 
 			      					</li>
