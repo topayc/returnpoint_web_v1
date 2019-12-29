@@ -126,7 +126,7 @@ $(document).ready(function(){
 			
 			<p style = "margin-top:20px;font-weight:550;color : #000">입금 계좌 정보</p>
 			<div style = "border : 1px solid #ddd;margin-top:10px;">
-				국민은행   10000-11111   예금주 : 안영철
+				우리은행 &nbsp;&nbsp;1002-751-058576 &nbsp;&nbsp;예금주:안영철
 			</div>
 		
 		<c:if test = "${model.receipt.status == '1'}"> 

@@ -133,19 +133,15 @@ $(document).ready(function(){
 		      		<p>처리절차 및 규정</p>
 		      		<!-- <div>영수증 올리기 > 금액입금 > 입금확인 > 적립코드발송</div> -->
 		      		<ul style="list-style-type:disc;">
-		      			<li>1.영수증 올리기 : 상단의 영수증 올리기 버튼 클릭</li>
-		      			<li>2.금액 입금 : 영수증 총 결제 금액의 15% 입금</li>
-		      			<li>3.임금 확인 : 15% 금액 입금 확인 </li>
-		      			<li>4.적립코드 발행  :  100% G.POINT 적립코드가 회원님 계정으로 등록 </li>
-		      			<li style = "margin-top:10px">&#42; 자세한 사용방법을 확인하시려며 바로 위의  <span style = "color : #04B431;font-weight:bold">서비스보기</span> 를 클릭하세요</li>
-		      		<!-- 	<li style = "margin-top:10px">&#42; 해당 금액을 입금한 후, 상단 탭 메뉴중 '영수증처리' 탭을 선택후 표시되는 영수증에서   <span style = "color : #2E9AFE;font-weight:500">입금확인 요청버튼</span>을 클릭하시면 더욱 빠른 처리가 가능합니다</li> -->
+		      			<li>1.4시 이전 입금확인건에 한해 4시이후 적립코드를 발급해드립니다.</li>
+		      			<li>2.4시이후 입급건은 익일 오후 4시 이후 입금확인 후 적립코드를 발급해드립니다.</li>
 		      		</ul>
 		      	</div>
 		      	
 		      	<div class="coupon_code3">
 		      		<p>입금은행</p>
 		      		<div>
-		      			<!-- <img src="/resources/images/bank.png"> --><b>우리은행 &nbsp;&nbsp;999-9999-9999 &nbsp;&nbsp;예금주:안영철</b>
+		      			<!-- <img src="/resources/images/bank.png"> --><b>우리은행 &nbsp;&nbsp;1002-751-058576 &nbsp;&nbsp;예금주:안영철</b>
 		      		</div>
 		      	</div>
 		    <!--   	<div class="coupon_code4">
