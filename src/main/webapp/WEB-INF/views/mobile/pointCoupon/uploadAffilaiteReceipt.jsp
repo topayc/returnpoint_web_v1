@@ -48,30 +48,6 @@ $(document).ready(function(){
 		$('#accPointAmount').val(payAmount);
 	})
 
-	var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
 	$("#selectPhoneImage").click(function(){
 		selectImage();
 	})
@@ -110,7 +86,6 @@ $(document).ready(function(){
 			affiliateNo : "가맹점 선택",
 			issueType : "발행 타입"
 		}
-		console.log(data);
 		for (var prop in data){
 			if (data.hasOwnProperty(prop)) {
 				if (prop == "affiliateNo" &&   data[prop] == '0' ){

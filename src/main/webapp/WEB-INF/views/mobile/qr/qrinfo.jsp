@@ -35,7 +35,7 @@ $(document).ready(function(){
 			numberStep: comma_separator_number_step
 		});
 	if ($(".qr_kicc").length > 0){
-		$(".text").fadeIn(300);
+		$(".text").fadeIn(200);
 	}
 });
 </script>
@@ -68,7 +68,7 @@ $(document).ready(function(){
 					<c:otherwise>
 					<div class="qr_kicc" >
 						<p class = "text" style = "display:none">
-							<c:if test  = "${model.paymentRouterName == 'KICC' }"> 올페이먼트를 통하여 설치된 단말기의 </c:if>${model.paymentRouterName} 밴사의 적립은 현재 중지중입니다. </br>비가맹점 영수증 적립을 이용해주세요
+							<c:if test  = "${model.paymentRouterName == 'KICC' }"> 올페이먼트를 통하여 설치된 단말기의 </c:if>${model.paymentRouterName} 밴사의 적립은 현재 중지중입니다. </br>영수증 적립 서비스를 이용해주세요
 							</br>자세한 내용은 공지를 참고해주세요
 						</p>
 					</div>
@@ -97,7 +97,7 @@ $(document).ready(function(){
 				<li><span  class = "gift_qr_title"><spring:message code="label.approval_number" /></span> ${model.pan}</li>
 				<li style = "display: none"><span ><spring:message code="label.approval_status" /></span> ${model.pas}</li>
 				<li><span   class = "gift_qr_title"><spring:message code="label.approval_status" /></span> ${model.pas_str}</li>
-				<%-- <li><span   class = "gift_qr_title">VAN</span> ${model.paymentRouterName}</li> --%>
+				<li><span   class = "gift_qr_title">VAN</span> ${model.paymentRouterName}</li>
 			</ul>	
 		</div>			
 		<div class="btns2">

@@ -1094,7 +1094,11 @@
  	</select>
  	
  	<select id="selectPointCodeIssues" parameterType="HashMap" resultType="HashMap">
-		select * from point_code_issue where memberNo = ${memberNo} and useStatus = ${useStatus}
+		select A.*, B.issueType,B.depositAmount, C.affiliateName
+		from point_code_issue as A
+		inner join point_code_issue_request as B on (A.pointCodeIssueRequestNo = B.pointCodeIssueRequestNo) 
+		left outer join affiliate as C on (B.AffiliateNo = C.affiliateNo)
+		where A.memberNo = ${memberNo} and A.useStatus = ${useStatus}
  	</select>
 
  	<select id="selectReceipt" parameterType="HashMap" resultType="HashMap">
