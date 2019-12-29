@@ -132,10 +132,11 @@ $(document).ready(function(){
 		      	 <div class="coupon_code2">
 		      		<p>처리절차 및 규정</p>
 		      		<!-- <div>영수증 올리기 > 금액입금 > 입금확인 > 적립코드발송</div> -->
-		      		<ul style="list-style-type:disc;">
-		      			<li>1.4시 이전 입금확인건에 한해 4시이후 적립코드를 발급해드립니다.</li>
-		      			<li>2.4시이후 입급건은 익일 오후 4시 이후 입금확인 후 적립코드를 발급해드립니다.</li>
-		      		</ul>
+		      		<ol style="list-style-type:disc;">
+		      			<li>4시 이전 입금확인건에 한해 4시이후 적립코드를 발급해드립니다.</li>
+		      			<li>4시이후 입급건은 익일 오후 4시 이후 입금확인 후 적립코드를 발급해드립니다.</li>
+		      			<li>영수증 업로드 및 적립 서비스 개발, 운영은 탑해피월드 협력점 </li>
+		      		</ol>
 		      	</div>
 		      	
 		      	<div class="coupon_code3">
