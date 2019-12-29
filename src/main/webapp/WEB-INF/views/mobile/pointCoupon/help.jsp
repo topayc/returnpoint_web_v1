@@ -19,6 +19,7 @@
 		<div class="receipt_explain_text">
 			<h3>영수증 적립 서비스란</h3>
 			<p>R.POINT 가맹점이건 혹은 비 가맹점이건 상관없이 결제하신 영수증을 앱을 통해 보내주시고 15% 금액을 입금하시면, 결제한 금액의 100%를 G.POINT 로 적립해드리는 서비스입니다 </p>
+			</br>
 			<p>가맹점의 영수증 QR 스캔을 이용하실 수 없는 상황이거나 혹은 비가맹점에서 사용한 금액도 적립하고 싶으실 때 이용해주세요</p>
 		</div>
 		<div class="receipt_explain_img"><img src="/resources/images/receipt_img1.png"></div>

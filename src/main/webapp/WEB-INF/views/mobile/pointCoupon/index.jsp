@@ -112,8 +112,8 @@ $(document).ready(function(){
 		      		<p>영수증 적립서비스란</p>
 		      		<span>R.POINT 가맹점이건 혹은 비가맹점이건 상관없이 결제하신 영수증을 앱을 통해 보내주시고 15% 금액을 입금하시면, 결제한 금액의 100%를 G.POINT 로 적립해드리는 서비스입니다 </span>
 		      		<div class="coupon_btn1">
-		      			<button onclick = "movePage('/m/pointCoupon/help.do')"><!-- <img src="/resources/images/receipt_search.png"> -->서비스 보기</button>
-		      			<button onclick = "movePage('/m/pointCoupon/help2.do')" style="margin-left:10px;"><!-- <img src="/resources/images/receipt_search.png"> -->처리 규정</button>
+		      			<button onclick = "movePage('/m/pointCoupon/help.do')"><!-- <img src="/resources/images/receipt_search.png"> -->서비스 소개 및 사용법 보기</button>
+		      			<!-- <button onclick = "movePage('/m/pointCoupon/help2.do')" style="margin-left:10px;">처리 규정</button> -->
 		      		</div>
 		      	</div>
 		      	<div class="coupon_code2">
@@ -128,6 +128,20 @@ $(document).ready(function(){
 		      		<!-- 	<li style = "margin-top:10px">&#42; 해당 금액을 입금한 후, 상단 탭 메뉴중 '영수증처리' 탭을 선택후 표시되는 영수증에서   <span style = "color : #2E9AFE;font-weight:500">입금확인 요청버튼</span>을 클릭하시면 더욱 빠른 처리가 가능합니다</li> -->
 		      		</ul>
 		      	</div>
+		      	
+		      	 <div class="coupon_code2">
+		      		<p>처리절차 및 규정</p>
+		      		<!-- <div>영수증 올리기 > 금액입금 > 입금확인 > 적립코드발송</div> -->
+		      		<ul style="list-style-type:disc;">
+		      			<li>1.영수증 올리기 : 상단의 영수증 올리기 버튼 클릭</li>
+		      			<li>2.금액 입금 : 영수증 총 결제 금액의 15% 입금</li>
+		      			<li>3.임금 확인 : 15% 금액 입금 확인 </li>
+		      			<li>4.적립코드 발행  :  100% G.POINT 적립코드가 회원님 계정으로 등록 </li>
+		      			<li style = "margin-top:10px">&#42; 자세한 사용방법을 확인하시려며 바로 위의  <span style = "color : #04B431;font-weight:bold">서비스보기</span> 를 클릭하세요</li>
+		      		<!-- 	<li style = "margin-top:10px">&#42; 해당 금액을 입금한 후, 상단 탭 메뉴중 '영수증처리' 탭을 선택후 표시되는 영수증에서   <span style = "color : #2E9AFE;font-weight:500">입금확인 요청버튼</span>을 클릭하시면 더욱 빠른 처리가 가능합니다</li> -->
+		      		</ul>
+		      	</div>
+		      	
 		      	<div class="coupon_code3">
 		      		<p>입금은행</p>
 		      		<div>
