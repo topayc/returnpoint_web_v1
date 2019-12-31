@@ -119,25 +119,25 @@ $(document).ready(function(){
 		      	<div class="coupon_code2">
 		      		<p>영수증 적립방법</p>
 		      		<!-- <div>영수증 올리기 > 금액입금 > 입금확인 > 적립코드발송</div> -->
-		      		<ul style="list-style-type:disc;">
-		      			<li>1.영수증 올리기 : 상단의 영수증 올리기 버튼 클릭</li>
-		      			<li>2.금액 입금 : 영수증 총 결제 금액의 15% 입금</li>
-		      			<li>3.임금 확인 : 15% 금액 입금 확인 </li>
-		      			<li>4.적립코드 발행  :  100% G.POINT 적립코드가 회원님 계정으로 등록 </li>
-		      			<li style = "margin-top:10px">&#42; 자세한 사용방법을 확인하시려며 바로 위의  <span style = "color : #04B431;font-weight:bold">서비스보기</span> 를 클릭하세요</li>
+		      		<ol style = "padding: 0 4px 0 15px">
+		      			<li style="list-style-type:decimal">영수증 올리기 : 상단의 영수증 올리기 버튼 클릭</li>
+		      			<li style="list-style-type:decimal">금액 입금 : 영수증 총 결제 금액의 15% 입금</li>
+		      			<li style="list-style-type:decimal">임금 확인 : 15% 금액 입금 확인 </li>
+		      			<li style="list-style-type:decimal">적립코드 발행  :  100% G.POINT 적립코드가 회원님 계정으로 등록 </li>
+		      			<li style="list-style-type:decimal">자세한 사용방법을 확인하시려며 바로 위의  <span style = "color : #04B431;font-weight:bold">서비스보기</span> 를 클릭하세요</li>
 		      		<!-- 	<li style = "margin-top:10px">&#42; 해당 금액을 입금한 후, 상단 탭 메뉴중 '영수증처리' 탭을 선택후 표시되는 영수증에서   <span style = "color : #2E9AFE;font-weight:500">입금확인 요청버튼</span>을 클릭하시면 더욱 빠른 처리가 가능합니다</li> -->
-		      		</ul>
+		      		</ol>
 		      	</div>
 		      	
 		      	 <div class="coupon_code2">
 		      		<p>처리절차 및 규정</p>
 		      		<!-- <div>영수증 올리기 > 금액입금 > 입금확인 > 적립코드발송</div> -->
-		      		<ol style="list-style-type:disc;">
-		      			<li>1.4시 이전 입금확인건에 한해 4시이후 적립코드를 발급해드립니다.</li>
-		      			<li>2.4시이후 입급건은 익일 오후 4시 이후 입금확인 후 적립코드를 발급해드립니다.</li>
-		      			<li>3.입금확인 요청 건에 대해서는 확인하는 즉시 적립코드를 발급해드립니다. </li>
-		      			<li>4.설정에서 푸시알림 받기를 선택하셔야 등록시 보내드리는 알림을 받으실 수 있습니다.</li>
-		      			<li>5.신청인과 입금자 명이 다를 경우는 업무처리가 다소 지연될 수 있습니다</li>
+		      		<ol style = "padding: 0 4px 0 15px">
+		      			<li style="list-style-type:decimal">4시 이전 입금확인건에 한해 4시이후 적립코드를 발급해드립니다.</li>
+		      			<li style="list-style-type:decimal">4시이후 입급건은 익일 오후 4시 이후 입금확인 후 적립코드를 발급해드립니다.</li>
+		      			<li style="list-style-type:decimal">입금확인 요청 건에 대해서는 확인하는 즉시 적립코드를 발급해드립니다. </li>
+		      			<li style="list-style-type:decimal">설정에서 푸시알림 받기를 선택하셔야 등록시 보내드리는 알림을 받으실 수 있습니다.</li>
+		      			<li style="list-style-type:decimal">신청인과 입금자 명이 다를 경우는 업무처리가 다소 지연될 수 있습니다</li>
 		      		</ol>
 		      	</div>
 		      	

@@ -121,7 +121,7 @@ if (isApp()) {
    <!-- 0921 이벤트 노티 -->
    <!-- 0831 서버점검 노티 -->
 <%--    <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }"> --%>
-    <!-- <div style="display:none;" id = "event_popup">
+    <div style="display:none;" id = "event_popup">
     	<div class="main_popuppage">
 		<div class="popup_list" >
 			<img src="/resources/images/event_popup2.png">
@@ -136,8 +136,8 @@ if (isApp()) {
 			</div>
 		</div>
 	</div>
-   </div> -->
-   <div style="display:none;" id = "event_popup">
+   </div>
+<!--    <div style="display:none;" id = "event_popup">
     	<div class="main_popuppage">
 		<div class="popup_list1" >
 		<img src="/resources/images/event_popup_notice.png">
@@ -159,7 +159,7 @@ if (isApp()) {
 			</div>
 		</div>
 	</div>
-   </div>
+   </div> -->
    <%-- </c:if> --%>
    <!-- nav -->
    <jsp:include page="../common/topper.jsp" />

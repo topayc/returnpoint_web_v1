@@ -201,7 +201,7 @@ $(document).ready(function(){
 							
 				<p style = "margin-top:20px;font-weight:550">15% 금액 입금 계좌</p>
 				<div style = "font-size:16px;border:1px solid #ddd;margin-top:10px;width: 100%; border:1px solid #ccc; padding: 4% 2%; text-align: center;margin-bottom:70px">
-				 국민은행    10000-11111    예금주 : 안영철 
+				 우리은행    1002-751-058576    예금주 : 안영철 
 				</div>
 		</div>
 		<div class="bottom_btn">
