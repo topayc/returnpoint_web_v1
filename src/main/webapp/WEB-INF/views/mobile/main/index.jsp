@@ -121,30 +121,41 @@ if (isApp()) {
    <!-- 0921 이벤트 노티 -->
    <!-- 0831 서버점검 노티 -->
 <%--    <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }"> --%>
-    <div style="display:none;" id = "event_popup">
+    <!-- <div style="display:none;" id = "event_popup">
     	<div class="main_popuppage">
 		<div class="popup_list" >
-			
-			<!-- 이벤트 OPEN 예정 팝업 -->
-		<!-- 	<img src="/resources/images/event_popup1.png">
-			<div class="list_box1">
-				<ul>
-					<li>시행일시 : <span>2019.12.18</span></li>
-				</ul>
-			</div> -->
-			<!-- 이벤트 OPEN후 주석 풀어주세요 -->
-			
 			<img src="/resources/images/event_popup2.png">
 			<div class="list_box">
 				<ul>
 					<li><span onclick = "movePage('/m/pointCoupon/index.do')">자세히보기</span></li>
 				</ul>
 			</div>
-			
-			
 			<div class="popup_btn_box">
 				<button style="border-top:1px solid #ff83c5;border-right:1px solid #ff83c5" onclick = "closePopupNotToday('alertView')">오늘 그만 보기</button>
 				<button style="margin-left: -4.5px;border-top:1px solid #ff83c5;" onclick = "closeMainModal();return false">닫기</button>
+			</div>
+		</div>
+	</div>
+   </div> -->
+   <div style="display:none;" id = "event_popup">
+    	<div class="main_popuppage">
+		<div class="popup_list1" >
+		<img src="/resources/images/event_popup_notice.png">
+			<div class="list_box2">
+				<ul>
+					<li><h3>영수증 적립 서비스 계좌변경</h3></li>
+					<li>부득이하게 계좌변경됨을 양해부탁드립니다.</li>
+					<li>변경계좌 : 우리은행 000-000-000 예금주:안영철</li>
+				</ul>
+			</div>
+			<div class="list_box">
+				<ul>
+					<li><span onclick = "movePage('/m/pointCoupon/index.do')">자세히보기</span></li>
+				</ul>
+			</div>
+			<div class="popup_btn_box1">
+				<button style="border-top:1px solid #fff;border-right:1px solid #fff" onclick = "closePopupNotToday('alertView')">오늘 그만 보기</button>
+				<button style="margin-left: -4.5px;border-top:1px solid #fff;" onclick = "closeMainModal();return false">닫기</button>
 			</div>
 		</div>
 	</div>
