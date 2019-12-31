@@ -138,6 +138,7 @@ $(document).ready(function(){
 		      			<li style="list-style-type:decimal">입금확인 요청 건에 대해서는 확인하는 즉시 적립코드를 발급해드립니다. </li>
 		      			<li style="list-style-type:decimal">설정에서 푸시알림 받기를 선택하셔야 등록시 보내드리는 알림을 받으실 수 있습니다.</li>
 		      			<li style="list-style-type:decimal">신청인과 입금자 명이 다를 경우는 업무처리가 다소 지연될 수 있습니다</li>
+		      			<li style="list-style-type:decimal">토요일, 일요일 및 공휴일은 해당 업무를 처리하지 않으며, 업무 개시후 등록된 영수증에 대한 코드발급을 일괄 처리합니다.</li>
 		      		</ol>
 		      	</div>
 		      	
