@@ -1124,7 +1124,7 @@
 
  <insert id="insertPointCodeIssueRequest" parameterType="HashMap" useGeneratedKeys = "true" keyProperty = "pointCodeIssueRequestNo">	
   insert into point_code_issue_request (memberNo, 
-      issueType,  payAmount, 
+      issueType,  depositor, payAmount, 
       accPointRate, accPointAmount, accTargetRange, 
       depositAmount, depositRate, 
       uploadFile, depositBankAccount, status, 
@@ -1132,7 +1132,7 @@
       affiliateNo,
       createTime, updateTime)
     values (#{memberNo,jdbcType=INTEGER}, 
-      #{issueType,jdbcType=VARCHAR},  #{payAmount,jdbcType=INTEGER}, 
+      #{issueType,jdbcType=VARCHAR},  #{depositor,jdbcType=VARCHAR}, #{payAmount,jdbcType=INTEGER}, 
       #{accPointRate,jdbcType=REAL}, #{accPointAmount,jdbcType=REAL}, #{accTargetRange,jdbcType=VARCHAR}, 
       #{depositAmount,jdbcType=REAL}, #{depositRate,jdbcType=REAL}, 
       #{uploadFile,jdbcType=VARCHAR}, #{depositBankAccount,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 

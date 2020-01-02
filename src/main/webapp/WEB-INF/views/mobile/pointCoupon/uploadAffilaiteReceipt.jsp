@@ -181,7 +181,7 @@ $(document).ready(function(){
 				<input type="number"  name = "payAmount" id = "payAmount"" style = "font-size:15px" / >
 				<input type = "hidden" name = "receiptFile" id = "receiptFile" />
 				<input type = "hidden" name= "accPointAmount" id = "accPointAmount" />
-				<input type = "hidden" name= "depositBankAccount" id = "depositBankAccount" value = "국민은행:10000-11111:안영철"/>
+				<input type = "hidden" name= "depositBankAccount" id = "depositBankAccount" value = "우리은행:1002-751-058576:안영철"/>
 				<input type = "hidden" name= "depositAmount" id = "depositAmount"  />
 				<input type = "hidden" name= "issueType" id = "issueType"   value = "1"/>
 				<input type = "hidden" name= "accTargetRange" id = "accTargetRange"  value = "10" /> <!-- 일반 QR 적립 범위  -->
