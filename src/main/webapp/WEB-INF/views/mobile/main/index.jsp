@@ -209,10 +209,10 @@ if (isApp()) {
 			<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">
 				<c:choose>
 					<c:when test="${fn:length(model.notice.title) gt 35}">
-				        <c:out value="${fn:substring(model.notice.title, 0, 35)}"></c:out>...
+				        [공지]<c:out value="${fn:substring(model.notice.title, 0, 35)}"></c:out>...
 				    </c:when>
 				    <c:otherwise>
-				        <c:out value="${model.notice.title}"> </c:out>
+				        [공지]<c:out value="${model.notice.title}"> </c:out>
 				    </c:otherwise>
 				</c:choose>	
 			</a>
@@ -228,7 +228,31 @@ if (isApp()) {
 		</c:if>
 	</div>
 	</c:if>
-	
+	<c:if test = "${! empty model.affiliateNotice}">
+		<div class="m_noti">
+			<span> 
+				<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.affiliateNotice.mainBbsNo}">
+					<c:choose>
+						<c:when test="${fn:length(model.affiliateNotice.title) gt 35}">
+					        [가맹점 공지]<c:out value="${fn:substring(model.affiliateNotice.title, 0, 35)}"></c:out>...
+					    </c:when>
+					    <c:otherwise>
+					        [가맹점공지]<c:out value="${model.affiliateNotice.title}"> </c:out>
+					    </c:otherwise>
+					</c:choose>	
+				</a>
+			
+			</span>
+			
+			 <c:set var="now1" value="<%=new java.util.Date()%>"/>
+	         <fmt:parseNumber value="${now1.time / (1000*60*60*24)}" integerOnly="true" var="today1"></fmt:parseNumber>
+			 <fmt:parseDate value="${model.affiliateNotice.createTime}" var="affiliateNoticePostDate" pattern="yyyy-MM-dd "/>
+	          <fmt:parseNumber value="${affiliateNoticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData1"></fmt:parseNumber>
+			<c:if test="${today1 - postData1 <= 5}">
+			<span> NEW</span>
+			</c:if>
+		</div>
+	</c:if>
 	<div class="main_img_box">
 		<div onclick="startQRScan()"><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.qrcode_acc" /></p></div>
 		<div onclick = "movePage('/m/pointCoupon/index.do')"><img src="/resources/images/r_receipt.png"><p><spring:message code="label.n_reciept_acc" /></p></div>

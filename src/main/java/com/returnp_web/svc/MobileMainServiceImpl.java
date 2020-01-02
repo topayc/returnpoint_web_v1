@@ -215,17 +215,32 @@ public class MobileMainServiceImpl implements MobileMainService {
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
 				return false;
 			}
+			
 			HashMap<String, Object> myRedPointSumInfo = mobileMainDao.selectMyRedPointSumInfo(dbparams); // red point search.
 			HashMap<String, Object> myGreenPointSumInfo = mobileMainDao.selectMyGreenPointSumInfo(dbparams); // green point Sum search.
 			
 			dbparams.clear();
 			dbparams.put("bbsType1", "1");
+			dbparams.put("bbsType2", "1");
 			dbparams.put("bbsLimit", 1);
-			
 			ArrayList<HashMap<String, Object>> notices = this.mobileMainDao.selectBoards(dbparams);
 			if (notices.size() ==1) {
 				rmap.put("notice", notices .get(0));
 			}
+			
+			dbparams.clear();
+			dbparams.put("memberNo", sm.getMemberNo());
+			if (mobileMainDao.selectAffiliate(dbparams) != null) {
+				dbparams.clear();
+				dbparams.put("bbsType1", "1");
+				dbparams.put("bbsType2", "2");
+				dbparams.put("bbsLimit", 1);
+				ArrayList<HashMap<String, Object>> affiliateNotices = this.mobileMainDao.selectBoards(dbparams);
+				if (affiliateNotices.size()>0) {
+					rmap.put("affiliateNotice", affiliateNotices.get(0));
+				} 
+			}
+			
 			rmap.put("myRedPointSumInfo", myRedPointSumInfo);
 			rmap.put("myGreenPointSumInfo", myGreenPointSumInfo);
 

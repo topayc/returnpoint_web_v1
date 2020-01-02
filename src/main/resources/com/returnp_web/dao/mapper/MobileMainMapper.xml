@@ -882,6 +882,7 @@
 		FROM affiliate
 		WHERE 1 = 1
 		<if test="affiliateNo != null"> AND affiliateNo = #{affiliateNo} </if> 
+		<if test="memberNo != null"> AND memberNo = #{memberNo} </if> 
 	</select>
 	
 	<select id="selectAffiliateDetail" parameterType="HashMap" resultType="HashMap">
