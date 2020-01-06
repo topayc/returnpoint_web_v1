@@ -90,6 +90,11 @@ $(document).ready(function(){
 					alertOpen("알림", nameMapper[prop] + message, true, false, null, null); 
 					return;
 				}
+				
+				if (prop == "payAmount" &&   parseInt(data[prop]) <= 0  ){
+					alertOpen("알림", "결제 금액 입력이 잘못되었습니다.</br>  결제 금액은 0원이거나 0원보다 작을 수 없습니다", true, false, null, null); 
+					return;
+				}
 			}
 		}
 		

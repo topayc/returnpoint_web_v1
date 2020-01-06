@@ -71,8 +71,7 @@ $(document).ready(function(){
 			depositAmount : $('#depositAmount').val().trim().replace(",",""),
 			depositBankAccount : $('#depositBankAccount').val().trim(),
 			accTargetRange: $('#accTargetRange').val().trim(),
-			issueType: $('#issueType').val().trim(),
-			
+			issueType: $('#issueType').val().trim()
 		};
 		
 		var nameMapper = {
@@ -92,9 +91,15 @@ $(document).ready(function(){
 					alertOpen("알림", nameMapper[prop]  + "을 하지 않으셨습니다", true, false, null, null); 
 					return;
 				}
-				if (data[prop] == '' || data[prop].length < 1) {
+				
+				if (data[prop].trim() == '' || data[prop].trim().length < 1) {
 					var message = prop == "receiptFile" ? " 파일이 등록되지 않았습니다.</br>갤러리와 카메라로 영수증 파일을 등록할 수 있습니다. ": " 항목이 입력되지 않았습니다.";
 					alertOpen("알림", nameMapper[prop] + message, true, false, null, null); 
+					return;
+				}
+				
+				if (prop == "payAmount" &&   parseInt(data[prop]) <= 0  ){
+					alertOpen("알림", "결제 금액 입력이 잘못되었습니다.</br>  결제 금액은 0원이거나 0원보다 작을 수 없습니다", true, false, null, null); 
 					return;
 				}
 			}

@@ -1679,7 +1679,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 				dbparams.put("affiliateNo",paramMap.get("affiliateNo"));
 			}
 			
-			dbparams.put("depositor",paramMap.getInt("depositor"));
+			dbparams.put("depositor",paramMap.getStr("depositor"));
 			dbparams.put("payAmount",paramMap.getInt("payAmount"));
 			dbparams.put("accPointRate",1);
 			dbparams.put("accPointAmount",paramMap.getInt("payAmount"));
