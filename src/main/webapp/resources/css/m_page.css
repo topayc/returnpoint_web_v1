@@ -756,9 +756,9 @@ button {color : #000; font-weight:400}
 
 .circle_text{margin-right:5px;border-radius: 10px;padding: 0 2%;line-height: 1.25em;display: inline-block;text-align: center;}
 
-#main .m_noti{padding:13px 0;font-size:12px;color:#333;font-weight:300;border-bottom:1px solid #f1f1f1;}
-#main .m_noti span:nth-child(1){padding:0 5px 0 10px;}
-#main .m_noti span:nth-child(2){color:#fff;background-color:red;border-radius:10px;font-size:10px;padding:3px;}
+#main .m_noti{padding:13px 0;font-size:12px;color:#333;font-weight:300;border-bottom:1px solid #f1f1f1;    background-color: #fff}
+#main .m_noti span:nth-child(1){padding:0 2px 0 7px;}
+.new_notice{color:#fff;background-color:red;border-radius:10px;font-size:10px;padding:3px;}
 #main .m_noti span:nth-child(3){float:right;padding-right:10px;}
 
 #main .main_img_box{overflow:hidden;padding:10px 0;}

@@ -169,7 +169,7 @@ $(document).ready(function(){
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="receipt"  items="${model.receipts}"  >
-							<div style = "padding-bottom:28px" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
+							<div style = "padding-bottom:28px" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}&issueType=${receipt.issueType}')">
 		        				<div class="coupon_img_box"><img src = "${receipt.uploadFile}"/></div>
 		        				<p>
 		        					<c:choose>

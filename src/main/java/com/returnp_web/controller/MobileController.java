@@ -127,9 +127,10 @@ public class MobileController extends MallBaseController {
 	
 	// 영수증 업로드 내역 세부 페이지 
 	@RequestMapping("/pointCoupon/receiptDetail.do")
-	public String receiptDetail(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+	public String receiptCommonDetail(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/pointCoupon/receiptDetail");
+		String viewPage = ((String)p.get("issueType")).equals("1") ? "/mobile/pointCoupon/affiliateReceiptDetail" : "/mobile/pointCoupon/commonReceiptDetail";
+		RPMap rmap = Util.getRPRmap(viewPage);
 		boolean bret =  mms.selectReceiptDetailInfo(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}

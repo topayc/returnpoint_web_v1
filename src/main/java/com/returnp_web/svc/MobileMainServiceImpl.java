@@ -1589,6 +1589,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 		return true;
 	}
 
+	
 	@Override
 	public boolean selectReceiptDetailInfo(RPMap rPap, RPMap rmap, HttpServletRequest request,
 			HttpServletResponse response) {
@@ -1690,6 +1691,18 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("depositRate",0.15);
 			dbparams.put("status","1");
 			dbparams.put("publisher",sm.getMemberNo());
+			
+			//비가맹점 영수증인 경우 그대로 전달된 입금자 명을 등록지만 , 가맹점 영수증일 경우 입금자명을 가맹점명:가맹점주 이름으로 세팅
+			if (paramMap.getStr("issueType").equals("1")) {
+				HashMap<String, Object> param2 = new HashMap<String, Object>();
+				param2.put("affiliateNo", dbparams.getInt("affiliateNo"));
+				HashMap<String, Object> affiliateMap = this.mobileMainDao.selectAffiliate(param2);
+				param2.clear();
+				
+				param2.put("memberNo", (int)affiliateMap.get("memberNo"));
+				HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(param2);
+				dbparams.put("depositor", (String)affiliateMap.get("affiliateName") + ":" + (String)memberMap.get("memberName"));
+			}
 			
 			Date date = new Date();
 			String fileName = "receipt_" + sm.getMemberNo() + "_" + date.getTime() + ".png";

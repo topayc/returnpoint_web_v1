@@ -209,10 +209,12 @@ if (isApp()) {
 			<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">
 				<c:choose>
 					<c:when test="${fn:length(model.notice.title) gt 35}">
-				        [공지]<c:out value="${fn:substring(model.notice.title, 0, 35)}"></c:out>...
+				        <span style = "color : #000;font-weight:700;">공지</span>
+				        <span style = "color : #666"><c:out value="${fn:substring(model.notice.title, 0, 35)}"></c:out>...</span>
 				    </c:when>
 				    <c:otherwise>
-				        [공지]<c:out value="${model.notice.title}"> </c:out>
+				        <span style = "color : #000;font-weight:700;">공지</span>
+				        <span style = "color : #666"><c:out value="${model.notice.title}"> </c:out></span>
 				    </c:otherwise>
 				</c:choose>	
 			</a>
@@ -224,7 +226,7 @@ if (isApp()) {
 		 <fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
           <fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
 		<c:if test="${today - postData <= 5}">
-		<span> NEW</span>
+		<span class = "new_notice"> NEW</span>
 		</c:if>
 	</div>
 	</c:if>
@@ -234,10 +236,12 @@ if (isApp()) {
 				<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.affiliateNotice.mainBbsNo}">
 					<c:choose>
 						<c:when test="${fn:length(model.affiliateNotice.title) gt 35}">
-					        [가맹점 공지]<c:out value="${fn:substring(model.affiliateNotice.title, 0, 35)}"></c:out>...
+					        <span style = "color : #000;font-weight:700;">가맹점 공지</span>
+					        <span style = "color : #666"><c:out value="${fn:substring(model.affiliateNotice.title, 0, 35)}"></c:out>...</span>
 					    </c:when>
 					    <c:otherwise>
-					        [가맹점공지]<c:out value="${model.affiliateNotice.title}"> </c:out>
+					        <span style = "color : #000;font-weight:700;">가맹점공지</span>
+					        <span style = "color : #666"><c:out value="${model.affiliateNotice.title}"> </c:out></span>
 					    </c:otherwise>
 					</c:choose>	
 				</a>
@@ -249,7 +253,7 @@ if (isApp()) {
 			 <fmt:parseDate value="${model.affiliateNotice.createTime}" var="affiliateNoticePostDate" pattern="yyyy-MM-dd "/>
 	          <fmt:parseNumber value="${affiliateNoticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData1"></fmt:parseNumber>
 			<c:if test="${today1 - postData1 <= 5}">
-			<span> NEW</span>
+			<span class = "new_notice"> NEW</span>
 			</c:if>
 		</div>
 	</c:if>

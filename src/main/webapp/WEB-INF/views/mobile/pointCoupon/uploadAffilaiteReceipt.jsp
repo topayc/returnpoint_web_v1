@@ -37,7 +37,7 @@ $(document).ready(function(){
 			if (!$.isNumeric(payAmount)) {
 				alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
 				$(this).val("");
-		}
+			}
 			
 		}
 		payAmount = parseInt(payAmount);
@@ -61,12 +61,23 @@ $(document).ready(function(){
 		$(this).addClass('upload_type_select');
 	});
 	
+/* 	$("#affiliateNo").change(function(){
+		var param = {affiliateNo: $(this).val().trim()}
+		$.getJSON('/m/pointCoupon/getAffiliateInfo.do', function(result){
+			
+			if (result.result.code == 0) {
+				$('#depositor').val(res.memberName)
+			}else {
+				alertOpen("알림", result.result.msg, true, false, null, null); 	
+			}
+		});
+	});
+	 */
 	$("#receipt_submit").click(function(){
 		var data = {
 			receiptFile : $('#receiptFile').val().trim(),
 			affiliateNo: $('#affiliateNo').val().trim(),
 			payAmount : $('#payAmount').val().trim(),
-			depositor: $('#depositor').val().trim(),
 			accPointAmount : $('#accPointAmount').val().trim(),
 			depositAmount : $('#depositAmount').val().trim().replace(",",""),
 			depositBankAccount : $('#depositBankAccount').val().trim(),
@@ -79,7 +90,6 @@ $(document).ready(function(){
 			depositBankAccount : "입금 은행 정보",
 			accPointAmount : "적립 금액",
 			depositAmount : "적립 금액",
-			depositor : "입금자",
 			receiptFile : "영수증"	,
 			accTargetRange : "적립 대상 범위 "	,
 			affiliateNo : "가맹점 선택",
@@ -190,23 +200,27 @@ $(document).ready(function(){
 				<input type = "hidden" name= "depositAmount" id = "depositAmount"  />
 				<input type = "hidden" name= "issueType" id = "issueType"   value = "1"/>
 				<input type = "hidden" name= "accTargetRange" id = "accTargetRange"  value = "10" /> <!-- 일반 QR 적립 범위  -->
-						
-				<p style = "margin-top:5px;font-weight:550">입금자명</p>
-				<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px" value = "${model.memberInfo.memberName}"/>
+				
+				<div style = "margin-top:10px;display:none">		
+					<p style = "font-weight:550;">입금자명</p>
+					<input type="text"  name = "depositor"  id = "depositor" style = "font-size:16px;"/>
+				</div>
 				
 				<div style = "margin-top:10px">
-				<p style = "font-weight:550">적립 받을 포인트(100%) </p>
-				<p class="upload_conbox_p accPoint" style = "background-color : #eee; border:1px solid #888;color : #000;margin-top:10px;font-size : 16px;font-weight:400;">&nbsp;0 원</p>
+					<p style = "font-weight:550">적립 받을 포인트(100%) </p>
+					<p class="upload_conbox_p accPoint" style = "background-color : #eee; border:1px solid #888;color : #000;margin-top:10px;font-size : 16px;font-weight:400;">&nbsp;0 원</p>
 				</div>
 			
-				<div style = "margin-top:20px">
+				<div style = "margin-top:20px;display:none">
 					<p style = "font-weight:550">회원님이 입금하셔야 할 금액(결제금액의 15%)</p>
 					<p class="upload_conbox_p" style = "background-color : #eee; border:1px solid #888;color : #000;margin-top:10px;font-size : 16px;font-weight:400;">&nbsp;0 원</p>
 				</div>
-							
-				<p style = "margin-top:20px;font-weight:550">15% 금액 입금 계좌</p>
-				<div style = "font-size:16px;border:1px solid #ddd;margin-top:10px;width: 100%; border:1px solid #ccc; padding: 4% 2%; text-align: center;margin-bottom:70px">
-				 우리은행    1002-751-058576    예금주 : 안영철 
+				
+				<div style = "margin-top:20px;display:none">		
+					<p style = "font-weight:550;">15% 금액 입금 계좌</p>
+					<div style = "font-size:16px;border:1px solid #ddd;margin-top:10px;width: 100%; border:1px solid #ccc; padding: 4% 2%; text-align: center;margin-bottom:70px">
+				 	우리은행    1002-751-058576    예금주 : 안영철 
+				</div>
 				</div>
 		</div>
 		<div class="bottom_btn">

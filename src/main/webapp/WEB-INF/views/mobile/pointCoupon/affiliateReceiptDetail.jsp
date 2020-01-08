@@ -25,24 +25,12 @@ $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
 	
-	$("#reqeust_deposit_check").click(function(){
+	$("#reqeust_affiliate_deposit").click(function(){
 		$.ajax({
 	       	   type: "POST",
-	              url: "/m/pointCoupon/checkDepositRequest.do",
+	              url: "/m/pointCoupon/reqeustAffiliateDeposit.do",
 	               data: {pointCodeIssueRequestNo : $(this).attr("requestNo")},
 	               success: function (result) {
-	            	  console.log(result);
-	            	   if (result && typeof result !="undefined") {
-	            	   		if (result.result.code == 0) {
-								$(".depositStatus").text("입금확인요청중");
-								$(".depositStatus").css("background-color","#BF00FF");
-							    $("#check_deposit_1").hide();
-							    $("#reqeust_deposit_check").hide();
-							}
-	            		   	alertOpen("알림", result.result.msg, true, false, null, null); 
-		               }else{
-		              		alertOpen("알림", "1.장애 발생. 다시 시도해주세요.", true, false, null, null);
-		           	   }
 	               },
 	               error : function(request, status, error){
 	            	   alertOpen("알림 ", "2.장애 발생. 다시 시도해주세요", true, false, null, null);
@@ -123,22 +111,23 @@ $(document).ready(function(){
 							</li>
 						</ul>
 					</li>
+					<c:if test = "${model.receipt.status== '1'}">
+						<li style="border-top:none;">
+						<ul>
+							<li class="upload_conbox_text1"> 상태 메시지 </li>
+							<li class="upload_conbox_text2">현재 가맹점의 입금을 기다리고 있습니다</li>
+						</ul>
+						</li>
+					</c:if>
 				</ul> 
-			
-			<p style = "margin-top:20px;font-weight:550;color : #000">입금 계좌 정보</p>
-			<div style = "border : 1px solid #ddd;margin-top:10px;">
-				우리은행 &nbsp;&nbsp;1002-751-058576 &nbsp;&nbsp;예금주:안영철
-			</div>
-		
-		<c:if test = "${model.receipt.status == '1'}"> 
-			<p style = "margin-top:20px;font-weight:550;color : #000; " id = "check_deposit_1">빠른 처리를 위해서 입금확인 요청을 해주세요</p>
-			<button id = "reqeust_deposit_check"   requestNo = "${model.receipt.pointCodeIssueRequestNo}">입금 확인 요청하기</button>
-			</br>
-			<p>입금이 완료되어야 적립코드가 발행되며,입금을 하셨을 경우 </br>
-				<b>입금확인 요청하기</b> 버튼을 클릭하시면 빠른 처리가 가능합니다.
-			</p>
-		</c:if> 
-		</div>	
+			<c:if test = "${model.receipt.status == '1'}"> 
+				<p style = "margin-top:20px;font-weight:550;color : #000; " id = "check_deposit_1">가맹점주에게 입금을 요청하려면 아래 버튼을 눌러주세요</p>
+				<button id = "reqeust_affiliate_deposit"   requestNo = "${model.receipt.pointCodeIssueRequestNo}">가맹점주에게 입금 요청하기 </button>
+				</br>
+				<p>*가맹점주가 푸시알림을 OFF 했을 경우는 가맹점주에게 메시지가 전달되지 않습니다. </p>
+			</c:if> 	
+		</div>
+	
 		
 	</div>
    </section>
