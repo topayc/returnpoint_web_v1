@@ -125,6 +125,11 @@ $(document).ready(function(){
 						</li>
 					</c:if>
 				</ul> 
+	<!-- 		<p style = "margin-top:20px;font-weight:550;color : #000">입금 계좌 정보</p>
+			<div style = "border : 1px solid #ddd;margin-top:10px;">
+				우리은행 &nbsp;&nbsp;1002-751-058576 &nbsp;&nbsp;예금주:안영철
+			</div> -->
+			
 			<c:if test = "${model.receipt.status == '1'}"> 
 				<p style = "margin-top:20px;font-weight:550;color : #000; " id = "check_deposit_1">가맹점주의 입금이 확인시 회원님 계정으로 적립코드가 등록됩니다.가맹점주에게 입금을 요청하려면 아래 버튼을 눌러주세요</p>
 				<button id = "reqeust_affiliate_deposit"   requestNo = "${model.receipt.pointCodeIssueRequestNo}">가맹점주에게 입금 요청하기 </button>
