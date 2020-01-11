@@ -774,5 +774,30 @@ public class MobileController extends MallBaseController {
 		boolean bret = mms.getBoardReply(Util.toRPap(paramMap), rmap, request, response);
 		return page(bret, modelMap, rmap);
 	}
-
+	
+	
+	
+	/*****************************************************************************************************************************************************************
+	 * 가맹점 개인화 메인 컨트롤러 메서드 
+	 *****************************************************************************************************************************************************************/
+	/*
+	 * 가맹점 개인화 페이지 메인
+	 */
+	@RequestMapping("/affiliate/affiliateMain.do")
+	public String affiliateMain(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/affiliate/affiliateMain");
+		boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
+	
+	// 회원이 가맹점주에게 입금 확인 요청하기 
+	@RequestMapping(value = "/pointCoupon/reqeustAffiliateDeposit.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String reqeustAffiliateDeposit(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.reqeustAffiliateDeposit(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}
 }

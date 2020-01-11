@@ -297,6 +297,10 @@ public interface MobileMainService {
 	String accPointCode(HashMap<String, String> paramMap, ModelMap modelMap, HttpServletRequest request,
 			HttpServletResponse response);
 
+	boolean prepareAffiliateMain(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	boolean reqeustAffiliateDeposit(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 

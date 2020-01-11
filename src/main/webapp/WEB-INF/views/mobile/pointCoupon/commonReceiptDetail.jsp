@@ -131,7 +131,7 @@ $(document).ready(function(){
 			</div>
 		
 		<c:if test = "${model.receipt.status == '1'}"> 
-			<p style = "margin-top:20px;font-weight:550;color : #000; " id = "check_deposit_1">빠른 처리를 위해서 입금확인 요청을 해주세요</p>
+			<p style = "margin-top:20px;font-weight:550;color : #000; " id = "check_deposit_1">입금을 하신 후 다음의 입금확인 요청하기 버튼을 눌러주시면 더욱 빠른 처리가 가능합니다.</p>
 			<button id = "reqeust_deposit_check"   requestNo = "${model.receipt.pointCodeIssueRequestNo}">입금 확인 요청하기</button>
 			</br>
 			<p>입금이 완료되어야 적립코드가 발행되며,입금을 하셨을 경우 </br>

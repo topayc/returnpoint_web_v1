@@ -31,6 +31,11 @@ $(document).ready(function(){
 	              url: "/m/pointCoupon/reqeustAffiliateDeposit.do",
 	               data: {pointCodeIssueRequestNo : $(this).attr("requestNo")},
 	               success: function (result) {
+	            	   if (result && typeof result !="undefined") {
+	            		   	alertOpen("알림", result.result.msg, true, false, null, null); 
+		               }else{
+		              		alertOpen("알림", "장애 발생. 다시 시도해주세요.", true, false, null, null);
+		           	   }
 	               },
 	               error : function(request, status, error){
 	            	   alertOpen("알림 ", "2.장애 발생. 다시 시도해주세요", true, false, null, null);
@@ -121,7 +126,7 @@ $(document).ready(function(){
 					</c:if>
 				</ul> 
 			<c:if test = "${model.receipt.status == '1'}"> 
-				<p style = "margin-top:20px;font-weight:550;color : #000; " id = "check_deposit_1">가맹점주에게 입금을 요청하려면 아래 버튼을 눌러주세요</p>
+				<p style = "margin-top:20px;font-weight:550;color : #000; " id = "check_deposit_1">가맹점주의 입금이 확인시 회원님 계정으로 적립코드가 등록됩니다.가맹점주에게 입금을 요청하려면 아래 버튼을 눌러주세요</p>
 				<button id = "reqeust_affiliate_deposit"   requestNo = "${model.receipt.pointCodeIssueRequestNo}">가맹점주에게 입금 요청하기 </button>
 				</br>
 				<p>*가맹점주가 푸시알림을 OFF 했을 경우는 가맹점주에게 메시지가 전달되지 않습니다. </p>

@@ -1669,11 +1669,11 @@ public class MobileMainServiceImpl implements MobileMainService {
 		RPMap dbparams = new RPMap();
 		SessionManager sm = new SessionManager(request, response);
 		try {
-			//System.out.println(Math.round(paramMap.getInt("payAmount") *  0.15));
-			//System.out.println(paramMap.getInt("depositAmount"));
-			
+			HashMap<String, Object> uploadMemberMap = null;
 			/*point_code_issue_request */
 			dbparams.put("memberNo",sm.getMemberNo());
+			uploadMemberMap = this.mobileMainDao.selectMember(dbparams);
+			
 			dbparams.put("issueType",paramMap.get("issueType"));
 			
 			if (paramMap.containsKey("affiliateNo") && paramMap.getStr("affiliateNo").trim().length() > 0  && !paramMap.getStr("affiliateNo").trim().equals("") && paramMap.getStr("affiliateNo") != null) {
@@ -1692,16 +1692,24 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("status","1");
 			dbparams.put("publisher",sm.getMemberNo());
 			
-			//비가맹점 영수증인 경우 그대로 전달된 입금자 명을 등록지만 , 가맹점 영수증일 경우 입금자명을 가맹점명:가맹점주 이름으로 세팅
+			/*
+			 * 비가맹점 영수증인 경우 그대로 전달된 입금자 명을 등록지만 , 가맹점 영수증일 경우 입금자명을 가맹점명:가맹점주 이름으로 세팅
+			 */
+			
+			/* 가맹점 정보 */
+			HashMap<String, Object> affiliateMap = null;
+			/* 가맹점 소유주 멤버 정보  */
+			HashMap<String, Object> affiliateMemberMap = null;
+			
 			if (paramMap.getStr("issueType").equals("1")) {
 				HashMap<String, Object> param2 = new HashMap<String, Object>();
 				param2.put("affiliateNo", dbparams.getInt("affiliateNo"));
-				HashMap<String, Object> affiliateMap = this.mobileMainDao.selectAffiliate(param2);
+				affiliateMap = this.mobileMainDao.selectAffiliate(param2);
 				param2.clear();
 				
 				param2.put("memberNo", (int)affiliateMap.get("memberNo"));
-				HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(param2);
-				dbparams.put("depositor", (String)affiliateMap.get("affiliateName") + ":" + (String)memberMap.get("memberName"));
+				affiliateMemberMap = this.mobileMainDao.selectMember(param2);
+				dbparams.put("depositor", (String)affiliateMap.get("affiliateName") + ":" + (String)affiliateMemberMap.get("memberName"));
 			}
 			
 			Date date = new Date();
@@ -1731,7 +1739,51 @@ public class MobileMainServiceImpl implements MobileMainService {
 	        
 	        dbparams.put("uploadFile", "/cloud/images/receipt/" + fileName);
 	        int count = this.mobileMemberDao.updatePointCodeIssueRequest(dbparams);
-	       
+	      
+	        /* 
+	         * 가맹점 영수증일 경우 해당 가맹점에 대한 노티를 생성 
+	         * (영수증을 업로드 했으니, 해당 금액을 입금해달라는 노티)
+	         * */
+	    	if (paramMap.getStr("issueType").equals("1")) {
+	    		HashMap<String, Object> notiMap = new HashMap<String, Object>();
+	    		notiMap.put("notiType", "2");
+	    		notiMap.put("memberNo", affiliateMap.get("memberNo"));
+	    		notiMap.put("nodeNo", affiliateMap.get("affiliateNo"));
+	    		notiMap.put("nodeType", "5");
+	    		notiMap.put("nodeTypeName", "affiliate");
+	    		
+	    		String notiTitle = String.format( "%s 님에 의한 영수증 업로드 완료 ", uploadMemberMap.get("memberName"));
+	    		notiMap.put("notiTitle", notiTitle);
+	    		
+	    		StringBuilder builder = new StringBuilder();
+	    		
+	    		builder.append(String.format( "%s님이 %s 영수증 업로드 완료했습니다 ", uploadMemberMap.get("memberName"), affiliateMap.get("affiliateName")));
+	    		builder.append(System.getProperty("line.separator"));
+	    		builder.append(System.getProperty("line.separator"));
+	    		
+	    		builder.append(String.format( "1.결제 금액 :  %,d 원", paramMap.getInt("payAmount")));
+	    		builder.append(System.getProperty("line.separator"));
+	    		
+	    		builder.append(String.format( "2.가맹점주님이 입금할 금액 : %,d 원", Math.round(paramMap.getInt("payAmount") *  0.15)));
+	    		builder.append(System.getProperty("line.separator"));
+	    		builder.append("3.입금하실 계좌 : 우리은행 1002-751-058576 예금주 : 안영철");
+	            builder.append(System.getProperty("line.separator"));
+	            builder.append(System.getProperty("line.separator"));
+
+	    		builder.append("*가맹점주님이 위 금액을 입금하시면, 업로드 한 회원으로 적립코드가 발송됩니다");
+	    		builder.append(System.getProperty("line.separator"));
+	    		builder.append("*입금을 하신 후 빠른 처리를 위해서 해당 내역 페이지에서 입금확인 요청하기 버튼을 눌러주시면 더욱 빠른 처리가 가능합니다");
+	    		
+	    		notiMap.put("notiContent", builder.toString());
+
+	    		String notiExt1 = String.format(
+	    			"/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=%d&issueType=%d",
+	    			(int)dbparams.get("pointCodeIssueRequestNo"),1);
+	    		notiMap.put("notiExt1",  notiExt1);
+	    		this.mobileMemberDao.insertMemberNoti(notiMap);
+	    		
+	    	}
+	    	
 	        String json = Util.printResult(0, String.format("영수증 업로드 처리가 완료되었습니다."), null);
 			rmap.put("json", json);
 			
@@ -1807,5 +1859,120 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 
 		return response2.toString();
+	}
+
+	
+	
+	/*****************************************************************************************************************************************************************
+	 * 가맹점 개인화 메인 서비스 메서드 
+	 *****************************************************************************************************************************************************************/
+	
+	@Override
+	public boolean prepareAffiliateMain(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		RPMap dbparams = new RPMap();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			int affectedRow = this.mobileMemberDao.insertMemberNoti(dbparams);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean reqeustAffiliateDeposit(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		SessionManager sm = new SessionManager(request, response);
+		HashMap<String, Object> dbParams = new HashMap<String, Object>();
+
+		HashMap<String, Object> insertNotiMap  = new HashMap<String, Object>();
+		HashMap<String, Object> affiliateMap = null;
+		HashMap<String, Object> requestMemberMap = null;
+		HashMap<String, Object> pointCodeIssueRequestMap = null;
+		ArrayList<HashMap<String, Object>> pointCodeIssueRequestList = null;
+		
+		try {
+			String json = null;
+			if (!rPap.containsKey("pointCodeIssueRequestNo") ||  rPap.getInt("pointCodeIssueRequestNo") == 0  || rPap.get("pointCodeIssueRequestNo") == null) {
+				json = Util.printResult(1, String.format("109:잘못된 요청입니다.."), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
+			/*요청 회원 정보 */
+			dbParams.put("memberNo", sm.getMemberNo());
+			requestMemberMap = this.mobileMainDao.selectMember(dbParams);
+			
+			/*해당 영수증 업로드 정보 */
+			dbParams.clear();
+			dbParams.put("pointCodeIssueRequestNo", rPap.getInt("pointCodeIssueRequestNo"));
+			pointCodeIssueRequestList = this.mobileMemberDao.selectPointCodeIssueRequests(dbParams);
+			
+			if (pointCodeIssueRequestList.size() != 1) {
+				json = Util.printResult(1, String.format("110:잘못된 요청입니다."), null);
+				rmap.put("json", json);
+				return true;
+			}
+			pointCodeIssueRequestMap = pointCodeIssueRequestList.get(0);
+
+			/*가맹점 정보 */
+			dbParams.clear();
+			dbParams.put("affiliateNo", pointCodeIssueRequestMap.get("affiliateNo"));
+			affiliateMap = this.mobileMemberDao.selectAffiliateInfo(dbParams);
+			
+			insertNotiMap.put("notiType", "2");
+			insertNotiMap.put("memberNo", affiliateMap.get("memberNo"));
+			insertNotiMap.put("nodeNo", affiliateMap.get("affiliateNo"));
+			insertNotiMap.put("nodeType", "5");
+			insertNotiMap.put("nodeTypeName", "affiliate");
+            
+            String notiTitle = String.format( "%s 님에 의한 영수증 완료 및 입금 요청", requestMemberMap.get("memberName"));
+            insertNotiMap.put("notiTitle", notiTitle);
+            
+            StringBuilder builder = new StringBuilder();
+            
+            builder.append(String.format( 
+            	"%s님이 영수증 업로드 완료했으며,%s이에 %s 에 대해 다음의 금액을 입금을 요청하고 있습니다",
+            	requestMemberMap.get("memberName"), System.getProperty("line.separator"), affiliateMap.get("affiliateName")));
+            builder.append(System.getProperty("line.separator"));
+            builder.append(System.getProperty("line.separator"));
+            
+            builder.append(String.format( "1.결제 금액 :  %,d 원", pointCodeIssueRequestMap.get("payAmount")));
+            builder.append(System.getProperty("line.separator"));
+            
+            builder.append(String.format( "2.가맹점주님이 입금할 금액 : %,d 원", Math.round((int)pointCodeIssueRequestMap.get("payAmount") *  0.15)));
+            builder.append(System.getProperty("line.separator"));
+            builder.append("3.입금하실 계좌 : 우리은행 1002-751-058576 예금주 : 안영철");
+            builder.append(System.getProperty("line.separator"));
+            builder.append(System.getProperty("line.separator"));
+
+            builder.append("*가맹점주님이 위 금액을 입금하시면, 업로드 한 회원으로 적립코드가 발송됩니다");
+            builder.append(System.getProperty("line.separator"));
+            builder.append("*입금을 하신 후 빠른 처리를 위해서 해당 내역 페이지에서 입금확인 요청하기 버튼을 눌러주시면 더욱 빠른 처리가 가능합니다");
+            
+            insertNotiMap.put("notiContent", builder.toString());
+
+            String notiExt1 = String.format(
+                "/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=%d&issueType=%d",
+                (int)pointCodeIssueRequestMap.get("pointCodeIssueRequestNo"),
+                1
+            	);
+            
+            insertNotiMap.put("notiExt1",  notiExt1);
+            
+            int count =  this.mobileMemberDao.insertMemberNoti(insertNotiMap);
+			if (count == 0) {
+				json = Util.printResult(1, String.format("110:잘못된 요청입니다."), null);
+				rmap.put("json", json);
+				return true;
+			} else {
+				json = Util.printResult(0, String.format("가맹점에 대한 입금 확인 요청이 완료되었습니다."), null);
+				rmap.put("json", json);
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return true;
 	}
 }

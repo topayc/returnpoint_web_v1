@@ -594,12 +594,12 @@
 	
 	<!-- 가맹점 정보 조회 -->
 	<select id="selectAffiliateInfo" parameterType="HashMap" resultType="HashMap">
-		SELECT affiliateNo
-				,affiliateSerial
-				,affiliateCode
-				,affiliateName
+		SELECT *
 		FROM affiliate
-		WHERE affiliateSerial= #{af_id} 
+		WHERE 1 = 1
+		<if test="affiliateNo != null "> AND affiliateNo   = #{affiliateNo} </if>
+		<if test="memberNo != null "> AND memberNo   = #{memberNo} </if>
+		<if test="af_id != null "> AND affiliateSerial   = #{af_id}  </if>
 	</select> 
 	
 	<!-- 회원 휴대폰 중복 가입 조회(회원정보수정) -->
@@ -1090,7 +1090,10 @@
 	</select>
 
 	<select id="selectPointCodeIssueRequests" parameterType="HashMap" resultType="HashMap">
-		select * from point_code_issue_request where memberNo = ${memberNo}
+		select * from point_code_issue_request 
+			where 1= 1 
+			<if test="memberNo != null "> AND memberNo   = #{memberNo} </if> 
+			<if test="pointCodeIssueRequestNo != null "> AND pointCodeIssueRequestNo   = #{pointCodeIssueRequestNo} </if> 
  	</select>
  	
  	<select id="selectPointCodeIssues" parameterType="HashMap" resultType="HashMap">
@@ -1140,7 +1143,7 @@
       #{affiliateNo,jdbcType=INTEGER}, 
       NOW(), NOW())
 		
-    <selectKey keyProperty="insertPointCodeIssueRequest" resultType="java.lang.Integer" order ="AFTER">
+    <selectKey keyProperty="pointCodeIssueRequestNo" resultType="java.lang.Integer" order ="AFTER">
 		    SELECT LAST_INSERT_ID()
 	 </selectKey>	
 	</insert>
@@ -1213,6 +1216,49 @@
 		<if test="pagination">
 			limit ${pageSize} offset ${offset}
 		</if>
- 		</select>
+ 	</select>
+	
+	<insert id="insertMemberNoti" parameterType="HashMap" useGeneratedKeys = "true" keyProperty = "memberNotiNo">	
+		  insert into member_noti (
+		 	  notiType, 
+		      memberNo, 
+		      nodeNo, 
+		      nodeType, 
+		      nodeTypeName,
+		      notiTitle, 
+		      notiContent, 
+		      notiExt1,
+		      isViewed,
+		      createTime, 
+		      updateTime
+		    ) 
+		    values 
+		    (
+		      #{notiType}, 
+		      #{memberNo},  
+		      #{nodeNo},
+		      #{nodeType},
+		      #{nodeTypeName},
+		      #{notiTitle},
+		      #{notiContent}, 
+		      #{notiExt1},
+		      'N', 
+		      NOW(),
+		      NOW()
+		     )
+				
+		    <selectKey keyProperty="memberNotiNo" resultType="java.lang.Integer" order ="AFTER">
+				    SELECT LAST_INSERT_ID()
+			 </selectKey>	
+	</insert>
+	
+	<select id="selectMemberNotis" parameterType="HashMap" resultType="HashMap">
+		select * from member_noti 
+		where 1 =1 
+		<if test="memberNotiNo != null "> AND memberNotiNo   = #{memberNotiNoberNo} </if>
+		<if test="memberNo != null "> AND memberNo   = #{memberNo} </if>
+		<if test="isViewed != null "> AND isViewed   = #{isViewed} </if>
+ 	</select>
+ 	
 	
 </mapper>

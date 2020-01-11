@@ -590,4 +590,9 @@ public interface MobileMapper {
 
 	ArrayList<HashMap<String, Object>> selectAffiliates(RPMap dbparams);
 
+
+	int insertMemberNoti(HashMap<String, Object> notiMap);
+	
+	ArrayList<HashMap<String, Object>> selectMemberNotis(HashMap<String, Object> dbparams);
+
 }

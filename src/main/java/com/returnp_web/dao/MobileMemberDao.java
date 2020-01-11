@@ -653,4 +653,13 @@ public class MobileMemberDao {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(MobileMapper.class).selectAffiliates(dbparams);
 	}
+
+	public int insertMemberNoti(HashMap<String, Object> notiMap) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMapper.class).insertMemberNoti(notiMap);
+	}
+	public ArrayList<HashMap<String, Object>> selectMemberNotis(HashMap<String, Object> dbparams){
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMapper.class).selectMemberNotis(dbparams);
+	}
 }
