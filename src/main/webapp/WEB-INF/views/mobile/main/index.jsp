@@ -250,7 +250,7 @@ if (isApp()) {
 	        	 <fmt:parseNumber value="${now1.time / (1000*60*60*24)}" integerOnly="true" var="today1"></fmt:parseNumber>
 			 	<fmt:parseDate value="${model.affiliateNotice.createTime}" var="affiliateNoticePostDate" pattern="yyyy-MM-dd "/>
 	          	<fmt:parseNumber value="${affiliateNoticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData1"></fmt:parseNumber>
-				<c:if test="${today1 - postData1 <= 5}">
+				<c:if test="${today1 - postData1 <= 7}">
 				<span class = "new_notice"> NEW</span>
 				</c:if>
 			</span>
