@@ -230,32 +230,32 @@ if (isApp()) {
 		</c:if>
 	</div>
 	</c:if>
-	<c:if test = "${! empty model.affiliateNotice}">
+	<c:if test = "${! empty model.affiliateNotices}">
+		<c:forEach var="affiliateNotice" items="${model.affiliateNotices}">
 		<div class="m_noti">
 			<span> 
-				<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.affiliateNotice.mainBbsNo}">
+				<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${affiliateNotice.mainBbsNo}">
 					<c:choose>
 						<c:when test="${fn:length(model.affiliateNotice.title) gt 35}">
 					        <span style = "color : #000;font-weight:700;">가맹점 공지</span>
-					        <span style = "color : #666"><c:out value="${fn:substring(model.affiliateNotice.title, 0, 35)}"></c:out>...</span>
+					        <span style = "color : #666"><c:out value="${fn:substring(affiliateNotice.title, 0, 35)}"></c:out>...</span>
 					    </c:when>
 					    <c:otherwise>
 					        <span style = "color : #000;font-weight:700;">가맹점공지</span>
-					        <span style = "color : #666"><c:out value="${model.affiliateNotice.title}"> </c:out></span>
+					        <span style = "color : #666"><c:out value="${affiliateNotice.title}"> </c:out></span>
 					    </c:otherwise>
 					</c:choose>	
 				</a>
-			
+			 	<c:set var="now1" value="<%=new java.util.Date()%>"/>
+	        	 <fmt:parseNumber value="${now1.time / (1000*60*60*24)}" integerOnly="true" var="today1"></fmt:parseNumber>
+			 	<fmt:parseDate value="${model.affiliateNotice.createTime}" var="affiliateNoticePostDate" pattern="yyyy-MM-dd "/>
+	          	<fmt:parseNumber value="${affiliateNoticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData1"></fmt:parseNumber>
+				<c:if test="${today1 - postData1 <= 5}">
+				<span class = "new_notice"> NEW</span>
+				</c:if>
 			</span>
-			
-			 <c:set var="now1" value="<%=new java.util.Date()%>"/>
-	         <fmt:parseNumber value="${now1.time / (1000*60*60*24)}" integerOnly="true" var="today1"></fmt:parseNumber>
-			 <fmt:parseDate value="${model.affiliateNotice.createTime}" var="affiliateNoticePostDate" pattern="yyyy-MM-dd "/>
-	          <fmt:parseNumber value="${affiliateNoticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData1"></fmt:parseNumber>
-			<c:if test="${today1 - postData1 <= 5}">
-			<span class = "new_notice"> NEW</span>
-			</c:if>
-		</div>
+		</div>		
+		</c:forEach>
 	</c:if>
 	<div class="main_img_box">
 		<div onclick="startQRScan()"><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.qrcode_acc" /></p></div>

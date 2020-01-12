@@ -234,10 +234,11 @@ public class MobileMainServiceImpl implements MobileMainService {
 				dbparams.clear();
 				dbparams.put("bbsType1", "1");
 				dbparams.put("bbsType2", "2");
-				dbparams.put("bbsLimit", 1);
+				dbparams.put("bbsLimit", 2);
 				ArrayList<HashMap<String, Object>> affiliateNotices = this.mobileMainDao.selectBoards(dbparams);
 				if (affiliateNotices.size()>0) {
 					rmap.put("affiliateNotice", affiliateNotices.get(0));
+					rmap.put("affiliateNotices", affiliateNotices);
 				} 
 			}
 			
