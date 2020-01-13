@@ -1119,4 +1119,5 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .affiliate_receiptlist_page .affiliate_receiptlist .receiptlist_list{width:80%;float:left;padding:3% 0;color:#555;line-height:23px;}
 .affiliate_receiptlist_page .affiliate_receiptlist .receiptlist_list span{border-radius:20px;background:red;padding:1% 2%;color:#fff;}
 .affiliate_receiptlist_page .affiliate_receiptlist .receiptlist_img{float:right;padding-top:10%;}
-.affiliate_receiptlist_page .affiliate_receiptlist button{width:100%;padding:2% 0;background:#33cccc;color:#fff;border:none;font-weight:bold;}
+.affiliate_receiptlist_page .affiliate_receiptlist button{border:1px solid #33cccc;width:100%;padding:2% 0;background:#33cccc;color:#fff;font-weight:bold;}
+.affiliate_receiptlist_page .affiliate_receiptlist button:active{border:1px solid #33cccc;background:#fff;color:#33cccc;}
