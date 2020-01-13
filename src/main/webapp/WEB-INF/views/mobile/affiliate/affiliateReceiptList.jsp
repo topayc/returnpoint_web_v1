@@ -47,10 +47,12 @@ $(document).ready(function(){
 			<div class="receiptlist_fran">옛날 분식</div>
 			<div class="receiptlist_day">2020-01-13</div>
 			<div class="receiptlist_list">
-				<li>ㆍ영수증 업로드 회원 : 안영철</li>
-				<li>ㆍ결제 금액 : 10,000원</li>
-				<li>ㆍ가맹점주가 입금할 금액 : 15,000원</li>
-				<li>ㆍ상태 : <span>입금확인중</span></li>
+				<ul>
+					<li>ㆍ영수증 업로드 회원 : 안영철</li>
+					<li>ㆍ결제 금액 : 10,000원</li>
+					<li>ㆍ가맹점주가 입금할 금액 : 15,000원</li>
+					<li>ㆍ상태 : <span>입금확인중</span></li>
+				</ul>
 			</div>
 			<button>입금 확인 요청하기</button>
 		</div>
@@ -58,10 +60,12 @@ $(document).ready(function(){
 			<div class="receiptlist_fran">옛날 분식</div>
 			<div class="receiptlist_day">2020-01-13</div>
 			<div class="receiptlist_list">
-				<li>ㆍ영수증 업로드 회원 : 안영철</li>
-				<li>ㆍ결제 금액 : 10,000원</li>
-				<li>ㆍ가맹점주가 입금할 금액 : 15,000원</li>
-				<li>ㆍ상태 : <span>입금확인중</span></li>
+				<ul>	
+					<li>ㆍ영수증 업로드 회원 : 안영철</li>
+					<li>ㆍ결제 금액 : 10,000원</li>
+					<li>ㆍ가맹점주가 입금할 금액 : 15,000원</li>
+					<li>ㆍ상태 : <span>입금확인중</span></li>
+				</ul>
 			</div>
 			<button>입금 확인 요청하기</button>
 		</div>
