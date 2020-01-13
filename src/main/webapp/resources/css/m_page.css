@@ -1101,7 +1101,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .affiliate_main .affiliate_conbox1 .affiliate_con2{float:left;width:33%;color:rgba(255,255,255,0.8);text-align:center;border-right:1px solid rgba(0,0,0,0.1);font-size:13px;line-height:17px;padding:3% 0;}
 .affiliate_main .affiliate_conbox1 .affiliate_con2 span{font-size:13px;color:rgba(255,255,255,0.5);}
 .affiliate_main .affiliate_conbox1 .affiliate_con2:last-child{border:none;}
-.affiliate_main .affiliate_conbox1 ul li span{font-size:17px;color:#fff;font-weight:300;margin-left:2%;border-right:1px solid #f1f1f1;padding-right:2%;margin-right:2%;}
+.affiliate_main .affiliate_conbox1 ul li span{font-size:15px;color:#fff;font-weight:300;margin-left:2%;border-right:1px solid #f1f1f1;padding-right:2%;margin-right:2%;}
 .affiliate_main .affiliate_conbox1 ul li{font-size:12px;color:#f1f1f1;}
 .affiliate_main .affiliate_conbox2 .affiliate_con1{text-align:center;padding:10% 0;font-size:13px;color:rgba(255,255,255,0.5);line-height:25px;border-bottom:1px solid rgba(0,0,0,0.1);}
 .affiliate_main .affiliate_conbox2 .affiliate_con1 span{font-size:25px;color:#fff;font-weight:bold;}
