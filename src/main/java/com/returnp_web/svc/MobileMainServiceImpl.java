@@ -1873,7 +1873,6 @@ public class MobileMainServiceImpl implements MobileMainService {
 		RPMap dbparams = new RPMap();
 		SessionManager sm = new SessionManager(request, response);
 		try {
-			int affectedRow = this.mobileMemberDao.insertMemberNoti(dbparams);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

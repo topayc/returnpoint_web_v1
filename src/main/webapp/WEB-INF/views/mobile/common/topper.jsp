@@ -75,7 +75,7 @@
 								<li onclick = "movePage('/m/mypage/mypage_myinfo.do')"><spring:message code="label.n_myinfo" />/<spring:message code="label.n_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/customer/customerCenter.do')"><spring:message code="label.n_cs" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/mypage/m_selectLanguage.do')"><spring:message code="label.n_lang_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
-								<li onclick = "movePage('/m/mypage/m_selectLanguage.do')"  >가맹점 메뉴</li>
+								<li onclick = "movePage('/m/affiliate/affiliateMain.do')"  >가맹점 메뉴</li>
 								<c:choose>
 									<c:when test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
 										<li onclick = "movePage('/m/member/login.do')"><spring:message code="login.form.submit" /></li>
