@@ -274,7 +274,7 @@ if (isApp()) {
 			<span><spring:message code="label.n_search_affiliate" /></span><span><img src="/resources/images/r_bottom_search.png"></span>
 		</div> --%>
 		<div class="r_fran_page">
-			<div class="r_fran_btn"><img src="/resources/images/r_fran_btn_img.png">가맹점 페이지</div>
+			<div class="r_fran_btn" onclick = "movePage('/m/affiliate/affiliateMain.do')" ><img src="/resources/images/r_fran_btn_img.png">가맹점 페이지</div>
 			<div class="r_fran_left"  onclick = "movePage('/m/affiliate/newAffiliateSearch.do')">업종별 가맹점</div>
 			<div class="r_fran_right" onclick = "movePage('/m/affiliate/affiliateSearchList.do')">지역별 가맹점</div>
 		</div>
