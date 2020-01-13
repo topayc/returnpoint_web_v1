@@ -1114,9 +1114,9 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 /*가맹점 리스트 페이지*/
 .affiliate_receiptlist_page{padding:3% 0;}
 .affiliate_receiptlist_page .affiliate_receiptlist{padding:0 3% 5% 3%;border-bottom:1px solid #ccc;margin-bottom:15px;}
-.affiliate_receiptlist_page .affiliate_receiptlist .receiptlist_fran{float:left;width:70%;font-size:17px;font-weight:bold;color:#333;}
+.affiliate_receiptlist_page .affiliate_receiptlist .receiptlist_fran{float:left;width:50%;font-size:17px;font-weight:bold;color:#333;margin-left:2%;}
 .affiliate_receiptlist_page .affiliate_receiptlist .receiptlist_day{float:right;width:30%;font-size:13px;color:#555;padding-top:5px;text-align:right;}
-.affiliate_receiptlist_page .affiliate_receiptlist .receiptlist_list{width:80%;float:left;padding:3% 0;color:#555;line-height:23px;}
+.affiliate_receiptlist_page .affiliate_receiptlist .receiptlist_list{width:80%;float:left;padding:3% 0;color:#555;line-height:20px;}
 .affiliate_receiptlist_page .affiliate_receiptlist .receiptlist_list span{border-radius:20px;background:red;padding:1% 2%;color:#fff;}
 .affiliate_receiptlist_page .affiliate_receiptlist .receiptlist_img{float:right;padding-top:10%;}
 .affiliate_receiptlist_page .affiliate_receiptlist button{border:1px solid #33cccc;width:100%;padding:2% 0;background:#33cccc;color:#fff;}
