@@ -44,42 +44,63 @@ $(document).ready(function(){
   
 	<section>
 	<div class="affiliate_main">
-		<div class="affiliate_conbox1">
-			<h3><img src="/resources/images/affiliate_img.png">옛날분식 영수증 매출 (2020년 1월 13일 현재)</h3>
-			<div class="affiliate_con1">
-				<li>금일까지 영수증 총 매출</li>
-				<li><span>14,001,121</span></li>
-			</div>
-			<div class="affiliate_con2">
-				<li>전체 매출 조회</li>
-				<li><span>14,001,121</span></li>
-			</div>
-			<div class="affiliate_con2">
-				<li>입금 완료 조회</li>
-				<li><span>7,800,000</span></li>
-			</div>
-			<div class="affiliate_con2">
-				<li>미입금 내역 조회</li>
-				<li><span>3,091,112</span></li>
+		<ul>
+			<li>
+				<ul>
+					<li class="affiliate_main_fran">[가맹점 공지]가맹점 시스템 개편<span>NEW</span></li>
+					<li class="affiliate_main_day">2020-01-13</li>
+				</ul>
+			</li>
+			<li>아직 읽지 않은 알림 메세지가 6개가 있습니다.</li>
+		</ul>
+		<div class="affiliate_main_list">
+			<ul>
+				<li><span>영수증 매출</span></li>
+				<li>가맹점 영수증 매출 및 완료 내역을 확일 할 수 있습니다.</li>
+			</ul>
+			<div class="affiliate_conbox1">
+				<h3>옛날분식 영수증 매출 (2020년 1월 13일 현재)</h3>
+				<div class="affiliate_con1">
+					<li>금일까지 영수증 총 매출</li>
+					<li><span>14,001,121</span></li>
+				</div>
+				<div class="affiliate_con2">
+					<li>전체 매출 조회</li>
+					<li><span>14,001,121</span></li>
+				</div>
+				<div class="affiliate_con2">
+					<li>입금 완료 조회</li>
+					<li><span>7,800,000</span></li>
+				</div>
+				<div class="affiliate_con2">
+					<li>미입금 내역 조회</li>
+					<li><span>3,091,112</span></li>
+				</div>
 			</div>
 		</div>
-		<div class="affiliate_conbox2">
-			<h3><img src="/resources/images/affiliate_img.png">옛날분식 영수증 매출 (2020년 1월 13일 현재)</h3>
-			<div class="affiliate_con1">
-				<li>금일까지 영수증 총 매출</li>
-				<li><span>14,001,121</span></li>
-			</div>
-			<div class="affiliate_con2">
-				<li>전체 매출 조회</li>
-				<li><span>14,001,121</span></li>
-			</div>
-			<div class="affiliate_con2">
-				<li>입금 완료 조회</li>
-				<li><span>7,800,000</span></li>
-			</div>
-			<div class="affiliate_con2">
-				<li>미입금 내역 조회</li>
-				<li><span>3,091,112</span></li>
+		<div class="affiliate_main_list">
+			<ul>
+				<li><span>단말기 QR 매출</span></li>
+				<li>단말기 QR 매출을 확인 할 수 있습니다.</li>
+			</ul>
+			<div class="affiliate_conbox2">
+				<h3>옛날분식 영수증 매출 (2020년 1월 13일 현재)</h3>
+				<div class="affiliate_con1">
+					<li>금일까지 영수증 총 매출</li>
+					<li><span>14,001,121</span></li>
+				</div>
+				<div class="affiliate_con2">
+					<li>전체 매출 조회</li>
+					<li><span>14,001,121</span></li>
+				</div>
+				<div class="affiliate_con2">
+					<li>입금 완료 조회</li>
+					<li><span>7,800,000</span></li>
+				</div>
+				<div class="affiliate_con2">
+					<li>미입금 내역 조회</li>
+					<li><span>3,091,112</span></li>
+				</div>
 			</div>
 		</div>
 	</div>
