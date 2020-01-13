@@ -84,7 +84,7 @@ $(document).ready(function(){
 			</div>
 			<div class="affiliate_conbox2">
 			<ul>
-				<li><span>단말기 QR 매출</span>옛날분식</li>
+				<li><span>단말기 QR 매출</span>${model.affiliate.affiliateName}</li>
 			</ul>
 				<div class="affiliate_con1">
 					<ul>
