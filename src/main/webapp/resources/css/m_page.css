@@ -1087,10 +1087,10 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 
 /*가맹점 메인 페이지*/
 .affiliate_main{padding:3%;}
-.affiliate_main img{margin-right:10px;}
+.affiliate_main img{margin-right:7px;}
 .affiliate_main .affiliate_conbox1{overflow:hidden;width:100%;background:#f6f1d6;border:1px solid #ccc;padding:3% 0;margin-bottom:15px;}
 .affiliate_main .affiliate_conbox2{overflow:hidden;width:100%;background:#fed6fe;border:1px solid #ccc;padding:3% 0;margin-bottom:15px;}
-.affiliate_main .affiliate_conbox1 h3{font-size:13px;color:#333;font-weight:400;margin-left:3%;}
+.affiliate_main .affiliate_conbox1 h3{font-size:13px;color:#333;font-weight:400;margin-left:3%;padding:1% 0;}
 .affiliate_main .affiliate_conbox1 .affiliate_con1{text-align:center;padding:10% 0;font-size:13px;color:#555;margin:10px 0;line-height:25px;border-bottom:1px solid #ccc;}
 .affiliate_main .affiliate_conbox1 .affiliate_con1 span{font-size:25px;color:#000;font-weight:bold;}
 .affiliate_main .affiliate_conbox1 .affiliate_con2{float:left;width:33%;color:#555;text-align:center;border-right:1px solid #ccc;font-size:13px;line-height:25px;}
