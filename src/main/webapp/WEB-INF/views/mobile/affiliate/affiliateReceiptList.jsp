@@ -52,7 +52,6 @@ $(document).ready(function(){
 				<li>ㆍ가맹점주가 입금할 금액 : 15,000원</li>
 				<li>ㆍ상태 : <span>입금확인중</span></li>
 			</div>
-			<div class="receiptlist_img"><img src="/resources/images/receiptlist_img.png"></div>
 			<button>입금 확인 요청하기</button>
 		</div>
 		<div class="affiliate_receiptlist">
@@ -64,7 +63,6 @@ $(document).ready(function(){
 				<li>ㆍ가맹점주가 입금할 금액 : 15,000원</li>
 				<li>ㆍ상태 : <span>입금확인중</span></li>
 			</div>
-			<div class="receiptlist_img"><img src="/resources/images/receiptlist_img.png"></div>
 			<button>입금 확인 요청하기</button>
 		</div>
 	</div>
