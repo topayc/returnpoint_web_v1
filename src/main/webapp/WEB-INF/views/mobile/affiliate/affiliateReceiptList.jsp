@@ -42,7 +42,32 @@ $(document).ready(function(){
 		<h4>RETURNP</h4>
 	</header> 
 	<section>
-	여기다 작업하세요
+	<div class="affiliate_receiptlist_page">
+		<div class="affiliate_receiptlist">
+			<div class="receiptlist_fran">옛날 분식</div>
+			<div class="receiptlist_day">2020-01-13</div>
+			<div class="receiptlist_list">
+				<li>영수증 업로드 회원 : 안영철</li>
+				<li>결제 금액 : 10,000원</li>
+				<li>가맹점주가 입금할 금액 : 15,000원</li>
+				<li>상태 : <span>입금확인중</span></li>
+			</div>
+			<div class="receiptlist_img"><img src="/resources/images/receiptlist_img.png"></div>
+			<button>입금 확인 요청하기</button>
+		</div>
+		<div class="affiliate_receiptlist">
+			<div class="receiptlist_fran">옛날 분식</div>
+			<div class="receiptlist_day">2020-01-13</div>
+			<div class="receiptlist_list">
+				<li>영수증 업로드 회원 : 안영철</li>
+				<li>결제 금액 : 10,000원</li>
+				<li>가맹점주가 입금할 금액 : 15,000원</li>
+				<li>상태 : <span>입금확인중</span></li>
+			</div>
+			<div class="receiptlist_img"><img src="/resources/images/receiptlist_img.png"></div>
+			<button>입금 확인 요청하기</button>
+		</div>
+	</div>
    </section>
      <div id = "progress_loading2">
 		<img src="/resources/images/progress_loading.gif"/>
