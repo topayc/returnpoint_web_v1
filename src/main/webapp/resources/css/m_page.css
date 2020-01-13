@@ -1094,7 +1094,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .affiliate_main .affiliate_main_day{float:right;}
 .affiliate_main .affiliate_main_fran{width:80%;}
 .affiliate_main img{margin-right:7px;}
-.affiliate_main .affiliate_main_list{padding:5% 0;color:#555;line-height:25px;}
+.affiliate_main .affiliate_main_list{padding:5% 0;color:#999;font-size:10px;}
 .affiliate_main .affiliate_main_list span{font-size:17Px;font-weight:bold;color:#333;}
 .affiliate_main .affiliate_conbox1{overflow:hidden;width:100%;background:#54678f;padding:3% 0 0 0;margin-top:10px;}
 .affiliate_main .affiliate_conbox2{overflow:hidden;width:100%;background:#379177;padding:3% 0 0 0;margin-top:10px;}
