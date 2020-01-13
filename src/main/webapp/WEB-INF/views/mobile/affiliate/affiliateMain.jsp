@@ -58,20 +58,28 @@ $(document).ready(function(){
 				<li><span>영수증 매출</span>옛날분식</li>
 			</ul>
 				<div class="affiliate_con1">
-					<li>금일까지 영수증 총 매출</li>
-					<li><span>14,001,121</span></li>
+					<ul>
+						<li>금일까지 영수증 총 매출</li>
+						<li><span>14,001,121</span></li>
+					</ul>
 				</div>
 				<div class="affiliate_con2">
-					<li>전체 매출 조회</li>
-					<li><span>14,001,121</span></li>
+					<ul>
+						<li>전체 매출 조회</li>
+						<li><span>14,001,121</span></li>
+					</ul>
 				</div>
 				<div class="affiliate_con2">
-					<li>입금 완료 조회</li>
-					<li><span>7,800,000</span></li>
+					<ul>
+						<li>입금 완료 조회</li>
+						<li><span>7,800,000</span></li>
+					</ul>
 				</div>
 				<div class="affiliate_con2">
-					<li>미입금 내역 조회</li>
-					<li><span>3,091,112</span></li>
+					<ul>
+						<li>미입금 내역 조회</li>
+						<li><span>3,091,112</span></li>
+					</ul>
 				</div>
 			</div>
 			<div class="affiliate_conbox2">
@@ -79,16 +87,22 @@ $(document).ready(function(){
 				<li><span>단말기 QR 매출</span>옛날분식</li>
 			</ul>
 				<div class="affiliate_con1">
-					<li>금일까지 영수증 총 매출</li>
-					<li><span>14,001,121</span></li>
+					<ul>
+						<li>금일까지 영수증 총 매출</li>
+						<li><span>14,001,121</span></li>
+					</ul>
 				</div>
 				<div class="affiliate_con2">
-					<li>전체 매출 조회</li>
-					<li><span>14,001,121</span></li>
+					<ul>
+						<li>전체 매출 조회</li>
+						<li><span>14,001,121</span></li>
+					</ul>
 				</div>
 				<div class="affiliate_con2">
-					<li>입금 완료 조회</li>
-					<li><span>7,800,000</span></li>
+					<ul>
+						<li>입금 완료 조회</li>
+						<li><span>7,800,000</span></li>
+					</ul>
 				</div>
 			</div>
 	</div>
