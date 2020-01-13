@@ -86,14 +86,6 @@ $(document).ready(function(){
 					<li>전체 매출 조회</li>
 					<li><span>14,001,121</span></li>
 				</div>
-				<div class="affiliate_con2">
-					<li>입금 완료 조회</li>
-					<li><span>7,800,000</span></li>
-				</div>
-				<div class="affiliate_con2">
-					<li>미입금 내역 조회</li>
-					<li><span>3,091,112</span></li>
-				</div>
 			</div>
 	</div>
    </section>
