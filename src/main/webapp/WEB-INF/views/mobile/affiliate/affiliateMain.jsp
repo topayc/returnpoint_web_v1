@@ -47,7 +47,7 @@ $(document).ready(function(){
 		<ul>
 			<li>
 				<ul>
-					<li class="affiliate_main_fran">[가맹점 공지]가맹점 시스템 개편<span>NEW</span></li>
+					<li class="affiliate_main_fran"><b>가맹점공지</b>&nbsp;가맹점 시스템 개편<span>NEW</span></li>
 					<li class="affiliate_main_day">2020-01-13</li>
 				</ul>
 			</li>
@@ -55,9 +55,8 @@ $(document).ready(function(){
 		</ul>
 			<div class="affiliate_conbox1">
 			<ul>
-				<li><span>영수증 매출</span></li>
+				<li><span>영수증 매출</span>옛날분식</li>
 			</ul>
-				<h3>옛날분식 영수증 매출 (2020년 1월 13일 현재)</h3>
 				<div class="affiliate_con1">
 					<li>금일까지 영수증 총 매출</li>
 					<li><span>14,001,121</span></li>
@@ -77,9 +76,8 @@ $(document).ready(function(){
 			</div>
 			<div class="affiliate_conbox2">
 			<ul>
-				<li><span>단말기 QR 매출</span></li>
+				<li><span>단말기 QR 매출</span>옛날분식</li>
 			</ul>
-				<h3>옛날분식 영수증 매출 (2020년 1월 13일 현재)</h3>
 				<div class="affiliate_con1">
 					<li>금일까지 영수증 총 매출</li>
 					<li><span>14,001,121</span></li>
