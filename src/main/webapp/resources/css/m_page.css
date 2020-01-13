@@ -1088,7 +1088,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 
 /*가맹점 메인 페이지*/
 .affiliate_main{}
-.affiliate_main > ul > li{border-bottom:1px solid #f1f1f1;padding:2% 1%;color:#333;font-size:12px;margin-left:6px}
+.affiliate_main > ul > li{padding:3% 1%;color:#333;font-size:12px;margin-left:6px}
 .affiliate_main ul li ul{display:inline;}
 .affiliate_main ul li ul li{display:inline-block;}
 .affiliate_main ul li ul li span{background:red;color:#fff;border-radius:20px;padding:1% 2%;margin-left:5px;}
@@ -1096,7 +1096,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .affiliate_main .affiliate_main_fran{width:80%;margin-left:1px;font-size:12px}
 .affiliate_main img{margin-right:7px;}
 .affiliate_main .affiliate_conbox1{overflow:hidden;width:100%;background:#54678f;padding:3% 0 0 0;}
-.affiliate_main .affiliate_conbox2{overflow:hidden;width:100%;background:#379177;padding:3% 0 0 0;margin-top:10px;}
+.affiliate_main .affiliate_conbox2{overflow:hidden;width:100%;background:#379177;padding:3% 0 0 0;margin-top:5px;}
 .affiliate_main .affiliate_conbox1 .affiliate_con1{text-align:center;padding:10% 0;font-size:13px;color:rgba(255,255,255,0.5);line-height:25px;border-bottom:1px solid rgba(0,0,0,0.1);}
 .affiliate_main .affiliate_conbox1 .affiliate_con1 span{font-size:25px;color:#fff;font-weight:bold;}
 .affiliate_main .affiliate_conbox1 .affiliate_con2{float:left;width:33%;color:rgba(255,255,255,0.8);text-align:center;border-right:1px solid rgba(0,0,0,0.1);font-size:13px;line-height:17px;padding:3% 0;}

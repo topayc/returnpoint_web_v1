@@ -39,7 +39,7 @@ $(document).ready(function(){
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>RETURNP</h4>
+		<h4>${model.affiliate.affiliateName}</h4>
 	</header> 
   
 	<section>
@@ -51,9 +51,17 @@ $(document).ready(function(){
 					<li class="affiliate_main_day">2020-01-13</li>
 				</ul>
 			</li>
-			<li>아직 읽지 않은 알림 메세지가 6개가 있습니다.</li>
+			<li data-toggle="collapse" data-target="#member_noti" >아직 읽지 않은 알림 메세지가 6개가 있습니다.<span><i class="fas fa-chevron-right list_blt"></i></span></li>
 		</ul>
-			<div class="affiliate_conbox1">
+		<div id = "member_noti"  class="collapse list_toggle" style = "background-color:#f1f1f1">
+			<ul>
+				<li style = "padding : 3% 3%;font-size:12px;border-bottom: 1px solid #ddd;" >읽지 않은 리스트 입니다</li>
+				<li style = "padding : 3% 3%;font-size:12px;border-bottom: 1px solid #ddd;border-top: 1px solid #fff" >읽지 않은 리스트 입니다</li>
+				<li style = "padding : 3% 3%;font-size:12px;border-bottom: 1px solid #ddd;border-top: 1px solid #fff" >읽지 않은 리스트 입니다</li>
+				<li style = "padding : 3% 3%;font-size:12px;border-bottom: 1px solid #ddd;border-top: 1px solid #fff" >읽지 않은 리스트 입니다</li>
+			</ul>
+		</div>
+		<div class="affiliate_conbox1">
 			<ul>
 				<li><span>영수증 매출</span>${model.affiliate.affiliateName}</li>
 			</ul>
@@ -65,36 +73,36 @@ $(document).ready(function(){
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do')">전체매출 조회</li>
+						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do?status=0&affiliateNo=${model.affiliate.affiliateNo}')">전체내역 조회</li>
 						<li><span><fmt:formatNumber value="${model.receiptSaleSummary.totalReceiptPayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li>처리완료 조회</li>
+						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do?status=3_4&affiliateNo=${model.affiliate.affiliateNo}')">처리완료 조회</li>
 						<li><span><fmt:formatNumber value="${model.receiptSaleSummary.totalReceiptCompletePayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li>미처리내역 조회</li>
+						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do?status=1_2__5_6&affiliateNo=${model.affiliate.affiliateNo}')">미처리내역 조회</li>
 						<li><span><fmt:formatNumber value="${model.receiptSaleSummary.totalReceiptNotCompletePayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 			</div>
 			<div class="affiliate_conbox2">
 			<ul>
-				<li><span>단말기 QR 매출</span>${model.affiliate.affiliateName}</li>
+				<li><span>단말기 QR 적립 매출</span>${model.affiliate.affiliateName}</li>
 			</ul>
 				<div class="affiliate_con1">
 					<ul>
-						<li>현재까지 단말기 QR 매출</li>
+						<li>현재까지 단말기 QR 적립 매출</li>
 						<li><span><fmt:formatNumber value="${model.qrSaleSummary.totalQrPayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li>전체매출 조회</li>
+						<li>전체내역 조회</li>
 						<li><span><fmt:formatNumber value="${model.qrSaleSummary.totalQrPayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>

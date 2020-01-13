@@ -276,7 +276,7 @@ if (isApp()) {
 		<div class="r_fran_page">
 			<c:if test = "${not empty model.affiliate}">
 			<div class="r_fran_btn" onclick = "movePage('/m/affiliate/affiliateMain.do?affiliateNo=${model.affiliate.affiliateNo}')" >
-				<img src="/resources/images/r_fran_btn_img.png"><b>${model.affiliate.affiliateName}</b> 가맹점 페이지</div>
+				<img src="/resources/images/r_fran_btn_img.png"><span style = "font-weight:bold;font-size:14px">${model.affiliate.affiliateName}</span> 가맹점 페이지</div>
 			</c:if>
 			<div class="r_fran_left"  onclick = "movePage('/m/affiliate/newAffiliateSearch.do')">업종별 가맹점</div>
 			<div class="r_fran_right" onclick = "movePage('/m/affiliate/affiliateSearchList.do')">지역별 가맹점</div>
