@@ -47,10 +47,10 @@ $(document).ready(function(){
 			<div class="receiptlist_fran">옛날 분식</div>
 			<div class="receiptlist_day">2020-01-13</div>
 			<div class="receiptlist_list">
-				<li style="list-style-type :disc">영수증 업로드 회원 : 안영철</li>
-				<li style="list-style-type :disc">결제 금액 : 10,000원</li>
-				<li style="list-style-type :disc">가맹점주가 입금할 금액 : 15,000원</li>
-				<li style="list-style-type :disc">상태 : <span>입금확인중</span></li>
+				<li>ㆍ영수증 업로드 회원 : 안영철</li>
+				<li>ㆍ결제 금액 : 10,000원</li>
+				<li>ㆍ가맹점주가 입금할 금액 : 15,000원</li>
+				<li>ㆍ상태 : <span>입금확인중</span></li>
 			</div>
 			<div class="receiptlist_img"><img src="/resources/images/receiptlist_img.png"></div>
 			<button>입금 확인 요청하기</button>
@@ -59,10 +59,10 @@ $(document).ready(function(){
 			<div class="receiptlist_fran">옛날 분식</div>
 			<div class="receiptlist_day">2020-01-13</div>
 			<div class="receiptlist_list">
-				<li style="list-style-type :disc">영수증 업로드 회원 : 안영철</li>
-				<li style="list-style-type :disc">결제 금액 : 10,000원</li>
-				<li style="list-style-type :disc">가맹점주가 입금할 금액 : 15,000원</li>
-				<li style="list-style-type :disc">상태 : <span>입금확인중</span></li>
+				<li>ㆍ영수증 업로드 회원 : 안영철</li>
+				<li>ㆍ결제 금액 : 10,000원</li>
+				<li>ㆍ가맹점주가 입금할 금액 : 15,000원</li>
+				<li>ㆍ상태 : <span>입금확인중</span></li>
 			</div>
 			<div class="receiptlist_img"><img src="/resources/images/receiptlist_img.png"></div>
 			<button>입금 확인 요청하기</button>
