@@ -47,7 +47,7 @@ $(document).ready(function(){
 		<ul>
 			<li>
 				<ul>
-					<li class="affiliate_main_fran"><b>가맹점공지</b>&nbsp;가맹점 시스템 개편<span>NEW</span></li>
+					<li class="affiliate_main_fran" style = "font-size:13px"><b>가맹점공지</b>&nbsp;가맹점 시스템 개편<span>NEW</span></li>
 					<li class="affiliate_main_day">2020-01-13</li>
 				</ul>
 			</li>
@@ -59,25 +59,25 @@ $(document).ready(function(){
 			</ul>
 				<div class="affiliate_con1">
 					<ul>
-						<li>금일까지 영수증 총 매출</li>
+						<li>현재까지 영수증 총 매출</li>
 						<li><span>14,001,121</span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li>전체 매출 조회</li>
+						<li>전체매출 조회</li>
 						<li><span>14,001,121</span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li>입금 완료 조회</li>
+						<li>처리완료 조회</li>
 						<li><span>7,800,000</span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li>미입금 내역 조회</li>
+						<li>미처리내역 조회</li>
 						<li><span>3,091,112</span></li>
 					</ul>
 				</div>
@@ -88,19 +88,19 @@ $(document).ready(function(){
 			</ul>
 				<div class="affiliate_con1">
 					<ul>
-						<li>금일까지 단말기 QR 매출</li>
+						<li>현재까지 단말기 QR 매출</li>
 						<li><span>14,001,121</span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li>전체 매출 조회</li>
+						<li>전체매출 조회</li>
 						<li><span>14,001,121</span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li>입금 완료 조회</li>
+						<li>적립내역 조회</li>
 						<li><span>7,800,000</span></li>
 					</ul>
 				</div>
