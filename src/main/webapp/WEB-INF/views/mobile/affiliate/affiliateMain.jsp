@@ -88,7 +88,7 @@ $(document).ready(function(){
 			</ul>
 				<div class="affiliate_con1">
 					<ul>
-						<li>금일까지 영수증 총 매출</li>
+						<li>금일까지 단말기 QR 매출</li>
 						<li><span>14,001,121</span></li>
 					</ul>
 				</div>
