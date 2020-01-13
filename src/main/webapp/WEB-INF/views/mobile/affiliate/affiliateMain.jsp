@@ -43,7 +43,46 @@ $(document).ready(function(){
 	</header> 
   
 	<section>
-	여기다 작업하세요
+	<div class="affiliate_main">
+		<div class="affiliate_conbox1">
+			<h3><img src="/resources/images/affiliate_img.png">옛날분식 영수증 매출 (2020년 1월 13일 현재)</h3>
+			<div class="affiliate_con1">
+				<li>금일까지 영수증 총 매출</li>
+				<li><span>14,001,121</span></li>
+			</div>
+			<div class="affiliate_con2">
+				<li>전체 매출 조회</li>
+				<li><span>14,001,121</span></li>
+			</div>
+			<div class="affiliate_con2">
+				<li>입금 완료 조회</li>
+				<li><span>7,800,000</span></li>
+			</div>
+			<div class="affiliate_con2">
+				<li>미입금 내역 조회</li>
+				<li><span>3,091,112</span></li>
+			</div>
+		</div>
+		<div class="affiliate_conbox2">
+			<h3><img src="/resources/images/affiliate_img.png">옛날분식 영수증 매출 (2020년 1월 13일 현재)</h3>
+			<div class="affiliate_con1">
+				<li>금일까지 영수증 총 매출</li>
+				<li><span>14,001,121</span></li>
+			</div>
+			<div class="affiliate_con2">
+				<li>전체 매출 조회</li>
+				<li><span>14,001,121</span></li>
+			</div>
+			<div class="affiliate_con2">
+				<li>입금 완료 조회</li>
+				<li><span>7,800,000</span></li>
+			</div>
+			<div class="affiliate_con2">
+				<li>미입금 내역 조회</li>
+				<li><span>3,091,112</span></li>
+			</div>
+		</div>
+	</div>
    </section>
      <div id = "progress_loading2">
 		<img src="/resources/images/progress_loading.gif"/>
