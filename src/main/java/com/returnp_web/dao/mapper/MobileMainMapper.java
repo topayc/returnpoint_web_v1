@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.returnp_web.utils.RPMap;
+
 public interface MobileMainMapper {
 
 	/**
@@ -405,5 +407,9 @@ public interface MobileMainMapper {
 	HashMap<String, Object> selectPointCoupon(HashMap<String, Object> dbparams);
 
 	HashMap<String, Object> selectPointCodeIssue(HashMap<String, Object> dbparams);
+
+	HashMap<String, Object> selectAffiliateReceiptSummary(RPMap dbparams);
+
+	HashMap<String, Object> selectAffiliateQrSummary(RPMap dbparams);
 
 }

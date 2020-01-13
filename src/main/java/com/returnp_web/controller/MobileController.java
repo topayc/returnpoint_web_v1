@@ -787,8 +787,8 @@ public class MobileController extends MallBaseController {
 	public String affiliateMain(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/affiliate/affiliateMain");
-		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
-		return page(true, map, rmap);
+		boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
 	}
 	
 	

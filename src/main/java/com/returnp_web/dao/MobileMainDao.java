@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.returnp_web.dao.mapper.MobileMainMapper;
 import com.returnp_web.dao.mapper.MobileMapper;
+import com.returnp_web.utils.RPMap;
 
 
 /**
@@ -419,6 +420,16 @@ public class MobileMainDao {
 	public HashMap<String, Object> selectPointCodeIssue(HashMap<String, Object> dbparams) {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(MobileMainMapper.class).selectPointCodeIssue(dbparams);
+	}
+
+	public HashMap<String, Object> selectAffiliateReceiptSummary(RPMap dbparams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMainMapper.class).selectAffiliateReceiptSummary(dbparams);
+	}
+
+	public HashMap<String, Object> selectAffiliateQrSummary(RPMap dbparams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMainMapper.class).selectAffiliateQrSummary(dbparams);
 	}
 
 }

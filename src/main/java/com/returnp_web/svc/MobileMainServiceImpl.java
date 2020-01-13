@@ -230,7 +230,9 @@ public class MobileMainServiceImpl implements MobileMainService {
 			
 			dbparams.clear();
 			dbparams.put("memberNo", sm.getMemberNo());
-			if (mobileMainDao.selectAffiliate(dbparams) != null) {
+			HashMap<String, Object> affiliateMap = mobileMainDao.selectAffiliate(dbparams);
+			if (affiliateMap != null) {
+				rmap.put("affiliate", affiliateMap);
 				dbparams.clear();
 				dbparams.put("bbsType1", "1");
 				dbparams.put("bbsType2", "2");
@@ -1873,6 +1875,13 @@ public class MobileMainServiceImpl implements MobileMainService {
 		RPMap dbparams = new RPMap();
 		SessionManager sm = new SessionManager(request, response);
 		try {
+			dbparams.put("affiliateNo", rPap.getInt("affiliateNo"));
+			HashMap<String, Object> affiliateMap = this.mobileMainDao.selectAffiliate(dbparams);
+			HashMap<String, Object> receiptSaleSummaryMap = this.mobileMainDao.selectAffiliateReceiptSummary(dbparams);
+			HashMap<String, Object> qrSaleSummaryMap = this.mobileMainDao.selectAffiliateQrSummary(dbparams);
+			rmap.put("receiptSaleSummary", receiptSaleSummaryMap);
+			rmap.put("qrSaleSummary", qrSaleSummaryMap);
+			rmap.put("affiliate", affiliateMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -55,30 +55,30 @@ $(document).ready(function(){
 		</ul>
 			<div class="affiliate_conbox1">
 			<ul>
-				<li><span>영수증 매출</span>옛날분식</li>
+				<li><span>영수증 매출</span>${model.affiliate.affiliateName}</li>
 			</ul>
 				<div class="affiliate_con1">
 					<ul>
 						<li>현재까지 영수증 총 매출</li>
-						<li><span>14,001,121</span></li>
+						<li><span><fmt:formatNumber value="${model.receiptSaleSummary.totalReceiptPayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
 						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do')">전체매출 조회</li>
-						<li><span>14,001,121</span></li>
+						<li><span><fmt:formatNumber value="${model.receiptSaleSummary.totalReceiptPayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
 						<li>처리완료 조회</li>
-						<li><span>7,800,000</span></li>
+						<li><span><fmt:formatNumber value="${model.receiptSaleSummary.totalReceiptCompletePayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
 						<li>미처리내역 조회</li>
-						<li><span>3,091,112</span></li>
+						<li><span><fmt:formatNumber value="${model.receiptSaleSummary.totalReceiptNotCompletePayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 			</div>
@@ -89,19 +89,13 @@ $(document).ready(function(){
 				<div class="affiliate_con1">
 					<ul>
 						<li>현재까지 단말기 QR 매출</li>
-						<li><span>14,001,121</span></li>
+						<li><span><fmt:formatNumber value="${model.qrSaleSummary.totalQrPayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
 						<li>전체매출 조회</li>
-						<li><span>14,001,121</span></li>
-					</ul>
-				</div>
-				<div class="affiliate_con2">
-					<ul>
-						<li>적립내역 조회</li>
-						<li><span>7,800,000</span></li>
+						<li><span><fmt:formatNumber value="${model.qrSaleSummary.totalQrPayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 			</div>
