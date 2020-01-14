@@ -56,7 +56,7 @@ function showMemberNoticeDetail(no){
 				 </small>
 				<span class = "item_title"  style = "font-size: 13px">${memberNoti.notiTitle}
 					<c:if test = "${memberNoti.isViewed == 'N'}">
-					<span class ="badge badge-success" style = "background-color: #04B404;display : inline;font-weight : 300;font-size: 10px">보지 않음</span>
+					<span class ="badge badge-success" style = "background-color:red;font-weight :300;font-size: 10px">읽지 않음</span>
 					</c:if>
 				</span>
 				 <span><i class="fas fa-chevron-right list_blt"></i></span>
