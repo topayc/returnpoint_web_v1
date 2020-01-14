@@ -796,6 +796,18 @@ public class MobileController extends MallBaseController {
 		boolean bret = mms.getMemberNotiDetail(Util.toRPap(paramMap), rmap, request, response);
 		return page(bret, modelMap, rmap);
 	}
+
+	/*
+	 * 알립 읽음 상태 변경
+	 */
+	@RequestMapping(value = "/board/memberNoti/changeStatus.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String changeMemberNotiStatus(@RequestParam Map<String, Object> paramMap, ModelMap modelMap, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.changeMemberNotiStatus(Util.toRPap(paramMap), rmap, request, response);
+		return rmap.getStr("json");
+	}
 	
 	
 	

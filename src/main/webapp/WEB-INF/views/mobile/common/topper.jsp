@@ -78,7 +78,7 @@
 								<li onclick = "movePage('/m/mypage/mypage_myinfo.do')"><spring:message code="label.n_myinfo" />/<spring:message code="label.n_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/customer/customerCenter.do')"><spring:message code="label.n_cs" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/mypage/m_selectLanguage.do')"><spring:message code="label.n_lang_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
-								<li onclick = "movePage('/m/board/memberNotiList.do')">내 알림 보기<!-- <img src="/resources/images/r_home_button.png"> --></li>
+								<li onclick = "movePage('/m/board/memberNotiList.do')">내알림 보기<!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<c:if test = "${not empty affiliate}">
 								<li onclick = "movePage('/m/affiliate/affiliateMain.do?affiliateNo=${affiliate.affiliateNo}')" ><img style="float:left;margin-right:7px;"src="/resources/images/r_fran_btn_img.png"><b>${affiliate.affiliateName}</b> 가맹점 메뉴<!-- <img src="/resources/images/r_home_button.png"> --></li>
 								</c:if>

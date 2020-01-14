@@ -1990,8 +1990,6 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbparams.put("memberNo", sm.getMemberNo());
 			ArrayList<HashMap<String, Object>> notis = this.mobileMemberDao.selectMemberNotis(dbparams);
 			rmap.put("memberNotis", notis);
-			System.out.println("등록 노티 ");
-			System.out.println(notis.size());
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2013,6 +2011,32 @@ public class MobileMainServiceImpl implements MobileMainService {
 			}
 			
 			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean changeMemberNotiStatus(RPMap rPap, RPMap rmap, HttpServletRequest request,
+			HttpServletResponse response) {
+		SessionManager sm = new SessionManager(request, response);
+		RPMap dbparams = new  RPMap();
+		String json = null;
+		try {
+			dbparams.put("memberNotiNo", rPap.getStr("memberNotiNo"));
+			dbparams.put("isViewed", rPap.getStr("isViewed"));
+			int count  = this.mobileMemberDao.updateMemberNotiStatus(dbparams);;
+			if (count == 0) {
+				json = Util.printResult(1, String.format("110:잘못된 요청입니다."), null);
+				rmap.put("json", json);
+				return true;
+			} else {
+				json = Util.printResult(0, String.format("알림 상태 변경 완료"), null);
+				rmap.put("json", json);
+				return true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();

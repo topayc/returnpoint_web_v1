@@ -26,6 +26,21 @@
 $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale); 	
+	
+	$(".list_li").click(function(){
+		var target = $(this);
+		var param = {isViewed : 'Y', memberNotiNo : $(this).data('target').split('_')[1].trim()}
+		$.getJSON('/m/board/memberNoti/changeStatus.do', param, function(result){
+			console.log(result);  
+			if (result && typeof result !="undefined") {
+      	   		if (result.result.code == 0) {
+      	   		target.find('.badge').remove();;
+					}
+             }else{
+            		alertOpen("알림", "장애 발생. 다시 시도해주세요.", true, false, null, null);
+         	   }
+		});	
+	});
 });
 
 function showMemberNoticeDetail(no){
@@ -51,17 +66,17 @@ function showMemberNoticeDetail(no){
 			<c:forEach var="memberNoti" items="${model.memberNotis}" varStatus="loop">
 			<div data-toggle="collapse" data-target="#memberNoti_${memberNoti.memberNotiNo}" class="list_li collapsed ellp" style = "padding: 12px 20px">
 				<small style ="padding: 0 3px">
-					<fmt:parseDate value="${memberNoti.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
-					<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd"/>
+					<fmt:parseDate value="${memberNoti.createTime}" var="noticePostDate" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${noticePostDate}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>
 				 </small>
 				<span class = "item_title"  style = "font-size: 13px">${memberNoti.notiTitle}
 					<c:if test = "${memberNoti.isViewed == 'N'}">
-					<span class ="badge badge-success" style = "background-color:red;font-weight :300;font-size: 10px">읽지 않음</span>
+					<span class ="badge badge-success" style = "background-color:red;font-weight :300;font-size: 10px;display:inline;padding:3px 8px;">읽지않음</span>
 					</c:if>
 				</span>
 				 <span><i class="fas fa-chevron-right list_blt"></i></span>
 			</div>
-			<div id="memberNoti_${memberNoti.memberNotiNo}" class="list_toggle collapse">
+			<div id="memberNoti_${memberNoti.memberNotiNo}" class="list_toggle collapse" style="background:#f9f9f9;">
 				  <p>
 					<c:set var = "content" value ="${fn:replace(memberNoti.notiContent, LF, '<br>')}"/>
 					${f:decQuote(content)}

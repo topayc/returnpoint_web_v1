@@ -1268,5 +1268,11 @@
 		<if test="memberNo != null "> AND memberNo   = #{memberNo} </if>
 		<if test="isViewed != null "> AND isViewed   = #{isViewed} </if>
  	</select>
+ 	
+ 	<update id = "updateMemberNotiStatus"  parameterType="HashMap">
+		update member_noti
+		set isViewed=#{isViewed}
+		where memberNotiNo= #{memberNotiNo}
+ 	</update>
 	
 </mapper>

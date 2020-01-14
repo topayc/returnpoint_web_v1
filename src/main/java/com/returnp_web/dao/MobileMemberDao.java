@@ -667,4 +667,9 @@ public class MobileMemberDao {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(MobileMapper.class).selectMemberNotiCount(dbparams);
 	}
+
+	public int updateMemberNotiStatus(RPMap dbparams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMapper.class).updateMemberNotiStatus(dbparams);
+	}
 }

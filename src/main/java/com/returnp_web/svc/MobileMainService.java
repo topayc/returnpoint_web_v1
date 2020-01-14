@@ -305,6 +305,8 @@ public interface MobileMainService {
 
 	boolean getMemberNotiDetail(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean changeMemberNotiStatus(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 

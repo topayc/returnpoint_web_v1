@@ -598,4 +598,7 @@ public interface MobileMapper {
 
 	HashMap<String, Object> selectMemberNotiCount(RPMap dbparams);
 
+
+	int updateMemberNotiStatus(RPMap dbparams);
+
 }
