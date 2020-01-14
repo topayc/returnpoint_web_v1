@@ -1984,8 +1984,20 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 	@Override
 	public boolean getMemberNotis(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return false;
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			dbparams.put("memberNo", sm.getMemberNo());
+			ArrayList<HashMap<String, Object>> notis = this.mobileMemberDao.selectMemberNotis(dbparams);
+			rmap.put("memberNotis", notis);
+			System.out.println("등록 노티 ");
+			System.out.println(notis.size());
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+		}
+		return true;
 	}
 
 	@Override

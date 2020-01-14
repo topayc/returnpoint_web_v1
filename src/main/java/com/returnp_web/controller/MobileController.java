@@ -781,7 +781,7 @@ public class MobileController extends MallBaseController {
 	@RequestMapping("/board/memberNotiList")
 	public String getMemberNotiList(@RequestParam Map<String, Object> paramMap, ModelMap modelMap, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/board/board_detail");
+		RPMap rmap = Util.getRPRmap("/mobile/board/memberNotiList");
 		boolean bret = mms.getMemberNotis(Util.toRPap(paramMap), rmap, request, response);
 		return page(bret, modelMap, rmap);
 	}

@@ -30,7 +30,7 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a href="javascript:history.back()" class="navbar-back"><i class="fas fa-chevron-left"></i></a>
-					<a class="navbar-qr" onclick = "movePage('/m/noti/memberNoti.do')">
+					<a class="navbar-qr" onclick = "movePage('/m/board/memberNotiList.do')">
 						<i class="far fa-bell" style="color:#333;position:relative;"></i>
 						<c:if test = "${notiInfo.notiCount != 0}">
 							<span style="position:absolute;color:#fff;background-color:red;padding:1px 5px;border-radius:10px;left:25px;top:8px;font-size:10px"><b>${notiInfo.notiCount}</b></span> 
@@ -78,7 +78,7 @@
 								<li onclick = "movePage('/m/mypage/mypage_myinfo.do')"><spring:message code="label.n_myinfo" />/<spring:message code="label.n_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/customer/customerCenter.do')"><spring:message code="label.n_cs" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/mypage/m_selectLanguage.do')"><spring:message code="label.n_lang_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
-								<li onclick = "movePage('/m/mypage/memberNoti.do')">내 알림 보기<!-- <img src="/resources/images/r_home_button.png"> --></li>
+								<li onclick = "movePage('/m/board/memberNotiList.do')">내 알림 보기<!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<c:if test = "${not empty affiliate}">
 								<li onclick = "movePage('/m/affiliate/affiliateMain.do?affiliateNo=${affiliate.affiliateNo}')" ><b>${affiliate.affiliateName}</b> 가맹점 메뉴<!-- <img src="/resources/images/r_home_button.png"> --></li>
 								</c:if>
