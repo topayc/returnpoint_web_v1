@@ -80,7 +80,7 @@
 								<li onclick = "movePage('/m/mypage/m_selectLanguage.do')"><spring:message code="label.n_lang_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/mypage/memberNoti.do')">내 알림 보기<!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<c:if test = "${not empty affiliate}">
-								<li onclick = "movePage('/m/affiliate/affiliateMain.do?affiliateNo=${affiliate.affiliateNo}')" ><b>${affiliate.affiliateName}</b> 가맹점 메뉴<!-- <img src="/resources/images/r_home_button.png"> --></li>
+								<li onclick = "movePage('/m/affiliate/affiliateMain.do?affiliateNo=${affiliate.affiliateNo}')" ><img style="float:left;margin-right:7px;"src="/resources/images/r_fran_btn_img.png"><b>${affiliate.affiliateName}</b> 가맹점 메뉴<!-- <img src="/resources/images/r_home_button.png"> --></li>
 								</c:if>
 								<c:choose>
 									<c:when test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
