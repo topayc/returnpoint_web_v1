@@ -939,4 +939,43 @@
 		<if test="affiliateNo != null "> AND affiliateNo = #{affiliateNo} </if>
 	</select> 
 	
+	
+	
+	<select id="selectReceipts" parameterType="HashMap" resultType="HashMap">
+		SELECT 
+			A.*,
+			B.memberName,
+			C.affiliateName
+		FROM point_code_issue_request as A
+		inner join member as B on (A.memberNo = B.memberNo)
+		inner join affiliate as C on (A.affiliateNo= C.affiliateNo)
+		WHERE 
+		C.affiliateNo = #{affiliateNo} and issueType = #{issueType}
+	</select> 
+	
+		<select id="selectCompletedReceipts" parameterType="HashMap" resultType="HashMap">
+		SELECT 
+			A.*,
+			B.memberName,
+			C.affiliateName
+		FROM point_code_issue_request as A
+		inner join member as B on (A.memberNo = B.memberNo)
+		inner join affiliate as C on (A.affiliateNo= C.affiliateNo)
+		WHERE 
+			C.affiliateNo = #{affiliateNo} and issueType = #{issueType} and status in('3', '4')
+	</select> 
+	
+		<select id="selectNotCompletedReceipts" parameterType="HashMap" resultType="HashMap">
+		SELECT 
+			A.*,
+			B.memberName,
+			C.affiliateName
+		FROM point_code_issue_request as A
+		inner join member as B on (A.memberNo = B.memberNo)
+		inner join affiliate as C on (A.affiliateNo= C.affiliateNo)
+		WHERE 
+			C.affiliateNo = #{affiliateNo} and issueType = #{issueType} and status in('1', '2', '5','6')
+	</select> 
+	
+	
 </mapper>

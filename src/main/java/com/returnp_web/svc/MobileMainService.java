@@ -307,6 +307,8 @@ public interface MobileMainService {
 
 	boolean changeMemberNotiStatus(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean affiliateReceiptList(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 

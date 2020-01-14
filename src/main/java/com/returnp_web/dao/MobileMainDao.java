@@ -432,4 +432,16 @@ public class MobileMainDao {
 		return sqlSession.getMapper(MobileMainMapper.class).selectAffiliateQrSummary(dbparams);
 	}
 
+	public ArrayList<HashMap<String, Object>> selectReceipts(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectReceipts(dbparams);
+	}
+
+	public ArrayList<HashMap<String, Object>> selectCompletedReceipts(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectCompletedReceipts(dbparams);
+	}
+
+	public ArrayList<HashMap<String, Object>> selectNotCompletedReceipts(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectNotCompletedReceipts(dbparams);
+	}
+
 }

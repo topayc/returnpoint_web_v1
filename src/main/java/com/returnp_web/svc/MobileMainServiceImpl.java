@@ -2043,4 +2043,41 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 		return true;
 	}
+
+	@Override
+	public boolean affiliateReceiptList(RPMap rPap, RPMap rmap, HttpServletRequest request,
+			HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			ArrayList<HashMap<String, Object>> receiptList = null;
+			
+			dbparams.put("memberNo", sm.getMemberNo()); 
+			HashMap<String, Object> affiliate = this.mobileMemberDao.selectAffiliateInfo(dbparams);
+			
+			dbparams.clear();
+			dbparams.put("affiliateNo", (int)affiliate.get("affiliateNo"));
+			dbparams.put("issueType", "1"); 
+			
+			switch(rPap.getStr("statusCode").trim()) {
+			case "TRL": /*전체 내역 조회*/
+				receiptList = this.mobileMainDao.selectReceipts(dbparams);
+				break;
+			case "CRL": /*처리 완료 내역 조회*/
+				receiptList = this.mobileMainDao.selectCompletedReceipts(dbparams);
+				break;
+			case "NRL": /*미 처리 내역 조회*/
+				receiptList = this.mobileMainDao.selectNotCompletedReceipts(dbparams);
+				break;
+			}
+			rmap.put("receiptList", receiptList);
+			rmap.put("affiliate", affiliate);
+			rmap.put("statusCod", rPap.getStr("statusCode").trim());
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+		}
+		return true;
+	}
 }

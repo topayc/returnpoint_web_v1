@@ -833,7 +833,7 @@ public class MobileController extends MallBaseController {
 	public String listRecipt(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/affiliate/affiliateReceiptList");
-		/*boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);*/
+		boolean bret =  mms.affiliateReceiptList(Util.toRPap(p), rmap, request, response);
 		return page(true, map, rmap);
 	}
 	

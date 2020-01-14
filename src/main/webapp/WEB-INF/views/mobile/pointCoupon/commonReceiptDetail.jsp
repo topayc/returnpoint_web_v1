@@ -111,7 +111,8 @@ $(document).ready(function(){
 						<ul>
 							<li class="upload_conbox_text1">처리 상태</li>
 							<li class="upload_conbox_text2">
-								<p><c:choose>
+								<p>
+								<c:choose>
 							    	<c:when test = "${model.receipt.status== '1'}"><span class = "depositStatus" style = "background-color : #DF0101">입급확인중</span></c:when>
 							    	<c:when test = "${model.receipt.status== '2'}"><span class = "depositStatus" style = "background-color : #BF00FF">입금확인 요청중</span></c:when>
 							    	<c:when test = "${model.receipt.status== '3'}"><span class = "depositStatus" style = "background-color : #4000FF">입금확인 완료</span></c:when>

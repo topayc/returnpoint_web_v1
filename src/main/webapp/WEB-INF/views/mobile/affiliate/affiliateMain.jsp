@@ -56,7 +56,7 @@ $(document).ready(function(){
 							<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
 							<fmt:parseDate value="${affilaiteNotice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
 							<fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
-							<c:if test="${today - postData <= 100}">
+							<c:if test="${today - postData <= 7}">
 								<span class = "new_notice"> NEW</span>
 							</c:if>
 					    </c:when>
@@ -66,7 +66,7 @@ $(document).ready(function(){
 							<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
 							<fmt:parseDate value="${affilaiteNotice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
 							<fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
-							<c:if test="${today - postData <= 100}">
+							<c:if test="${today - postData <= 7}">
 								<span class = "new_notice"> NEW</span>
 							</c:if>
 					    </c:otherwise>
@@ -109,19 +109,19 @@ $(document).ready(function(){
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do?status=0&affiliateNo=${model.affiliate.affiliateNo}')">전체내역 조회</li>
+						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do?statusCode=TRL&affiliateNo=${model.affiliate.affiliateNo}')">전체내역 조회</li>
 						<li><span><fmt:formatNumber value="${model.receiptSaleSummary.totalReceiptPayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do?status=3_4&affiliateNo=${model.affiliate.affiliateNo}')">처리완료 조회</li>
+						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do?statusCode=CRL&affiliateNo=${model.affiliate.affiliateNo}')">처리완료 조회</li>
 						<li><span><fmt:formatNumber value="${model.receiptSaleSummary.totalReceiptCompletePayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>
 				<div class="affiliate_con2">
 					<ul>
-						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do?status=1_2__5_6&affiliateNo=${model.affiliate.affiliateNo}')">미처리내역 조회</li>
+						<li onclick = "movePage('/m/affiliate/affiliateReceiptList.do?statusCode=NRL&affiliateNo=${model.affiliate.affiliateNo}')">미처리내역 조회</li>
 						<li><span><fmt:formatNumber value="${model.receiptSaleSummary.totalReceiptNotCompletePayAmount}" pattern="###,###,###,###"/></span></li>
 					</ul>
 				</div>

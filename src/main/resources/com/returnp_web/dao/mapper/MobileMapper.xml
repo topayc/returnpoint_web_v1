@@ -600,6 +600,7 @@
 		<if test="affiliateNo != null "> AND affiliateNo   = #{affiliateNo} </if>
 		<if test="memberNo != null "> AND memberNo   = #{memberNo} </if>
 		<if test="af_id != null "> AND affiliateSerial   = #{af_id}  </if>
+		<if test="issueType != null "> AND issueType   = #{issueType}  </if>
 	</select> 
 	
 	<!-- 회원 휴대폰 중복 가입 조회(회원정보수정) -->
