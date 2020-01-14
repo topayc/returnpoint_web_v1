@@ -34,6 +34,8 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Locale;
+
+import com.returnp_web.dao.MobileMainDao;
 import com.returnp_web.dao.MobileMemberDao;
 
 /**
@@ -46,6 +48,10 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 
 	@Autowired
 	private MobileMemberDao mobileMemberDao;
+	
+	@Autowired
+	private MobileMainDao mobileMainDao;
+
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -110,6 +116,7 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView mv)
 			throws Exception {
+			
 	}
 
 	@Override

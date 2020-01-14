@@ -301,6 +301,10 @@ public interface MobileMainService {
 
 	boolean reqeustAffiliateDeposit(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean getMemberNotis(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	boolean getMemberNotiDetail(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 

@@ -775,6 +775,28 @@ public class MobileController extends MallBaseController {
 		return page(bret, modelMap, rmap);
 	}
 	
+	/*
+	 * 나의 알림 가져오기
+	 */
+	@RequestMapping("/board/memberNotiList")
+	public String getMemberNotiList(@RequestParam Map<String, Object> paramMap, ModelMap modelMap, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/board/board_detail");
+		boolean bret = mms.getMemberNotis(Util.toRPap(paramMap), rmap, request, response);
+		return page(bret, modelMap, rmap);
+	}
+	
+	/*
+	 * 알림 보기 
+	 */
+	@RequestMapping("/board/memberNotiDetail")
+	public String getMemberNotiDetail(@RequestParam Map<String, Object> paramMap, ModelMap modelMap, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/board/memberNotiDetail");
+		boolean bret = mms.getMemberNotiDetail(Util.toRPap(paramMap), rmap, request, response);
+		return page(bret, modelMap, rmap);
+	}
+	
 	
 	
 	/*****************************************************************************************************************************************************************

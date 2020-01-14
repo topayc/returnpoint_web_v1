@@ -220,15 +220,6 @@ public class MobileMainServiceImpl implements MobileMainService {
 			HashMap<String, Object> myGreenPointSumInfo = mobileMainDao.selectMyGreenPointSumInfo(dbparams); // green point Sum search.
 			
 			dbparams.clear();
-			dbparams.put("bbsType1", "1");
-			dbparams.put("bbsType2", "1");
-			dbparams.put("bbsLimit", 1);
-			ArrayList<HashMap<String, Object>> notices = this.mobileMainDao.selectBoards(dbparams);
-			if (notices.size() ==1) {
-				rmap.put("notice", notices .get(0));
-			}
-			
-			dbparams.clear();
 			dbparams.put("memberNo", sm.getMemberNo());
 			HashMap<String, Object> affiliateMap = mobileMainDao.selectAffiliate(dbparams);
 			if (affiliateMap != null) {
@@ -1881,7 +1872,13 @@ public class MobileMainServiceImpl implements MobileMainService {
 			HashMap<String, Object> qrSaleSummaryMap = this.mobileMainDao.selectAffiliateQrSummary(dbparams);
 			rmap.put("receiptSaleSummary", receiptSaleSummaryMap);
 			rmap.put("qrSaleSummary", qrSaleSummaryMap);
-			rmap.put("affiliate", affiliateMap);
+			
+			dbparams.clear();
+			dbparams.put("memberNo", sm.getMemberNo());
+			dbparams.put("isViewed", "N");
+			ArrayList<HashMap<String, Object>>  notReadNotis  = this.mobileMemberDao.selectMemberNotis(dbparams);
+			rmap.put("notReadNotis", notReadNotis);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -1981,6 +1978,32 @@ public class MobileMainServiceImpl implements MobileMainService {
 		} catch (Exception e) {
 			e.printStackTrace();
 
+		}
+		return true;
+	}
+
+	@Override
+	public boolean getMemberNotis(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean getMemberNotiDetail(RPMap rPap, RPMap rmap, HttpServletRequest request,
+			HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			dbparams.put("memberNotiNo", rPap.getStr("memberNotiNo"));
+			ArrayList<HashMap<String, Object>> notis = this.mobileMemberDao.selectMemberNotis(dbparams);
+			if (notis.size()> 0) {
+				rmap.put("memberNoti", notis.get(0));
+			}
+			
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 		}
 		return true;
 	}

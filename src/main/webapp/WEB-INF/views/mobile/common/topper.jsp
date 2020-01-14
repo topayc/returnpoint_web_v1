@@ -30,8 +30,11 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a href="javascript:history.back()" class="navbar-back"><i class="fas fa-chevron-left"></i></a>
-					<a class="navbar-qr"><i class="far fa-bell" style="color:#333;position:relative;"></i>
-						<!-- <span style="position:absolute;color:#fff;background-color:red;padding:1px 5px;font-size:5px;border-radius:10px;left:25px;top:10px;">1</span> -->
+					<a class="navbar-qr" onclick = "movePage('/m/noti/memberNoti.do')">
+						<i class="far fa-bell" style="color:#333;position:relative;"></i>
+						<c:if test = "${notiInfo.notiCount != 0}">
+							<span style="position:absolute;color:#fff;background-color:red;padding:1px 5px;border-radius:10px;left:25px;top:8px;font-size:10px"><b>${notiInfo.notiCount}</b></span> 
+						</c:if>
 					</a>
 					<button type="button" class="navbar-toggle" onclick="openNav()">
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span	class="icon-bar"></span>
@@ -63,18 +66,22 @@
 							<ul class = "topper_menu" >
 								<li onclick = "movePage('/m/board/boardList.do?bbsType1=1')">
 										<spring:message code="label.n_notice" />
-										<c:set var="now" value="<%=new java.util.Date()%>"/>
-									    <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
-									    <fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
-									    <fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
-										<c:if test="${today - postData <= 5}">
-											<span> NEW</span>
+										 <c:set var="now" value="<%=new java.util.Date()%>"/>
+								         <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
+										 <fmt:parseDate value="${notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
+								          <fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
+										<c:if test="${today - postData <= 100}">
+										<span class = "new_notice"> NEW</span>
 										</c:if>
 								<%-- <li><a href="#"><spring:message code="label.n_add_call" /><img src="/resources/images/r_home_button.png"></a></li>
 								<li ><a href="#"><spring:message code="label.n_register_affiliate" /><img src="/resources/images/r_home_button.png"></a></li>  --%>
 								<li onclick = "movePage('/m/mypage/mypage_myinfo.do')"><spring:message code="label.n_myinfo" />/<spring:message code="label.n_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/customer/customerCenter.do')"><spring:message code="label.n_cs" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
 								<li onclick = "movePage('/m/mypage/m_selectLanguage.do')"><spring:message code="label.n_lang_settings" /><!-- <img src="/resources/images/r_home_button.png"> --></li>
+								<li onclick = "movePage('/m/mypage/memberNoti.do')">내 알림 보기<!-- <img src="/resources/images/r_home_button.png"> --></li>
+								<c:if test = "${not empty affiliate}">
+								<li onclick = "movePage('/m/affiliate/affiliateMain.do?affiliateNo=${affiliate.affiliateNo}')" ><b>${affiliate.affiliateName}</b> 가맹점 메뉴<!-- <img src="/resources/images/r_home_button.png"> --></li>
+								</c:if>
 								<c:choose>
 									<c:when test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
 										<li onclick = "movePage('/m/member/login.do')"><spring:message code="login.form.submit" /></li>

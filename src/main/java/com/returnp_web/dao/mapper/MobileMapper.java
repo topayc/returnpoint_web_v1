@@ -595,4 +595,7 @@ public interface MobileMapper {
 	
 	ArrayList<HashMap<String, Object>> selectMemberNotis(HashMap<String, Object> dbparams);
 
+
+	HashMap<String, Object> selectMemberNotiCount(RPMap dbparams);
+
 }

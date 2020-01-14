@@ -1255,10 +1255,18 @@
 	<select id="selectMemberNotis" parameterType="HashMap" resultType="HashMap">
 		select * from member_noti 
 		where 1 =1 
-		<if test="memberNotiNo != null "> AND memberNotiNo   = #{memberNotiNoberNo} </if>
+		<if test="memberNotiNo != null "> AND memberNotiNo   = #{memberNotiNo} </if>
 		<if test="memberNo != null "> AND memberNo   = #{memberNo} </if>
 		<if test="isViewed != null "> AND isViewed   = #{isViewed} </if>
  	</select>
  	
+	<select id="selectMemberNotiCount" parameterType="HashMap" resultType="HashMap">
+		select 
+			ifnull(count(*), 0)  as notiCount 
+		from member_noti 
+		where 1 =1 
+		<if test="memberNo != null "> AND memberNo   = #{memberNo} </if>
+		<if test="isViewed != null "> AND isViewed   = #{isViewed} </if>
+ 	</select>
 	
 </mapper>

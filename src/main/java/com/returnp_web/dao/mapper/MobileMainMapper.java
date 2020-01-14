@@ -411,5 +411,4 @@ public interface MobileMainMapper {
 	HashMap<String, Object> selectAffiliateReceiptSummary(RPMap dbparams);
 
 	HashMap<String, Object> selectAffiliateQrSummary(RPMap dbparams);
-
 }

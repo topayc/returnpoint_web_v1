@@ -52,12 +52,12 @@ if (isApp()) {
     checkVersion();
   }
  $(document).on('ready', function() {
-	 $("#event_popup").modal({
+/* 	 $("#event_popup").modal({
 		  escapeClose: false,
 		  clickClose: false,
 		  showClose: false,
 		  fadeDuration: 90
-		});  
+		});  */ 
 	  if(getCookie("notToday")=="Y"){
 		  closeMainModal();
        }
@@ -203,18 +203,18 @@ if (isApp()) {
 	</div>
 	
 	<!-- 공지사항 -->
-	<c:if test = "${! empty model.notice}">
+	<c:if test = "${! empty notice}">
 	<div class="m_noti">
 		<span> 
-			<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${model.notice.mainBbsNo}">
+			<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${notice.mainBbsNo}">
 				<c:choose>
-					<c:when test="${fn:length(model.notice.title) gt 35}">
+					<c:when test="${fn:length(notice.title) gt 35}">
 				        <span style = "color : #000;font-weight:700;">공지</span>
-				        <span style = "color : #666"><c:out value="${fn:substring(model.notice.title, 0, 35)}"></c:out>...</span>
+				        <span style = "color : #666"><c:out value="${fn:substring(notice.title, 0, 35)}"></c:out>...</span>
 				    </c:when>
 				    <c:otherwise>
 				        <span style = "color : #000;font-weight:700;">공지</span>
-				        <span style = "color : #666"><c:out value="${model.notice.title}"> </c:out></span>
+				        <span style = "color : #666"><c:out value="${notice.title}"> </c:out></span>
 				    </c:otherwise>
 				</c:choose>	
 			</a>
@@ -223,20 +223,20 @@ if (isApp()) {
 		
 		 <c:set var="now" value="<%=new java.util.Date()%>"/>
          <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
-		 <fmt:parseDate value="${model.notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
+		 <fmt:parseDate value="${notice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
           <fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
-		<c:if test="${today - postData <= 5}">
+		<c:if test="${today - postData <= 7}">
 		<span class = "new_notice"> NEW</span>
 		</c:if>
 	</div>
 	</c:if>
-	<c:if test = "${! empty model.affiliateNotices}">
-		<c:forEach var="affiliateNotice" items="${model.affiliateNotices}">
+	<c:if test = "${! empty affiliateNotices}">
+		<c:forEach var="affiliateNotice" items="${affiliateNotices}">
 		<div class="m_noti">
 			<span> 
 				<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${affiliateNotice.mainBbsNo}">
 					<c:choose>
-						<c:when test="${fn:length(model.affiliateNotice.title) gt 35}">
+						<c:when test="${fn:length(affiliateNotice.title) gt 35}">
 					        <span style = "color : #000;font-weight:700;">가맹점 공지</span>
 					        <span style = "color : #666"><c:out value="${fn:substring(affiliateNotice.title, 0, 35)}"></c:out>...</span>
 					    </c:when>
@@ -248,7 +248,7 @@ if (isApp()) {
 				</a>
 			 	<c:set var="now1" value="<%=new java.util.Date()%>"/>
 	        	 <fmt:parseNumber value="${now1.time / (1000*60*60*24)}" integerOnly="true" var="today1"></fmt:parseNumber>
-			 	<fmt:parseDate value="${model.affiliateNotice.createTime}" var="affiliateNoticePostDate" pattern="yyyy-MM-dd "/>
+			 	<fmt:parseDate value="${affiliateNotice.createTime}" var="affiliateNoticePostDate" pattern="yyyy-MM-dd "/>
 	          	<fmt:parseNumber value="${affiliateNoticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData1"></fmt:parseNumber>
 				<c:if test="${today1 - postData1 <= 7}">
 				<span class = "new_notice"> NEW</span>
@@ -274,9 +274,9 @@ if (isApp()) {
 			<span><spring:message code="label.n_search_affiliate" /></span><span><img src="/resources/images/r_bottom_search.png"></span>
 		</div> --%>
 		<div class="r_fran_page">
-			<c:if test = "${not empty model.affiliate}">
-			<div class="r_fran_btn" onclick = "movePage('/m/affiliate/affiliateMain.do?affiliateNo=${model.affiliate.affiliateNo}')" >
-				<img src="/resources/images/r_fran_btn_img.png"><span style = "font-weight:bold;font-size:14px">${model.affiliate.affiliateName}</span> 가맹점 페이지</div>
+			<c:if test = "${not empty affiliate}">
+			<div class="r_fran_btn" onclick = "movePage('/m/affiliate/affiliateMain.do?affiliateNo=${affiliate.affiliateNo}')" >
+				<img src="/resources/images/r_fran_btn_img.png"><span style = "font-weight:bold;font-size:14px">${affiliate.affiliateName}</span> 가맹점 페이지</div>
 			</c:if>
 			<div class="r_fran_left"  onclick = "movePage('/m/affiliate/newAffiliateSearch.do')">업종별 가맹점</div>
 			<div class="r_fran_right" onclick = "movePage('/m/affiliate/affiliateSearchList.do')">지역별 가맹점</div>

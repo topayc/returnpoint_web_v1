@@ -1,5 +1,7 @@
 package com.returnp_web.interceptor;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 import javax.servlet.ServletException;
@@ -19,8 +21,11 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.support.RequestContextUtils;
 import org.springframework.web.util.WebUtils;
 
+import com.returnp_web.dao.MobileMainDao;
+import com.returnp_web.dao.MobileMemberDao;
 import com.returnp_web.svc.FrontMainService;
 import com.returnp_web.utils.RPMap;
+import com.returnp_web.utils.SessionManager;
 
 /**
  * The Class FrontInterceptor.
@@ -35,6 +40,12 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
 	/** The fcs. */
 	@Autowired
 	private FrontMainService fms;
+	
+	@Autowired
+	private MobileMemberDao mobileMemberDao;
+	
+	@Autowired
+	private MobileMainDao mobileMainDao;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -113,6 +124,45 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
 		if (mv == null) return;
 		mv.addObject("SERVER_MANAGE", fms.getServerManageStatus());
 		mv.addObject("FOOTER", fms.getFooter(dbparams));
+		
+		dbparams.put("isViewed", "N");
+		HashMap<String, Object>  notiCountMap  = this.mobileMemberDao.selectMemberNotiCount(dbparams);
+		mv.addObject("notiInfo", notiCountMap);
+
+		/*최신 공지사항 1개 가져오기 */
+		dbparams.clear();
+		dbparams.put("bbsType1", "1");
+		dbparams.put("bbsType2", "1");
+		dbparams.put("bbsLimit", 1);
+		ArrayList<HashMap<String, Object>> notices = this.mobileMainDao.selectBoards(dbparams);
+		if (notices.size() ==1) {
+			mv.addObject("notice", notices .get(0));
+		}
+		
+		dbparams.clear();
+		if (request.getSession().getAttribute("memberNo") != null) {
+			SessionManager sm = new SessionManager(request, response);
+			dbparams.put("memberNo", sm.getMemberNo());
+			HashMap<String, Object> affiliateMap = mobileMainDao.selectAffiliate(dbparams);
+			
+			if (affiliateMap != null) {
+				mv.addObject("affiliate", affiliateMap);
+				
+				dbparams.clear();
+				dbparams.put("bbsType1", "1");
+				dbparams.put("bbsType2", "2");
+				dbparams.put("bbsLimit", 2);
+				
+				ArrayList<HashMap<String, Object>> affiliateNotices = this.mobileMainDao.selectBoards(dbparams);
+				if (affiliateNotices.size()>0) {
+					mv.addObject("affiliateNotice", affiliateNotices.get(0));
+					mv.addObject("affiliateNotices", affiliateNotices);
+				} 
+				
+			}
+			
+		}
+		
 	}
 
 

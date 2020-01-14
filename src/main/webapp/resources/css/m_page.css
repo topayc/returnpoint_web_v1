@@ -1088,7 +1088,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 
 /*가맹점 메인 페이지*/
 .affiliate_main{}
-.affiliate_main > ul > li{padding:3% 1%;color:#333;font-size:12px;margin-left:6px}
+.affiliate_main > ul > li{padding:3% 1%;color:#333;font-size:12px;margin-left:6px;}
 .affiliate_main ul li ul{display:inline;}
 .affiliate_main ul li ul li{display:inline-block;}
 .affiliate_main ul li ul li span{background:red;color:#fff;border-radius:20px;padding:1% 2%;margin-left:5px;}

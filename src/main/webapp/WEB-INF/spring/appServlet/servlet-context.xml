@@ -37,6 +37,8 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/m/main/index.do"/>
 			<mvc:mapping path="/m/mypage/**"/>
+		
+
 			<mvc:exclude-mapping path="/m/device/device/registPushToken.do" />
 			<mvc:exclude-mapping path="/m/member/login_ok.do" />
 			<mvc:exclude-mapping path="/m/member/select_member_validity.do" />
