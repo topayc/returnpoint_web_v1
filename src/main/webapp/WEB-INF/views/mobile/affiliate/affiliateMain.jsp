@@ -83,7 +83,7 @@ $(document).ready(function(){
 			<li data-toggle="collapse" data-target="#member_noti" >
 				아직 읽지 않은 알림 메세지가 
 				<span style = "color : red;font-weight:600">${fn:length(model.notReadNotis)}</span>개가 있습니다.<span>
-				<i class="fas fa-chevron-right list_blt"></i></span></li>
+				<!-- <i class="fas fa-chevron-right list_blt"></i></span></li> -->
 			</c:if>
 		</ul>
 		<c:if test = "${! empty model.notReadNotis}">
