@@ -68,52 +68,47 @@ $(document).ready(function(){
 		<h4>${affiliate.affiliateName}</h4>
 	</header> 
 	<section>
+	<c:choose>
+	<c:when test = "${! empty model.receiptList}">
 	<div class="affiliate_receipt">
-		<div class="affiliate_receipt_list">
-			<div class="affiliate_receipt_top_left">AhnSoft<span>2020-1-01-15</span></div>
-			<div class="affiliate_receipt_top_right">입금확인</div>
-			<div class="affiliate_receipt_pay">
-				<ul>
-					<li>가맹점주님이 입금하실금액</li>
-					<li><h3>13,000원</h3></li>
-				</ul>
+		<c:forEach items = "${model.receiptList}" var= "receipt">
+			<div class="affiliate_receipt_list">
+				<div class="affiliate_receipt_top_left">AhnSoft
+					<span>
+						<fmt:parseDate value="${receipt.createTime}" var="noticePostDate" pattern="yyyy-MM-dd HH:mm:ss"/>
+						<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd HH:mm"/>
+					</span>
+				</div>
+				<div class="affiliate_receipt_top_right">입금확인</div>
+				<div class="affiliate_receipt_pay">
+					<ul>
+						<li>가맹점주님이 입금하실금액</li>
+						<li><h3><fmt:formatNumber value="${receipt.depositAmount}" pattern="###,###,###,###"/>원</h3></li>
+					</ul>
+				</div>
+				<div class="affiliate_receipt_bottom" style="border-right:1px solid rgba(0,0,0,0.1);">
+					<ul>
+						<li>업로드 회원</li>
+						<li><span> ${receipt.memberName}</span></li>
+					</ul>
+				</div>
+				<div class="affiliate_receipt_bottom">
+					<ul>
+						<li>결제금액</li>
+						<li><span><fmt:formatNumber value="${receipt.payAmount}" pattern="###,###,###,###"/>원</span></li>
+					</ul>
+				</div>
 			</div>
-			<div class="affiliate_receipt_bottom" style="border-right:1px solid rgba(0,0,0,0.1);">
-				<ul>
-					<li>업로드 회원</li>
-					<li><span>안영철</span></li>
-				</ul>
-			</div>
-			<div class="affiliate_receipt_bottom">
-				<ul>
-					<li>결제금액</li>
-					<li><span>10,000원</span></li>
-				</ul>
-			</div>
-		</div>
-		<div class="affiliate_receipt_list">
-			<div class="affiliate_receipt_top_left">AhnSoft</div>
-			<div class="affiliate_receipt_top_right">입금확인</div>
-			<div class="affiliate_receipt_pay">
-				<ul>
-					<li>가맹점주님이 입금하실금액</li>
-					<li><h3>13,000원</h3></li>
-				</ul>
-			</div>
-			<div class="affiliate_receipt_bottom" style="border-right:1px solid rgba(0,0,0,0.1);">
-				<ul>
-					<li>업로드 회원</li>
-					<li><span>안영철</span></li>
-				</ul>
-			</div>
-			<div class="affiliate_receipt_bottom">
-				<ul>
-					<li>결제금액</li>
-					<li><span>10,000원</span></li>
-				</ul>
-			</div>
-		</div>
+		</c:forEach>
 	</div>
+	</c:when>
+	<c:otherwise>
+		<div class="list_none" style="width:70%;margin-left:15%;margin-top:27%;height:200px;" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
+		<img src="/resources/images/list_none_img.png" width="80" height="80">
+		<p>내역이 존재하지 않습니다</p>
+	</div>
+	</c:otherwise>
+	</c:choose>
    </section>
      <div id = "progress_loading2">
 		<img src="/resources/images/progress_loading.gif"/>
