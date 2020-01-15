@@ -68,6 +68,52 @@ $(document).ready(function(){
 		<h4>${affiliate.affiliateName}</h4>
 	</header> 
 	<section>
+	<div class="affiliate_receipt">
+		<div class="affiliate_receipt_list">
+			<div class="affiliate_receipt_top_left">AhnSoft</div>
+			<div class="affiliate_receipt_top_right">입금확인</div>
+			<div class="affiliate_receipt_pay">
+				<ul>
+					<li>가맹점주님이 입금하실금액</li>
+					<li><h3>13,000원</h3></li>
+				</ul>
+			</div>
+			<div class="affiliate_receipt_bottom" style="border-right:1px solid rgba(0,0,0,0.1);">
+				<ul>
+					<li>업로드 회원</li>
+					<li><span>안영철</span></li>
+				</ul>
+			</div>
+			<div class="affiliate_receipt_bottom">
+				<ul>
+					<li>결제금액</li>
+					<li><span>10,000원</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="affiliate_receipt_list">
+			<div class="affiliate_receipt_top_left">AhnSoft</div>
+			<div class="affiliate_receipt_top_right">입금확인</div>
+			<div class="affiliate_receipt_pay">
+				<ul>
+					<li>가맹점주님이 입금하실금액</li>
+					<li><h3>13,000원</h3></li>
+				</ul>
+			</div>
+			<div class="affiliate_receipt_bottom" style="border-right:1px solid rgba(0,0,0,0.1);">
+				<ul>
+					<li>업로드 회원</li>
+					<li><span>안영철</span></li>
+				</ul>
+			</div>
+			<div class="affiliate_receipt_bottom">
+				<ul>
+					<li>결제금액</li>
+					<li><span>10,000원</span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
    </section>
      <div id = "progress_loading2">
 		<img src="/resources/images/progress_loading.gif"/>
