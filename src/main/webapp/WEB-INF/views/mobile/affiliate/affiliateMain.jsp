@@ -110,6 +110,7 @@ $(document).ready(function(){
 			</ul>
 		</div>
 		</c:if>
+		<div class="affiliate_conbox">
 		<div class="affiliate_conbox1">
 			<ul>
 				<li><span>영수증 매출</span>${affiliate.affiliateName}</li>
@@ -156,6 +157,7 @@ $(document).ready(function(){
 					</ul>
 				</div>
 			</div>
+		</div>
 	</div>
    </section>
      <div id = "progress_loading2">

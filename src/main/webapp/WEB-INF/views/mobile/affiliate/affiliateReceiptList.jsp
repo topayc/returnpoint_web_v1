@@ -85,6 +85,7 @@ $(document).ready(function(){
 					<ul>
 						<li>가맹점주님이 입금하실 금액</li>
 						<li><h3><fmt:formatNumber value="${receipt.depositAmount}" pattern="###,###,###,###"/>원</h3></li>
+						<li style="font-size:12px;">입금 완료시 회원님께 적립코드가 발송됩니다.</li>
 					</ul>
 				</div>
 				<div class="affiliate_receipt_bottom">
