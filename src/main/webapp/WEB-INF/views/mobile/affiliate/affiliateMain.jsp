@@ -26,6 +26,18 @@ $(document).ready(function(){
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
 	
+	$(".memer_noti_item").click(function(){
+		var param = {isViewed : 'Y', memberNotiNo : $(this).attr('requestNo').trim()}
+		$.getJSON('/m/board/memberNoti/changeStatus.do', param, function(result){
+			if (result && typeof result !="undefined") {
+      	   		if (result.result.code == 0) {
+				}
+             }else{
+            		alertOpen("알림", "장애 발생. 다시 시도해주세요.", true, false, null, null);
+         	   }
+		});	
+	});
+	
 });
 
 </script>
@@ -52,12 +64,12 @@ $(document).ready(function(){
 					<c:choose>
 						<c:when test="${fn:length(affilaiteNotice.title) gt 35}">
 							<li class="affiliate_main_fran" ><b>가맹점공지</b>&nbsp;<c:out value="${fn:substring(affiliateNotice.title, 0, 35)}"></c:out>...
-							 <c:set var="now" value="<%=new java.util.Date()%>"/>
-							<fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
-							<fmt:parseDate value="${affilaiteNotice.createTime}" var="noticePostDate" pattern="yyyy-MM-dd "/>
-							<fmt:parseNumber value="${noticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData"></fmt:parseNumber>
-							<c:if test="${today - postData <= 7}">
-								<span class = "new_notice"> NEW</span>
+						 	<c:set var="now1" value="<%=new java.util.Date()%>"/>
+				        	 <fmt:parseNumber value="${now1.time / (1000*60*60*24)}" integerOnly="true" var="today1"></fmt:parseNumber>
+						 	<fmt:parseDate value="${affiliateNotice.createTime}" var="affiliateNoticePostDate" pattern="yyyy-MM-dd "/>
+				          	<fmt:parseNumber value="${affiliateNoticePostDate.time / (1000*60*60*24)}" integerOnly="true" var="postData1"></fmt:parseNumber>
+							<c:if test="${today1 - postData1 <= 7}">
+							<span class = "new_notice"> NEW</span>
 							</c:if>
 					    </c:when>
 					    <c:otherwise>
@@ -81,7 +93,7 @@ $(document).ready(function(){
 			</c:if>
 			<c:if test = "${! empty model.notReadNotis}">
 			<li data-toggle="collapse" data-target="#member_noti" >
-				아직 읽지 않은 알림 메세지가 
+				<b>알림</b>&nbsp;아직 읽지 않은 알림 메세지가 
 				<span style = "color : red;font-weight:600">${fn:length(model.notReadNotis)}</span>개가 있습니다.<span>
 				<!-- <i class="fas fa-chevron-right list_blt"></i></span></li> -->
 			</c:if>
@@ -90,9 +102,10 @@ $(document).ready(function(){
 		<div id = "member_noti"  class="collapse list_toggle" style = "background-color:#f1f1f1">
 			<ul>
 				<c:forEach items = "${model.notReadNotis}" var = "noti">
-				<li onclick = "movePage('/m/board/memberNotiDetail.do?memberNotiNo=${noti.memberNotiNo}')"style = "padding : 3% 3%;font-size:12px;border-bottom: 1px solid #ddd;border-top: 1px solid #fff" >ㆍ${noti.notiTitle} 
-					&nbsp;&nbsp;<fmt:parseDate value="${noti.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss"/>
-					<fmt:formatDate value="${createTime}" pattern="yyyy-MM-dd"/> </li>
+					<li class = "memer_noti_item"  requestNo = "${noti.memberNotiNo}" onclick = "movePage('/m/board/memberNotiDetail.do?memberNotiNo=${noti.memberNotiNo}')" style = "padding : 3% 3%;font-size:12px;border-bottom: 1px solid #ddd;border-top: 1px solid #fff" >ㆍ${noti.notiTitle} 
+						&nbsp;&nbsp;<fmt:parseDate value="${noti.createTime}" var="createTime" pattern="yyyy-MM-dd HH:mm:ss"/>
+						<fmt:formatDate value="${createTime}" pattern="yyyy-MM-dd"/> 
+					</li>
 				</c:forEach>
 			</ul>
 		</div>
