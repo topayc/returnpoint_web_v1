@@ -88,13 +88,13 @@ $(document).ready(function(){
 				</div>
 				<div class="affiliate_receipt_bottom" style="border-right:1px solid rgba(0,0,0,0.1);">
 					<ul>
-						<li>업로드 회원</li>
+						<li>회원</li>
 						<li><span> ${receipt.memberName}</span></li>
 					</ul>
 				</div>
 				<div class="affiliate_receipt_bottom">
 					<ul>
-						<li>결제금액</li>
+						<li>결제</li>
 						<li><span><fmt:formatNumber value="${receipt.payAmount}" pattern="###,###,###,###"/>원</span></li>
 					</ul>
 				</div>
