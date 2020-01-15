@@ -1122,6 +1122,6 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .affiliate_receipt .affiliate_receipt_list .affiliate_receipt_pay{text-align:center;color:rgba(0,0,0,0.5);padding:0 0 7% 0;line-height:30px;}
 .affiliate_receipt .affiliate_receipt_list .affiliate_receipt_pay h3{color:#000;font-weight:bold;font-size:20px;}
 .affiliate_receipt .affiliate_receipt_list .affiliate_receipt_bottom{font-size:12px;float:left;text-align:center;color:rgba(0,0,0,0.5);width:50%;padding:3% 0;border-top:1px solid rgba(0,0,0,0.1);}
-.affiliate_receipt .affiliate_receipt_list .affiliate_receipt_bottom span{font-size:15px;color:rgba(0,0,0,0.8);}
+.affiliate_receipt .affiliate_receipt_list .affiliate_receipt_bottom span{font-size:14px;color:rgba(0,0,0,0.8);}
 .affiliate_receipt .affiliate_receipt_list .affiliate_receipt_bottom ul{display:inline;}
 .affiliate_receipt .affiliate_receipt_list .affiliate_receipt_bottom ul li{display:inline-block;}
