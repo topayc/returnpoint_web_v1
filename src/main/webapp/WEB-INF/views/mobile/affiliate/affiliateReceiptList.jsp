@@ -83,7 +83,7 @@ $(document).ready(function(){
 				</c:if>
 				<div class="affiliate_receipt_pay">
 					<ul>
-						<li>가맹점주님이 입금하실금액</li>
+						<li>가맹점주님이 입금하실 금액</li>
 						<li><h3><fmt:formatNumber value="${receipt.depositAmount}" pattern="###,###,###,###"/>원</h3></li>
 					</ul>
 				</div>
