@@ -85,8 +85,9 @@ function showMemberNoticeDetail(no){
 			</c:forEach>			
 				</c:when>
 				<c:otherwise>
-					<div class="list_li collapsed ellp">
-					<p class = "item_title"><spring:message code="label.no_post" /></p>
+					<div class="list_none" style="width:70%;margin-left:15%;margin-top:27%;height:200px;" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
+						<img src="/resources/images/list_none_img.png" width="80" height="80">
+						<p>알림메시지 내역이 없습니다</p>
 					</div>
 				</c:otherwise>
 			</c:choose>			

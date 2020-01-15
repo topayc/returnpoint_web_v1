@@ -65,10 +65,11 @@ $(document).ready(function(){
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>RETURNP</h4>
+		<h4>${affiliate.affiliateName}</h4>
 	</header> 
 	<section>
-	<c:if test = "${! empty model.receiptList}">
+	<c:choose>
+	<c:when test = "${! empty model.receiptList}">
 	<div class="affiliate_receiptlist_page">
 		<c:forEach items = "${model.receiptList}" var= "receipt">
 		<div class="affiliate_receiptlist requestNo_${receipt.pointCodeIssueRequestNo}" >
@@ -95,12 +96,19 @@ $(document).ready(function(){
 				</ul>
 			</div>
 			<c:if test = "${receipt.status == '1'}"> 
-			<button class = "reqeust_deposit_check"   requestNo = "${receipt.pointCodeIssueRequestNo}">입금 확인 요청하기</button>
+				<button class = "reqeust_deposit_check"   requestNo = "${receipt.pointCodeIssueRequestNo}">입금 확인 요청하기</button>
 			</c:if>
 		</div>
 		</c:forEach>
 	</div>
-	</c:if>
+	</c:when>
+	<c:otherwise>
+		<div class="list_none" style="width:70%;margin-left:15%;margin-top:27%;height:200px;" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
+			<img src="/resources/images/list_none_img.png" width="80" height="80">
+			<p>내역이 존재하지 않습니다</p>
+		</div>
+	</c:otherwise>
+	</c:choose>
    </section>
      <div id = "progress_loading2">
 		<img src="/resources/images/progress_loading.gif"/>
