@@ -70,7 +70,7 @@ $(document).ready(function(){
 	<section>
 	<div class="affiliate_receipt">
 		<div class="affiliate_receipt_list">
-			<div class="affiliate_receipt_top_left">AhnSoft</div>
+			<div class="affiliate_receipt_top_left">AhnSoft<span>2020-1-01-15</span></div>
 			<div class="affiliate_receipt_top_right">입금확인</div>
 			<div class="affiliate_receipt_pay">
 				<ul>
