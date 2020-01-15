@@ -72,7 +72,7 @@ $(document).ready(function(){
 	<div class="affiliate_receipt">
 		<c:forEach items = "${model.receiptList}" var= "receipt">
 			<div class="affiliate_receipt_list requestNo_${receipt.pointCodeIssueRequestNo}" >
-				<div class="affiliate_receipt_top_left">AhnSoft
+				<div class="affiliate_receipt_top_left">${affiliate.affiliateName}
 					<span>
 						<fmt:parseDate value="${receipt.createTime}" var="noticePostDate" pattern="yyyy-MM-dd HH:mm:ss"/>
 						<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd HH:mm"/>
@@ -83,26 +83,33 @@ $(document).ready(function(){
 				</c:if>
 				<div class="affiliate_receipt_pay">
 					<ul>
+						<c:if test = "${receipt.status == '1' or receipt.status == '2'}"> 
 						<li>가맹점주님이 입금하실 금액</li>
+						</c:if>
+						<c:if test = "${receipt.status == '3' or receipt.status == '4'}"> 
+						<li>가맹점주님이 입금하신 금액</li>
+						</c:if>
 						<li><h3><fmt:formatNumber value="${receipt.depositAmount}" pattern="###,###,###,###"/>원</h3></li>
+						<c:if test = "${receipt.status == '1' or receipt.status == '2'}"> 
 						<li style="font-size:12px;">입금 완료시 회원님께 적립코드가 발송됩니다.</li>
+						</c:if>
 					</ul>
 				</div>
 				<div class="affiliate_receipt_bottom">
 					<ul>
-						<li>회원</li>
+						<li>등록회원</li>
 						<li><span> ${receipt.memberName}</span></li>
 					</ul>
 				</div>
 				<div class="affiliate_receipt_bottom">
 					<ul>
-						<li>결제</li>
+						<li>결제금액</li>
 						<li><span><fmt:formatNumber value="${receipt.payAmount}" pattern="###,###,###,###"/>원</span></li>
 					</ul>
 				</div>
 				<div class="affiliate_receipt_bottom">
 					<ul>
-						<li>상태</li>
+						<li>처리상태</li>
 						<li>
 							<span class = "depositStatus">
 								<c:choose>
