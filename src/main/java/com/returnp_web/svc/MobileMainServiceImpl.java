@@ -1746,25 +1746,25 @@ public class MobileMainServiceImpl implements MobileMainService {
 	    		notiMap.put("nodeType", "5");
 	    		notiMap.put("nodeTypeName", "affiliate");
 	    		
-	    		String notiTitle = String.format( "%s 님에 의한 영수증 업로드 완료 ", uploadMemberMap.get("memberName"));
+	    		String notiTitle = String.format( "[영수증 등록됨]%s님에 의한 영수증 등록 ", uploadMemberMap.get("memberName"));
 	    		notiMap.put("notiTitle", notiTitle);
 	    		
 	    		StringBuilder builder = new StringBuilder();
 	    		
-	    		builder.append(String.format( "%s님이 %s 영수증 업로드 완료했습니다 ", uploadMemberMap.get("memberName"), affiliateMap.get("affiliateName")));
+	    		builder.append(String.format( "%s님이 %s 영수증을 등록했습니다 ", uploadMemberMap.get("memberName"), affiliateMap.get("affiliateName")));
 	    		builder.append(System.getProperty("line.separator"));
 	    		builder.append(System.getProperty("line.separator"));
 	    		
-	    		builder.append(String.format( "1.결제 금액 :  %,d 원", paramMap.getInt("payAmount")));
+	    		builder.append(String.format( "1.결제 금액 :  %,d원", paramMap.getInt("payAmount")));
 	    		builder.append(System.getProperty("line.separator"));
 	    		
-	    		builder.append(String.format( "2.가맹점주님이 입금할 금액 : %,d 원", Math.round(paramMap.getInt("payAmount") *  0.15)));
+	    		builder.append(String.format( "2.가맹점주님이 입금할 금액 : %,d원 (결제금액의 15%%)", Math.round(paramMap.getInt("payAmount") *  0.15)));
 	    		builder.append(System.getProperty("line.separator"));
 	    		builder.append("3.입금하실 계좌 : 우리은행 1002-751-058576 예금주 : 안영철");
 	            builder.append(System.getProperty("line.separator"));
 	            builder.append(System.getProperty("line.separator"));
 
-	    		builder.append("*가맹점주님이 위 금액을 입금하시면, 업로드 한 회원으로 적립코드가 발송됩니다");
+	            builder.append("*가맹점주님이 위 금액을 입금하시면, 영수증을 등록한 회원의 계정으로 적립코드가 등록됩니다");
 	    		builder.append(System.getProperty("line.separator"));
 	    		builder.append("*입금을 하신 후 빠른 처리를 위해서 해당 내역 페이지에서 입금확인 요청하기 버튼을 눌러주시면 더욱 빠른 처리가 가능합니다");
 	    		
@@ -1931,13 +1931,13 @@ public class MobileMainServiceImpl implements MobileMainService {
 			insertNotiMap.put("nodeType", "5");
 			insertNotiMap.put("nodeTypeName", "affiliate");
             
-            String notiTitle = String.format( "%s 님에 의한 영수증 완료 및 입금 요청", requestMemberMap.get("memberName"));
+            String notiTitle = String.format( "[영수증 입금요청] %s 님에 의한 입금 요청", requestMemberMap.get("memberName"));
             insertNotiMap.put("notiTitle", notiTitle);
             
             StringBuilder builder = new StringBuilder();
             
             builder.append(String.format( 
-            	"%s님이 영수증 업로드 완료했으며,%s이에 %s 에 대해 다음의 금액을 입금을 요청하고 있습니다",
+            	"%s님이 영수증을 등록했으며  ,%s이에 %s 에 대해 다음의 금액을 입금을 요청하고 있습니다",
             	requestMemberMap.get("memberName"), System.getProperty("line.separator"), affiliateMap.get("affiliateName")));
             builder.append(System.getProperty("line.separator"));
             builder.append(System.getProperty("line.separator"));
@@ -1945,13 +1945,13 @@ public class MobileMainServiceImpl implements MobileMainService {
             builder.append(String.format( "1.결제 금액 :  %,d 원", pointCodeIssueRequestMap.get("payAmount")));
             builder.append(System.getProperty("line.separator"));
             
-            builder.append(String.format( "2.가맹점주님이 입금할 금액 : %,d 원", Math.round((int)pointCodeIssueRequestMap.get("payAmount") *  0.15)));
+            builder.append(String.format( "2.가맹점주님이 입금할 금액 : %,d원 (결제금액의 15%%)", Math.round((int)pointCodeIssueRequestMap.get("payAmount") *  0.15)));
             builder.append(System.getProperty("line.separator"));
             builder.append("3.입금하실 계좌 : 우리은행 1002-751-058576 예금주 : 안영철");
             builder.append(System.getProperty("line.separator"));
             builder.append(System.getProperty("line.separator"));
 
-            builder.append("*가맹점주님이 위 금액을 입금하시면, 업로드 한 회원으로 적립코드가 발송됩니다");
+            builder.append("*가맹점주님이 위 금액을 입금하시면, 영수증을 등록한 회원의 계정으로 적립코드가 등록됩니다");
             builder.append(System.getProperty("line.separator"));
             builder.append("*입금을 하신 후 빠른 처리를 위해서 해당 내역 페이지에서 입금확인 요청하기 버튼을 눌러주시면 더욱 빠른 처리가 가능합니다");
             
