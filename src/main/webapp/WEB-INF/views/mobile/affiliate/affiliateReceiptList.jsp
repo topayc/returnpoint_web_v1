@@ -79,7 +79,7 @@ $(document).ready(function(){
 						<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd HH:mm"/>
 					</span>
 				</div>
-				<div class="affiliate_receipt_top_right">입금확인</div>
+				<div class="affiliate_receipt_top_right reqeust_deposit_check" requestNo = "${receipt.pointCodeIssueRequestNo}" >입금확인</div>
 				<div class="affiliate_receipt_pay">
 					<ul>
 						<li>가맹점주님이 입금하실금액</li>
