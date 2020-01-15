@@ -36,8 +36,7 @@ $(document).ready(function(){
 	            	  console.log(result);
 	            	   if (result && typeof result !="undefined") {
 	            	   		if (result.result.code == 0) {
-								$(".requestNo_"+ target.attr("requestNo")).find(".depositStatus").text("입금확인요청중");
-								$(".requestNo_"+ target.attr("requestNo")).find(".depositStatus").css("background-color","#BF00FF");
+								$(".requestNo_"+ target.attr("requestNo")).find(".depositStatus").text("입금확인 요청중");
 								target.remove();
 							}
 	            		   	alertOpen("알림", result.result.msg, true, false, null, null); 
@@ -72,14 +71,16 @@ $(document).ready(function(){
 	<c:when test = "${! empty model.receiptList}">
 	<div class="affiliate_receipt">
 		<c:forEach items = "${model.receiptList}" var= "receipt">
-			<div class="affiliate_receipt_list">
+			<div class="affiliate_receipt_list requestNo_${receipt.pointCodeIssueRequestNo}" >
 				<div class="affiliate_receipt_top_left">AhnSoft
 					<span>
 						<fmt:parseDate value="${receipt.createTime}" var="noticePostDate" pattern="yyyy-MM-dd HH:mm:ss"/>
 						<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd HH:mm"/>
 					</span>
 				</div>
+				<c:if test = "${receipt.status == '1'}"> 
 				<div class="affiliate_receipt_top_right reqeust_deposit_check" requestNo = "${receipt.pointCodeIssueRequestNo}" >입금확인</div>
+				</c:if>
 				<div class="affiliate_receipt_pay">
 					<ul>
 						<li>가맹점주님이 입금하실금액</li>
@@ -101,7 +102,18 @@ $(document).ready(function(){
 				<div class="affiliate_receipt_bottom">
 					<ul>
 						<li>상태</li>
-						<li><span>입금확인중</span></li>
+						<li>
+							<span class = "depositStatus">
+								<c:choose>
+									<c:when test = "${receipt.status== '1'}" >입급확인중</c:when>
+									<c:when test = "${receipt.status== '2'}">입금확인 요청중</c:when>
+									<c:when test = "${receipt.status== '3'}">입금확인 완료</c:when>
+									<c:when test = "${receipt.status== '4'}">처리완료</c:when>
+									<c:when test = "${receipt.status== '5'}">입금취소</c:when>
+									<c:when test = "${receipt.status== '6'}">처리불가 </c:when>
+									</c:choose>	
+							</span>
+						</li>
 					</ul>
 				</div>
 			</div>
