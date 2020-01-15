@@ -86,7 +86,7 @@ $(document).ready(function(){
 						<li><h3><fmt:formatNumber value="${receipt.depositAmount}" pattern="###,###,###,###"/>원</h3></li>
 					</ul>
 				</div>
-				<div class="affiliate_receipt_bottom" style="border-right:1px solid rgba(0,0,0,0.1);">
+				<div class="affiliate_receipt_bottom">
 					<ul>
 						<li>회원</li>
 						<li><span> ${receipt.memberName}</span></li>
@@ -96,6 +96,12 @@ $(document).ready(function(){
 					<ul>
 						<li>결제</li>
 						<li><span><fmt:formatNumber value="${receipt.payAmount}" pattern="###,###,###,###"/>원</span></li>
+					</ul>
+				</div>
+				<div class="affiliate_receipt_bottom">
+					<ul>
+						<li>상태</li>
+						<li><span>입금확인중</span></li>
 					</ul>
 				</div>
 			</div>
