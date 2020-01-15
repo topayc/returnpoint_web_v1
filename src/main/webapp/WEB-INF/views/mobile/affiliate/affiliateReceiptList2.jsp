@@ -68,6 +68,47 @@ $(document).ready(function(){
 		<h4>${affiliate.affiliateName}</h4>
 	</header> 
 	<section>
+	<c:choose>
+	<c:when test = "${! empty model.receiptList}">
+	<div class="affiliate_receiptlist_page">
+		<c:forEach items = "${model.receiptList}" var= "receipt">
+		<div class="affiliate_receiptlist requestNo_${receipt.pointCodeIssueRequestNo}" >
+			<div class="receiptlist_fran">${receipt.affiliateName}</div>
+			<div class="receiptlist_day">
+				<fmt:parseDate value="${receipt.createTime}" var="noticePostDate" pattern="yyyy-MM-dd HH:mm:ss"/>
+				<fmt:formatDate value="${noticePostDate}" pattern="yyyy-MM-dd HH:mm"/>
+			</div>
+			<div class="receiptlist_list">
+				<ul>
+					<li>ㆍ영수증 업로드 회원 : ${receipt.memberName}</li>
+					<li>ㆍ결제 금액 : <fmt:formatNumber value="${receipt.payAmount}" pattern="###,###,###,###"/>원</li>
+					<li>ㆍ가맹점주가 입금할 금액 : <fmt:formatNumber value="${receipt.depositAmount}" pattern="###,###,###,###"/>원</li>
+					<li>ㆍ상태 : 
+					<c:choose>
+					<c:when test = "${receipt.status== '1'}" ><span class = "depositStatus" style = "background-color : #DF0101">입급확인중</span></c:when>
+					<c:when test = "${receipt.status== '2'}"><span class = "depositStatus" style = "background-color : #BF00FF">입금확인 요청중</span></c:when>
+					<c:when test = "${receipt.status== '3'}"><span class = "depositStatus" style = "background-color : #4000FF">입금확인 완료</span></c:when>
+					<c:when test = "${receipt.status== '4'}"><span class = "depositStatus" style = "background-color : #04B404">적립코드 발급완료</span></c:when>
+					<c:when test = "${receipt.status== '5'}"><span class = "depositStatus" style = "background-color : #FF8000">입금취소 </span></c:when>
+					<c:when test = "${receipt.status== '6'}"><span class = "depositStatus" style = "background-color : #6E6E6E">처리불가  </span></c:when>
+					</c:choose>	
+					</li>
+				</ul>
+			</div>
+			<c:if test = "${receipt.status == '1'}"> 
+				<button class = "reqeust_deposit_check"   requestNo = "${receipt.pointCodeIssueRequestNo}">입금 확인 요청하기</button>
+			</c:if>
+		</div>
+		</c:forEach>
+	</div>
+	</c:when>
+	<c:otherwise>
+		<div class="list_none" style="width:70%;margin-left:15%;margin-top:27%;height:200px;" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}')">
+			<img src="/resources/images/list_none_img.png" width="80" height="80">
+			<p>내역이 존재하지 않습니다</p>
+		</div>
+	</c:otherwise>
+	</c:choose>
    </section>
      <div id = "progress_loading2">
 		<img src="/resources/images/progress_loading.gif"/>
