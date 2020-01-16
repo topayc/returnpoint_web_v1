@@ -125,23 +125,27 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
 		mv.addObject("SERVER_MANAGE", fms.getServerManageStatus());
 		mv.addObject("FOOTER", fms.getFooter(dbparams));
 		
-		dbparams.put("isViewed", "N");
-		HashMap<String, Object>  notiCountMap  = this.mobileMemberDao.selectMemberNotiCount(dbparams);
-		mv.addObject("notiInfo", notiCountMap);
-
-		/*최신 공지사항 1개 가져오기 */
-		dbparams.clear();
-		dbparams.put("bbsType1", "1");
-		dbparams.put("bbsType2", "1");
-		dbparams.put("bbsLimit", 1);
-		ArrayList<HashMap<String, Object>> notices = this.mobileMainDao.selectBoards(dbparams);
-		if (notices.size() ==1) {
-			mv.addObject("notice", notices .get(0));
-		}
 		
-		dbparams.clear();
 		if (request.getSession().getAttribute("memberNo") != null) {
 			SessionManager sm = new SessionManager(request, response);
+			
+			dbparams.clear();
+			dbparams.put("isViewed", "N");
+			dbparams.put("memberNo", sm.getMemberNo());
+			HashMap<String, Object>  notiCountMap  = this.mobileMemberDao.selectMemberNotiCount(dbparams);
+			mv.addObject("notiInfo", notiCountMap);
+
+			/*최신 공지사항 1개 가져오기 */
+			dbparams.clear();
+			dbparams.put("bbsType1", "1");
+			dbparams.put("bbsType2", "1");
+			dbparams.put("bbsLimit", 1);
+			ArrayList<HashMap<String, Object>> notices = this.mobileMainDao.selectBoards(dbparams);
+			if (notices.size() ==1) {
+				mv.addObject("notice", notices .get(0));
+			}
+			
+			dbparams.clear();
 			dbparams.put("memberNo", sm.getMemberNo());
 			HashMap<String, Object> affiliateMap = mobileMainDao.selectAffiliate(dbparams);
 			
