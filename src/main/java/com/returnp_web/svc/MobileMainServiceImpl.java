@@ -893,6 +893,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			
 			if (rPap.containsKey("bbsType2") && !rPap.getStr("bbsType2").equals("0")) {
 				dbparams.put("bbsType2", rPap.getStr("bbsType2"));
+				rmap.put("bbsType2", rPap.getStr("bbsType2"));
 			}
 			
 			if (rPap.getStr("bbsType1").equals("4")) {

@@ -64,7 +64,7 @@
 						<!-- 홈링크 하단 페이지 -->
 						<div class="r_homelink">
 							<ul class = "topper_menu" >
-								<li onclick = "movePage('/m/board/boardList.do?bbsType1=1')">
+								<li onclick = "movePage('/m/board/boardList.do?bbsType1=1&bbsType2=1')">
 										<spring:message code="label.n_notice" />
 										 <c:set var="now" value="<%=new java.util.Date()%>"/>
 								         <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="today"></fmt:parseNumber>
@@ -81,9 +81,14 @@
 								<li onclick = "movePage('/m/board/memberNotiList.do')">내알림 보기
 									<c:if test = "${notiInfo.notiCount != 0}"> <span style="padding:0.7% 1.8%;font-size:11px;background-color:#EC2491"> ${notiInfo.notiCount}</span></c:if> 
 								</li>
+								
 								<c:if test = "${not empty affiliate}">
 								<li onclick = "movePage('/m/affiliate/affiliateMain.do?affiliateNo=${affiliate.affiliateNo}')" ><img style="float:left;margin-right:7px;"src="/resources/images/r_fran_btn_img.png"><b>${affiliate.affiliateName}</b> 가맹점 메뉴<!-- <img src="/resources/images/r_home_button.png"> --></li>
 								</c:if>
+								<c:if test = "${not empty affiliate}">
+								<li onclick = "movePage('/m/board/boardList.do?bbsType1=1&bbsType2=2')"><img style="float:left;margin-right:7px;"src="/resources/images/r_fran_btn_img.png"> 가맹점 공지<!-- <img src="/resources/images/r_home_button.png"> --></li>
+								</c:if>
+								
 								<c:choose>
 									<c:when test="${(sessionScope.memberEmail == null) || (sessionScope.memberEmail == '')}">
 										<li onclick = "movePage('/m/member/login.do')"><spring:message code="login.form.submit" /></li>

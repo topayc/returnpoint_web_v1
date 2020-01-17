@@ -179,7 +179,7 @@ section hr{display:none;}
 .listS01 .list_li i.fa-chevron-right{position:absolute;right:0px;top:-2px;padding: 28px 22px 22px 30px;}
 .listS01 .list_li i.list_blt{transform: rotate(90deg);transition: 0.7s;}
 .listS01 .list_li.collapsed i.list_blt{transform: rotate(0deg);transition: 0.7s;}
-.listS01 .list_toggle{color: #555;padding: 0px 3px;font-size:13px;font-weight: 400;border-bottom:1px solid #eee}
+.listS01 .list_toggle{background-color: rgb(245, 245, 245);color: #555;padding: 0px 3px;font-size:13px;font-weight: 400;border-bottom:1px solid #eee}
 .listS01 .list_toggle p{padding: 16px;}
 /* list-style02 */
 .listS02{}

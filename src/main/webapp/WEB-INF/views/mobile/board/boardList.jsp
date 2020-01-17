@@ -50,9 +50,12 @@ function moveFaq(bbsType2){
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>&nbsp;
+		<h4>
 		<c:choose>
-         <c:when test = "${model.bbsType1 == '1'}"> <spring:message code="label.notice" /> </c:when>
+         <c:when test = "${model.bbsType1 == '1'}"> 
+         	<c:if test = "${model.bbsType2 == '1'}"><spring:message code="label.notice" /> </c:if>
+         	<c:if test = "${model.bbsType2 == '2'}"><spring:message code="label.affiliateNotice" /> </c:if>
+         </c:when>
          <c:when test = "${model.bbsType1 == '4'}"> <spring:message code="label.general_affiliated_inquiry" /> </c:when>
          <c:when test = "${model.bbsType1 == '2'}"> <spring:message code="label.faq" /> </c:when>
       </c:choose>

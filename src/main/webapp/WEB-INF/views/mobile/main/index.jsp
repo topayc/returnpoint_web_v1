@@ -231,18 +231,25 @@ if (isApp()) {
 	</div>
 	</c:if>
 	<c:if test = "${! empty affiliateNotices}">
-		<c:forEach var="affiliateNotice" items="${affiliateNotices}">
+		<c:forEach var="affiliateNotice" items="${affiliateNotices}" varStatus = "status">
 		<div class="m_noti">
 			<span> 
 				<a  href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=${affiliateNotice.mainBbsNo}">
 					<c:choose>
-						<c:when test="${fn:length(affiliateNotice.title) gt 35}">
-					        <span style = "color : #000;font-weight:700;">가맹점 공지</span>
-					        <span style = "color : #666"><c:out value="${fn:substring(affiliateNotice.title, 0, 35)}"></c:out>...</span>
-					    </c:when>
-					    <c:otherwise>
-					        <span style = "color : #000;font-weight:700;">가맹점공지</span>
-					        <span style = "color : #666"><c:out value="${affiliateNotice.title}"> </c:out></span>
+						<c:when test="${fn:length(affiliateNotice.title) gt 35}"> 
+							<c:set var = "affiliateNoticeTitle" value = "${fn:substring(affiliateNotice.title, 0, 35)}"/> </c:when>
+					    <c:otherwise> 
+					    	<c:set var= "affiliateNoticeTitle" value = "${affiliateNotice.title}"/> 
+					    </c:otherwise>
+					</c:choose>	
+					 
+					 <span style = "color : #000;font-weight:700;">가맹점 공지</span>
+					 <c:choose>
+						<c:when test="${status.first}"> 
+						 <span style = "color : #05A532;font-weight:600"><c:out value="${affiliateNoticeTitle}"/></span>
+						</c:when>
+					    <c:otherwise> 
+					    	 <span style = "color : #666"><c:out value="${affiliateNoticeTitle}"/></span>
 					    </c:otherwise>
 					</c:choose>	
 				</a>
