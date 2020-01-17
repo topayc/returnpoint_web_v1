@@ -246,7 +246,7 @@ if (isApp()) {
 					 <span style = "color : #000;font-weight:700;">가맹점 공지</span>
 					 <c:choose>
 						<c:when test="${status.first}"> 
-						 <span style = "color : #05A532;font-weight:600"><c:out value="${affiliateNoticeTitle}"/></span>
+						 <span style = "color : #EC2491;font-weight:600"><c:out value="${affiliateNoticeTitle}"/></span>
 						</c:when>
 					    <c:otherwise> 
 					    	 <span style = "color : #666"><c:out value="${affiliateNoticeTitle}"/></span>
