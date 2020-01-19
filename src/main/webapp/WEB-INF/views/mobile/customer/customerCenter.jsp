@@ -42,7 +42,7 @@ $(document).ready(function(){
 			<div class="list_title"><i class="fas fa-clipboard"></i><spring:message code="label.board" /></div>		
 			
 			<!--공지 사항-->
-			<div class="list_li" onclick = "movePage('/m/board/boardList.do?bbsType1=1&')">
+			<div class="list_li" onclick = "movePage('/m/board/boardList.do?bbsType1=1&bbsType2=1')">
 				<span class= "item_title"><spring:message code="label.notice" /></span><span><i class="fas fa-chevron-right"></i></span> 
 			</div>
 			
