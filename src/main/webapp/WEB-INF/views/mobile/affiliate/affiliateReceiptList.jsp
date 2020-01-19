@@ -84,14 +84,15 @@ $(document).ready(function(){
 				<div class="affiliate_receipt_pay">
 					<ul>
 						<c:if test = "${receipt.status == '1' or receipt.status == '2'}"> 
-						<li>가맹점주님이 입금하실 금액</li>
+						<li style = "font-size:15px;color : #222;">가맹점주님이 입금하실 금액</li>
 						</c:if>
 						<c:if test = "${receipt.status == '3' or receipt.status == '4'}"> 
-						<li>가맹점주님이 입금하신 금액</li>
+						<li style = "font-size:15px;color : #222;">가맹점주님이 입금하신 금액</li>
 						</c:if>
-						<li><h3><fmt:formatNumber value="${receipt.depositAmount}" pattern="###,###,###,###"/>원</h3></li>
+						<li style = "font-size:12px;color : #999;margin-top:-12px">결제 금액에서 부가세를 제외한 금액의 15%</li>
+						<li><h3><fmt:formatNumber value="${receipt.finalDepositAmount}" pattern="###,###,###,###"/>원</h3></li>
 						<c:if test = "${receipt.status == '1' or receipt.status == '2'}"> 
-						<li style="font-size:12px;">입금 완료시 회원님께 적립코드가 발송됩니다.</li>
+					<!-- 	<li style="font-size:12px;">입금 완료시 회원님께 적립코드가 발송됩니다.</li> -->
 						</c:if>
 					</ul>
 				</div>

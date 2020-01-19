@@ -922,8 +922,13 @@
 	<select id="selectAffiliateReceiptSummary" parameterType="HashMap" resultType="HashMap">
 		SELECT 
 			ifnull(sum(payAmount),0) as totalReceiptPayAmount,
+			ifnull(count(payAmount),0) as totalReceipCount,
+			
 			ifnull(sum(if(status = '3' or status = '4'  , payAmount , 0)),0) as totalReceiptCompletePayAmount,
-			ifnull(sum(if(status = '1' or status = '2' or status = '5' or status = '6' , payAmount , 0)),0) as totalReceiptNotCompletePayAmount
+			ifnull(sum(if(status = '3' or status = '4'  , 1 , 0)),0) as totalReceiptCompleteCount,
+			
+			ifnull(sum(if(status = '1' or status = '2' or status = '5' or status = '6' , payAmount , 0)),0) as totalReceiptNotCompletePayAmount,
+			ifnull(sum(if(status = '1' or status = '2' or status = '5' or status = '6' , 1 , 0)),0) as totalReceiptNotCompleteCount
 		FROM point_code_issue_request
 		WHERE 
 		1 =1 

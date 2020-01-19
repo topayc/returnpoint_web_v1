@@ -38,11 +38,13 @@ $(document).ready(function(){
 			
 		}
 		payAmount = parseInt(payAmount);
-		$(".upload_conbox_p").text( $.number(Math.round(payAmount * 0.15)) + ' 원');
+
 		$(".accPoint").text( $.number(payAmount) + ' 원');
-		
-		$('#depositAmount').val($.number(payAmount * 0.15));
 		$('#accPointAmount').val(payAmount);
+		
+		$(".upload_conbox_p").text( $.number(Math.floor(payAmount * 0.15)) + ' 원');
+		$('#depositAmount').val($.number(Math.floor(payAmount * 0.15)));
+
 	})
 
 	$("#selectPhoneImage").click(function(){
