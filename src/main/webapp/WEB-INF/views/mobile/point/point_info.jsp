@@ -96,8 +96,8 @@
                </div>
                <div class="main_link g_link" >
                   <ul>
-                     <li onclick="startQRScan()"><img src="/resources/images/r_qr.png"><span><p>R POINT</p>적립QR 스캔</span></li>
-                     <li onclick="movePage('/m/mypage/newpoint.do')"><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>R POINT</p>적립내역 조회</span></li>
+                     <li onclick="startQRScan()"><img src="/resources/images/r_qr.png"><span><p>G POINT</p>적립QR 스캔</span></li>
+                     <li onclick="movePage('/m/mypage/newpoint.do')"><img style="top:15px;"src="/resources/images/r_list.png"><span style="left:65px;"><p>G POINT</p>적립내역 조회</span></li>
                   </ul>
                </div>
             </div>
