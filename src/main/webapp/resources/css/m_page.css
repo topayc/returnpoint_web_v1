@@ -716,23 +716,23 @@ button {color : #000; font-weight:400}
  
  
  /* rpoint_withdrawal 페이지 */
- .rpoint_withdrawal{width:100%;padding:20px;}
- .rpoint_withdrawal > div {border:1.5px solid #e6e5e5;border-radius:5px;overflow:hidden;padding:18px 15px;margin:10px 0;}
+ .rpoint_withdrawal{width:100%;padding: 20px 20px 0 20px;}
+ .rpoint_withdrawal > div {border:1.5px solid #e6e5e5;border-radius:5px;overflow:hidden;padding:14px 15px;margin:10px 0;}
  .rpoint_withdrawal > div:first-child{border:none;}
  .rpoint_withdrawal > div:first-child .rpoint_withdrawal01{width:100%;text-align:center;} 
  .rpoint_withdrawal > div:first-child .rpoint_withdrawal01 > ul > li:nth-child(2){font-size:35px;font-weight:500;margin-bottom:30px;}
  .rpoint_withdrawal .rpoint_withdrawal01{float:left;}
  .rpoint_withdrawal .rpoint_withdrawal01 > ul > li:nth-child(1){color:#666;font-size:13px;}
  .rpoint_withdrawal .rpoint_withdrawal01 > ul > li:nth-child(2){color:#000;font-weight:bold;font-size:15px;margin-top:5px;}
- .rpoint_withdrawal .rpoint_withdrawal03 > ul > li:first-child{font-size:15px;font-weight:bold;margin-bottom:10px;margin-left: -10px !important}
+ /* .rpoint_withdrawal .rpoint_withdrawal03 > ul > li:first-child{font-size:15px;font-weight:bold;margin-bottom:10px;margin-left: -10px !important} */
  
   .rpoint_withdrawal .rpoint_withdrawal01 > ul > li.sub{color:#333;font-size:12px;font-weight:300}
  .rpoint_withdrawal .rpoint_withdrawal01 > ul > li.title{color:#222;font-weight:400;font-size:22px;margin-top:1px;}
  
  .rpoint_withdrawal .rpoint_withdrawal02{float:right;margin-top:10px;}
- .rpoint_withdrawal .rpoint_withdrawal02 span{font-weight:bold;font-size:13px;color:#000;padding:7px 5px;}
+ .rpoint_withdrawal .rpoint_withdrawal02 span{font-weight:bold;f	ont-size:13px;color:#000;padding:7px 5px;}
  .rpoint_withdrawal .rpoint_withdrawal02 button{border:none;border-radius:5px;background-color:#391eab;color:#fff;padding:7px;font-size:13px;}
- .rpoint_withdrawal .rpoint_withdrawal_button{border:none;padding:20px 0;}
+ .rpoint_withdrawal .rpoint_withdrawal_button{border:none;padding:0 0;}
  .rpoint_withdrawal .rpoint_withdrawal_button button{width:49.5%;border:none;border-radius:5px;background-color: #33cccc; color: #fff;padding:10px 0;}
  .rpoint_withdrawal .rpoint_withdrawal_button button:nth-child(2){float:right;}
  

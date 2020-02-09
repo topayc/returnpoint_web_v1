@@ -32,10 +32,9 @@ function submitWithdrawl(){
 	var memberBankAccountNo = $("#memberBankAccountNo").val().trim();
 
 	var rpay_withdrawable_amount = parseInt($("#rpay_withdrawable_amount").val().trim());
-	var rpay_total_withdrawal_one_day = parseInt($("#rpay_total_withdrawal_one_day").val().trim());
+	var rpay_total_withdrawal_per_week = parseInt($("#rpay_total_withdrawal_per_week").val().trim());
 	
 	var rPayWithdrawalMinLimit = parseInt($("#rPayWithdrawalMinLimit").val().trim());
-	var rPayWithdrawalMaxLimit = parseInt($("#rPayWithdrawalMaxLimit").val().trim());
 	
 	if (!memberBankAccountNo || memberBankAccountNo.length == 0) {
 		alertOpen("확인", "출금하실 은행계좌를 선택해주세요.", true, false, null, null);
@@ -57,12 +56,12 @@ function submitWithdrawl(){
 		alertOpen("확인", "출금 금액은 최저 " + numberWithComma(rPayWithdrawalMinLimit) + " 이상입니다", true, false, null, null);
 		return false;
 	}
-	
+	rpay_withdrawable_amount = rpay_withdrawable_amount <= 0 ? 0 :rpay_withdrawable_amount;
 	if (withdrawalAmount >  rpay_withdrawable_amount) { 
 		alertOpen(
-			"확인", "회원님은 금일 총 " + 
-			numberWithComma(rpay_total_withdrawal_one_day) + " 을 출금 요청하셨으며 </br> 현재 총 출금 가능금액은 " +  
-			numberWithComma(rpay_withdrawable_amount) +" 입니다" , true, false, null, null);
+			"확인", "회원님은 금주 <b> " + 
+			numberWithComma(rpay_total_withdrawal_per_week) + " </b>을 출금 요청하셨으며 </br> 현재  출금 가능금액은 <b> " +  
+			numberWithComma(rpay_withdrawable_amount) +" </b>입니다" , true, false, null, null);
 		return false;
 	}
 	
@@ -97,7 +96,7 @@ function submitWithdrawl(){
 			
 			success: function(data) {
 				if (data.result.code == 0 ) {
-					alertOpen("확인", "R PAY의 현금 출금 요청이 완료되었습니다.", true, false, function(){history.go(-1)}, null);
+					alertOpen("확인", "R 포인트의 현금 출금 요청이 완료되었습니다.", true, false, function(){history.go(-1)}, null);
 				}else{
 					alertOpen("확인", data.result.msg, false, true, null, null);
 				}
@@ -180,11 +179,9 @@ $(document).ready(function(){
 							</div>
 							<ul class="pointinfo" style = "padding-left:20px;margin-top:30px">
 								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_fee_policy" /></li>
-								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_total_withdrawal_one_day" arguments="${model.rpayTotalWithdrawal}" /></li>
-								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawable_amount" arguments="${model.policy.rPayWithdrawalMaxLimit - model.rpayTotalWithdrawal}" /></li>
 								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_min_quide" arguments="${model.policy.rPayWithdrawalMinLimit}" /></li>
-								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_max_quide" arguments="${model.policy.rPayWithdrawalMaxLimit}" /></li>
-								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_day" /></li>
+								<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_max_per_week_quide" arguments="${model.policy.rPayWithdrawalMaxLimitPerWeek}" /></li>
+									<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_day" /></li>
 								<li style = "list-style-type: disc;font-weight:300">출금 정책은 예고없이 변경될 수 있습니다</li>
 							</ul>
 						</div>
@@ -192,13 +189,11 @@ $(document).ready(function(){
 							<button type="button" class="btn btn-submit" onclick="submitWithdrawl();"><spring:message code="label.withdrawl_req"/></button>
 							<button type="button" class="btn btn-submit-cancel" id="withdrawalCancel"><spring:message code="label.cancel"/></button>
 						</div>
+						<input type = "hidden" name = "rPayBalance"  id = "rPayBalance" value = "${model.rPayInfo.pointAmount}"/>
+						<input type = "hidden" name = "rPayWithdrawalMinLimit"  id = "rPayWithdrawalMinLimit" value = "${model.policy.rPayWithdrawalMinLimit}"/>
+						<input  type = "hidden"  name = "rpay_total_withdrawal_per_week"  id = "rpay_total_withdrawal_per_week" value = "${model.rpayTotalWithdrawalPerWeek}"/>
+						<input type = "hidden" name = "rpay_withdrawable_amount"  id = "rpay_withdrawable_amount" value = "${model.policy.rPayWithdrawalMaxLimitPerWeek - model.rpayTotalWithdrawalPerWeek}"/>
 					</form>	
-					<input type = "hidden" name = "rPayBalance"  id = "rPayBalance" value = "${model.rPayInfo.pointAmount}"/>
-					<input type = "hidden" name = "rPayWithdrawalMinLimit"  id = "rPayWithdrawalMinLimit" value = "${model.policy.rPayWithdrawalMinLimit}"/>
-					<input type = "hidden" name = "rPayWithdrawalMaxLimit"  id = "rPayWithdrawalMaxLimit" value = "${model.policy.rPayWithdrawalMaxLimit}"/>
-
-					<input type = "hidden" name = "rpay_total_withdrawal_one_day"  id = "rpay_total_withdrawal_one_day" value = "${model.rpayTotalWithdrawal}"/>
-					<input type = "hidden" name = "rpay_withdrawable_amount"  id = "rpay_withdrawable_amount" value = "${model.policy.rPayWithdrawalMaxLimit - model.rpayTotalWithdrawal}"/>
 				</div>
 			</section>	
         </c:otherwise>

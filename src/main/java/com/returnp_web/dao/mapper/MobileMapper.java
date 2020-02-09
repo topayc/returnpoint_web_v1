@@ -601,4 +601,7 @@ public interface MobileMapper {
 
 	int updateMemberNotiStatus(RPMap dbparams);
 
+
+	int selectPeriodiWithdrawalSum(HashMap<String, Object> params);
+
 }

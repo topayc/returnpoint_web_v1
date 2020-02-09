@@ -57,7 +57,7 @@ $(document).ready(function(){
 	<!-- content begin -->
 	<section>
 		<div class="rpoint_withdrawal">
-			<div>
+			<div style = "padding : 5px 15px">
 				<div class="rpoint_withdrawal01">
 					<ul>
 						<li class = "sub">현재 보유 R 포인트</li>
@@ -70,7 +70,7 @@ $(document).ready(function(){
 				<c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일" /></c:set> 
 				<div class="rpoint_withdrawal01">
 					<ul>
-						<li class = "sub">금일 총 출금 금액 (<c:out value="${sysYear}" />)</li>
+						<li class = "sub"><span style = "color : #000 ; font-weight:400;font-size : 13px">금일 총 출금 금액 (<c:out value="${sysYear}" />)</span></li>
 						<li class = "title"><span id = "today_withdrawal_rpoint"><fmt:formatNumber value="${model.rpayTotalWithdrawal}" pattern="###,###,###,###"/></span> P</li>
 					</ul>
 				</div>
@@ -78,23 +78,57 @@ $(document).ready(function(){
 					<button onclick = "movePage('/m/mypage/m_rpay_withdrawal_list.do?memberNo=${model.memberTypeInfo.memberNo}')">출금 리스트</button>
 				</div> --%>
 			</div>
+			
 			<div>
+				<div class="rpoint_withdrawal01">
+					<ul>
+						<li class = "sub"><span style = "color : #000;font-weight:400;font-size : 13px">금주 총 출금 금액 </span></li>
+						<li class = "sub">${model.weekStartDate} - ${model.weekEndDate}</li>
+						<li class = "title">
+							<span id = "remain_today_withdrawal_rpoint"><fmt:formatNumber value="${model.rpayTotalWithdrawalPerWeek}" pattern="###,###,###,###"/></span> P</li>
+					</ul>
+				</div>
+				
+				<div class="rpoint_withdrawal02">
+					<!-- button>출금 리스트</button> -->
+				</div>
+			</div>
+			
+			<div>
+				<%-- 
 				<div class="rpoint_withdrawal01">
 					<ul>
 						<li class = "sub">금일 출금 잔여 가능 금액 (<c:out value="${sysYear}" />)</li>
 						<li class = "title"><span id = "remain_today_withdrawal_rpoint"><fmt:formatNumber value="${model.policy.rPayWithdrawalMaxLimit - model.rpayTotalWithdrawal}" pattern="###,###,###,###"/></span> P</li>
 					</ul>
+				</div> --%>
+				<div class="rpoint_withdrawal01">
+					<ul>
+						<li class = "sub"><span style = "color : #000;font-weight:400;font-size : 13px">금주 출금 가능 금액 </span></li>
+							<li class = "sub">${model.weekStartDate} - ${model.weekEndDate}</li>
+						<li class = "title">
+							<span id = "remain_today_withdrawal_rpoint">
+								<c:choose>
+								<c:when test = "${model.policy.rPayWithdrawalMaxLimitPerWeek - model.rpayTotalWithdrawalPerWeek <= 0}">0</c:when>
+								<c:otherwise>
+								<fmt:formatNumber value="${model.policy.rPayWithdrawalMaxLimitPerWeek - model.rpayTotalWithdrawalPerWeek}" pattern="###,###,###,###"/>
+								</c:otherwise>
+								</c:choose>
+							</span> P</li>
+					</ul>
 				</div>
+				
 				<div class="rpoint_withdrawal02">
-					<<!-- button>출금 리스트</button> -->
+					<!-- button>출금 리스트</button> -->
 				</div>
 			</div>
 			<div class="rpoint_withdrawal03">
 				<ul style = "padding-left:10px">
-					<li style = "list-style-type: none">출금 정책</li>
+					<!-- <li style = "list-style-type: none">출금 정책</li> -->
 					<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_fee_policy" /></li>
 					<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_min_quide" arguments="${model.policy.rPayWithdrawalMinLimit}" /></li>
-					<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_max_quide" arguments="${model.policy.rPayWithdrawalMaxLimit}" /></li>
+					<%-- <li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_max_quide" arguments="${model.policy.rPayWithdrawalMaxLimit}" /></li> --%>
+					<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_max_per_week_quide" arguments="${model.policy.rPayWithdrawalMaxLimitPerWeek}" /></li>
 						<li style = "list-style-type: disc;font-weight:300"><spring:message code="label.rpay_withdrawal_day" /></li>
 					<li style = "list-style-type: disc;font-weight:300">출금 정책은 예고없이 변경될 수 있습니다</li>
 				</ul>

@@ -430,6 +430,7 @@
 				gPointMovingMaxLimit,
 				rPointMovingMinLimit,
 				rPointMovingMaxLimit,
+				rPayWithdrawalMaxLimitPerWeek,
 				customerRecManagerComm,
 				affiliateRecManagerComm,
 				agancyRecManagerComm,
@@ -904,6 +905,14 @@
 		WHERE memberNo = #{memberNo} 
 		AND createTime > date_format(curdate( ), '%Y-%m-%d %H:%i:%s' )
 		AND (withdrawalStatus='1' OR withdrawalStatus='2')
+	</select> 
+	
+	<!-- 기간별 출금 총액 조회-->
+	<select id="selectPeriodiWithdrawalSum" parameterType="HashMap" resultType="int">
+		SELECT COALESCE(sum(withdrawalAmount), 0)
+		FROM point_withdrawal 
+		WHERE memberNo = #{memberNo} 
+		AND (createTime between #{searchStartDate} and #{searchEndDate}) AND (withdrawalStatus='1' OR withdrawalStatus='2')
 	</select> 
 	
 	<!--핀넘버 조회에 의한 상품권 발행 정보 가져오기-->

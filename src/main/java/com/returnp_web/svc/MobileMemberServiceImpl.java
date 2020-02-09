@@ -8,8 +8,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -1387,7 +1389,39 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			rmap.put("memberBankAccounts", mobileMemberDao.selectBankAccounts(dbparams));
 			rmap.put("rPayInfo", mobileMemberDao.selectMyRedPointMapinfo(dbparams));
 			rmap.put("policy", mobileMemberDao.selectPolicyPointTranslimit(dbparams));
+			
+			/*금일 출금 총액 가져오기*/
 			rmap.put("rpayTotalWithdrawal", mobileMemberDao.selectWithdrawalSumPerDay(dbparams));
+			
+			SimpleDateFormat webFormatter = new java.text.SimpleDateFormat("yyyy년 MM월 dd일");
+			SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd 00:00:00");
+            Calendar c = Calendar.getInstance();
+            
+         /*   c.setFirstDayOfWeek(Calendar.MONDAY);
+            c.set(Calendar.YEAR, 2020);
+     		c.set(Calendar.MONTH, 1-1);
+     		c.set(Calendar.DATE,1);*/
+     		
+     		//System.out.println( "지정일자 : " + formatter.format(c.getTime()));
+            
+     		  /*현재일의 월요일 구하기*/
+     		c.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY);
+            String searchStartDate =formatter.format(c.getTime());
+            rmap.put("weekStartDate", webFormatter.format(c.getTime()));
+            dbparams.put("searchStartDate", c.getTime());
+            
+            /*현재일의 일요일 구하기*/
+            formatter = new java.text.SimpleDateFormat("yyyy-MM-dd 23:59:59");
+            c.set(Calendar.DAY_OF_WEEK,Calendar.SUNDAY);
+            String searchEndtDate = formatter.format(c.getTime());
+            rmap.put("weekEndDate", webFormatter.format(c.getTime()));
+            dbparams.put("searchEndDate", c.getTime());
+
+         /*   System.out.println("지정일자주의 월요일: " +  searchStartDate);
+            System.out.println("지정일자주의 일요일 : " + searchEndtDate);
+            System.out.println("============================================");*/
+			
+			rmap.put("rpayTotalWithdrawalPerWeek", mobileMemberDao.selectPeriodiWithdrawalSum(dbparams));
 
 		} catch (Exception e) {
 			e.printStackTrace();

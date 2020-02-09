@@ -576,9 +576,14 @@ public class MobileMemberDao {
 		return sqlSession.getMapper(MobileMapper.class).selectPointwithdrawals(params);
 	}
 
+	public int selectPeriodiWithdrawalSum(HashMap<String, Object> params){
+		return sqlSession.getMapper(MobileMapper.class).selectPeriodiWithdrawalSum(params);
+	}
+
 	public int selectWithdrawalSumPerDay(HashMap<String, Object> params){
 		return sqlSession.getMapper(MobileMapper.class).selectWithdrawalSumPerDay(params);
 	}
+	
 	public HashMap<String,Object> selectGiftCardIssue(HashMap<String, Object> params){
 		return sqlSession.getMapper(MobileMapper.class).selectGiftCardIssue(params);
 	}
