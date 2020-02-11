@@ -92,6 +92,7 @@ function submitWithdrawl(){
 			     }else {
 			    	 xhr.setRequestHeader("user_auth_token",userAuthToken);
 			     }
+			    $("#btn-submit").attr('disabled', true);
 			},
 			
 			success: function(data) {
