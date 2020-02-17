@@ -1408,19 +1408,19 @@ public class MobileMemberServiceImpl implements MobileMemberService {
      		c.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY);
             String searchStartDate =formatter.format(c.getTime());
             rmap.put("weekStartDate", webFormatter.format(c.getTime()));
-            dbparams.put("searchStartDate", c.getTime());
+            dbparams.put("searchStartDate", searchStartDate);
             
             /*현재일의 일요일 구하기*/
             formatter = new java.text.SimpleDateFormat("yyyy-MM-dd 23:59:59");
             c.set(Calendar.DAY_OF_WEEK,Calendar.SUNDAY);
             String searchEndtDate = formatter.format(c.getTime());
             rmap.put("weekEndDate", webFormatter.format(c.getTime()));
-            dbparams.put("searchEndDate", c.getTime());
+            dbparams.put("searchEndDate", searchEndtDate);
 
-           // System.out.println("지정일자주의 월요일: " +  searchStartDate);
-           // System.out.println("지정일자주의 일요일 : " + searchEndtDate);
+          // System.out.println("지정일자주의 월요일: " +  searchStartDate);
+           //System.out.println("지정일자주의 일요일 : " + searchEndtDate);
             //System.out.println("============================================");
-			
+			//System.out.println("memberNo " + dbparams.get("memberNo") );
 			rmap.put("rpayTotalWithdrawalPerWeek", mobileMemberDao.selectPeriodiWithdrawalSum(dbparams));
 
 		} catch (Exception e) {

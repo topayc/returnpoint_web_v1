@@ -57,6 +57,7 @@ function submitWithdrawl(){
 		return false;
 	}
 	rpay_withdrawable_amount = rpay_withdrawable_amount <= 0 ? 0 :rpay_withdrawable_amount;
+	//alert(rpay_withdrawable_amount);
 	if (withdrawalAmount >  rpay_withdrawable_amount) { 
 		alertOpen(
 			"확인", "회원님은 금주 <b> " + 
