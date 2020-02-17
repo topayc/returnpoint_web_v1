@@ -1471,7 +1471,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
            //System.out.println("memberNo " + dbparams.get("memberNo") );
 		   
            int rpayTotalWithdrawalPerWeek = mobileMemberDao.selectPeriodiWithdrawalSum(dbparams);
-		  System.out.println("##### : " + (rpayTotalWithdrawalPerWeek + Converter.toInt(p.getStr("withdrawalAmount"))) );
+		  //System.out.println("##### : " + (rpayTotalWithdrawalPerWeek + Converter.toInt(p.getStr("withdrawalAmount"))) );
            if ((rpayTotalWithdrawalPerWeek + Converter.toInt(p.getStr("withdrawalAmount"))) > Converter.toInt(policyMap.get("rPayWithdrawalMaxLimitPerWeek"))){
 				String json = Util.printResult(1, String.format("금주 출금 금액 한도가 초과되었습니다. </br>확인후 다시 시도해주세요"), null);
 				rmap.put("json", json);
