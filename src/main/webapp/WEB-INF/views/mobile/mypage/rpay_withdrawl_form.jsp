@@ -64,7 +64,7 @@ function submitWithdrawl(){
 			numberWithComma(rpay_total_withdrawal_per_week) + " </b>을 출금 요청하셨으며 </br> 현재  출금 가능금액은 <b> " +  
 			numberWithComma(rpay_withdrawable_amount) +" </b>입니다" , true, false, null, null);
 		return false;
-	}
+	} 
 	
 	if (withdrawalAmount > rPayBalance) { 
 		alertOpen("확인", "출금 금액이 보유중인 R POINT를 초과합니다.</br> 확인후 다시 시도해주세요", true, false, null, null);

@@ -1441,14 +1441,45 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			rpayMap = mobileMemberDao.selectMyRedPointMapinfo(dbparams);
 
 			if ( Converter.toInt(p.getStr("withdrawalAmount")) > (float) rpayMap.get("pointAmount") ) {
-				String json = Util.printResult(1, String.format("요청 하신 출금 금액이 보유하신 R POINT 를 초과합니다. 확인후 다시 시도해주세요"),
-						null);
+				String json = Util.printResult(1, String.format("요청 하신 출금 금액이 보유하신 R POINT 를 초과합니다. 확인후 다시 시도해주세요"), null);
 				rmap.put("json", json);
 				return true;
 			}
+			
+			HashMap<String, Object> policyMap = mobileMemberDao.selectPolicyPointTranslimit(dbparams) ;
+			
+			/*금주 총 출금 금액 한도 비교*/
+			SimpleDateFormat webFormatter = new java.text.SimpleDateFormat("yyyy년 MM월 dd일");
+			SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy-MM-dd 00:00:00");
+            Calendar c = Calendar.getInstance();
+            c.setFirstDayOfWeek(Calendar.MONDAY);
+            
+     		  /*현재일의 월요일 구하기*/
+     		c.set(Calendar.DAY_OF_WEEK,Calendar.MONDAY);
+            String searchStartDate =formatter.format(c.getTime());
+            dbparams.put("searchStartDate", searchStartDate);
+            
+            /*현재일의 일요일 구하기*/
+            formatter = new java.text.SimpleDateFormat("yyyy-MM-dd 23:59:59");
+            c.set(Calendar.DAY_OF_WEEK,Calendar.SUNDAY);
+            String searchEndtDate = formatter.format(c.getTime());
+            dbparams.put("searchEndDate", searchEndtDate);
 
-			dbparams.put("memberBankAccountNo", Converter.toInt(p.getStr("memberBankAccountNo")));
-			dbparams.put("withdrawalAmount", Converter.toInt(p.getStr("withdrawalAmount")));
+            //System.out.println("지정일자주의 월요일 : " + searchStartDate);
+           //System.out.println("지정일자주의 일요일 : " + searchEndtDate);
+           //System.out.println("============================================");
+           //System.out.println("memberNo " + dbparams.get("memberNo") );
+		   
+           int rpayTotalWithdrawalPerWeek = mobileMemberDao.selectPeriodiWithdrawalSum(dbparams);
+		  System.out.println("##### : " + (rpayTotalWithdrawalPerWeek + Converter.toInt(p.getStr("withdrawalAmount"))) );
+           if ((rpayTotalWithdrawalPerWeek + Converter.toInt(p.getStr("withdrawalAmount"))) > Converter.toInt(policyMap.get("rPayWithdrawalMaxLimitPerWeek"))){
+				String json = Util.printResult(1, String.format("금주 출금 금액 한도가 초과되었습니다. </br>확인후 다시 시도해주세요"), null);
+				rmap.put("json", json);
+				return true;
+		   }
+		   
+		   dbparams.put("memberBankAccountNo", Converter.toInt(p.getStr("memberBankAccountNo")));
+		   dbparams.put("withdrawalAmount", Converter.toInt(p.getStr("withdrawalAmount")));
 
 			int count = mobileMemberDao.insertPointWithdrawal(dbparams);
 			if (count == 0) {
