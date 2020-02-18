@@ -1488,7 +1488,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				return true;
 			} else {
 				int result = Converter.toInt(rpayMap.get("pointAmount"));
-				System.out.println((float) rpayMap.get("pointAmount"));
+				//System.out.println((float) rpayMap.get("pointAmount"));
 				/* 출금 신청된 회원의 RPay를 출금 금액만큼 차감 */
 				rpayMap.put("pointAmount",
 						(float) rpayMap.get("pointAmount") - Float.parseFloat(p.getStr("withdrawalAmount")));

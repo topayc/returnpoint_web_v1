@@ -24,8 +24,12 @@
 <script type="text/javascript" src="/resources/js/lib/jquery-number.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery.animateNumber.min.js"></script>
 <script type="text/javascript">
-
+var isSubmitting  = false;
 function submitWithdrawl(){
+	if (isSubmitting == true) {
+		return;
+	}
+	isSubmitting = true;
 	var withdrawalAmount = $("#withdrawalAmount").val().trim();
 
 	var rPayBalance= ${model.rPayInfo.pointAmount};
@@ -71,6 +75,7 @@ function submitWithdrawl(){
 		return false;
 	}
 	
+	
  	bridge.getSessionValue('PREF_ALL_SESSION', function(result){
 		  var userAuthToken;
 		  var ajax;
@@ -98,12 +103,17 @@ function submitWithdrawl(){
 			
 			success: function(data) {
 				if (data.result.code == 0 ) {
-					alertOpen("확인", "R 포인트의 현금 출금 요청이 완료되었습니다.", true, false, function(){history.go(-1)}, null);
+					alertOpen("확인", "R 포인트의 현금 출금 요청이 완료되었습니다.", true, false, function(){
+						history.go(-1);
+						//movePage('/m/mypage/rpoint/rpoint_withdrawal.do');
+					}, null);
 				}else{
 					alertOpen("확인", data.result.msg, false, true, null, null);
 				}
+				isSubmitting = false;
 			},
 			error: function (request, status, error) {
+				isSubmitting = false;
 				alertOpen("확인", data.result.msg, false, true, null, null);
 			}
 		});
