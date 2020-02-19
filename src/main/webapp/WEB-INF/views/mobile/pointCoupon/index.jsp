@@ -61,7 +61,7 @@ $(document).ready(function(){
 						</ul>
 					</div>
 				</div>
-				<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=2')" class="popup_img_box">
+		<!-- 		<div onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=2')" class="popup_img_box">
 					<div class="popup_box1">비가맹점</div>
 					<div class="popup_box2">
 						<ul onclick = "movePage('/m/pointCoupon/uploadReceipt.do?receiptType=2')">
@@ -69,7 +69,7 @@ $(document).ready(function(){
 							<li class="popup_box2_text2">비가맹점 영수증의 경우 올리신 회원분과 그 회원분의 2대까지 포인트가 적립</li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -109,10 +109,17 @@ $(document).ready(function(){
 		      		<!-- <div class="register"><a onclick = "movePage('/m/pointCoupon/help.do')"><img src="/resources/images/coupon_check.png">&nbsp;적립코드 등록하기</a></div> -->
 		      	</div>
 		      	<div class="coupon_code1">
-		      		<p>영수증 적립서비스란</p>
-		      		<span>R.POINT 가맹점이건 혹은 비가맹점이건 상관없이 결제하신 영수증을 앱을 통해 보내주시고 15% 금액을 입금하시면, 결제한 금액의 100%를 G.POINT 로 적립해드리는 서비스입니다 </span>
+		      		<p>영수증 적립서비스(eZ가맹점)</p>
+		      		<span>
+		      			R.POINT의 큐알 적립 서비스를 이용하지 못하는 가맹점과 회원님을 위한 서비스로 
+		      		</span>
+		      		</br></br>
+		      		<span>
+		      			결제한 회원님이 R.POINT 가맹점에서 결제하신 영수증을 앱을 통해 보내주신 후, 해당 가맹점이 결제금액의 15%를 입금하면 
+		      			회원님께  결제한 금액의 100%를 G.POINT 로 적립해드리는 서비스입니다 
+		      		</span>
 		      		<div class="coupon_btn1">
-		      			<button onclick = "movePage('/m/pointCoupon/help.do')"><!-- <img src="/resources/images/receipt_search.png"> -->서비스 소개 및 사용법 보기</button>
+		      		<!-- 	<button onclick = "movePage('/m/pointCoupon/help.do')">서비스 소개 및 사용법 보기</button> -->
 		      			<!-- <button onclick = "movePage('/m/pointCoupon/help2.do')" style="margin-left:10px;">처리 규정</button> -->
 		      		</div>
 		      	</div>
@@ -121,10 +128,10 @@ $(document).ready(function(){
 		      		<!-- <div>영수증 올리기 > 금액입금 > 입금확인 > 적립코드발송</div> -->
 		      		<ol style = "padding: 0 4px 0 15px">
 		      			<li style="list-style-type:decimal">영수증 올리기 : 상단의 영수증 올리기 버튼 클릭</li>
-		      			<li style="list-style-type:decimal">금액 입금 : 영수증 총 결제 금액의 15% 입금</li>
-		      			<li style="list-style-type:decimal">임금 확인 : 15% 금액 입금 확인 </li>
+		      		<!-- 	<li style="list-style-type:decimal">금액 입금 : 영수증 총 결제 금액의 15% 입금</li> -->
+		      			<li style="list-style-type:decimal">임금 확인 : 가맹점의 15% 금액 입금 확인 </li>
 		      			<li style="list-style-type:decimal">적립코드 발행  :  100% G.POINT 적립코드가 회원님 계정으로 등록 </li>
-		      			<li style="list-style-type:decimal">자세한 사용방법을 확인하시려며 바로 위의  <span style = "color : #04B431;font-weight:bold">서비스보기</span> 를 클릭하세요</li>
+		      		<!-- 	<li style="list-style-type:decimal">자세한 사용방법을 확인하시려며 바로 위의  <span style = "color : #04B431;font-weight:bold">서비스보기</span> 를 클릭하세요</li> -->
 		      		<!-- 	<li style = "margin-top:10px">&#42; 해당 금액을 입금한 후, 상단 탭 메뉴중 '영수증처리' 탭을 선택후 표시되는 영수증에서   <span style = "color : #2E9AFE;font-weight:500">입금확인 요청버튼</span>을 클릭하시면 더욱 빠른 처리가 가능합니다</li> -->
 		      		</ol>
 		      	</div>
@@ -135,9 +142,10 @@ $(document).ready(function(){
 		      		<ol style = "padding: 0 4px 0 15px">
  						<li style="list-style-type:decimal">8시 이전 업로드 및 입금이 확인된 건은 당일 적립코드를 발급해드립니다..</li>
 		      			<li style="list-style-type:decimal">8시 이후 업로드 및 입금건은  확인이 되는 경우, 당일 발급해드리며, 확인이 지연되는 경우 익일 발급해드립니다.</li>
-		      			<li style="list-style-type:decimal">회원님이 입금후 <b>입금확인 요청</b>을 하실 경우 확인하는 즉시 적립코드를 발급해드립니다.</li>
+		      		<!-- 	<li style="list-style-type:decimal">회원님이 입금후 <b>입금확인 요청</b>을 하실 경우 확인하는 즉시 적립코드를 발급해드립니다.</li> -->
 		      			<li style="list-style-type:decimal">설정에서 <b>푸시알림 받기</b>를 선택하셔야 등록시 보내드리는 알림을 받으실 수 있습니다.</li>
-		      			<li style="list-style-type:decimal">신청인과 입금자 명이 다를 경우는 업무처리가 다소 지연될 수 있습니다</li>
+		      			<li style="list-style-type:decimal">가맹점주님은 가급적 가맹점이름으로 입금해주시기 바랍니다</li>
+		      		<!-- 	<li style="list-style-type:decimal">신청인과 입금자 명이 다를 경우는 업무처리가 다소 지연될 수 있으며, 가맹점주님은 가급적 가맹점이름으로 입금해주시기 바랍니다</li> -->
 		      		</ol>
 		      	</div>
 		      	

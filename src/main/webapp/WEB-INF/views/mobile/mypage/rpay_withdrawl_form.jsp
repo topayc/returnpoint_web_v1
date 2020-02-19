@@ -75,7 +75,6 @@ function submitWithdrawl(){
 		return false;
 	}
 	
-	
  	bridge.getSessionValue('PREF_ALL_SESSION', function(result){
 		  var userAuthToken;
 		  var ajax;
