@@ -1197,8 +1197,8 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_login .r_login_page5 .r_id .r_id_input button{color:#fff;background:#95b3d7;padding:3%;float:right;border:0;}
 .r_login .r_login_page5 > button{width:100%;color:#fff;background:#95b3d7;padding:3%;border:1px solid #95b3d7;margin-top:5%;font-size:15px;font-weight:bold;}
 
-.r_login_page6{padding:10%;color:#000;background:rgba(0,0,0,0.2);display:none;z-index:1000;width:100%;position:absolute;}
-.r_login_page6 .r_name{background:#fff;padding:3% 1%;}
+.r_login_page6{padding:10%;color:#000;background:rgba(0,0,0,0.2);display:none;z-index:1000;width:100%;position:absolute;height:100%;}
+.r_login_page6 .r_name{background:#fff;padding:3% 1%;height:100%;}
 .r_login_page6 .r_name .r_name_box{border:1px solid #ccc;border-radius:10px;}
 .r_login_page6 .r_name .r_name_box .r_name_left{width:20px;height:20px;float:left;margin-top:7px;}
 .r_login_page6 .r_name .r_name_box .r_name_right{width:20px;height:20px;float:right;margin-top:7px;margin-right:5px;}
