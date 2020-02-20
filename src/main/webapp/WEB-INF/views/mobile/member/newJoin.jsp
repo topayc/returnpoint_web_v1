@@ -214,6 +214,7 @@ function setSlide(){
 }
 
 function move(idx){
+	$(".r_login").height(height);
 	$slides.eq(current).animate({"right":"100%"});
 	$slides.eq(idx).css({"right":"-100%"});
 	$slides.eq(idx).animate({"right":"0px"});
