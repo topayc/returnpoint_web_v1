@@ -28,7 +28,13 @@
 			}) 
 	 	}  
 	function openRecommendDlg(){
-	 $(".r_login_page6").show();
+	 $(".r_login_page6").modal({
+		  escapeClose: false,
+		  clickClose: false,
+		  showClose: true,
+		  closeClass: 'icon-remove',
+		  closeText: 'X'
+		});  
 	}
 	</script>
 </head>
@@ -48,7 +54,7 @@
 					</ul>
 				</div>
 			</div>
-			<button>계정 만들기</button>
+			<button onclick = "openRecommendDlg()">계정 만들기</button>
 			<div class="login_text">
 				<span>이미 R POINT 계정이 있으신가요</span>
 				<span>|</span>
@@ -144,7 +150,8 @@
 			<div class="r_home">R POINT 홈으로 가기</div>
 		</div>
 	</div>
-	<div class="r_login_page6">
+	
+	   <div class="r_login_page6">
 			<div class="r_name">
 				<div class="r_name_box">
 					<div class="r_name_left">
@@ -212,7 +219,7 @@ function move(idx){
 	$slides.eq(idx).animate({"right":"0px"});
 	current=idx;
 }
- setInterval(setSlide,4000); 
+setInterval(setSlide,4000);
 });
 </script>
 </body>
