@@ -16,7 +16,6 @@
 	<script>
 		var height  = window.screen.height - 90;
 	    var width = window.screen.width
-	
 	    if (isApp()) {
 	    	getDeviceResolution(function(result){
 				if (result) {
@@ -204,6 +203,7 @@ $(document).ready(function(){
 	var current = 0;
 	var $slides = $(".join_slide");
 	var total = 5;
+	$(".r_login").height(height);
 
 $slides.css("right","-100%");
 $slides.eq(0).css("right","0px");
@@ -219,7 +219,7 @@ function move(idx){
 	$slides.eq(idx).animate({"right":"0px"});
 	current=idx;
 }
-setInterval(setSlide,4000);
+setInterval(setSlide,4000); 
 });
 </script>
 </body>
