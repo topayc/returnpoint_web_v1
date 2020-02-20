@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="/resources/css/m_common.css">
 	<script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script> 
 	<script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
-	<script type="text/javascript" src="/resources/js/lib/m_slick.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
 	<script>
 		var height  = window.screen.height - 90;
 	    var width = window.screen.width
@@ -31,7 +31,7 @@
 
 <body>
     <div class="r_login">
-		<div class="r_login_page1">
+		<div class="r_login_page1 slide">
 			<div class="top_main">
 				<div class="logo_img">
 					<img src="/resources/images/logo_img.png">
@@ -51,7 +51,7 @@
 			</div>
 			<div class="facebook_btn"><img src="/resources/images/facebook_logo.png">페이스북으로 회원가입</div>
 		</div>
-		<div class="r_login_page2">
+		<div class="r_login_page2 slide">
 			<div class="top_main">
 				<div class="logo_img">
 					<img src="/resources/images/logo_img.png">
@@ -77,7 +77,7 @@
 				<span>추천인QR로 가입하기</span>
 			</div>
 		</div>
-		<div class="r_login_page3">
+		<div class="r_login_page3  slide">
 			<p><b>R POINT</b> 앱은 핸드폰 번호를 회원님의 아이디로 사용합니다.</p>
 			<p>아래의 인증 과정을 진행해 주시기 바랍니다.</p>
 			<h5>휴대폰 인증</h5>
@@ -93,7 +93,7 @@
 			<div class="time">03:00</div>
 			<button>인증하기</button>
 		</div>
-		<div class="r_login_page4">
+		<div class="r_login_page4  slide">
 			<div class="cord_number">
 				<h3>국가선택</h3>
 				<div class="close_img">
@@ -114,7 +114,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="r_login_page5">
+		<div class="r_login_page5 slide">
 			<h3>기본 정보 입력</h3>
 			<div class="r_id">
 				<p>아이디</p>
@@ -139,7 +139,7 @@
 			</div>
 			<button>가입하기</button>
 		</div>
-		<div class="r_login_page6">
+		<div class="r_login_page6 slide">
 			<div class="r_name">
 				<div class="r_name_box">
 					<div class="r_name_left">
@@ -166,7 +166,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="r_login_page7">
+		<div class="r_login_page7 slide">
 			<div class="top_main">
 				<div class="logo_img">
 					<img src="/resources/images/logo_img.png">
@@ -183,5 +183,4 @@
 		</div>
 	</div>
 </body>
-
 </html>

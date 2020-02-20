@@ -104,7 +104,7 @@
 			slidesToScroll : 1,
 			arrows : false,
 			infinite : false,
-			swipeToSlide : true,
+			swipeToSlide : false,
 			draggable : false,
 			touchThreshold : 10
 		});
