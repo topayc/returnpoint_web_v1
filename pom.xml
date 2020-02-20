@@ -262,6 +262,13 @@
 		    <artifactId>spring-context-support</artifactId>
 		    <version>3.1.0.RELEASE</version>
 		</dependency>
+		<!-- 문자발송(sms) Coolsms SDK 추가 -->
+		<dependency>
+    <groupId>net.nurigo</groupId>
+    <artifactId>javaSDK</artifactId>
+    <version>2.2</version>
+</dependency>
+
 		<!-- 문자발송(sms) Popbill SDK 추가 -->
 		<dependency>
 			<groupId>kr.co.linkhub</groupId>

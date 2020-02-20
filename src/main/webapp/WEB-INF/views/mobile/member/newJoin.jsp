@@ -11,7 +11,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 	<script>
 		var height  = window.screen.height - 90;
 	    var width = window.screen.width
@@ -26,7 +27,9 @@
 				}
 			}) 
 	 	}  
-	
+	function openRecommendDlg(){
+		$(".r_login_page6").show();
+	}
 	</script>
 </head>
 
@@ -120,7 +123,7 @@
 				<span>추천인은 선택입력사항이며, 추천인 입력은 추천인 검색을 통하여 등록해주세요.</span>
 				<div class="r_id_input">
 					<input type="text" name="추천인 등록">
-					<button>추천인 검색</button>
+					<button onclick = "openRecommendDlg()">추천인 검색</button>
 				</div>
 			</div>
 			<button>가입하기</button>
@@ -168,7 +171,7 @@
 				</div>
 			</div>
 		</div>
-				<div class="r_login_page4">
+		<div class="r_login_page4">
 			<div class="cord_number">
 				<h3>국가선택</h3>
 				<div class="close_img">
