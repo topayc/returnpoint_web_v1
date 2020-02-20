@@ -31,9 +31,9 @@
 </head>
 
 <body>
-    <div class="r_login join_slider">
+    <div class="r_login">
     
-		<div class="r_login_page1">
+		<div class="r_login_page1 join_slide">
 			<div class="top_main">
 				<div class="logo_img">
 					<img src="/resources/images/logo_img.png">
@@ -53,7 +53,7 @@
 			</div>
 			<div class="facebook_btn"><img src="/resources/images/facebook_logo.png">페이스북으로 회원가입</div>
 		</div>
-		<div class="r_login_page2">
+		<div class="r_login_page2 join_slide">
 			<div class="top_main">
 				<div class="logo_img">
 					<img src="/resources/images/logo_img.png">
@@ -79,7 +79,7 @@
 				<span>추천인QR로 가입하기</span>
 			</div>
 		</div>
-		<div class="r_login_page3">
+		<div class="r_login_page3 join_slide">
 			<p><b>R POINT</b> 앱은 핸드폰 번호를 회원님의 아이디로 사용합니다.</p>
 			<p>아래의 인증 과정을 진행해 주시기 바랍니다.</p>
 			<h5>휴대폰 인증</h5>
@@ -95,28 +95,8 @@
 			<div class="time">03:00</div>
 			<button>인증하기</button>
 		</div>
-		<div class="r_login_page4">
-			<div class="cord_number">
-				<h3>국가선택</h3>
-				<div class="close_img">
-					<img src="/resources/images/close_img.png">
-				</div>
-				<div class="cord_input">
-					<div class="search_img">
-						<img src="/resources/images/search_img.png">
-					</div>
-					<input type="text" name="국가 이름 또는 코드" placeholder="국가 이름 또는 코드">
-				</div>
-				<ul>
-					<li>가나(+233)</li>
-					<li>가봉(+241)</li>
-					<li>가이아나()+592</li>
-					<li>감비아(+220)</li>
-					<li>건지(+44)</li>
-				</ul>
-			</div>
-		</div>
-		<div class="r_login_page5">
+
+		<div class="r_login_page5 join_slide">
 			<h3>기본 정보 입력</h3>
 			<div class="r_id">
 				<p>아이디</p>
@@ -129,7 +109,11 @@
 			</div>
 			<div class="r_id">
 				<p>비밀번호 확인</p>
-				<input type="password" name="비밀번호 확인" placeholder="비밀번호 확인을 해주세요">
+				<input type="password" name="비밀번호 확인" placeholder="비밀번호 확인을 해주세요.">
+			</div>
+			<div class="r_id">
+				<p>이메일 입력</p>
+				<input type="text" name="이메일 입력" placeholder="이메일주소를 입력해주세요.">
 			</div>
 			<div class="r_id">
 				<p>추천인 입력</p>
@@ -141,7 +125,23 @@
 			</div>
 			<button>가입하기</button>
 		</div>
-		<div class="r_login_page6">
+		<div class="r_login_page7 join_slide">
+			<div class="top_main">
+				<div class="logo_img">
+					<img src="/resources/images/logo_img.png">
+				</div>
+				<div class="rpoint_text">
+					<ul>
+						<li><b>RPOINT</b></li>
+						<li>소비가 저축이 되는</br>똑똑한 앱</li>
+					</ul>
+				</div>
+			</div>
+			<h1>가입을 축하합니다.</h1>
+			<div class="r_home">R POINT 홈으로 가기</div>
+		</div>
+	</div>
+	<div class="r_login_page6">
 			<div class="r_name">
 				<div class="r_name_box">
 					<div class="r_name_left">
@@ -168,21 +168,49 @@
 				</div>
 			</div>
 		</div>
-		<div class="r_login_page7">
-			<div class="top_main">
-				<div class="logo_img">
-					<img src="/resources/images/logo_img.png">
+				<div class="r_login_page4">
+			<div class="cord_number">
+				<h3>국가선택</h3>
+				<div class="close_img">
+					<img src="/resources/images/close_img.png">
 				</div>
-				<div class="rpoint_text">
-					<ul>
-						<li><b>RPOINT</b></li>
-						<li>소비가 저축이 되는</br>똑똑한 앱</li>
-					</ul>
+				<div class="cord_input">
+					<div class="search_img">
+						<img src="/resources/images/search_img.png">
+					</div>
+					<input type="text" name="국가 이름 또는 코드" placeholder="국가 이름 또는 코드">
 				</div>
+				<ul>
+					<li>가나(+233)</li>
+					<li>가봉(+241)</li>
+					<li>가이아나()+592</li>
+					<li>감비아(+220)</li>
+					<li>건지(+44)</li>
+				</ul>
 			</div>
-			<h1>가입을 축하합니다.</h1>
-			<div class="r_home">R POINT 홈으로 가기</div>
 		</div>
-	</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	var current = 0;
+	var $slides = $(".join_slide");
+	var total = 5;
+
+$slides.css("right","-100%");
+$slides.eq(0).css("right","0px");
+
+function setSlide(){
+	if (current+1 >= total) move(0);
+	else move(current + 1);
+}
+
+function move(idx){
+	$slides.eq(current).animate({"right":"100%"});
+	$slides.eq(idx).css({"right":"-100%"});
+	$slides.eq(idx).animate({"right":"0px"});
+	current=idx;
+}
+setInterval(setSlide,4000);
+});
+</script>
 </body>
 </html>
