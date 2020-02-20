@@ -28,7 +28,7 @@
 			}) 
 	 	}  
 	function openRecommendDlg(){
-		$(".r_login_page6").show();
+	 $(".r_login_page6").show();
 	}
 	</script>
 </head>
@@ -212,7 +212,7 @@ function move(idx){
 	$slides.eq(idx).animate({"right":"0px"});
 	current=idx;
 }
-setInterval(setSlide,4000);
+ setInterval(setSlide,4000); 
 });
 </script>
 </body>
