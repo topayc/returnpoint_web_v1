@@ -209,7 +209,7 @@ $slides.css("right","-100%");
 $slides.eq(0).css("right","0px");
 
 function setSlide(){
-	if (current+1 >= total) move(0);
+	if (current+1 >= total) moveSlide(0);
 	else moveSlide(current + 1);
 }
 

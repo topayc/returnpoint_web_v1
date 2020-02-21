@@ -66,14 +66,6 @@ public class MobileMemberController extends MallBaseController{
 		return page(bret, map, rmap);
 	}
 
-	//핸드폰 번호로 new 회원 가입
-	@RequestMapping("/member/newJoin")
-	public String memberNewJoin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/member/newJoin");
-		boolean bret = mms.selectCountries(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
-	}
-	
 	// 회원가입
 	@RequestMapping(value ="/member/join_act" )
 	public String memberJoinAct(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -447,5 +439,14 @@ public class MobileMemberController extends MallBaseController{
 		RPMap rmap = Util.getRPRmap();
 		boolean bret = mms.updatePaymentStatus(Util.toRPap(p), rmap, request, response);
 		return act(map, rmap);
+	}
+	
+	/*new Join */
+	//핸드폰 번호로 new 회원 가입
+	@RequestMapping("/member/newJoinProcess")
+	public String memberNewJoin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/member/newJoinProcess");
+		boolean bret = mms.selectCountries(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
 	}
 }
