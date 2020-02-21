@@ -30,6 +30,37 @@
 </head>
 
 <body>
-로그인 폼
+	<div class="r_login">
+		<div class="r_login_page2 join_slide">
+			<div class="top_main">
+				<div class="logo_img">
+					<img src="/resources/images/logo_img.png">
+				</div>
+				<div class="rpoint_text">
+					<ul>
+						<li><b>RPOINT</b></li>
+						<li>소비가 저축이 되는</br>똑똑한 앱
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="input_box">
+				<input type="text" name="전화번호" placeholder="전화번호"> <input
+					type="text" name="비밀번호" placeholder="비밀번호">
+			</div>
+			<button>로그인</button>
+			<input type="checkbox" id="cb"><label for="cb">아이디 저장</label>
+			<div class="sign_text">
+				<ul>
+					<li>회원가입</li>
+					<li>아이디 비밀번호 찾기</li>
+					<li>추천인QR로 가입하기</li>
+				</ul>
+			</div>
+			<div class="facebook_btn">
+				<img src="/resources/images/facebook_logo.png">페이스북으로 회원가입
+			</div>
+		</div>
+	</div>
 </body>
 </html>

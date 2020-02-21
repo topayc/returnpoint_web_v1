@@ -30,6 +30,23 @@
 </head>
 
 <body>
-가입완료
+	<div class="r_login">
+		<div class="r_login_page7 join_slide">
+			<div class="top_main">
+				<div class="logo_img">
+					<img src="/resources/images/logo_img.png">
+				</div>
+				<div class="rpoint_text">
+					<ul>
+						<li><b>RPOINT</b></li>
+						<li>소비가 저축이 되는</br>똑똑한 앱
+						</li>
+					</ul>
+				</div>
+			</div>
+			<h1>가입을 축하합니다.</h1>
+			<div class="r_home">R POINT 홈으로 가기</div>
+		</div>
+	</div>
 </body>
 </html>
