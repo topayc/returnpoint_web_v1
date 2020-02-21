@@ -31,7 +31,7 @@
 
 <body>
 	<div class="r_login">
-		<div class="r_login_page2 join_slide">
+		<div class="r_login_page2">
 			<div class="top_main">
 				<div class="logo_img">
 					<img src="/resources/images/logo_img.png">
