@@ -48,8 +48,7 @@
 				<div class="rpoint_text">
 					<ul>
 						<li><b>RPOINT</b></li>
-						<li>소비가 저축이 되는</br>똑똑한 앱
-						</li>
+						<li>소비가 저축이 되는 똑똑한 앱</br>100%적립</li>
 					</ul>
 				</div>
 			</div>
@@ -69,8 +68,7 @@
 				<div class="rpoint_text">
 					<ul>
 						<li><b>RPOINT</b></li>
-						<li>소비가 저축이 되는</br>똑똑한 앱
-						</li>
+						<li>소비가 저축이 되는 똑똑한 앱</br>100%적립</li>
 					</ul>
 				</div>
 			</div>
@@ -149,8 +147,7 @@
 				<div class="rpoint_text">
 					<ul>
 						<li><b>RPOINT</b></li>
-						<li>소비가 저축이 되는</br>똑똑한 앱
-						</li>
+						<li>소비가 저축이 되는 똑똑한 앱</br>100%적립</li>
 					</ul>
 				</div>
 			</div>
