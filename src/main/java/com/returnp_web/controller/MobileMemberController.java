@@ -441,6 +441,24 @@ public class MobileMemberController extends MallBaseController{
 		return act(map, rmap);
 	}
 	
+	/*newLogin */
+	//핸드폰 번호로 new 회원 가입
+	@RequestMapping("/member/newLogin")
+	public String memberNewLogin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/member/newLogin");
+		boolean bret = mms.selectCountries(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
+	
+	/*newJoinOk */
+	//핸드폰 번호로 new 회원 가입
+	@RequestMapping("/member/newJoinOk")
+	public String memberNewJoinOk(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/member/newJoinOk");
+		boolean bret = mms.selectCountries(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
+	
 	/*new Join */
 	//핸드폰 번호로 new 회원 가입
 	@RequestMapping("/member/newJoinProcess")
