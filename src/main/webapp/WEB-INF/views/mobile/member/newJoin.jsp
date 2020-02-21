@@ -210,10 +210,10 @@ $slides.eq(0).css("right","0px");
 
 function setSlide(){
 	if (current+1 >= total) move(0);
-	else move(current + 1);
+	else moveSlide(current + 1);
 }
 
-function move(idx){
+function moveSlide(idx){
 	$(".r_login").height(height);
 	$slides.eq(current).animate({"right":"100%"});
 	$slides.eq(idx).css({"right":"-100%"});
