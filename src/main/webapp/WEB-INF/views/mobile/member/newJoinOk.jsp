@@ -30,7 +30,7 @@
 </head>
 
 <body>
-	<div class="r_login">
+	<div class="r_join_ok">
 		<div class="r_login_page7">
 			<div class="top_main">
 				<div class="logo_img">
