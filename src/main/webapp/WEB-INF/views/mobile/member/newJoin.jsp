@@ -80,11 +80,11 @@
 			<button>로그인</button>
 			<input type="checkbox" id="cb"><label for="cb">아이디 저장</label>
 			<div class="sign_text">
-				<span>회원가입</span>
-				<span>|</span>
-				<span>아이디 비밀번호 찾기</span>
-				<span>|</span>
-				<span>추천인QR로 가입하기</span>
+				<ul>
+					<li>회원가입</li>
+					<li>아이디 비밀번호 찾기</li>
+					<li>추천인QR로 가입하기</li>
+				</ul>
 			</div>
 		</div>
 		<div class="r_login_page3 join_slide">
