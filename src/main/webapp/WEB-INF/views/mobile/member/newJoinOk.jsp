@@ -30,6 +30,6 @@
 </head>
 
 <body>
-로그인 폼
+가입완료
 </body>
 </html>
