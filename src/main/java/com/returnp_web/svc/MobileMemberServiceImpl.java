@@ -36,9 +36,12 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.web.util.WebUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.returnp_web.controller.dto.CountryPhoneNumber;
 import com.returnp_web.dao.MobileMemberDao;
 import com.returnp_web.utils.BASE64Util;
 import com.returnp_web.utils.Const;
@@ -246,8 +249,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				} else {
 					userAuthToken = Converter.toStr(tokenMap.get("userAuthToken"));
 				}
-				rmap.put(Const.D_SCRIPT,
-						Util.gotoURL("/m/member/login_ok.do?mbrE=" + memberEmail + "&userAT=" + userAuthToken, ""));
+				rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/member/login_ok.do?mbrE=" + memberEmail + "&userAT=" + userAuthToken, ""));
 			} else {
 				rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/main/index.do", ""));
 			}
@@ -1806,5 +1808,69 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		}
 		return false;
 	}
+	//#####################################################################################################################################
+
+	@Override
+	public boolean prepareJoinProcess(RPMap rPap, RPMap rmap, HttpServletRequest request,
+			HttpServletResponse response) {
+		//	Locale locale = (Locale) WebUtils.getSessionAttribute(request, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			Locale locale = (Locale) WebUtils.getSessionAttribute(request, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
+			String  countryPhoneNumberArr[]= messageUtils.getMessage("country.country_code", null, locale).split(",");
+			ArrayList<CountryPhoneNumber> countryPhoneNumberList = new ArrayList<CountryPhoneNumber>();
+			CountryPhoneNumber countryPhoneNumber = null;
+			for (String data : countryPhoneNumberArr) {
+				countryPhoneNumber = new CountryPhoneNumber();
+				countryPhoneNumber.setCountryName(data.split(":")[0].trim());
+				countryPhoneNumber.setCountryIso2(data.split(":")[1].trim());
+				countryPhoneNumber.setCountryPhoneNumber(data.split(":")[2].trim());
+				countryPhoneNumberList.add(countryPhoneNumber);
+			}
+			rmap.put("countryPhoneNumbers", countryPhoneNumberList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public boolean sendPhoneAuthSms(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		RPMap dbparams = new RPMap();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			int count = 0;
+			String json = Util.printResult(0, String.format("인증번호를 발송하였습니다.</b>해당 시간안에 인증을 진행해주시기 바랍니다"), null);
+			rmap.put("json", json);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			String json = Util.printResult(2, String.format("서버 에러 "), null);
+			rmap.put("json", json);
+			return true;
+
+		}
+	}
+
+	@Override
+	public boolean requestPhoneNumberAuth(RPMap rPap, RPMap rmap, HttpServletRequest request,
+			HttpServletResponse response) {
+		RPMap dbparams = new RPMap();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			int count = 0;
+			String json = Util.printResult(0, String.format("인증 완료"), null);
+			rmap.put("json", json);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			String json = Util.printResult(2, String.format("서버 에러 "), null);
+			rmap.put("json", json);
+			return true;
+		}
+	}
+	
 
 }

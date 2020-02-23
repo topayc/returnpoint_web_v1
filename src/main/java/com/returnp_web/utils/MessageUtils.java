@@ -23,4 +23,7 @@ public class MessageUtils implements MessageSourceAware {
 	public String getMessage(String code, Object[] arguments){
 		return this.messageSource.getMessage(code, arguments, Locale.getDefault());
 	}
+	public String getMessage(String code, Object[] arguments, Locale locale){
+		return this.messageSource.getMessage(code, arguments, locale);
+	}
 }

@@ -70,7 +70,7 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
 		
 		try {
 			String newLocale = request.getParameter("lang");
-			/*System.out.println("Local Lang : " + newLocale);*/
+			//System.out.println("Local Lang : " + newLocale);
 			if(newLocale != null){
 				LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
 				if(localeResolver == null){
@@ -99,6 +99,9 @@ public class LocaleInterceptor extends HandlerInterceptorAdapter {
 					}
 					//System.out.println("적용 로케일  : "  + acceptLocale.toString());
 					WebUtils.setSessionAttribute( request, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, acceptLocale);
+				}else {
+					/*System.out.println("적용 로케일1  : "  + locale.toString());*/
+					
 				}
 				return true;
 			}

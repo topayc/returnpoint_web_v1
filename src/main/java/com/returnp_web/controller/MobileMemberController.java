@@ -441,8 +441,13 @@ public class MobileMemberController extends MallBaseController{
 		return act(map, rmap);
 	}
 	
-	/*newLogin */
-	//핸드폰 번호로 new 회원 가입
+	
+	
+	//#####################################################################################################################################
+	//핸드폰 번호를 아이디로 사용함에 따라 추가된 컨트롤러
+	//#####################################################################################################################################
+	
+	/* newLogin  */
 	@RequestMapping("/member/newLogin")
 	public String memberNewLogin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/member/newLogin");
@@ -451,7 +456,6 @@ public class MobileMemberController extends MallBaseController{
 	}
 	
 	/*newJoinOk */
-	//핸드폰 번호로 new 회원 가입
 	@RequestMapping("/member/newJoinOk")
 	public String memberNewJoinOk(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/member/newJoinOk");
@@ -460,11 +464,29 @@ public class MobileMemberController extends MallBaseController{
 	}
 	
 	/*new Join */
-	//핸드폰 번호로 new 회원 가입
 	@RequestMapping("/member/newJoinProcess")
 	public String memberNewJoin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/member/newJoinProcess");
-		boolean bret = mms.selectCountries(Util.toRPap(p), rmap, request, response);
+		boolean bret = mms.prepareJoinProcess(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
+	}
+	
+
+	/*모바일 인증 번호 발송 요청*/
+	@RequestMapping(value = "/member/sendPhoneAuthSms.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String sendPhoneAuthSms(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.sendPhoneAuthSms(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}
+	
+	/*모바일 인증 번호 인증 요청*/
+	@RequestMapping(value = "/member/requestPhoneNumberAuth.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String requestPhoneNumberAuth(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.requestPhoneNumberAuth(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
 	}
 }

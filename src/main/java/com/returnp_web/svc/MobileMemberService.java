@@ -348,5 +348,12 @@ public interface MobileMemberService {
 	public String handleGiftCardQR(HashMap<String, String> p, ModelMap rmap, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	public boolean changeMemberConfig(RPMap rPap, RPMap rMap, HttpServletRequest request, HttpServletResponse response);
+
+	boolean prepareJoinProcess(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	boolean sendPhoneAuthSms(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	boolean requestPhoneNumberAuth(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 	
 }

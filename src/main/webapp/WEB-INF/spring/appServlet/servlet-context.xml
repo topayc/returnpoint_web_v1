@@ -92,6 +92,7 @@
 		   <beans:list>
 		    <beans:value>/messages/messages</beans:value>
 		    <beans:value>/messages/label</beans:value>
+		    <beans:value>/messages/country</beans:value>
 		 	</beans:list>
 		 </beans:property>	
 	     <!--  <beans:property name="basenames" value="classpath:/message/message"/>	 -->         
