@@ -376,25 +376,25 @@
 			<div class="r_id">
 				<!-- <p>아이디</p> -->
 				<span>아이디는 인증하신 핸드폰 번호가 설정됩니다.</span> 
-				<input type="text" name="id"  id="id" readonly style = "background-color : #eee">
+				<input type="text" name="id"  id="id" readonly >
 			</div>
 			<div class="r_id">
 				<!-- <p>비밀번호</p> -->
-				<input type="password" name="password"  id="password" placeholder="영문+숫자 8 ~ 12 자리로 설정해주세요." value = "">
+				<input type="password" name="password"  id="password" placeholder="비밀번호 입력  - 영문+숫자 8 ~ 12 자리로." value = "">
 			</div>
 			<div class="r_id">
 				<!-- <p>비밀번호 확인</p> -->
-				<input type="password" name="passwordConfirm" id="passwordConfirm"  placeholder="비밀번호 확인을 해주세요." value = "">
+				<input type="password" name="passwordConfirm" id="passwordConfirm"  placeholder="비밀번호 재입력" value = "">
 			</div>
 			<div class="r_id">
 				<!-- <p>이메일 입력</p> -->
-				<input type="text" name="email"  id="email"  placeholder="이메일주소를 입력해주세요.">
+				<input type="text" name="email"  id="email"  placeholder="이메일 입력">
 			</div>
 			<div class="r_id">
 				<!-- <p>추천인 입력(선택)</p> -->
 				<span>추천인은 선택입력사항이며, 추천인 전화번호를 입력한 후 추천인 확인 버튼을 눌러주세요 ( - 없이 입력)</span>
 				<div class="r_id_input">
-					<input type="text" name="recommPhone"  id="recommPhone"  placeholder="추천인전화번호 입력  (- 제외)"  style = "padding-left:13px;">
+					<input type="text" name="recommPhone"  id="recommPhone"  placeholder="추천인 전화번호 입력  (- 제외)"  style = "padding-left:13px;">
 					<button type = "button" onclick="checkRecommender();return false">추천인확인</button>
 				</div>
 			</div>
