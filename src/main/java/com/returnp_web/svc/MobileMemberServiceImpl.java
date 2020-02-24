@@ -1945,7 +1945,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				return false;
 			}
 
-			if (p.getStr("phone").trim() == null || p.getStr("phone").trim().equals("")) {
+			if (p.getStr("email").trim() == null || p.getStr("phone").trim().equals("")) {
 				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
 				return false;
 			}
@@ -1953,7 +1953,9 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			String json = null;
 			String  phoneNumner  = p.getStr("phoneNumber");
 			String phoneAuthNumber = p.getStr("phoneAuthNumber");
+
 			String memberId = p.getStr("id");
+			String memberName = p.getStr("name");
 			String memberPassword = p.getStr("password");
 			String memberEmail = p.getStr("email");
 			String recommenderPhone  = p.getStr("recommPhone");

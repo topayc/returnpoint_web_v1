@@ -324,55 +324,6 @@
 	  </div> 
 	</div>
 	<div class="r_login">
-		<!-- <div class="r_login_page1 join_slide">
-			<div class="top_main">
-				<div class="logo_img">
-					<img src="/resources/images/logo_img.png">
-				</div>
-				<div class="rpoint_text">
-					<ul>
-						<li><b>RPOINT</b></li>
-						<li>소비가 저축이 되는 똑똑한 앱</br>100%적립</li>
-					</ul>
-				</div>
-			</div>
-			<button onclick="openRecommendDlg()">계정 만들기</button>
-			<div class="login_text">
-				<span>이미 R POINT 계정이 있으신가요</span> <span>|</span> <span><b>로그인</b></span>
-			</div>
-			<div class="facebook_btn">
-				<img src="/resources/images/facebook_logo.png">페이스북으로 회원가입
-			</div>
-		</div>
-		<div class="r_login_page2 join_slide">
-			<div class="top_main">
-				<div class="logo_img">
-					<img src="/resources/images/logo_img.png">
-				</div>
-				<div class="rpoint_text">
-					<ul>
-						<li><b>RPOINT</b></li>
-						<li>소비가 저축이 되는 똑똑한 앱</br>100%적립</li>
-					</ul>
-				</div>
-			</div>
-			<div class="input_box">
-				<input type="text" name="전화번호" placeholder="전화번호"> <input
-					type="text" name="비밀번호" placeholder="비밀번호">
-			</div>
-			<button>로그인</button>
-			<input type="checkbox" id="cb"><label for="cb">아이디 저장</label>
-			<div class="sign_text">
-				<ul>
-					<li>회원가입</li>
-					<li>아이디 비밀번호 찾기</li>
-					<li>추천인QR로 가입하기</li>
-				</ul>
-			</div>
-			<div class="facebook_btn">
-				<img src="/resources/images/facebook_logo.png">페이스북으로 회원가입
-			</div>
-		</div> -->
 		<div class="r_login_page3 join_slide">
 			<h3>모바일 인증</h3>
 			<p>
@@ -381,11 +332,6 @@
 			<p>아래의 인증 과정을 진행해 주시기 바랍니다.</p>
 			</br>
 			<div class="phone_input1">
-			<%-- 	<select  id = "countryPhoneNumber" >
-					<c:forEach var="countryPhoneNumber" items="${model.countryPhoneNumbers}" varStatus="status">
-						<option value = "${countryPhoneNumber.countryPhoneNumber}">${countryPhoneNumber.countryName}(${countryPhoneNumber.countryPhoneNumber})</option>
-					</c:forEach>
-				</select>  --%>
 				<input type="number" id="phoneNumber"  name="phoneNumber" placeholder="휴대폰번호" style = "padding-left:15px;">
 			</div>
 			<div class="phone_input2">
@@ -395,9 +341,9 @@
 			</br>
 			<span>입력하신 번호로 인증번호 6자리가 발송됩니다 </br>아래 시간안에 입력하신 후 인증을 진행해주세요.</span>
 			<div class="time" id = "timer">&nbsp;</div>
-			<button id = "requestPhoneNumberAuth"  onclick = "requestPhoneNumberAuth()">인증하기</button>
+			<button type = "button" id = "requestPhoneNumberAuth"  onclick = "requestPhoneNumberAuth()">인증하기</button>
 		</div>
-		<form id = "joinFormData" name = "joinFormData">
+		
 		<div class="r_login_page5 join_slide">
 			<h3>기본 정보 입력</h3>
 			<div class="r_id">
@@ -426,65 +372,6 @@
 				</div>
 			</div>
 			<button  type = "button" onclick = "joinSumit();return false;">가입하기</button>
-		</div>
-		</form>
-		<!-- <div class="r_login_page7 join_slide">
-			<div class="top_main">
-				<div class="logo_img">
-					<img src="/resources/images/logo_img.png">
-				</div>
-				<div class="rpoint_text">
-					<ul>
-						<li><b>RPOINT</b></li>
-						<li>소비가 저축이 되는 똑똑한 앱</br>100%적립</li>
-					</ul>
-				</div>
-			</div>
-			<h1>가입을 축하합니다.</h1>
-			<div class="r_home">R POINT 홈으로 가기</div>
-		</div> -->
-	</div>
-	<div class="r_login_page4">
-		<div class="cord_number">
-			<h3>국가선택</h3>
-			<div class="close_img">
-				<img src="/resources/images/close_img.png">
-			</div>
-			<div class="cord_input">
-				<div class="search_img">
-					<img src="/resources/images/search_img.png">
-				</div>
-				<input type="text" name="국가 이름 또는 코드" placeholder="국가 이름 또는 코드">
-			</div>
-			<ul>
-				<li>가나(+233)</li>
-				<li>가봉(+241)</li>
-				<li>가이아나()+592</li>
-				<li>감비아(+220)</li>
-				<li>건지(+44)</li>
-			</ul>
-		</div>
-	</div>
-	
-	<div class="r_login_page6">
-		<div class="r_name">
-			<div class="r_name_box">
-				<div class="r_name_left">
-					<img src="/resources/images/name_left_img.png">
-				</div>
-				<input type="text" name="recommenderPhone" placeholder="추천인 전화번호" style = "padding-left:15px;">
-				<div class="r_name_right">
-					<img src="/resources/images/name_right_img.png">
-				</div>
-			</div>
-			<div class="r_name_text">
-				<ul>
-					<li><span>차미라</span> <span>010-5845-0051</span> <span>mira0326@naver.com</span>
-					</li>
-					<li><span>차미라</span> <span>010-5845-0051</span> <span>mira0326@naver.com</span>
-					</li>
-				</ul>
-			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
