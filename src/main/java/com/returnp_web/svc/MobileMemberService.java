@@ -357,5 +357,7 @@ public interface MobileMemberService {
 
 	boolean checkRecommender(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean newJoin(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 	
 }

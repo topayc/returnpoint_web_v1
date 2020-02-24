@@ -1921,6 +1921,72 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			return true;
 		}
 	}
+
+	@Override
+	public boolean newJoin(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		RPMap dbparams = new RPMap();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			
+			//System.out.println("회원가입 파리미터 dbparams::" + dbparams);
+			if (p.getStr("id").trim() == null || p.getStr("email").trim().equals("")) {
+				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
+				return false;
+			}
+
+			if (p.getStr("password").trim() == null || p.getStr("pwd").trim().equals("")) {
+				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
+				return false;
+			}
+
+			if (p.getStr("name").trim() == null || p.getStr("name").trim().equals("")) {
+				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
+				return false;
+			}
+
+			if (p.getStr("phone").trim() == null || p.getStr("phone").trim().equals("")) {
+				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
+				return false;
+			}
+			
+			String json = null;
+			String  phoneNumner  = p.getStr("phoneNumber");
+			String phoneAuthNumber = p.getStr("phoneAuthNumber");
+			String memberId = p.getStr("id");
+			String memberPassword = p.getStr("password");
+			String memberEmail = p.getStr("email");
+			String recommenderPhone  = p.getStr("recommPhone");
+
+			String sessionAuthKey = (String)request.getSession().getAttribute("PHONE_AUTH_NUMBER");
+			
+			/*추천인 정보 구하기*/
+			dbparams.put("memebrPhone", recommenderPhone);
+			HashMap<String, Object> recommenderMap  = this.mobileMainDao.selectMember(dbparams);
+			
+			if (!sessionAuthKey.equals(memberId)) {
+				json = Util.printResult(1, "부적절한 회원 가입 요청입니다.", null);
+				return true;
+			}
+			
+			dbparams.put("memberPhone", p.getStr("recommPhone"));
+			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
+			dbparams.clear();
+			
+			if (memberMap == null) {
+				json = Util.printResult(1, "해당 전화번호의 사용자가 없습니다.</br>확인후 다시 진행해주세요", null);
+			}else {
+				json = Util.printResult(0, String.format("해당 전화번호의 사용자는 %s 입니다.", memberMap.get("memberName")), null);
+			}
+			rmap.put("json", json);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			String json = Util.printResult(2, String.format("서버 에러 "), null);
+			rmap.put("json", json);
+			return true;
+		}
+	}
 	
 
 }

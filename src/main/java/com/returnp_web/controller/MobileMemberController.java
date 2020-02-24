@@ -454,6 +454,14 @@ public class MobileMemberController extends MallBaseController{
 		boolean bret = mms.selectCountries(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
 	}
+
+	/* newLogin  */
+	@RequestMapping("/member/newJoin")
+	public String memberNewJoin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/member/newLogin");
+		boolean bret = mms.newJoin(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
+	}
 	
 	/*newJoinOk */
 	@RequestMapping("/member/newJoinOk")
@@ -465,7 +473,7 @@ public class MobileMemberController extends MallBaseController{
 	
 	/*new Join */
 	@RequestMapping("/member/newJoinProcess")
-	public String memberNewJoin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String memberNewJoinProcess(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/member/newJoinProcess");
 		boolean bret = mms.prepareJoinProcess(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
