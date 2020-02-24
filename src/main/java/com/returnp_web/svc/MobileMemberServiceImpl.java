@@ -1842,7 +1842,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		SessionManager sm = new SessionManager(request, response);
 		try {
 			int count = 0;
-			String json = Util.printResult(0, String.format("인증번호를 발송하였습니다.</b>해당 시간안에 인증을 진행해주시기 바랍니다"), null);
+			String json = Util.printResult(0, String.format("인증번호를 발송하였습니다.</br>해당 시간안에 인증을 진행해주시기 바랍니다"), null);
 			rmap.put("json", json);
 			return true;
 		} catch (Exception e) {

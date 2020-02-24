@@ -66,14 +66,14 @@
 		}
 		
 		function sendPhoneAuthSms(){
-			var countryPhoneNumber = $('#countryPhoneNumber').val().trim();
+		/* 	var countryPhoneNumber = $('#countryPhoneNumber').val().trim(); */
 			var phoneNumber = $('#phoneNumber').val().trim();
 			if (phoneNumber.indexOf("-")  != -1) {
 				phoneNumber = phoneNumber.replace(/-/gi, "");
 			}
 			
 			if (phoneNumber.length < 1) {
-				 alertOpen("알림", "인증할 전화번호를 입력해주세요", true, false, null, null);
+				 alertOpen("알림", "전화번호를 입력해주세요", true, false, null, null);
 				 return;
 			}
 			if (!$.isNumeric(phoneNumber)) {
@@ -84,15 +84,15 @@
 			$.ajax({
 	           	type: "POST",
 	               url: "/m/member/sendPhoneAuthSms.do",
-	               data: {phoneNumber : {countryPhoneNumber : countryPhoneNumber, phoneNumber : phoneNumber} },
+	               data: {phoneNumber : phoneNumber },
 	               success: function (result) {
 	            	   $("#progress_loading").hide();
 	            	   if (result && typeof result !="undefined") {
 	            	   	 $("#progress_loading").hide();
 	            	   	 if (result.result.code  == "0") {
-	            	   		 joinData.countryPhoneNumber = countryPhoneNumber;
+	            	   		/*  joinData.countryPhoneNumber = countryPhoneNumber; */
 		            	   	 joinData.phoneNumber = phoneNumber ;
-		            	   	 alertOpen("확인", alertText, true, false, function(){startTimer(180, "timer") }, null );
+		            	   	 alertOpen("확인", result.result.msg, true, false, function(){startTimer(180, "timer") }, null );
 	            	   		;
 	            		 }else {
 	            			 $("#sendPhoneAuthSms").attr("disabled",false);
@@ -112,16 +112,11 @@
 		}
 		
 		function requestPhoneNumberAuth(){
-			var authData = {
-				countryPhoneNumber : joinData.countryPhoneNumber, 
-				joinData.phoneNumber : phoneNumber
-			};
-			
 			$("#requestPhoneNumberAuth").attr("disabled",true);
 			$.ajax({
 	           	type: "POST",
 	               url: "/m/member/requestPhoneNumberAuth.do",
-	               data: {phoneNumber : {countryPhoneNumber : countryPhoneNumber, phoneNumber : phoneNumber} },
+	               data: {phoneNumber : joinData.phoneNumber },
 	               success: function (result) {
 	            	   $("#progress_loading").hide();
 	            	   if (result && typeof result !="undefined") {
@@ -238,12 +233,12 @@
 			<p>아래의 인증 과정을 진행해 주시기 바랍니다.</p>
 			</br>
 			<div class="phone_input1">
-				<select  id = "countryPhoneNumber" >
+			<%-- 	<select  id = "countryPhoneNumber" >
 					<c:forEach var="countryPhoneNumber" items="${model.countryPhoneNumbers}" varStatus="status">
 						<option value = "${countryPhoneNumber.countryPhoneNumber}">${countryPhoneNumber.countryName}(${countryPhoneNumber.countryPhoneNumber})</option>
 					</c:forEach>
-				</select> 
-				<input type="text" id="phoneNumber"  name="phoneNumber" placeholder="휴대폰번호">
+				</select>  --%>
+				<input type="number" id="phoneNumber"  name="phoneNumber" placeholder="휴대폰번호" style = "padding-left:15px;">
 			</div>
 			<div class="phone_input2">
 				<input type="text" name="인증번호 입력" placeholder="인증번호 입력">
