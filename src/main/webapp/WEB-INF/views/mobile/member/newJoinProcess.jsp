@@ -365,7 +365,7 @@
 				<input type="text" name="id"  id="id" readonly >
 			</div>
 			<div class="r_id">
-				<input type="text" name="name"  id="name" placeholder="이름을 입력해주세요" value = "">
+				<input type="text" name="name"  id="name" placeholder="이름 입력" value = "">
 			</div>
 			<div class="r_id">
 				<!-- <p>비밀번호</p> -->
