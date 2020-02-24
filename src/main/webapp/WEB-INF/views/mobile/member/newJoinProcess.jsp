@@ -206,10 +206,17 @@
 		}
 
 		function joinSumit() {
+			var name = $("#name").val().trim();
 			var password = $("#password").val().trim();
 			var passwordConfirm = $("#passwordConfirm").val().trim();
 			var email = $("#email").val().trim();
 			var recommPhone = $("#recommPhone").val().trim().replace(/-/gi, "");
+
+			if (name.length < 1) {
+				$("#name").focus();
+				alertOpen("알림 ", "이름이 입력되지 않았습니다.", true, false, null, null);
+				return;
+			}
 
 			if (password.length < 1) {
 				$("#password").focus();
