@@ -24,6 +24,7 @@
 		WHERE memberEmail = #{recommend}
 		AND memberStatus='1'
 	</select> 
+	
 
 	<!-- 사용자 조회 -->
 	<select id="selectAuthMember" parameterType="HashMap" resultType="HashMap">

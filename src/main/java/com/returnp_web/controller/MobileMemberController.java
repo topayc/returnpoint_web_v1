@@ -489,4 +489,13 @@ public class MobileMemberController extends MallBaseController{
 		boolean bret = mms.requestPhoneNumberAuth(Util.toRPap(p), rmap, request, response);
 		return rmap.getStr("json");
 	}
+
+	/*추천인 확인 요청*/
+	@RequestMapping(value = "/member/checkRecommender.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String checkRecommender(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.checkRecommender(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}
 }

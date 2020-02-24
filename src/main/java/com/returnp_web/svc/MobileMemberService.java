@@ -355,5 +355,7 @@ public interface MobileMemberService {
 
 	boolean requestPhoneNumberAuth(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean checkRecommender(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 	
 }

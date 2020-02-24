@@ -173,7 +173,6 @@ function searchMember(){
 		return false;
 	}
 	
-	alert(email);
 	$.ajax({
 		method : "POST",
 		url    : "/m/member/select_member_validity.do",
