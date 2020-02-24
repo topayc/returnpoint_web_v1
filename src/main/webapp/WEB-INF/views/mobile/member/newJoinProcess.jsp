@@ -212,19 +212,19 @@
 			var recommPhone = $("#recommPhone").val().trim().replace(/-/gi, "");
 
 			if (password.length < 1) {
-				$("#memberPassword").focus();
+				$("#password").focus();
 				alertOpen("알림 ", "비밀번호가 입력되지 않았습니다.", true, false, null, null);
 				return;
 			}
 
 			if (passwordConfirm.length < 1) {
-				$("#memberPasswordConfirm").focus();
+				$("#passwordConfirm").focus();
 				alertOpen("알림 ", "비밀번호 확인이 입력되지 않았습니다", true, false, null, null);
 				return;
 			}
 
 			if (email.length < 1) {
-				$("#memberEmail").focus();
+				$("#email").focus();
 				alertOpen("알림 ", "이메일이 입력되지 않았습니다", true, false, null, null);
 				return;
 			}
@@ -253,8 +253,11 @@
 				return;
 			}
 
-			var joinFormData = $("#joinFormData").serializeObject();
-			$.extend(joinData, joinFormData);
+			var joinFormData = $("#joinForm1").serializeObject();
+			var joinFormData2 = $("#joinForm2").serializeObject();
+			$.extend(joinFormData, joinFormData2);
+			console.log(joinFormData);
+			
 			$.ajax({
 	           	type: "POST",
 	               url: "/m/member/sendPhoneAuthSms.do",
@@ -325,6 +328,7 @@
 	</div>
 	<div class="r_login">
 		<div class="r_login_page3 join_slide">
+			<form id = "joinForm1">
 			<h3>모바일 인증</h3>
 			<p>
 				<b>R POINT</b> 앱은 모바일 번호를 아이디로 사용합니다.
@@ -339,12 +343,14 @@
 				<button id  = "sendPhoneAuthSms" onclick = "sendPhoneAuthSms()">인증번호받기</button>
 			</div>
 			</br>
+			</form>
 			<span>입력하신 번호로 인증번호 6자리가 발송됩니다 </br>아래 시간안에 입력하신 후 인증을 진행해주세요.</span>
 			<div class="time" id = "timer">&nbsp;</div>
 			<button type = "button" id = "requestPhoneNumberAuth"  onclick = "requestPhoneNumberAuth()">인증하기</button>
 		</div>
 		
 		<div class="r_login_page5 join_slide">
+			<form id = "joinForm2">
 			<h3>기본 정보 입력</h3>
 			<div class="r_id">
 				<!-- <p>아이디</p> -->
@@ -371,6 +377,7 @@
 					<button type = "button" onclick="checkRecommender();return false">추천인확인</button>
 				</div>
 			</div>
+			</form>
 			<button  type = "button" onclick = "joinSumit();return false;">가입하기</button>
 		</div>
 	</div>
