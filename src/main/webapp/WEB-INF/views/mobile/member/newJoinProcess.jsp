@@ -249,8 +249,7 @@
 				} */
 
 			if (password != passwordConfirm) {
-				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false,
-						null, null);
+				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false, null, null);
 				return;
 			}
 
@@ -262,33 +261,28 @@
 
 			var joinFormData = $("#joinForm1").serializeObject();
 			var joinFormData2 = $("#joinForm2").serializeObject();
+			
 			$.extend(joinFormData, joinFormData2);
 			console.log(joinFormData);
 			
 			$.ajax({
 	           	type: "POST",
-	               url: "/m/member/sendPhoneAuthSms.do",
-	               data: {phoneNumber : phoneNumber },
+	               url: "/m/member/newJoin.do",
+	               data: joinFormData,
 	               success: function (result) {
 	            	   $("#progress_loading").hide();
 	            	   if (result && typeof result !="undefined") {
 	            	   	 $("#progress_loading").hide();
 	            	   	 if (result.result.code  == 0) {
-	            	   		/*  joinData.countryPhoneNumber = countryPhoneNumber; */
-		            	   	 joinData.phoneNumber = phoneNumber ;
 		            	   	 alertOpen("확인", result.result.msg, true, false, function(){startTimer(180, "timer") }, null );
-	            	   		;
 	            		 }else {
-	            			 $("#sendPhoneAuthSms").attr("disabled",false);
 	            		 }
 	               	 }else{
-	               		$("#sendPhoneAuthSms").attr("disabled",false);
 	               		 alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
 	               	 }
 	               },
 	               error : function(request, status, error){
 	            	   $("#progress_loading").hide();
-	            	   $("#sendPhoneAuthSms").attr("disabled",false);
 	            	   alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
 	               },
 	               dataType: 'json'

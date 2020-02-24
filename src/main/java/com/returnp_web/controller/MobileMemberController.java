@@ -456,7 +456,8 @@ public class MobileMemberController extends MallBaseController{
 	}
 
 	/* newLogin  */
-	@RequestMapping("/member/newJoin")
+	@RequestMapping(value = "/member/newJoin.do", produces = "application/text; charset=utf8")
+	@ResponseBody
 	public String memberNewJoin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/member/newLogin");
 		boolean bret = mms.newJoin(Util.toRPap(p), rmap, request, response);
