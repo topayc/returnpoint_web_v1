@@ -358,6 +358,9 @@
 				<input type="text" name="id"  id="id" readonly >
 			</div>
 			<div class="r_id">
+				<input type="text" name="name"  id="name" placeholder="이름을 입력해주세요" value = "">
+			</div>
+			<div class="r_id">
 				<!-- <p>비밀번호</p> -->
 				<input type="password" name="password"  id="password" placeholder="비밀번호 입력  - 영문+숫자 8 ~ 12 자리로." value = "">
 			</div>
