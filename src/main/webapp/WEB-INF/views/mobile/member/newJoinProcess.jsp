@@ -213,18 +213,14 @@
 			$.ajax({
 				type : "POST",
 				url : "/m/member/checkRecommender.do",
-				data : {
-					recommPhone : recommPhone
-				},
+				data : { recommPhone : recommPhone },
 				success : function(result) {
 					$("#progress_loading").hide();
 					if (result && typeof result != "undefined") {
-						alertOpen("알림 ", result.result.msg, true, false, null,
-								null);
+						alertOpen("알림 ", result.result.msg, true, false, null, null);
 					} else {
 						$("#requestPhoneNumberAuth").attr("disabled", false);
-						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false,
-								null, null);
+						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
 					}
 				},
 				error : function(request, status, error) {
@@ -240,9 +236,7 @@
 		var isJoinSumitting = false;
 
 		function joinSumit() {
-			if (isJoinSumitting == true) {
-				return false;
-			}
+			if (isJoinSumitting == true) return false;
 			isJoinSumitting = true;
 			var name = $("#memberName").val().trim();
 			var password = $("#memberPassword").val().trim();
@@ -287,8 +281,7 @@
 				} */
 
 			if (password != passwordConfirm) {
-				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false,
-						null, null);
+				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false, null, null);
 				return;
 			}
 
@@ -313,8 +306,8 @@
 						if (result.result.code == 0) {
 							movePageReplace('/m/member/newJoinOk.do')
 						} else {
-							if (result.result.code == 10) {
-								alertOpen("알림", result.result.msg, true, false, function(){movePage('/m/member/newJoinProcess.do')}, null);
+							if (result.result.code == 10 || result.result.code == 17) {
+								alertOpen("알림", result.result.msg, true, false, function(){movePageReplace('/m/member/newJoinProcess.do')}, null);
 							}else if (result.result.code == 11) {
 								alertOpen("알림", result.result.msg, true, false, null, null);
 							}else {
@@ -353,6 +346,8 @@
 			$(".r_login").height(height);
 			$slides.css("right", "-100%");
 			$slides.eq(0).css("right", "0px");
+			 $('#phoneNumber').val("");
+			 $('#phoneAuthNumber').val("");
 		});
 	</script>
 </head>

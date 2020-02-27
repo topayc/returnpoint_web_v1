@@ -1925,12 +1925,11 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		// TODO Auto-generated method stub
 		RPMap dbparams = new RPMap();
 		RPMap extDbparams = new RPMap();
-		SessionManager sm = new SessionManager(request, response);
 		try {
 			
 			String json = null;
-			//String phoneNumber  = p.getStr("phoneNumber");
-			//String phoneAuthNumber = p.getStr("phoneAuthNumber");
+			String phoneNumber  = p.getStr("phoneNumber");
+			String phoneAuthNumber = p.getStr("phoneAuthNumber");
 
 			String memberPhone = p.getStr("memberPhone").trim();
 			String memberName = p.getStr("memberName").trim();
@@ -1938,12 +1937,13 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			String memberEmail = p.getStr("memberEmail").trim();
 			String recommPhone  = p.getStr("recommPhone").trim();
 			
-			String sessionAuthKey = (String)request.getSession().getAttribute("PHONE_AUTH_NUMBER");
+			String sessionPhoneAuthKey = (String)request.getSession().getAttribute("PHONE_AUTH_NUMBER");
+			String sessionPhoneNumber = (String)request.getSession().getAttribute("PHONE_NUMBER");
 			
-		/*	if (!sessionAuthKey.equals(phoneAuthNumber) || !phoneNumber.equals(memberPhone)) {
-				json = Util.printResult(1, "부적절한 회원 가입 요청입니다.", null);
+			if (!sessionPhoneAuthKey.equals(phoneAuthNumber) || !sessionPhoneNumber.equals(memberPhone) || !phoneNumber.equals(memberPhone) ) {
+				json = Util.printResult(17, "부적절한 회원 가입 요청입니다.", null);
 				return true;
-			}*/
+			}
 
 			/*전화번호 중복 등록 체크*/
 			dbparams.put("memberPhone", memberPhone);
@@ -1956,7 +1956,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			
 			/*추천인 정보 구하기*/
 			dbparams.clear();
-			dbparams.put("memberPhone", p.getStr("recommPhone"));
+			dbparams.put("memberPhone", recommPhone);
 			HashMap<String, Object> recommenderMemberMap = this.mobileMainDao.selectMember(dbparams);
 
 			// 파라미터 정리
@@ -1971,7 +1971,9 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			//dbparams.put("privacy", "on".equals(p.getStr("privacy").trim()) ? "Y" : "N");
 			//dbparams.put("spam", "on".equals(p.getStr("spam").trim()) ? "Y" : "N");
 			dbparams.put("joinRoute", "www.returnp.com");
-			dbparams.put("recommendNo", recommenderMemberMap != null ? recommenderMemberMap.get("memberBerNo") : null); // 
+			if (recommenderMemberMap != null) {
+				dbparams.put("recommenderNo", recommenderMemberMap.get("memberNo")); // 
+			}
 			mobileMemberDao.insertJoinAct(dbparams);
 			
 			/* 회원가입후 memberNo갑슬 가져오기 위해 추가 */
@@ -2019,6 +2021,10 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			email.setEmailMap(dbparams);
 			email.setHtmlYn("Y");
 			emailSender.sendVelocityEmail(email);
+			
+			/*세션에 존재하는 인증키 및 전화번호 제거 */
+			request.getSession().removeAttribute("PHONE_AUTH_NUMBER");
+			request.getSession().removeAttribute("PHONE_NUMBER");
 			
 			json = Util.printResult(0, "회원 가입 성공", null);
 			rmap.put("json", json);
