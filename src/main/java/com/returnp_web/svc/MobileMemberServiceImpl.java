@@ -41,6 +41,7 @@ import org.springframework.web.util.WebUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.zxing.common.StringUtils;
 import com.returnp_web.controller.dto.CountryPhoneNumber;
 import com.returnp_web.dao.MobileMainDao;
 import com.returnp_web.dao.MobileMemberDao;
@@ -1846,20 +1847,26 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		RPMap dbparams = new RPMap();
 		SessionManager sm = new SessionManager(request, response);
 		try {
+			String json;
+			/*전화번호 중복 등록 체크*/
+			dbparams.put("memberPhone", rPap.getStr("phoneNumber").trim());
+			HashMap<String, Object> memberMap  = this.mobileMainDao.selectMember(dbparams);
+			if (memberMap !=null) {
+				json = Util.printResult(2, "이미 회원으로 등록된 전화번호 입니다.</br>확인후 다시 시도해주세요", null);
+				rmap.put("json", json);
+				return true;
+			}
+			
 			int count = 0;
 			String key = CodeGenerator.genPhoneAuthNumber();
-			//System.out.println(rPap.getStr("phoneNumber"));
-			//System.out.println(key);
-		
-			JSONObject smsResult = SmsManager.sendSms(rPap.getStr("phoneNumber"), String.format("[R.POINT] 인증번호 %s 를 입력하세요",key));
-			String json;
+			JSONObject smsResult = SmsManager.sendSms(rPap.getStr("phoneNumber").trim(), String.format("[R.POINT] 인증번호 %s 를 입력하세요",key));
 			
 			if ((long)smsResult.get("error_count") == 0) {
 				request.getSession().setAttribute("PHONE_AUTH_NUMBER", key);
 				request.getSession().setAttribute("PHONE_NUMBER", rPap.getStr("phoneNumber"));
-				json = Util.printResult(0, String.format("R.POINT 인증번호를 발송하였습니다.</br>해당 시간안에 인증을 진행해주시기 바랍니다"), null);
+				json = Util.printResult(0, String.format("R.POINT 인증번호 문자를 발송하였습니다.</br>해당 시간안에 인증번호를 입력한 후 인증하기 버튼을 눌러주세요"), null);
 			}else {
-				json = Util.printResult(0, String.format("인증번호 발송에 실패했습니다..</br>다시 진행해주세요 "), null);
+				json = Util.printResult(0, String.format("인증번호 발송에 실패했습니다.</br>다시 진행해주세요 "), null);
 			}
 			rmap.put("json", json);
 			return true;
@@ -1927,12 +1934,11 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		// TODO Auto-generated method stub
 		RPMap dbparams = new RPMap();
 		RPMap extDbparams = new RPMap();
-		SessionManager sm = new SessionManager(request, response);
 		try {
 			
 			String json = null;
-			//String phoneNumber  = p.getStr("phoneNumber");
-			//String phoneAuthNumber = p.getStr("phoneAuthNumber");
+			String phoneNumber  = p.getStr("phoneNumber");
+			String phoneAuthNumber = p.getStr("phoneAuthNumber");
 
 			String memberPhone = p.getStr("memberPhone").trim();
 			String memberName = p.getStr("memberName").trim();
@@ -1940,12 +1946,13 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			String memberEmail = p.getStr("memberEmail").trim();
 			String recommPhone  = p.getStr("recommPhone").trim();
 			
-			String sessionAuthKey = (String)request.getSession().getAttribute("PHONE_AUTH_NUMBER");
+			String sessionPhoneAuthKey = (String)request.getSession().getAttribute("PHONE_AUTH_NUMBER");
+			String sessionPhoneNumber = (String)request.getSession().getAttribute("PHONE_NUMBER");
 			
-		/*	if (!sessionAuthKey.equals(phoneAuthNumber) || !phoneNumber.equals(memberPhone)) {
-				json = Util.printResult(1, "부적절한 회원 가입 요청입니다.", null);
+			if (!sessionPhoneAuthKey.equals(phoneAuthNumber) || !sessionPhoneNumber.equals(memberPhone) || !phoneNumber.equals(memberPhone) ) {
+				json = Util.printResult(17, "부적절한 회원 가입 요청입니다.", null);
 				return true;
-			}*/
+			}
 
 			/*전화번호 중복 등록 체크*/
 			dbparams.put("memberPhone", memberPhone);
@@ -1957,9 +1964,12 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			}
 			
 			/*추천인 정보 구하기*/
-			dbparams.clear();
-			dbparams.put("memberPhone", p.getStr("recommPhone"));
-			HashMap<String, Object> recommenderMemberMap = this.mobileMainDao.selectMember(dbparams);
+			HashMap<String, Object> recommenderMemberMap = null;
+			if (recommPhone != null && !"".equals(recommPhone)) {
+				dbparams.clear();
+				dbparams.put("memberPhone", recommPhone);
+				recommenderMemberMap = this.mobileMainDao.selectMember(dbparams);
+			}
 
 			// 파라미터 정리
 			dbparams.clear();
@@ -1973,7 +1983,9 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			//dbparams.put("privacy", "on".equals(p.getStr("privacy").trim()) ? "Y" : "N");
 			//dbparams.put("spam", "on".equals(p.getStr("spam").trim()) ? "Y" : "N");
 			dbparams.put("joinRoute", "www.returnp.com");
-			dbparams.put("recommendNo", recommenderMemberMap != null ? recommenderMemberMap.get("memberBerNo") : null); // 
+			if (recommenderMemberMap != null) {
+				dbparams.put("recommenderNo", recommenderMemberMap.get("memberNo")); // 
+			}
 			mobileMemberDao.insertJoinAct(dbparams);
 			
 			/* 회원가입후 memberNo갑슬 가져오기 위해 추가 */
@@ -2022,12 +2034,16 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			email.setHtmlYn("Y");
 			emailSender.sendVelocityEmail(email);
 			
+			/*세션에 존재하는 인증키 및 전화번호 제거 */
+			request.getSession().removeAttribute("PHONE_AUTH_NUMBER");
+			request.getSession().removeAttribute("PHONE_NUMBER");
+			
 			json = Util.printResult(0, "회원 가입 성공", null);
 			rmap.put("json", json);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			String json = Util.printResult(2, String.format("서버 에러 "), null);
+			String json = Util.printResult(11, String.format("서버 에러 "), null);
 			rmap.put("json", json);
 			return true;
 		}

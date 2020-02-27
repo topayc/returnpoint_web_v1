@@ -163,7 +163,7 @@
 			NOW(),
 			NOW(),
 			#{joinRoute},	
-			#{country}.
+			#{country},
 			#{memberAuthType}
 				
 		)

@@ -94,6 +94,7 @@
 			var phoneNumber = $('#phoneNumber').val().trim();
 			if (phoneNumber.indexOf("-")  != -1) {
 				phoneNumber = phoneNumber.replace(/-/gi, "");
+				$('#phoneNumber').val(phoneNumber)
 			}
 			
 			if (phoneNumber.length < 1) {
@@ -106,6 +107,7 @@
 				isSendingSms = false;
 				return false;
 			}
+			$("#progress_loading2").show();
 			$("#sendPhoneAuthSms").attr("disabled",true);
 			$.ajax({
 	           	type: "POST",
@@ -113,13 +115,14 @@
 	               data: {phoneNumber : phoneNumber },
 	               success: function (result) {
 	            	   isSendingSms =	false;
-	            	   $("#progress_loading").hide();
+		               alertOpen("확인", result.result.msg, true, false, null, null );
+	            	   $("#progress_loading2").hide();
 	            	   if (result && typeof result !="undefined") {
-	            	   	 $("#progress_loading").hide();
+	            	   	 $("#progress_loading2").hide();
 	            	   	 if (result.result.code  == 0) {
 	            	   		/*  joinData.countryPhoneNumber = countryPhoneNumber; */
 		            	   	 joinData.phoneNumber = phoneNumber ;
-		            	   	 alertOpen("확인", result.result.msg, true, false, function(){startTimer(180, "timer") }, null );
+		            	   	 startTimer(180, "timer")
 	            	   		;
 	            		 }else {
 	            			 $("#sendPhoneAuthSms").attr("disabled",false);
@@ -132,7 +135,7 @@
 	               },
 	               error : function(request, status, error){
 	            	   isSendingSms = false;
-	            	   $("#progress_loading").hide();
+	            	   $("#progress_loading2").hide();
 	            	   $("#sendPhoneAuthSms").attr("disabled",false);
 	            	   alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
 	               },
@@ -142,10 +145,10 @@
 
 		var isAuthRequesting = false;
 		function requestPhoneNumberAuth() {
-			joinData.phoneNumber = "01088227467";
+		/* 	joinData.phoneNumber = "01088227467";
 			$("#memberPhone").val("01088227467");
 			moveSlide(1);
-			return;
+			return; */
 
 			if (isAuthRequesting == true) return;
 			isAuthRequesting = true;
@@ -157,7 +160,7 @@
 				isAuthRequesting = false;
 				return;
 			}
-
+			$("#progress_loading2").show();
 			$.ajax({
 				type : "POST",
 				url : "/m/member/requestPhoneNumberAuth.do",
@@ -167,14 +170,14 @@
 				},
 				success : function(result) {
 					isAuthRequesting = false;
-					$("#progress_loading").hide();
+					$("#progress_loading2").hide();
 
 					if (result && typeof result != "undefined") {
 						if (result.result.code == 0) {
 							joinData.phoneAuthNumber = phoneAuthNumber;
 							AuthTimer.fnStop();
 							$("#memberPhone").val(joinData.phoneNumber);
-							moveSlide(1);
+							alertOpen("알림", result.result.msg, true, false, function(){moveSlide(1)}, null);
 						} else {
 							alertOpen("알림", result.result.msg, true, false, null, null);
 							$("#requestPhoneNumberAuth") .attr("disabled", false);
@@ -187,7 +190,7 @@
 				},
 				error : function(request, status, error) {
 					isAuthRequesting = false;
-					$("#progress_loading").hide();
+					$("#progress_loading2").hide();
 					$("#requestPhoneNumberAuth").attr("disabled", false);
 					alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
 				},
@@ -204,30 +207,25 @@
 			}
 
 			if (memberPhone == recommPhone) {
-				alertOpen("알림 ", "회원님 자신을 추천인으로 등록할 수 없습니다.", true, false,
-						null, null);
+				alertOpen("알림 ", "회원님 자신을 추천인으로 등록할 수 없습니다.", true, false, null, null);
 				return;
 			}
 
 			$.ajax({
 				type : "POST",
 				url : "/m/member/checkRecommender.do",
-				data : {
-					recommPhone : recommPhone
-				},
+				data : { recommPhone : recommPhone },
 				success : function(result) {
-					$("#progress_loading").hide();
+					$("#progress_loading2").hide();
 					if (result && typeof result != "undefined") {
-						alertOpen("알림 ", result.result.msg, true, false, null,
-								null);
+						alertOpen("알림 ", result.result.msg, true, false, null, null);
 					} else {
 						$("#requestPhoneNumberAuth").attr("disabled", false);
-						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false,
-								null, null);
+						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
 					}
 				},
 				error : function(request, status, error) {
-					$("#progress_loading").hide();
+					$("#progress_loading2").hide();
 					$("#requestPhoneNumberAuth").attr("disabled", false);
 					alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false,
 							null, null);
@@ -239,9 +237,7 @@
 		var isJoinSumitting = false;
 
 		function joinSumit() {
-			if (isJoinSumitting == true) {
-				return false;
-			}
+			if (isJoinSumitting == true) return false;
 			isJoinSumitting = true;
 			var name = $("#memberName").val().trim();
 			var password = $("#memberPassword").val().trim();
@@ -251,23 +247,27 @@
 
 			if (name.length < 1) {
 				$("#name").focus();
+				isJoinSumitting = false;
 				alertOpen("알림 ", "이름이 입력되지 않았습니다.", true, false, null, null);
 				return;
 			}
 
 			if (password.length < 1) {
+				isJoinSumitting = false;
 				$("#password").focus();
 				alertOpen("알림 ", "비밀번호가 입력되지 않았습니다.", true, false, null, null);
 				return;
 			}
 
 			if (passwordConfirm.length < 1) {
+				isJoinSumitting = false;
 				$("#passwordConfirm").focus();
 				alertOpen("알림 ", "비밀번호 확인이 입력되지 않았습니다", true, false, null, null);
 				return;
 			}
 
 			if (email.length < 1) {
+				isJoinSumitting = false;
 				$("#email").focus();
 				alertOpen("알림 ", "이메일이 입력되지 않았습니다", true, false, null, null);
 				return;
@@ -275,8 +275,8 @@
 
 			var passReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,12}$/;
 			if (!passReg.test(password)) {
-				alertOpen("알림 ", "비밀번호는 영문자로 시작하는 8 ~12자 영문자 또는 숫자이어야 합니다.",
-						true, false, null, null);
+				isJoinSumitting = false;
+				alertOpen("알림 ", "비밀번호는 영문자로 시작하는 8 ~12자 영문자 또는 숫자이어야 합니다.", true, false, null, null);
 				return;
 			}
 
@@ -286,34 +286,37 @@
 				} */
 
 			if (password != passwordConfirm) {
-				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false,
-						null, null);
+				isJoinSumitting = false;
+				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false, null, null);
 				return;
 			}
 
 			var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 			if (email.match(regExp) == null) {
+				isJoinSumitting = false;
 				alertOpen("알림 ", "이메일 형식이 옳바르지 않습니다", true, false, null, null);
 				return;
 			}
 
 			var joinFormData = $("#joinForm").serializeObject();
 			$.extend(joinData, joinFormData);
-
+			$("#progress_loading2").show();
 			$.ajax({
 				type : "POST",
 				url : "/m/member/newJoin.do",
 				data : joinData,
 				success : function(result) {
 					isJoinSumitting = false;
-					$("#progress_loading").hide();
+					$("#progress_loading2").hide();
 					if (result && typeof result != "undefined") {
-						$("#progress_loading").hide();
+						$("#progress_loading2").hide();
 						if (result.result.code == 0) {
-							movePage('/m/member/newJoinOk.do')
+							movePageReplace('/m/member/newJoinOk.do')
 						} else {
-							if (result.result.code = 10) {
-								alertOpen("알림", result.result.msg, true, false, function(){movePage('/m/member/newJoinProcess.do')}, null);
+							if (result.result.code == 10 || result.result.code == 17) {
+								alertOpen("알림", result.result.msg, true, false, function(){movePageReplace('/m/member/newJoinProcess.do')}, null);
+							}else if (result.result.code == 11) {
+								alertOpen("알림", result.result.msg, true, false, null, null);
 							}else {
 								alertOpen("알림", result.result.msg, true, false, null, null);
 							}
@@ -323,10 +326,9 @@
 					}
 				},
 				error : function(request, status, error) {
-					$("#progress_loading").hide();
+					$("#progress_loading2").hide();
 					isJoinSumitting = false;
-					alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false,
-							null, null);
+					alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
 				},
 				dataType : 'json'
 			});
@@ -350,6 +352,8 @@
 			$(".r_login").height(height);
 			$slides.css("right", "-100%");
 			$slides.eq(0).css("right", "0px");
+			$('#phoneNumber').val("");
+			$('#phoneAuthNumber').val("");
 		});
 	</script>
 </head>
@@ -441,7 +445,7 @@
 				<!-- <p>추천인 입력(선택)</p> -->
 				<span>추천인은 선택입력사항이며, 추천인 전화번호를 입력한 후 추천인 확인 버튼을 눌러주세요 ( - 없이 입력)</span>
 				<div class="r_id_input">
-					<input type="text" name="recommPhone"  id="recommPhone"  placeholder="추천인 전화번호 입력  (- 제외)"  style = "padding-left:13px;">
+					<input type="number" name="recommPhone"  id="recommPhone"  placeholder="추천인 전화번호 입력  (- 제외)"  style = "padding-left:13px;">
 					<button type = "button" onclick="checkRecommender();return false">추천인확인</button>
 				</div>
 			</div>
@@ -449,6 +453,7 @@
 			<button  type = "button" onclick = "joinSumit();return false;">가입하기</button>
 		</div>
 	</div>
+	<div id = "progress_loading2" style = "display:none;color : #aaa;font-size : 30px;top:50%"> <i class="fas fa-circle-notch fa-spin"></i> </div>
 	<script type="text/javascript">
 		var current = 0;
 		var $slides = $(".join_slide");
