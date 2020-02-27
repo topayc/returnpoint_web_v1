@@ -94,6 +94,7 @@
 			var phoneNumber = $('#phoneNumber').val().trim();
 			if (phoneNumber.indexOf("-")  != -1) {
 				phoneNumber = phoneNumber.replace(/-/gi, "");
+				$('#phoneNumber').val(phoneNumber)
 			}
 			
 			if (phoneNumber.length < 1) {
@@ -119,7 +120,8 @@
 	            	   	 if (result.result.code  == 0) {
 	            	   		/*  joinData.countryPhoneNumber = countryPhoneNumber; */
 		            	   	 joinData.phoneNumber = phoneNumber ;
-		            	   	 alertOpen("확인", result.result.msg, true, false, function(){startTimer(180, "timer") }, null );
+		            	   	 startTimer(180, "timer")
+		            	   	 alertOpen("확인", result.result.msg, true, false, null, null );
 	            	   		;
 	            		 }else {
 	            			 $("#sendPhoneAuthSms").attr("disabled",false);
@@ -142,10 +144,10 @@
 
 		var isAuthRequesting = false;
 		function requestPhoneNumberAuth() {
-			joinData.phoneNumber = "01088227467";
+		/* 	joinData.phoneNumber = "01088227467";
 			$("#memberPhone").val("01088227467");
 			moveSlide(1);
-			return;
+			return; */
 
 			if (isAuthRequesting == true) return;
 			isAuthRequesting = true;
@@ -174,7 +176,7 @@
 							joinData.phoneAuthNumber = phoneAuthNumber;
 							AuthTimer.fnStop();
 							$("#memberPhone").val(joinData.phoneNumber);
-							moveSlide(1);
+							alertOpen("알림", result.result.msg, true, false, function(){moveSlide(1)}, null);
 						} else {
 							alertOpen("알림", result.result.msg, true, false, null, null);
 							$("#requestPhoneNumberAuth") .attr("disabled", false);
@@ -204,8 +206,7 @@
 			}
 
 			if (memberPhone == recommPhone) {
-				alertOpen("알림 ", "회원님 자신을 추천인으로 등록할 수 없습니다.", true, false,
-						null, null);
+				alertOpen("알림 ", "회원님 자신을 추천인으로 등록할 수 없습니다.", true, false, null, null);
 				return;
 			}
 
@@ -310,7 +311,7 @@
 					if (result && typeof result != "undefined") {
 						$("#progress_loading").hide();
 						if (result.result.code == 0) {
-							movePage('/m/member/newJoinOk.do')
+							movePageReplace('/m/member/newJoinOk.do')
 						} else {
 							if (result.result.code == 10) {
 								alertOpen("알림", result.result.msg, true, false, function(){movePage('/m/member/newJoinProcess.do')}, null);

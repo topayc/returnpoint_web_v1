@@ -58,8 +58,12 @@ function numberWithComma(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function movePage(url){
+function movePage(url, type){
 	window.location.href = url;
+}
+
+function movePageReplace(url){
+	window.location.replace(url);
 }
 
 function changeLang(value){
