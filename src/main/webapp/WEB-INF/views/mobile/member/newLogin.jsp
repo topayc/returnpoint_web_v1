@@ -44,8 +44,8 @@
             </div>
          </div>
          <div class="input_box">
-            <input type="text" name="전화번호" placeholder="전화번호"> <input
-               type="text" name="비밀번호" placeholder="비밀번호">
+            <input type="text" name="전화번호" placeholder="전화번호">
+             <input type="text" name="비밀번호" placeholder="비밀번호">
          </div>
          <button>로그인</button>
          <input type="checkbox" id="cb"><label for="cb">아이디 저장</label>

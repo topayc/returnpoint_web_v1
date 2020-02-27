@@ -371,6 +371,29 @@
 	  </div> 
 	</div>
 	<div class="r_login">
+		<div class="r_login_page8 join_slide">
+			<div class="close_btn"><img src="/resources/images/close_btn.png"></div>
+			<h1>R POINT</h1>
+			<h3>어서오세요</h3>
+			<h3>약관동의가 필요합니다.</h3>
+			<p><input type="checkbox" id="check_btn"><label for="check_btn"><span>전체동의</span></label></p>
+			<ul>
+				<li>
+					<div class="r_text">R POINT 이용약관 동의<input type="checkbox" id="check_btn"><label for="check_btn"></label></div>
+				</li>
+				<li>
+					<div class="r_text">전자금융거래 이용약관 동의<input type="checkbox" id="check_btn"><label for="check_btn"></label></div>
+				</li>
+				<li>
+					<div class="r_text">개인정보 수집이용 동의<input type="checkbox" id="check_btn"><label for="check_btn"></label></div>
+				</li>
+				<li>
+					<div class="r_text">마케팅 정보 매일 SMS 수신동의 (선택)<input type="checkbox" id="check_btn"><label for="check_btn"></label></div>
+				</li>
+				<li>만 14세 이상 고객만 가입 가능합니다.<span>내용보기</span></li>
+				<li><p>R POINT은 14세 미만 아동의 회원가입을 제한하고 있습니다.</p></li>
+			</ul>
+		</div>
 		<div class="r_login_page3 join_slide">
 			<h3>모바일 인증</h3>
 			<p>
@@ -429,7 +452,7 @@
 	<script type="text/javascript">
 		var current = 0;
 		var $slides = $(".join_slide");
-		var total = 2;
+		var total = 3;
 		
 		function setSlide() {
 			if (current + 1 >= total)
