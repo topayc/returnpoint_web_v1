@@ -8,8 +8,8 @@ import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 public class SmsManager {
-	public static final String api_key = "NCSV6EQBWICV7NGG";
-	public static final  String api_secret = "U48NJOKTDPZCSMOAX8U9RAQUVQJ0ZUAU";
+	public static final String api_key = "NCSWCTFSFRFIUNA1";
+	public static final  String api_secret = "NPLHW7XUCUWJRL8C6NHDII0M4FTWSKCZ";
 	
 	private JSONObject result = null;
 	
@@ -17,7 +17,7 @@ public class SmsManager {
 		Message coolsms = new Message(api_key, api_secret);
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("to", phoneNumber);
-	    params.put("from", "01088227467");
+	    params.put("from", "025855993");
 	    params.put("type", "SMS");
 	    params.put("text", message);
 	    params.put("app_version", "rpoint 25"); // application name and version

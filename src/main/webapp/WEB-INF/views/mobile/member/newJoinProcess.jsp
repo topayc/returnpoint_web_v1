@@ -19,32 +19,29 @@
 	<script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 	<link rel="stylesheet" href="/resources/css/m_common.css">
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 	<script>
+		$.fn.serializeObject = function () {
+		    "use strict";
+		    var result = {};
+		    var extend = function (i, element) {
+		        var node = result[element.name];
+		        if ('undefined' !== typeof node && node !== null) {
+		           if ($.isArray(node)) {
+		               node.push(element.value);
+		           } else {
+		               result[element.name] = [node, element.value];
+		           }
+		        } else {
+		            result[element.name] = element.value;
+		        }
+		    };
+		 
+		    $.each(this.serializeArray(), extend);
+		    return result;
+		};
 		
-	$.fn.serializeObject = function () {
-	    "use strict";
-	    var result = {};
-	    var extend = function (i, element) {
-	        var node = result[element.name];
-	        if ('undefined' !== typeof node && node !== null) {
-	           if ($.isArray(node)) {
-	               node.push(element.value);
-	           } else {
-	               result[element.name] = [node, element.value];
-	           }
-	        } else {
-	            result[element.name] = element.value;
-	        }
-	    };
-	 
-	    $.each(this.serializeArray(), extend);
-	    return result;
-	};
-	
-	var joinData = {
-				
-		}
+		var joinData = {}
 		
 		var height = window.screen.height - 90;
 		var width = window.screen.width
@@ -86,19 +83,27 @@
 			}
 		}
 		
+		var isSendingSms = false;
+		
 		function sendPhoneAuthSms(){
-		/* 	var countryPhoneNumber = $('#countryPhoneNumber').val().trim(); */
+			if (isSendingSms == true){
+				return;
+			} 
+			isSendingSms = true;
+			/* 	var countryPhoneNumber = $('#countryPhoneNumber').val().trim(); */
 			var phoneNumber = $('#phoneNumber').val().trim();
 			if (phoneNumber.indexOf("-")  != -1) {
 				phoneNumber = phoneNumber.replace(/-/gi, "");
 			}
 			
 			if (phoneNumber.length < 1) {
-				 alertOpen("알림", "전화번호를 입력해주세요", true, false, null, null);
-				 return;
+				alertOpen("알림", "전화번호를 입력해주세요", true, false, null, null);
+				isSendingSms = false;
+				return;
 			}
 			if (!$.isNumeric(phoneNumber)) {
 				alertOpen("확인", "전화번호는 숫자만 입력가능합니다", true, false, null, null);
+				isSendingSms = false;
 				return false;
 			}
 			$("#sendPhoneAuthSms").attr("disabled",true);
@@ -107,6 +112,7 @@
 	               url: "/m/member/sendPhoneAuthSms.do",
 	               data: {phoneNumber : phoneNumber },
 	               success: function (result) {
+	            	   isSendingSms =	false;
 	            	   $("#progress_loading").hide();
 	            	   if (result && typeof result !="undefined") {
 	            	   	 $("#progress_loading").hide();
@@ -120,10 +126,12 @@
 	            		 }
 	               	 }else{
 	               		$("#sendPhoneAuthSms").attr("disabled",false);
-	               		 alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
+	               	 	isSendingSms =	false;
+	               		alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
 	               	 }
 	               },
 	               error : function(request, status, error){
+	            	   isSendingSms = false;
 	            	   $("#progress_loading").hide();
 	            	   $("#sendPhoneAuthSms").attr("disabled",false);
 	            	   alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
@@ -132,40 +140,46 @@
 	           });
 		}
 		
+		var isAuthRequesting = false;
 		function requestPhoneNumberAuth(){
-		/* 	$("#requestPhoneNumberAuth").attr("disabled",true);
+			if (isAuthRequesting ==true){
+				return;
+			}
+			isAuthRequesting = true;
+			$("#requestPhoneNumberAuth").attr("disabled",true);
 			var phoneAuthNumber = $("#phoneAuthNumber").val().trim();
 			if (phoneAuthNumber.length < 1) {
 				 alertOpen("확인", "인증번호가 입력되지 않았습니다.", true, false, function(){startTimer(180, "timer") }, null );
+				 isAuthRequesting = false;
 				 return;
-			} */
-			
-			moveSlide(1);
- 	 		$("#id").val("01088227467");
- 	 		return;
+			} 
  	 		
 			$.ajax({
 	           	type: "POST",
 	               url: "/m/member/requestPhoneNumberAuth.do",
 	               data: {phoneNumber : joinData.phoneNumber, phoneAuthNumber : phoneAuthNumber   },
 	               success: function (result) {
+	            	   isAuthRequesting = false;
 	            	   $("#progress_loading").hide();
+	            	  
 	            	   if (result && typeof result !="undefined") {
 	            	   	 if (result.result.code  == 0) {
-	            	   		 joinData.phoneAuthNumber = phoneAuthNumber;
+	            	   		joinData.phoneAuthNumber = phoneAuthNumber;
 	            	   		AuthTimer.fnStop();
 	            	   		moveSlide(1);
-	            	 		$("#memberPhone").val(phoneNumber)
-	            		 }else {
-	            		 	 alertOpen("알림", result.result.msg, true, false, null, null );
-	            			 $("#requestPhoneNumberAuth").attr("disabled",false);
-	            		 }
-	               	 }else{
-	               		$("#requestPhoneNumberAuth").attr("disabled",false);
-	               		 alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
-	               	 }
+	            	 		$("#id").val(joinData.phoneNumber);
+		            	  }else {
+		            		alertOpen("알림", result.result.msg, true, false, null, null );
+		            		$("#requestPhoneNumberAuth").attr("disabled",false);
+		            	  }
+		               	 }else{
+		               	 	isAuthRequesting = false;
+		               		$("#requestPhoneNumberAuth").attr("disabled",false);
+		               		 alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
+		               	 }
 	               },
 	               error : function(request, status, error){
+	            	   isAuthRequesting = false;
 	            	   $("#progress_loading").hide();
 	            	   $("#requestPhoneNumberAuth").attr("disabled",false);
 	            	   alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
@@ -174,25 +188,28 @@
 	           });
 		}
 		
-		function checkRecommender(){
+
+		function checkRecommender() {
 			var recommPhone = $("#recommPhone").val().trim().replace(/-/gi, "");
 			if (recommPhone.length < 1) {
 				alertOpen("알림 ", "추천인 전화번호를 입력해주세요", true, false, null, null);
 				return;
 			}
-			
 
-		$.ajax({
+			$.ajax({
 				type : "POST",
 				url : "/m/member/checkRecommender.do",
-				data : { recommPhone : recommPhone},
+				data : {
+					recommPhone : recommPhone
+				},
 				success : function(result) {
 					$("#progress_loading").hide();
 					if (result && typeof result != "undefined") {
 						alertOpen("알림 ", result.result.msg, true, false, null, null);
 					} else {
 						$("#requestPhoneNumberAuth").attr("disabled", false);
-						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
+						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false,
+								null, null);
 					}
 				},
 				error : function(request, status, error) {
@@ -205,7 +222,12 @@
 			});
 		}
 
+		var isJoinSumitting = false;
 		function joinSumit() {
+			if (isJoinSumitting == true) {
+				return false;
+			}
+			isJoinSumitting = true;
 			var name = $("#name").val().trim();
 			var password = $("#password").val().trim();
 			var passwordConfirm = $("#passwordConfirm").val().trim();
@@ -249,7 +271,8 @@
 				} */
 
 			if (password != passwordConfirm) {
-				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false, null, null);
+				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false,
+						null, null);
 				return;
 			}
 
@@ -259,34 +282,39 @@
 				return;
 			}
 
-			var joinFormData = $("#joinForm1").serializeObject();
-			var joinFormData2 = $("#joinForm2").serializeObject();
-			
-			$.extend(joinFormData, joinFormData2);
+			var joinFormData = $("#joinForm").serializeObject();
+
+			$.extend(joinData, joinFormData);
+			alert(JSON.stringify(joinFormData));
 			console.log(joinFormData);
-			
+			return;
 			$.ajax({
-	           	type: "POST",
-	               url: "/m/member/newJoin.do",
-	               data: joinFormData,
-	               success: function (result) {
-	            	   $("#progress_loading").hide();
-	            	   if (result && typeof result !="undefined") {
-	            	   	 $("#progress_loading").hide();
-	            	   	 if (result.result.code  == 0) {
-		            	   	 alertOpen("확인", result.result.msg, true, false, function(){startTimer(180, "timer") }, null );
-	            		 }else {
-	            		 }
-	               	 }else{
-	               		 alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
-	               	 }
-	               },
-	               error : function(request, status, error){
-	            	   $("#progress_loading").hide();
-	            	   alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
-	               },
-	               dataType: 'json'
-	           });
+				type : "POST",
+				url : "/m/member/newJoin.do",
+				data : joinData,
+				success : function(result) {
+					$("#progress_loading").hide();
+					if (result && typeof result != "undefined") {
+						$("#progress_loading").hide();
+						if (result.result.code == 0) {
+							alertOpen("확인", result.result.msg, true, false,
+									function() {
+										startTimer(180, "timer")
+									}, null);
+						} else {
+						}
+					} else {
+						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false,
+								null, null);
+					}
+				},
+				error : function(request, status, error) {
+					$("#progress_loading").hide();
+					alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false,
+							null, null);
+				},
+				dataType : 'json'
+			});
 		}
 
 		var AuthTimer;
@@ -329,7 +357,6 @@
 	</div>
 	<div class="r_login">
 		<div class="r_login_page3 join_slide">
-			<form id = "joinForm1">
 			<h3>모바일 인증</h3>
 			<p>
 				<b>R POINT</b> 앱은 모바일 번호를 아이디로 사용합니다.
@@ -341,17 +368,16 @@
 			</div>
 			<div class="phone_input2">
 				<input type="number" id="phoneAuthNumber" name="phoneAuthNumber" placeholder="인증번호 입력">
-				<button id  = "sendPhoneAuthSms" onclick = "sendPhoneAuthSms()">인증번호받기</button>
+				<button id  = "sendPhoneAuthSms" onclick = "sendPhoneAuthSms();return false;">인증번호받기</button>
 			</div>
 			</br>
-			</form>
 			<span>입력하신 번호로 인증번호 6자리가 발송됩니다 </br>아래 시간안에 입력하신 후 인증을 진행해주세요.</span>
 			<div class="time" id = "timer">&nbsp;</div>
 			<button type = "button" id = "requestPhoneNumberAuth"  onclick = "requestPhoneNumberAuth()">인증하기</button>
 		</div>
 		
 		<div class="r_login_page5 join_slide">
-			<form id = "joinForm2">
+			<form id = "joinForm">
 			<h3>기본 정보 입력</h3>
 			<div class="r_id">
 				<!-- <p>아이디</p> -->
