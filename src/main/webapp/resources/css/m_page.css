@@ -1259,7 +1259,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_join_ok .r_login_page7 .r_home{width:100%;border:1px solid #33cccc;font-size:15px;font-weight:500;text-align:center;padding:3% 0;border-radius:20px;background:#33cccc;color:#fff;}
 .r_join_ok .r_login_page7 .r_home:hover{border:1px solid #33cccc;background:#fff;color:#33cccc;}
 
-.r_login .r_login_page8{background:#33cccc;color:#fff;padding:5% 5% 80% 5%;}
+.r_login .r_login_page8{position: absolute;background:#33cccc;color:#fff;padding:5% 5% 80% 5%;width:100%;}
 .r_login .r_login_page8 .close_btn{overfolw:hidden;margin-bottom:10%;width:17px;height:17px;}
 .r_login .r_login_page8 .close_btn img{width:100%;height:100%;}
 .r_login .r_login_page8 h1{font-weight:bold;margin-bottom:5%;}
