@@ -177,7 +177,7 @@
 							joinData.phoneAuthNumber = phoneAuthNumber;
 							AuthTimer.fnStop();
 							$("#memberPhone").val(joinData.phoneNumber);
-							alertOpen("알림", result.result.msg, true, false, function(){moveSlide(1)}, null);
+							alertOpen("알림", result.result.msg, true, false, function(){moveSlide(2)}, null);
 						} else {
 							alertOpen("알림", result.result.msg, true, false, null, null);
 							$("#requestPhoneNumberAuth") .attr("disabled", false);
