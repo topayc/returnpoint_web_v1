@@ -388,18 +388,15 @@
 					<div class="r_text">R POINT 이용약관 동의<span>V</span></div>
 				</li>
 				<li>
-					<div class="r_text">전자금융거래 이용약관 동의<span>V</span></div>
-				</li>
-				<li>
 					<div class="r_text">개인정보 수집이용 동의<span>V</span></div>
 				</li>
 				<li>
 					<div class="r_text">마케팅 정보 매일 SMS 수신동의 (선택)<span>V</span></div>
 				</li>
-				<li>만 14세 이상 고객만 가입 가능합니다.<span>내용보기</span></li>
-				<li><p>R POINT은 14세 미만 아동의 회원가입을 제한하고 있습니다.</p></li>
+				<!-- <li>만 14세 이상 고객만 가입 가능합니다.<span>내용보기</span></li>
+				<li><p>R POINT은 14세 미만 아동의 회원가입을 제한하고 있습니다.</p></li> -->
 			</ul>
-			<div class="bottom_btn" onclick = "moveSlide(2)">다음으로<span><img src="/resources/images/bottom_btn.png"></span></div>
+			<div class="bottom_btn" onclick = "moveSlide(1)">다음으로<span><img src="/resources/images/bottom_btn.png"></span></div>
 		</div>
 		<div class="r_login_page3 join_slide">
 			<h3>모바일 인증</h3>
