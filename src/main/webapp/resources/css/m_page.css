@@ -1259,23 +1259,21 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_join_ok .r_login_page7 .r_home{width:100%;border:1px solid #33cccc;font-size:15px;font-weight:500;text-align:center;padding:3% 0;border-radius:20px;background:#33cccc;color:#fff;}
 .r_join_ok .r_login_page7 .r_home:hover{border:1px solid #33cccc;background:#fff;color:#33cccc;}
 
-.r_login .r_login_page8{background:#33cccc;color:#fff;padding:5% 3% 80% 3%;}
+.r_login .r_login_page8{background:#33cccc;color:#fff;padding:5% 5% 80% 5%;}
 .r_login .r_login_page8 .close_btn{overfolw:hidden;margin-bottom:10%;width:17px;height:17px;}
 .r_login .r_login_page8 .close_btn img{width:100%;height:100%;}
 .r_login .r_login_page8 h1{font-weight:bold;margin-bottom:5%;}
 .r_login .r_login_page8 h3{margin-bottom:2%;}
-.r_login .r_login_page8 > p{text-align:right;width:100%;margin-bottom:3%;}
+.r_login .r_login_page8 .check{font-size:16px;text-align:right;margin:5% 0;font-weight:bold;}
+.r_login .r_login_page8 .check span{border-radius:50%;border:1px solid #fff;padding:0.5% 2%;margin-left:10px;}
 .r_login .r_login_page8 ul{list-style:none;}
 .r_login .r_login_page8 ul li{overflow:hidden;padding:2% 0;width:100%;}
-.r_login .r_login_page8 ul li p{font-size:10px;}
+.r_login .r_login_page8 ul li p{font-size:12px;}
 .r_login .r_login_page8 > p span{margin-right:20px;}
-.r_login .r_login_page8 .r_text{float:left;width:100%;}
-.r_login .r_login_page8 input[type=checkbox] {display: none;}
-.r_login .r_login_page8 input[type=checkbox] + label{float:right;display: inline-block;cursor:pointer;position:relative;padding-left: 25px;font-size: 13px;}
-.r_login .r_login_page8 input[type=checkbox]+ label:before{content: "";content: "\2713";font-size: 15px;color:#fff;text-align: center;line-height: 17px;display: inline-block;width: 17px;height: 17px;position: absolute;right:0;border:1px solid #fff;background-color:#33cccc;border-radius:50%;}
-.r_login .r_login_page8 input[type=checkbox]:checked + label:before {content: "\2713";font-size: 15px;color:#33cccc;background:#fff;text-align: center;line-height: 17px;border:1px solid #fff;}
+.r_login .r_login_page8 .r_text{float:left;width:100%;text-decoration-line: underline;}
+.r_login .r_login_page8 .r_text span{border-radius:50%;border:1px solid #fff;padding:0.5% 2%;margin-left:10px;float:right;text-decoration-line:none;}
+.r_login .r_login_page8 ul li span{text-decoration-line: underline;}
 
-.r_login .r_login_page8 .r_text input[type=checkbox] {display: none;}
-.r_login .r_login_page8 .r_text input[type=checkbox] + label{float:right;display: inline-block;cursor:pointer;position:relative;padding-left: 25px;font-size: 13px;}
-.r_login .r_login_page8 .r_text input[type=checkbox]+ label:before{content: "";content: "\2713";font-size: 15px;color:#fff;text-align: center;line-height: 17px;display: inline-block;width: 17px;height: 17px;position: absolute;right:0;border:1px solid #33cccc;background-color:#33cccc;border-radius:50%;}
-.r_login .r_login_page8 .r_text input[type=checkbox]:checked + label:before {content: "\2713";font-size: 15px;color:#33cccc;background:#fff;text-align: center;line-height: 17px;border:1px solid #fff;}
+.r_login .r_login_page8 .bottom_btn{width:36%;position:fixed;bottom:20px;right:30px;font-size:25px;color:rgba(255,255,255,0.5);}
+.r_login .r_login_page8 .bottom_btn span{background:rgba(255,255,255,0.5);border-radius:30px;float:right;text-align:center;padding:0 2% 1.5% 2.4%;}
+
