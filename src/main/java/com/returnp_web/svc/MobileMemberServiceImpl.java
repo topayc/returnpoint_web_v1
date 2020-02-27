@@ -1848,8 +1848,6 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		try {
 			int count = 0;
 			String key = CodeGenerator.genPhoneAuthNumber();
-			//System.out.println(rPap.getStr("phoneNumber"));
-			//System.out.println(key);
 		
 			JSONObject smsResult = SmsManager.sendSms(rPap.getStr("phoneNumber"), String.format("[R.POINT] 인증번호 %s 를 입력하세요",key));
 			String json;
@@ -2027,7 +2025,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			String json = Util.printResult(2, String.format("서버 에러 "), null);
+			String json = Util.printResult(11, String.format("서버 에러 "), null);
 			rmap.put("json", json);
 			return true;
 		}

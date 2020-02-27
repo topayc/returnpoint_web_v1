@@ -312,8 +312,10 @@
 						if (result.result.code == 0) {
 							movePage('/m/member/newJoinOk.do')
 						} else {
-							if (result.result.code = 10) {
+							if (result.result.code == 10) {
 								alertOpen("알림", result.result.msg, true, false, function(){movePage('/m/member/newJoinProcess.do')}, null);
+							}else if (result.result.code == 11) {
+								alertOpen("알림", result.result.msg, true, false, null, null);
 							}else {
 								alertOpen("알림", result.result.msg, true, false, null, null);
 							}
