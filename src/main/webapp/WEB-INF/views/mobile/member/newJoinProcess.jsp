@@ -139,60 +139,73 @@
 	               dataType: 'json'
 	           });
 		}
-		
+
 		var isAuthRequesting = false;
-		function requestPhoneNumberAuth(){
-			if (isAuthRequesting ==true){
-				return;
-			}
+		function requestPhoneNumberAuth() {
+			joinData.phoneNumber = "01088227467";
+			$("#memberPhone").val("01088227467");
+			moveSlide(1);
+			return;
+
+			if (isAuthRequesting == true) return;
 			isAuthRequesting = true;
-			$("#requestPhoneNumberAuth").attr("disabled",true);
+
+			$("#requestPhoneNumberAuth").attr("disabled", true);
 			var phoneAuthNumber = $("#phoneAuthNumber").val().trim();
 			if (phoneAuthNumber.length < 1) {
-				 alertOpen("확인", "인증번호가 입력되지 않았습니다.", true, false, function(){startTimer(180, "timer") }, null );
-				 isAuthRequesting = false;
-				 return;
-			} 
- 	 		
+				alertOpen("확인", "인증번호가 입력되지 않았습니다.", true, false, function() { startTimer(180, "timer") }, null);
+				isAuthRequesting = false;
+				return;
+			}
+
 			$.ajax({
-	           	type: "POST",
-	               url: "/m/member/requestPhoneNumberAuth.do",
-	               data: {phoneNumber : joinData.phoneNumber, phoneAuthNumber : phoneAuthNumber   },
-	               success: function (result) {
-	            	   isAuthRequesting = false;
-	            	   $("#progress_loading").hide();
-	            	  
-	            	   if (result && typeof result !="undefined") {
-	            	   	 if (result.result.code  == 0) {
-	            	   		joinData.phoneAuthNumber = phoneAuthNumber;
-	            	   		AuthTimer.fnStop();
-	            	   		moveSlide(1);
-	            	 		$("#id").val(joinData.phoneNumber);
-		            	  }else {
-		            		alertOpen("알림", result.result.msg, true, false, null, null );
-		            		$("#requestPhoneNumberAuth").attr("disabled",false);
-		            	  }
-		               	 }else{
-		               	 	isAuthRequesting = false;
-		               		$("#requestPhoneNumberAuth").attr("disabled",false);
-		               		 alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
-		               	 }
-	               },
-	               error : function(request, status, error){
-	            	   isAuthRequesting = false;
-	            	   $("#progress_loading").hide();
-	            	   $("#requestPhoneNumberAuth").attr("disabled",false);
-	            	   alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
-	               },
-	               dataType: 'json'
-	           });
+				type : "POST",
+				url : "/m/member/requestPhoneNumberAuth.do",
+				data : {
+					phoneNumber : joinData.phoneNumber,
+					phoneAuthNumber : phoneAuthNumber
+				},
+				success : function(result) {
+					isAuthRequesting = false;
+					$("#progress_loading").hide();
+
+					if (result && typeof result != "undefined") {
+						if (result.result.code == 0) {
+							joinData.phoneAuthNumber = phoneAuthNumber;
+							AuthTimer.fnStop();
+							$("#memberPhone").val(joinData.phoneNumber);
+							moveSlide(1);
+						} else {
+							alertOpen("알림", result.result.msg, true, false, null, null);
+							$("#requestPhoneNumberAuth") .attr("disabled", false);
+						}
+					} else {
+						isAuthRequesting = false;
+						$("#requestPhoneNumberAuth").attr("disabled", false);
+						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
+					}
+				},
+				error : function(request, status, error) {
+					isAuthRequesting = false;
+					$("#progress_loading").hide();
+					$("#requestPhoneNumberAuth").attr("disabled", false);
+					alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
+				},
+				dataType : 'json'
+			});
 		}
-		
 
 		function checkRecommender() {
+			var memberPhone = $("#memberPhone").val().trim().replace(/-/gi, "");
 			var recommPhone = $("#recommPhone").val().trim().replace(/-/gi, "");
 			if (recommPhone.length < 1) {
 				alertOpen("알림 ", "추천인 전화번호를 입력해주세요", true, false, null, null);
+				return;
+			}
+
+			if (memberPhone == recommPhone) {
+				alertOpen("알림 ", "회원님 자신을 추천인으로 등록할 수 없습니다.", true, false,
+						null, null);
 				return;
 			}
 
@@ -205,7 +218,8 @@
 				success : function(result) {
 					$("#progress_loading").hide();
 					if (result && typeof result != "undefined") {
-						alertOpen("알림 ", result.result.msg, true, false, null, null);
+						alertOpen("알림 ", result.result.msg, true, false, null,
+								null);
 					} else {
 						$("#requestPhoneNumberAuth").attr("disabled", false);
 						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false,
@@ -223,16 +237,16 @@
 		}
 
 		var isJoinSumitting = false;
-		
+
 		function joinSumit() {
 			if (isJoinSumitting == true) {
 				return false;
 			}
 			isJoinSumitting = true;
-			var name = $("#name").val().trim();
-			var password = $("#password").val().trim();
-			var passwordConfirm = $("#passwordConfirm").val().trim();
-			var email = $("#email").val().trim();
+			var name = $("#memberName").val().trim();
+			var password = $("#memberPassword").val().trim();
+			var passwordConfirm = $("#memberPasswordConfirm").val().trim();
+			var email = $("#memberEmail").val().trim();
 			var recommPhone = $("#recommPhone").val().trim().replace(/-/gi, "");
 
 			if (name.length < 1) {
@@ -261,7 +275,8 @@
 
 			var passReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,12}$/;
 			if (!passReg.test(password)) {
-				alertOpen("알림 ", "비밀번호는 영문자로 시작하는 8 ~12자 영문자 또는 숫자이어야 합니다.", true, false, null, null);
+				alertOpen("알림 ", "비밀번호는 영문자로 시작하는 8 ~12자 영문자 또는 숫자이어야 합니다.",
+						true, false, null, null);
 				return;
 			}
 
@@ -271,7 +286,8 @@
 				} */
 
 			if (password != passwordConfirm) {
-				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false, null, null);
+				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false,
+						null, null);
 				return;
 			}
 
@@ -282,33 +298,33 @@
 			}
 
 			var joinFormData = $("#joinForm").serializeObject();
-
 			$.extend(joinData, joinFormData);
-			alert(JSON.stringify(joinData));
-			console.log(joinFormData);
-			return;
+
 			$.ajax({
 				type : "POST",
 				url : "/m/member/newJoin.do",
 				data : joinData,
 				success : function(result) {
+					isJoinSumitting = false;
 					$("#progress_loading").hide();
 					if (result && typeof result != "undefined") {
 						$("#progress_loading").hide();
 						if (result.result.code == 0) {
-							alertOpen("확인", result.result.msg, true, false,
-									function() {
-										startTimer(180, "timer")
-									}, null);
+							movePage('/m/member/newJoinOk.do')
 						} else {
+							if (result.result.code = 10) {
+								alertOpen("알림", result.result.msg, true, false, function(){movePage('/m/member/newJoinProcess.do')}, null);
+							}else {
+								alertOpen("알림", result.result.msg, true, false, null, null);
+							}
 						}
 					} else {
-						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false,
-								null, null);
+						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
 					}
 				},
 				error : function(request, status, error) {
 					$("#progress_loading").hide();
+					isJoinSumitting = false;
 					alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false,
 							null, null);
 				},
@@ -381,22 +397,22 @@
 			<div class="r_id">
 				<!-- <p>아이디</p> -->
 				<span>아이디는 인증하신 핸드폰 번호가 설정됩니다.</span> 
-				<input type="text" name="id"  id="id" readonly >
+				<input type="text" name="memberPhone"  id="memberPhone" readonly >
 			</div>
 			<div class="r_id">
-				<input type="text" name="name"  id="name" placeholder="이름 입력" value = "">
+				<input type="text" name="memberName"  id="memberName" placeholder="이름 입력" value = "">
 			</div>
 			<div class="r_id">
 				<!-- <p>비밀번호</p> -->
-				<input type="password" name="password"  id="password" placeholder="비밀번호 입력  - 영문+숫자 8 ~ 12 자리로." value = "">
+				<input type="password" name="memberPassword"  id="memberPassword" placeholder="비밀번호 입력  - 영문+숫자 8 ~ 12 자리로." value = "">
 			</div>
 			<div class="r_id">
 				<!-- <p>비밀번호 확인</p> -->
-				<input type="password" name="passwordConfirm" id="passwordConfirm"  placeholder="비밀번호 재입력" value = "">
+				<input type="password" name="memberPasswordConfirm" id="memberPasswordConfirm"  placeholder="비밀번호 재입력" value = "">
 			</div>
 			<div class="r_id">
 				<!-- <p>이메일 입력</p> -->
-				<input type="text" name="email"  id="email"  placeholder="이메일 입력">
+				<input type="text" name="memberEmail"  id="memberEmail"  placeholder="이메일 입력">
 			</div>
 			<div class="r_id">
 				<!-- <p>추천인 입력(선택)</p> -->

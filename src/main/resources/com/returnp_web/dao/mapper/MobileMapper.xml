@@ -147,7 +147,8 @@
 			createTime,
 			updateTime,
 			joinRoute,
-			country
+			country,
+			memberAuthType
 		) VALUES (
 			#{name},
 			#{email},
@@ -162,7 +163,8 @@
 			NOW(),
 			NOW(),
 			#{joinRoute},	
-			#{country}
+			#{country}.
+			#{memberAuthType}
 				
 		)
 	</insert> 

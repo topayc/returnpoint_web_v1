@@ -1926,60 +1926,103 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 	public boolean newJoin(RPMap p, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		RPMap dbparams = new RPMap();
+		RPMap extDbparams = new RPMap();
 		SessionManager sm = new SessionManager(request, response);
 		try {
 			
-			//System.out.println("회원가입 파리미터 dbparams::" + dbparams);
-			if (p.getStr("id").trim() == null || p.getStr("email").trim().equals("")) {
-				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
-				return false;
-			}
-
-			if (p.getStr("password").trim() == null || p.getStr("pwd").trim().equals("")) {
-				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
-				return false;
-			}
-
-			if (p.getStr("name").trim() == null || p.getStr("name").trim().equals("")) {
-				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
-				return false;
-			}
-
-			if (p.getStr("email").trim() == null || p.getStr("phone").trim().equals("")) {
-				rmap.put(Const.D_SCRIPT, Util.jsmsgLink("잘못된 경로입니다.", "/m/main/index.do?alertView=t&Message=1", "T"));
-				return false;
-			}
-			
 			String json = null;
-			String  phoneNumner  = p.getStr("phoneNumber");
-			String phoneAuthNumber = p.getStr("phoneAuthNumber");
+			//String phoneNumber  = p.getStr("phoneNumber");
+			//String phoneAuthNumber = p.getStr("phoneAuthNumber");
 
-			String memberId = p.getStr("id");
-			String memberName = p.getStr("name");
-			String memberPassword = p.getStr("password");
-			String memberEmail = p.getStr("email");
-			String recommenderPhone  = p.getStr("recommPhone");
-
+			String memberPhone = p.getStr("memberPhone").trim();
+			String memberName = p.getStr("memberName").trim();
+			String memberPassword = p.getStr("memberPassword").trim();
+			String memberEmail = p.getStr("memberEmail").trim();
+			String recommPhone  = p.getStr("recommPhone").trim();
+			
 			String sessionAuthKey = (String)request.getSession().getAttribute("PHONE_AUTH_NUMBER");
 			
-			/*추천인 정보 구하기*/
-			dbparams.put("memebrPhone", recommenderPhone);
-			HashMap<String, Object> recommenderMap  = this.mobileMainDao.selectMember(dbparams);
-			
-			if (!sessionAuthKey.equals(memberId)) {
+		/*	if (!sessionAuthKey.equals(phoneAuthNumber) || !phoneNumber.equals(memberPhone)) {
 				json = Util.printResult(1, "부적절한 회원 가입 요청입니다.", null);
+				return true;
+			}*/
+
+			/*전화번호 중복 등록 체크*/
+			dbparams.put("memberPhone", memberPhone);
+			HashMap<String, Object> memberMap  = this.mobileMainDao.selectMember(dbparams);
+			if (memberMap !=null) {
+				json = Util.printResult(10, "이미 회원으로 등록된 전화번호 입니다.", null);
+				rmap.put("json", json);
 				return true;
 			}
 			
-			dbparams.put("memberPhone", p.getStr("recommPhone"));
-			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
+			/*추천인 정보 구하기*/
 			dbparams.clear();
+			dbparams.put("memberPhone", p.getStr("recommPhone"));
+			HashMap<String, Object> recommenderMemberMap = this.mobileMainDao.selectMember(dbparams);
+
+			// 파라미터 정리
+			dbparams.clear();
+			dbparams.put("email", p.getStr("memberEmail").trim());
+			dbparams.put("memberAuthType", "2");
+			dbparams.put("country", null);
+			dbparams.put("pwd", Util.sha(memberPassword));
+			dbparams.put("name", memberName);
+			dbparams.put("phone", memberPhone);
+			//dbparams.put("terms", "on".equals(p.getStr("terms").trim()) ? "Y" : "N");
+			//dbparams.put("privacy", "on".equals(p.getStr("privacy").trim()) ? "Y" : "N");
+			//dbparams.put("spam", "on".equals(p.getStr("spam").trim()) ? "Y" : "N");
+			dbparams.put("joinRoute", "www.returnp.com");
+			dbparams.put("recommendNo", recommenderMemberMap != null ? recommenderMemberMap.get("memberBerNo") : null); // 
+			mobileMemberDao.insertJoinAct(dbparams);
 			
-			if (memberMap == null) {
-				json = Util.printResult(1, "해당 전화번호의 사용자가 없습니다.</br>확인후 다시 진행해주세요", null);
-			}else {
-				json = Util.printResult(0, String.format("해당 전화번호의 사용자는 %s 입니다.", memberMap.get("memberName")), null);
-			}
+			/* 회원가입후 memberNo갑슬 가져오기 위해 추가 */
+			extDbparams.put("memberPhone", memberPhone);
+			int memberNo = mobileMemberDao.selectMemberNo(dbparams);
+            dbparams.put("memberNo", memberNo);
+            
+            /* 기본 G-POINT 생성 */
+            dbparams.put("nodeNo", memberNo);
+            dbparams.put("nodeType", "1");
+            dbparams.put("nodeTypeName", "member");
+            mobileMemberDao.insertGreenAct(dbparams);
+            
+            /* 추천인 G-POINT 생성 */
+            dbparams.put("nodeNo", memberNo);
+            dbparams.put("nodeType", "2");
+            dbparams.put("nodeTypeName", "recommender");
+            mobileMemberDao.insertGreenAct(dbparams);
+            
+            /* 기본 R-PAY생성 */
+            mobileMemberDao.insertRedAct(dbparams);
+            
+            /*회원 가입 이메일 발송*/
+			/*
+			 * Cookie joinCookie = new Cookie("joinCookie","T"); joinCookie.setMaxAge(7);
+			 * joinCookie.setPath("/"); response.addCookie(joinCookie);
+			 */
+			Date today = new Date();
+			SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+			String mail_date = date.format(today);
+			String mail_name = memberName;
+			String mail_email = BASE64Util.encodeString(memberEmail);
+
+			String[] url = request.getRequestURL().toString().split(request.getRequestURI());
+			//String mail_sign = "<a href =" + url[0] + "/m/member/email_sign_act.do?memberEmail='" + mail_email + "' target ='_blank'>";
+			String mail_sign = "";
+
+			/* send email ->계정:gmail, 운영 반영시에 실제사용값으로 수정요청드립니다.(참고파일: root-context.xml) */
+			email.setSubject(memberName + "님 R.POINT 회원가입이 완료되었습니다.");
+			email.setReceiver(memberEmail);
+			email.setVeloTemplate("mail_emailconfirm.vm");
+			dbparams.put("mail_name", mail_name);
+			dbparams.put("mail_date", mail_date);
+			dbparams.put("mail_sign", mail_sign);
+			email.setEmailMap(dbparams);
+			email.setHtmlYn("Y");
+			emailSender.sendVelocityEmail(email);
+			
+			json = Util.printResult(0, "회원 가입 성공", null);
 			rmap.put("json", json);
 			return true;
 		} catch (Exception e) {

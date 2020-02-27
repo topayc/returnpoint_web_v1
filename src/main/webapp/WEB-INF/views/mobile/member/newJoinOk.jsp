@@ -41,7 +41,7 @@
             </div>
          </div>
          <h1>가입을 축하합니다.</h1>
-         <div class="r_home">R POINT 홈으로 가기</div>
+         <div class="r_home" onclick = "movePage('/m/main/index.do')">R POINT 홈으로 가기</div>
       </div>
    </div>
 </body>

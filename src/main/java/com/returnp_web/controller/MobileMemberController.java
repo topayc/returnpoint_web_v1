@@ -455,14 +455,6 @@ public class MobileMemberController extends MallBaseController{
 		return page(bret, map, rmap);
 	}
 
-	/* newLogin  */
-	@RequestMapping(value = "/member/newJoin.do", produces = "application/text; charset=utf8")
-	@ResponseBody
-	public String memberNewJoin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/member/newLogin");
-		boolean bret = mms.newJoin(Util.toRPap(p), rmap, request, response);
-		return page(bret, map, rmap);
-	}
 	
 	/*newJoinOk */
 	@RequestMapping("/member/newJoinOk")
@@ -472,7 +464,7 @@ public class MobileMemberController extends MallBaseController{
 		return page(bret, map, rmap);
 	}
 	
-	/*new Join */
+	/*newJoinProcess */
 	@RequestMapping("/member/newJoinProcess")
 	public String memberNewJoinProcess(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/member/newJoinProcess");
@@ -480,6 +472,14 @@ public class MobileMemberController extends MallBaseController{
 		return page(bret, map, rmap);
 	}
 	
+	/* newJoin  */
+	@RequestMapping(value = "/member/newJoin.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String memberNewJoin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/member/newLogin");
+		boolean bret = mms.newJoin(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}
 
 	/*모바일 인증 번호 발송 요청*/
 	@RequestMapping(value = "/member/sendPhoneAuthSms.do", produces = "application/text; charset=utf8")
