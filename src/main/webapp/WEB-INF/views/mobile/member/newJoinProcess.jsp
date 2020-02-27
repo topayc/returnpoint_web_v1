@@ -223,6 +223,7 @@
 		}
 
 		var isJoinSumitting = false;
+		
 		function joinSumit() {
 			if (isJoinSumitting == true) {
 				return false;
@@ -260,8 +261,7 @@
 
 			var passReg = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,12}$/;
 			if (!passReg.test(password)) {
-				alertOpen("알림 ", "비밀번호는 영문자로 시작하는 8 ~12자 영문자 또는 숫자이어야 합니다.",
-						true, false, null, null);
+				alertOpen("알림 ", "비밀번호는 영문자로 시작하는 8 ~12자 영문자 또는 숫자이어야 합니다.", true, false, null, null);
 				return;
 			}
 
@@ -271,8 +271,7 @@
 				} */
 
 			if (password != passwordConfirm) {
-				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false,
-						null, null);
+				alertOpen("알림 ", "입력하신 비밀번호와 비밀번호 확인이 다릅니다.", true, false, null, null);
 				return;
 			}
 
@@ -285,7 +284,7 @@
 			var joinFormData = $("#joinForm").serializeObject();
 
 			$.extend(joinData, joinFormData);
-			alert(JSON.stringify(joinFormData));
+			alert(JSON.stringify(joinData));
 			console.log(joinFormData);
 			return;
 			$.ajax({
