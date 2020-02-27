@@ -115,6 +115,7 @@
 	               data: {phoneNumber : phoneNumber },
 	               success: function (result) {
 	            	   isSendingSms =	false;
+		               alertOpen("확인", result.result.msg, true, false, null, null );
 	            	   $("#progress_loading2").hide();
 	            	   if (result && typeof result !="undefined") {
 	            	   	 $("#progress_loading2").hide();
@@ -122,7 +123,6 @@
 	            	   		/*  joinData.countryPhoneNumber = countryPhoneNumber; */
 		            	   	 joinData.phoneNumber = phoneNumber ;
 		            	   	 startTimer(180, "timer")
-		            	   	 alertOpen("확인", result.result.msg, true, false, null, null );
 	            	   		;
 	            		 }else {
 	            			 $("#sendPhoneAuthSms").attr("disabled",false);
@@ -328,8 +328,7 @@
 				error : function(request, status, error) {
 					$("#progress_loading2").hide();
 					isJoinSumitting = false;
-					alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false,
-							null, null);
+					alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
 				},
 				dataType : 'json'
 			});
@@ -353,8 +352,8 @@
 			$(".r_login").height(height);
 			$slides.css("right", "-100%");
 			$slides.eq(0).css("right", "0px");
-			 $('#phoneNumber').val("");
-			 $('#phoneAuthNumber').val("");
+			$('#phoneNumber').val("");
+			$('#phoneAuthNumber').val("");
 		});
 	</script>
 </head>
@@ -423,7 +422,7 @@
 				<!-- <p>추천인 입력(선택)</p> -->
 				<span>추천인은 선택입력사항이며, 추천인 전화번호를 입력한 후 추천인 확인 버튼을 눌러주세요 ( - 없이 입력)</span>
 				<div class="r_id_input">
-					<input type="text" name="recommPhone"  id="recommPhone"  placeholder="추천인 전화번호 입력  (- 제외)"  style = "padding-left:13px;">
+					<input type="number" name="recommPhone"  id="recommPhone"  placeholder="추천인 전화번호 입력  (- 제외)"  style = "padding-left:13px;">
 					<button type = "button" onclick="checkRecommender();return false">추천인확인</button>
 				</div>
 			</div>
