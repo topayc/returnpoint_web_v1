@@ -41,6 +41,7 @@ import org.springframework.web.util.WebUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.zxing.common.StringUtils;
 import com.returnp_web.controller.dto.CountryPhoneNumber;
 import com.returnp_web.dao.MobileMainDao;
 import com.returnp_web.dao.MobileMemberDao;
@@ -1955,9 +1956,12 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			}
 			
 			/*추천인 정보 구하기*/
-			dbparams.clear();
-			dbparams.put("memberPhone", recommPhone);
-			HashMap<String, Object> recommenderMemberMap = this.mobileMainDao.selectMember(dbparams);
+			HashMap<String, Object> recommenderMemberMap = null;
+			if (recommPhone != null && !"".equals(recommPhone)) {
+				dbparams.clear();
+				dbparams.put("memberPhone", recommPhone);
+				recommenderMemberMap = this.mobileMainDao.selectMember(dbparams);
+			}
 
 			// 파라미터 정리
 			dbparams.clear();
