@@ -96,7 +96,7 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 								return true;
 							}
 						} else {
-							response.sendRedirect(request.getContextPath() + "/m/member/login.do");
+							response.sendRedirect(request.getContextPath() + "/m/member/newLogin.do");
 							return false;
 						}
 					} else {

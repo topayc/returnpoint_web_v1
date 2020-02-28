@@ -899,6 +899,7 @@
 		FROM member
 		WHERE 1 = 1
 		<if test="memberNo != null"> AND memberNo = #{memberNo} </if> 
+		<if test="memberName != null"> AND memberPhone = #{memberName} </if> 
 		<if test="memberPhone != null"> AND memberPhone = #{memberPhone} </if> 
 		<if test="memberEmail != null"> AND memberEmail = #{memberEmail} </if> 
 	</select>

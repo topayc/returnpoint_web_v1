@@ -2048,6 +2048,45 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			return true;
 		}
 	}
+
+	@Override
+	public boolean sendPasswordAuthSms(RPMap rPap, RPMap rmap, HttpServletRequest request,
+			HttpServletResponse response) {
+		RPMap dbparams = new RPMap();
+		try {
+			String json;
+			
+			/*이름 , 핸드폰으로 해당 회원이 존재하는지 검사*/
+			dbparams.put("memberName", rPap.getStr("memberName"));
+			dbparams.put("memberPhone", rPap.getStr("memberPhone"));
+			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
+			if (memberMap == null) {
+				json = Util.printResult(0, String.format("입력하신 정보의 해당 회원이 존재하지 않습니다.</br> 확인후 다시 시도해주세요"), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
+			int count = 0;
+			String key = CodeGenerator.genPhoneAuthNumber();
+			JSONObject smsResult = SmsManager.sendSms(rPap.getStr("phoneNumber").trim(), String.format("[R.POINT] 인증번호 %s 를 입력하세요",key));
+			
+			if ((long)smsResult.get("error_count") == 0) {
+				request.getSession().setAttribute("PASS_SETTING_PHONE_AUTH_NUMBER", key);
+				request.getSession().setAttribute("PASS_SETTINGPHONE_NUMBER", rPap.getStr("memberPhone"));
+				json = Util.printResult(0, String.format("R.POINT 인증번호 문자를 발송하였습니다.</br>해당 시간안에 인증번호를 입력한 후 인증하기 버튼을 눌러주세요"), null);
+			}else {
+				json = Util.printResult(0, String.format("인증번호 발송에 실패했습니다.</br>다시 진행해주세요 "), null);
+			}
+			rmap.put("json", json);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			String json = Util.printResult(2, String.format("서버 에러 "), null);
+			rmap.put("json", json);
+			return true;
+
+		}
+	}
 	
 
 }

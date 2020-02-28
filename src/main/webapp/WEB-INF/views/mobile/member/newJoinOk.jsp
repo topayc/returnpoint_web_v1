@@ -13,7 +13,7 @@
    <script>
       var height  = window.screen.height - 90;
        var width = window.screen.width
-       if (isApp()) {
+     /*   if (isApp()) {
           getDeviceResolution(function(result){
             if (result) {
                 result = JSON.parse(result);
@@ -22,7 +22,11 @@
                }
             }
          }) 
-       }  
+       }   */
+       
+       $(document).ready(function(){
+    	   $(".r_join_ok").css("height" , height);
+       });
    </script>
 </head>
 

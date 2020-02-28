@@ -359,5 +359,7 @@ public interface MobileMemberService {
 
 	boolean newJoin(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean sendPasswordAuthSms(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 	
 }

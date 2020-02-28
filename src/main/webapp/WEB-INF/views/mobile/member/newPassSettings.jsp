@@ -436,52 +436,23 @@
 	  </div> 
 	</div>
 	<div class="r_login">
-		<div class="r_login_page8 join_slide">
-			<div class="close_btn"><!-- <img src="/resources/images/close_btn.png"> --></div>
-			<h1>R POINT</h1>
-			<h3>어서오세요</h3>
-			<h3>약관동의가 필요합니다.</h3>
-			<div class="check">전체동의<span id = "all_agree">V</span></div>
-			<ul>
-				<li>
-					<div class="r_text" >
-						<a  style = "color : #fff" href="../company/m_termsofuse.do"><spring:message code="label.joinDesc11" /></a>
-						<span class = "agree" id = "termsofuse">V</span>
-					</div>
-				</li>
-				<li>
-					<div class="r_text">
-						<a style = "color : #fff" href="../company/m_privacypolicy.do"><spring:message code="label.joinDesc12" /></a>
-						<span class = "agree" id = "privacypolicy">V</span>
-					</div>
-				</li>
-				<li>
-					<div class="r_text">
-						<spring:message code="label.joinDesc13" />
-						<span class = "agree"  id = "marketing">V</span>
-					</div>
-				</li>
-				<!-- <li>만 14세 이상 고객만 가입 가능합니다.<span>내용보기</span></li>
-				<li><p>R POINT은 14세 미만 아동의 회원가입을 제한하고 있습니다.</p></li> -->
-			</ul>
-			<div class="bottom_btn"><b id = "next">다음으로</b><span><img src="/resources/images/bottom_btn.png"></span></div>
-		</div>
 		<div class="r_login_page3 join_slide">
-			<h3>모바일 인증</h3>
-			<p>
-				<b>R POINT</b> 앱은 휴대폰 번호를 아이디로 사용합니다.
-			</p>
-			<p>아래의 인증 과정을 진행해 주시기 바랍니다.</p>
+			<h3>비밀번호 재설정</h3>
+			<p> <span>아래의 정보를 입력하신 후 인증번호 받기를 클릭하면 입력하신 번호로 인증번호 6자리가 발송됩니다.</span> </p>
+			</br>
+			<p> <span>아래 시간안에 인증번호를 입력하신 후 인증을 진행해주세요.</span> </p>
 			</br>
 			<div class="phone_input1">
-				<input type="number" id="phoneNumber"  name="phoneNumber" placeholder="휴대폰번호" style = "padding-left:15px;">
+				<input type="number" id="phoneNumber"  name="phoneNumber" placeholder="이름" style = "padding-left:15px;">
+			</div>
+			<div class="phone_input1">
+				<input type="number" id="phoneNumber"  name="phoneNumber" placeholder="휴대폰번호(숫자만 입력)" style = "padding-left:15px;">
 			</div>
 			<div class="phone_input2">
 				<input type="number" id="phoneAuthNumber" name="phoneAuthNumber" placeholder="인증번호 입력">
 				<button id  = "sendPhoneAuthSms" onclick = "sendPhoneAuthSms();return false;">인증번호받기</button>
 			</div>
-			</br>
-			<span>입력하신 번호로 인증번호 6자리가 발송됩니다 </br>아래 시간안에 입력하신 후 인증을 진행해주세요.</span>
+			<!-- <span>위의 정보를 입력하신 후 인증번호 받기를 클릭하면 입력하신 번호로 인증번호 6자리가 발송됩니다 </br>아래 시간안에 인증번호를 입력하신 후 인증을 진행해주세요.</span> -->
 			<div class="time" id = "timer">&nbsp;</div>
 			<button type = "button" id = "requestPhoneNumberAuth"  onclick = "requestPhoneNumberAuth()">인증하기</button>
 		</div>

@@ -1,4 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@page import="com.returnp_web.utils.SessionManager"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -16,7 +22,7 @@
    <script>
       var height  = window.screen.height - 90;
        var width = window.screen.width
-       if (isApp()) {
+   /*     if (isApp()) {
           getDeviceResolution(function(result){
             if (result) {
                 result = JSON.parse(result);
@@ -25,7 +31,11 @@
                }
             }
          }) 
-       }  
+       }  */
+       
+       $(document).ready(function(){
+    	   $(".r_join_ok").css("height" , height + "px");
+       })
    </script>
 </head>
 
@@ -48,12 +58,12 @@
              <input type="text" name="비밀번호" placeholder="비밀번호">
          </div>
          <button>로그인</button>
-         <input type="checkbox" id="cb"><label for="cb">아이디 저장</label>
+     <!--     <input type="checkbox" id="cb"><label for="cb">아이디 저장</label> -->
          <div class="sign_text">
             <ul>
-               <li>회원가입</li>
-               <li>아이디 비밀번호 찾기</li>
-               <li>추천인QR로 가입하기</li>
+               <li><a href="/m/member/newJoinProcess.do"><spring:message code="label.loginDesc05" /></a></li>
+               <li><a href="/m/member/newPassSettings.do">비밀번호 재설정</a></li>
+               <li><a onclick="startQRScan()"><spring:message code="label.recognize_the_promoter_qr" /></a></li>
             </ul>
          </div>
          <div class="facebook_btn">

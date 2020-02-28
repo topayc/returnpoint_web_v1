@@ -507,4 +507,22 @@ public class MobileMemberController extends MallBaseController{
 		boolean bret = mms.checkRecommender(Util.toRPap(p), rmap, request, response);
 		return rmap.getStr("json");
 	}
+	
+	/*비밀번호 재 설정*/
+	@RequestMapping("/member/newPassSettings.do")
+	public String memberPassSettings(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/member/newPassSettings");
+		//boolean bret = mms.prepareJoinProcess(Util.toRPap(p), rmap, request, response);
+		return page(true, map, rmap);
+	}
+	
+	/*비밀번호 재설정을 위한 인증및 인증 번호 발송*/
+	@RequestMapping(value = "/member/sendPasswordAuthSms.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String sendPasswordAuthSms(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.sendPasswordAuthSms(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}
+	
 }

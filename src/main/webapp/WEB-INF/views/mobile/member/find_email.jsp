@@ -109,27 +109,29 @@ function goMainPage() {
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-		<h4>Find email</h4>
+		<h4>내 정보</h4>
 	</header> 
 	<!-- content begin -->
 	<ul class="submenu">
-		<li class="active"><a href="/m/member/find_email.do"><spring:message code="label.findEmail" /></a></li>
-		<li><a href="/m/member/find_pw.do"><spring:message code="label.findEmailPassword" /></a></li>
+		<%-- <li class="active"><a href="/m/member/find_email.do"><spring:message code="label.findEmail" /></a></li> --%>
+		<li class="active"><a href="/m/member/find_pw.do"><spring:message code="label.findEmailPassword" /></a></li>
 	</ul>
 	<section>
 	<h4><spring:message code="label.findEmail" /></h4>
 	<hr>
 	<form name="Frm" id="Frm" style="display:block">
 		<div class="txtarea">
-			<i class="fas fa-envelope-open"></i>
-			<h3><spring:message code="label.findEmailDesc01" /></h3>
+		<!-- 	<i class="fas fa-envelope-open"></i> -->
+			<h3>아래의 정보를 입력하시구 확인을 누르시면 입력하신 이메일로 비밀번호가 발송됩니다</h3>
 			<p><spring:message code="label.findEmailDesc02" /></p>
 		</div>
 		<div class="form-group find">
-			<label for="memberName"><spring:message code="label.mypageConfirmDesc05" /></label> <input type="text" class="form-control" id="memberName" name="memberName">
+			<label for="memberName"><spring:message code="label.mypageConfirmDesc05" /></label> 
+			<input type="text" class="form-control" id="memberName" name="memberName">
 		</div>	
 		<div class="form-group find">
-			<label for="memberPhone"><spring:message code="label.mypageConfirmDesc06" /></label> <input type="text"	class="form-control" id="memberPhone" name="memberPhone">
+			<label for="memberPhone"><spring:message code="label.mypageConfirmDesc06" /></label>
+			 <input type="text"	class="form-control" id="memberPhone" name="memberPhone">
 		</div>		
 		<div class="btns2">
 			<button type="button" class="btn btn-submit" onclick="confirm();"><spring:message code="label.commonConfirm"/></button>
