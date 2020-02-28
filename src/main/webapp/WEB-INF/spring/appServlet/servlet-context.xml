@@ -47,6 +47,10 @@
 			<mvc:exclude-mapping path="/m/member/loginAct.do" />
 			<mvc:exclude-mapping path="/m/member/joinAct.do" />
 			<mvc:exclude-mapping path="/m/member/logout.do" />
+
+			<mvc:exclude-mapping path="/m/member/newLogin.do" />
+			<mvc:exclude-mapping path="/m/member/newJoinProcess.do" />
+
 			<mvc:exclude-mapping path="/m/member/member_email_confirm_act.do" />
 			<mvc:exclude-mapping path="/m/member/select_phone_overlap.do" />
 			<mvc:exclude-mapping path="/m/map/rpmapLoadAct.do" />
