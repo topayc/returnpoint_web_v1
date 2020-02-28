@@ -496,7 +496,7 @@
 	<script type="text/javascript">
 		var current = 0;
 		var $slides = $(".join_slide");
-		var total = 3;
+		var total = 2;
 		
 		function setSlide() {
 			if (current + 1 >= total)
@@ -512,6 +512,8 @@
 			$slides.eq(idx).animate({ "right" : "0px" },{ duration:200});
 			current = idx;
 		}
+		
+		setInterval(setSlide,4000);
 
 	</script>
 </body>
