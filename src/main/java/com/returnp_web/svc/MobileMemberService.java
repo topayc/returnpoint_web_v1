@@ -361,5 +361,7 @@ public interface MobileMemberService {
 
 	boolean sendPasswordAuthSms(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean newLogin(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 	
 }

@@ -2087,6 +2087,114 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 
 		}
 	}
+
+	@Override
+	public boolean newLogin(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		RPMap dbparams = new RPMap();
+		try {
+			String json;
+			if (!rPap.containsKey("memberPhone") || !rPap.containsKey("memberPassword")) {
+				json = Util.printResult(0, String.format("부적절한 요청입니다 </br>필수 입력 정보가 없습니다."), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
+			String memberPhone = rPap.getStr("memberPhone");
+			String memberPassword= rPap.getStr("memberPassword");
+			if (org.apache.commons.lang3.StringUtils.isEmpty(memberPhone ) || org.apache.commons.lang3.StringUtils.isEmpty(memberPassword ) ) {
+				json = Util.printResult(0, String.format("부적절한 요청입니다 </br>필수 입력 정보가 없습니다."), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
+			dbparams.put("memberPhone", memberPhone);
+			dbparams.put("memberPassword",Util.sha(memberPassword));
+			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
+			if (memberMap == null) {
+				json = Util.printResult(1, String.format("입력하신 정보의 회원이 존재하지 않습니다.</br>전화번호, 비밀번호를 확인 후 다시 시도해주세요"), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
+			String memberStatus = (String)memberMap.get("memberStatus");
+			int code = 0;
+			String message = null;
+			switch(memberStatus) {
+			case "1": code = 0; message = "정상입니다"; break;
+			case "2": code = 1; message = "현재 회원님은 등록 대기중입니다. </br>관리자게 문의해주세요"; break;
+			case "3": code = 1; message = "현재 회원님은 미인증 상태입니다 </br>관리자게 문의해주세요"; break;
+			case "4": code = 1; message = "현재 회원님은 사용중지 상태입니다. </br>관리자게 문의해주세요"; break;
+			case "5": code = 1; message = "현재 회원님은 사용중지 상태입니다 </br>관리자게 문의해주세요"; break;
+			case "6": code = 1; message = "현재 회원님은 강제 탈퇴 상태입니다 </br>관리자게 문의해주세요"; break;
+			case "7": code = 1; message = "현재 회원님은 탈퇴 상태입니다. </br>관리자게 문의해주세요"; break;
+			}
+			
+			/*정상 회원이 아닌 경우 단순 관련 코드 및 메시지 반화*/
+			if (code != 0) {
+				json = Util.printResult(code, String.format(message), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
+			/*정상 회원인 경우 */
+			
+			// 아이디 저장
+			 Cookie new_cookie = new Cookie("cookieSaveId", memberPhone);
+             new_cookie.setMaxAge(365 * 24 * 60 * 60); // 1 year
+             response.addCookie(new_cookie);
+            
+			SessionManager sm = new SessionManager(request, response);
+			int memberNo = Converter.toInt(memberMap.get("memberNo"));
+			String memberEmail = Converter.toStr(memberMap.get("memberEmail"));
+			memberPassword = Converter.toStr(memberMap.get("memberPassword"));
+			memberStatus = Converter.toStr(memberMap.get("memberStatus"));
+			String memberName = Converter.toStr(memberMap.get("memberName"));
+			memberPhone = Converter.toStr(memberMap.get("memberPhone"));
+            
+            sm.setMemberNo(memberNo);
+            sm.setmemberName(memberName);
+            sm.setMemberEmail(memberEmail);
+            sm.setMemberPhone(memberPhone);
+            HttpSession session = request.getSession(true);
+            session.setAttribute("memberNo", memberNo);
+            
+            Device device = DeviceUtils.getCurrentDevice(request);
+            String deviceType = "";
+            
+            String userAuthToken = null;
+            RPMap dbparams2 = new RPMap();
+            if (device.isMobile()) {
+                dbparams2.put("memberNo", memberNo);
+                dbparams2.put("memberPhone", memberPhone);
+                // dbparams2.put("memberPhone" , memberPhone);
+
+                HashMap<String, Object> tokenMap = mobileMemberDao.getMemberAuthToken(dbparams2);
+                if (tokenMap == null || tokenMap.isEmpty()) {
+                    userAuthToken = RandomStringUtils.randomAlphanumeric(40);
+                    dbparams.put("memberNo", memberNo);
+                    dbparams.put("memberName", memberName);
+                    dbparams.put("memberEmail", memberEmail);
+                    dbparams.put("userAuthToken", userAuthToken);
+                    mobileMemberDao.insertMemberAuthTokenAct(dbparams);
+                } else {
+                    userAuthToken = Converter.toStr(tokenMap.get("userAuthToken"));
+                }
+                json = Util.printResult(code, String.format("app,%s,%s,%s,%s", memberName, memberEmail, memberPhone,userAuthToken), null);
+				rmap.put("json", json);
+				return true;
+            } else {
+            	message = String.format("web,");
+                json = Util.printResult(code, String.format(message), null);
+				rmap.put("json", json);
+				return true;
+            }
+		} catch (Exception e) {
+			e.printStackTrace();
+			String json = Util.printResult(2, String.format("서버 에러 "), null);
+			rmap.put("json", json);
+			return true;
+		}
+	}
 	
 
 }

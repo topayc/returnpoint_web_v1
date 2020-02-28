@@ -446,13 +446,21 @@ public class MobileMemberController extends MallBaseController{
 	//#####################################################################################################################################
 	//핸드폰 번호를 아이디로 사용함에 따라 추가된 컨트롤러
 	//#####################################################################################################################################
-	
-	/* newLogin  */
-	@RequestMapping("/member/newLogin")
+	/* newLogin form  */
+	@RequestMapping(value =  "/member/newLogin", method = RequestMethod.GET)
 	public String memberNewLogin(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap("/mobile/member/newLogin");
 		boolean bret = mms.selectCountries(Util.toRPap(p), rmap, request, response);
 		return page(bret, map, rmap);
+	}
+
+	/* newLogin form  */
+	@RequestMapping(value =  "/member/newLogin", method = RequestMethod.POST, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String memberNewLoginAct(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.newLogin(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
 	}
 
 	

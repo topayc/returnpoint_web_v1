@@ -544,6 +544,7 @@
         <if test="memberNo !=null"> AND memberNo =  #{memberNo} </if>
         <if test="memberEmail != null"> AND memberEmail =  #{memberEmail} </if>
         <if test="userAuthToken != null"> AND userAuthToken = #{userAuthToken}</if>
+        <if test="memberPhone != null"> AND memberPhone = #{memberPhone}</if>
 	</select> 
 	
 	<!-- member_auth_token 저장 -->

@@ -32,14 +32,93 @@
             }
          }) 
        }  */
+       var isLoginSumitting = false;
+       function login(){
+    	   if (isLoginSumitting == true) return;
+		   isLoginSumitting  = false;
+		   
+		   var memberPhone = $("#memberPhone").val().trim().replace(/-/gi, "");;
+			var memberPassword = $("#memberPassword").val().trim();
+			if (memberPhone.length < 1) {
+				alertOpen("알림", "전화번호가 입력되지 않았습니다", true, false, function(){$("#memberPhone").focus()}, null);
+				reteurn;
+			}
+			if (memberPassword.length < 1) {
+				alertOpen("알림", "비밀번호가 입력되지 않았습니다", true, false, function(){$("#memberPassword").focus()}, null);
+				return;
+			}
+			
+			$("#progress_loading2").show();
+			$.ajax({
+				type : "POST",
+				url : "/m/member/newLogin.do",
+				data : {memberPhone : memberPhone, memberPassword : memberPassword},
+				success : function(result) {
+					console.log(result);
+					isLoginSumitting = false;
+					$("#progress_loading2").hide();
+					if (result && typeof result != "undefined") {
+						$("#progress_loading2").hide();
+						var memberPhone, userAuthToken;
+						if (result.result.code == 0) {
+							if (isApp() && result.result.msg.startsWith("APP")){
+								var data = result.result.split(",");
+								var session = {userName :data[0] , userEmail : [1], userPhone : [2],userAuthToken : data[3]}
+							    bridge.setDeviceSession(JSON.stringify(session), function(result) {
+							    	 result = JSON.parse(result);
+							    	 if (result.result == "100") {
+							   		 	bridge.setPushToken();
+							         	location.href = "/m/main/index.do";
+							        }else {
+							       		alertOpen("알림", "앱 오류 발생", true, false, null, null);
+							        }
+							      });
+							}else {
+								 location.href = "/m/main/index.do";
+							}
+						} else {
+							alertOpen("알림", result.result.msg, true, false, null, null);
+						}
+					} else {
+						isLoginSumitting = false;
+						alertOpen("알림", "네트워트 장애 발생1. 다시 시도해주세요.", true, false, null, null);
+					}
+				},
+				error : function(request, status, error) {
+					$("#progress_loading2").hide();
+					isLoginSumitting = false;
+					alertOpen("알림 ", "네트워트 장애 발생2  다시 시도해주세요", true, false, null, null);
+				},
+				dataType : 'json'
+			});
+       }
        
        $(document).ready(function(){
     	   $(".r_join_ok").css("height" , height + "px");
+    	   $("#login_btn").bind("click",function(){
+    			login();
+    	   })
        })
    </script>
 </head>
 
 <body>
+   	<div class="alert_wrap" id="alertView" name="alertView" style="display:none;">
+	  <div class="alert alert-info">
+	    <div class="alert_body">
+	    	<!-- <button type="button" class="close" id="alertClose" name="alertClose" onclick='javascript:alertClose();'>&times;</button> -->
+	    	<!-- <span id="alertTitle" name="alertTitle"><strong><i class="fas fa-info-circle"></i> Warning!</strong></span> --> 	
+	    	<!-- <span id="alertMassage" name="alertMassage"><p>alert 메시지가 들어가는 곳입니다.</p></span> -->
+	    	<span id="alertTitle" name="alertTitle"></span>
+	    	<span id="alertMassage" name="alertMassage"></span>
+	    	<div class="btns">
+		    	<button type="button" id="alert_ok" name="alert_ok" onclick='javascript:alertClose();'><spring:message code="label.ok" /></button>
+		    	<button type="button" id="alert_cancel" name="alert_cancel" onclick='javascript:alertClose();'><spring:message code="label.cancel" /></button>
+	    	</div>
+	    </div>
+	  </div> 
+	</div>
+	
    <div class="r_join_ok">
       <div class="r_login_page2">
          <div class="top_main">
@@ -54,11 +133,11 @@
             </div>
          </div>
          <div class="input_box">
-            <input type="text" name="전화번호" placeholder="전화번호">
-             <input type="text" name="비밀번호" placeholder="비밀번호">
+            <input type="number" name="memberPhone"  id = "memberPhone" placeholder="전화번호">
+             <input type="text" name="memberPassword" id = "memberPassword" placeholder="비밀번호">
          </div>
-         <button>로그인</button>
-     <!--     <input type="checkbox" id="cb"><label for="cb">아이디 저장</label> -->
+         <button id="login_btn">로그인</button>
+      	<!-- <input type="checkbox" id="isSaveId" name = "isSaveId"><label for="cb">아이디 저장</label>  -->
          <div class="sign_text">
             <ul>
                <li><a href="/m/member/newJoinProcess.do"><spring:message code="label.loginDesc05" /></a></li>
@@ -71,5 +150,6 @@
          </div>
       </div>
    </div>
+   <div id = "progress_loading2" style = "display:none;color : #aaa;font-size : 30px;top:50%"> <i class="fas fa-circle-notch fa-spin"></i> </div>
 </body>
 </html>
