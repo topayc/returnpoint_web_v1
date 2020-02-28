@@ -1287,7 +1287,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_login .r_pass1 .r_pass1_text p b{font-size:30px;color:#33cccc;}
 .r_login .r_pass1 .r_pass1_text p{color:#777;margin-bottom:3%;}
 .r_login .r_pass1 .r_pass1_text button{width:100%;padding:4.5% 0;border:1px solid #33cccc;background:#fff;color:#33cccc;margin-top:15%;font-size:15px;border-radius:30px;}
-.r_login .r_pass1 .r_pass1_text button:hover{background:#33cccc; color:#fff;}
+.r_login .r_pass1 .r_pass1_text button:active{background:#33cccc; color:#fff;}
 .r_login .r_pass1 > button{width:100%;position:fixed;bottom:0;border:1px solid #33cccc;background:#33cccc;color:#fff;padding:4.5% 0;font-size:17px;}
 
 .r_login .r_pass2{width:100%;position:absolute;}
