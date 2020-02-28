@@ -452,51 +452,40 @@
 				<input type="number" id="phoneAuthNumber" name="phoneAuthNumber" placeholder="인증번호 입력">
 				<button id  = "sendPhoneAuthSms" onclick = "sendPhoneAuthSms();return false;">인증번호받기</button>
 			</div>
-			<!-- <span>위의 정보를 입력하신 후 인증번호 받기를 클릭하면 입력하신 번호로 인증번호 6자리가 발송됩니다 </br>아래 시간안에 인증번호를 입력하신 후 인증을 진행해주세요.</span> -->
+			<span>위의 정보를 입력하신 후 인증번호 받기를 클릭하면 입력하신 번호로 인증번호 6자리가 발송됩니다 </br>아래 시간안에 인증번호를 입력하신 후 인증을 진행해주세요.</span>
 			<div class="time" id = "timer">&nbsp;</div>
 			<button type = "button" id = "requestPhoneNumberAuth"  onclick = "requestPhoneNumberAuth()">인증하기</button>
+		</div> 
+		<div class="r_pass1 join_slide">
+			<h3>아이디 확인</h3>
+			<div class="r_pass1_text">
+				<h5>고객님께서 가입하신 회원 아이디 입니다.</h5>
+				<p><b>01058450051</b></p>
+				<p>회원가입일 : 2020년 02월 28일</p>
+				<button>비밀번호 재설정</button>
+			</div>
+			<button>로그인</button>
+		</div>
+		<div class="r_pass2 join_slide">
+			<h3>비밀전호 재설정</h3>
+			<div class="r_pass1_text">
+				<h5>고객님께서 가입하신 회원 아이디 입니다.</h5>
+				<p><b>01058450051</b></p>
+				<p>회원가입일 : 2020년 02월 28일</p>
+			</div>
+			<div class="r_pass_box">
+				<input type="password" placeholder="새비밀번호 입력(영문숫자 12자리이상)">
+				<input type="password" placeholder="새비밀번호 재입력">
+			</div>
+			<button>변경</button>
 		</div>
 		
-		<div class="r_login_page5 join_slide">
-			<form id = "joinForm">
-			<h3>기본 정보 입력</h3>
-			<div class="r_id">
-				<!-- <p>아이디</p> -->
-				<span>아이디는 인증하신 핸드폰 번호가 설정됩니다.</span> 
-				<input type="text" name="memberPhone"  id="memberPhone" readonly >
-			</div>
-			<div class="r_id">
-				<input type="text" name="memberName"  id="memberName" placeholder="이름 입력" value = "">
-			</div>
-			<div class="r_id">
-				<!-- <p>비밀번호</p> -->
-				<input type="password" name="memberPassword"  id="memberPassword" placeholder="비밀번호 입력  - 영문+숫자 8 ~ 12 자리로." value = "">
-			</div>
-			<div class="r_id">
-				<!-- <p>비밀번호 확인</p> -->
-				<input type="password" name="memberPasswordConfirm" id="memberPasswordConfirm"  placeholder="비밀번호 재입력" value = "">
-			</div>
-			<div class="r_id">
-				<!-- <p>이메일 입력</p> -->
-				<input type="text" name="memberEmail"  id="memberEmail"  placeholder="이메일 입력">
-			</div>
-			<div class="r_id">
-				<!-- <p>추천인 입력(선택)</p> -->
-				<span>추천인은 선택입력사항이며, 추천인 전화번호를 입력한 후 추천인 확인 버튼을 눌러주세요 ( - 없이 입력)</span>
-				<div class="r_id_input">
-					<input type="number" name="recommPhone"  id="recommPhone"  placeholder="추천인 전화번호 입력  (- 제외)"  style = "padding-left:13px;">
-					<button type = "button" onclick="checkRecommender();return false">추천인확인</button>
-				</div>
-			</div>
-			</form>
-			<button  type = "button" onclick = "joinSumit();return false;">가입하기</button>
-		</div>
 	</div>
 	<div id = "progress_loading2" style = "display:none;color : #aaa;font-size : 30px;top:50%"> <i class="fas fa-circle-notch fa-spin"></i> </div>
 	<script type="text/javascript">
-		var current = 0;
+	var current = 0;
 		var $slides = $(".join_slide");
-		var total = 2;
+		var total = 3;
 		
 		function setSlide() {
 			if (current + 1 >= total)
@@ -507,13 +496,14 @@
 
 		function moveSlide(idx) {
 			$(".r_login").height(height);
-			//$slides.eq(current).animate( { "right" : "100%" },{ duration: 200});
+			$slides.eq(current).animate( { "right" : "100%" },{ duration: 200});
 			$slides.eq(idx).css({"right" : "-100%" });
 			$slides.eq(idx).animate({ "right" : "0px" },{ duration:200});
 			current = idx;
 		}
 		
-		setInterval(setSlide,4000);
+		setInterval(setSlide,4000); 
+
 
 	</script>
 </body>
