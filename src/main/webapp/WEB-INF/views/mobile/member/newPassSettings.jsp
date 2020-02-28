@@ -452,7 +452,7 @@
 				<input type="number" id="phoneAuthNumber" name="phoneAuthNumber" placeholder="인증번호 입력">
 				<button id  = "sendPhoneAuthSms" onclick = "sendPhoneAuthSms();return false;">인증번호받기</button>
 			</div>
-			<span>위의 정보를 입력하신 후 인증번호 받기를 클릭하면 입력하신 번호로 인증번호 6자리가 발송됩니다 </br>아래 시간안에 인증번호를 입력하신 후 인증을 진행해주세요.</span>
+			<!-- <span>위의 정보를 입력하신 후 인증번호 받기를 클릭하면 입력하신 번호로 인증번호 6자리가 발송됩니다 </br>아래 시간안에 인증번호를 입력하신 후 인증을 진행해주세요.</span> -->
 			<div class="time" id = "timer">&nbsp;</div>
 			<button type = "button" id = "requestPhoneNumberAuth"  onclick = "requestPhoneNumberAuth()">인증하기</button>
 		</div> 
