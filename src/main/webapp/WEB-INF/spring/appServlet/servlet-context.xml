@@ -46,7 +46,7 @@
 			<mvc:exclude-mapping path="/m/member/login.do" />
 			<mvc:exclude-mapping path="/m/member/loginAct.do" />
 			<mvc:exclude-mapping path="/m/member/joinAct.do" />
-			<mvc:exclude-mapping path="/m/member/logout.do" />
+			<!-- <mvc:exclude-mapping path="/m/member/logout.do" /> -->
 
 			<mvc:exclude-mapping path="/m/member/newLogin.do" />
 			<mvc:exclude-mapping path="/m/member/newJoinProcess.do" />

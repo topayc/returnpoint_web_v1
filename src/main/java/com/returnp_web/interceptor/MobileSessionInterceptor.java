@@ -127,19 +127,11 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView mv)
 			throws Exception {
 		if("HTTP/1.1".equals(request.getProtocol())) {
-
 			response.setHeader ("Cache-Control", "no-cache, no-store, must-revalidate");
-
 		} else {
-
 			response.setHeader ("Pragma", "no-cache");
-
 		}
-
 		response.setDateHeader ("Expires", 0);
-
-
-
 	}
 
 	@Override
