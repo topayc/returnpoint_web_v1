@@ -80,19 +80,24 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 			RPMap dbparams = new RPMap();
 			if (user_agent.indexOf("APP_RETURNP_Android") > -1) { // APP
 				if (userAuthToken != null && !"null".equalsIgnoreCase(userAuthToken)) { // APP이면서 유효한 토큰이 존재
+					
+					/*세션이 끊어진 경우 userAuthToken 으로 회원정보를 가져와서 세션정보 생성*/
 					if (sm.getMemberEmail() == null) {
 						dbparams.put("userAuthToken", userAuthToken);
-						HashMap<String, Object> memberAuthTokenGb = mobileMemberDao.selectMemberAuthToken(dbparams);
+						HashMap<String, Object> memberAuthTokenMap = mobileMemberDao.selectMemberAuthToken(dbparams);
 
-						if (memberAuthTokenGb != null && !memberAuthTokenGb.isEmpty()) {
-							RPMap dbparams2 = new RPMap();
-							dbparams2.put("memberEmail", Converter.toStr(memberAuthTokenGb.get("memberEmail")));
-							HashMap<String, Object> records = mobileMemberDao.loginAppAct(dbparams2);
+						if (memberAuthTokenMap != null && !memberAuthTokenMap.isEmpty()) {
+							dbparams.clear();
+							dbparams.put("memberNo", Converter.toStr(memberAuthTokenMap.get("memberNo")));
+							//dbparams.put("memberEmail", Converter.toStr(memberAuthTokenMap.get("memberEmail")));
+							//dbparams.put("memberPhone", Converter.toStr(memberAuthTokenMap.get("memberPhone")));
+							HashMap<String, Object> memberMap = mobileMainDao.selectMember(dbparams);
 
-							if (records != null && !records.isEmpty()) {
-								sm.setMemberNo(Converter.toInt(records.get("memberNo")));
-								sm.setMemberEmail(Converter.toStr(records.get("memberEmail")));
-								sm.setmemberName(Converter.toStr(records.get("memberName")));
+							if (memberMap != null && !memberMap.isEmpty()) {
+								sm.setMemberNo(Converter.toInt(memberMap.get("memberNo")));
+								sm.setMemberEmail(Converter.toStr(memberMap.get("memberEmail")));
+								sm.setmemberName(Converter.toStr(memberMap.get("memberName")));
+								sm.setMemberPhone(Converter.toStr(memberMap.get("memberPhone")));
 								return true;
 							}
 						} else {
@@ -106,6 +111,11 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 					response.sendRedirect(request.getContextPath() + "/m/member/newLogin.do");
 					return false;
 				}
+			}else {
+				if (sm.getMemberEmail() == null) {
+					response.sendRedirect(request.getContextPath() + "/m/member/newLogin.do");
+					return false;
+				}
 			}
 		} catch (Exception e) {// try{
 			e.printStackTrace();
@@ -116,7 +126,20 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView mv)
 			throws Exception {
-			
+		if("HTTP/1.1".equals(request.getProtocol())) {
+
+			response.setHeader ("Cache-Control", "no-cache, no-store, must-revalidate");
+
+		} else {
+
+			response.setHeader ("Pragma", "no-cache");
+
+		}
+
+		response.setDateHeader ("Expires", 0);
+
+
+
 	}
 
 	@Override

@@ -285,6 +285,10 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 
 		SessionManager sm = new SessionManager(request, response);
 		RPMap dbparams = new RPMap();
+		if (sm.getMemberEmail() == null) {
+			rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/member/newLogin.do", ""));
+			return true;
+		}
 		dbparams.put("memberNo", sm.getMemberNo());
 		try {
 			// 필요할 경우 접속 로그 추가 할 것
@@ -293,7 +297,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 		}
 		mobileMemberDao.deleteMemberAuthToken(dbparams);
 		sm.killSession();
-		rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/main/index.do", ""));
+		rmap.put(Const.D_SCRIPT, Util.gotoURL("/m/member/newLogin.do", ""));
 		return true;
 	}
 
@@ -2229,11 +2233,11 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			String message = null;
 			switch(memberStatus) {
 			case "1": code = 0; message = "정상입니다"; break;
-			case "2": code = 1; message = "현재 회원님은 등록 대기중입니다. </br>관리자게 문의해주세요"; break;
-			case "3": code = 1; message = "현재 회원님은 미인증 상태입니다 </br>관리자게 문의해주세요"; break;
-			case "4": code = 1; message = "현재 회원님은 사용중지 상태입니다. </br>관리자게 문의해주세요"; break;
-			case "5": code = 1; message = "현재 회원님은 사용중지 상태입니다 </br>관리자게 문의해주세요"; break;
-			case "6": code = 1; message = "현재 회원님은 강제 탈퇴 상태입니다 </br>관리자게 문의해주세요"; break;
+			case "2": code = 1; message = "현재 회원님은 등록 대기중입니다. </br>관리자에게 문의해주세요"; break;
+			case "3": code = 1; message = "현재 회원님은 미인증 상태입니다 </br>관리자에게 문의해주세요"; break;
+			case "4": code = 1; message = "현재 회원님은 사용중지 상태입니다. </br>관리자에게 문의해주세요"; break;
+			case "5": code = 1; message = "현재 회원님은 사용중지 상태입니다 </br>관리자에게 문의해주세요"; break;
+			case "6": code = 1; message = "현재 회원님은 강제 탈퇴 상태입니다 </br>관리자에게 문의해주세요"; break;
 			case "7": code = 1; message = "현재 회원님은 탈퇴 상태입니다. </br>관리자게 문의해주세요"; break;
 			}
 			

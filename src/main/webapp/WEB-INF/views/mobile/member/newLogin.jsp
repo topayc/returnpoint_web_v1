@@ -22,16 +22,6 @@
    <script>
       var height  = window.screen.height - 90;
        var width = window.screen.width
-   /*     if (isApp()) {
-          getDeviceResolution(function(result){
-            if (result) {
-                result = JSON.parse(result);
-                if (result.result == "100"){
-                  height = Number(result.deviceHeight ) / window.devicePixelRatio;
-               }
-            }
-         }) 
-       }  */
        var isLoginSumitting = false;
        function login(){
     	   if (isLoginSumitting == true) return;
@@ -67,13 +57,13 @@
 							    	 result = JSON.parse(result);
 							    	 if (result.result == "100") {
 							   		 	bridge.setPushToken();
-							         	location.href = "/m/main/index.do";
+							         	movePage("/m/main/index.do");
 							        }else {
 							       		alertOpen("알림", "앱 오류 발생", true, false, null, null);
 							        }
 							      });
 							}else {
-								 location.href = "/m/main/index.do";
+								movePage("/m/main/index.do");
 							}
 						} else {
 							alertOpen("알림", result.result.msg, true, false, null, null);
