@@ -54,7 +54,6 @@
 				url : "/m/member/newLogin.do",
 				data : {memberPhone : memberPhone, memberPassword : memberPassword},
 				success : function(result) {
-					console.log(result);
 					isLoginSumitting = false;
 					$("#progress_loading2").hide();
 					if (result && typeof result != "undefined") {
@@ -62,8 +61,8 @@
 						var memberPhone, userAuthToken;
 						if (result.result.code == 0) {
 							if (isApp() && result.result.msg.startsWith("APP")){
-								var data = result.result.split(",");
-								var session = {userName :data[0] , userEmail : [1], userPhone : [2],userAuthToken : data[3]}
+								var data = result.result.msg.split(",");
+								var session = {userName :data[1] , userEmail : [2], userPhone : [3],userAuthToken : data[4]}
 							    bridge.setDeviceSession(JSON.stringify(session), function(result) {
 							    	 result = JSON.parse(result);
 							    	 if (result.result == "100") {
@@ -140,14 +139,14 @@
       	<!-- <input type="checkbox" id="isSaveId" name = "isSaveId"><label for="cb">아이디 저장</label>  -->
          <div class="sign_text">
             <ul>
-               <li><a href="/m/member/newJoinProcess.do"><spring:message code="label.loginDesc05" /></a></li>
-               <li><a href="/m/member/newPassSettings.do">비밀번호 재설정</a></li>
-               <li><a onclick="startQRScan()"><spring:message code="label.recognize_the_promoter_qr" /></a></li>
+               <li onclick = "movePage('/m/member/newJoinProcess.do')"><spring:message code="label.loginDesc05" /></li>
+               <li onclick = "movePage('/m/member/newPassSettings.do')">비밀번호 재설정</a></li>
+               <li onclick = "startQRScan()"><spring:message code="label.recognize_the_promoter_qr" /></li>
             </ul>
          </div>
-         <div class="facebook_btn">
+    <!--      <div class="facebook_btn">
             <img src="/resources/images/facebook_logo.png">페이스북으로 회원가입
-         </div>
+         </div> -->
       </div>
    </div>
    <div id = "progress_loading2" style = "display:none;color : #aaa;font-size : 30px;top:50%"> <i class="fas fa-circle-notch fa-spin"></i> </div>

@@ -524,12 +524,30 @@ public class MobileMemberController extends MallBaseController{
 		return page(true, map, rmap);
 	}
 	
-	/*비밀번호 재설정을 위한 인증및 인증 번호 발송*/
+	/*비밀번호 재설정을 위한 인증 번호 발송*/
 	@RequestMapping(value = "/member/sendPasswordAuthSms.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String sendPasswordAuthSms(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		RPMap rmap = Util.getRPRmap();
 		boolean bret = mms.sendPasswordAuthSms(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}
+
+	/*비밀번호 재설정을 위한 인증 번호 인증*/
+	@RequestMapping(value = "/member/requestPasswordAuthSms.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String requestPasswordAuthSms(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.requestPasswordAuthSms(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}
+
+	/*비밀번호 최종 변경*/
+	@RequestMapping(value = "/member/changePasswordSubmit.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String changePasswordSubmit(@RequestParam Map<String,Object> p, ModelMap map, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.changePasswordSubmit(Util.toRPap(p), rmap, request, response);
 		return rmap.getStr("json");
 	}
 	

@@ -99,7 +99,7 @@
                     </ul>
                 </div>
                 <div class="swiper_text1"><a href="#" onclick = "joinMember()">가입하기</a></div>
-                <div class="swiper_text2"><a href="#" onclick = "location.href = '/m/member/login.do'">로그인</a></div>
+                <div class="swiper_text2"><a href="#" onclick = "location.href = '/m/member/newLogin.do'">로그인</a></div>
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -113,7 +113,7 @@
     	
     	function joinMember(){
     		var recommender = $("#recommender").val().trim();
-    		var url = "/m/member/join.do?recommender=" + recommender;
+    		var url = "/m/member/newJoinProcess.do?recommender=" + recommender;
     		location.href = url;
     	}
     </script>

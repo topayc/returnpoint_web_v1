@@ -1172,13 +1172,17 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_join_ok .r_login_page2 .top_main .rpoint_text ul li b{font-size:25px;color:#33cccc;}
 .r_join_ok .r_login_page2 .input_box{margin-top:20%;}
 .r_join_ok .r_login_page2 .input_box input{width:100%;padding:3.5% 0;text-indent:10px;margin-bottom:10px;border:1px solid #ccc;box-sizing:border-box;}
+.r_join_ok .r_login_page2 .input_box input:focus{border : 1px solid #999}
 .r_join_ok .r_login_page2 button{width:100%;font-size:15px;color:#fff;background:#33cccc;border:1px solid #33cccc;padding:3% 0;}
 .r_join_ok .r_login_page2 input[type=checkbox] {display: none;}
 .r_join_ok .r_login_page2 input[type=checkbox] + label{display: inline-block;cursor:pointer;position:relative;padding-left: 25px;font-size: 13px;top:10px;}
 .r_join_ok .r_login_page2 input[type=checkbox]+ label:before{content: "";display: inline-block;width: 17px;height: 17px;position: absolute;left:0;border:1px solid #e87191;background-color:#fff;border-radius:50%;}
 .r_join_ok .r_login_page2 input[type=checkbox]:checked + label:before {content: "\2713";font-size: 15px;font-weight:800; color:#fff;background:#e87191;text-align: center;line-height: 18px;border:1px solid #e87191;}
-.r_join_ok .r_login_page2 .sign_text{margin-top:20px;width:100%;color:#000;font-size:12px;text-align:center;padding-bottom:10%;border-bottom:1px solid #ccc;}
-.r_join_ok .r_login_page2 .sign_text li{width:100%;padding:3% 0;border:1px solid #ccc;border-radius:20px;margin-bottom:10px;}
+.r_join_ok .r_login_page2 .sign_text{margin-top:20px;width:100%;color:#000;font-size:12px;text-align:center;padding-top:30px;padding-bottom:10%;/* border-bottom:1px solid #ccc; */}
+.r_join_ok .r_login_page2 .sign_text li{width:100%;padding:3% 0;border:1px solid #ccc;border-radius:20px;margin-bottom:10px;font-size:13px}
+
+.r_join_ok .r_login_page2 .sign_text li:active{border : 1px solid #33cccc; color : white; background-color : #33cccc}
+
 .r_join_ok .r_login_page2 .facebook_btn{border:1px solid #ccc;border-radius:30px;text-align:center;padding:3% 0;font-size:13px;;margin-top:7%;}
 .r_join_ok .r_login_page2 .facebook_btn img{width:15px;height:15px;margin-right:5px;}
 
@@ -1298,6 +1302,6 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_login .r_pass2 .r_pass1_text p{color:#777;margin-bottom:3%;}
 .r_login .r_pass2 .r_pass_box{width:100%;padding:0 5%;margin-top:10%;}
 .r_login .r_pass2 .r_pass_box input{width:100%;padding:4.5%;margin-bottom:5%;font-size:15px;}
+.r_login .r_pass2 .r_pass_box input:focus{border : 1px solid #999}
 .r_login .r_pass2 input::placeholder {color:#ccc;}
 .r_login .r_pass2 > button{width:100%;position:fixed;bottom:0;border:1px solid #33cccc;background:#33cccc;color:#fff;padding:4.5% 0;font-size:17px;}
-

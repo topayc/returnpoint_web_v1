@@ -1895,7 +1895,12 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			}else {
 				json = Util.printResult(0, String.format("인증되었습니다"), null);
 				rmap.put("json", json);
+				
+				/*세션에 존재하는 인증키 및 전화번호 제거 */
+				request.getSession().removeAttribute("PHONE_AUTH_NUMBER");
+				request.getSession().removeAttribute("PHONE_NUMBER");
 			}
+			
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1946,13 +1951,13 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			String memberEmail = p.getStr("memberEmail").trim();
 			String recommPhone  = p.getStr("recommPhone").trim();
 			
-			String sessionPhoneAuthKey = (String)request.getSession().getAttribute("PHONE_AUTH_NUMBER");
+		/*	String sessionPhoneAuthKey = (String)request.getSession().getAttribute("PHONE_AUTH_NUMBER");
 			String sessionPhoneNumber = (String)request.getSession().getAttribute("PHONE_NUMBER");
 			
 			if (!sessionPhoneAuthKey.equals(phoneAuthNumber) || !sessionPhoneNumber.equals(memberPhone) || !phoneNumber.equals(memberPhone) ) {
 				json = Util.printResult(17, "부적절한 회원 가입 요청입니다.", null);
 				return true;
-			}
+			}*/
 
 			/*전화번호 중복 등록 체크*/
 			dbparams.put("memberPhone", memberPhone);
@@ -2057,23 +2062,24 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			String json;
 			
 			/*이름 , 핸드폰으로 해당 회원이 존재하는지 검사*/
-			dbparams.put("memberName", rPap.getStr("memberName"));
-			dbparams.put("memberPhone", rPap.getStr("memberPhone"));
+			dbparams.put("memberName", rPap.getStr("name"));
+			dbparams.put("memberPhone", rPap.getStr("phoneNumber"));
 			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
 			if (memberMap == null) {
-				json = Util.printResult(0, String.format("입력하신 정보의 해당 회원이 존재하지 않습니다.</br> 확인후 다시 시도해주세요"), null);
+				json = Util.printResult(1, String.format("입력하신 정보의 해당 회원이 존재하지 않습니다.</br> 확인후 다시 시도해주세요"), null);
 				rmap.put("json", json);
 				return true;
 			}
 			
 			int count = 0;
 			String key = CodeGenerator.genPhoneAuthNumber();
-			JSONObject smsResult = SmsManager.sendSms(rPap.getStr("phoneNumber").trim(), String.format("[R.POINT] 인증번호 %s 를 입력하세요",key));
+			JSONObject smsResult = SmsManager.sendSms(rPap.getStr("phoneNumber").trim(), String.format("[R.POINT] 비밀번호 설정 인증번호 %s 를 입력하세요",key));
 			
 			if ((long)smsResult.get("error_count") == 0) {
 				request.getSession().setAttribute("PASS_SETTING_PHONE_AUTH_NUMBER", key);
-				request.getSession().setAttribute("PASS_SETTINGPHONE_NUMBER", rPap.getStr("memberPhone"));
-				json = Util.printResult(0, String.format("R.POINT 인증번호 문자를 발송하였습니다.</br>해당 시간안에 인증번호를 입력한 후 인증하기 버튼을 눌러주세요"), null);
+				request.getSession().setAttribute("PASS_SETTINGP_HONE_NUMBER", rPap.getStr("phoneNumber"));
+				request.getSession().setAttribute("PASS_SETTING_USER_NAME", rPap.getStr("name"));
+				json = Util.printResult(0, String.format("비밀번호 설정 인증번호 문자를 발송하였습니다"), null);
 			}else {
 				json = Util.printResult(0, String.format("인증번호 발송에 실패했습니다.</br>다시 진행해주세요 "), null);
 			}
@@ -2084,7 +2090,109 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			String json = Util.printResult(2, String.format("서버 에러 "), null);
 			rmap.put("json", json);
 			return true;
+		}
+	}
+	
+	@Override
+	public boolean requestPasswordAuthSms(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		RPMap dbparams = new RPMap();
+		try {
+			String json;
+			
+			/*이름 , 핸드폰으로 해당 회원이 존재하는지 검사*/
+			String memberName = rPap.getStr("name");
+			String phoneNumber = rPap.getStr("phoneNumber");
+			String phoneAuthNumber = rPap.getStr("phoneAuthNumber");
 
+			dbparams.put("memberName", memberName);
+			dbparams.put("memberPhone", phoneNumber);
+			
+			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
+			if (memberMap == null) {
+				json = Util.printResult(1, String.format("[인증 실패] 입력하신 정보의 해당 회원이 존재하지 않습니다.</br> 확인후 다시 시도해주세요"), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
+			String sessionPhoneAuthNumber = (String)request.getSession().getAttribute("PASS_SETTING_PHONE_AUTH_NUMBER");
+			String sessionPhoneNumber = (String)request.getSession().getAttribute("PASS_SETTINGP_HONE_NUMBER");
+			String sessionName= (String)request.getSession().getAttribute("PASS_SETTING_USER_NAME");
+			
+			HashMap<String, Object> extDataMap = null;
+			SimpleDateFormat format1 = null;
+			
+			if (sessionPhoneAuthNumber == null || sessionPhoneAuthNumber == null  || sessionPhoneAuthNumber == null || 
+					!sessionPhoneAuthNumber.equals(phoneAuthNumber) || !sessionPhoneNumber.equals(phoneNumber) || !sessionName.equals(memberName)) {
+				json = Util.printResult(1, String.format("인증에 실패했습니다 </br> 확인후 다시 시도해주세요"), null);
+				
+			}else {
+				extDataMap = new HashMap<String, Object>();
+				format1 = new SimpleDateFormat("yyyy년 MM월 dd일");
+				extDataMap.put("data", format1.format(memberMap.get("createTime")));
+				json = Util.printResult(0, String.format("인증되었습니다"), extDataMap);
+				
+				/*세션에 존재하는 인증키 및 전화번호 제거 */
+				request.getSession().removeAttribute("PASS_SETTING_PHONE_AUTH_NUMBER");
+				request.getSession().removeAttribute("PASS_SETTINGP_HONE_NUMBER");
+				request.getSession().removeAttribute("PASS_SETTING_USER_NAME");
+			}
+			
+			rmap.put("json", json);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			String json = Util.printResult(2, String.format("서버 에러 "), null);
+			rmap.put("json", json);
+			return true;
+		}
+	}
+	
+
+	@Override
+	public boolean changePasswordSubmit(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		RPMap dbparams = new RPMap();
+		try {
+			String json = null;
+			
+			/*이름 , 핸드폰으로 해당 회원이 존재하는지 검사*/
+			String memberName = rPap.getStr("name");
+			String phoneNumber = rPap.getStr("phoneNumber");
+			String newPassword = rPap.getStr("password");
+			String newPasswordConfirm = rPap.getStr("passwordConfirm");
+			if (org.apache.commons.lang3.StringUtils.isEmpty(memberName) || org.apache.commons.lang3.StringUtils.isEmpty(phoneNumber ) || 
+					org.apache.commons.lang3.StringUtils.isEmpty(newPassword ) || org.apache.commons.lang3.StringUtils.isEmpty(newPasswordConfirm )){
+				json = Util.printResult(1, String.format("부적절한 접근 - 필수 입력 정보가 없습니다"), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
+			dbparams.put("memberName", memberName);
+			dbparams.put("memberPhone", phoneNumber);
+			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
+			if (memberMap == null) {
+				json = Util.printResult(1, String.format("패스워드 변경 실패 - 입력하신 정보의 해당 회원이 존재하지 않습니다.</br> 확인후 다시 시도해주세요"), null);
+				rmap.put("json", json);
+				return true;
+			}
+			
+			dbparams.clear();
+			dbparams.put("memberNo", Converter.toInt(memberMap.get("memberNo")));
+			dbparams.put("memberPassword", Util.sha(newPassword));
+			int count = this.mobileMemberDao.updateUser(dbparams);
+			
+			if (count == 0) {
+				json = Util.printResult(1, String.format("비밀번호 변경에 실패했습니다 </b> 다시 시도해주세요"), null);
+			} else {
+				json = Util.printResult(0, String.format("비밀번호 변경을 완료했습니다"), null);
+			}
+			rmap.put("json", json);
+			return true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			String json = Util.printResult(2, String.format("서버 에러"), null);
+			rmap.put("json", json);
+			return true;
 		}
 	}
 
@@ -2179,7 +2287,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
                 } else {
                     userAuthToken = Converter.toStr(tokenMap.get("userAuthToken"));
                 }
-                json = Util.printResult(code, String.format("app,%s,%s,%s,%s", memberName, memberEmail, memberPhone,userAuthToken), null);
+                json = Util.printResult(code, String.format("APP,%s,%s,%s,%s", memberName, memberEmail, memberPhone,userAuthToken), null);
 				rmap.put("json", json);
 				return true;
             } else {
@@ -2195,6 +2303,5 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			return true;
 		}
 	}
-	
 
 }
