@@ -1309,5 +1309,5 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_login .r_pass2 input::placeholder {color:#ccc;}
 .r_login .r_pass2 > button{width:100%;position:fixed;bottom:0;border:1px solid #33cccc;background:#33cccc;color:#fff;padding:4.5% 0;font-size:17px;}
 
-.topper_logout{text-align: center;border : 1px solid #33cccc; border-radius: 15px;font-size : 13px;padding : 10px 40px;background-color : #33cccc; color : #fff}
+.topper_logout{text-align: center;border : 1px solid #33cccc; border-radius: 18px;font-size : 13px;padding : 10px 40px;background-color : #33cccc; color : #fff}
 .topper_logout:active{background-color : #fff; color : #33cccc}

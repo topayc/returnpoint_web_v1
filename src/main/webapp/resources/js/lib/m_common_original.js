@@ -802,82 +802,116 @@ function startPointBack(){
 	$('.returnp_qr').each(function(){
 		param[$(this).attr("id")]  = $(this).val().trim().replace(",","");
 	});
-	
-	for (key in param){
-		if (param.hasOwnProperty(key)) {
-			param[key] = encodeURIComponent(param[key]);
-		}
+	function execPointback(){
+		bridge.getSesssionAndDeviceInfo(function(data){
+			data = JSON.parse(data);
+			if (data.result != "100")  {
+				alertOpen("알림", "앱을 업데이트 받아주시기 바랍니다.", true, false, null, null);
+				return;
+			}
+			param["memberEmail"] = data.user_email;
+			param["memberName"] = data.user_name;
+			param["phoneNumber"] = data.phoneNumber;
+			param["phoneNumberCountry"]  = data.phoneNumberCountry;
+			
+			for (key in param){
+				if (param.hasOwnProperty(key)) {
+					param[key] = encodeURIComponent(param[key]);
+				}
+			}
+			
+			var  pointBackUrl;
+			/* KICC 외의 일반 QR에 의한 적립 요청 주소 */
+			if (param["paymentRouterType"] && param["paymentRouterType"].trim().length != 0 &&  param["paymentRouterType"] == "VAN"){
+				if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KFTC" ){
+					pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrAcc.do";
+				}
+				
+				else if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KIS" ){
+					pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrAcc.do";
+				}
+				
+				else if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KOVAN" ){
+					pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrAcc.do";
+				}
+				/* KICC 전용 QR 에 의한 적립 요청 주소 */
+				else if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KICC" ){
+					pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/kiccQrAcc.do";
+				} 
+				else {
+					 alertOpen("알림", "잘못된 QR 정보입니다. <br/>관리자에게 문의해주세요", true, false, null, null);
+				}
+			}
+			
+			if (pointBackUrl == null || pointBackUrl == "" || pointBackUrl.trim().length == 0 ){
+				alertOpen("알림", "적립경로 오류 :  잘못된 QR 정보입니다. <br/>관리자에게 문의해주세요", true, false, null, null);
+				return;
+			}
+			
+ 			$.ajax({
+	           	type: "POST",
+	               url: pointBackUrl,
+	               data: param,
+	               success: function (result) {
+	            	   $("#progress_loading").hide();
+	            	   if (result && typeof result !="undefined") {
+	            		  $("#progress_loading").hide();
+	            		   /* result obj 설명
+	               		  * resultCode : 성공 실패 값(100 이 아니면 실패)
+	               		  * message : 메시지
+	               		  * url : 이동할 URL 
+	               		  */ 
+	            		 var alertText = "";
+	            		 if (result.resultCode  == "100") {
+	            			 alertText = result.message
+	            		 }else {
+	            			 alertText = result.resultCode + " : " + result.message
+	            		 }
+	            		 
+	            		 alertOpen("확인", 
+	            			alertText, 
+	            			true, 
+	            			false, 
+	            			function(){
+	            			 if (result.resultCode == "100") {
+	            				 movePageReplace(window.location.protocol + "//" + window.location.host + "/m/mypage/newpoint.do");
+	            			 }
+	            		 	}, 
+	            			null);
+	               	 }else{
+	               		 alertOpen("알림", "1.네트워크 장애 발생. 다시 시도해주세요.", true, false, null, null);
+	               	 }
+	               },
+	               error : function(request, status, error){
+	            	   $("#progress_loading").hide();
+	            	   alertOpen("알림 ", "2.네트워크 장애 발생 !  다시 시도해주세요", true, false, null, null);
+	               },
+	               dataType: 'json'
+	           });
+			//var qrInfoUrl = window.location.protocol + "//pb.retunp.com + "/qr/qrinfo.do?data=" + url;
+		});	
 	}
 	
-	var  pointBackUrl;
-	/* KICC 외의 일반 QR에 의한 적립 요청 주소 */
-	if (param["paymentRouterType"] && param["paymentRouterType"].trim().length != 0 &&  param["paymentRouterType"] == "VAN"){
-		if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KFTC" ){
-			pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrAcc.do";
+	bridge.checkPermission(appInfo.permission.READ_PHONE_STATE, function(data){
+		data = JSON.parse(data);
+		if (data.result == "100") {
+			if (data.permissionState == appInfo.permissionResult.PERMITTEED) {
+				execPointback();
+			}else {
+				bridge.requestPermission(appInfo.permission.READ_PHONE_STATE, function(data){
+					data = JSON.parse(data);
+					if (data.permissionState == appInfo.permissionResult.PERMITTEED) {
+						execPointback();
+					}else {
+						 alertOpen("확인", result.permissionName + " 권한을 허용하셔야 적립이 가능합니다", true, false, null, null);
+					}
+				});
+			}
+		}else {
+			alertOpen("알림", "업데이트가 필요합니다</br>확인을 누르시면 업데이트 페이지로 이동합니다.", true, false, null, null);
+			return;
 		}
-
-		else if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KIS" ){
-			pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrAcc.do";
-		}
-
-		else if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KOVAN" ){
-			pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/commonQrAcc.do";
-		}
-		/* KICC 전용 QR 에 의한 적립 요청 주소 */
-		else if (param["paymentRouterName"] && param["paymentRouterName"].trim().length != 0 && param["paymentRouterName"] == "KICC" ){
-			pointBackUrl = window.location.protocol + "//" + window.location.host + "/m/qr/kiccQrAcc.do";
-		} 
-		else {
-			alertOpen("알림", "잘못된 QR 정보입니다. <br/>관리자에게 문의해주세요", true, false, null, null);
-		}
-	}
-	
-	if (pointBackUrl == null || pointBackUrl == "" || pointBackUrl.trim().length == 0 ){
-        alertOpen("알림", "적립경로 오류 :  잘못된 QR 정보입니다. <br/>관리자에게 문의해주세요", true, false, null, null);
-        return;
-    }
-	
-	$("#progress_loading2").show();
-	$.ajax({
-       	type: "POST",
-           url: pointBackUrl,
-           data: param,
-           success: function (result) {
-        	   $("#progress_loading2").hide();
-        	   if (result && typeof result !="undefined") {
-        		  $("#progress_loading").hide();
-        		   /* result obj 설명
-           		  * resultCode : 성공 실패 값(100 이 아니면 실패)
-           		  * message : 메시지
-           		  * url : 이동할 URL 
-           		  */ 
-        		 var alertText = "";
-        		 if (result.resultCode  == "100") {
-        			 alertText = result.message
-        		 }else {
-        			 alertText = result.resultCode + " : " + result.message
-        		 }
-        		 
-        		 alertOpen("확인", 
-        			alertText, 
-        			true, 
-        			false, 
-        			function(){
-        			 if (result.resultCode == "100") {
-        				 movePageReplace(window.location.protocol + "//" + window.location.host + "/m/mypage/newpoint.do");
-        			 }
-        		 	}, 
-        			null);
-           	 }else{
-           		 alertOpen("알림", "1.네트워크 장애 발생. 다시 시도해주세요.", true, false, null, null);
-           	 }
-           },
-           error : function(request, status, error){
-        	   $("#progress_loading").hide();
-        	   alertOpen("알림 ", "2.네트워크 장애 발생 !  다시 시도해주세요", true, false, null, null);
-           },
-           dataType: 'json'
-       });
+	});
 }
 
 function checkVersion(){

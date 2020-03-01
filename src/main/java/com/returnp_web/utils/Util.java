@@ -54,6 +54,13 @@ public class Util {
 	    return result;
 	  }
 	
+	public static void encodingURIMap(HashMap<String, String> map) {
+		for (Map.Entry<String, String> entry : map.entrySet()) {
+		     String key = entry.getKey();
+		     Object value = entry.getValue();
+		 }
+	}
+	
 	private static final int NOPOS = -1;
 
 	/**

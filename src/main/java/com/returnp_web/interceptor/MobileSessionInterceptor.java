@@ -73,10 +73,7 @@ public class MobileSessionInterceptor extends HandlerInterceptorAdapter {
 			String isAjax= request.getHeader("AJAX");
 			if ("true".equals(isAjax)) return true;
 		
-			/*System.out.println("user_auth_tokensss");
-			System.out.println(userAuthToken);*/
 			String user_agent = request.getHeader("User-Agent");
-
 			RPMap dbparams = new RPMap();
 			if (user_agent.indexOf("APP_RETURNP_Android") > -1) { // APP
 				if (userAuthToken != null && !"null".equalsIgnoreCase(userAuthToken)) { // APP이면서 유효한 토큰이 존재

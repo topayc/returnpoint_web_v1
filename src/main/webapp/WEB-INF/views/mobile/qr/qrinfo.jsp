@@ -119,6 +119,7 @@ $(document).ready(function(){
 	</c:choose>
 	<!-- content end -->	
 </div>
+<div id = "progress_loading2" style = "display:none;color : #aaa;font-size : 30px;top:50%"> <i class="fas fa-circle-notch fa-spin"></i> </div>
 </body>
 <!-- body end -->
 </html>

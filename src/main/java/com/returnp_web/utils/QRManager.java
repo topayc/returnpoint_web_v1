@@ -84,9 +84,9 @@ public class QRManager {
 			String.format("%09d", field3) + 
 			String.format("%09d", field4) +
 			String.format("%04d", field5);
-		System.out.println("----------------------KICC 큐알 적립 원본 데이타--------------------");
-		System.out.println(qrPText);
-		System.out.println("------------------------------------------------------------------------");
+		//System.out.println("----------------------KICC 큐알 적립 원본 데이타--------------------");
+		//System.out.println(qrPText);
+		//System.out.println("------------------------------------------------------------------------");
 		/*VAN 시간을 내부 포맷으로 변경*/
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		GregorianCalendar calendar = new GregorianCalendar(
@@ -190,10 +190,10 @@ public class QRManager {
 		 * pas_str : 승인 상태에 따른 추가된 문자열
 		 * */
 		
-		System.out.println("-------------------------------QR Manager Common QR 파싱 데이타--------------------------------------");
-		System.out.println(qrPText);
-		System.out.println("제품 번호 " + af_id);
-		System.out.println("---------------------------------------------------------------------------------------------------------------");
+		//System.out.println("-------------------------------QR Manager Common QR 파싱 데이타--------------------------------------");
+		//System.out.println(qrPText);
+		//System.out.println("제품 번호 " + af_id);
+		//System.out.println("---------------------------------------------------------------------------------------------------------------");
 		
 		try {
 			qrMap.put("paymentRouterType", "VAN");  //라우터 타입

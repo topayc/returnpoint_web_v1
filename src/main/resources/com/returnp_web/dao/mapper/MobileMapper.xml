@@ -504,7 +504,10 @@
 				,updateTime
 				,memberPhone
 		FROM member_auth_token
-		WHERE userAuthToken = #{userAuthToken}
+		WHERE 1 = 1
+		<if test="memberNo != null "> AND memberNo   = #{memberNo} </if>
+		<if test="userAuthToken != null "> AND userAuthToken   = #{userAuthToken} </if>
+		
 		ORDER BY
    		memberAuthTokenNo DESC
 		LIMIT 1 

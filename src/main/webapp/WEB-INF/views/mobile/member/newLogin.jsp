@@ -59,7 +59,7 @@
 						if (result.result.code == 0) {
 							if (isApp() && result.result.msg.startsWith("APP")){
 								var data = result.result.msg.split(",");
-								var session = {userName :data[1] , userEmail : [2], userPhone : [3],userAuthToken : data[4]}
+								var session = {userName :data[1] , userEmail : data[2], userPhone : data[3],userAuthToken : data[4]}
 							    bridge.setDeviceSession(JSON.stringify(session), function(result) {
 							    	 result = JSON.parse(result);
 							    	 if (result.result == "100") {

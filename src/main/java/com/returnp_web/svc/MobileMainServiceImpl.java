@@ -727,7 +727,27 @@ public class MobileMainServiceImpl implements MobileMainService {
 			JsonObject object = new JsonObject();
 			object.addProperty("responseCode", "1000");
 			object.addProperty("resultCode", "9081");
-			object.addProperty("message", "잘못된 </br> 해당 요청에 대한 세션이 없습니다.");
+			object.addProperty("message", "잘못된 요청</br> 해당 요청에 대한 세션이 없습니다.");
+			return gson.toJson(object);
+		}
+		
+		RPMap dbparams = new RPMap();
+		dbparams.put("memberNo",sm.getMemberNo());
+		HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
+		if (memberMap == null || memberMap.isEmpty()) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9089");
+			object.addProperty("message", "해당 회원에 대한 정보가 없습니다. </br>확인후 다시 시도해주세요.");
+			return gson.toJson(object);
+		}
+		
+		HashMap<String, Object> userTokenMap = this.mobileMemberDao.selectMemberAuthToken(dbparams);
+		if (userTokenMap == null || userTokenMap.isEmpty()) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9089");
+			object.addProperty("message", "해당 회원의 인증 토큰 정보가 없습니다. ");
 			return gson.toJson(object);
 		}
 		
@@ -761,6 +781,28 @@ public class MobileMainServiceImpl implements MobileMainService {
 		StringBuffer response2 = null;
 		
 		try {
+			String memberPhone = String.valueOf(memberMap.get("memberPhone"));
+			String phoneNumber = null;;
+			String phoneNumberCountry = null;
+			
+			if (memberPhone.startsWith("+82")) {
+				phoneNumberCountry = memberPhone;
+				phoneNumber = "0" + phoneNumberCountry.substring(3);
+			}
+			
+			else if (memberPhone.startsWith("82")) {
+				phoneNumberCountry = memberPhone;
+				phoneNumber = "0" + phoneNumberCountry.substring(2);
+			}else {
+				phoneNumber = memberPhone;
+				phoneNumberCountry  = "0"+ phoneNumber.substring(1);
+			}
+			
+			p.put("memberName",Util.encodeURIComponent(String.valueOf(memberMap.get("memberName"))));
+			p.put("memberEmail", Util.encodeURIComponent(String.valueOf(memberMap.get("memberEmail"))));
+			p.put("phoneNumber", Util.encodeURIComponent(phoneNumber));
+			p.put("phoneNumberCountry", Util.encodeURIComponent(phoneNumberCountry));
+			
 			p.put("key", key.split(",")[0]);
 			URL url = new URL(remoteCallURL + "?" + Util.mapToQueryParam(p));
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -786,7 +828,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 				request.getSession().removeAttribute(accKeyName+ "_router");
 				request.getSession().removeAttribute(accKeyName+ "_time");
 			} else {
-				System.out.println("포인트 백 적립 요청 에러");
+				//System.out.println("포인트 백 적립 요청 에러");
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -815,6 +857,28 @@ public class MobileMainServiceImpl implements MobileMainService {
 			object.addProperty("message", "잘못된 직접 요청</br>해당 요청에 대한 세션이 없습니다.");
 			return gson.toJson(object);
 		}
+		
+		RPMap dbparams = new RPMap();
+		dbparams.put("memberNo",sm.getMemberNo());
+		
+		HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
+		if (memberMap == null || memberMap.isEmpty()) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9089");
+			object.addProperty("message", "해당 회원에 대한 정보가 없습니다. 다시 시도해주세요.");
+			return gson.toJson(object);
+		}
+		
+		HashMap<String, Object> userTokenMap = this.mobileMemberDao.selectMemberAuthToken(dbparams);
+		if (userTokenMap == null || userTokenMap.isEmpty()) {
+			JsonObject object = new JsonObject();
+			object.addProperty("responseCode", "1000");
+			object.addProperty("resultCode", "9089");
+			object.addProperty("message", "해당 회원의 인증 토큰 정보가 없습니다. ");
+			return gson.toJson(object);
+		}
+		
 		
 		/* refer 검사 */
 /*		String referer = request.getHeader("referer");
@@ -846,6 +910,28 @@ public class MobileMainServiceImpl implements MobileMainService {
 		StringBuffer response2 = null;
 		
 		try {
+			String memberPhone = String.valueOf(memberMap.get("memberPhone"));
+			String phoneNumber = null;;
+			String phoneNumberCountry = null;
+			
+			if (memberPhone.startsWith("+82")) {
+				phoneNumberCountry = memberPhone;
+				phoneNumber = "0" + phoneNumberCountry.substring(3);
+			}
+			
+			else if (memberPhone.startsWith("82")) {
+				phoneNumberCountry = memberPhone;
+				phoneNumber = "0" + phoneNumberCountry.substring(2);
+			}else {
+				phoneNumber = memberPhone;
+				phoneNumberCountry  = "0"+ phoneNumber.substring(1);
+			}
+			
+			p.put("memberName",Util.encodeURIComponent(String.valueOf(memberMap.get("memberName"))));
+			p.put("memberEmail", Util.encodeURIComponent(String.valueOf(memberMap.get("memberEmail"))));
+			p.put("phoneNumber", Util.encodeURIComponent(phoneNumber));
+			p.put("phoneNumberCountry", Util.encodeURIComponent(phoneNumberCountry));
+			
 			p.put("key", key.split(",")[0]);
 			URL url = new URL(remoteCallURL + "?" + Util.mapToQueryParam(p));
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -869,7 +955,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 				request.getSession().removeAttribute(accKeyName+ "_router");
 				request.getSession().removeAttribute(accKeyName+ "_time");
 			} else {
-				System.out.println("포인트 백 적립 요청 에러");
+				//System.out.println("포인트 백 적립 요청 에러");
 			}
 			//System.out.println("포인트 백 적립 요청");
 			//System.out.println(remoteCallURL + "?" + Util.mapToQueryParam(p));
@@ -878,8 +964,8 @@ public class MobileMainServiceImpl implements MobileMainService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("적립 요청 결과");
-		System.out.println(response2.toString());
+	/*	System.out.println("적립 요청 결과");
+		System.out.println(response2.toString());*/
 		return response2.toString();
 	}
 	
