@@ -30,9 +30,16 @@
 		   var memberPhone = $("#memberPhone").val().trim().replace(/-/gi, "");;
 			var memberPassword = $("#memberPassword").val().trim();
 			if (memberPhone.length < 1) {
-				alertOpen("알림", "전화번호가 입력되지 않았습니다", true, false, function(){$("#memberPhone").focus()}, null);
-				reteurn;
+				alertOpen("알림", "휴대폰 번호가 입력되지 않았습니다", true, false, function(){$("#memberPhone").focus()}, null);
+				return;
 			}
+			
+			if (!checkPhoneNumber(memberPhone)) {
+				alertOpen("확인", "휴대폰 번호 형식이 옳바르지 않습니다", true, false, null, null);
+				isSendingSms = false;
+				return false;
+			}
+			
 			if (memberPassword.length < 1) {
 				alertOpen("알림", "비밀번호가 입력되지 않았습니다", true, false, function(){$("#memberPassword").focus()}, null);
 				return;
@@ -91,7 +98,7 @@
    </script>
 </head>
 
-<body>
+<body style = "background-color : #f1f1f1">
    	<div class="alert_wrap" id="alertView" name="alertView" style="display:none;">
 	  <div class="alert alert-info">
 	    <div class="alert_body">
@@ -122,7 +129,7 @@
             </div>
          </div>
          <div class="input_box">
-            <input type="number" name="memberPhone"  id = "memberPhone" placeholder="전화번호">
+            <input type="number" name="memberPhone"  id = "memberPhone" placeholder="휴대폰 번호( - 없이 숫자만 입력)">
              <input type="text" name="memberPassword" id = "memberPassword" placeholder="비밀번호">
          </div>
          <button id="login_btn">로그인</button>

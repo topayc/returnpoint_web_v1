@@ -104,7 +104,12 @@
 				isSendingSms = false;
 				return false;
 			}
-
+			
+			if (!checkPhoneNumber(phoneNumber)) {
+				alertOpen("확인", "휴대폰 번호 형식이 옳바르지 않습니다", true, false, null, null);
+				isSendingSms = false;
+				return false;
+			}
 			
 			$("#progress_loading2").show();
 			$("#sendPhoneAuthSms").attr("disabled",true);

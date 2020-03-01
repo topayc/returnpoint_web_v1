@@ -94,6 +94,13 @@
 										<li onclick = "movePage('/m/member/login.do')"><spring:message code="login.form.submit" /></li>
 										<li onclick = "movePage('/m/member/join.do')"><spring:message code="label.join" /></li>
 									</c:when>	
+									<c:otherwise>
+										<li onclick = "movePage('/m/member/logout.do')">
+											<div class = "topper_logout">
+												<spring:message code="label.logout" />
+											</div>
+										</li>
+									</c:otherwise>
 								</c:choose>
 								<li ><spring:message code="label.n_en_rpoint" />&nbsp;<spring:message code="label.n_cs" />&nbsp;&nbsp;<b>02-585-5993</b></li>
 							</ul>

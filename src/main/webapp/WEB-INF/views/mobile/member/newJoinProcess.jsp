@@ -99,15 +99,22 @@
 			}
 			
 			if (phoneNumber.length < 1) {
-				alertOpen("알림", "전화번호를 입력해주세요", true, false, null, null);
+				alertOpen("알림", "휴대폰 번호를 입력해주세요", true, false, null, null);
 				isSendingSms = false;
 				return;
 			}
 			if (!$.isNumeric(phoneNumber)) {
-				alertOpen("확인", "전화번호는 숫자만 입력가능합니다", true, false, null, null);
+				alertOpen("확인", "휴대폰 번호는 숫자만 입력가능합니다", true, false, null, null);
 				isSendingSms = false;
 				return false;
 			}
+			
+			if (!checkPhoneNumber(phoneNumber)) {
+				alertOpen("확인", "휴대폰 번호 형식이 옳바르지 않습니다", true, false, null, null);
+				isSendingSms = false;
+				return false;
+			}
+			
 			$("#progress_loading2").show();
 			$("#sendPhoneAuthSms").attr("disabled",true);
 			$.ajax({
@@ -156,9 +163,19 @@
 
 			$("#requestPhoneNumberAuth").attr("disabled", true);
 			var phoneAuthNumber = $("#phoneAuthNumber").val().trim();
-			if (phoneAuthNumber.length < 1) {
-				alertOpen("확인", "인증번호가 입력되지 않았습니다.", true, false, function() { startTimer(180, "timer") }, null);
+			var phoneNumber = $("#phoneNumber").val().trim();
+			
+			if (phoneNumber.length < 1) {
+				alertOpen("확인", "휴대폰 번호가 입력되지 않았습니다.", true, false, null, null);
 				isAuthRequesting = false;
+				$("#requestPhoneNumberAuth").attr("disabled", false);
+				return;
+			}
+			
+			if (phoneAuthNumber.length < 1) {
+				alertOpen("확인", "인증번호가 입력되지 않았습니다.", true, false, null, null);
+				isAuthRequesting = false;
+				$("#requestPhoneNumberAuth").attr("disabled", false);
 				return;
 			}
 			$("#progress_loading2").show();
@@ -474,7 +491,7 @@
 			<p>아래의 인증 과정을 진행해 주시기 바랍니다.</p>
 			</br>
 			<div class="phone_input1">
-				<input type="number" id="phoneNumber"  name="phoneNumber" placeholder="휴대폰번호" style = "padding-left:15px;">
+				<input type="number" id="phoneNumber"  name="phoneNumber" placeholder="휴대폰번호( - 없이 숫자만 입력)" style = "padding-left:15px;">
 			</div>
 			<div class="phone_input2">
 				<input type="number" id="phoneAuthNumber" name="phoneAuthNumber" placeholder="인증번호 입력">

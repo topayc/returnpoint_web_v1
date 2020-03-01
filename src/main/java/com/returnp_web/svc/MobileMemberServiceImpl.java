@@ -1868,7 +1868,7 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			if ((long)smsResult.get("error_count") == 0) {
 				request.getSession().setAttribute("PHONE_AUTH_NUMBER", key);
 				request.getSession().setAttribute("PHONE_NUMBER", rPap.getStr("phoneNumber"));
-				json = Util.printResult(0, String.format("R.POINT 인증번호 문자를 발송하였습니다.</br>해당 시간안에 인증번호를 입력한 후 인증하기 버튼을 눌러주세요"), null);
+				json = Util.printResult(0, String.format("R.POINT 인증번호 문자를 발송하였습니다.</br> 해당 시간안에 인증번호를 입력한 후 인증하기 버튼을 눌러주세요"), null);
 			}else {
 				json = Util.printResult(0, String.format("인증번호 발송에 실패했습니다.</br>다시 진행해주세요 "), null);
 			}
@@ -2212,6 +2212,8 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 			}
 			
 			String memberPhone = rPap.getStr("memberPhone");
+		
+			
 			String memberPassword= rPap.getStr("memberPassword");
 			if (org.apache.commons.lang3.StringUtils.isEmpty(memberPhone ) || org.apache.commons.lang3.StringUtils.isEmpty(memberPassword ) ) {
 				json = Util.printResult(0, String.format("부적절한 요청입니다 </br>필수 입력 정보가 없습니다."), null);
@@ -2219,18 +2221,50 @@ public class MobileMemberServiceImpl implements MobileMemberService {
 				return true;
 			}
 			
+			String countryMemberPhone1 = "+82" + memberPhone.substring(1);
+			String countryMemberPhone2 = "82" + memberPhone.substring(1);
+
 			dbparams.put("memberPhone", memberPhone);
 			dbparams.put("memberPassword",Util.sha(memberPassword));
+			
+			/* 
+			 * 휴대폰 인증으로 변경 후, +82, 82 로 기존 등록된 회원의 경우도 처리하기 위해 
+			 * 아래의 방식으로 로그인 인증을 처리
+			 */
+			boolean isMemberPhoneUpdate = false;
 			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
 			if (memberMap == null) {
-				json = Util.printResult(1, String.format("입력하신 정보의 회원이 존재하지 않습니다.</br>전화번호, 비밀번호를 확인 후 다시 시도해주세요"), null);
-				rmap.put("json", json);
-				return true;
+				dbparams.put("memberPhone", countryMemberPhone1);
+				memberMap = this.mobileMainDao.selectMember(dbparams);
+				
+				if (memberMap == null) {
+					dbparams.put("memberPhone", countryMemberPhone2);
+					memberMap = this.mobileMainDao.selectMember(dbparams);
+					
+					if (memberMap == null) {
+						json = Util.printResult(1, String.format("입력하신 정보의 회원이 존재하지 않습니다.</br>전화번호, 비밀번호를 확인 후 다시 시도해주세요"), null);
+						rmap.put("json", json);
+						return true;
+					}else {
+						isMemberPhoneUpdate = true;
+					}
+				}else {
+					isMemberPhoneUpdate = true;
+				}
+			}
+			
+			if (isMemberPhoneUpdate) {
+				dbparams.put("memberNo", Converter.toInt(memberMap.get("memberNo")));
+				dbparams.put("memberPhone", memberPhone);
+				this.mobileMemberDao.updateUser(dbparams);
+				memberMap.put("memberPhone", memberPhone);
 			}
 			
 			String memberStatus = (String)memberMap.get("memberStatus");
+			
 			int code = 0;
 			String message = null;
+			
 			switch(memberStatus) {
 			case "1": code = 0; message = "정상입니다"; break;
 			case "2": code = 1; message = "현재 회원님은 등록 대기중입니다. </br>관리자에게 문의해주세요"; break;

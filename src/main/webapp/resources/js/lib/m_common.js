@@ -1038,6 +1038,14 @@ $.fn.serializeObject = function () {
     return result;
 };
 
+function checkPhoneNumber(str){
+	var rgEx = /(01[016789])(\d{4}|\d{3})\d{4}$/g;
+	if (rgEx.test(str)) {
+		return true;
+	} else {
+		return false;
+	}
+}
 //이메일 형식 체크 
 function checkEmail(str) {
 	var pattern = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
