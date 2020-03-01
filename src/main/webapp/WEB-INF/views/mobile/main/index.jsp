@@ -52,12 +52,12 @@ if (isApp()) {
     checkVersion();
   }
  $(document).on('ready', function() {
-/* 	 $("#event_popup").modal({
+ $("#event_popup").modal({
 		  escapeClose: false,
 		  clickClose: false,
 		  showClose: false,
 		  fadeDuration: 90
-		});  */ 
+		});  
 	  if(getCookie("notToday")=="Y"){
 		  closeMainModal();
        }
@@ -121,7 +121,7 @@ if (isApp()) {
    <!-- 0921 이벤트 노티 -->
    <!-- 0831 서버점검 노티 -->
 <%--    <c:if test="${SERVER_MANAGE.status.webServerStatus == '2' }"> --%>
-    <div style="display:none;" id = "event_popup">
+<!--     <div style="display:none;" id = "event_popup">
     	<div class="main_popuppage">
 		<div class="popup_list" >
 			<img src="/resources/images/event_popup2.png">
@@ -136,6 +136,32 @@ if (isApp()) {
 			</div>
 		</div>
 	</div>
+   </div> -->
+     <div style="display:none;" id = "event_popup">
+    	<div class="main_popuppage" style = "background-color : #fff;">
+			<div class="popup_list" style = "border: 1px solid #000" >
+				<div >
+					<div style = "padding: 10px 10px;font-size : 14px;color :#fff;background-color : #cc0000">알리는 말씀 - 시스템 개편</div>
+					<div style = "text-align:left;padding:20px 20px 10px 20px">
+						<p style = "font-size : 14px; font-weight : 550">☞ 휴대폰 번호 인증시스템으로 변경 </p>
+						<p style = "color : #555;margin-top:3px">이메일을 기반으로 한 인증 및 적립시스템을 휴대폰 번호 기반의 인증 및 적립시스템으로 변경 완료되었습니다.</p>
+						<p style = "color : #555;margin-top:4px">회원가입, 로그인, 비밀번호 재설정등 휴대폰 인증을 통하여 간편하게 이용하실 수 있습니다.</p>
+						</br>
+						<p style = "font-size : 14px; font-weight : 550">☞ 영수증 QR 적립 방식 변경</p>
+						<p style = "color : #555;margin-top:3px">이제 다른 휴대폰에서도 로그인 한 후 영수증 QR 적립이 가능합니다.</p>
+					</div>
+				</div>
+				<div class="list_box">
+					<ul>
+						<li><span onclick = "movePage('/m/pointCoupon/index.do')">자세히보기</span></li>
+					</ul>
+				</div>
+				<div class="popup_btn_box">
+					<button style="border-top:1px solid #ccc;border-right:1px solid #ccc" onclick = "closePopupNotToday('alertView')">오늘 그만 보기</button>
+					<button style="margin-left: -4.5px;border-top:1px solid #ccc;" onclick = "closeMainModal();return false">닫기</button>
+				</div>
+			</div>
+		</div>
    </div>
 <!--    <div style="display:none;" id = "event_popup">
     	<div class="main_popuppage">

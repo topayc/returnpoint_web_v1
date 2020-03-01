@@ -61,6 +61,7 @@
 					clearInterval(this.timer); // 타이머 해제
 					alert("인증 시간이 초과하였습니다. 다시 인증해주시기 바랍니다.");
 					$("#sendPhoneAuthSms").attr("disabled",false);
+					$("#phoneAuthNumber").val("");
 				}
 			},
 			fnStop : function() {
@@ -425,7 +426,7 @@
 				<p class = "joinDate"></p>
 				<button onclick = "moveSlide(2)">비밀번호 재설정</button>
 			</div>
-			<button click = "movePage('/m/member/newLogin.do')">로그인</button>
+			<button onclick = "movePageReplace('/m/member/newLogin.do')">로그인</button>
 		</div>
 		<div class="r_pass2 join_slide">
 			<h3>비밀전호 재설정</h3>

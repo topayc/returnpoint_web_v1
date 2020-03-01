@@ -689,7 +689,6 @@ function accPointCode(){
 	            		 	}, 
 	            			null);
 	               	 }else{
-	               	  $("#progress_loading2").hide();
 	               		 alertOpen("알림", "1.네트워크 장애 발생. 다시 시도해주세요.", true, false, null, null);
 	               	 }
 	               },

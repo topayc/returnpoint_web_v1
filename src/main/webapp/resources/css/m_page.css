@@ -1028,7 +1028,8 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .main_popuppage .popup_list .list_box1{width:100%;position: absolute;bottom:60px;text-align:center;color:#fafd00;font-weight:bold;}
 .main_popuppage .popup_list .list_box span{padding:1% 1.5%;border-radius: 20px;font-size: 13px;color:#fff;border:1px solid #fff;}
 .main_popuppage .popup_btn_box{width:100%;position:absolute;left: 0;bottom:0;}
-.main_popuppage .popup_btn_box button{width:50%;padding:3%;border:none;color:#fff;background-color: #ef1b8c;font-size: 15px;}
+/* .main_popuppage .popup_btn_box button{width:50%;padding:3%;border:none;color:#fff;background-color: #ef1b8c;font-size: 15px;} */
+.main_popuppage .popup_btn_box button{width:50%;padding:3%;border:none;color:#fff;background-color: #fff;font-size: 13px;color : #000}
 .main_popuppage .popup_list1{background:#33cccc;width:100%;height:400px;position: relative;}
 .main_popuppage .popup_list1 img{width:100%;height: 100%;}
 .main_popuppage .popup_list1 .list_box{width:100%;position: absolute;bottom:60px;text-align:center;}
@@ -1225,7 +1226,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_login .r_login_page5 .r_id p{font-size:13px;font-weight:bold;}
 .r_login .r_login_page5 .r_id span{font-size:13px;}
 .r_login .r_login_page5 .r_id > input{width:100%;padding:3% 0;text-indent:10px;margin-top:3%;font-size:15px;}
-.r_login .r_login_page5 .r_id .r_id_input{border:1px solid #999;margin-top:3%;}
+.r_login .r_login_page5 .r_id .r_id_input{border:1px solid #ddd;margin-top:3%;}
 .r_login .r_login_page5 .r_id .r_id_input input{padding:3% 0;border:1px solid transparent;width:70%;font-size:15px;}
 .r_login .r_login_page5 .r_id .r_id_input button{color:#fff;background:#33cccc;border:1px solid #33cccc;padding:3.3% 3%;float:right;border:0;font-size:15px;}
 .r_login .r_login_page5 > button{width:100%;color:#fff;background:#33cccc;padding:3%;border:1px solid #33cccc;margin-top:5%;font-size:15px;font-weight:bold;}

@@ -74,6 +74,7 @@
 					clearInterval(this.timer); // 타이머 해제
 					alert("인증 시간이 초과하였습니다. 다시 인증해주시기 바랍니다.");
 					$("#sendPhoneAuthSms").attr("disabled",false);
+					$("#phoneAuthNumber").val("");
 				}
 			},
 			fnStop : function() {
@@ -484,7 +485,7 @@
 			<div class="bottom_btn"><b id = "next">다음으로</b><span><img src="/resources/images/bottom_btn.png"></span></div>
 		</div>
 		<div class="r_login_page3 join_slide">
-			<h3>모바일 인증</h3>
+			<h3>휴대폰 인증</h3>
 			<p>
 				<b>R POINT</b> 앱은 휴대폰 번호를 아이디로 사용합니다.
 			</p>
@@ -526,6 +527,7 @@
 				<!-- <p>이메일 입력</p> -->
 				<input type="text" name="memberEmail"  id="memberEmail"  placeholder="이메일 입력">
 			</div>
+			</br>
 			<div class="r_id">
 				<!-- <p>추천인 입력(선택)</p> -->
 				<span>추천인은 선택입력사항이며, 추천인 전화번호를 입력한 후 추천인 확인 버튼을 눌러주세요 ( - 없이 입력)</span>
