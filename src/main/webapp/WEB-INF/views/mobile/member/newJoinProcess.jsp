@@ -486,10 +486,11 @@
 		</div>
 		<div class="r_login_page3 join_slide">
 			<h3>휴대폰 인증</h3>
-			<p>
-				<b>R POINT</b> 앱은 휴대폰 번호를 아이디로 사용합니다.
-			</p>
-			<p>아래의 인증 과정을 진행해 주시기 바랍니다.</p>
+			<p> <span>회원 가입은 휴대폰 인증이 필요합니다</span> </p>
+			</br>
+			<p> <span>전화번호를 입력하신 후 '인증번호 받기'를 클릭하면 입력하신 번호로 인증번호 6자리가 문자메시지로 발송됩니다.</span> </p>
+			</br>
+			<p> <span>아래 시간안에 인증번호를 입력하신 후 인증을 진행해주세요.</span> </p>
 			</br>
 			<div class="phone_input1">
 				<input type="number" id="phoneNumber"  name="phoneNumber" placeholder="휴대폰번호( - 없이 숫자만 입력)" style = "padding-left:15px;">
@@ -499,7 +500,6 @@
 				<button id  = "sendPhoneAuthSms" onclick = "sendPhoneAuthSms();return false;">인증번호받기</button>
 			</div>
 			</br>
-			<span>입력하신 번호로 인증번호 6자리가 발송됩니다 </br>아래 시간안에 입력하신 후 인증을 진행해주세요.</span>
 			<div class="time" id = "timer">&nbsp;</div>
 			<button type = "button" id = "requestPhoneNumberAuth"  onclick = "requestPhoneNumberAuth()">인증하기</button>
 		</div>
