@@ -23,7 +23,6 @@
 <link rel="stylesheet" href="/resources/css/m_common.css">
 <!-- <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script> -->
 <script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="/resources/js/lib/jquery.mobile.js.js"></script>
 
 <!-- 가맹점롤링 -->
 <!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script> -->
@@ -144,11 +143,13 @@ if (isApp()) {
 					<div style = "padding: 10px 10px;font-size : 14px;color :#fff;background-color : #cc0000">알리는 말씀 - 시스템 개편</div>
 					<div style = "text-align:left;padding:20px 20px 10px 20px">
 						<p style = "font-size : 14px; font-weight : 550">☞ 휴대폰 번호 인증시스템으로 변경 </p>
-						<p style = "color : #555;margin-top:3px">이메일을 기반으로 한 인증 및 적립시스템을 휴대폰 번호 기반의 인증 및 적립시스템으로 변경 완료되었습니다.</p>
+						<p style = "color : #555;margin-top:3px">이메일을 기반으로 한 인증 및 적립시스템을 휴대폰 번호 기반의 인증 및 적립시스템으로 변경 ,완료하였습니다.</p>
 						<p style = "color : #555;margin-top:4px">회원가입, 로그인, 비밀번호 재설정등 휴대폰 인증을 통하여 간편하게 이용하실 수 있습니다.</p>
 						</br>
 						<p style = "font-size : 14px; font-weight : 550">☞ 영수증 QR 적립 방식 변경</p>
 						<p style = "color : #555;margin-top:3px">이제 다른 휴대폰에서도 로그인 한 후 영수증 QR 적립이 가능합니다.</p>
+						</br>
+						<p style = "color : #555;margin-top:3px">언제나 최선을 다하는 탑해피월드가 되겠습니다</p>
 					</div>
 				</div>
 				<div class="list_box">
