@@ -178,7 +178,10 @@ $(document).ready(function(){
 					<c:otherwise>
 						<c:forEach var="receipt"  items="${model.receipts}"  >
 							<div style = "padding-bottom:28px" onclick = "movePage('/m/pointCoupon/receiptDetail.do?pointCodeIssueRequestNo=${receipt.pointCodeIssueRequestNo}&issueType=${receipt.issueType}')">
-		        				<div class="coupon_img_box"><img src = "${receipt.uploadFile}" onerror="this.src='https://imgnews.pstatic.net/image/025/2020/03/02/0002980315_001_20200302152303107.jpg?type=w647'"/></div>
+		        				<div class="coupon_img_box">
+		        				<%-- 	<img src = "${receipt.uploadFile}" onerror="this.src='/resources/images/receipt_rect.png'"/> --%>
+		        					<img src = "/resources/images/receipt_rect.png"/>
+		        				</div>
 		        				<p>
 		        					<c:choose>
 								    	<c:when test = "${receipt.issueType == '1'}"><span style = "font-weight:600;">가맹점 : </span><span style = "font-weight:600;">${receipt.affiliateName}</span></c:when>

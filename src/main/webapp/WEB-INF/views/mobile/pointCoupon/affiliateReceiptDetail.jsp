@@ -63,7 +63,8 @@ $(document).ready(function(){
 		<div class="bg_black">
 			<div class="bg_white">
 				<div class="bg_img">
-					<img  src = "${model.receipt.uploadFile }"/>
+					<img src = "/resources/images/receipt_rect.png"/>
+					<%-- <img  src = "${model.receipt.uploadFile }"/> --%>
 				</div>
 			</div>
 		</div>
