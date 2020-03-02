@@ -1107,9 +1107,10 @@
 	</select>
 
 	<select id="selectPointCodeIssueRequests" parameterType="HashMap" resultType="HashMap">
-		select * from point_code_issue_request 
+		select A.*, B.affiliateName from point_code_issue_request as A  
+		left outer join affiliate as B on (A.affiliateNo= B.affiliateNo)
 			where 1= 1 
-			<if test="memberNo != null "> AND memberNo   = #{memberNo} </if> 
+			<if test="memberNo != null "> AND A.memberNo   = #{memberNo} </if> 
 			<if test="pointCodeIssueRequestNo != null "> AND pointCodeIssueRequestNo   = #{pointCodeIssueRequestNo} </if> 
  	</select>
  	
