@@ -130,7 +130,7 @@
          </div>
          <div class="input_box">
             <input type="number" name="memberPhone"  id = "memberPhone" placeholder="휴대폰 번호( - 없이 숫자만 입력)">
-             <input type="text" name="memberPassword" id = "memberPassword" placeholder="비밀번호">
+               <input type="password" name="memberPassword" id = "memberPassword" placeholder="비밀번호">
          </div>
          <button id="login_btn">로그인</button>
       	<!-- <input type="checkbox" id="isSaveId" name = "isSaveId"><label for="cb">아이디 저장</label>  -->
