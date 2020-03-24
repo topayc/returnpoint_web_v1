@@ -25,7 +25,7 @@
 <script type="text/javascript">
 function pointWithdrawal(){
 	 alertOpen("알림",
-		"현재 출금 신청은 회사 정상화 작업이 완료된 후 가능합니다. </br>자세한 내용은 공지를 참고해주세요",
+		"현재 출금 신청은 회사 정상화 작업이 </br>완료된 후 가능합니다. </br>자세한 내용은 공지를 참고해주세요",
 		true,
 		true,
 		function(){movePage("/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=118")},
