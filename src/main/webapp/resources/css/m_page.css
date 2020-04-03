@@ -1413,3 +1413,37 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_pay .r_address .r_pay_bottom .r_pay_bottom_img img{width:100%;height:100%;}
 .r_pay .r_address button{background:#33cccc;color:#fff;padding:3% 0;width:100%;border:1px solid #33cccc;font-size:15px;font-weight:500;margin-top:7%;}
 .r_pay .r_address button:hover{background:#fff;color:#33cccc;}
+
+/*쇼핑몰 장바구니 페이지*/
+.r_basket{}
+.r_basket .r_basket_page{width:100%;border-bottom:10px solid #f1f1f1;overflow:hidden;}
+.r_basket .r_basket_page p{text-align: center;font-size: 15px;color:#333;padding:2% 0;}
+.r_basket .r_basket_page .r_basket_box{border-top:1px solid #f1f1f1;border-bottom:1px solid #f1f1f1;width:100%;overflow:hidden;padding-bottom:5%;}
+.r_basket .r_basket_page .r_basket_box .r_basket_page_btn{float:left;width:10%;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con{float:right;width:90%;overflow:hidden;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents{overflow:hidden;margin-top:5%;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_img{float:left;width:70px;overflow:hidden;height:70px;border-radius:10px;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_img img{width:100%;height:100%;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text{float:right;width:77%;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text ul{list-style:none;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text ul li{font-size:15px;color:#333;line-height:25px;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text span{color:#777;font-size:11px;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods{color:#333;background-color:#f1f1f1;border-radius:5px;width:90%;padding:3%;margin:3% 0;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods h5{font-size:13px;margin-bottom:2%;font-weight:400;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods select{width:20%;padding:0.5% 0;border-radius:5px;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods span{float:right;font-weight:bold;font-size:15px;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con span{font-size:13px;color:#333;margin-right:2%;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con b{font-size:17px;color:#333;float:right;margin-right:5%;}
+.r_basket .r_basket_page .r_basket_box .r_basket_page_btn input[type=checkbox] {display: none;}
+.r_basket .r_basket_page .r_basket_box .r_basket_page_btn input[type=checkbox] + label{display: inline-block;cursor:pointer;position:relative;padding-left: 25px;margin-right: 15px;font-size: 13px;}
+.r_basket .r_basket_page .r_basket_box .r_basket_page_btn input[type=checkbox]+ label:before{content: "";display: inline-block;width: 20px;height: 20px;position: absolute;left:5px;top:3px;border:1px solid #33cccc;background-color:#fff;border-radius:20px;}
+.r_basket .r_basket_page .r_basket_box .r_basket_page_btn input[type=checkbox]:checked + label:before {content: "\2713";font-size: 18px;font-weight:800; color: #fff;background:#33cccc;text-align: center;line-height: 18px;} 
+.r_basket .r_basket_footer{overflow:hidden;padding:5% 0;font-size:15px;color:#333;width:100%;}
+.r_basket .r_basket_footer .r_basket_footer_left{float:left;width:40%;padding:2% 3%;}
+.r_basket .r_basket_footer .r_basket_footer_right{float:right;width:48%;padding:2% 3%;text-align:right;}
+.r_basket .r_basket_footer .r_basket_footer_l{float:left;width:40%;padding:2% 3%;font-weight:bold;margin-bottom:7%;}
+.r_basket .r_basket_footer .r_basket_footer_r{float:right;width:48%;padding:2% 3%;text-align:right;font-size:20px;margin-bottom:7%;font-weight:bold;}
+.r_basket .r_basket_footer .r_basket_footer_btn{width:100%;clear:both;}
+.r_basket .r_basket_footer .r_basket_footer_btn span{width:15%;padding:3%;font-size:13px}
+.r_basket .r_basket_footer .r_basket_footer_btn button{background-color:#33cccc;color:#fff;border:1px solid #33cccc;width:71%;padding:2% 0;border-radius:5px;}
+.r_basket .r_basket_footer .r_basket_footer_btn button:hover{background-color:#fff;border:1px solid #33cccc;color:#33cccc;}
