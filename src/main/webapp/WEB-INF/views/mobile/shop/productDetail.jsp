@@ -192,7 +192,7 @@
 					</div>
 				</div>
 				<div class="r_detail_pay">
-					<button>구매하기</button>
+					<button onclick = "movePage('/m/shop/orderDetail.do')">구매하기</button>
 				</div>
 
 			</div>
