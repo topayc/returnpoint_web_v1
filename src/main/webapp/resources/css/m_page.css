@@ -1333,7 +1333,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_detail .r_delivery ul{list-style: none;}
 .r_detail .r_delivery ul li{font-size:14px;line-height:30px;}
 .r_detail .r_delivery ul li span{border-radius:5px;background-color:#ccc;color:#555;font-size: 13px;padding:0.5% 1%;}
-.r_detail .r_nav{width:100%;background-color: #fff;border-bottom:1px solid #ccc;}
+.r_detail .r_nav{width:100%;background-color: #fff;border-bottom:1px solid #eee;}
 .r_detail .r_nav a{text-decoration: none;color:#333;font-size: 15px;display: block;}
 .r_detail .r_nav ul{display: inline;}
 .r_detail .r_nav ul li{display: inline-block;width:32%;text-align: center;padding:3% 0;}
@@ -1438,6 +1438,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods span{font-weight:bold;font-size:15px;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con span{font-size:13px;color:#333;margin-right:2%;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con b{font-size:17px;color:#333;float:right;margin-right:5%;}
+.r_shop_tab_select {border-bottom : 2px solid #33cccc}
 /* .r_basket .r_basket_page .r_basket_box .r_basket_page_btn input[type=checkbox] {display: none;}
 .r_basket .r_basket_page .r_basket_box .r_basket_page_btn input[type=checkbox] + label{display: inline-block;cursor:pointer;position:relative;padding-left: 25px;margin-right: 15px;font-size: 13px;}
 .r_basket .r_basket_page .r_basket_box .r_basket_page_btn input[type=checkbox]+ label:before{content: "";display: inline-block;width: 20px;height: 20px;position: absolute;left:5px;top:3px;border:1px solid #33cccc;background-color:#fff;border-radius:20px;}
