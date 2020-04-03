@@ -45,12 +45,14 @@ $(document).ready(function(){
 	<section>
 	<div class="r_basket">
 		<div class="r_basket_page">
-			<p>인터피플 배송</p>
+			<div class="r_basket_day">
+			<span class="r_basket_day1">18648682|2020.40.03</span><span class="r_basket_day2">></span><span class="r_basket_day3">주문상세보기</span>
+			</div>
 			<div class="r_basket_box">
-				<div class="r_basket_page_btn">
+				<!-- <div class="r_basket_page_btn">
 					<input type="checkbox" id="r_check">
 					<label for="r_check"></label>
-				</div>
+				</div> -->
 				<div class="r_basket_con">
 					<div class="r_basket_contents">
 						<div class="r_basket_img">
@@ -73,21 +75,18 @@ $(document).ready(function(){
 						</select>
 						<span>33,900원</span>
 					</div>
-					<span>옵션변경</span><span>|</span><span>바로구매</span>
-					<b>33,900원</b>
 				</div>
 			</div>
-			<p>배송비 무료</p>
 		</div>
 
 
 		<div class="r_basket_page">
 			<p>인터피플 배송</p>
 			<div class="r_basket_box">
-				<div class="r_basket_page_btn">
+				<!-- <div class="r_basket_page_btn">
 					<input type="checkbox" id="r_check">
 					<label for="r_check"></label>
-				</div>
+				</div> -->
 				<div class="r_basket_con">
 					<div class="r_basket_contents">
 						<div class="r_basket_img">
@@ -110,87 +109,15 @@ $(document).ready(function(){
 						</select>
 						<span>33,900원</span>
 					</div>
-					<span>옵션변경</span><span>|</span><span>바로구매</span>
-					<b>33,900원</b>
 				</div>
 			</div>
-			<p>배송비 무료</p>
-		</div>
-		<div class="r_basket_page">
-			<p>인터피플 배송</p>
-			<div class="r_basket_box">
-				<div class="r_basket_page_btn">
-					<input type="checkbox" id="r_check">
-					<label for="r_check"></label>
-				</div>
-				<div class="r_basket_con">
-					<div class="r_basket_contents">
-						<div class="r_basket_img">
-							<img src="/resources/images/r_basket_img.png">
-						</div>
-						<div class="r_basket_contents_text">
-							<ul>
-								<li>빈백 풋스툴 발받침</li>
-								<li>3colors</li>
-								<li><span>무료배송|일반택배</span></li>
-							</ul>
-						</div>
-					</div>
-					<div class="r_basket_goods">
-						<h5>무광올리브그린 보호패드포함</h5>
-						<select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-						</select>
-						<span>33,900원</span>
-					</div>
-					<span>옵션변경</span><span>|</span><span>바로구매</span>
-					<b>33,900원</b>
-				</div>
-			</div>
-			<p>배송비 무료</p>
-		</div>
-		<div class="r_basket_page">
-			<p>인터피플 배송</p>
-			<div class="r_basket_box">
-				<div class="r_basket_page_btn">
-					<input type="checkbox" id="r_check">
-					<label for="r_check"></label>
-				</div>
-				<div class="r_basket_con">
-					<div class="r_basket_contents">
-						<div class="r_basket_img">
-							<img src="/resources/images/r_basket_img.png">
-						</div>
-						<div class="r_basket_contents_text">
-							<ul>
-								<li>빈백 풋스툴 발받침</li>
-								<li>3colors</li>
-								<li><span>무료배송|일반택배</span></li>
-							</ul>
-						</div>
-					</div>
-					<div class="r_basket_goods">
-						<h5>무광올리브그린 보호패드포함</h5>
-						<select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-						</select>
-						<span>33,900원</span>
-					</div>
-					<span>옵션변경</span><span>|</span><span>바로구매</span>
-					<b>33,900원</b>
-				</div>
-			</div>
-			<p>배송비 무료</p>
 		</div>
 
 
 
 
-		<div class="r_basket_footer">
+
+<!-- 		<div class="r_basket_footer">
 			<div class="r_basket_footer_left">총 상품금액</div>
 			<div class="r_basket_footer_right">306,600원</div>
 			<div class="r_basket_footer_left">총 배송비</div>
@@ -202,7 +129,7 @@ $(document).ready(function(){
 			<div class="r_basket_footer_btn">
 			<span>5개 <b>163,600원</b></span><button>바로구매</button>
 			</div>
-		</div>
+		</div> -->
 	</div>
    </section>
      <div id = "progress_loading2">
