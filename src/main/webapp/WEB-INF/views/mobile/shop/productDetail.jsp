@@ -28,7 +28,16 @@
 	$(document).ready(function() {
 		var pageContextlocale = '${pageContext.response.locale}';
 		$("#sel1").val(pageContextlocale);
-
+		$('.product_info_tab').click(function(){
+			$(".product_info_tab").removeClass("r_shop_tab_select");
+			$(this).addClass("r_shop_tab_select");
+			var target = $(this).attr("target");
+			$(".product_info").hide();
+			$("#" + target).show();
+		});
+		
+		$(".product_info").hide();
+		$("#r_detail_page").show();
 	});
 </script>
 <style>
@@ -47,8 +56,8 @@
 	</header>
 
 	<section>
-		<div class="shop_main">
-			<div class="r_detail">
+		<div class="shop_main" >
+			<div class="r_detail" style = "padding:0px 10px 70px 0px">
 				<div class="r_detail_sliderimg">
 					<img src="/resources/images/sliderimg1.png">
 				</div>
@@ -80,22 +89,21 @@
 				<div class="r_delivery">
 					<ul>
 						<li>일반택배</li>
-						<li><span style = "padding: 5px;background-color : #eee">유료배송 : 착불 , 3000원</span></li>
+						<li><span style = "padding: 5px;background-color : #ececec">유료배송 : 착불 , 3000원</span></li>
 					</ul>
 				</div>
 				<div class="r_nav">
 					<ul>
-						<li class="r_shop_tab_select"><a href="#r_detail_page">상품정보</a></li>
-						<li><a href="#r_review">리뷰</a></li>
-						<li><a href="#r_detail_delivery">배송/환불</a></li>
+						<li class="product_info_tab r_shop_tab_select"  target = "r_detail_page"  style ="border-right:1px solid #eee;width:48%">상품 정보</li>
+						<!-- <li><a href="#r_review">리뷰</a></li> -->
+						<li class = "product_info_tab" style ="width:48%" target = "r_detail_delivery">배송 / 환불</li>
 					</ul>
 				</div>
-				<div class="r_detail_page" id="r_detail_page">
+				<div class="product_info r_detail_page" id="r_detail_page">
 					<!-------상품상세페이지 이미지 들어가는 자리------->
 					<img src="/resources/images/detail.png">
 				</div>
-				<div class="r_review" id="r_review">
-					<!----리뷰들어가는 자리----->
+		<!-- 		<div class="r_review" id="r_review">
 					<p>
 						리뷰<span>1,234</span>
 					</p>
@@ -133,8 +141,8 @@
 						<button>리뷰쓰기</button>
 						<input type="text" placeholder="리뷰를 작성해 주세요.">
 					</div>
-				</div>
-				<div class="r_detail_delivery" id="r_detail_delivery">
+				</div> -->
+				<div class="product_info r_detail_delivery" id="r_detail_delivery">
 					<div class="r_delivery_page">
 						<b>배송 관련 안내</b>
 						<div class="r_delivery_s">배송</div>
