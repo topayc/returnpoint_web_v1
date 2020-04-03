@@ -1193,7 +1193,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_login .r_login_page3 p b{color:#33cccc;}
 .r_login .r_login_page3 h5{font-size:15px;margin-top:50px;}
 .r_login .r_login_page3 h3{font-size:20px;text-align:center;margin-bottom:15%;}
-.r_login .r_login_page3 .phone_input1{border:1px solid #ccc;background:#fff;padding:5px;margin-top:10px;font-size:15px;}
+.r_login .r_login_page3 .phone_input1{border:1px solid #ccc;background:#fff;margin-top:10px;font-size:15px;}
 .r_login .r_login_page3 input::placeholder {color:#ccc;}
 
 .r_login .r_login_page3 .phone_input1 span{font-size:13px;background:#5cb0da;border-radius:5px;color:#fff;padding:3% 3%;margin-right:5px;}
