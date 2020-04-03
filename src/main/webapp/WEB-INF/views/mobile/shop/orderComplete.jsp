@@ -47,8 +47,38 @@
 	</header>
 
 	<section>
-		<div class="shop_main">
-sfsdf
+		<div class="r_order">
+			<div class="r_order_img">
+				<img src="/resources/images/r_order.png">
+			</div>
+			<div class="r_cart_img">
+				<img src="/resources/images/r_cart.png">
+			</div>
+			<div class="r_order_text">
+				<h3>아래의 표를 참조해서 입금해주세요.</h3>
+				<div class="text_box">
+					<div class="text_left">
+						<ul>
+							<li>은행명</li>
+							<li>예금주</li>
+							<li>계좌번호</li>
+							<li>입금금액</li>
+							<li>기한</li>
+						</ul>
+					</div>
+					<div class="text_right">
+						<ul>
+							<li>기업은행</li>
+							<li>주식회사 탑해피월드</li>
+							<li>0123456789</li>
+							<li>20.000원</li>
+							<li>2020.04.08까지</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<button class="r_btn1">주문현황보기</button>
+			<button class="r_btn2">메인으로가기</button>
 		</div>
 	</section>
 	<div id="progress_loading2">
