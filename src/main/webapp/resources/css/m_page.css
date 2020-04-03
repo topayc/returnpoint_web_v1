@@ -1455,7 +1455,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 
 /*쇼핑몰 결제완료 안내창*/
 .r_order{padding:5% 15%;}
-.r_order .r_order_img{margin:0 auto;width:170px;margin-bottom:15px;}
+.r_order .r_order_img{margin:0 auto;width:230px;margin-bottom:15px;}
 .r_order .r_order_img img{width:100%;height:100%;}
 .r_order .r_cart_img{margin:0 auto;width:80px;margin-bottom:25px;}
 .r_order .r_cart_img img{width:100%;height:100%;}
