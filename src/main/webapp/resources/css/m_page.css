@@ -1316,11 +1316,11 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 /*쇼핑몰페이지 css*/
 /*쇼핑몰 상세페이지 css*/
 .r_detail{}
-.r_detail .r_detail_sliderimg{width:100%;overflow: hidden;height:300px;}
+.r_detail .r_detail_sliderimg{width:100%;overflow: hidden;height:400px;}
 .r_detail .r_detail_sliderimg img{width:100%;height:100%;}
 .r_detail .r_detail_text{padding:3%;border-bottom:1px solid #f1f1f1;}
-.r_detail .r_detail_text #r_option{border:2px solid #33cccc;margin-left:20px;width:150px;}
-.r_detail .r_detail_text ul li input{border:2px solid #33cccc;width:50px;height:25px;}
+.r_detail .r_detail_text #r_option{border:1px solid #33cccc;margin-left:20px;width:150px;height:27px;}
+.r_detail .r_detail_text ul li input{border:1px solid #33cccc;width:50px;height:27px;}
 .r_detail .r_detail_text ul{list-style: none;}
 .r_detail .r_detail_text ul li{line-height:27px;color:#777;font-size: 15px;}
 .r_detail .r_detail_text ul li h5{color:#333;font-size: 17px;}
