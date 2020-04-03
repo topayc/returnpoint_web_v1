@@ -68,11 +68,6 @@ $(document).ready(function(){
 					</div>
 					<div class="r_basket_goods">
 						<h5>무광올리브그린 보호패드포함</h5>
-						<select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-						</select>
 						<span>33,900원</span>
 					</div>
 				</div>
@@ -102,11 +97,6 @@ $(document).ready(function(){
 					</div>
 					<div class="r_basket_goods">
 						<h5>무광올리브그린 보호패드포함</h5>
-						<select>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-						</select>
 						<span>33,900원</span>
 					</div>
 				</div>

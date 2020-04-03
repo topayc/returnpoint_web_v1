@@ -1432,10 +1432,10 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text ul{list-style:none;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text ul li{font-size:15px;color:#333;line-height:18px;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text span{color:#777;font-size:11px;}
-.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods{color:#333;background-color:#f1f1f1;border-radius:5px;width:90%;padding:3%;margin:3% 0;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods{color:#333;background-color:#f1f1f1;border-radius:5px;width:90%;padding:3%;margin:3% 0;text-align:center;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods h5{font-size:13px;margin-bottom:2%;font-weight:400;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods select{width:20%;padding:0.5% 0;border-radius:5px;}
-.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods span{float:right;font-weight:bold;font-size:15px;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods span{font-weight:bold;font-size:15px;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con span{font-size:13px;color:#333;margin-right:2%;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con b{font-size:17px;color:#333;float:right;margin-right:5%;}
 /* .r_basket .r_basket_page .r_basket_box .r_basket_page_btn input[type=checkbox] {display: none;}
