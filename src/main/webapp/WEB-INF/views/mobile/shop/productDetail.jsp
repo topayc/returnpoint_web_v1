@@ -59,6 +59,19 @@
 						<li>KN 99 고기능</li>
 						<li><h5>은나노 마스크 Silver Nano Mask</h5></li>
 						<li><span>41%</span><span class="line_t">28,000</span></li>
+						<li>옵션<select name="옵션" id="r_option">
+									<option>color(색상)</option>
+									<option>white(흰색)</option>
+									<option>black(검정색)</option>
+								</select>
+						</li>
+						<li>수량<select name="수량" id="r_option">
+									<option>선택</option>
+									<option>10p</option>
+									<option>20p</option>
+								</select>
+								<input type="text">개
+						</li>
 						<li><h3>
 								16,300원 <span>최저가</span>
 							</h3></li>
@@ -88,26 +101,6 @@
 					<p>
 						리뷰<span>1,234</span>
 					</p>
-					<div class="r_review_text">
-						<ul>
-							<li><div class="r_review_img">
-									<img src="/resources/images/myimg.png">
-								</div>차미라<span>2020.01.28</span></li>
-							<li>너무 좋네요 선배가 와서 양념 치킨 먹다가 바로 흘림 상놈 배송도 엄청 빨리 왔고 사이즈도 3인용
-								소파랑 잠 맞네요 그리고 무엇보다 알레르기 때문에 먼지 사이사이에 다 끼는 애들 극도로 싫어해서 단모러그를 찾았는데
-								아주 만족스러워요 ㅎㅎ</li>
-						</ul>
-					</div>
-					<div class="r_review_text">
-						<ul>
-							<li><div class="r_review_img">
-									<img src="/resources/images/myimg.png">
-								</div>차미라<span>2020.01.28</span></li>
-							<li>너무 좋네요 선배가 와서 양념 치킨 먹다가 바로 흘림 상놈 배송도 엄청 빨리 왔고 사이즈도 3인용
-								소파랑 잠 맞네요 그리고 무엇보다 알레르기 때문에 먼지 사이사이에 다 끼는 애들 극도로 싫어해서 단모러그를 찾았는데
-								아주 만족스러워요 ㅎㅎ</li>
-						</ul>
-					</div>
 					<div class="r_review_text">
 						<ul>
 							<li><div class="r_review_img">

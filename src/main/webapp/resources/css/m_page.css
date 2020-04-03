@@ -1319,6 +1319,8 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_detail .r_detail_sliderimg{width:100%;overflow: hidden;height:300px;}
 .r_detail .r_detail_sliderimg img{width:100%;height:100%;}
 .r_detail .r_detail_text{padding:3%;border-bottom:1px solid #f1f1f1;}
+.r_detail .r_detail_text #r_option{border:2px solid #33cccc;margin-left:20px;width:150px;}
+.r_detail .r_detail_text ul li input{border:2px solid #33cccc;width:50px;height:25px;}
 .r_detail .r_detail_text ul{list-style: none;}
 .r_detail .r_detail_text ul li{line-height:27px;color:#777;font-size: 15px;}
 .r_detail .r_detail_text ul li h5{color:#333;font-size: 17px;}
@@ -1331,11 +1333,11 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_detail .r_delivery ul{list-style: none;}
 .r_detail .r_delivery ul li{font-size:14px;line-height:30px;}
 .r_detail .r_delivery ul li span{border-radius:5px;background-color:#ccc;color:#555;font-size: 13px;padding:0.5% 1%;}
-.r_detail .r_nav{width:100%;background-color: #fff;box-shadow: 0px 1px rgba(0,0,0,0.2);}
+.r_detail .r_nav{width:100%;background-color: #fff;border-bottom:1px solid #ccc;}
 .r_detail .r_nav a{text-decoration: none;color:#333;font-size: 15px;display: block;}
 .r_detail .r_nav ul{display: inline;}
 .r_detail .r_nav ul li{display: inline-block;width:32%;text-align: center;padding:3% 0;}
-.r_detail .r_detail_page{width:100%;height:auto;overflow:hidden;border-bottom:10px solid #f1f1f1;padding: 0 3%;}
+.r_detail .r_detail_page{width:100%;height:auto;overflow:hidden;border-bottom:10px solid #f1f1f1;padding:3%;}
 .r_detail .r_detail_page img{width:100%;height:100%;}
 .r_detail .r_review{padding:3%;background-color:#f1f1f1;}
 .r_detail .r_review p{font-size: 17px;color:#333;font-weight: bold;margin-bottom:7%;}
@@ -1355,7 +1357,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_detail .r_detail_delivery .r_delivery_page b{font-size:15px;color:#333;margin-bottom:3%;display:block;}
 .r_detail .r_detail_delivery .r_delivery_page .r_delivery_s{font-size:11px;color:#777;margin-bottom:1%;}
 .r_detail .r_detail_delivery .r_delivery_page .r_delivery_l{font-size:13px;color:#333;margin-bottom:3%;}
-.r_detail .r_detail_delivery .r_delivery_text{padding-bottom:5%;}
+.r_detail .r_detail_delivery .r_delivery_text{padding-bottom:15%;}
 .r_detail .r_detail_delivery .r_delivery_text ul{list-style: none;padding:5%;}
 .r_detail .r_detail_delivery .r_delivery_text ul li{font-size:15px;color:#333;font-weight:bold;}
 .r_detail .r_detail_delivery .r_delivery_text ul li span{font-size:12px; color:#333;margin-top:2%;display:block;}
@@ -1363,4 +1365,4 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_detail .r_detail_delivery .r_delivery_text ol li{font-size:15px;color:#333;margin-bottom:3%;}
 .r_detail .r_detail_delivery .r_delivery_text ol li span{font-size:12px;color:#777;}
 .r_detail .r_detail_pay{position:fixed;bottom:0;width:100%;}
-.r_detail .r_detail_pay button{padding:3% 0;background:#33cccc;color:#fff;width:100%;border:1px solid #33cccc;}
+.r_detail .r_detail_pay button{padding:3% 0;background:#33cccc;color:#fff;width:100%;border:1px solid #33cccc;font-size:15px;font-weight:500;}
