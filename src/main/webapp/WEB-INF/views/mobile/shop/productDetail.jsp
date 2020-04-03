@@ -58,22 +58,23 @@
 					<ul>
 						<li>KN 99 고기능</li>
 						<li><h5>은나노 마스크 Silver Nano Mask</h5></li>
-						<li><span>41%</span><span class="line_t">28,000</span></li>
-						<li style="margin-bottom:10px;">옵션<select name="옵션" id="r_option">
+					<!-- 	<li><span>41%</span><span class="line_t">28,000</span></li> -->
+						<li style="margin-bottom:10px;margin-top:20px">옵션<select name="옵션" id="r_option">
 									<option>color(색상)</option>
 									<option>white(흰색)</option>
 									<option>black(검정색)</option>
 								</select>
 						</li>
-						<li style="margin-bottom:10px;">수량<select name="수량" id="r_option">
+						<li style="margin-bottom:20px;">수량<select name="수량" id="r_option">
 									<option>선택</option>
-									<option>10p</option>
-									<option>20p</option>
+									<option>10개 묶음</option>
+									<option>20개 묶음</option>
+									<option>30개 묶음</option>
 								</select>
-								<input type="text">개
+								<input type="text">&nbsp;개
 						</li>
 						<li><h3>
-								16,300원 <span>최저가</span>
+								16,300원 <span></span>
 							</h3></li>
 						<li><span class="text_point">489P</span> 적립해드립니다. (VIP 3배 혜택
 							적용됨)</li>
