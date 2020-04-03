@@ -1366,3 +1366,50 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_detail .r_detail_delivery .r_delivery_text ol li span{font-size:12px;color:#777;}
 .r_detail .r_detail_pay{position:fixed;bottom:0;width:100%;}
 .r_detail .r_detail_pay button{padding:3.5% 0;background:#33cccc;color:#fff;width:100%;border:1px solid #33cccc;font-size:15px;font-weight:500;}
+
+/*쇼핑몰 결제 페이지 */
+.r_pay{font-size:15px;color:3333;}
+.r_pay .r_address{padding:7% 3%;overflow:hidden;border-bottom:10px solid #f1f1f1;}
+.r_pay .r_address b{font-size:17px;font-weight:bold;}
+.r_pay .r_address span{float:right;color:#33cccc;font-size:15px;}
+.r_pay .r_address .r_pay_address{width:100%;overflow:hidden;margin-top:5%;}
+.r_pay .r_address .r_address_left{float:left;width:25%;padding:1.5% 0;clear:both;}
+.r_pay .r_address .r_address_right{float:right;width:70%;}
+.r_pay .r_address .r_address_right input{width:97%;padding:2% 0;margin-bottom:3%;border-radius:5px;background:#fff;border:1px solid #ccc;}
+.r_pay .r_address .r_address_right button{width:25%;padding:1.5% 5%;background-color:#33cccc;border:1px solid #33cccc;color:#fff;border-radius:5px;margin-left:2%;}
+.r_pay .r_address .r_address_check{float:right;width:70%;font-size:13px;}
+.r_pay .r_address .r_address_check input[type=checkbox] {display: none;}
+.r_pay .r_address .r_address_check input[type=checkbox] + label{display: inline-block;cursor:pointer;position:relative;padding-left: 25px;font-size: 13px;}
+.r_pay .r_address .r_address_check input[type=checkbox]+ label:before{content: "";display: inline-block;width: 17px;height: 17px;position: absolute;left:0;top:-13px;border:1px solid #33cccc;background-color:#fff;border-radius:5px;}
+.r_pay .r_address .r_address_check input[type=checkbox]:checked + label:before {content: "\2713";font-size: 15px;font-weight:800; color: #fff;background:#33cccc;text-align: center;line-height: 18px;} 
+.r_pay .r_address .r_pay_address .r_pay_left{float:left;width:73%;font-size:10px;color:#777;padding:2% 0;border-bottom:1px solid #ccc;border-right:1px solid #ccc;}
+.r_pay .r_address .r_pay_address .r_pay_right{float:right;width:25%;border-bottom:1px solid #ccc;font-size:10px;color:#777;padding:2% 0 2% 1.7%;}
+.r_pay .r_address .r_pay_address .r_pay_left .r_pay_left_l{width:50px;height:50px;overflow:hidden;float:left;}
+.r_pay .r_address .r_pay_address .r_pay_left .r_pay_left_l img{width:100%;height:100%;}
+.r_pay .r_address .r_pay_address .r_pay_left .r_pay_left_r{float:right;width:80%;}
+.r_pay .r_address .r_pay_address .r_pay_left .r_pay_left_r span{font-size:13px;color:#333;float:left;padding-right:2%;margin-right:2%;}
+.r_pay .r_address .r_pay_address .r_pay_left .r_pay_left_r ul{list-style:none;}
+.r_pay .r_address .r_pay_address .r_pay_left .r_pay_left_r ul li{width:100%;clear:both;line-height:20px;}
+.r_pay .r_address .r_pay_address .r_pay_right span{font-size:13px;color:#333;float:left;}
+.r_pay .r_address .r_pay_address .r_pay_right ul{list-style: none;}
+.r_pay .r_address .r_pay_address .r_pay_right ul li{line-height:20px;}
+.r_pay .r_address .r_pay_address .r_pay_right:last-child{border:none;}
+.r_pay .r_address .r_address_point{margin-top:5%;}
+.r_pay .r_address .r_address_point p{font-size:15px;color:#333;}
+.r_pay .r_address .r_address_point b{font-size:17px;color:#333;margin-left:2%;}
+.r_pay .r_address .r_address_point input{width:90%;padding:2% 0;text-indent:10px;margin-top:2%;}
+.r_pay .r_address .r_address_point span{color:#333;font-size: 12px;float:left;width:50%;margin-top:2%;}
+.r_pay .r_address .r_address_point span b{color:#33cccc;}
+.r_pay .r_address .r_address_point input[type=checkbox] {display: none;}
+.r_pay .r_address .r_address_point input[type=checkbox] + label{display: inline-block;cursor:pointer;position:relative;padding-left: 25px;font-size: 13px;top:10px;}
+.r_pay .r_address .r_address_point input[type=checkbox]+ label:before{content: "";display: inline-block;width: 17px;height: 17px;position: absolute;left:0;border:1px solid #33cccc;background-color:#fff;border-radius:5px;}
+.r_pay .r_address .r_address_point input[type=checkbox]:checked + label:before {content: "\2713";font-size: 15px;font-weight:800; color: #fff;background:#33cccc;text-align: center;line-height: 18px;} 
+.r_pay .r_address .r_address_p p{font-size:15px;color:#333;margin-top:5%;margin-bottom: 2%;}
+.r_pay .r_address .r_address_p p span{float:left;color:#ccc;text-decoration:line-through;font-size:15px;margin-top:1%;}
+.r_pay .r_address .r_address_p p b{font-size:17px;color:#33cccc;}
+.r_pay .r_address .r_address_p span{float:left;color:#333;font-size:12px;margin-top:2%;}
+.r_pay .r_address .r_pay_bottom{overflow:hidden;}
+.r_pay .r_address .r_pay_bottom .r_pay_bottom_img{margin:0 auto;margin-top:5%;width:150px; height:120px;border-radius:5px;border:1px solid #f1f1f1;padding:3% 7% 7% 7%;font-size:13px;color:#333;text-align:center;}
+.r_pay .r_address .r_pay_bottom .r_pay_bottom_img img{width:100%;height:100%;}
+.r_pay .r_address button{background:#33cccc;color:#fff;padding:3% 0;width:100%;border:1px solid #33cccc;font-size:15px;font-weight:500;margin-top:7%;}
+.r_pay .r_address button:hover{background:#fff;color:#33cccc;}
