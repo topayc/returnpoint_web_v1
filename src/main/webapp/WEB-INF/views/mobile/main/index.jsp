@@ -148,15 +148,16 @@ if (isApp()) {
 						</br>
 						<p style = "font-size : 14px; font-weight : 550">▶ 출금 관련 처리 </p>
 						<p style = "color : #555;margin-top:3px">- 포인트 출자 전환 및 증자 완료 후 출금 처리 가능</p>
-						<p style = "color : #555;margin-top:3px">- 출금 가능 예상일 : 5월중</p>
+						<p style = "color : #555;margin-top:3px">- 출금 가능 예상일 : 협의중</p>
 						
+						</br>
 						<p style = "color : #000;margin-top:3px;font-weight: 500">자세한 내용을 보시려면 아래 버튼을 클릭해주세요</p>
 						</br>
 						<p style = "color : #555;margin-top:3px;text-align:center;">
 							<a href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=118" style = "color : #fff;border: 1px solid #cc0000;padding:7px 15px;border-radius: 15px;background-color : #cc0000;font-size:12px">✓ 출자 전환신청 및 자세히보기</a>
 						</p>
 						</br>
-						<p style = "color : #000;margin-top:3px;font-weight: 500">또한 회사 정상화 작업과 관련되어 한시적으로 부득불 아래의 조치를 취할 수 밖에 없음을 알려드리며, 회원님들의 양해 부탁드립니다</p>
+						<p style = "color : #000;margin-top:3px;font-weight: 500;margin-top:12px">또한 회사 정상화 작업과 관련되어 한시적으로 부득이하게 아래의 조치를 취할 수 밖에 없음을 알려드리며, 회원님들의 양해 부탁드립니다</p>
 						<p style = "color : #000;margin-top:3px;font-weight: bold">- 출금 신청 중지</p>
 						<p style = "color : #000;margin-top:3px;font-weight: bold">- G 포인트 -> R 포인트로의 자동 전환 작업 중지</p>
 						</br>
@@ -308,6 +309,7 @@ if (isApp()) {
 		<div onclick = "movePage('/m/map/rpmap.do')"><img src="/resources/images/r_search.png"><p><spring:message code="label.n_my_affiliate" /></p></div>
 		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" />/<spring:message code="label.n_settings" /></p></div>
 		<div onclick = "movePage('/m/mypage/manage_qr.do')"><img src="/resources/images/r_qr_manage.png"><p><%-- <spring:message code="label.create_recom_qr" /> --%>추천QR생성</p></div>
+		<div onclick = "movePage('/m/shop/productDetail.do')"><img src="/resources/images/r_qr_manage.png"><p>마스크</p></div>
 	</div>
 	<div style="background-color:#f1f1f1;padding:1px 0;">
 		<%-- <div class="m_search" onclick = "movePage('/m/affiliate/affiliateSearchList.do')"> 

@@ -846,4 +846,42 @@ public class MobileController extends MallBaseController {
 		boolean bret = mms.reqeustAffiliateDeposit(Util.toRPap(p), rmap, request, response);
 		return rmap.getStr("json");
 	}
+	
+	/*****************************************************************************************************************************************************************
+	 * 마스크 판매 
+	 *****************************************************************************************************************************************************************/
+	
+	@RequestMapping("/mypage/myShop.do")
+	public String myShop(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/mypage/my_shop");
+		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
+		return page(true, map, rmap);
+	}
+	
+	@RequestMapping("/shop/productDetail.do")
+	public String productDetail(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/shop/productDetail");
+		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
+		return page(true, map, rmap);
+	}
+	
+	@RequestMapping("/shop/productOrder.do")
+	public String productOrder(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/shop/productOrder");
+		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
+		return page(true, map, rmap);
+	}
+	
+	@RequestMapping(value = "/shop/processOrder.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String order(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap();
+		boolean bret = mms.reqeustAffiliateDeposit(Util.toRPap(p), rmap, request, response);
+		return rmap.getStr("json");
+	}
+	
 }
