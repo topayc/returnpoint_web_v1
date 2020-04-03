@@ -1365,4 +1365,4 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_detail .r_detail_delivery .r_delivery_text ol li{font-size:15px;color:#333;margin-bottom:3%;}
 .r_detail .r_detail_delivery .r_delivery_text ol li span{font-size:12px;color:#777;}
 .r_detail .r_detail_pay{position:fixed;bottom:0;width:100%;}
-.r_detail .r_detail_pay button{padding:3% 0;background:#33cccc;color:#fff;width:100%;border:1px solid #33cccc;font-size:15px;font-weight:500;}
+.r_detail .r_detail_pay button{padding:3.5% 0;background:#33cccc;color:#fff;width:100%;border:1px solid #33cccc;font-size:15px;font-weight:500;}
