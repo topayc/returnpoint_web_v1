@@ -23,7 +23,6 @@
 <link rel="stylesheet" href="/resources/css/m_common.css">
 <!-- <script type="text/javascript" src="/resources/js/lib/jquery.min.js"></script> -->
 <script type="text/javascript" src="/resources/js/lib/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="/resources/js/lib/jquery.mobile.js.js"></script>
 
 <!-- 가맹점롤링 -->
 <!-- <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script> -->
@@ -139,22 +138,31 @@ if (isApp()) {
    </div> -->
      <div style="display:none;" id = "event_popup">
     	<div class="main_popuppage" style = "background-color : #fff;">
-			<div class="popup_list" style = "border: 1px solid #000" >
-				<div >
-					<div style = "padding: 10px 10px;font-size : 14px;color :#fff;background-color : #cc0000">알리는 말씀 - 시스템 개편</div>
+			<div class="popup_list" style = "border: 1px solid #000;" >
+				<div>
+					<div style = "padding: 10px 5px;font-size : 13px;color :#fff;background-color : #cc0000">회사 정상화를 위한 포인트 출자전환 및 출금관련 공지</div>
 					<div style = "text-align:left;padding:20px 20px 10px 20px">
-						<p style = "font-size : 14px; font-weight : 550">☞ 휴대폰 번호 인증시스템으로 변경 </p>
-						<p style = "color : #555;margin-top:3px">이메일을 기반으로 한 인증 및 적립시스템을 휴대폰 번호 기반의 인증 및 적립시스템으로 변경 완료되었습니다.</p>
-						<p style = "color : #555;margin-top:4px">회원가입, 로그인, 비밀번호 재설정등 휴대폰 인증을 통하여 간편하게 이용하실 수 있습니다.</p>
+						<p style = "font-size : 14px; font-weight : 550">▶ 포인트 출자 전환 및 신규 증자 </p>
+						<p style = "color : #555;margin-top:3px">- 조속한 회사 정상화를 위하여 현재 포인트의 출자 전환과 신규 증자 작업이 진행되고 있습니다.</p>
+						<p style = "color : #555;margin-top:3px">- 많은 분들의 참여 바라며, 회사 정상화를 위하여 최선을 다하겠습니다.</p>
 						</br>
-						<p style = "font-size : 14px; font-weight : 550">☞ 영수증 QR 적립 방식 변경</p>
-						<p style = "color : #555;margin-top:3px">이제 다른 휴대폰에서도 로그인 한 후 영수증 QR 적립이 가능합니다.</p>
+						<p style = "font-size : 14px; font-weight : 550">▶ 출금 관련 처리 </p>
+						<p style = "color : #555;margin-top:3px">- 포인트 출자 전환 및 증자 완료 후 출금 처리 가능</p>
+						<p style = "color : #555;margin-top:3px">- 출금 가능 예상일 : 협의중</p>
+						
+						</br>
+						<p style = "color : #000;margin-top:3px;font-weight: 500">자세한 내용을 보시려면 아래 버튼을 클릭해주세요</p>
+						</br>
+						<p style = "color : #555;margin-top:3px;text-align:center;">
+							<a href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=118" style = "color : #fff;border: 1px solid #cc0000;padding:7px 15px;border-radius: 15px;background-color : #cc0000;font-size:12px">✓ 출자 전환신청 및 자세히보기</a>
+						</p>
+						</br>
+						<p style = "color : #000;margin-top:3px;font-weight: 500;margin-top:12px">또한 회사 정상화 작업과 관련되어 한시적으로 부득이하게 아래의 조치를 취할 수 밖에 없음을 알려드리며, 회원님들의 양해 부탁드립니다</p>
+						<p style = "color : #000;margin-top:3px;font-weight: bold">- 출금 신청 중지</p>
+						<p style = "color : #000;margin-top:3px;font-weight: bold">- G 포인트 -> R 포인트로의 자동 전환 작업 중지</p>
+						</br>
+						<p style = "color : #000;margin-top:3px;font-weight: 500">조속한 정상화를 위해 최선의 노력을 다하겠습니다</p>
 					</div>
-				</div>
-				<div class="list_box">
-					<ul>
-						<li><span onclick = "movePage('/m/pointCoupon/index.do')">자세히보기</span></li>
-					</ul>
 				</div>
 				<div class="popup_btn_box">
 					<button style="border-top:1px solid #ccc;border-right:1px solid #ccc" onclick = "closePopupNotToday('alertView')">오늘 그만 보기</button>
@@ -301,6 +309,7 @@ if (isApp()) {
 		<div onclick = "movePage('/m/map/rpmap.do')"><img src="/resources/images/r_search.png"><p><spring:message code="label.n_my_affiliate" /></p></div>
 		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" />/<spring:message code="label.n_settings" /></p></div>
 		<div onclick = "movePage('/m/mypage/manage_qr.do')"><img src="/resources/images/r_qr_manage.png"><p><%-- <spring:message code="label.create_recom_qr" /> --%>추천QR생성</p></div>
+		<div onclick = "movePage('/m/shop/productDetail.do')"><img src="/resources/images/r_qr_manage.png"><p>마스크</p></div>
 	</div>
 	<div style="background-color:#f1f1f1;padding:1px 0;">
 		<%-- <div class="m_search" onclick = "movePage('/m/affiliate/affiliateSearchList.do')"> 

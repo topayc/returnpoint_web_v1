@@ -98,7 +98,7 @@ function closeAlert(){
 }
 
 
-function alertOpen(title, message, okbutt, obcancle, f1, f2){
+function alertOpen(title, message, okbutt, obcancle, f1, f2,t1,t2){
 	
 	var alertMessageHtml = "";
 	var alertTitleHtml = "";
@@ -116,6 +116,7 @@ function alertOpen(title, message, okbutt, obcancle, f1, f2){
 	$('#alert_cancel').hide();
 	
 	if (okbutt){ //ok(확인)버튼이 true이면
+		if (t1) $('#alert_ok').text(t1);
 		$('#alert_ok').show();
 		if ((typeof f1 == "function")){
 			$('#alert_ok').bind("click", f1); //ok 버튼을 누르면 f1을 바인드
@@ -125,6 +126,7 @@ function alertOpen(title, message, okbutt, obcancle, f1, f2){
 	}
 	
 	if (obcancle){ //ok(취소)버튼이 true이면
+		if (t2) $('#alert_cancel').text(t2);
 		$('#alert_cancel').show();
 		if ((typeof f2 == "function")){
 			$('#alert_ok').bind("click", f2);

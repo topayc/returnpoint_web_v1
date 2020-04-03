@@ -23,7 +23,15 @@
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery.animateNumber.min.js"></script>
 <script type="text/javascript">
-
+function pointWithdrawal(){
+	 alertOpen("알림",
+		"현재 출금 신청은 회사 정상화 작업이 </br>완료된 후 가능합니다. </br>자세한 내용은 공지를 참고해주세요",
+		true,
+		true,
+		function(){movePage("/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=118")},
+		null,
+		"공지 확인하러 가기","닫기");
+}
 $(document).ready(function(){
 	var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
 	var p1 = ${model.rPayInfo.pointAmount};
@@ -135,7 +143,8 @@ $(document).ready(function(){
 			</div>
 			<div class="rpoint_withdrawal_button">
 				<button onclick = "movePage('/m/mypage/m_rpay_withdrawal_list.do?memberNo=${model.memberTypeInfo.memberNo}')">출금 리스트</button>
-				<button onclick = "movePage('/m/mypage/m_withdrawl_point_form.do')">출금 신청</button>
+				<button onclick = "pointWithdrawal();">출금 신청</button>
+				<!-- <button onclick = "movePage('/m/mypage/m_withdrawl_point_form.do')">출금 신청</button> -->
 			</div>
 		</div>
 	</section>
