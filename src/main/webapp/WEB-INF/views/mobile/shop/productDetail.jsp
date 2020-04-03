@@ -73,17 +73,14 @@
 								</select>
 								<input type="text">&nbsp;개
 						</li>
-						<li><h3>
-								16,300원 <span></span>
-							</h3></li>
-						<li><span class="text_point">489P</span> 적립해드립니다. (VIP 3배 혜택
-							적용됨)</li>
+						<li style = "margin-bottom:7px"><h3> 16,300원 <span>온라인 최저가</span> </h3></li>
+						<li><span class="text_point" >489 G.POINT 를 </span> 적립해드립니다.</li>
 					</ul>
 				</div>
 				<div class="r_delivery">
 					<ul>
 						<li>일반택배</li>
-						<li><span>무료배송</span></li>
+						<li><span style = "padding: 5px;background-color : #eee">유료배송 : 착불 , 3000원</span></li>
 					</ul>
 				</div>
 				<div class="r_nav">
