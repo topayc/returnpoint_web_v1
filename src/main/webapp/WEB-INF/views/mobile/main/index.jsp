@@ -32,6 +32,7 @@
 <script type="text/javascript" src="/resources/js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
+<script type="text/javascript" src="/resources/js/lib/jquery-number.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -50,8 +51,12 @@
 if (isApp()) {
     checkVersion();
   }
+  
  $(document).on('ready', function() {
- $("#event_popup").modal({
+	  $("#price_text").text($.number(productInfo.price));
+	  $("#gpoint_text").text($.number(productInfo.price * productInfo.gPointRate));
+	  
+ 	  $("#event_popup").modal({
 		  escapeClose: false,
 		  clickClose: false,
 		  showClose: false,
@@ -306,11 +311,10 @@ if (isApp()) {
 				</div>
 				<div class="r_shop_list_text">
 					<ul>
-						<li>바이빔</li>
-						<li><h5>선데이 러그 7size 5colors</h5></li>
-						<li><img src="/resources/images/list_star.png"><b>4.6</b>리뷰 8,630</li>
-						<li><h4><b>41%</b>16,300</h4></li>
-						<li class="r_shop_list_free">무료배송</li>
+						<li>KN 99 고기능</li>
+						<li><h5>은나노 마스크 Silver Nano Mask</h5></li>
+						<li style = "font-weight:600;font-size : 16px"><img src="/resources/images/list_star.png"><span id = "price_text"></span>원</li>
+						<li style = "color : #33cccc;font-weight: 500"><span id = "gpoint_text"></span> GPOINT 적립</li>
 					</ul>
 				</div>
 			</div>

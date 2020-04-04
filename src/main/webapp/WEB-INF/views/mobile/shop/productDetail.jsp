@@ -26,11 +26,6 @@
 <script type="text/javascript" src="/resources/js/lib/jquery-number.js"></script>
  
 <script type="text/javascript">
-	var productInfo  = {
-		price : 2500,
-		productName : "KN 99 고기능 은나노 마스크 Silver Nano Mask",
-		gPointRate : 0.1
-	}
 	
 	$(document).ready(function() {
 		var pageContextlocale = '${pageContext.response.locale}';
