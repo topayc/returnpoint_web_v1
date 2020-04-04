@@ -2190,4 +2190,29 @@ public class MobileMainServiceImpl implements MobileMainService {
 		}
 		return true;
 	}
+
+	@Override
+	public boolean maskOrder(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			rmap.put("qty", rPap.get("qty"));
+			rmap.put("unit", rPap.get("unit"));
+			rmap.put("productNo", rPap.get("productNo"));
+			rmap.put("color", rPap.get("color"));
+			rmap.put("productName", rPap.get("productName"));
+			rmap.put("gpointRate", rPap.get("gpointRate"));
+			rmap.put("price", rPap.get("price"));
+			rmap.put("deliveryCharge", rPap.get("deliveryCharge"));
+			
+			dbparams.put("memberNo", sm.getMemberNo());
+			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
+			rmap.put("memberMap", memberMap);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+		}
+		return true;
+	}
 }

@@ -41,6 +41,12 @@
 		$(".product_info").hide();
 		$("#r_detail_page").show();
 		
+		$("#price").val(productInfo.price);
+		$("#gpointRate").val(productInfo.gPointRate);
+		$("#productName").val(productInfo.productName);
+		$("#deliveryCharge").val(productInfo.deliveryCharge);
+		$("#delivery_charge_text").text(productInfo.deliveryCharge + "원");
+		
 		$("#unit").change(function() {
 			var unit = parseInt($(this).val().trim());
 			if (unit == 0) {
@@ -69,7 +75,35 @@
 			$("#gpoint_text").text( $.number(qty * unit * productInfo.price * productInfo.gPointRate) + ' 를 적립해드립니다');
 		});
 		
-		$("#qty").on("blur", function(){
+		   $("#qty").on("propertychange change keyup paste input", function() {
+				var qty = $(this).val().trim();
+				var unit =  parseInt($("#unit").val().trim());
+				
+				if (unit == 0) return;
+				
+				if (qty.length > 0 ) {
+					if (!$.isNumeric(qty)) {
+						alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
+						$("#price_text").text("");
+						$("#qty").val("");
+						$("#gpoint_text").text("");
+					}else {
+						qty = parseInt(qty);
+						if (qty < 1) {
+							$("#price_text").text("");
+							$("#qty").val("");
+							$("#gpoint_text").text("");
+							return;
+						}
+						$("#price_text").text( $.number(qty * unit * productInfo.price ) + ' 원');
+						$("#gpoint_text").text( $.number(qty * unit * productInfo.price * productInfo.gPointRate) + ' G.POINT를 적립해드립니다');
+					}
+				}else {
+					return;
+				}
+	        })
+	        
+/* 		$("#qty").on("blur", function(){
 			var qty = $(this).val().trim();
 			var unit =  parseInt($("#unit").val().trim());
 			
@@ -95,7 +129,7 @@
 			}else {
 				return;
 			}
-		})
+		}) */
 	});
 	
 	function submitOrder(){
@@ -145,6 +179,11 @@
 				</div>
 				<!-----메인이미지 들어가는 자리------->
 				<form id ="productOrderForm" name = "productOrderForm" action = "/m/shop/maskOrder.do">
+				<input type = "hidden" name = "productNo"  id = "productNo"  value = "1"/>
+				<input type = "hidden" name = "productName"  id = "productName"  value = ""/>
+				<input type = "hidden" name = "price"  id = "price" value = ""/>
+				<input type = "hidden" name = "gpointRate" id = "gpointRate" value = ""/>
+				<input type = "hidden" name = "deliveryCharge" id = "deliveryCharge" value = ""/>
 				<div class="r_detail_text">
 					<!-----상품 설명 text------->
 					<ul>
@@ -175,7 +214,7 @@
 				<div class="r_delivery">
 					<ul>
 						<li>일반택배</li>
-						<li><span style = "padding: 5px;background-color : #ececec">유료배송 : 착불 , 3000원</span></li>
+						<li><span style = "padding: 5px;background-color : #ececec">유료배송 : 착불 , <b id = "delivery_charge_text"></b> </li>
 					</ul>
 				</div>
 				<div class="r_nav">

@@ -43,7 +43,7 @@
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-	<h4>마스크</h4>
+	<h4>KN 99 고기능 은나노 마스크</h4>
 	</header>
 
 	<section>
@@ -84,28 +84,29 @@
 		<b>주문상품</b>
 			<div class="r_pay_address">
 			<div class="r_pay_left">상품정보</div>
-			<div class="r_pay_right">배송비/판매자</div>
+			<div class="r_pay_right">배송</div>
 			<div class="r_pay_left" style="border-bottom:none;">
 				<div class="r_pay_left_l">
 					<img src="/resources/images/r_pay.png">
 				</div>
 				<div class="r_pay_left_r">
 					<ul>
-						<li><span>터치미 극세사 러그-원형/사각</span></li>
-						<li>사이즈 : 02[원형] 150x150 / 색상 : 그레이</li>
-						<li><span>24,200원</span> <span>|</span>1개</li>
+						<li><span>${model.productName}</span></li>
+						<li>개당 가격 : ${model.price }</li>
+						<li>색상 : ${model.color}</li>
+						<li>구매  : ${model.unit } 묶음  ${model.qty} 개 구매</li>
+						<li><span style = "font-weight:bold">총 결제 금액 : <fmt:formatNumber value="${model.qty * model.unit * model.price}" pattern="###,###,###,###"/> 원</span> </li>
 					</ul>
 				</div>
 			</div>
 			<div class="r_pay_right">
 				<ul>
-					<li>무료배송</li>
-					<li><span>한일카페트</span></li>
+					<li>일반택배 : 착불 ${model.deliveryCharge }</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div class="r_address">
+<!-- 	<div class="r_address">
 		<b>포인트</b>
 			<div class="r_address_point">
 				<p>3만원이상 결제시 포인트 사용이 가능합니다.</p>
@@ -114,20 +115,18 @@
 				<input type="checkbox" id="r_pay_address_point">
 				<label for="r_pay_address_point">전액사용</label>
 			</div>			
-	</div>
+	</div> -->
 	<div class="r_address">
-		<b>예상 적립 포인트</b>
+		<b>적립 G 포인트</b>
 		<div class="r_address_p">
-			<p><span>242P</span><b>726P</b> 적립 예정</p>
-			<span>VIP 3배 혜택이 적용되었습니다.</span>
-			<span>총 100만원 이상 구매시 20,000P 추가 적립 됩니다.</span>
+			<b style = "color : #33cccc"><fmt:formatNumber value="${model.qty * model.unit * model.price * model.gpointRate}" pattern="###,###,###,###"/>  </b> G POINT 적립 예정
 		</div>
 	</div>
 	<div class="r_address">
 		<b>결제수단</b>
 		<div class="r_pay_bottom">
 			<!-- <div class="r_pay_bottom_img"><img src="./img/pay_bottomimg1.png">핸드폰</div> -->
-			<div class="r_pay_bottom_img"><img src="/resources/images/pay_bottomimg2.png">무통장 입금</div>
+			<div class="r_pay_bottom_img" style = "border : 4px solid #33cccc"><img src="/resources/images/pay_bottomimg2.png">무통장 입금</div>
 		</div>
 		<button onclick = "movePage('/m/shop/orderComplete.do')">결제하기</button>
 	</div>

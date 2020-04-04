@@ -309,6 +309,8 @@ public interface MobileMainService {
 
 	boolean affiliateReceiptList(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean maskOrder(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 
