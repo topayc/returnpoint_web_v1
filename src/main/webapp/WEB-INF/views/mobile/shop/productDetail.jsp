@@ -83,7 +83,7 @@
 					$("#gpoint_text").text("");
 				}else {
 					qty = parseInt(qty);
-					if (qty == 0) {
+					if (qty < 1) {
 						$("#price_text").text("");
 						$("#qty").val("");
 						$("#gpoint_text").text("");
@@ -113,7 +113,9 @@
 			 return;
 		}
 		
-		if (qty.length < 1) {
+		if (qty.length < 1 || parseInt(qty) < 1) {
+			$("#qty").val("");
+			$("#qty").focus();
 			 alertOpen("알림", "수량을 선택해주세요", true, false,true, null);
 			 return;
 		}
@@ -132,7 +134,7 @@
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
-	<h4>마스크</h4>
+	<h4>KN 99 고기능 은나노 마스크</h4>
 	</header>
 
 	<section>
@@ -142,7 +144,7 @@
 					<img src="/resources/images/sliderimg1.png">
 				</div>
 				<!-----메인이미지 들어가는 자리------->
-			
+				<form id ="productOrderForm" name = "productOrderForm" action = "/m/shop/orderDetail.do">
 				<div class="r_detail_text">
 					<!-----상품 설명 text------->
 					<ul>
@@ -169,6 +171,7 @@
 						<li><span class="text_point"  id = "gpoint_text"></span></li>
 					</ul>
 				</div>
+				</form>
 				<div class="r_delivery">
 					<ul>
 						<li>일반택배</li>

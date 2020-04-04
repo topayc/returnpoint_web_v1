@@ -305,13 +305,13 @@ if (isApp()) {
 	</c:if>
 	<div class="r_shop" style="border-top:none;">
 
-			<div class="r_shop_list">
+			<div class="r_shop_list" onclick = "movePage('/m/shop/productDetail.do')">
 				<div class="r_shop_list_img">
-					<img src="/resources/images/listimg1.png">
+					<img src="/resources/images/sliderimg1.png">
 				</div>
 				<div class="r_shop_list_text">
 					<ul>
-						<li>KN 99 고기능</li>
+						<li style = "font-szie:8px">재사용 가능한 KN 99 고기능</li>
 						<li><h5>은나노 마스크 Silver Nano Mask</h5></li>
 						<li style = "font-weight:600;font-size : 16px"><img src="/resources/images/list_star.png"><span id = "price_text"></span>원</li>
 						<li style = "color : #33cccc;font-weight: 500"><span id = "gpoint_text"></span> GPOINT 적립</li>
@@ -330,7 +330,6 @@ if (isApp()) {
 		<div onclick = "movePage('/m/map/rpmap.do')"><img src="/resources/images/r_search.png"><p><spring:message code="label.n_my_affiliate" /></p></div>
 		<div onclick = "movePage('/m/mypage/mypage_myinfo.do')"><img src="/resources/images/r_my.png"><p><spring:message code="label.n_myinfo" />/<spring:message code="label.n_settings" /></p></div>
 		<div onclick = "movePage('/m/mypage/manage_qr.do')"><img src="/resources/images/r_qr_manage.png"><p><%-- <spring:message code="label.create_recom_qr" /> --%>추천QR생성</p></div>
-		<div onclick = "movePage('/m/shop/productDetail.do')"><img src="/resources/images/r_qr_manage.png"><p>마스크</p></div>
 	</div>
 	<div style="background-color:#f1f1f1;padding:1px 0;">
 		<%-- <div class="m_search" onclick = "movePage('/m/affiliate/affiliateSearchList.do')"> 
