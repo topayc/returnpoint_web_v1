@@ -81,9 +81,17 @@
 					alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
 					$(this).val("");
 				}
+			}else {
+				alertOpen("확인", "수량을 입력해주세요", true, false, null, null);
+				return;
 			}
 			
 			qty = parseInt(qty);
+			if(qty < 1) {
+				alertOpen("확인", "수량을 입력해주세요", true, false, null, null);
+				return;
+			}
+			
 			var unit =  parseInt($("#unit").val().trim());
 			if (unit  == 0) {
 				return;
