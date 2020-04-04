@@ -53,26 +53,26 @@
 		<b>배송지</b>
 		<div class="r_pay_address">
 			<div class="r_address_left">받는분</div>
-			<div class="r_address_right"><input type="text"></div>
+			<div class="r_address_right"><input type="text" id = "receiverName" name = "receiverName" value = "${model.memberMap.memberName }"></div>
 			<div class="r_address_left">우편번호</div>
 			<div class="r_address_right"><input type="text" style="width:70%;"><button>변경</button></div>
 			<div class="r_address_left">주소</div>
 			<div class="r_address_right"><input type="text"><input type="text"></div>
 			<div class="r_address_left">휴대전화</div>
-			<div class="r_address_right"><input type="text"></div>
+			<div class="r_address_right"><input type="text"  id = "receiverPhone" name = "receiverPhone" value = "${model.memberMap.memberPhone }"></div>
 			<div class="r_address_left">요청사항</div>
-			<div class="r_address_right"><input type="text"></div>
+			<div class="r_address_right"><input type="text" id = "reqMsg" name = "reqMsg" value = ""></div>
 		</div>
 	</div>
 	<div class="r_address">
 		<b>주문자</b><span>위와 동일하게 채우기</span>
 		<div class="r_pay_address">
 			<div class="r_address_left">이름</div>
-			<div class="r_address_right"><input type="text"></div>
+			<div class="r_address_right"><input type="text" id = "orderName" name = "orderName" value = "${model.memberMap.memberName }"></div>
 			<div class="r_address_left">이메일</div>
-			<div class="r_address_right"><input type="text"></div>
+			<div class="r_address_right"><input type="text" id = "orderEmail" name = "orderEmail" value = "${model.memberMap.memberEmail}"></div>
 			<div class="r_address_left">휴대전화</div>
-			<div class="r_address_right"><input type="text"></div>
+			<div class="r_address_right"><input type="text"   id = "orderPhone" name = "orderPhone" value = "${model.memberMap.memberPhone}"></div>
 		</div>
 		<div class="r_address_check">
 		<input type="checkbox" id="r_orderer_box">
