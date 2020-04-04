@@ -298,6 +298,23 @@ if (isApp()) {
 		</div>		
 		</c:forEach>
 	</c:if>
+	<div class="r_shop">
+
+			<div class="r_shop_list">
+				<div class="r_shop_list_img">
+					<img src="/resources/images/listimg1.png">
+				</div>
+				<div class="r_shop_list_text">
+					<ul>
+						<li>바이빔</li>
+						<li><h5>선데이 러그 7size 5colors</h5></li>
+						<li><img src="/resources/images/list_star.png"><b>4.6</b>리뷰 8,630</li>
+						<li><h4><b>41%</b>16,300</h4></li>
+						<li class="r_shop_list_free">무료배송</li>
+					</ul>
+				</div>
+			</div>
+			</div>
 	<div class="main_img_box">
 		<div onclick="startQRScan()"><img src="/resources/images/r_qrcode.png"><p><spring:message code="label.qrcode_acc" /></p></div>
 		<div onclick = "movePage('/m/pointCoupon/index.do')"><img src="/resources/images/r_receipt.png"><p><spring:message code="label.n_reciept_acc" /></p></div>
