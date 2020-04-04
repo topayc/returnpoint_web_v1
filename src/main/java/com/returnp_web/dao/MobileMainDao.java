@@ -444,4 +444,12 @@ public class MobileMainDao {
 		return sqlSession.getMapper(MobileMainMapper.class).selectNotCompletedReceipts(dbparams);
 	}
 
+	public int createOrder(HashMap<String, Object> dbParams) {
+		return sqlSession.getMapper(MobileMainMapper.class).createOrder(dbParams);
+	}
+
+	public ArrayList<HashMap<String, Object>> selectMaskOrders(HashMap<String, Object> dbparams) {
+		return sqlSession.getMapper(MobileMainMapper.class).selectMaskOrders(dbparams);
+	}
+
 }

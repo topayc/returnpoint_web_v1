@@ -311,6 +311,12 @@ public interface MobileMainService {
 
 	boolean maskOrder(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
 
+	boolean processOrder(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	boolean orderComplete(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
+	boolean maskOrderList(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response);
+
 
 }
 

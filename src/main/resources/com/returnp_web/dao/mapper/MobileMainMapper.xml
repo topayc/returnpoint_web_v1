@@ -985,6 +985,59 @@
 		WHERE 
 			C.affiliateNo = #{affiliateNo} and issueType = #{issueType} and status in('1', '2', '5','6')
 	</select> 
+
+		<insert id="createOrder" parameterType="HashMap" >
+		INSERT INTO shop_product_order (
+			orderNumber
+			,orderMemberNo
+			,productName
+			,productPrice
+			,orderColor
+			,orderUnit
+			,orderQty
+			,orderAmount
+			,gpointRate
+			,gpointAmount
+			,status
+			,receiverName
+			,receiverPhone
+			,receiverAddress
+			,deliveryCharge,
+			,reqMsg
+			,createTime
+			,updateTime
+		) VALUES (
+			#{orderNumber}
+			,#{orderMemberNo}
+			,#{productName}
+			,#{productPrice}
+			,#{orderColor}
+			,#{orderUnit}
+			,#{orderQty}
+			,#{orderAmount}
+			,#{gpointRate}
+			,#{gpointAmount}
+			,#{status}
+			,#{receiverName}
+			,#{receiverPhone}
+			,#{receiverAddress}
+			,#{deliveryCharge}
+			,#{reqMsg}
+			,NOW()
+			,NOW()
+		)
+	</insert> 
 	
+	<select id="selectMaskOrders" parameterType="HashMap" resultType="HashMap">
+		SELECT 
+			A.*,
+			B.memberName as orderMemberName,
+			B.memberPhone as orderMemberPhone,
+			B.memberEmail as orderMemberEmail
+		FROM shop_product_order as A
+		inner join member as B on (A.orderMemberNo = B.memberNo)
+		WHERE 
+			orderMemberNo = #{orderMemberNo} 
+	</select> 
 	
 </mapper>

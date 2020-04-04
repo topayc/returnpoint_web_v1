@@ -59,8 +59,8 @@
 				<div class="text_box">
 					<div class="text_left">
 						<ul>
-							<li>은행명</li>
 							<li>예금주</li>
+							<li>은행명</li>
 							<li>계좌번호</li>
 							<li>입금금액</li>
 							<li>기한</li>
@@ -68,16 +68,16 @@
 					</div>
 					<div class="text_right">
 						<ul>
-							<li>기업은행</li>
 							<li>주식회사 탑해피월드</li>
-							<li>0123456789</li>
-							<li>20.000원</li>
-							<li>2020.04.08까지</li>
+							<li>우리은행</li>
+							<li>1005-703-612321</li>
+							<li id = "orderAmount"><fmt:formatNumber value="${model.orderAmount}" pattern="###,###,###,###" /> 원</li>
+							<li id = "depositDay">2020.04.08까지</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<button class="r_btn1">주문현황보기</button>
+			<button class="r_btn1" onclick = "movePage('/m/mypage/myShop.do')">주문현황보기</button>
 			<button class="r_btn2">메인으로가기</button>
 		</div>
 	</section>

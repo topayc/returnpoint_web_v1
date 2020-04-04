@@ -45,4 +45,19 @@ public class CodeGenerator {
 		  }
 		  return String.valueOf(pinCharArrs);
 	  }
+	  
+	  public static String genOrderSerialNumber() {
+		  char[] PIN_CHARACTERS  = "1234567890".toCharArray();
+		  SplittableRandom splittableRandom = null;
+		  char[] pinCharArrs = new char[5];
+		  Collections.shuffle(Arrays.asList(PIN_CHARACTERS));
+		  splittableRandom = new SplittableRandom();
+		  
+		  for (int k = 0; k < pinCharArrs.length; k++) {
+			  int elementIndex = splittableRandom.nextInt(PIN_CHARACTERS.length);
+			  pinCharArrs[k] = PIN_CHARACTERS[elementIndex];
+		  }
+		  new Date ().getTime(); 
+		  return  new Date ().getTime() + "_"+ String.valueOf(pinCharArrs);
+	  }
 }

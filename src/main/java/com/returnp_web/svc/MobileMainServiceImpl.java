@@ -2204,10 +2204,88 @@ public class MobileMainServiceImpl implements MobileMainService {
 			rmap.put("gpointRate", rPap.get("gpointRate"));
 			rmap.put("price", rPap.get("price"));
 			rmap.put("deliveryCharge", rPap.get("deliveryCharge"));
+			rmap.put("gpointAmount", rPap.get("gpointAmount"));
+			rmap.put("orderAmount", rPap.getInt("unit") * rPap.getInt("qty") *  rPap.getInt("price"));
 			
 			dbparams.put("memberNo", sm.getMemberNo());
 			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
 			rmap.put("memberMap", memberMap);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean processOrder(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		SessionManager sm = new SessionManager(request, response);
+		HashMap<String, Object> dbParams = new HashMap<String, Object>();
+		String json = null;
+		try {
+			dbParams.put("orderNumber", CodeGenerator.genOrderSerialNumber());
+			dbParams.put("orderMemberNo", sm.getMemberNo());
+			
+			dbParams.put("productName", rPap.get("productName"));
+			dbParams.put("productPrice", rPap.get("price"));
+			
+			dbParams.put("orderColor", rPap.get("color"));
+			dbParams.put("orderUnit", rPap.get("unit"));
+			dbParams.put("orderQty", rPap.get("qty"));
+			dbParams.put("orderAmount", rPap.get("orderAmount"));
+			
+			dbParams.put("gpointRate", rPap.get("gpointRate"));
+			dbParams.put("gpointAmount", rPap.getStr("gpointAmount"));
+
+			dbParams.put("status", "1");
+			
+			dbParams.put("receiverName", rPap.get("receiverName"));
+			dbParams.put("receiverPhone", rPap.get("receiverPhone"));
+			dbParams.put("receiverAddress", rPap.getStr("zipCode") + " " + rPap.getStr("address1") + " " +rPap.getStr("address2"));
+			
+			dbParams.put("deliveryCharge", rPap.get("deliveryCharge"));
+			dbParams.put("reqMsg", rPap.get("reqMsg"));
+			
+			int count = this.mobileMainDao.createOrder(dbParams);
+			if (count == 0) {
+				json = Util.printResult(1, String.format("일시적인 장애가 발생했습니다 </br>조금후 다시 시도해주세요"), null);
+				rmap.put("json", json);
+			} else {
+				json = Util.printResult(0, String.format("정상적으로 주문이 접수되었습니다"), null);
+				rmap.put("json", json);
+			}
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		return true;
+	}
+
+	@Override
+	public boolean orderComplete(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			rmap.put("orderAmount", rPap.get("orderAmount"));
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+		}
+		return true;
+	}
+
+	@Override
+	public boolean maskOrderList(RPMap rPap, RPMap rmap, HttpServletRequest request, HttpServletResponse response) {
+		HashMap<String, Object> dbparams = new HashMap<String, Object>();
+		SessionManager sm = new SessionManager(request, response);
+		try {
+			dbparams.put("orderMemberNo", sm.getMemberNo());
+			ArrayList<HashMap<String, Object>> orders = this.mobileMainDao.selectMaskOrders(dbparams);
+			rmap.put("orders", orders);
+			
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

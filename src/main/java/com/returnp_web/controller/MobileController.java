@@ -851,22 +851,14 @@ public class MobileController extends MallBaseController {
 	 * 마스크 판매 
 	 *****************************************************************************************************************************************************************/
 	
-	@RequestMapping("/mypage/myShop.do")
-	public String myShop(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+	@RequestMapping("/mypage/maskOrderList.do")
+	public String maskOrderList(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/mypage/my_shop");
-		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
+		RPMap rmap = Util.getRPRmap("/mobile/shop/mask_order_list");
+		boolean bret =  mms.maskOrderList(Util.toRPap(p), rmap, request, response);
 		return page(true, map, rmap);
 	}
 
-	@RequestMapping("/shop/orderComplete.do")
-	public String orderComplete(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
-			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/shop/order_complete");
-		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
-		return page(true, map, rmap);
-	}
-	
 	@RequestMapping("/shop/maskProductDetail.do")
 	public String productDetail(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -883,21 +875,22 @@ public class MobileController extends MallBaseController {
 		return page(true, map, rmap);
 	}
 	
-	@RequestMapping("/mypage/maskOrderDetail.do")
-	public String ordertDetail(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
-			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/shop/mask_order_detail");
-		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
-		return page(true, map, rmap);
-	}
 	
-	@RequestMapping(value = "/shop/processOrder.do", produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/shop/processOrder.do",produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String order(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+	public String processOrder(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		RPMap rmap = Util.getRPRmap();
-		boolean bret = mms.reqeustAffiliateDeposit(Util.toRPap(p), rmap, request, response);
+		boolean bret = mms.processOrder(Util.toRPap(p), rmap, request, response);
 		return rmap.getStr("json");
+	}
+	
+	@RequestMapping("/shop/orderComplete.do")
+	public String orderComplete(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/shop/order_complete");
+		boolean bret =  mms.orderComplete(Util.toRPap(p), rmap, request, response);
+		return page(bret, map, rmap);
 	}
 	
 }

@@ -1134,6 +1134,26 @@ for(var i = 0; i < mobilePhones.length; i++){
 //}
 
 
+$.fn.serializeObject = function () {
+    "use strict";
+    var result = {};
+    var extend = function (i, element) {
+        var node = result[element.name];
+        if ('undefined' !== typeof node && node !== null) {
+           if ($.isArray(node)) {
+               node.push(element.value);
+           } else {
+               result[element.name] = [node, element.value];
+           }
+        } else {
+            result[element.name] = element.value;
+        }
+    };
+ 
+    $.each(this.serializeArray(), extend);
+    return result;
+};
+
 var productInfo  = {
 		price : 2500,
 		productName : "KN 99 고기능 은나노 마스크 Silver Nano Mask",

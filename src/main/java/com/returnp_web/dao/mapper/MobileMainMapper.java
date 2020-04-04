@@ -417,4 +417,8 @@ public interface MobileMainMapper {
 	ArrayList<HashMap<String, Object>> selectCompletedReceipts(HashMap<String, Object> dbparams);
 
 	ArrayList<HashMap<String, Object>> selectNotCompletedReceipts(HashMap<String, Object> dbparams);
+
+	int createOrder(HashMap<String, Object> dbParams);
+
+	ArrayList<HashMap<String, Object>> selectMaskOrders(HashMap<String, Object> dbparams);
 }
