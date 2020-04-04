@@ -1425,7 +1425,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_basket .r_basket_page .r_basket_day .r_basket_day3{font-size:15px;color:#33cccc;float:right;}
 .r_basket .r_basket_page .r_basket_box{border-top:1px solid #f1f1f1;border-bottom:1px solid #f1f1f1;width:100%;overflow:hidden;padding-bottom:5%;}
 .r_basket .r_basket_page .r_basket_box .r_basket_page_btn{float:left;width:10%;}
-.r_basket .r_basket_page .r_basket_box .r_basket_con{float:right;width:95%;overflow:hidden;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con{width:100%;overflow:hidden;padding:0 5%;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents{overflow:hidden;margin-top:5%;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_img{float:left;width:70px;overflow:hidden;height:70px;border-radius:10px;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_img img{width:100%;height:100%;}
@@ -1483,3 +1483,11 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_shop .r_shop_list .r_shop_list_text ul li h4{color:#333;font-size: 17px;font-weight: bold;}
 .r_shop .r_shop_list .r_shop_list_text ul li h4 b{color:red;margin-right: 3%;}
 .r_shop .r_shop_list .r_shop_list_text .r_shop_list_free{border-radius:7px;background-color:#eee;color:#555;width:35%;margin:5% 0;text-align: center;font-size:12px;}
+
+/*쇼핑몰 나의 쇼핑 리스트페이지*/
+.r_basket_con .r_table_box{border-bottom:1px solid #ccc;width:100%;padding:2% 0;}
+.r_basket_con .r_table_box p{text-align:left;color:#333;font-size:13px;}
+.r_basket_con .r_table_box table{width:100%;font-size:12px;}
+.r_basket_con .r_table_box table tr td{padding:1.5% 0;}
+.r_basket_con .r_table_box .r_table1{color:#bbb;}
+.r_basket_con .r_table_box .r_table2{color:#333;}

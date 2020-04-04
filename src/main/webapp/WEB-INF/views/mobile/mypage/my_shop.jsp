@@ -70,6 +70,68 @@ $(document).ready(function(){
 						<h5>무광올리브그린 보호패드포함</h5>
 						<span>33,900원</span>
 					</div>
+					<div class="r_table_box">
+					<p>결제정보</p>
+					<table>
+						<tr>
+							<td class="r_table1">상품금액</td>
+							<td class="r_table2">22,900</td>
+							<td class="r_table1">결제방법</td>
+							<td class="r_table2">무통장</td>
+						</tr>
+						<tr>
+							<td class="r_table1">할인금액</td>
+							<td class="r_table2">(-)6,000원</td>
+							<td class="r_table1">주문자</td>
+							<td class="r_table2">차미라</td>
+						</tr>
+						<tr>
+							<td class="r_table1">선불배송비</td>
+							<td class="r_table2">(+)0원</td>
+							<td class="r_table1">연락처</td>
+							<td class="r_table2">010-5845-0051</td>
+						</tr>
+						<tr>
+							<td class="r_table1">사용포인트</td>
+							<td class="r_table2">(-)0P</td>
+							<td class="r_table1">이메일</td>
+							<td class="r_table2">mira0326@naver.com</td>
+						</tr>
+						<tr>
+							<td class="r_table1">쿠폰할인가</td>
+							<td class="r_table2">(-)0P</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="r_table1">결제금액</td>
+							<td class="r_table2">16,900원</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+					</div>
+					<div class="r_table_box">
+					<p>배송지 정보</p>
+					<table>
+						<tr>
+							<td class="r_table1">수령인</td>
+							<td class="r_table2">차미라</td>
+						</tr>
+						<tr>
+							<td class="r_table1">연락처</td>
+							<td class="r_table2">010-5845-0051</td>
+						</tr>
+						<tr>
+							<td class="r_table1">주소</td>
+							<td class="r_table2">서울시 구로구 구로동 1129-69</td>
+						</tr>
+						<tr>
+							<td class="r_table1">배송메로</td>
+							<td class="r_table2"></td>
+						</tr>
+					</table>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -99,6 +161,7 @@ $(document).ready(function(){
 						<h5>무광올리브그린 보호패드포함</h5>
 						<span>33,900원</span>
 					</div>
+					
 				</div>
 			</div>
 		</div>
