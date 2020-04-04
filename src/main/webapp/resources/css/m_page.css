@@ -1470,7 +1470,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_order .r_btn2{width:100%;background:#ccc;border:1px solid #ccc;padding:3% 0;color:#fff;font-weight:bold;}
 
 /*쇼핑몰메인페이지*/
-.r_shop{padding:3%;border:1px solid #eee;}
+.r_shop{padding:3%;border:1px solid #eee;background:#fff;}
 .r_shop .r_shop_list{width:100%;overflow: hidden;margin-bottom:3%;}
 .r_shop .r_shop_list:last-child{margin-bottom: 0;}
 .r_shop .r_shop_list .r_shop_list_img{float:left;width:150px;height:150px;border-radius: 5px;overflow: hidden;}

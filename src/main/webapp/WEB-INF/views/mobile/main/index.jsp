@@ -303,7 +303,7 @@ if (isApp()) {
 		</div>		
 		</c:forEach>
 	</c:if>
-	<div class="r_shop">
+	<div class="r_shop" style="border-top:none;">
 
 			<div class="r_shop_list">
 				<div class="r_shop_list_img">
