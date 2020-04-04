@@ -29,7 +29,7 @@
 	var productInfo  = {
 		price : 2500,
 		productName : "KN 99 고기능 은나노 마스크 Silver Nano Mask",
-		gPointRate : 0.2
+		gPointRate : 0.1
 	}
 	
 	$(document).ready(function() {
@@ -74,30 +74,32 @@
 			$("#gpoint_text").text( $.number(qty * unit * productInfo.price * productInfo.gPointRate) + ' 를 적립해드립니다');
 		});
 		
-		$("#qty").on("propertychange change keyup paste input", function() {
+		$("#qty").on("blur", function(){
 			var qty = $(this).val().trim();
-			if (qty.lenght > 1) {
-				if (!$.isNumeric(payAmount)) {
+			var unit =  parseInt($("#unit").val().trim());
+			
+			if (unit == 0) return;
+			
+			if (qty.length > 0 ) {
+				if (!$.isNumeric(qty)) {
 					alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
-					$(this).val("");
+					$("#price_text").text("");
+					$("#qty").val("");
+					$("#gpoint_text").text("");
+				}else {
+					qty = parseInt(qty);
+					if (qty == 0) {
+						$("#price_text").text("");
+						$("#qty").val("");
+						$("#gpoint_text").text("");
+						return;
+					}
+					$("#price_text").text( $.number(qty * unit * productInfo.price ) + ' 원');
+					$("#gpoint_text").text( $.number(qty * unit * productInfo.price * productInfo.gPointRate) + ' G.POINT를 적립해드립니다');
 				}
 			}else {
-				alertOpen("확인", "수량을 입력해주세요", true, false, null, null);
 				return;
 			}
-			
-			qty = parseInt(qty);
-			if(qty < 1) {
-				alertOpen("확인", "수량을 입력해주세요", true, false, null, null);
-				return;
-			}
-			
-			var unit =  parseInt($("#unit").val().trim());
-			if (unit  == 0) {
-				return;
-			}
-			$("#price_text").text( $.number(qty * unit * productInfo.price ) + ' 원');
-			$("#gpoint_text").text( $.number(qty * unit * productInfo.price * productInfo.gPointRate) + ' G.POINT를 적립해드립니다');
 		})
 	});
 	
@@ -120,7 +122,6 @@
 			 alertOpen("알림", "수량을 선택해주세요", true, false,true, null);
 			 return;
 		}
-		
 		$("#productOrderForm").submit();
 	}
 </script>
