@@ -1432,7 +1432,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text{float:right;width:77%;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text ul{list-style:none;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text ul li{font-size:15px;color:#333;line-height:18px;}
-.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text span{color:#777;font-size:11px;}
+.r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_contents .r_basket_contents_text span{color:#33cccc;font-size:13px;font-weight:bold;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods{color:#333;background-color:#f1f1f1;border-radius:5px;width:90%;padding:3%;margin:3% 0;text-align:center;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods h5{font-size:13px;margin-bottom:2%;font-weight:400;}
 .r_basket .r_basket_page .r_basket_box .r_basket_con .r_basket_goods select{width:20%;padding:0.5% 0;border-radius:5px;}

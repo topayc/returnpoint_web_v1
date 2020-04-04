@@ -62,7 +62,7 @@ $(document).ready(function(){
 							<ul>
 								<li>빈백 풋스툴 발받침</li>
 								<li>3colors</li>
-								<li><span>무료배송|일반택배</span></li>
+								<li><span>배송완료</span></li>
 							</ul>
 						</div>
 					</div>
