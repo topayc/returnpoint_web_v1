@@ -141,7 +141,7 @@
 		<div class="shop_main" >
 			<div class="r_detail" style = "padding:0px 10px 70px 0px">
 				<div class="r_detail_sliderimg">
-					<img src="/resources/images/sliderimg1.png">
+					<img src="/resources/images/mask_img.png">
 				</div>
 				<!-----메인이미지 들어가는 자리------->
 				<form id ="productOrderForm" name = "productOrderForm" action = "/m/shop/order.do">

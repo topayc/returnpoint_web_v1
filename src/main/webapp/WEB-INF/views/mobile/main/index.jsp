@@ -54,7 +54,9 @@ if (isApp()) {
   
  $(document).on('ready', function() {
 	  $("#price_text").text($.number(productInfo.price));
-	  $("#gpoint_text").text($.number(productInfo.price * productInfo.gPointRate));
+	  if (productInfo.gPointRate != 0 ){
+		  $("#gpoint_text").text($.number(productInfo.price * productInfo.gPointRate) + " GPOINT 적립") ;
+	  }
 	  
  	  $("#event_popup").modal({
 		  escapeClose: false,
@@ -307,14 +309,14 @@ if (isApp()) {
 
 			<div class="r_shop_list" onclick = "movePage('/m/shop/productDetail.do')">
 				<div class="r_shop_list_img">
-					<img src="/resources/images/sliderimg1.png">
+					<img src="/resources/images/mask_img.png">
 				</div>
 				<div class="r_shop_list_text">
 					<ul>
 						<li style = "font-szie:8px">재사용 가능한 KN 99 고기능</li>
 						<li><h5>은나노 마스크 Silver Nano Mask</h5></li>
 						<li style = "font-weight:600;font-size : 16px"><img src="/resources/images/list_star.png"><span id = "price_text"></span>원</li>
-						<li style = "color : #33cccc;font-weight: 500"><span id = "gpoint_text"></span> GPOINT 적립</li>
+						<li style = "color : #33cccc;font-weight: 500"><span id = "gpoint_text"></span> </li>
 					</ul>
 				</div>
 			</div>
