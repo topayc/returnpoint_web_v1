@@ -875,10 +875,10 @@ public class MobileController extends MallBaseController {
 		return page(true, map, rmap);
 	}
 	
-	@RequestMapping("/shop/orderDetail.do")
+	@RequestMapping("/shop/order.do")
 	public String productOrder(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/shop/orderDetail");
+		RPMap rmap = Util.getRPRmap("/mobile/shop/order");
 		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
 		return page(true, map, rmap);
 	}

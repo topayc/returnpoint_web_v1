@@ -144,7 +144,7 @@
 					<img src="/resources/images/sliderimg1.png">
 				</div>
 				<!-----메인이미지 들어가는 자리------->
-				<form id ="productOrderForm" name = "productOrderForm" action = "/m/shop/orderDetail.do">
+				<form id ="productOrderForm" name = "productOrderForm" action = "/m/shop/order.do">
 				<div class="r_detail_text">
 					<!-----상품 설명 text------->
 					<ul>
