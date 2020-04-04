@@ -111,7 +111,7 @@ $(document).ready(function(){
 						</tr>
 					</table>
 					</div>
-					<div class="r_table_box">
+					<div class="r_table_box" style="border:none;">
 					<p>배송지 정보</p>
 					<table>
 						<tr>
