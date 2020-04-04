@@ -124,6 +124,7 @@
 	</div>
 	<div class="r_address">
 		<b>결제수단</b>
+		<p style = "font-size : 13px;color : #999">현재 무통장 입금 결제만 가능합니다</p>
 		<div class="r_pay_bottom">
 			<!-- <div class="r_pay_bottom_img"><img src="./img/pay_bottomimg1.png">핸드폰</div> -->
 			<div class="r_pay_bottom_img" style = "border : 4px solid #33cccc"><img src="/resources/images/pay_bottomimg2.png">무통장 입금</div>
