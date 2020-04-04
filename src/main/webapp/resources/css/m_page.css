@@ -1475,7 +1475,7 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 .r_shop .r_shop_list:last-child{margin-bottom: 0;}
 .r_shop .r_shop_list .r_shop_list_img{float:left;width:150px;height:150px;border-radius: 5px;overflow: hidden;}
 .r_shop .r_shop_list .r_shop_list_img img{width:100%;height:100%;}
-.r_shop .r_shop_list .r_shop_list_text{float:right;width:50%;margin-top:3%;}
+.r_shop .r_shop_list .r_shop_list_text{float:right;width:55%;margin-top:3%;}
 .r_shop .r_shop_list .r_shop_list_text ul{list-style: none;}
 .r_shop .r_shop_list .r_shop_list_text ul li{line-height:25px;color:#777;font-size: 14px;}
 .r_shop .r_shop_list .r_shop_list_text ul li b{color:#333;font-weight: bold;margin:0 3%;}
