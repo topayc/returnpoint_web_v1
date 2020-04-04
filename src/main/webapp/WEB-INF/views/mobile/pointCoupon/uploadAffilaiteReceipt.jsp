@@ -38,7 +38,6 @@ $(document).ready(function(){
 				alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
 				$(this).val("");
 			}
-			
 		}
 		payAmount = parseInt(payAmount);
 		$(".upload_conbox_p").text( $.number(Math.round(payAmount * 0.15)) + ' 원');

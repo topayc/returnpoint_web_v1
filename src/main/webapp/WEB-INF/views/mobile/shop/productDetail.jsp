@@ -23,8 +23,15 @@
 <script type="text/javascript" src="/resources/js/lib/m_common.js"></script>
 <script type="text/javascript" src="/resources/js/lib/m_point_gift.js"></script>
 <script type="text/javascript" src="/resources/js/lib/jquery.sticky.js"></script>
+<script type="text/javascript" src="/resources/js/lib/jquery-number.js"></script>
  
 <script type="text/javascript">
+	var productInfo  = {
+		price : 2500,
+		productName : "KN 99 고기능 은나노 마스크 Silver Nano Mask",
+		gPointRate : 0.2
+	}
+	
 	$(document).ready(function() {
 		var pageContextlocale = '${pageContext.response.locale}';
 		$("#sel1").val(pageContextlocale);
@@ -38,7 +45,76 @@
 		
 		$(".product_info").hide();
 		$("#r_detail_page").show();
+		
+		$("#unit").change(function() {
+			var unit = parseInt($(this).val().trim());
+			if (unit == 0) {
+				$("#price_text").text("");
+				$("#qty").val("");
+				$("#gpoint_text").text("");
+				return;
+			}
+			
+			var qty = $("#qty").val().trim();
+			if (qty.length < 1) {
+				$("#price_text").text("");
+				$("#qty").val("");
+				$("#gpoint_text").text("");
+				return;
+			}
+			
+			if (parseInt(qty) < 1) {
+				$("#price_text").text("");
+				$("#qty").val("");
+				$("#gpoint_text").text("");
+				return;
+			}
+			
+			$("#price_text").text( $.number(qty * unit * productInfo.price ) + ' 원');
+			$("#gpoint_text").text( $.number(qty * unit * productInfo.price * productInfo.gPointRate) + ' 를 적립해드립니다');
+		});
+		
+		$("#qty").on("propertychange change keyup paste input", function() {
+			var qty = $(this).val().trim();
+			if (qty.lenght > 1) {
+				if (!$.isNumeric(payAmount)) {
+					alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
+					$(this).val("");
+				}
+			}
+			
+			qty = parseInt(qty);
+			var unit =  parseInt($("#unit").val().trim());
+			if (unit  == 0) {
+				return;
+			}
+			$("#price_text").text( $.number(qty * unit * productInfo.price ) + ' 원');
+			$("#gpoint_text").text( $.number(qty * unit * productInfo.price * productInfo.gPointRate) + ' G.POINT를 적립해드립니다');
+		})
 	});
+	
+	function submitOrder(){
+		var color = $("#color").val().trim();
+		var unit  = $("#unit").val().trim();
+		var qty  = $("#qty").val().trim();
+		
+		if (color ==  "0") {
+			 alertOpen("알림", "색상을 선택해주세요", true, false,true, null);
+			 return;
+		}
+		
+		if (unit == "0") {
+			 alertOpen("알림", "묶음을 선택해주세요", true, false,true, null);
+			 return;
+		}
+		
+		if (qty.length < 1) {
+			 alertOpen("알림", "수량을 선택해주세요", true, false,true, null);
+			 return;
+		}
+		
+		$("#productOrderForm").submit();
+	}
 </script>
 <style>
 * {
@@ -62,28 +138,31 @@
 					<img src="/resources/images/sliderimg1.png">
 				</div>
 				<!-----메인이미지 들어가는 자리------->
+			
 				<div class="r_detail_text">
 					<!-----상품 설명 text------->
 					<ul>
 						<li>KN 99 고기능</li>
 						<li><h5>은나노 마스크 Silver Nano Mask</h5></li>
 					<!-- 	<li><span>41%</span><span class="line_t">28,000</span></li> -->
-						<li style="margin-bottom:10px;margin-top:20px">옵션<select name="옵션" id="r_option">
-									<option>color(색상)</option>
-									<option>white(흰색)</option>
-									<option>black(검정색)</option>
-								</select>
+						<li style="margin-bottom:10px;margin-top:20px">옵션
+							<select name="color"  id="color">
+								<option value = "0" >color(색상 선택)</option>
+								<option value = "white" >white(흰색)</option>
+								<option value = "black" >black(검정색)</option>
+							</select>
 						</li>
-						<li style="margin-bottom:20px;">수량<select name="수량" id="r_option">
-									<option>선택</option>
-									<option>10개 묶음</option>
-									<option>20개 묶음</option>
-									<option>30개 묶음</option>
-								</select>
-								<input type="text">&nbsp;개
+						<li style="margin-bottom:20px;">수량
+							<select name="unit" id="unit">
+								<option value = "0" >묶음 선택</option>
+								<option value = "10" >10개 묶음</option>
+								<option value = "20" >20개 묶음</option>
+								<option value = "30" >30개 묶음</option>
+							</select>
+								<input type="number"  id = "qty"  name = "qty">&nbsp;개
 						</li>
-						<li style = "margin-bottom:7px"><h3> 16,300원 <span>온라인 최저가</span> </h3></li>
-						<li><span class="text_point" >489 G.POINT 를 </span> 적립해드립니다.</li>
+						<li style = "margin-bottom:7px"><h3> <b id = "price_text"></b> <!-- <span>온라인 최저가</span> --> </h3></li>
+						<li><span class="text_point"  id = "gpoint_text"></span></li>
 					</ul>
 				</div>
 				<div class="r_delivery">
@@ -198,7 +277,7 @@
 					</div>
 				</div>
 				<div class="r_detail_pay">
-					<button onclick = "movePage('/m/shop/orderDetail.do')">구매하기</button>
+					<button onclick = "submitOrder();">구매하기</button>
 				</div>
 
 			</div>
