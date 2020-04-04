@@ -862,23 +862,31 @@ public class MobileController extends MallBaseController {
 	@RequestMapping("/shop/orderComplete.do")
 	public String orderComplete(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/shop/orderComplete");
+		RPMap rmap = Util.getRPRmap("/mobile/shop/order_complete");
 		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
 		return page(true, map, rmap);
 	}
 	
-	@RequestMapping("/shop/productDetail.do")
+	@RequestMapping("/shop/maskProductDetail.do")
 	public String productDetail(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/shop/productDetail");
+		RPMap rmap = Util.getRPRmap("/mobile/shop/mask_product_detail");
 		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
 		return page(true, map, rmap);
 	}
 	
-	@RequestMapping("/shop/order.do")
+	@RequestMapping("/shop/maskOrder.do")
 	public String productOrder(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
 			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		RPMap rmap = Util.getRPRmap("/mobile/shop/order");
+		RPMap rmap = Util.getRPRmap("/mobile/shop/mask_order");
+		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
+		return page(true, map, rmap);
+	}
+	
+	@RequestMapping("/mypage/maskOrderDetail.do")
+	public String ordertDetail(@RequestParam(required = false) String lang, @RequestParam Map<String, Object> p, ModelMap map,
+			HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		RPMap rmap = Util.getRPRmap("/mobile/shop/mask_order_detail");
 		//boolean bret =  mms.prepareAffiliateMain(Util.toRPap(p), rmap, request, response);
 		return page(true, map, rmap);
 	}

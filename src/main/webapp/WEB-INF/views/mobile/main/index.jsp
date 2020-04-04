@@ -307,7 +307,7 @@ if (isApp()) {
 	</c:if>
 	<div class="r_shop" style="border-top:none;">
 
-			<div class="r_shop_list" onclick = "movePage('/m/shop/productDetail.do')">
+			<div class="r_shop_list" onclick = "movePage('/m/shop/maskProductDetail.do')">
 				<div class="r_shop_list_img">
 					<img src="/resources/images/mask_img.png">
 				</div>

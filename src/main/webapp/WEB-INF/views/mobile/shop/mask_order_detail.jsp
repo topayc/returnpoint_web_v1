@@ -46,7 +46,7 @@ $(document).ready(function(){
 	<div class="r_basket">
 		<div class="r_basket_page">
 			<div class="r_basket_day">
-			<span class="r_basket_day1">18648682|2020.40.03</span><span class="r_basket_day2">></span><span class="r_basket_day3" onclick = "movePage('/m/shop/orderDetail.do')">주문상세보기</span>
+			<span class="r_basket_day1">18648682|2020.40.03</span><span class="r_basket_day2">></span><span class="r_basket_day3" onclick = "movePage('/m/mypage/orderDetail.do')">주문상세보기</span>
 			</div>
 			<div class="r_basket_box">
 				<!-- <div class="r_basket_page_btn">
