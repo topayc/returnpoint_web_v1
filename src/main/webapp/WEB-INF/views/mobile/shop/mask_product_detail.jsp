@@ -38,6 +38,7 @@
 			$("#" + target).show();
 		});
 		
+		$("#refundInfo").html(productInfo.refundInfo);
 		$(".product_info").hide(); 
 		$("#r_detail_page").show();
 		
@@ -49,8 +50,8 @@
 		$("#price").val(productInfo.price);
 		
 		/*초기 주문 페이지의 주문 가격 세팅*/
-		$("#orderAmount_text").text($.number(productInfo.price * 10 * 1) + "원");
-		$("#orderAmount").val(productInfo.price * 10);
+		$("#totalPriceAmount_text").text($.number(productInfo.price * 10 * 1) + "원");
+		$("#totalPriceAmount").val(productInfo.price * 10);
 		
 		$("#gpointRate").val(productInfo.gPointRate);
 		$("#gpointAdmout").val(productInfo.price * 10 * 1* productInfo.gPointRate );
@@ -58,14 +59,25 @@
 		if (productInfo.gPointRate > 0) $("#gpointRate_text").text((productInfo.gPointRate * 100) + "% G.POINT 적립");
 		
 		$("#deliveryChargeType").val(productInfo.curDeliveryType);
-		$("#deliveryCharge").val(productInfo.deliveryType[productInfo.curDeliveryType].charge);
 		
 		var delText = ""
-		if (productInfo.curDeliveryType == "condition") delText= $.number(productInfo.deliveryType[productInfo.curDeliveryType].charge) + "원 (" + $.number(productInfo.deliveryType[productInfo.curDeliveryType].limitAmount) + "원 이상 구매시 무료 배송)";
-		if (productInfo.curDeliveryType == "nofree") delText= $.number(productInfo.deliveryType[productInfo.curDeliveryType].charge) + "원";
-		if (productInfo.curDeliveryType == "free") delText= "배송비 무료"
+		if (productInfo.curDeliveryType == "condition") {
+			delText= $.number(productInfo.deliveryType[productInfo.curDeliveryType].charge) + "원 (" + $.number(productInfo.deliveryType[productInfo.curDeliveryType].limitAmount) + "원 이상 구매시 무료 배송)";
+			$("#deliveryChargeLimit").val(productInfo.deliveryType[productInfo.curDeliveryType].limitAmount);
+			$("#deliveryCharge").val(productInfo.deliveryType[productInfo.curDeliveryType].charge);
+		}
+		if (productInfo.curDeliveryType == "nofree"){ 
+			delText= $.number(productInfo.deliveryType[productInfo.curDeliveryType].charge) + "원";
+			$("#deliveryCharge").val(productInfo.deliveryType[productInfo.curDeliveryType].charge);
+			$("#deliveryChargeLimit").val(0);
+		}
+		if (productInfo.curDeliveryType == "free"){ 
+			delText= "배송비 무료";
+			$("#deliveryCharge").val(0);
+			$("#deliveryChargeLimit").val(0);
+		}
 		
-		$("#delivery_charge_text").text(delText);
+		$(".delivery_charge_text").text(delText);
 		
 		$("#unit").change(function() {
 			setOrderAmount();
@@ -95,9 +107,10 @@
 		var unit = $("#unit").val();
 		var orderAmount = parseInt(qty) *  parseInt(unit)  * productInfo.price;
 		
-		$("#orderAmount_text").text( $.number(orderAmount) + ' 원 (배송비 제외)');
+		$("#totalPriceAmount_text").text( $.number(orderAmount) + ' 원 (배송비 제외)');
+		$("#totalPriceAmount").val(orderAmount );
+
 		$("#gpoint_text").text( $.number(orderAmount *  productInfo.gPointRate) + ' G.POINT를 적립해드립니다');
-		$("#orderAmount").val(orderAmount );
 		$("#gpointAmount").val( orderAmount * productInfo.gPointRate );
 	}
 	
@@ -150,12 +163,13 @@
 				<form id ="productOrderForm" name = "productOrderForm" action = "/m/shop/maskOrder.do" method = "post">
 				<input type = "hidden" name = "productNo"  id = "productNo"  value = "1"/>
 				<input type = "hidden" name = "productName"  id = "productName"  value = ""/>
-				<input type = "hidden" name = "orderAmount"  id = "orderAmount" value = ""/>
+				<input type = "hidden" name = "totalPriceAmount"  id = "totalPriceAmount" value = ""/>
 				<input type = "hidden" name = "price" id = "price" value = ""/>
 				<input type = "hidden" name = "gpointRate" id = "gpointRate" value = ""/>
 				<input type = "hidden" name = "gpointAmount" id = "gpointAmount" value = ""/>
 				<input type = "hidden" name = "deliveryChargeType" id = "deliveryChargeType" value = ""/>
 				<input type = "hidden" name = "deliveryCharge" id = "deliveryCharge" value = ""/>
+				<input type = "hidden" name = "deliveryChargeLimit" id = "deliveryChargeLimit" value = ""/>
 				<div class="r_detail_text">
 					<!-----상품 설명 text------->
 					<ul>
@@ -176,7 +190,7 @@
 							</select>
 								<input type="number"  id = "qty"  name = "qty" style = "width:100px;height:35px"  value = "1">&nbsp;개
 						</li>
-						<li style = "margin-bottom:7px"><h3> <b id = "orderAmount_text"></b> <!-- <span>온라인 최저가</span> --> </h3></li>
+						<li style = "margin-bottom:7px"><h3> <b id = "totalPriceAmount_text"></b> <!-- <span>온라인 최저가</span> --> </h3></li>
 						<li><span class="text_point"  id = "gpoint_text"></span></li>
 					</ul>
 				</div>
@@ -184,7 +198,7 @@
 				<div class="r_delivery">
 					<ul>
 						<li>일반택배</li>
-						<li><span style = "padding: 5px;background-color : #ececec"><b id = "delivery_charge_text" style = "padding : 10px"></b></span> </li>
+						<li><span style = "padding: 5px;background-color : #ececec"><b id = "delivery_charge_text" class = "delivery_charge_text" style = "padding : 10px"></b></span> </li>
 					</ul>
 				</div>
 				<div class="r_nav">
@@ -243,7 +257,7 @@
 						<div class="r_delivery_s">배송</div>
 						<div class="r_delivery_l">일반택배상품</div>
 						<div class="r_delivery_s">배송비</div>
-						<div class="r_delivery_l">무료</div>
+						<div class="r_delivery_l delivery_charge_text"></div>
 						<div class="r_delivery_s">도서산간 추가 배송비</div>
 						<div class="r_delivery_l">3,000원</div>
 						<div class="r_delivery_s">배송불가지역</div>
@@ -257,8 +271,7 @@
 						<div class="r_delivery_s">교환배송</div>
 						<div class="r_delivery_l">2,500원</div>
 						<div class="r_delivery_s">보내실 곳</div>
-						<div class="r_delivery_l">(34711) 대전 동구 대별동 155-1 (대별동)
-							한빛텍스타일</div>
+						<div class="r_delivery_l" id = "refundInfo"></div>
 					</div>
 					<div class="r_delivery_text">
 						<ul>

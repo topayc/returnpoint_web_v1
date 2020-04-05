@@ -1486,8 +1486,8 @@ li.on > .coupon_contents{height:auto;top:40px;width: 100%;border-top: 1px solid 
 
 /*쇼핑몰 나의 쇼핑 리스트페이지*/
 .r_basket_con .r_table_box{border-bottom:1px solid #eee;width:100%;padding:2% 0;}
-.r_basket_con .r_table_box p{text-align:left;color:#333;font-size:13px;}
+.r_basket_con .r_table_box p{text-align:left;color:#333;font-size:13px;font-weight:600}
 .r_basket_con .r_table_box table{width:100%;font-size:12px;}
 .r_basket_con .r_table_box table tr td{padding:1.5% 0;}
-.r_basket_con .r_table_box .r_table1{color:#bbb;}
+.r_basket_con .r_table_box .r_table1{color:#999;}
 .r_basket_con .r_table_box .r_table2{color:#333;}

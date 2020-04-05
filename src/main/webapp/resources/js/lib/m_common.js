@@ -1165,5 +1165,6 @@ var productInfo  = {
 			nofree : {charge : 5000},
 			free : {charge : 0}
 		},
-		deliveryCharge : 1000
+		deliveryCharge : 1000,
+		refundInfo : "TEL (02) 898-09023  </br> 12345 서울시 강남구 논현동"
 	}

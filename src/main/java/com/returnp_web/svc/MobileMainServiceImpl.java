@@ -2198,17 +2198,32 @@ public class MobileMainServiceImpl implements MobileMainService {
 		try {
 			rmap.put("productNo", rPap.get("productNo"));
 			rmap.put("productName", rPap.get("productName"));
-			rmap.put("totalPriceAmount", rPap.getInt("price") * rPap.getInt("unit") *   rPap.getInt("qty") );
-			rmap.put("orderAmount", rPap.getInt("price") * rPap.getInt("unit") *   rPap.getInt("qty") + rPap.getInt("deliveryCharge"));
+			rmap.put("totalPriceAmount", rPap.get("totalPriceAmount"));
 			rmap.put("price", rPap.get("price"));
 			rmap.put("gpointRate", rPap.get("gpointRate"));
 			rmap.put("gpointAmount", rPap.get("gpointAmount"));
-			rmap.put("deliveryChargeType", rPap.get("deliveryChargeType"));
-			rmap.put("deliveryCharge", rPap.get("deliveryCharge"));
+			rmap.put("deliveryChargeLimit", rPap.get("deliveryChargeLimit"));
 			rmap.put("color", rPap.get("color"));
 			rmap.put("unit", rPap.get("unit"));
 			rmap.put("qty", rPap.get("qty"));
+
+			rmap.put("deliveryChargeType", rPap.get("deliveryChargeType"));
+			rmap.put("deliveryCharge", rPap.get("deliveryCharge"));
 			
+			switch(rPap.getStr("deliveryChargeType")) {
+			case "condition":
+				if (rPap.getInt("totalPriceAmount") >= rPap.getInt("deliveryChargeLimit")) {
+					rmap.put("deliveryCharge", 0);
+				}
+				break;
+			case "free":
+				rmap.put("deliveryCharge", 0);
+				break;
+			case "nofree": break;
+			}
+			
+			rmap.put("orderAmount", rPap.getInt("totalPriceAmount")+ rmap.getInt("deliveryCharge"));
+
 			dbparams.put("memberNo", sm.getMemberNo());
 			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
 			rmap.put("memberMap", memberMap);
@@ -2238,9 +2253,10 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbParams.put("orderAmount", rPap.get("orderAmount"));
 			
 			dbParams.put("gpointRate", rPap.get("gpointRate"));
-			dbParams.put("gpointAmount", rPap.getStr("gpointAmount"));
+			dbParams.put("gpointAmount", rPap.get("gpointAmount"));
 
 			dbParams.put("status", "1");
+			dbParams.put("totalPriceAmount", rPap.get("totalPriceAmount"));
 			
 			dbParams.put("receiverName", rPap.get("receiverName"));
 			dbParams.put("receiverPhone", rPap.get("receiverPhone"));

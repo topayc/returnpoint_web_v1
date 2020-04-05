@@ -1002,8 +1002,10 @@
 			,receiverName
 			,receiverPhone
 			,receiverAddress
-			,deliveryCharge,
+			,deliveryCharge
+			,deliveryChargeType
 			,reqMsg
+			,totalPriceAmount
 			,createTime
 			,updateTime
 		) VALUES (
@@ -1022,7 +1024,9 @@
 			,#{receiverPhone}
 			,#{receiverAddress}
 			,#{deliveryCharge}
+			,#{deliveryChargeType}
 			,#{reqMsg}
+			,#{totalPriceAmount}
 			,NOW()
 			,NOW()
 		)

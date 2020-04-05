@@ -77,8 +77,8 @@
 					</div>
 				</div>
 			</div>
-			<button class="r_btn1" onclick = "movePage('/m/mypage/myShop.do')">주문현황보기</button>
-			<button class="r_btn2">메인으로가기</button>
+			<button class="r_btn1" onclick = "movePage('/m/mypage/maskOrderList.do')">주문현황보기</button>
+			<button class="r_btn2" onclick = "movePage('/m/main/index.do')">메인으로가기</button>
 		</div>
 	</section>
 	<div id="progress_loading2">

@@ -218,9 +218,10 @@ function initLayerPosition(){
 		<input type = "hidden" name = "productNo" id = "productNo" value = "${model.productNo }"/>
 		<input type = "hidden" name = "price" id = "price" value = "${model.price }"/>
 		<input type = "hidden" name = "deliveryCharge" id = "deliveryCharge" value = "${model.deliveryCharge }"/>
-		<input type = "hidden" name = "deliveryChargeType" id = "deliveryCharge" value = "${model.deliveryChargeType }"/>
+		<input type = "hidden" name = "deliveryChargeType" id = "deliveryChargeType" value = "${model.deliveryChargeType }"/>
 		<input type = "hidden" name = "productName" id = "productName" value = "${model.productName }"/>
 		<input type = "hidden" name = "orderAmount" id = "orderAmount" value = "${model.orderAmount }"/>
+		<input type = "hidden" name = "totalPriceAmount" id = "orderAmount" value = "${model.totalPriceAmount }"/>
 
 		<div class="shop_main">
 			<div class="r_pay">
@@ -283,7 +284,7 @@ function initLayerPosition(){
 					<b>주문상품</b>
 					<div class="r_pay_address">
 						<div class="r_pay_left">상품정보</div>
-						<div class="r_pay_right">배송</div>
+						<div class="r_pay_right">배송 및 요금</div>
 						<div class="r_pay_left" style="border-bottom: none;">
 							<div class="r_pay_left_l">
 								<img src="/resources/images/r_pay.png">
@@ -294,7 +295,7 @@ function initLayerPosition(){
 									<li>개당 가격 : ${model.price }</li>
 									<li>색상 : ${model.color}</li>
 									<li>구매 : ${model.unit } 묶음 ${model.qty} 개 구매</li>
-									<li><span style="font-weight: bold">총 결제 금액 : <fmt:formatNumber value="${model.orderAmount}" pattern="###,###,###,###" /> 원
+									<li><span style="font-weight: bold">총 상품 금액 : <fmt:formatNumber value="${model.totalPriceAmount}" pattern="###,###,###,###" /> 원
 									</span></li>
 								</ul>
 							</div>
@@ -338,7 +339,7 @@ function initLayerPosition(){
 							<img src="/resources/images/pay_bottomimg2.png">무통장 입금
 						</div>
 					</div>
-					<button id = "submit_btn" onclick="submitOrder()">결제하기</button>
+					<button id = "submit_btn"  type = "button" onclick="submitOrder()">결제하기</button>
 				</div>
 			</div>
 			

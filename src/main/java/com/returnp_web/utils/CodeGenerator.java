@@ -1,5 +1,6 @@
 package com.returnp_web.utils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -57,7 +58,7 @@ public class CodeGenerator {
 			  int elementIndex = splittableRandom.nextInt(PIN_CHARACTERS.length);
 			  pinCharArrs[k] = PIN_CHARACTERS[elementIndex];
 		  }
-		  new Date ().getTime(); 
-		  return  new Date ().getTime() + "_"+ String.valueOf(pinCharArrs);
+		  SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+		  return  df.format( new Date ()) + "_"+ String.valueOf(pinCharArrs);
 	  }
 }
