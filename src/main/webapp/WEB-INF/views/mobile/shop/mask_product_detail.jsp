@@ -38,103 +38,68 @@
 			$("#" + target).show();
 		});
 		
-		$(".product_info").hide();
+		$(".product_info").hide(); 
 		$("#r_detail_page").show();
 		
+	    if (productInfo.gPointRate >  0 ){
+		   $("#gpointRate").text($.number( productInfo.gPointRate * 100) + "%") ;
+		   $("#gpoint_text").text($.number( productInfo.price * 10 * productInfo.gPointRate) + " GPOINT 적립") ;
+		 }
+		  
 		$("#price").val(productInfo.price);
+		
+		/*초기 주문 페이지의 주문 가격 세팅*/
+		$("#orderAmount_text").text($.number(productInfo.price * 10 * 1) + "원");
+		$("#orderAmount").val(productInfo.price * 10);
+		
 		$("#gpointRate").val(productInfo.gPointRate);
+		$("#gpointAdmout").val(productInfo.price * 10 * 1* productInfo.gPointRate );
 		$("#productName").val(productInfo.productName);
-		$("#deliveryCharge").val(productInfo.deliveryCharge);
-		$("#delivery_charge_text").text(productInfo.deliveryCharge + "원");
-		if (productInfo.gPointRate > 0) {
-			$("#gpointRate_text").text((productInfo.gPointRate * 100) + "% G.POINT 적립");
-		}
+		if (productInfo.gPointRate > 0) $("#gpointRate_text").text((productInfo.gPointRate * 100) + "% G.POINT 적립");
+		
+		$("#deliveryChargeType").val(productInfo.curDeliveryType);
+		$("#deliveryCharge").val(productInfo.deliveryType[productInfo.curDeliveryType].charge);
+		
+		var delText = ""
+		if (productInfo.curDeliveryType == "condition") delText= $.number(productInfo.deliveryType[productInfo.curDeliveryType].charge) + "원 (" + $.number(productInfo.deliveryType[productInfo.curDeliveryType].limitAmount) + "원 이상 구매시 무료 배송)";
+		if (productInfo.curDeliveryType == "nofree") delText= $.number(productInfo.deliveryType[productInfo.curDeliveryType].charge) + "원";
+		if (productInfo.curDeliveryType == "free") delText= "배송비 무료"
+		
+		$("#delivery_charge_text").text(delText);
+		
 		$("#unit").change(function() {
-			var unit = parseInt($(this).val().trim());
-			if (unit == 0) {
-				$("#price_text").text("");
-				$("#qty").val("");
-				$("#gpoint_text").text("");
-				return;
-			}
-			
-			var qty = $("#qty").val().trim();
-			if (qty.length < 1) {
-				$("#price_text").text("");
-				$("#qty").val("");
-				$("#gpoint_text").text("");
-				return;
-			}
-			
-			if (parseInt(qty) < 1) {
-				$("#price_text").text("");
-				$("#qty").val("");
-				$("#gpoint_text").text("");
-				return;
-			}
-			
-			$("#price_text").text( $.number(qty * unit * productInfo.price ) + '원');
-			$("#gpoint_text").text( $.number(qty * unit * productInfo.price * productInfo.gPointRate) + ' G.POINT를 적립해드립니다');
-			$("#gpointAmount").val( qty * unit * productInfo.price * productInfo.gPointRate );
+			setOrderAmount();
 		});
 		
 		   $("#qty").on("propertychange change keyup paste input", function() {
 				var qty = $(this).val().trim();
-				var unit =  parseInt($("#unit").val().trim());
-				
-				if (unit == 0) return;
-				
 				if (qty.length > 0 ) {
 					if (!$.isNumeric(qty)) {
 						alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
-						$("#price_text").text("");
-						$("#qty").val("");
-						$("#gpoint_text").text("");
+						return;
 					}else {
 						qty = parseInt(qty);
 						if (qty < 1) {
-							$("#price_text").text("");
-							$("#qty").val("");
-							$("#gpoint_text").text("");
-							return;
+							$(this).val("1");
 						}
-						$("#price_text").text( $.number(qty * unit * productInfo.price ) + ' 원');
-						$("#gpoint_text").text( $.number(qty * unit * productInfo.price * productInfo.gPointRate) + ' G.POINT를 적립해드립니다');
-						$("#gpointAmount").val( qty * unit * productInfo.price * productInfo.gPointRate );
+						setOrderAmount();
 					}
-				}else {
-					return;
 				}
 	        })
 	        
-/* 		$("#qty").on("blur", function(){
-			var qty = $(this).val().trim();
-			var unit =  parseInt($("#unit").val().trim());
-			
-			if (unit == 0) return;
-			
-			if (qty.length > 0 ) {
-				if (!$.isNumeric(qty)) {
-					alertOpen("확인", "숫자만 입력가능합니다", true, false, null, null);
-					$("#price_text").text("");
-					$("#qty").val("");
-					$("#gpoint_text").text("");
-				}else {
-					qty = parseInt(qty);
-					if (qty < 1) {
-						$("#price_text").text("");
-						$("#qty").val("");
-						$("#gpoint_text").text("");
-						return;
-					}
-					$("#price_text").text( $.number(qty * unit * productInfo.price ) + ' 원');
-					$("#gpoint_text").text( $.number(qty * unit * productInfo.price * productInfo.gPointRate) + ' G.POINT를 적립해드립니다');
-				}
-			}else {
-				return;
-			}
-		}) */
+	        setOrderAmount();
 	});
+	
+	function setOrderAmount(){
+		var qty = $("#qty").val();
+		var unit = $("#unit").val();
+		var orderAmount = parseInt(qty) *  parseInt(unit)  * productInfo.price;
+		
+		$("#orderAmount_text").text( $.number(orderAmount) + ' 원 (배송비 제외)');
+		$("#gpoint_text").text( $.number(orderAmount *  productInfo.gPointRate) + ' G.POINT를 적립해드립니다');
+		$("#orderAmount").val(orderAmount );
+		$("#gpointAmount").val( orderAmount * productInfo.gPointRate );
+	}
 	
 	function order(){
 		var color = $("#color").val().trim();
@@ -182,13 +147,14 @@
 					<img src="/resources/images/mask_img.png">
 				</div>
 				<!-----메인이미지 들어가는 자리------->
-				<form id ="productOrderForm" name = "productOrderForm" action = "/m/shop/maskOrder.do">
+				<form id ="productOrderForm" name = "productOrderForm" action = "/m/shop/maskOrder.do" method = "post">
 				<input type = "hidden" name = "productNo"  id = "productNo"  value = "1"/>
 				<input type = "hidden" name = "productName"  id = "productName"  value = ""/>
-				<input type = "hidden" name = "price"  id = "price" value = ""/>
+				<input type = "hidden" name = "orderAmount"  id = "orderAmount" value = ""/>
+				<input type = "hidden" name = "price" id = "price" value = ""/>
 				<input type = "hidden" name = "gpointRate" id = "gpointRate" value = ""/>
 				<input type = "hidden" name = "gpointAmount" id = "gpointAmount" value = ""/>
-				<input type = "hidden" name = "gpointRate" id = "gpointRate" value = ""/>
+				<input type = "hidden" name = "deliveryChargeType" id = "deliveryChargeType" value = ""/>
 				<input type = "hidden" name = "deliveryCharge" id = "deliveryCharge" value = ""/>
 				<div class="r_detail_text">
 					<!-----상품 설명 text------->
@@ -198,21 +164,19 @@
 						<li id = "gpointRate_text" style = "font-size : 13px;color : #33cccc;font-weight : 500"></li>
 						<li style="margin-bottom:10px;margin-top:20px">옵션
 							<select name="color"  id="color" style = "height:35px">
-								<option value = "0" >color(색상 선택)</option>
 								<option value = "white" >white(흰색)</option>
 								<option value = "black" >black(검정색)</option>
 							</select>
 						</li>
 						<li style="margin-bottom:20px;">수량
 							<select name="unit" id="unit" style = "height:35px">
-								<option value = "0" >묶음 선택</option>
 								<option value = "10" >10개 묶음</option>
 								<option value = "20" >20개 묶음</option>
 								<option value = "30" >30개 묶음</option>
 							</select>
-								<input type="number"  id = "qty"  name = "qty" style = "width:100px;height:35px" >&nbsp;개
+								<input type="number"  id = "qty"  name = "qty" style = "width:100px;height:35px"  value = "1">&nbsp;개
 						</li>
-						<li style = "margin-bottom:7px"><h3> <b id = "price_text"></b> <!-- <span>온라인 최저가</span> --> </h3></li>
+						<li style = "margin-bottom:7px"><h3> <b id = "orderAmount_text"></b> <!-- <span>온라인 최저가</span> --> </h3></li>
 						<li><span class="text_point"  id = "gpoint_text"></span></li>
 					</ul>
 				</div>
@@ -220,7 +184,7 @@
 				<div class="r_delivery">
 					<ul>
 						<li>일반택배</li>
-						<li><span style = "padding: 5px;background-color : #ececec">유료배송 : 착불 , <b id = "delivery_charge_text"></b></span> </li>
+						<li><span style = "padding: 5px;background-color : #ececec"><b id = "delivery_charge_text" style = "padding : 10px"></b></span> </li>
 					</ul>
 				</div>
 				<div class="r_nav">

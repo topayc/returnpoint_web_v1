@@ -1156,7 +1156,14 @@ $.fn.serializeObject = function () {
 
 var productInfo  = {
 		price : 2500,
-		productName : "KN99 은나노 마스크 Silver Nano Mask",
+		productDes : "재사용 가능한 고기능",
+		productName : "KN99 은나노 마스크 (10매)",
 		gPointRate : 0.1,
+		curDeliveryType : "condition", 
+		deliveryType : {
+			condition : {limitAmount : 50000, charge : 5000},
+			nofree : {charge : 5000},
+			free : {charge : 0}
+		},
 		deliveryCharge : 1000
 	}

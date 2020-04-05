@@ -2196,16 +2196,18 @@ public class MobileMainServiceImpl implements MobileMainService {
 		HashMap<String, Object> dbparams = new HashMap<String, Object>();
 		SessionManager sm = new SessionManager(request, response);
 		try {
-			rmap.put("qty", rPap.get("qty"));
-			rmap.put("unit", rPap.get("unit"));
 			rmap.put("productNo", rPap.get("productNo"));
-			rmap.put("color", rPap.get("color"));
 			rmap.put("productName", rPap.get("productName"));
-			rmap.put("gpointRate", rPap.get("gpointRate"));
+			rmap.put("totalPriceAmount", rPap.getInt("price") * rPap.getInt("unit") *   rPap.getInt("qty") );
+			rmap.put("orderAmount", rPap.getInt("price") * rPap.getInt("unit") *   rPap.getInt("qty") + rPap.getInt("deliveryCharge"));
 			rmap.put("price", rPap.get("price"));
-			rmap.put("deliveryCharge", rPap.get("deliveryCharge"));
+			rmap.put("gpointRate", rPap.get("gpointRate"));
 			rmap.put("gpointAmount", rPap.get("gpointAmount"));
-			rmap.put("orderAmount", rPap.getInt("unit") * rPap.getInt("qty") *  rPap.getInt("price"));
+			rmap.put("deliveryChargeType", rPap.get("deliveryChargeType"));
+			rmap.put("deliveryCharge", rPap.get("deliveryCharge"));
+			rmap.put("color", rPap.get("color"));
+			rmap.put("unit", rPap.get("unit"));
+			rmap.put("qty", rPap.get("qty"));
 			
 			dbparams.put("memberNo", sm.getMemberNo());
 			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
