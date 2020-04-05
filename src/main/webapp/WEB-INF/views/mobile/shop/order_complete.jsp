@@ -63,7 +63,7 @@
 							<li>은행명</li>
 							<li>계좌번호</li>
 							<li>입금금액</li>
-							<li>기한</li>
+						<!-- 	<li>기한</li> -->
 						</ul>
 					</div>
 					<div class="text_right">
@@ -72,7 +72,7 @@
 							<li>우리은행</li>
 							<li>1005-703-612321</li>
 							<li id = "orderAmount"><fmt:formatNumber value="${model.orderAmount}" pattern="###,###,###,###" /> 원</li>
-							<li id = "depositDay">2020.04.08까지</li>
+						<!-- 	<li id = "depositDay">2020.04.08까지</li> -->
 						</ul>
 					</div>
 				</div>

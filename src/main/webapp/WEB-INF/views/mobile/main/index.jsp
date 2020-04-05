@@ -55,7 +55,7 @@ if (isApp()) {
  $(document).on('ready', function() {
 	  $("#productDes").text(productInfo.productDes);
 	  $("#productName").text(productInfo.productName);
-	  $("#price_text").text($.number(productInfo.price));
+	  $("#price_text").text($.number(productInfo.price * 10));
 	  if (productInfo.gPointRate >  0 ){
 		  $("#gpointRate").text($.number( productInfo.gPointRate * 100) + "%") ;
 		  $("#gpoint_text").text($.number(productInfo.price * productInfo.gPointRate) + " GPOINT 적립") ;

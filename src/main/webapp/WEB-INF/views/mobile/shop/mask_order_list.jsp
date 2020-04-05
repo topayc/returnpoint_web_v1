@@ -110,7 +110,7 @@ $(document).ready(function(){
 									<td class="r_table2">무통장</td>
 								</tr>
 								<tr>
-									<td class="r_table1">적립 G POINT</td>
+									<td class="r_table1">적립 GPOINT</td>
 									<td class="r_table2"><fmt:formatNumber value="${order.gpointAmount}" pattern="###,###,###,###" />원 </td>
 									<td class="r_table1">주문자</td>
 									<td class="r_table2">${order.orderMemberName}</td>
@@ -143,7 +143,7 @@ $(document).ready(function(){
 									<td class="r_table2">${order.receiverAddress}</td>
 								</tr>
 								<tr>
-									<td class="r_table1">배송 메시지</td>
+									<td class="r_table1">배송메시지</td>
 									<td class="r_table2">${order.reqMsg}</td>
 								</tr>
 							</table>

@@ -33,6 +33,8 @@ $(document).ready(function() {
 	var pageContextlocale = '${pageContext.response.locale}';
 	$("#sel1").val(pageContextlocale);
 	element_layer = document.getElementById('layer');
+	//$("#progress_loading2").show();
+	//$(".wrap").hide(); 
 
 });
 
@@ -135,29 +137,35 @@ function initLayerPosition(){
 		var receiverPhone = $("#receiverPhone").val().trim();
 		
 		if (receiverName.length < 1) {
-			 alertOpen("알림", "받는분 이름을 입력해주세요", true, false,true, null);
+			isSubmitting = false; 
+			alertOpen("알림", "받는분 이름을 입력해주세요", true, false,function(){$("#receiverName").focus();}, null);
 			 return;
 		}
 		
 		if (zipCode.length < 1) {
-			 alertOpen("알림", "우편번호 검색 버튼을 이용해서 번호를 입력해주세요", true, false,true, null);
+			isSubmitting = false;
+			 alertOpen("알림", "우편번호 검색 버튼을 이용해서 우편번호와 주소를 입력해주세요", true, false,true, null);
 			 return;
 		}
 		
 		if (address1.length < 1) {
-			 alertOpen("알림", "우편번호 검색 버튼을 이용해서 주소를 입력해주세요", true, false,true, null);
+			isSubmitting = false;
+			 alertOpen("알림", "우편번호 검색 버튼을 이용해서 우편번호와 주소를 입력해주세요", true, false,true, null);
 			 return;
 		}
 		
 		if (address2.length < 1) {
-			 alertOpen("알림", "배송지 상세 주소를 입력해주세요", true, false,true, null);
+			isSubmitting = false;
+			 alertOpen("알림", "배송지 상세 주소를 입력해주세요", true, false,function(){$("#address2").focus();}, null);
 			 return;
 		}
 		
 		if (receiverPhone.length < 1) {
-			 alertOpen("알림", "받는분 전화번호를 입력해세요", true, false,true, null);
+			isSubmitting = false;
+			 alertOpen("알림", "받는분 전화번호를 입력해세요", true, false,function(){$("#receiverPhone").focus();}, null);
 			 return;
 		}
+		$(".wrap").hide(); 
 		var submitData = $("#orderForm").serializeObject();
 		$.ajax({
 			method : "post",
@@ -172,16 +180,18 @@ function initLayerPosition(){
 				if (data.result.code == 0 ) {
 					movePageReplace('/m/shop/orderComplete.do?orderAmount=' + submitData.orderAmount);
 				}else{
+					$(".wrap").show(); 
+					$("#progress_loading2").hide(); 	
 					alertOpen("확인", data.result.msg, false, true, null, null);
 					 $("#btn-submit").attr('disabled', false);
+					isSubmitting = false;
 				}
-				isSubmitting = false;
-				$("#progress_loading2").hide(); 	
 			},
 			error: function (request, status, error) {
+				$(".wrap").show(); 
+				$("#progress_loading2").hide(); 	
 				isSubmitting = false;
 				 $("#btn-submit").attr('disabled', false);
-				 $("#progress_loading2").hide(); 	
 				alertOpen("확인", "일시적 장애 발생", false, true, null, null);
 			}
 		});
@@ -198,6 +208,10 @@ function initLayerPosition(){
 <!-- header end -->
 <!-- body begin -->
 <body class="p_terms">
+	<div style = "width:40%;height:auto"id="progress_loading2" >
+		 <div><img src="/resources/images/progress_loading.gif" /></div>
+		 <p>결제가 </br> 진행중입니다.</p>
+	</div>
 	<!-- nav -->
 	<jsp:include page="../common/topper.jsp" />
 	<!-- nav -->
@@ -235,13 +249,13 @@ function initLayerPosition(){
 
 						<div class="r_address_left">우편번호</div>
 						<div class="r_address_right">
-							<input type="text" style="width: 70%;" id="zipCode" name="zipCode">
+							<input type="text" style="width: 70%;" id="zipCode" name="zipCode" readonly>
 							<button type = "button" onclick = "searchZipCode();return false;">우편</button> 
 						</div>
 
 						<div class="r_address_left">주소</div>
 						<div class="r_address_right">
-							<input type="text" id="address1" name="address1"> 
+							<input type="text" id="address1" name="address1" readonly> 
 							<input type="text" id="address2" name="address2">
 						</div>
 
@@ -346,9 +360,7 @@ function initLayerPosition(){
 		</div>
 	</form>
 	</section>
-	<div id="progress_loading2">
-		<img src="/resources/images/progress_loading.gif" />
-	</div>
+	
 </body>
 <!-- body end -->
 </html>

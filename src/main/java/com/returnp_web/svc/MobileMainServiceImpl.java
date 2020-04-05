@@ -2263,6 +2263,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			dbParams.put("receiverAddress", rPap.getStr("zipCode") + " " + rPap.getStr("address1") + " " +rPap.getStr("address2"));
 			
 			dbParams.put("deliveryCharge", rPap.get("deliveryCharge"));
+			dbParams.put("deliveryChargeType", rPap.get("deliveryChargeType"));
 			dbParams.put("reqMsg", rPap.get("reqMsg"));
 			
 			int count = this.mobileMainDao.createOrder(dbParams);
