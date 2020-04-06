@@ -87,7 +87,7 @@ $(document).ready(function(){
 								</tr>
 								<tr>
 									<td class="r_table1">계좌번호</td>
-									<td class="r_table2">1005-703-612321</td>
+									<td class="r_table2">1005-403-674308</td>
 								</tr>
 								<tr>
 									<td class="r_table1">예금주</td>

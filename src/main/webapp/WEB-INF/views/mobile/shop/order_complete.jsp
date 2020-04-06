@@ -70,7 +70,7 @@
 						<ul>
 							<li>주식회사 탑해피월드</li>
 							<li>우리은행</li>
-							<li>1005-703-612321</li>
+							<li>1005-403-674308</li>
 							<li id = "orderAmount"><fmt:formatNumber value="${model.orderAmount}" pattern="###,###,###,###" /> 원</li>
 						<!-- 	<li id = "depositDay">2020.04.08까지</li> -->
 						</ul>

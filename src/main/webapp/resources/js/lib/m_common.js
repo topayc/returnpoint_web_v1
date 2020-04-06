@@ -1161,8 +1161,8 @@ var productInfo  = {
 		gPointRate : 0.1,
 		curDeliveryType : "condition", 
 		deliveryType : {
-			condition : {limitAmount : 50000, charge : 5000},
-			nofree : {charge : 5000},
+			condition : {limitAmount : 50000, charge : 3000},
+			nofree : {charge : 3000},
 			free : {charge : 0}
 		},
 		deliveryCharge : 1000,
