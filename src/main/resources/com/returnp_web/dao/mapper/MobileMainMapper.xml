@@ -999,6 +999,7 @@
 			,gpointRate
 			,gpointAmount
 			,status
+			,payType
 			,receiverName
 			,receiverPhone
 			,receiverAddress
@@ -1020,6 +1021,7 @@
 			,#{gpointRate}
 			,#{gpointAmount}
 			,#{status}
+			,#{payType}
 			,#{receiverName}
 			,#{receiverPhone}
 			,#{receiverAddress}

@@ -78,7 +78,8 @@ $(document).ready(function(){
 						</div>
 					</div>
 					<div id="order_detail_${status.count}" class="list_toggle collapse" >
-							<div class="r_table_box" >
+						<c:if test = "${order.payType == '3' && order.status == '1' }">
+						<div class="r_table_box" >
 							<p>계좌정보</p>
 							<table>
 								<tr>
@@ -99,7 +100,7 @@ $(document).ready(function(){
 								</tr>
 							</table>
 						</div>
-						
+						</c:if>
 						<div class="r_table_box">
 							<p>결제정보</p>
 							<table>
@@ -107,7 +108,14 @@ $(document).ready(function(){
 									<td class="r_table1">상품금액</td>
 									<td class="r_table2"><fmt:formatNumber value="${order.totalPriceAmount}" pattern="###,###,###,###" />원</td>
 									<td class="r_table1">결제방법</td>
-									<td class="r_table2">무통장</td>
+									<td class="r_table2">
+									<c:choose>
+									    	<c:when test = "${order.payType == '1'}">카드결제</c:when>
+									    	<c:when test = "${order.payType == '2'}">간편결제</c:when>
+									    	<c:when test = "${order.payType == '3'}">무통장입금</c:when>
+									    	<c:when test = "${order.payType == '4'}">계좌이체</c:when>
+									    </c:choose>
+									</td>
 								</tr>
 								<tr>
 									<td class="r_table1">적립 GPOINT</td>

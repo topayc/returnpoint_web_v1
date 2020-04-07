@@ -35,7 +35,15 @@ $(document).ready(function() {
 	element_layer = document.getElementById('layer');
 	//$("#progress_loading2").show();
 	//$(".wrap").hide(); 
-
+	
+	$(".pay_method").click(function(){
+		$(".pay_method").removeClass("pay_method_select");
+		$(this).addClass("pay_method_select");
+		$('#payType').val($(this).attr("pay_type]").trim())
+	})
+	
+	$(".muto").click();
+	$('#payType').val("3")
 });
 
 function closeDaumPostcode() {
@@ -165,6 +173,12 @@ function initLayerPosition(){
 			 alertOpen("알림", "받는분 전화번호를 입력해세요", true, false,function(){$("#receiverPhone").focus();}, null);
 			 return;
 		}
+		
+		if ($("#payType").val() == "0"  || $("#payType").val().trim().length < 1) {
+			isSubmitting = false;
+			 alertOpen("알림", "결제할 방법을 선택해주세요", true, false,null, null);
+			 return;
+		}
 		$(".wrap").hide(); 
 		var submitData = $("#orderForm").serializeObject();
 		$.ajax({
@@ -236,6 +250,7 @@ function initLayerPosition(){
 		<input type = "hidden" name = "productName" id = "productName" value = "${model.productName }"/>
 		<input type = "hidden" name = "orderAmount" id = "orderAmount" value = "${model.orderAmount }"/>
 		<input type = "hidden" name = "totalPriceAmount" id = "orderAmount" value = "${model.totalPriceAmount }"/>
+		<input type = "hidden" name = "payType" id = "payType" value = "3"/>
 
 		<div class="shop_main">
 			<div class="r_pay">
@@ -348,9 +363,11 @@ function initLayerPosition(){
 					<b>결제수단</b>
 					<p style="font-size: 13px; color: #999">현재 무통장 입금 결제만 가능합니다</p>
 					<div class="r_pay_bottom">
-						<!-- <div class="r_pay_bottom_img"><img src="./img/pay_bottomimg1.png">핸드폰</div> -->
-						<div class="r_pay_bottom_img" style="border: 4px solid #33cccc">
-							<img src="/resources/images/pay_bottomimg2.png">무통장 입금
+					<!-- 	<div class="r_pay_bottom_img pay_method creditcard" style = "float :left" pay_type = "1">
+							<img src="/resources/images/credit_card.png">신용카드
+						</div>  -->
+						<div class="r_pay_bottom_img pay_method muto" style ="float : left;" pay_type = "3">
+							<img src="/resources/images/pay_bottomimg2.png" >무통장입금
 						</div>
 					</div>
 					<button id = "submit_btn"  type = "button" onclick="submitOrder()">결제하기</button>

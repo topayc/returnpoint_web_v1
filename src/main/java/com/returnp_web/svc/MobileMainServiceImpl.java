@@ -2246,6 +2246,7 @@ public class MobileMainServiceImpl implements MobileMainService {
 			
 			dbParams.put("productName", rPap.get("productName"));
 			dbParams.put("productPrice", rPap.get("price"));
+			dbParams.put("payType", rPap.get("payType"));
 			
 			dbParams.put("orderColor", rPap.get("color"));
 			dbParams.put("orderUnit", rPap.get("unit"));
