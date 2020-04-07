@@ -452,4 +452,19 @@ public class MobileMainDao {
 		return sqlSession.getMapper(MobileMainMapper.class).selectMaskOrders(dbparams);
 	}
 
+	public HashMap<String, Object> selectUserAddress(HashMap<String, Object> dbParams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMainMapper.class).selectUserAddress(dbParams);
+	}
+
+	public int insertUserAddress(HashMap<String, Object> dbParams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMainMapper.class).insertUserAddress(dbParams);
+	}
+
+	public int updateUserAddress(HashMap<String, Object> dbParams) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(MobileMainMapper.class).updateUserAddress(dbParams);
+	}
+
 }

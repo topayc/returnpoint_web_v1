@@ -1046,4 +1046,41 @@
 			orderMemberNo = #{orderMemberNo} 
 	</select> 
 	
+	<select id="selectUserAddress" parameterType="HashMap" resultType="HashMap">
+		SELECT 
+			* 
+		FROM user_address
+		WHERE 
+			memberNo = #{memberNo} 
+	</select> 
+	
+	<insert id="insertUserAddress" parameterType="HashMap" >
+		INSERT INTO user_address (
+			memberNo
+			,zipCode
+			,address1
+			,address2
+			,fullAddress
+			,createTime
+			,updateTime
+		) VALUES (
+			#{memberNo}
+			,#{zipCode}
+			,#{address1}
+			,#{address2}
+			,#{fullAddress}
+			,NOW()
+			,NOW()
+		)
+	</insert> 
+	
+		<update id="updateUserAddress" parameterType="HashMap">
+		UPDATE user_address
+		SET 
+			zipCode = #{zipCode},
+			address1 = #{address1},
+			address2 = #{address2},
+			fullAddress = #{fullAddress}
+		WHERE memberNo = #{memberNo}
+	</update>
 </mapper>

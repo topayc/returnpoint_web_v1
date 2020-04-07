@@ -421,4 +421,10 @@ public interface MobileMainMapper {
 	int createOrder(HashMap<String, Object> dbParams);
 
 	ArrayList<HashMap<String, Object>> selectMaskOrders(HashMap<String, Object> dbparams);
+
+	HashMap<String, Object> selectUserAddress(HashMap<String, Object> dbParams);
+
+	int insertUserAddress(HashMap<String, Object> dbParams);
+
+	int updateUserAddress(HashMap<String, Object> dbParams);
 }

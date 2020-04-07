@@ -264,14 +264,14 @@ function initLayerPosition(){
 
 						<div class="r_address_left">우편번호</div>
 						<div class="r_address_right">
-							<input type="text" style="width: 70%;" id="zipCode" name="zipCode" readonly>
+							<input type="text" style="width: 70%;" id="zipCode" name="zipCode"  value = "${model.memberAddress.zipCode}" readonly>
 							<button type = "button" onclick = "searchZipCode();return false;">우편</button> 
 						</div>
 
 						<div class="r_address_left">주소</div>
 						<div class="r_address_right">
-							<input type="text" id="address1" name="address1" readonly> 
-							<input type="text" id="address2" name="address2">
+							<input type="text" id="address1" name="address1" value = "${model.memberAddress.address1}" readonly> 
+							<input type="text" id="address2" name="address2" value = "${model.memberAddress.address2}" >
 						</div>
 
 						<div class="r_address_left">휴대전화</div>

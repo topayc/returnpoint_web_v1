@@ -2226,7 +2226,9 @@ public class MobileMainServiceImpl implements MobileMainService {
 
 			dbparams.put("memberNo", sm.getMemberNo());
 			HashMap<String, Object> memberMap = this.mobileMainDao.selectMember(dbparams);
+			HashMap<String, Object> memberAddress = this.mobileMainDao.selectUserAddress(dbparams);
 			rmap.put("memberMap", memberMap);
+			rmap.put("memberAddress", memberAddress);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -2272,12 +2274,26 @@ public class MobileMainServiceImpl implements MobileMainService {
 				json = Util.printResult(1, String.format("일시적인 장애가 발생했습니다 </br>조금후 다시 시도해주세요"), null);
 				rmap.put("json", json);
 			} else {
+				dbParams.clear();
+				dbParams.put("memberNo", sm.getMemberNo());
+				dbParams.put("zipCode", rPap.get("zipCode"));
+				dbParams.put("address1", rPap.get("address1"));
+				dbParams.put("address2", rPap.get("address2"));
+				dbParams.put("fullAddress",  rPap.getStr("zipCode") + " " + rPap.getStr("address1") + " " +rPap.getStr("address2"));
+				
+				HashMap<String, Object> userAddressMap  = this.mobileMainDao.selectUserAddress(dbParams);
+				if (userAddressMap == null) {
+					this.mobileMainDao.insertUserAddress(dbParams);
+				}else {
+					this.mobileMainDao.updateUserAddress(dbParams);
+				}
 				json = Util.printResult(0, String.format("정상적으로 주문이 접수되었습니다"), null);
 				rmap.put("json", json);
 			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 
 		}
 		return true;
