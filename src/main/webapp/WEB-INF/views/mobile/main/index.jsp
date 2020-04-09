@@ -146,11 +146,12 @@ if (isApp()) {
 		</div>
 	</div>
    </div> -->
-     <div style="display:none;" id = "event_popup">
+   
+  <!--      <div style="display:none;" id = "event_popup">
     	<div class="main_popuppage" style = "background-color : #fff;">
 			<div class="popup_list" style = "border: 1px solid #000;" >
 				<div>
-					<div style = "padding: 10px 5px;font-size : 13px;color :#fff;background-color : #cc0000">회사 정상화를 위한 포인트 출자전환 및 출금관련 공지</div>
+					<div style = "padding: 10px 5px;font-size : 13px;color :#fff;background-color : #cc0000">회사 정상화를 위한 방안</div>
 					<div style = "text-align:left;padding:20px 20px 10px 20px">
 						<p style = "font-size : 14px; font-weight : 550">▶ 포인트 출자 전환 및 신규 증자 </p>
 						<p style = "color : #555;margin-top:3px">- 조속한 회사 정상화를 위하여 현재 포인트의 출자 전환과 신규 증자 작업이 진행되고 있습니다.</p>
@@ -172,6 +173,39 @@ if (isApp()) {
 						<p style = "color : #000;margin-top:3px;font-weight: bold">- G 포인트 -> R 포인트로의 자동 전환 작업 중지</p>
 						</br>
 						<p style = "color : #000;margin-top:3px;font-weight: 500">조속한 정상화를 위해 최선의 노력을 다하겠습니다</p>
+					</div>
+				</div>
+				<div class="popup_btn_box">
+					<button style="border-top:1px solid #ccc;border-right:1px solid #ccc" onclick = "closePopupNotToday('alertView')">오늘 그만 보기</button>
+					<button style="margin-left: -4.5px;border-top:1px solid #ccc;" onclick = "closeMainModal();return false">닫기</button>
+				</div>
+			</div>
+		</div>
+   </div> -->
+   
+     <div style="display:none;" id = "event_popup">
+    	<div class="main_popuppage" style = "background-color : #fff;">
+			<div class="popup_list" style = "border: 1px solid #000;" >
+				<div>
+					<div style = "padding: 10px 5px;font-size : 13px;color :#fff;background-color : #cc0000">회사 정상화를 위한 방안</div>
+					<div style = "text-align:left;padding:20px 20px 1px 20px">
+						<p style = "color : #555;margin-top:3px">안녕하세요. 5만원 R포인트 회원 여러분</p>
+						<p style = "color : #555;margin-top:3px">(주) 탑해피월드 R포인트에서 회원 여러분께 사죄와 안내의 말씀을 드립니다</p>
+						<p style = "color : #555;margin-top:3px">현재 회사의 운영진의 경영미숙과 코로나 사태로 R포인트 시스템이 정상적으로 운영되지 못하고 있습니다.</p>
+						<p style = "color : #555;margin-top:3px">이에 회원님들께 경제적 피해를 야기한 점에 대하여 고개 숙여 사죄드립니다.</p>
+						</br>
+						<p style = "color : #555;margin-top:3px">회사 정상화를 위하여 비상대책위원회가 발족되었으며, 2020년 4월 5일 제 1차 회의를 개최하여 김청미 , 유인호 두분이 공동대표로 선출되었습니다.</p>
+						</br>
+						<p style = "font-size : 14px; font-weight : 550 ;margin-top:3px">▶김청미 대표(대전 1차 비상대책 준비위원회 추대로 (주) 탑해피월드 가맹점 1호점 대표)</p>
+						<p style = "font-size : 14px; font-weight : 550">▶ 유인호 대표  </p>
+						</br>
+						<p style = "color : #555;margin-top:3px">비상대책위원회와 회사임직원은 R포인트 정상화를 위하여 비상대책을 논의하였습니다</p>
+						<p style = "color : #555;margin-top:3px">이에 회원님들의 적극적인 동참을 간곡히 요청드리며, 자세한 내용을 보시려면 아래 자세히 보기를 클릭해주세요</p>
+						</br>
+						<p style = "color : #555;margin-top:3px;text-align:center;">
+							<a href = "/m/board/boardDetail.do?dType=mainBbs&mainBbsNo=124" style = "color : #fff;border: 1px solid #cc0000;padding:7px 15px;border-radius: 15px;background-color : #cc0000;font-size:12px">✓ 자세히보기</a>
+						</p>
+						</br>
 					</div>
 				</div>
 				<div class="popup_btn_box">
