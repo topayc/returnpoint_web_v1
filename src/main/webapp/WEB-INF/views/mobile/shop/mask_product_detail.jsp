@@ -180,6 +180,9 @@
 							<select name="color"  id="color" style = "height:35px">
 								<option value = "white" >white(흰색)</option>
 								<option value = "black" >black(검정색)</option>
+								<option value = "gray" >gray(회색)</option>
+								<option value = "wine" >wine(와인색)</option>
+								<option value = "chacoal" >chacoal(차콜)</option>
 							</select>
 						</li>
 						<li style="margin-bottom:20px;">수량
